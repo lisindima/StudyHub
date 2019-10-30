@@ -73,16 +73,16 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeHome</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).first</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Главная</string>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeAdd</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeAdd</string>
+			<string>UIApplicationShortcutIconTypeBookmark</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Расписание</string>
 			<key>UIApplicationShortcutItemType</key>
@@ -94,11 +94,11 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Чат</string>
 			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeAdd</string>
+			<string>UIApplicationShortcutIconTypeMessage</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeAdd</string>
+			<string>UIApplicationShortcutIconTypeContact</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Профиль</string>
 			<key>UIApplicationShortcutItemType</key>
