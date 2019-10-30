@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/AppPear/ChartView.git",
+        "state": {
+          "branch": null,
+          "revision": "94950db4d582c172340bb9f059c5288e98583863",
+          "version": "1.3.0"
+        }
+      },
+      {
+        "package": "KeyboardObserving",
+        "repositoryURL": "https://github.com/nickffox/KeyboardObserving",
+        "state": {
+          "branch": null,
+          "revision": "5431a00f55aa9a29ea1cb83c01461a483c9f969c",
+          "version": "0.2.0"
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios",
+        "state": {
+          "branch": null,
+          "revision": "b08b4f3d0101cd89471a4a25d7945e7f89d801b3",
+          "version": "3.1.3"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
+        "state": {
+          "branch": null,
+          "revision": "7b443c9e7b6889cf7677f102143c3c7442c589e5",
+          "version": "0.9.8"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

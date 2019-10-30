@@ -1,0 +1,44 @@
+//
+//  HeaderProfileView.swift
+//  altgtu
+//
+//  Created by Дмитрий Лисин on 26.09.2019.
+//  Copyright © 2019 Dmitriy Lisin. All rights reserved.
+//
+
+import SwiftUI
+import URLImage
+
+struct Header: View {
+    var body: some View {
+        Rectangle()
+    }
+}
+
+struct ProfileImage: View {
+    @EnvironmentObject var session: SessionStore
+    var body: some View {
+        VStack {
+            URLImage(URL(string:"\(session.url ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                ProgressView($0) { progress in
+                    ZStack {
+                        if progress > 0.0 {
+                            CircleProgressView(progress).stroke(lineWidth: 8.0)
+                        }
+                        else {
+                            CircleActivityView().stroke(lineWidth: 50.0)
+                        }
+                    }
+                }.frame(width: 210, height: 210)
+            }) { proxy in
+                    proxy.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .clipped()
+                        .shadow(radius: 10)
+                        .frame(width: 210, height: 210)
+            }
+        }
+    }
+}
