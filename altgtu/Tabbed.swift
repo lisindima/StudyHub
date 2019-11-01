@@ -12,6 +12,7 @@ import Firebase
 struct Tabbed : View {
     
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionChat: SessionChat
     @ObservedObject var pickerModel: pickerAPI = pickerAPI()
     //@ObservedObject var newsAPI: NewsAPI = NewsAPI()
     @State private var selection = 0
@@ -19,6 +20,7 @@ struct Tabbed : View {
     func fetchUserData(){
         session.getDataFromDatabaseListen()
         pickerModel.loadPickerData()
+        sessionChat.getDataFromDatabaseListenChat()
         //newsAPI.loadNews()
     }
     
@@ -40,7 +42,7 @@ struct Tabbed : View {
                         Text("Расписание")
                     }
                 }.tag(1)
-            ChatView()
+            ListChat()
                 .tabItem {
                     VStack{
                         Image(systemName: "bubble.left")

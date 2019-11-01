@@ -124,6 +124,11 @@ struct ProfileView: View {
                         }
                     }
                 }
+                Section(header: Text("Безопасность").bold()) {
+                    NavigationLink(destination: SecurityOption()) {
+                        Text("Безопасность")
+                    }
+                }
                 Section(header: Text("Информация").bold()) {
                     HStack {
                         Button("Возможности") {

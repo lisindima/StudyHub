@@ -10,9 +10,12 @@ import SwiftUI
 import KeyboardObserving
 
 struct ChatView: View {
+    
+    @EnvironmentObject var sessionChat: SessionChat
     @State private var message: String = ""
+    var titleChat: String
     var body: some View {
-        NavigationView {
+        
             VStack {
                 ScrollView {
                     Text("ddd")
@@ -35,21 +38,21 @@ struct ChatView: View {
                 }.padding()
             }
             .keyboardObserving()
-            .navigationBarTitle(Text("Чат"), displayMode: .inline)
+            .navigationBarTitle(Text(titleChat), displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
                     print("plus")
                 })
                 {
-                    Image(systemName: "plus.bubble")
+                    Image(systemName: "info.circle")
                         .imageScale(.large)
             })
             
-        }
+        
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView(titleChat: "test")
     }
 }

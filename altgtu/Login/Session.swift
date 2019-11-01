@@ -9,8 +9,6 @@
 import SwiftUI
 import Foundation
 import Firebase
-import FirebaseFirestore
-import FirebaseStorage
 import Combine
 import CoreNFC
 

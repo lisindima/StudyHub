@@ -39,6 +39,7 @@
 		CB27619A2355A9A00054C753 /* LessonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* LessonWatch.swift */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* HeaderProfileView.swift */; };
+		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6777BE23604B680019D6B6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
 		CB6777C123604B680019D6B6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6777C023604B680019D6B6 /* TodayViewController.swift */; };
@@ -49,6 +50,7 @@
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
+		CB6DFE6E236BDEF7008A014F /* SecurityOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6DFE6D236BDEF7008A014F /* SecurityOption.swift */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
@@ -170,6 +172,7 @@
 		CB2761992355A9A00054C753 /* LessonWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWatch.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* HeaderProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
+		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CB6777BD23604B680019D6B6 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6777C023604B680019D6B6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		CB6D3F7A235B07CA00E65661 /* ModelNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNews.swift; sourceTree = "<group>"; };
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
+		CB6DFE6D236BDEF7008A014F /* SecurityOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityOption.swift; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				CBDE62942352129E00E588EC /* pickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CBB13F0523584F9E00D98C83 /* ShareSheet.swift */,
+				CB6DFE6D236BDEF7008A014F /* SecurityOption.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				CB12E7ED23596F9E00115B2E /* ChatView.swift */,
 				CBABB1292366F5420087AD18 /* MessageView.swift */,
 				CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */,
+				CB5DE17F236AB98D001AC3E3 /* ListChat.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBDE62952352129E00E588EC /* pickerAPI.swift in Sources */,
+				CB6DFE6E236BDEF7008A014F /* SecurityOption.swift in Sources */,
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
 				CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */,
 				CB0AED86232E5AF90047A8A0 /* InfoPage.swift in Sources */,
@@ -728,6 +735,7 @@
 				CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */,
 				CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* InfoPageView.swift in Sources */,
+				CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
