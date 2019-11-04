@@ -14,7 +14,7 @@ struct SecurityOption: View {
     @State private var mailLogin = true
     @State private var appleLogin = false
     @State private var faceidSecure = false
-    let context = LAContext()
+    var context = LAContext()
     var body: some View {
         Form {
             if (context.biometryType == .faceID) {
@@ -45,8 +45,7 @@ struct SecurityOption: View {
                     Text("Вход через Apple ID")
                 }
             }
-            .navigationBarTitle(Text("Безопасность и вход"), displayMode: .inline)
-        }
+        }.navigationBarTitle(Text("Безопасность"), displayMode: .inline)
     }
 }
 

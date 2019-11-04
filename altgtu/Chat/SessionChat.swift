@@ -12,6 +12,39 @@ import Firebase
 final class SessionChat: ObservableObject {
     
     @Published var chatList = [String]()
+    @Published var msgs = [dataMessges]()
+    
+    init() {
+        let db = Firestore.firestore()
+        db.collection("chatRoom1").addSnapshotListener { (querySnapshot, err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            for i in querySnapshot!.documentChanges {
+                if i.type == .added {
+                    let user = i.document.get("user") as! String
+                    let msg = i.document.get("msg") as! String
+                    let idUser = i.document.get("idUser") as! String
+                    let dateMsg = i.document.get("dateMsg") as! String
+                    let id = i.document.documentID
+                    
+                    self.msgs.append(dataMessges(id: id, user: user, msg: msg, idUser: idUser, dateMsg: dateMsg))
+                }
+            }
+        }
+    }
+    
+    func addMsg(msg: String, user: String, idUser: String, dateMsg: String) {
+        let db = Firestore.firestore()
+        db.collection("chatRoom1").addDocument(data: ["msg": msg, "user": user, "idUser": idUser, "dateMsg": dateMsg]) { (err) in
+        if err != nil {
+            print((err?.localizedDescription)!)
+            return
+        }
+            print("success")
+        }
+    }
     
     func getDataFromDatabaseListenChat() {
         let db = Firestore.firestore()
@@ -23,4 +56,13 @@ final class SessionChat: ObservableObject {
             }
         }
     }
+}
+
+struct dataMessges: Identifiable {
+    
+    var id: String
+    var user: String
+    var msg: String
+    var idUser: String
+    var dateMsg: String
 }

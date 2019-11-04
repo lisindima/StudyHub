@@ -32,13 +32,13 @@ struct ListChat: View {
                 .onMove(perform: move)
             }
             .navigationBarTitle(Text("Чат"))
-            .navigationBarItems(leading: Button (action: {
+            .navigationBarItems(leading: EditButton(), trailing: Button (action: {
                 print("plus")
             })
             {
                 Image(systemName: "plus.bubble")
                     .imageScale(.large)
-            }, trailing: EditButton())
+            })
             
         }
     }

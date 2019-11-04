@@ -8,24 +8,47 @@
 
 import SwiftUI
 import KeyboardObserving
+import Firebase
 
 struct ChatView: View {
     
     @EnvironmentObject var sessionChat: SessionChat
-    @State private var message: String = ""
+    @EnvironmentObject var session: SessionStore
+    @ObservedObject var msg = SessionChat()
+    @State private var typeMessage: String = ""
+    let currentUid = Auth.auth().currentUser!.uid
     var titleChat: String
+    
     var body: some View {
-        
-            VStack {
-                ScrollView {
-                    Text("ddd")
+        VStack {
+            ScrollView {
+                ForEach(msg.msgs) { i in
+                    if self.currentUid == i.idUser {
+                        MessageView(message: i.msg, sender: i.user)
+                            .contextMenu {
+                                Button(action:
+                                    {
+    
+                                    }){
+                                HStack {
+                                    Image(systemName: "trash")
+                                    Text("Удалить")
+                                }
+                            }
+                        }
+                    }
+                    else {
+                        MessageView1(message: i.msg, sender: i.user)
+                    }
                 }
+            }
                 Spacer()
             HStack {
-                CustomInput(text: $message, name: "Введите сообщение")
-                if message.isEmpty == false {
+                CustomInput(text: $typeMessage, name: "Введите сообщение")
+                if typeMessage.isEmpty == false {
                     Button(action:{
-                        
+                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: "11.11.11")
+                        self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")
                             .font(.largeTitle)
