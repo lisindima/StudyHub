@@ -216,7 +216,6 @@ struct ProfileView: View {
                 }
                 .navigationBarTitle(Text("Настройки"), displayMode: .inline)
                 .navigationBarItems(trailing: Button (action: {
-                        self.session.updateDataFromDatabase()
                         self.isPresented = false
                 })
                 {
@@ -226,6 +225,12 @@ struct ProfileView: View {
             })
         }
         .accentColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+    }
+    
+    func setNotification() -> Void {
+        let manager = LocalNotificationManager()
+        manager.addNotification(title: "This is a test reminder")
+        manager.schedule()
     }
     
     var body: some View {
@@ -258,7 +263,8 @@ struct ProfileView: View {
                 Spacer()
                 Button (action:
                     {
-                        self.session.readCard()
+                        self.setNotification()
+                        //self.session.readCard()
                     }, label: {
                         Text("Тест")
                             .bold()

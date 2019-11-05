@@ -28,7 +28,6 @@
 		CB0AED86232E5AF90047A8A0 /* InfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED84232E5AF90047A8A0 /* InfoPage.swift */; };
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED88232E5B080047A8A0 /* Today.swift */; };
-		CB0AED8C232E5B080047A8A0 /* Kabinet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED89232E5B080047A8A0 /* Kabinet.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12E7ED23596F9E00115B2E /* ChatView.swift */; };
 		CB1F6DA72338BC0900604C50 /* 9424-simple-loading-bar.json in Resources */ = {isa = PBXBuildFile; fileRef = CB1F6DA62338BC0800604C50 /* 9424-simple-loading-bar.json */; };
@@ -40,6 +39,7 @@
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* HeaderProfileView.swift */; };
 		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
+		CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6777BE23604B680019D6B6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
 		CB6777C123604B680019D6B6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6777C023604B680019D6B6 /* TodayViewController.swift */; };
@@ -161,7 +161,6 @@
 		CB0AED84232E5AF90047A8A0 /* InfoPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPage.swift; sourceTree = "<group>"; };
 		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CB0AED88232E5B080047A8A0 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
-		CB0AED89232E5B080047A8A0 /* Kabinet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kabinet.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "АлтГТУ.entitlements"; sourceTree = "<group>"; };
 		CB12E7ED23596F9E00115B2E /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -173,6 +172,7 @@
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* HeaderProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
 		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
+		CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CB6777BD23604B680019D6B6 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6777C023604B680019D6B6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -292,10 +292,10 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
-				CB1146702344452100DE3FF0 /* OLD */,
 				CB12E7EA23596F5400115B2E /* Support */,
-				CB0AED88232E5B080047A8A0 /* Today.swift */,
+				CB6704EA23712BB200F875C3 /* Notifications */,
 				CB0AED56232E5A210047A8A0 /* ContentView.swift */,
+				CB0AED88232E5B080047A8A0 /* Today.swift */,
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB28B8D92361459900A93F28 /* News */,
 				CB12E7EB23596F7900115B2E /* Chat */,
@@ -381,14 +381,6 @@
 			path = InfoPage;
 			sourceTree = "<group>";
 		};
-		CB1146702344452100DE3FF0 /* OLD */ = {
-			isa = PBXGroup;
-			children = (
-				CB0AED89232E5B080047A8A0 /* Kabinet.swift */,
-			);
-			path = OLD;
-			sourceTree = "<group>";
-		};
 		CB12E7EA23596F5400115B2E /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +427,14 @@
 				CB6D3F7A235B07CA00E65661 /* ModelNews.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		CB6704EA23712BB200F875C3 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		CB6777BF23604B680019D6B6 /* altgtuTodayWidget */ = {
@@ -719,13 +719,13 @@
 				CB276197235588820054C753 /* InfoApp.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
+				CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
-				CB0AED8C232E5B080047A8A0 /* Kabinet.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* Session.swift in Sources */,
 				CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */,
 				CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */,

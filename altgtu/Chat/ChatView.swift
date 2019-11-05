@@ -24,7 +24,8 @@ struct ChatView: View {
             ScrollView {
                 ForEach(msg.msgs) { i in
                     if self.currentUid == i.idUser {
-                        MessageView(message: i.msg, sender: i.user)
+                        MessageView(message: i.msg, sender: i.user, timeMsg: i.dateMsg)
+                            //.padding([.top, .bottom])
                             .contextMenu {
                                 Button(action:
                                     {
@@ -39,6 +40,7 @@ struct ChatView: View {
                     }
                     else {
                         MessageView1(message: i.msg, sender: i.user)
+                            //.padding([.top, .bottom])
                     }
                 }
             }
@@ -47,7 +49,8 @@ struct ChatView: View {
                 CustomInput(text: $typeMessage, name: "Введите сообщение")
                 if typeMessage.isEmpty == false {
                     Button(action:{
-                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: "11.11.11")
+                        self.session.currentTime()
+                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: "\(self.session.currentHour ?? 00):\(self.session.currentMinute ?? 00):\(self.session.currentSecond ?? 00)")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")
@@ -58,7 +61,7 @@ struct ChatView: View {
                             .cornerRadius(8)
                         }
                     }
-                }.padding()
+                }.padding([.horizontal, .bottom])
             }
             .keyboardObserving()
             .navigationBarTitle(Text(titleChat), displayMode: .inline)
@@ -68,9 +71,7 @@ struct ChatView: View {
                 {
                     Image(systemName: "info.circle")
                         .imageScale(.large)
-            })
-            
-        
+        })
     }
 }
 

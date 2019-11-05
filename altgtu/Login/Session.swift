@@ -58,11 +58,22 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var gValue: Double!
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
+    @Published var currentHour: Int!
+    @Published var currentMinute: Int!
+    @Published var currentSecond: Int!
     
     var handle: AuthStateDidChangeListenerHandle?
         
     init(session: User? = nil) {
         self.session = session
+    }
+    func currentTime() {
+        let date = Date()
+        let calendar = Calendar.current
+        self.currentHour = calendar.component(.hour, from: date)
+        self.currentMinute = calendar.component(.minute, from: date)
+        self.currentSecond = calendar.component(.second, from: date)
+        print("Текущее время: \(currentHour ?? 00):\(currentMinute ?? 00):\(currentSecond ?? 00)")
     }
     
     func listen() {

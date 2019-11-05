@@ -12,13 +12,13 @@ import URLImage
 struct MessageView: View {
     var message: String
     var sender: String
+    var timeMsg: String
     @EnvironmentObject var session: SessionStore
-    var alignment: HorizontalAlignment = .leading
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
 
     var body: some View {
-            VStack(alignment: self.alignment) {
+        VStack(alignment: .leading) {
                 HStack {
                     URLImage(URL(string:"\(session.url ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                     ProgressView($0) { progress in
@@ -43,35 +43,28 @@ struct MessageView: View {
             
                 VStack {
                 HStack {
-                    if alignment == .trailing {
-                        Spacer()
-                    }
                     Text(sender.uppercased())
                         .foregroundColor(accentColor)
                         .font(.footnote)
                         .padding(.bottom, 0)
-                    if alignment == .leading {
                         Spacer()
-                    }
                 }
                 HStack {
-                    if alignment == .trailing || alignment == .center {
-                        Spacer()
-                    }
-
                     VStack(alignment: .leading) {
                         Text(message)
                             .padding(.all, 10)
                             .background(messageColor)
-                            .font((alignment == .center) ? .footnote : .body)
+                            .font(.body)
                             .cornerRadius(5)
                     }.padding(.bottom, 5)
-
-                        if alignment == .leading || alignment == .center {
-                            Spacer()
-                        
-                        }
+                        Spacer()
                     }
+                    HStack {
+                        Text(timeMsg)
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }.padding(.leading, 3)
                 }
             }
         }.padding(.leading)
@@ -83,7 +76,6 @@ struct MessageView1: View {
     var message: String
     var sender: String
     @EnvironmentObject var session: SessionStore
-    var alignment: HorizontalAlignment = .leading
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
 
@@ -98,7 +90,6 @@ struct MessageView1: View {
                         .foregroundColor(accentColor)
                         .font(.footnote)
                         .padding(.bottom, 0)
-                   
                 }
                 HStack {
                     Spacer()
@@ -106,7 +97,7 @@ struct MessageView1: View {
                         Text(message)
                             .padding(.all, 10)
                             .background(messageColor)
-                            .font((alignment == .center) ? .footnote : .body)
+                            .font(.body)
                             .cornerRadius(5)
                     }.padding(.bottom, 5)
 
