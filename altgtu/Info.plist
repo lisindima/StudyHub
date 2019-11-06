@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
-	<string>Privacy</string>
+	<string>Use Face ID instead of a password to access your profile.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>add photo profile</string>
 	<key>NSPhotoLibraryUsageDescription</key>

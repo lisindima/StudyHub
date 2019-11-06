@@ -229,7 +229,7 @@ struct ProfileView: View {
     
     func setNotification() -> Void {
         let manager = LocalNotificationManager()
-        manager.addNotification(title: "This is a test reminder")
+        manager.addNotification(title: "Тестовое уведомление")
         manager.schedule()
     }
     

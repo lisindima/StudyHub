@@ -7,22 +7,49 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct ContentView : View {
     
     @EnvironmentObject var session: SessionStore
-    
-    func getUser () {
+
+    func getUser() {
         session.listen()
+        session.LocalAuthFunc()
     }
     
     var body: some View {
         Group {
             if (session.session != nil) {
-                Tabbed()
+                if (session.LocalAuthVerification == true) {
+                    Tabbed()
+                }
+                else {
+                    AuthenticationScreen()
+                }
             } else {
                 AuthenticationScreen()
             }
         }.onAppear(perform: getUser)
     }
 }
+/*
+struct LocalAuth : View {
+    
+    @EnvironmentObject var session: SessionStore
+    
+    func getAuth() {
+        session.LocalAuthFunc()
+    }
+    
+    var body: some View {
+        Group {
+            if (session.LocalAuthVerification == true) {
+                Tabbed()
+            } else {
+                AuthenticationScreen()
+            }
+        }.onAppear(perform: getAuth)
+    }
+}
+*/

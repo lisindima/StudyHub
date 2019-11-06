@@ -11,6 +11,7 @@ import Foundation
 import Firebase
 import Combine
 import CoreNFC
+import LocalAuthentication
 
 struct User {
     
@@ -59,12 +60,38 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
     @Published var currentTimeAndDate: String!
+    @Published var LocalAuthVerification: Bool! = false
     
     var handle: AuthStateDidChangeListenerHandle?
         
     init(session: User? = nil) {
         self.session = session
     }
+    
+    func LocalAuthFunc(){
+        let context = LAContext()
+        var error: NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Touch ID identification needed" // For touch ID only
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] success, authenticationError in
+
+                DispatchQueue.main.async {
+                    if success {
+                        self?.LocalAuthVerification = true
+                        print("збс")
+                    } else {
+                        self?.LocalAuthVerification = false
+                        print("херово")
+                    }
+                }
+            }
+        } else {
+            self.LocalAuthVerification = true
+        }
+    }
+    
     func currentTime() {
         let now = Date()
         let formatter = DateFormatter()
