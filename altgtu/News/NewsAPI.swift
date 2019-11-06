@@ -14,7 +14,7 @@ class NewsAPI: ObservableObject {
     @Published var articles: Articles = [Article]()
     
     init() {
-        guard let url: URL = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=376a97643c6c4633afe57427b71e8ebd") else { return }
+        guard let url: URL = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=376a97643c6c4633afe57427b71e8ebd") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 guard let json = data else { return }

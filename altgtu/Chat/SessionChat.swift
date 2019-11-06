@@ -14,10 +14,9 @@ final class SessionChat: ObservableObject {
     @Published var chatList = [String]()
     @Published var msgs = [dataMessges]()
     
-    
     init() {
         let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("msg")
+        db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
             .addSnapshotListener { (querySnapshot, err) in
             if err != nil {
                 print((err?.localizedDescription)!)

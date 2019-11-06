@@ -25,7 +25,7 @@ struct ChatView: View {
                 ForEach(msg.msgs) { i in
                     if self.currentUid == i.idUser {
                         MessageView(message: i.msg, sender: i.user, timeMsg: i.dateMsg)
-                            //.padding([.top, .bottom])
+                            .padding(.top, 6)
                             .contextMenu {
                                 Button(action:
                                     {
@@ -39,8 +39,8 @@ struct ChatView: View {
                         }
                     }
                     else {
-                        MessageView1(message: i.msg, sender: i.user)
-                            //.padding([.top, .bottom])
+                        MessageView1(message: i.msg, sender: i.user, timeMsg: i.dateMsg)
+                            .padding(.top, 6)
                     }
                 }
             }
@@ -50,7 +50,7 @@ struct ChatView: View {
                 if typeMessage.isEmpty == false {
                     Button(action:{
                         self.session.currentTime()
-                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: "\(self.session.currentHour ?? 00):\(self.session.currentMinute ?? 00):\(self.session.currentSecond ?? 00)")
+                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: self.session.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")
