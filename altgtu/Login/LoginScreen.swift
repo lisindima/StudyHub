@@ -72,8 +72,21 @@ func signUp () {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding()
             VStack(alignment: .trailing) {
-                SecureField("Пароль", text: $password)
-                    .modifier(InputModifier())
+                HStack {
+                        SecureField("Пароль", text: $password)
+                        if password.isEmpty {
+                
+                        }
+                        if 0 < password.count && password.count < 8 {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.red)
+                        }
+                        if 8 <= password.count{
+                            Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                        }
+                    }
+                        .modifier(InputModifier())
                 Text("Требуется минимум 8 символов.")
                     .font(.footnote)
                     .foregroundColor(Color.gray)
@@ -95,6 +108,7 @@ func signUp () {
                 .padding()
             Spacer()
         }
+        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
         .navigationBarTitle("Регистрация")
         .alert(isPresented: $showAlert){
             Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
@@ -147,6 +161,7 @@ struct ResetPassword: View {
                 .padding()
             Spacer()
         }
+        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
         .navigationBarTitle("Восстановление")
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
@@ -187,13 +202,26 @@ struct EmailLoginScreen: View {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
             VStack(alignment: .trailing) {
-            SecureField("Пароль", text: $password)
-                .modifier(InputModifier())
-                .padding([.horizontal, .top])
-            NavigationLink(destination: ResetPassword()) {
-                Text("Забыли пароль?").font(.footnote)
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
+                HStack {
+                    SecureField("Пароль", text: $password)
+                    if password.isEmpty {
+            
+                    }
+                    if 0 < password.count && password.count < 8 {
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                    }
+                    if 8 <= password.count{
+                        Image(systemName: "checkmark.circle")
+                        .foregroundColor(.green)
+                    }
+                }
+                    .modifier(InputModifier())
+                    .padding([.horizontal, .top])
+                NavigationLink(destination: ResetPassword()) {
+                    Text("Забыли пароль?").font(.footnote)
+                        .padding(.horizontal)
+                        .padding(.bottom, 8)
                 }
             }
             CustomButton(
@@ -225,6 +253,7 @@ struct EmailLoginScreen: View {
                     .padding(.bottom)
                 }.padding(.bottom)
             }
+            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
             .navigationBarTitle("Вход")
             .edgesIgnoringSafeArea(.bottom)
             .alert(isPresented: $showAlert) {
@@ -242,6 +271,7 @@ struct AuthenticationScreen : View {
 @State private var showAlert = false
 
 @EnvironmentObject var session: SessionStore
+@Environment(\.colorScheme) var colorScheme: ColorScheme
     
     func signIn () {
         loading = true
@@ -273,7 +303,7 @@ struct AuthenticationScreen : View {
                         .padding(.bottom, 10)
                         .multilineTextAlignment(.center)
                     Text("Самый простой способ узнать расписание и быть в курсе всех событий.")
-                        .font(.footnote)
+                        .font(.subheadline)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
@@ -291,7 +321,7 @@ struct AuthenticationScreen : View {
                         .font(.subheadline)
                     NavigationLink(destination: EmailLoginScreen()) {
                     Text("Войти с помощью эл.почты").font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .light ? .black : .white)
                         .padding()
                     }
                 }.padding(.bottom, 40)
@@ -308,8 +338,10 @@ struct AuthenticationScreen : View {
 
 final class SignInWithApple: UIViewRepresentable {
     
+@Environment(\.colorScheme) var colorScheme: ColorScheme
+    
   func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-    return ASAuthorizationAppleIDButton()
+    return ASAuthorizationAppleIDButton(type: .default, style: colorScheme == .light ? .black : .white)
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
