@@ -8,7 +8,7 @@
 
 import SwiftUI
 import Firebase
-import KeyboardObserving
+import AuthenticationServices
 
 struct SignUpView : View {
     
@@ -64,19 +64,13 @@ func signUp () {
     }
     
     var body : some View {
-
         VStack {
-            Text("Создание аккаунта")
-                .font(.title)
-                .padding(.horizontal)
-            
             CustomInput(text: $lastname, name: "Фамилия")
                 .padding([.top, .horizontal])
             CustomInput(text: $firstname, name: "Имя")
                 .padding([.top, .horizontal])
             CustomInput(text: $email, name: "Эл.почта")
                 .padding()
-            
             VStack(alignment: .trailing) {
                 SecureField("Пароль", text: $password)
                     .modifier(InputModifier())
@@ -101,6 +95,7 @@ func signUp () {
                 .padding()
             Spacer()
         }
+        .navigationBarTitle("Регистрация")
         .alert(isPresented: $showAlert){
             Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
         }
@@ -135,31 +130,106 @@ struct ResetPassword: View {
 
     var body : some View {
         VStack {
-            Text("Восстановление аккаунта")
-                .font(.title)
-                .padding(.horizontal)
-                
-                CustomInput(text: $email, name: "Эл.почта")
-                    .padding([.top, .horizontal])
-                CustomButton(
-                    label: "Восстановить аккаунт",
-                    action: sendPasswordReset
-                )
-                    .disabled(loading)
-                    .padding()
-                Divider()
-                Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(nil)
-                    .padding()
-                Spacer()
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
+            CustomInput(text: $email, name: "Эл.почта")
+                .padding([.top, .horizontal])
+            CustomButton(
+                label: "Восстановить аккаунт",
+                action: sendPasswordReset
+            )
+                .disabled(loading)
+                .padding()
+            Divider()
+            Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .padding()
+            Spacer()
+        }
+        .navigationBarTitle("Восстановление")
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
         }
         .edgesIgnoringSafeArea(.bottom)
+    }
+}
+
+struct EmailLoginScreen: View {
+    
+@State private var email: String = ""
+@State private var password: String = ""
+@State private var loading = false
+@State private var error = false
+@State private var showAlert = false
+
+@EnvironmentObject var session: SessionStore
+    
+    func signIn () {
+        loading = true
+        error = false
+        session.signIn(email: email, password: password) { (result, error) in
+            self.loading = false
+            if error != nil {
+                self.showAlert.toggle()
+                self.error = true
+            }
+                else
+            {
+                self.email = ""
+                self.password = ""
+            }
+        }
+    }
+
+    var body : some View {
+        VStack {
+            CustomInput(text: $email, name: "Эл.почта")
+                .padding([.top, .horizontal])
+            VStack(alignment: .trailing) {
+            SecureField("Пароль", text: $password)
+                .modifier(InputModifier())
+                .padding([.horizontal, .top])
+            NavigationLink(destination: ResetPassword()) {
+                Text("Забыли пароль?").font(.footnote)
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
+                }
+            }
+            CustomButton(
+                label: "Войти",
+                action: signIn
+            )
+                .disabled(loading)
+                .padding()
+            Divider()
+            Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .padding()
+            Spacer()
+        VStack {
+            Divider()
+            HStack(alignment: .center) {
+                Text("У вас еще нет аккаунта?")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                NavigationLink(destination: SignUpView())
+                {
+                Text("Регистрация").font(.footnote)
+                    }
+                }
+                    .padding(.top,5)
+                    .padding(.bottom)
+                }.padding(.bottom)
+            }
+            .navigationBarTitle("Вход")
+            .edgesIgnoringSafeArea(.bottom)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
+        }
     }
 }
 
@@ -194,6 +264,7 @@ struct AuthenticationScreen : View {
         NavigationView {
             VStack {
                 Spacer()
+                VStack {
                     Image("altgtu")
                         .resizable()
                         .frame(width: 135, height: 135)
@@ -207,54 +278,53 @@ struct AuthenticationScreen : View {
                         .multilineTextAlignment(.center)
                         .lineLimit(nil)
                         .padding([.horizontal, .bottom])
-                        
-                Group {
-                    Divider()
-                        .padding(.top, 40)
-                    CustomInput(text: $email, name: "Эл.почта")
-                        .padding()
-                        .keyboardType(.emailAddress)
-                    VStack(alignment: .trailing) {
-                    SecureField("Пароль", text: $password)
-                        .modifier(InputModifier())
-                        .padding([.leading, .trailing])
-                    NavigationLink(destination: ResetPassword()) {
-                        Text("Забыли пароль?").font(.footnote)
-                            .padding(.horizontal)
-                            .padding(.bottom, 8)
-                        }
-                    }
-                    
-                    CustomButton(
-                        label: "Войти",
-                        action: signIn,
-                        loading: loading
-                    )
-                        .padding()
-                }
+                }.padding(.top, 30)
+                Spacer()
                 VStack {
-                    Divider()
-                    HStack(alignment: .center) {
-                        Text("У вас еще нет аккаунта?")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    NavigationLink(destination: SignUpView())
-                    {
-                    Text("Регистрация").font(.footnote)
-                        }
+                    SignInWithApple()
+                        .frame(height: 55)
+                        .cornerRadius(8)
+                        .padding()
+                        .onTapGesture(perform: showAppleLogin)
+                    Text("-или-")
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                    NavigationLink(destination: EmailLoginScreen()) {
+                    Text("Войти с помощью эл.почты").font(.headline)
+                        .foregroundColor(.black)
+                        .padding()
                     }
-                        .padding(.top,5)
-                        .padding(.bottom)
-                }
+                }.padding(.bottom, 40)
             }
+            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
             .edgesIgnoringSafeArea(.top)
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .keyboardObserving()
     }
+}
+
+final class SignInWithApple: UIViewRepresentable {
+    
+  func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+    return ASAuthorizationAppleIDButton()
+    }
+    
+    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
+    }
+}
+
+private func showAppleLogin() {
+  // 1
+  let request = ASAuthorizationAppleIDProvider().createRequest()
+
+  // 2
+  request.requestedScopes = [.fullName, .email]
+
+  // 3
+  let controller = ASAuthorizationController(authorizationRequests: [request])
 }
 
 struct Authenticate_Previews : PreviewProvider {
