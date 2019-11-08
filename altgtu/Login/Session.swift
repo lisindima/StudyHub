@@ -220,15 +220,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
         if case let NFCTag.iso7816(tag) = tags.first! {
             
-            //3
             session.connect(to: tags.first!) { (error: Error?) in
                 
-                //4
                 let myAPDU = NFCISO7816APDU(instructionClass:0, instructionCode:0xB0, p1Parameter:0, p2Parameter:0, data: Data(), expectedResponseLength:16)
                 tag.sendCommand(apdu: myAPDU) { (response: Data, sw1: UInt8, sw2: UInt8, error: Error?)
                     in
                     
-                    // 5
                     guard error != nil && !(sw1 == 0x90 && sw2 == 0) else {
                         session.invalidate(errorMessage: "Application failure")
                         return

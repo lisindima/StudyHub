@@ -50,6 +50,7 @@
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
+		CB841CCF2375629600EF532C /* RefreshUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB841CCE2375629600EF532C /* RefreshUI */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
@@ -220,6 +221,7 @@
 			files = (
 				CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */,
 				05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */,
+				CB841CCF2375629600EF532C /* RefreshUI in Frameworks */,
 				CB1F6DAC2339F64E00604C50 /* URLImage in Frameworks */,
 				CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
@@ -508,6 +510,7 @@
 				CBF1E0E4234211990009E3BE /* SwiftUICharts */,
 				CB6D3F70235AC6F200E65661 /* Lottie */,
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
+				CB841CCE2375629600EF532C /* RefreshUI */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* АлтГТУ.app */;
@@ -607,6 +610,7 @@
 				CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */,
 				CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -1202,6 +1206,14 @@
 				minimumVersion = 3.1.3;
 			};
 		};
+		CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noppefoxwolf/RefreshUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
@@ -1227,6 +1239,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		CB841CCE2375629600EF532C /* RefreshUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */;
+			productName = RefreshUI;
 		};
 		CBE6660823545C1200C43811 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;

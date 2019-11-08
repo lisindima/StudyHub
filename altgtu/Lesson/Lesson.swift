@@ -14,11 +14,10 @@ var model: ScheduleModel
     
     var body: some View {
         HStack {
-            Image("avatar")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .clipped()
+            RoundedRectangle(cornerRadius: 10)
+                .frame(width:10)
+                .foregroundColor(.red)
+                .cornerRadius(10)
             VStack {
                 HStack {
                     Text("\(model.timeStart)-\(model.timeEnd)")
@@ -26,12 +25,12 @@ var model: ScheduleModel
                     .bold()
                     .foregroundColor(.red)
                     Spacer()
-                }
+                }.padding(.bottom, 5)
                 HStack {
                     Text(model.name)
                         .bold()
                 Spacer()
-                }
+                }.padding(.bottom, 5)
                 HStack {
                     Text(model.prepod)
                     .font(.footnote)
@@ -40,7 +39,7 @@ var model: ScheduleModel
                         .font(.footnote)
                 }
             
-            }
+            }.padding(.leading, 5)
         }.padding()
             .contextMenu {
                 Button(action: { print("Действие 1")}){
@@ -50,8 +49,6 @@ var model: ScheduleModel
                 }
             }
         }
-        .background(Color.green)
-        .cornerRadius(16.0)
     }
 }
 

@@ -259,7 +259,7 @@ struct ProfileView: View {
                 Button (action:
                     {
                         self.setNotification()
-                        //self.session.readCard()
+                        self.session.readCard()
                     }, label: {
                         Text("Тест")
                             .bold()
