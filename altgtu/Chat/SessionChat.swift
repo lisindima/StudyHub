@@ -14,7 +14,7 @@ final class SessionChat: ObservableObject {
     @Published var chatList = [String]()
     @Published var msgs = [dataMessges]()
     
-    func listenMsgChatRoom() {
+    init() {
         let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
             .addSnapshotListener { (querySnapshot, err) in
