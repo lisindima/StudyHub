@@ -71,6 +71,7 @@ func signUp () {
                 .padding([.top, .horizontal])
             CustomInput(text: $email, name: "Эл.почта")
                 .padding()
+                .keyboardType(.emailAddress)
             VStack(alignment: .trailing) {
                 HStack {
                         SecureField("Пароль", text: $password)
@@ -146,6 +147,7 @@ struct ResetPassword: View {
         VStack {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
+                .keyboardType(.emailAddress)
             CustomButton(
                 label: "Восстановить аккаунт",
                 action: sendPasswordReset
@@ -201,6 +203,7 @@ struct EmailLoginScreen: View {
         VStack {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
+                .keyboardType(.emailAddress)
             VStack(alignment: .trailing) {
                 HStack {
                     SecureField("Пароль", text: $password)
@@ -272,23 +275,6 @@ struct AuthenticationScreen : View {
 
 @EnvironmentObject var session: SessionStore
 @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    func signIn () {
-        loading = true
-        error = false
-        session.signIn(email: email, password: password) { (result, error) in
-            self.loading = false
-            if error != nil {
-                self.showAlert.toggle()
-                self.error = true
-            }
-                else
-            {
-                self.email = ""
-                self.password = ""
-            }
-        }
-    }
     
     var body: some View {
         NavigationView {

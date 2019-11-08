@@ -13,7 +13,7 @@ class APIService: ObservableObject {
     
     @Published var scheduleModel: Schedules = [ScheduleModel]()
     
-    init() {
+    func loadLesson() {
         guard let url: URL = URL(string: "http://10.211.55.3/Infobase/hs/get/List/") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {

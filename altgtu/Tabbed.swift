@@ -20,7 +20,7 @@ struct Tabbed : View {
         session.getDataFromDatabaseListen()
         pickerModel.loadPickerData()
         sessionChat.getDataFromDatabaseListenChat()
-        session.currentTime()
+        sessionChat.listenMsgChatRoom()
     }
     
     var body: some View {
