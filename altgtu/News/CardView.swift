@@ -11,12 +11,12 @@ import URLImage
 
 struct CardView: View {
     
-    let article: Article
+    let article: Articles
     let noImageUrl = "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg"
     
     var body: some View {
         VStack {
-            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
+            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
                 EmptyView()
             },
             content:  {
@@ -29,7 +29,7 @@ struct CardView: View {
                     Text(article.source?.name ?? "Источник отсутствует")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
-                    Text(article.title ?? "Заголовок отсутствует")
+                    Text(article.title)
                         .font(.headline)
                         .fontWeight(.black)
                         .foregroundColor(.primary)

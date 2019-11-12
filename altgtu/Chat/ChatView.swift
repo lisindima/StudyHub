@@ -64,6 +64,7 @@ struct ChatView: View {
                 }.padding([.horizontal, .bottom])
             }
             .keyboardObserving()
+            .onAppear(perform: sessionChat.loadMsgsList)
             .navigationBarTitle(Text(titleChat), displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
                     print("plus")

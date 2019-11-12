@@ -21,29 +21,44 @@ struct ListChat: View {
     }
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(self.sessionChat.chatList, id: \.self) { item in
-                    NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
-                        ListItem(sessionChat: self._sessionChat, nameChat: item)
+        Group {
+            if sessionChat.chatList.isEmpty {
+                NavigationView {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Spacer()
+                                ActivityIndicator()
+                            Spacer()
+                        }
                     }
+                    .navigationBarTitle(Text("Чат"))
                 }
-                .onDelete(perform: delete)
-                .onMove(perform: move)
+            } else {
+                NavigationView {
+                    List {
+                        ForEach(self.sessionChat.chatList, id: \.self) { item in
+                            NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
+                                ListItem(sessionChat: self._sessionChat, nameChat: item)
+                            }
+                        }
+                        .onDelete(perform: delete)
+                        .onMove(perform: move)
+                    }
+                    .navigationBarTitle(Text("Чат"))
+                    .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+                        print("plus")
+                    })
+                    {
+                        Image(systemName: "plus.bubble")
+                            .imageScale(.large)
+                    })
+                    
+                }
             }
-            .navigationBarTitle(Text("Чат"))
-            .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                print("plus")
-            })
-            {
-                Image(systemName: "plus.bubble")
-                    .imageScale(.large)
-            })
-            
         }
+        .onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
     }
 }
-
 
 struct ListItem: View {
     

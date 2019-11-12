@@ -19,7 +19,6 @@ struct Tabbed : View {
     func fetchUserData(){
         session.getDataFromDatabaseListen()
         pickerModel.loadPickerData()
-        sessionChat.getDataFromDatabaseListenChat()
     }
     
     var body: some View {

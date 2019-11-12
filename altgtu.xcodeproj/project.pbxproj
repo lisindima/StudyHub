@@ -50,11 +50,11 @@
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
-		CB841CCF2375629600EF532C /* RefreshUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB841CCE2375629600EF532C /* RefreshUI */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
 		CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB13F0523584F9E00D98C83 /* ShareSheet.swift */; };
+		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
 		CBDE62952352129E00E588EC /* pickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* pickerAPI.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */; };
@@ -187,6 +187,7 @@
 		CB9BBDCB234C6DDC00F89529 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CBB13F0523584F9E00D98C83 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
 		CBDE62942352129E00E588EC /* pickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerAPI.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionChat.swift; sourceTree = "<group>"; };
@@ -221,7 +222,6 @@
 			files = (
 				CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */,
 				05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */,
-				CB841CCF2375629600EF532C /* RefreshUI in Frameworks */,
 				CB1F6DAC2339F64E00604C50 /* URLImage in Frameworks */,
 				CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
@@ -304,6 +304,7 @@
 				CB0AED72232E5AA80047A8A0 /* Login */,
 				CB0AED6B232E5A840047A8A0 /* Profile */,
 				CB0AED66232E5A680047A8A0 /* Lesson */,
+				CBD896B22378FDAE008CF480 /* Extensions */,
 				CB0AED45232E59A30047A8A0 /* Assets.xcassets */,
 				CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */,
 				CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */,
@@ -340,11 +341,9 @@
 			children = (
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
 				CB4FA012234396110049D271 /* HeaderProfileView.swift */,
-				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
 				CBDE629223520D2600E588EC /* ModelPicker.swift */,
 				CBDE62942352129E00E588EC /* pickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
-				CBB13F0523584F9E00D98C83 /* ShareSheet.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,6 +447,16 @@
 			path = altgtuTodayWidget;
 			sourceTree = "<group>";
 		};
+		CBD896B22378FDAE008CF480 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
+				CBB13F0523584F9E00D98C83 /* ShareSheet.swift */,
+				CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CBE665DC23543A1000C43811 /* altgtuWatchApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +519,6 @@
 				CBF1E0E4234211990009E3BE /* SwiftUICharts */,
 				CB6D3F70235AC6F200E65661 /* Lottie */,
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
-				CB841CCE2375629600EF532C /* RefreshUI */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* АлтГТУ.app */;
@@ -610,7 +618,6 @@
 				CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */,
 				CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
-				CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -725,6 +732,7 @@
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
+				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
@@ -1206,14 +1214,6 @@
 				minimumVersion = 3.1.3;
 			};
 		};
-		CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/noppefoxwolf/RefreshUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 		CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
@@ -1239,11 +1239,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		CB841CCE2375629600EF532C /* RefreshUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB841CCD2375629600EF532C /* XCRemoteSwiftPackageReference "RefreshUI" */;
-			productName = RefreshUI;
 		};
 		CBE6660823545C1200C43811 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;

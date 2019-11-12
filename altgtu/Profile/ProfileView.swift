@@ -158,6 +158,7 @@ struct ProfileView: View {
                 Section(header: Text("Другое").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет его освободить.")) {
                     HStack {
                         Button("Очистить кэш изображений") {
+                            URLImageService.shared.cleanFileCache()
                             URLImageService.shared.resetFileCache()
                             self.showAlertCache = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
