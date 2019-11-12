@@ -18,6 +18,7 @@ struct ProfileView: View {
     @State private var isShowingModalView: Bool = false
     @State private var InfoPageModal: Bool = false
     @State private var ModalView = 1
+    @State private var ModalViewStatis = 1
     @State private var AlertView = 1
     @EnvironmentObject var session: SessionStore
     @ObservedObject var pickerModel: pickerAPI = pickerAPI()
@@ -277,7 +278,16 @@ struct ProfileView: View {
                             .padding()
                 })
             }
-            .navigationBarItems(trailing: Button (action: {
+            .navigationBarItems(leading: Button (action: {
+                        self.ModalViewStatis = 2
+                        self.isPresented = true
+                })
+                {
+                    Image(systemName: "flame")
+                        .imageScale(.large)
+                        .foregroundColor(.white)
+            }, trailing: Button (action: {
+                        self.ModalViewStatis = 1
                         self.isPresented = true
                 })
                 {
@@ -286,10 +296,21 @@ struct ProfileView: View {
                         .foregroundColor(.white)
             })
             .sheet(isPresented: $isPresented, onDismiss: {
-                self.session.updateDataFromDatabase()
-            }){
-                self.SliderModalPresentation
-            }
+                if self.ModalViewStatis == 1 {
+                    self.session.updateDataFromDatabase()
+                }
+                if self.ModalViewStatis == 2 {
+                    print("flame")
+                }
+            }, content: {
+                if self.ModalViewStatis == 1 {
+                    self.SliderModalPresentation
+                }
+                if self.ModalViewStatis == 2 {
+                    StatisticsUser()
+                        .environmentObject(SessionStore())
+                }
+            })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -55,7 +55,9 @@ struct Tabbed : View {
                         Text("Профиль")
                     }
                 }.tag(3)
-        }.onAppear(perform: fetchUserData)
+        }
+        .accentColor(Color(red: session.rValue ?? 10, green: session.gValue ?? 10, blue: session.bValue ?? 10, opacity: 1.0))
+        .onAppear(perform: fetchUserData)
         .edgesIgnoringSafeArea(.top)
     }
 }
