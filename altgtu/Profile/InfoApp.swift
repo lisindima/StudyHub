@@ -45,6 +45,14 @@ struct InfoApp: View {
             .padding(.horizontal)
                 Spacer()
             VStack(alignment: .leading) {
+                NavigationLink(
+                    destination: Payment(),
+                    label: {
+                        HStack {
+                            Image(systemName: "creditcard")
+                            Text("Скинуть разработчику на кофе :)")
+                        }
+                })
                 Button(
                     action: {
                         UIApplication.shared.open(URL(string: "mailto:lisindima1996@gmail.com")!)
@@ -52,7 +60,7 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "envelope")
-                            Text("Есть отзыв? Отправьте его по почте.")
+                            Text("Есть отзыв? Отправьте его по почте")
                         }
                 })
                 Button(
@@ -62,7 +70,7 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "ant")
-                            Text("Принять участие в бета-тестирование.")
+                            Text("Принять участие в бета-тестирование")
                         }
                 })
             }.padding(.bottom)
