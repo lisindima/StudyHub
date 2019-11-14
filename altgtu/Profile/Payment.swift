@@ -7,32 +7,39 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct Payment: View {
     
     @State private var donate: Int = 50
     @State private var active: Bool = false
     
-    func activeButton() {
-        if donate <= 55 {
-            self.active = true
-        } else {
-            self.active = false
-        }
-    }
-    
     var body: some View {
         VStack {
             HStack {
-                Button(
-                    action: {
-                        self.activeButton()
-                        self.donate = self.donate - 5
-                    },
-                    label: {
-                        Image(systemName: "minus.circle")
-                            .font(.largeTitle)
-                }).disabled(active).padding(.leading, 40)
+                LottieView(filename: "3509-coffee-and-biscuit")
+                    .frame(width: 400, height: 400)
+            }
+            HStack {
+                if donate <= 50 {
+                    Button(
+                        action: {
+                            self.donate = self.donate - 10
+                        },
+                        label: {
+                            Image(systemName: "minus.circle")
+                                .font(.largeTitle)
+                    }).disabled(true).padding(.leading, 40)
+                } else {
+                    Button(
+                        action: {
+                            self.donate = self.donate - 10
+                        },
+                        label: {
+                            Image(systemName: "minus.circle")
+                                .font(.largeTitle)
+                    }).padding(.leading, 40)
+                }
                 Spacer()
                 Text("\(donate) рублей")
                     .font(.largeTitle)
@@ -40,16 +47,15 @@ struct Payment: View {
                 Spacer()
                 Button(
                     action: {
-                        self.activeButton()
-                        self.donate = self.donate + 5
+                        self.donate = self.donate + 10
                     },
                     label: {
                         Image(systemName: "plus.circle")
                             .font(.largeTitle)
                 }).padding(.trailing, 40)
-            }.padding(.top, 40)
+            }.padding(.top)
             Spacer()
-        }.onAppear(perform: activeButton)
+        }
     }
 }
 

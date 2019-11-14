@@ -52,7 +52,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var choiseNews = 0
     @Published var Group = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
     @Published var Faculty = ["ФИТ", "ГФ", "ФСТ"]
-    @Published var News = ["Бизнес", "Развлечения", "Здоровье", "Наука", "Спорт", "Технологии"]
+    @Published var News = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
@@ -70,8 +70,14 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         let now = Date()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "HH:mm:ss dd.MM.yyyy"
+        formatter.dateFormat = "HH:mm:ss_dd.MM.yyyy"
         self.currentTimeAndDate = formatter.string(from: now)
+    }
+    
+    func setNotification() -> Void {
+        let manager = LocalNotificationManager()
+        manager.addNotification(title: "Тестовое уведомление")
+        manager.schedule()
     }
     
     func listen() {

@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import URLImage
+import SwiftUICharts
 
 struct ProfileView: View {
     
@@ -20,11 +21,35 @@ struct ProfileView: View {
     @State private var ModalView = 1
     @State private var ModalViewStatis = 1
     @State private var AlertView = 1
+    
     @EnvironmentObject var session: SessionStore
     @ObservedObject var pickerModel: pickerAPI = pickerAPI()
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @Environment(\.presentationMode) var presentationMode
     
-        let currentUser = Auth.auth().currentUser!
+    let currentUser = Auth.auth().currentUser!
+    
+    var StatisticsUser: some View {
+        NavigationView {
+            VStack {
+                HStack {
+                    LineView(data: [8,23,54,32,12,37,7,23,43], title: "Успеваемость", legend: "По дням")
+                }.padding()
+                Spacer()
+            }
+            .navigationBarTitle(Text("Статистика"), displayMode: .inline)
+            .navigationBarItems(trailing: Button (action: {
+                    self.presentationMode.wrappedValue.dismiss()
+            })
+            {
+                Text("Готово")
+                    .bold()
+                    .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+            })
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
     
     var SliderModalPresentation: some View {
         NavigationView {
@@ -118,7 +143,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\".")) {
+                Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\" по умолчанию.")) {
                     Picker(selection: $session.choiseNews, label: Text("Выбранная тема")) {
                         ForEach(0 ..< session.News.count) {
                             Text(self.session.News[$0])
@@ -222,12 +247,7 @@ struct ProfileView: View {
             })
         }
         .accentColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
-    }
-    
-    func setNotification() -> Void {
-        let manager = LocalNotificationManager()
-        manager.addNotification(title: "Тестовое уведомление")
-        manager.schedule()
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     var body: some View {
@@ -260,7 +280,7 @@ struct ProfileView: View {
                 Spacer()
                 Button (action:
                     {
-                        self.setNotification()
+                        self.session.setNotification()
                         self.session.readCard()
                     }, label: {
                         Text("Тест")
@@ -307,8 +327,8 @@ struct ProfileView: View {
                     self.SliderModalPresentation
                 }
                 if self.ModalViewStatis == 2 {
-                    StatisticsUser()
-                        .environmentObject(SessionStore())
+                    self.StatisticsUser
+                        
                 }
             })
         }
