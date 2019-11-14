@@ -13,7 +13,7 @@ struct Payment: View {
     
     @State private var donate: Int = 50
     @State private var active: Bool = false
-    
+        
     var body: some View {
         VStack {
             HStack {
