@@ -301,7 +301,7 @@ struct AuthenticationScreen : View {
                         .frame(height: 55)
                         .cornerRadius(8)
                         .padding()
-                        .onTapGesture(perform: showAppleLogin)
+                        .onTapGesture(perform: session.startSignInWithAppleFlow)
                     Text("-или-")
                         .foregroundColor(.gray)
                         .font(.subheadline)
@@ -332,17 +332,6 @@ final class SignInWithApple: UIViewRepresentable {
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
     }
-}
-
-private func showAppleLogin() {
-  // 1
-  let request = ASAuthorizationAppleIDProvider().createRequest()
-
-  // 2
-  request.requestedScopes = [.fullName, .email]
-
-  // 3
-  let controller = ASAuthorizationController(authorizationRequests: [request])
 }
 
 struct Authenticate_Previews : PreviewProvider {
