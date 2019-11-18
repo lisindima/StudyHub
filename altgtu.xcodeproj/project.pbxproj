@@ -36,6 +36,7 @@
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
 		CB276197235588820054C753 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276196235588820054C753 /* InfoApp.swift */; };
 		CB27619A2355A9A00054C753 /* LessonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* LessonWatch.swift */; };
+		CB4B284223823FED00E11A47 /* 27-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB4B284123823FEC00E11A47 /* 27-loading.json */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* HeaderProfileView.swift */; };
 		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
@@ -51,8 +52,8 @@
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB7B12DC237BCE550019DD6F /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B12DB237BCE550019DD6F /* Payment.swift */; };
-		CB90A290237D17AC00BCF3ED /* 10821-ui-side-menu.json in Resources */ = {isa = PBXBuildFile; fileRef = CB90A28F237D17AC00BCF3ED /* 10821-ui-side-menu.json */; };
 		CB90A292237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json in Resources */ = {isa = PBXBuildFile; fileRef = CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */; };
+		CB90A294237EB7C000BCF3ED /* 117-progress-bar.json in Resources */ = {isa = PBXBuildFile; fileRef = CB90A293237EB7C000BCF3ED /* 117-progress-bar.json */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
@@ -172,6 +173,7 @@
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* LessonWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWatch.swift; sourceTree = "<group>"; };
+		CB4B284123823FEC00E11A47 /* 27-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27-loading.json"; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* HeaderProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
 		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
@@ -186,8 +188,8 @@
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB7B12DB237BCE550019DD6F /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		CB90A28F237D17AC00BCF3ED /* 10821-ui-side-menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "10821-ui-side-menu.json"; sourceTree = "<group>"; };
 		CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3509-coffee-and-biscuit.json"; sourceTree = "<group>"; };
+		CB90A293237EB7C000BCF3ED /* 117-progress-bar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "117-progress-bar.json"; sourceTree = "<group>"; };
 		CB92273F2374036F00A4A3DB /* Расписание.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Расписание.entitlements"; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -370,9 +372,10 @@
 		CB0AED7B232E5ACE0047A8A0 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				CB90A28F237D17AC00BCF3ED /* 10821-ui-side-menu.json */,
+				CB4B284123823FEC00E11A47 /* 27-loading.json */,
 				CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */,
 				CB1F6DA62338BC0800604C50 /* 9424-simple-loading-bar.json */,
+				CB90A293237EB7C000BCF3ED /* 117-progress-bar.json */,
 				CB0AED7D232E5AE20047A8A0 /* 1798-check-animation.json */,
 				CB0AED7E232E5AE20047A8A0 /* 9065-notifications.json */,
 				CB0AED7C232E5AE20047A8A0 /* LottieView.swift */,
@@ -645,9 +648,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB90A294237EB7C000BCF3ED /* 117-progress-bar.json in Resources */,
 				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
 				CB1F6DA72338BC0900604C50 /* 9424-simple-loading-bar.json in Resources */,
-				CB90A290237D17AC00BCF3ED /* 10821-ui-side-menu.json in Resources */,
+				CB4B284223823FED00E11A47 /* 27-loading.json in Resources */,
 				CB90A292237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED81232E5AE20047A8A0 /* 9065-notifications.json in Resources */,

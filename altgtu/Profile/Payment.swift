@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Lottie
 
 struct Payment: View {
     

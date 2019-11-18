@@ -64,57 +64,59 @@ func signUp () {
     }
     
     var body : some View {
-        VStack {
-            CustomInput(text: $lastname, name: "Фамилия")
-                .padding([.top, .horizontal])
-            CustomInput(text: $firstname, name: "Имя")
-                .padding([.top, .horizontal])
-            CustomInput(text: $email, name: "Эл.почта")
-                .padding()
-                .keyboardType(.emailAddress)
-            VStack(alignment: .trailing) {
-                HStack {
-                        SecureField("Пароль", text: $password)
-                        if password.isEmpty {
-                
+        LoadingView(isShowing: .constant(loading)) {
+            VStack {
+                CustomInput(text: self.$lastname, name: "Фамилия")
+                    .padding([.top, .horizontal])
+                CustomInput(text: self.$firstname, name: "Имя")
+                    .padding([.top, .horizontal])
+                CustomInput(text: self.$email, name: "Эл.почта")
+                    .padding()
+                    .keyboardType(.emailAddress)
+                VStack(alignment: .trailing) {
+                    HStack {
+                        SecureField("Пароль", text: self.$password)
+                            if self.password.isEmpty {
+                    
+                            }
+                            if 0 < self.password.count && self.password.count < 8 {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
+                            }
+                            if 8 <= self.password.count{
+                                Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                            }
                         }
-                        if 0 < password.count && password.count < 8 {
-                            Image(systemName: "xmark.circle")
-                                .foregroundColor(.red)
-                        }
-                        if 8 <= password.count{
-                            Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                        }
-                    }
-                        .modifier(InputModifier())
-                Text("Требуется минимум 8 символов.")
+                            .modifier(InputModifier())
+                    Text("Требуется минимум 8 символов.")
+                        .font(.footnote)
+                        .foregroundColor(Color.gray)
+                }
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
+                CustomButton(
+                    label: "Зарегистрироваться",
+                    action: self.signUp
+                )
+                    .disabled(self.loading)
+                    .padding()
+                Divider()
+                Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
                     .font(.footnote)
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .padding()
+                Spacer()
             }
-                .padding(.horizontal)
-                .padding(.bottom, 8)
-            CustomButton(
-                label: "Зарегистрироваться",
-                action: signUp
-            )
-                .disabled(loading)
-                .padding()
-            Divider()
-            Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.leading)
-                .lineLimit(nil)
-                .padding()
-            Spacer()
+            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+            .navigationBarTitle("Регистрация")
+            .alert(isPresented: self.$showAlert){
+                Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
+            }
+            .edgesIgnoringSafeArea(.bottom)
         }
-        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-        .navigationBarTitle("Регистрация")
-        .alert(isPresented: $showAlert){
-            Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
-        }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -200,67 +202,71 @@ struct EmailLoginScreen: View {
     }
 
     var body : some View {
-        VStack {
-            CustomInput(text: $email, name: "Эл.почта")
-                .padding([.top, .horizontal])
-                .keyboardType(.emailAddress)
-            VStack(alignment: .trailing) {
-                HStack {
-                    SecureField("Пароль", text: $password)
-                    if password.isEmpty {
-            
+        LoadingView(isShowing: .constant(loading)) {
+            Group {
+                VStack {
+                    CustomInput(text: self.$email, name: "Эл.почта")
+                        .padding([.top, .horizontal])
+                        .keyboardType(.emailAddress)
+                    VStack(alignment: .trailing) {
+                        HStack {
+                            SecureField("Пароль", text: self.$password)
+                            if self.password.isEmpty {
+                    
+                            }
+                            if 0 < self.password.count && self.password.count < 8 {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
+                            }
+                            if 8 <= self.password.count{
+                                Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                            }
+                        }
+                            .modifier(InputModifier())
+                            .padding([.horizontal, .top])
+                        NavigationLink(destination: ResetPassword()) {
+                            Text("Забыли пароль?").font(.footnote)
+                                .padding(.horizontal)
+                                .padding(.bottom, 8)
+                        }
                     }
-                    if 0 < password.count && password.count < 8 {
-                        Image(systemName: "xmark.circle")
-                            .foregroundColor(.red)
+                    CustomButton(
+                        label: "Войти",
+                        action: self.signIn
+                    )
+                        .disabled(self.loading)
+                        .padding()
+                    Divider()
+                    Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(nil)
+                        .padding()
+                    Spacer()
+                VStack {
+                    Divider()
+                    HStack(alignment: .center) {
+                        Text("У вас еще нет аккаунта?")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        NavigationLink(destination: SignUpView())
+                        {
+                        Text("Регистрация").font(.footnote)
+                            }
+                        }
+                            .padding(.top,5)
+                            .padding(.bottom)
+                        }.padding(.bottom)
                     }
-                    if 8 <= password.count{
-                        Image(systemName: "checkmark.circle")
-                        .foregroundColor(.green)
-                    }
-                }
-                    .modifier(InputModifier())
-                    .padding([.horizontal, .top])
-                NavigationLink(destination: ResetPassword()) {
-                    Text("Забыли пароль?").font(.footnote)
-                        .padding(.horizontal)
-                        .padding(.bottom, 8)
+                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                    .navigationBarTitle("Вход")
+                    .edgesIgnoringSafeArea(.bottom)
+                    .alert(isPresented: self.$showAlert) {
+                        Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
                 }
             }
-            CustomButton(
-                label: "Войти",
-                action: signIn
-            )
-                .disabled(loading)
-                .padding()
-            Divider()
-            Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.leading)
-                .lineLimit(nil)
-                .padding()
-            Spacer()
-        VStack {
-            Divider()
-            HStack(alignment: .center) {
-                Text("У вас еще нет аккаунта?")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                NavigationLink(destination: SignUpView())
-                {
-                Text("Регистрация").font(.footnote)
-                    }
-                }
-                    .padding(.top,5)
-                    .padding(.bottom)
-                }.padding(.bottom)
-            }
-            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-            .navigationBarTitle("Вход")
-            .edgesIgnoringSafeArea(.bottom)
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
         }
     }
 }
@@ -277,57 +283,101 @@ struct AuthenticationScreen : View {
 @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                VStack {
-                    Image("altgtu")
-                        .resizable()
-                        .frame(width: 135, height: 135)
-                    Text("Личный кабинет АлтГТУ")
-                        .font(.title)
-                        .padding(.bottom, 10)
-                        .multilineTextAlignment(.center)
-                    Text("Самый простой способ узнать расписание и быть в курсе всех событий.")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                        .lineLimit(nil)
-                        .padding([.horizontal, .bottom])
-                }.padding(.top, 30)
-                Spacer()
-                VStack {
-                    SignInWithApple()
-                        .frame(height: 55)
-                        .cornerRadius(8)
-                        .padding()
-                        .onTapGesture(perform: session.startSignInWithAppleFlow)
-                    Text("-или-")
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
-                    NavigationLink(destination: EmailLoginScreen()) {
-                    Text("Войти с помощью эл.почты").font(.headline)
-                        .foregroundColor(colorScheme == .light ? .black : .white)
-                        .padding()
+        
+            Group {
+                NavigationView {
+                    VStack {
+                        Spacer()
+                        VStack {
+                            Image("altgtu")
+                                .resizable()
+                                .frame(width: 135, height: 135)
+                            Text("Личный кабинет АлтГТУ")
+                                .font(.title)
+                                .padding(.bottom, 10)
+                                .multilineTextAlignment(.center)
+                            Text("Самый простой способ узнать расписание и быть в курсе всех событий.")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(nil)
+                                .padding([.horizontal, .bottom])
+                        }.padding(.top, 30)
+                        Spacer()
+                        VStack {
+                            if self.colorScheme == .light {
+                                SignInWithAppleBlack()
+                                    .frame(height: 55)
+                                    .cornerRadius(8)
+                                    .padding()
+                                    .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                            } else {
+                                SignInWithAppleWhite()
+                                    .frame(height: 55)
+                                    .cornerRadius(8)
+                                    .padding()
+                                    .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                            }
+                            Text("-или-")
+                                .foregroundColor(.gray)
+                                .font(.subheadline)
+                            NavigationLink(destination: EmailLoginScreen()) {
+                            Text("Войти с помощью эл.почты").font(.headline)
+                                .foregroundColor(self.colorScheme == .light ? .black : .white)
+                                .padding()
+                            }
+                        }.padding(.bottom, 40)
                     }
-                }.padding(.bottom, 40)
+                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                    .edgesIgnoringSafeArea(.top)
+                    .alert(isPresented: self.$showAlert) {
+                        Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
+                    }
+                }
+                .navigationViewStyle(StackNavigationViewStyle())
             }
-            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-            .edgesIgnoringSafeArea(.top)
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
-            }
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 
-final class SignInWithApple: UIViewRepresentable {
-    
-@Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+struct LoadingView<Content>: View where Content: View {
+
+    @Binding var isShowing: Bool
+    var content: () -> Content
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                self.content()
+                    .disabled(self.isShowing)
+                    .blur(radius: self.isShowing ? 3 : 0)
+                VStack {
+                    LottieView(filename: "27-loading")
+                }
+                .frame(width: 200,
+                       height: 200)
+                .background(Color(#colorLiteral(red: 0.213772162, green: 0.2300552888, blue: 0.2528391964, alpha: 0.7704390405)))
+                .cornerRadius(20)
+                .opacity(self.isShowing ? 1 : 0)
+
+            }
+        }
+    }
+}
+final class SignInWithAppleWhite: UIViewRepresentable {
+        
   func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-    return ASAuthorizationAppleIDButton(type: .default, style: colorScheme == .light ? .black : .white)
+    return ASAuthorizationAppleIDButton(type: .default, style: .white)
+    }
+    
+    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
+    }
+}
+
+final class SignInWithAppleBlack: UIViewRepresentable {
+        
+  func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+    return ASAuthorizationAppleIDButton(type: .default, style: .black)
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {

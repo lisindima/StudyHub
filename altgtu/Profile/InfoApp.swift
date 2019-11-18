@@ -20,14 +20,12 @@ struct InfoApp: View {
     var body: some View {
         VStack {
             Spacer()
-            
             Image("infoApp")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)
                 .cornerRadius(30)
                 .shadow(radius: 10)
-
             Text("Личный кабинет АлтГТУ")
                 .font(.title)
             HStack(spacing: 5) {
@@ -60,7 +58,7 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "envelope")
-                            Text("Есть отзыв? Отправьте его по почте")
+                            Text("Есть отзыв? Отправьте его по почте.")
                         }
                 })
                 Button(
@@ -70,7 +68,7 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "ant")
-                            Text("Принять участие в бета-тестирование")
+                            Text("Принять участие в бета-тестирование.")
                         }
                 })
             }.padding(.bottom)
