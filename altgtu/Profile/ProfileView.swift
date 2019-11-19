@@ -39,7 +39,7 @@ struct ProfileView: View {
             }
             .navigationBarTitle(Text("Статистика"), displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                self.isPresented = false
             })
             {
                 Text("Готово")
