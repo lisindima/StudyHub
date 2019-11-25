@@ -16,8 +16,11 @@ class NewsViewModel: ObservableObject {
     
     let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=762c4a68394f46f5b493923c11dc7e8b"
     
-    func loadNews(){
-        
+    init() {
+        loadNews()
+    }
+    
+    func loadNews() {
         guard let url = URL(string: apiUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {

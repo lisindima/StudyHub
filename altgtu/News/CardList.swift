@@ -91,7 +91,7 @@ struct CardList: View {
                 .navigationBarTitle(Text("Сегодня"))
                 }
             }
-        }.onAppear(perform: newsVM.loadNews)
+        }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

@@ -217,7 +217,7 @@ struct ProfileView: View {
                         ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                     }
                     if self.ModalView == 3 {
-                        InfoPageView()
+                        SplashScreen().environmentObject(SessionStore())
                     }
                 })
                 .actionSheet(isPresented: $showActionSheet) {
