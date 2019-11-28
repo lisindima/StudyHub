@@ -170,6 +170,9 @@ struct ProfileView: View {
                         Image(systemName: "star")
                             .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
                     }
+                    NavigationLink(destination: License()) {
+                        Text("Лицензии")
+                    }
                     NavigationLink(destination: InfoApp()) {
                         Text("О приложении")
                     }
