@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct SplashScreen: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
@@ -18,6 +21,7 @@ struct SplashScreen: View {
             Button(action: {
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.success)
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Продолжить")
                     .customButton()
@@ -62,7 +66,6 @@ struct InformationDetailView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .padding(.top)
     }
 }
 
@@ -74,7 +77,6 @@ struct TitleView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150, alignment: .center)
                 .accessibility(hidden: true)
-                .cornerRadius(30)
                 .shadow(radius: 10)
             Text("Личный кабинет")
                 .customTitleText()

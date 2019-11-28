@@ -47,7 +47,6 @@
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
-		CB7B12DC237BCE550019DD6F /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7B12DB237BCE550019DD6F /* Payment.swift */; };
 		CB90A292237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json in Resources */ = {isa = PBXBuildFile; fileRef = CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
@@ -178,7 +177,6 @@
 		CB6D3F7A235B07CA00E65661 /* ModelNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNews.swift; sourceTree = "<group>"; };
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
-		CB7B12DB237BCE550019DD6F /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3509-coffee-and-biscuit.json"; sourceTree = "<group>"; };
 		CB92273F2374036F00A4A3DB /* Расписание.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Расписание.entitlements"; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 				CBDE629223520D2600E588EC /* ModelPicker.swift */,
 				CBDE62942352129E00E588EC /* pickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
-				CB7B12DB237BCE550019DD6F /* Payment.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -736,7 +733,6 @@
 				CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */,
-				CB7B12DC237BCE550019DD6F /* Payment.swift in Sources */,
 				CB0AED5F232E5A210047A8A0 /* ContentView.swift in Sources */,
 				CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */,
 				CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */,

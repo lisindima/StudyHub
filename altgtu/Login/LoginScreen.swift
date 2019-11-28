@@ -23,6 +23,8 @@ struct SignUpView : View {
 @EnvironmentObject var session: SessionStore
 
 func signUp () {
+    let generator = UINotificationFeedbackGenerator()
+    generator.notificationOccurred(.success)
     loading = true
     error = false
     session.signUp(email: email, password: password) { (result, error) in
@@ -131,6 +133,8 @@ struct ResetPassword: View {
 @EnvironmentObject var session: SessionStore
     
     func sendPasswordReset () {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         loading = true
         error = true
         showAlert = true
@@ -185,6 +189,8 @@ struct EmailLoginScreen: View {
 @EnvironmentObject var session: SessionStore
     
     func signIn () {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         loading = true
         error = false
         session.signIn(email: email, password: password) { (result, error) in

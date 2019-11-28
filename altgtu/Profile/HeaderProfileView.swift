@@ -24,9 +24,11 @@ struct ProfileImage: View {
                     ZStack {
                         if progress > 0.0 {
                             CircleProgressView(progress).stroke(lineWidth: 8.0)
+                                .frame(width: 50, height: 50)
                         }
                         else {
                             CircleActivityView().stroke(lineWidth: 50.0)
+                                .frame(width: 50, height: 50)
                         }
                     }
                 }.frame(width: 210, height: 210)

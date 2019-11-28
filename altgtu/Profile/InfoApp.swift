@@ -43,14 +43,6 @@ struct InfoApp: View {
             .padding(.horizontal)
                 Spacer()
             VStack(alignment: .leading) {
-                NavigationLink(
-                    destination: Payment(),
-                    label: {
-                        HStack {
-                            Image(systemName: "creditcard")
-                            Text("Скинуть разработчику на кофе :)")
-                        }
-                })
                 Button(
                     action: {
                         UIApplication.shared.open(URL(string: "mailto:lisindima1996@gmail.com")!)

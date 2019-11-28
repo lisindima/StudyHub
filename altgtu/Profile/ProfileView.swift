@@ -25,7 +25,6 @@ struct ProfileView: View {
     @EnvironmentObject var session: SessionStore
     @ObservedObject var pickerModel: pickerAPI = pickerAPI()
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @Environment(\.presentationMode) var presentationMode
     
     let currentUser = Auth.auth().currentUser!
     
@@ -72,7 +71,7 @@ struct ProfileView: View {
                         Image(systemName: "r.circle.fill")
                             .foregroundColor(Color.red)
                             .font(.system(size: 25))
-                    }.padding()
+                    }.padding(.vertical)
                     HStack {
                         Image(systemName: "g.circle")
                             .foregroundColor(Color.green.opacity(0.5))
@@ -82,7 +81,7 @@ struct ProfileView: View {
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(Color.green)
                             .font(.system(size: 25))
-                    }.padding()
+                    }.padding(.vertical)
                     HStack {
                         Image(systemName: "b.circle")
                             .foregroundColor(Color.blue.opacity(0.5))
@@ -92,28 +91,22 @@ struct ProfileView: View {
                         Image(systemName: "b.circle.fill")
                             .foregroundColor(Color.blue)
                             .font(.system(size: 25))
-                    }.padding()
-                    HStack {
-                        VStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(width: 100)
-                                .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                    }.padding(.vertical)
+                    ZStack {
+                        Rectangle()
+                            .cornerRadius(8)
+                            .shadow(radius: 5)
+                            .frame(height: 60)
+                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                        HStack {
+                            Text("R: \(Int(session.rValue * 255.0))")
+                            Text("G: \(Int(session.gValue * 255.0))")
+                            Text("B: \(Int(session.bValue * 255.0))")
                         }
-                            VStack {
-                                HStack {
-                                    Text("R: \(Int(session.rValue * 255.0))")
-                                    Spacer()
-                                }
-                                HStack {
-                                    Text("G: \(Int(session.gValue * 255.0))")
-                                    Spacer()
-                                }
-                                HStack {
-                                    Text("B: \(Int(session.bValue * 255.0))")
-                                    Spacer()
-                            }
-                        }
+                        .font(Font.custom("Futura", size: 24))
+                        .foregroundColor(.white)
                     }
+                    .padding(.vertical)
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("\(session.lastnameProfile)", text: $session.lastnameProfile)

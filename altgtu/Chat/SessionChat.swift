@@ -14,7 +14,11 @@ final class SessionChat: ObservableObject {
     @Published var chatList = [String]()
     @Published var msgs = [dataMessges]()
     
-     func loadMsgsList() {
+    init() {
+        loadMsgsList()
+    }
+    
+    func loadMsgsList() {
         print("Чат")
         let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
