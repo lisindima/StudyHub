@@ -19,7 +19,7 @@ struct ProfileView: View {
     @State private var isShowingModalView: Bool = false
     @State private var InfoPageModal: Bool = false
     @State private var ModalView = 1
-    @State private var ModalViewStatis = 1
+    @State private var showActionSheetExit: Bool = false
     @State private var AlertView = 1
     
     @EnvironmentObject var session: SessionStore
@@ -281,26 +281,15 @@ struct ProfileView: View {
                             .foregroundColor(.red)
                             .padding()
                 })
-                Button (action:
-                    {
-                        self.session.signOut()
-                    }, label: {
-                        Text("Выйти")
-                            .bold()
-                            .foregroundColor(.red)
-                            .padding()
-                })
             }
             .navigationBarItems(leading: Button (action: {
-                        self.ModalViewStatis = 2
-                        self.isPresented = true
+                        self.showActionSheetExit = true
                 })
                 {
                     Image(systemName: "flame")
                         .imageScale(.large)
                         .foregroundColor(.white)
             }, trailing: Button (action: {
-                        self.ModalViewStatis = 1
                         self.isPresented = true
                 })
                 {
@@ -308,21 +297,16 @@ struct ProfileView: View {
                         .imageScale(.large)
                         .foregroundColor(.white)
             })
+            .actionSheet(isPresented: $showActionSheetExit) {
+                ActionSheet(title: Text("Вы уверены, хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
+                        self.session.signOut()
+                    }, .cancel()
+                ])
+            }
             .sheet(isPresented: $isPresented, onDismiss: {
-                if self.ModalViewStatis == 1 {
-                    self.session.updateDataFromDatabase()
-                }
-                if self.ModalViewStatis == 2 {
-                    print("flame")
-                }
+                self.session.updateDataFromDatabase()
             }, content: {
-                if self.ModalViewStatis == 1 {
-                    self.SliderModalPresentation
-                }
-                if self.ModalViewStatis == 2 {
-                    self.StatisticsUser
-                        
-                }
+                self.SliderModalPresentation
             })
         }
         .navigationViewStyle(StackNavigationViewStyle())

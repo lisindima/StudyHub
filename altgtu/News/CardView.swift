@@ -16,13 +16,14 @@ struct CardView: View {
     
     var body: some View {
         VStack {
-            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
+            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
                 EmptyView()
             },
-            content:  {
-                $0.image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            content:
+            { proxy in
+                proxy.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             })
             HStack {
                 VStack(alignment: .leading) {
@@ -49,7 +50,7 @@ struct CardView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
-        )
+            )
         .padding()
     }
 }

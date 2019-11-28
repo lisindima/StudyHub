@@ -47,7 +47,6 @@
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
-		CB90A292237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json in Resources */ = {isa = PBXBuildFile; fileRef = CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
@@ -177,7 +176,6 @@
 		CB6D3F7A235B07CA00E65661 /* ModelNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNews.swift; sourceTree = "<group>"; };
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
-		CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "3509-coffee-and-biscuit.json"; sourceTree = "<group>"; };
 		CB92273F2374036F00A4A3DB /* Расписание.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Расписание.entitlements"; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				CB4B284123823FEC00E11A47 /* 27-loading.json */,
-				CB90A291237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json */,
 				CB0AED7C232E5AE20047A8A0 /* LottieView.swift */,
 			);
 			path = Lottie;
@@ -632,7 +629,6 @@
 			files = (
 				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
 				CB4B284223823FED00E11A47 /* 27-loading.json in Resources */,
-				CB90A292237D1A1700BCF3ED /* 3509-coffee-and-biscuit.json in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
@@ -945,7 +941,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -972,7 +968,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -996,7 +992,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "altgtuTodayWidget/Расписание.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1019,7 +1015,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "altgtuTodayWidget/Расписание.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1042,7 +1038,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1068,7 +1064,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1095,7 +1091,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;
@@ -1116,7 +1112,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;

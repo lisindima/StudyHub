@@ -45,7 +45,7 @@ class NewsViewModel: ObservableObject {
     }
     
     func fetchCategoryNews(category: String){
-        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=762c4a68394f46f5b493923c11dc7e8b&category=\(category)") else { return }
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=762c4a68394f46f5b493923c11dc7e8b\(category)") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
                 print(err.localizedDescription)
