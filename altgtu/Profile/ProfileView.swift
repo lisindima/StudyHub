@@ -289,8 +289,9 @@ struct ProfileView: View {
                         self.showActionSheetExit = true
                 })
                 {
-                    Image(systemName: "flame")
+                    Image(systemName: "square.and.arrow.down")
                         .imageScale(.large)
+                        .rotationEffect(.degrees(90))
                         .foregroundColor(.white)
             }, trailing: Button (action: {
                         self.isPresented = true
