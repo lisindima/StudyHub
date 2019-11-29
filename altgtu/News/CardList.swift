@@ -61,14 +61,14 @@ struct CardList: View {
                                     ZStack {
                                         if progress > 0.0 {
                                             CircleProgressView(progress).stroke(lineWidth: 8.0)
-                                                .frame(width: 50, height: 50)
+                                                .frame(width: 35, height: 35)
                                         }
                                         else {
                                             CircleActivityView().stroke(lineWidth: 50.0)
-                                                .frame(width: 50, height: 50)
+                                                .frame(width: 35, height: 35)
                                         }
                                     }
-                                }.frame(width: 210, height: 210)
+                                }.frame(width: 45, height: 45)
                             }) { proxy in
                                     proxy.image
                                         .resizable()
