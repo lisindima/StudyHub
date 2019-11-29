@@ -7,10 +7,20 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct CardList: View {
     
     @ObservedObject var newsVM = NewsViewModel()
+    @EnvironmentObject var session: SessionStore
+    
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter
+    }()
+    
+    var currentDate = Date()
     
     func showNews(_ news: Articles) {
         if let url = URL(string: news.url!) {
@@ -33,8 +43,42 @@ struct CardList: View {
                     .navigationBarTitle(Text("Сегодня"))
                 }
             } else {
-                NavigationView {
                     ScrollView(showsIndicators: false) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("\(currentDate, formatter: dateFormatter)")
+                                    .font(.headline)
+                                    .foregroundColor(.secondary)
+                                Text("Сегодня")
+                                    .font(.largeTitle)
+                                    .fontWeight(.black)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.leading, 15)
+                            Spacer()
+                            URLImage(URL(string:"\(session.url ?? "")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                                ProgressView($0) { progress in
+                                    ZStack {
+                                        if progress > 0.0 {
+                                            CircleProgressView(progress).stroke(lineWidth: 8.0)
+                                                .frame(width: 50, height: 50)
+                                        }
+                                        else {
+                                            CircleActivityView().stroke(lineWidth: 50.0)
+                                                .frame(width: 50, height: 50)
+                                        }
+                                    }
+                                }.frame(width: 210, height: 210)
+                            }) { proxy in
+                                    proxy.image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .clipShape(Circle())
+                                        .overlay(Circle().stroke(Color.gray, lineWidth: 1))
+                                        .frame(width: 45, height: 45)
+                                        .padding(.trailing, 15)
+                            }
+                        }.padding(.top, 30)
                         VStack(alignment: .center) {
                             ScrollView(.horizontal, showsIndicators: false){
                                VStack (alignment: .leading){
@@ -96,10 +140,7 @@ struct CardList: View {
                     }
                 }
                 .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-                .navigationBarTitle(Text("Сегодня"))
-                }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
