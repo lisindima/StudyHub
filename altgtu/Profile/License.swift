@@ -17,8 +17,8 @@ struct License: View {
             NavigationLink(destination: LottieLicense()) {
                 Text("Lottie")
             }
-            .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
         }
+        .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
     }
 }
 

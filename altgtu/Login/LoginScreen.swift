@@ -284,65 +284,79 @@ struct AuthenticationScreen : View {
 @State private var loading = false
 @State private var error = false
 @State private var showAlert = false
+@State private var showSpashScreen = false
 
 @EnvironmentObject var session: SessionStore
 @Environment(\.colorScheme) var colorScheme: ColorScheme
     
+    func funcSplashScreen() {
+        let defaults = UserDefaults.standard
+            if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
+                print("НЕ первый запуск")
+                self.showSpashScreen = false
+            }else{
+                defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+                print("Первый запуск")
+                self.showSpashScreen = true
+        }
+    }
+    
     var body: some View {
-        
-            Group {
-                NavigationView {
+        Group {
+            NavigationView {
+                VStack {
+                    Spacer()
                     VStack {
-                        Spacer()
-                        VStack {
-                            Image("altgtu")
-                                .resizable()
-                                .frame(width: 135, height: 135)
-                            Text("Личный кабинет АлтГТУ")
-                                .font(.title)
-                                .padding(.bottom, 10)
-                                .multilineTextAlignment(.center)
-                            Text("Самый простой способ узнать расписание и быть в курсе всех событий.")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .lineLimit(nil)
-                                .padding([.horizontal, .bottom])
-                        }.padding(.top, 30)
-                        Spacer()
-                        VStack {
-                            if self.colorScheme == .light {
-                                SignInWithAppleBlack()
-                                    .frame(height: 55)
-                                    .cornerRadius(8)
-                                    .padding()
-                                    .onTapGesture(perform: self.session.startSignInWithAppleFlow)
-                            } else {
-                                SignInWithAppleWhite()
-                                    .frame(height: 55)
-                                    .cornerRadius(8)
-                                    .padding()
-                                    .onTapGesture(perform: self.session.startSignInWithAppleFlow)
-                            }
-                            Text("-или-")
-                                .foregroundColor(.gray)
-                                .font(.subheadline)
-                            NavigationLink(destination: EmailLoginScreen()) {
-                            Text("Войти с помощью эл.почты").font(.headline)
-                                .foregroundColor(self.colorScheme == .light ? .black : .white)
+                        Image("altgtu")
+                            .resizable()
+                            .frame(width: 135, height: 135)
+                        Text("Личный кабинет АлтГТУ")
+                            .font(.title)
+                            .padding(.bottom, 10)
+                            .multilineTextAlignment(.center)
+                        Text("Самый простой способ узнать расписание и быть в курсе всех событий.")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(nil)
+                            .padding([.horizontal, .bottom])
+                    }.padding(.top, 30)
+                    Spacer()
+                    VStack {
+                        if self.colorScheme == .light {
+                            SignInWithAppleBlack()
+                                .frame(height: 55)
+                                .cornerRadius(8)
                                 .padding()
-                            }
-                        }.padding(.bottom, 40)
-                    }
-                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-                    .edgesIgnoringSafeArea(.top)
-                    .alert(isPresented: self.$showAlert) {
-                        Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
-                    }
+                                .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                        } else {
+                            SignInWithAppleWhite()
+                                .frame(height: 55)
+                                .cornerRadius(8)
+                                .padding()
+                                .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                        }
+                        Text("-или-")
+                            .foregroundColor(.gray)
+                            .font(.subheadline)
+                        NavigationLink(destination: EmailLoginScreen()) {
+                        Text("Войти с помощью эл.почты").font(.headline)
+                            .foregroundColor(self.colorScheme == .light ? .black : .white)
+                            .padding()
+                        }
+                    }.padding(.bottom, 40)
                 }
-                .navigationViewStyle(StackNavigationViewStyle())
+                .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                .edgesIgnoringSafeArea(.top)
+                .sheet(isPresented: self.$showSpashScreen) {
+                    SplashScreen()
+                }
+                .alert(isPresented: self.$showAlert) {
+                    Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
+                }
             }
-        
+            .navigationViewStyle(StackNavigationViewStyle())
+        }.onAppear(perform: funcSplashScreen)
     }
 }
 

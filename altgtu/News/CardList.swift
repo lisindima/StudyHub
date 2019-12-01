@@ -90,7 +90,7 @@ struct CardList: View {
                                             .cornerRadius(10)
                                         Divider()
                                             .frame(height: 90)
-                                            .padding()
+                                            .padding(.horizontal, 8)
                                         Button(action: {self.newsVM.fetchCategoryNews(category: "&category=sports")}, label: {Text("Спорт")})
                                             .frame(width: 120, height: 110)
                                             .background(Color.gray)
