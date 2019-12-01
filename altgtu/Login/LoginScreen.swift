@@ -226,7 +226,7 @@ struct EmailLoginScreen: View {
                             }
                             if 8 <= self.password.count{
                                 Image(systemName: "checkmark.circle")
-                                .foregroundColor(.green)
+                                    .foregroundColor(.green)
                             }
                         }
                             .modifier(InputModifier())
