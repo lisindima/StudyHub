@@ -145,15 +145,6 @@ struct ProfileView: View {
                 }
                 Section(header: Text("Информация").bold()) {
                     HStack {
-                        Button("Возможности") {
-                            self.ModalView = 3
-                            self.isShowingModalView = true
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
-                            Spacer()
-                        Image(systemName: "info.circle")
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
-                    }
-                    HStack {
                         Button("Поделиться") {
                             self.ModalView = 2
                             self.isShowingModalView = true
@@ -202,18 +193,12 @@ struct ProfileView: View {
                     if self.ModalView == 2 {
                         print("SHARE")
                     }
-                    if self.ModalView == 3 {
-                        print("InfoPAGE")
-                    }
                 }, content: {
                     if self.ModalView == 1 {
                         ImagePicker(imageFromPicker: self.$session.imageProfile)
                     }
                     if self.ModalView == 2 {
                         ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
-                    }
-                    if self.ModalView == 3 {
-                        SplashScreen().environmentObject(SessionStore())
                     }
                 })
                 .actionSheet(isPresented: $showActionSheet) {
