@@ -8,23 +8,31 @@
 
 import Foundation
 
-public class ModelPicker: Codable, Identifiable {
-    public let name: String
-    public let group: [group]
+public struct GroupModelElement: Codable, Hashable {
+    public let startYear: Int?
+    public let name: String?
+    public let facultyID: String?
+    public let specialityID: String?
+    public let groupBr: Int?
+    public let id: String?
 
-        public init(name: String, group: [group]) {
-            self.name = name
-            self.group = group
-        }
+    enum CodingKeys: String, CodingKey {
+        case startYear
+        case name
+        case facultyID
+        case specialityID
+        case groupBr
+        case id
     }
 
-    public class group: Codable, Identifiable {
-        public let name: String
-
-        public init(name: String) {
-            self.name = name
-        }
+    public init(startYear: Int?, name: String?, facultyID: String?, specialityID: String?, groupBr: Int?, id: String?) {
+        self.startYear = startYear
+        self.name = name
+        self.facultyID = facultyID
+        self.specialityID = specialityID
+        self.groupBr = groupBr
+        self.id = id
     }
+}
 
-public typealias ModelsPicker = [ModelPicker]
-
+public typealias GroupModel = [GroupModelElement]

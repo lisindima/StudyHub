@@ -13,20 +13,20 @@ import SwiftUICharts
 
 struct ProfileView: View {
     
-    @State private var showActionSheet: Bool = false
-    @State private var showAlertCache: Bool = false
-    @State private var isPresented: Bool = false
-    @State private var isShowingModalView: Bool = false
-    @State private var InfoPageModal: Bool = false
-    @State private var ModalView = 1
-    @State private var showActionSheetExit: Bool = false
-    @State private var AlertView = 1
+@State private var showActionSheet: Bool = false
+@State private var showAlertCache: Bool = false
+@State private var isPresented: Bool = false
+@State private var isShowingModalView: Bool = false
+@State private var InfoPageModal: Bool = false
+@State private var showActionSheetExit: Bool = false
+@State private var ModalView = 1
+@State private var AlertView = 1
     
-    @EnvironmentObject var session: SessionStore
-    @ObservedObject var pickerModel: pickerAPI = pickerAPI()
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
+@Environment(\.colorScheme) var colorScheme: ColorScheme
+@EnvironmentObject var session: SessionStore
+@ObservedObject var pickerModel: pickerAPI = pickerAPI()
     
-    let currentUser = Auth.auth().currentUser!
+let currentUser = Auth.auth().currentUser!
     
     var StatisticsUser: some View {
         NavigationView {
