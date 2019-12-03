@@ -12,21 +12,20 @@ import Combine
 class pickerAPI: ObservableObject {
     
     @Published var groupModel: GroupModel = [GroupModelElement]()
-    @Published var groupModelEleme: [GroupModelElement] = []
-    
+        
     init() {
         loadPickerData()
     }
     
     func loadPickerData() {
-        guard let url: URL = URL(string: "https://www.altstu.ru/main/schedule/ws/group/?f=74") else { return }
+        guard let url: URL = URL(string: "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             do {
                 guard let json = data else { return }
                 let swift = try JSONDecoder().decode(GroupModel.self, from: json)
                 DispatchQueue.main.async {
-                    self.groupModelEleme = swift
-                    print(self.groupModelEleme)
+                    self.groupModel = swift
+                    print(self.groupModel)
                 }
             }
             catch {

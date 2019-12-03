@@ -40,6 +40,17 @@ struct ProfileImage: View {
                         .clipped()
                         .shadow(radius: 10)
                         .frame(width: 210, height: 210)
+                        .contextMenu {
+                            Button(action:
+                            {
+                                    
+                            }){
+                            HStack {
+                                Image(systemName: "globe")
+                                Text("Открыть")
+                        }
+                    }
+                }
             }
         }
     }

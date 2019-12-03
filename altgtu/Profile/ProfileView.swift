@@ -9,7 +9,6 @@
 import SwiftUI
 import Firebase
 import URLImage
-import SwiftUICharts
 
 struct ProfileView: View {
     
@@ -26,29 +25,8 @@ struct ProfileView: View {
 @EnvironmentObject var session: SessionStore
 @ObservedObject var pickerModel: pickerAPI = pickerAPI()
     
-let currentUser = Auth.auth().currentUser!
-    
-    var StatisticsUser: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    LineView(data: [8,23,54,32,12,37,7,23,43], title: "Успеваемость", legend: "По дням")
-                }.padding()
-                Spacer()
-            }
-            .navigationBarTitle(Text("Статистика"), displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                self.isPresented = false
-            })
-            {
-                Text("Готово")
-                    .bold()
-                    .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
-            })
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
+    let currentUser = Auth.auth().currentUser!
+    let group: GroupModelElement
     
     var SliderModalPresentation: some View {
         NavigationView {
