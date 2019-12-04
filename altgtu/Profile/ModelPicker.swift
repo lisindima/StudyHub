@@ -10,7 +10,7 @@ import Foundation
 
 public struct GroupModelElement: Codable, Hashable {
     public let startYear: Int?
-    public let name: String?
+    public let name: String
     public let facultyID: String?
     public let specialityID: String?
     public let groupBr: Int?
@@ -25,7 +25,7 @@ public struct GroupModelElement: Codable, Hashable {
         case id
     }
 
-    public init(startYear: Int?, name: String?, facultyID: String?, specialityID: String?, groupBr: Int?, id: String?) {
+    public init(startYear: Int?, name: String, facultyID: String?, specialityID: String?, groupBr: Int?, id: String?) {
         self.startYear = startYear
         self.name = name
         self.facultyID = facultyID

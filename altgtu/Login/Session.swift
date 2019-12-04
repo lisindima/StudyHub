@@ -43,18 +43,18 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var session: User?
     @Published var lastnameProfile: String!
     @Published var firstnameProfile: String!
-    @Published var DateTimestamp: Timestamp!
-    @Published var DateBirthDay: Date!
-    @Published var NotifyAlertProfile: Bool!
+    @Published var dateTimestamp: Timestamp!
+    @Published var dateBirthDay: Date!
+    @Published var notifyAlertProfile: Bool!
     @Published var emailProfile: String!
     @Published var url: String!
-    @Published var NotifyMinute: Int!
+    @Published var notifyMinute: Int!
     @Published var choiseGroup = 0
     @Published var choiseFaculty = 0
     @Published var choiseNews = 0
-    @Published var Group = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
-    @Published var Faculty = ["ФИТ", "ГФ", "ФСТ"]
-    @Published var News = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
+    @Published var group = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
+    @Published var faculty = ["ФИТ", "ГФ", "ФСТ"]
+    @Published var news = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
@@ -110,23 +110,23 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 if let document = documentSnapshot {
                     self.lastnameProfile = document.get("lastname") as? String
                     self.firstnameProfile = document.get("firstname") as? String
-                    self.NotifyAlertProfile = document.get("NotifyAlertProfile") as? Bool
-                    self.DateTimestamp = document.get("DateBirthDay") as? Timestamp
-                    self.DateBirthDay = self.DateTimestamp.dateValue()
+                    self.notifyAlertProfile = document.get("NotifyAlertProfile") as? Bool
+                    self.dateTimestamp = document.get("DateBirthDay") as? Timestamp
+                    self.dateBirthDay = self.dateTimestamp.dateValue()
                     self.emailProfile = document.get("email") as? String
                     self.url = document.get("urlImageProfile") as? String
-                    self.NotifyMinute = document.get("NotifyMinute") as? Int
+                    self.notifyMinute = document.get("NotifyMinute") as? Int
                     self.rValue = document.get("rValue") as? Double
                     self.gValue = document.get("gValue") as? Double
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
                     print(self.lastnameProfile ?? "Ошибка, нет Фамилии!")
                     print(self.firstnameProfile ?? "Ошибка, нет Имени!")
-                    print(self.NotifyAlertProfile ?? "Ошибка, уведомления!")
-                    print(self.DateBirthDay ?? "Ошибка, нет Даты рождения!")
+                    print(self.notifyAlertProfile ?? "Ошибка, уведомления!")
+                    print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
                     print(self.emailProfile ?? "Ошибка, нет Почты!")
                     print(self.url ?? "Ошибка, нет Фото!")
-                    print(self.NotifyMinute ?? "Ошибка, нет времени уведомления!")
+                    print(self.notifyMinute ?? "Ошибка, нет времени уведомления!")
                     print(self.rValue ?? "Ошибка красный цвет!")
                     print(self.bValue ?? "Ошибка синий цвет!")
                     print(self.gValue ?? "Ошибка зеленый цвет!")
@@ -134,10 +134,10 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     print("Document does not exist")
                     self.lastnameProfile = "Error"
                     self.firstnameProfile = "Error"
-                    self.NotifyAlertProfile = false
-                    self.DateBirthDay = Date()
+                    self.notifyAlertProfile = false
+                    self.dateBirthDay = Date()
                     self.emailProfile = "test@test.com"
-                    self.NotifyMinute = 10
+                    self.notifyMinute = 10
             }
         }
     }
@@ -149,10 +149,10 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
             docRef.updateData([
                 "lastname": lastnameProfile!,
                 "firstname": firstnameProfile!,
-                "NotifyAlertProfile": NotifyAlertProfile!,
-                "DateBirthDay": DateBirthDay!,
+                "NotifyAlertProfile": notifyAlertProfile!,
+                "DateBirthDay": dateBirthDay!,
                 "email": emailProfile!,
-                "NotifyMinute": NotifyMinute!,
+                "NotifyMinute": notifyMinute!,
                 "rValue": rValue!,
                 "gValue": gValue!,
                 "bValue": bValue!

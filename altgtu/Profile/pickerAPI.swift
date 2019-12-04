@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class pickerAPI: ObservableObject {
+class PickerAPI: ObservableObject {
     
     @Published var groupModel: GroupModel = [GroupModelElement]()
         

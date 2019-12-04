@@ -12,11 +12,11 @@ import URLImage
 struct CardView: View {
     
     let article: Articles
-    let noImageUrl = "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg"
+    let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
     
     var body: some View {
         VStack {
-            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
+            URLImage(URL(string: noImageUrl ?? article.urlToImage!)!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
                 EmptyView()
             },
             content:

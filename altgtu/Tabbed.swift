@@ -13,7 +13,7 @@ struct Tabbed : View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: SessionChat
-    @ObservedObject var pickerModel: pickerAPI = pickerAPI()
+    @ObservedObject var pickerModel: PickerAPI = PickerAPI()
     @State private var selection = 0
     
     func fetchUserData(){

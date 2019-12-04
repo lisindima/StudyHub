@@ -412,10 +412,10 @@
 		CB28B8D92361459900A93F28 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				CB6EBF4A23975B8F00D9E771 /* Models */,
 				CB6D3F72235ADC6300E65661 /* CardView.swift */,
 				CB6D3F7E235B118200E65661 /* CardList.swift */,
 				CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */,
-				CB6D3F7A235B07CA00E65661 /* ModelNews.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -437,6 +437,14 @@
 				CB6777C523604B680019D6B6 /* Info.plist */,
 			);
 			path = altgtuTodayWidget;
+			sourceTree = "<group>";
+		};
+		CB6EBF4A23975B8F00D9E771 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB6D3F7A235B07CA00E65661 /* ModelNews.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CBD896B22378FDAE008CF480 /* Extensions */ = {

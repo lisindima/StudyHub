@@ -39,7 +39,7 @@ func signUp () {
                     "DateBirthDay": NSDate(),
                     "adminSetting": false,
                     "NotifyMinute": 10,
-                    "urlImageProfile": "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg"
+                    "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
                         ])
         {
             err in

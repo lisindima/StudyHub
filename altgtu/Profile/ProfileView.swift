@@ -16,27 +16,29 @@ struct ProfileView: View {
 @State private var showAlertCache: Bool = false
 @State private var isPresented: Bool = false
 @State private var isShowingModalView: Bool = false
-@State private var InfoPageModal: Bool = false
 @State private var showActionSheetExit: Bool = false
-@State private var ModalView = 1
-@State private var AlertView = 1
+@State private var modalView = 1
     
 @Environment(\.colorScheme) var colorScheme: ColorScheme
 @EnvironmentObject var session: SessionStore
-@ObservedObject var pickerModel: pickerAPI = pickerAPI()
+@ObservedObject var pickerModel: PickerAPI = PickerAPI()
     
     let currentUser = Auth.auth().currentUser!
-    let group: GroupModelElement
+    var elements:[GroupModelElement] = [
+       GroupModelElement(startYear: 1990, name: "name1", facultyID: "1", specialityID: "2", groupBr: 3, id: "abc1"),
+       GroupModelElement(startYear: 1991, name: "name2", facultyID: "10", specialityID: "20", groupBr: 30, id: "abc2"),
+       GroupModelElement(startYear: 1992, name: "name3", facultyID: "100", specialityID: "200", groupBr: 300, id: "abc3")
+   ]
     
     var SliderModalPresentation: some View {
         NavigationView {
             Form {
                 Section(header: Text("Главное").bold(), footer: Text("Здесь настраивается время отсрочки уведомлений, например, для уведомлений о начале пары.")) {
-                    Toggle(isOn: $session.NotifyAlertProfile.animation()) {
+                    Toggle(isOn: $session.notifyAlertProfile.animation()) {
                             Text("Уведомления")
                     }
-                    if session.NotifyAlertProfile {
-                        Stepper("\(session.NotifyMinute) мин", value: $session.NotifyMinute, in: 5...30)
+                    if session.notifyAlertProfile {
+                        Stepper("\(session.notifyMinute) мин", value: $session.notifyMinute, in: 5...30)
                     }
                 }
                 Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
@@ -89,11 +91,11 @@ struct ProfileView: View {
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("\(session.lastnameProfile)", text: $session.lastnameProfile)
                     TextField("\(session.firstnameProfile)", text: $session.firstnameProfile)
-                    DatePicker(selection: $session.DateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
+                    DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     TextField("\(session.emailProfile)", text: $session.emailProfile)
                     HStack {
                         Button("Изменить фотографию") {
-                            self.ModalView = 1
+                            self.modalView = 1
                             self.isShowingModalView = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                         
@@ -104,27 +106,27 @@ struct ProfileView: View {
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
                     Picker(selection: $session.choiseFaculty, label: Text("Выбранный факультет")) {
-                        ForEach(0 ..< session.Faculty.count) {
-                            Text(self.session.Faculty[$0])
+                        ForEach(0 ..< session.faculty.count) {
+                            Text(self.session.faculty[$0])
                         }
                     }
                     Picker(selection: $session.choiseGroup, label: Text("Выбранная группа")) {
-                        ForEach(0 ..< session.Group.count) {
-                            Text(self.session.Group[$0])
+                        ForEach(0 ..< elements.count) {
+                            Text(self.elements[$0].name)
                         }
                     }
                 }
                 Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\" по умолчанию.")) {
                     Picker(selection: $session.choiseNews, label: Text("Выбранная тема")) {
-                        ForEach(0 ..< session.News.count) {
-                            Text(self.session.News[$0])
+                        ForEach(0 ..< session.news.count) {
+                            Text(self.session.news[$0])
                         }
                     }
                 }
                 Section(header: Text("Информация").bold()) {
                     HStack {
                         Button("Поделиться") {
-                            self.ModalView = 2
+                            self.modalView = 2
                             self.isShowingModalView = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                             Spacer()
@@ -165,17 +167,17 @@ struct ProfileView: View {
                 
                 }
                 .sheet(isPresented: $isShowingModalView, onDismiss: {
-                    if self.ModalView == 1 {
+                    if self.modalView == 1 {
                         self.session.uploadImageToCloudStorage()
                     }
-                    if self.ModalView == 2 {
+                    if self.modalView == 2 {
                         print("SHARE")
                     }
                 }, content: {
-                    if self.ModalView == 1 {
+                    if self.modalView == 1 {
                         ImagePicker(imageFromPicker: self.$session.imageProfile)
                     }
-                    if self.ModalView == 2 {
+                    if self.modalView == 2 {
                         ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                     }
                 })
