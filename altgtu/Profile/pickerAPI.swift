@@ -12,6 +12,7 @@ import Combine
 class PickerAPI: ObservableObject {
     
     @Published var groupModel: GroupModel = [GroupModelElement]()
+    @Published var elements: [GroupModelElement] = [GroupModelElement]()
         
     init() {
         loadPickerData()
@@ -25,7 +26,6 @@ class PickerAPI: ObservableObject {
                 let swift = try JSONDecoder().decode(GroupModel.self, from: json)
                 DispatchQueue.main.async {
                     self.groupModel = swift
-                    print(self.groupModel)
                 }
             }
             catch {

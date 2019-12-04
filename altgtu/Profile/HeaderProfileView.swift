@@ -16,7 +16,9 @@ struct Header: View {
 }
 
 struct ProfileImage: View {
+    
     @EnvironmentObject var session: SessionStore
+    
     var body: some View {
         VStack {
             URLImage(URL(string:"\(session.url ?? "")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {

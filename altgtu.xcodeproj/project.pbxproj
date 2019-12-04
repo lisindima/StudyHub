@@ -49,12 +49,12 @@
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
-		CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* APIService.swift */; };
+		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
 		CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB13F0523584F9E00D98C83 /* ShareSheet.swift */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
-		CBDE62952352129E00E588EC /* pickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* pickerAPI.swift */; };
+		CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerAPI.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */; };
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
@@ -180,12 +180,12 @@
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		CB92273F2374036F00A4A3DB /* Расписание.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Расписание.entitlements"; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
-		CB9BBDCB234C6DDC00F89529 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CBB13F0523584F9E00D98C83 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
-		CBDE62942352129E00E588EC /* pickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerAPI.swift; sourceTree = "<group>"; };
+		CBDE62942352129E00E588EC /* PickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAPI.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionChat.swift; sourceTree = "<group>"; };
 		CBE665DB23543A1000C43811 /* altgtuWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altgtuWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE665DE23543A1000C43811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 				CB0AED67232E5A7B0047A8A0 /* LessonList.swift */,
 				CB1F6DA82338DDB000604C50 /* LessonDetail.swift */,
 				CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */,
-				CB9BBDCB234C6DDC00F89529 /* APIService.swift */,
+				CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */,
 			);
 			path = Lesson;
 			sourceTree = "<group>";
@@ -335,10 +335,10 @@
 		CB0AED6B232E5A840047A8A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CB6EBF4F23977BC700D9E771 /* Models */,
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
 				CB4FA012234396110049D271 /* HeaderProfileView.swift */,
-				CBDE629223520D2600E588EC /* ModelPicker.swift */,
-				CBDE62942352129E00E588EC /* pickerAPI.swift */,
+				CBDE62942352129E00E588EC /* PickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
 			);
@@ -358,7 +358,7 @@
 		CB0AED7B232E5ACE0047A8A0 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				CB4B284123823FEC00E11A47 /* 27-loading.json */,
+				CB6EBF5023977BE200D9E771 /* Files */,
 				CB0AED7C232E5AE20047A8A0 /* LottieView.swift */,
 			);
 			path = Lottie;
@@ -445,6 +445,22 @@
 				CB6D3F7A235B07CA00E65661 /* ModelNews.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CB6EBF4F23977BC700D9E771 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBDE629223520D2600E588EC /* ModelPicker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CB6EBF5023977BE200D9E771 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB4B284123823FEC00E11A47 /* 27-loading.json */,
+			);
+			path = Files;
 			sourceTree = "<group>";
 		};
 		CBD896B22378FDAE008CF480 /* Extensions */ = {
@@ -721,7 +737,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBDE62952352129E00E588EC /* pickerAPI.swift in Sources */,
+				CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */,
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
 				CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */,
 				CB276197235588820054C753 /* InfoApp.swift in Sources */,
@@ -749,7 +765,7 @@
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
-				CB9BBDCC234C6DDC00F89529 /* APIService.swift in Sources */,
+				CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,

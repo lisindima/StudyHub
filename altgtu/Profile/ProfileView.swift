@@ -21,14 +21,15 @@ struct ProfileView: View {
     
 @Environment(\.colorScheme) var colorScheme: ColorScheme
 @EnvironmentObject var session: SessionStore
-@ObservedObject var pickerModel: PickerAPI = PickerAPI()
+@EnvironmentObject var pickerModel: PickerAPI
+//@ObservedObject var pickerModel: PickerAPI = PickerAPI()
     
     let currentUser = Auth.auth().currentUser!
-    var elements:[GroupModelElement] = [
-       GroupModelElement(startYear: 1990, name: "name1", facultyID: "1", specialityID: "2", groupBr: 3, id: "abc1"),
-       GroupModelElement(startYear: 1991, name: "name2", facultyID: "10", specialityID: "20", groupBr: 30, id: "abc2"),
-       GroupModelElement(startYear: 1992, name: "name3", facultyID: "100", specialityID: "200", groupBr: 300, id: "abc3")
-   ]
+    var elements: [GroupModelElement] = [GroupModelElement]()
+    
+    func test() {
+        print(elements)
+    }
     
     var SliderModalPresentation: some View {
         NavigationView {
@@ -207,6 +208,7 @@ struct ProfileView: View {
                         .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
             })
         }
+        .onAppear(perform: test)
         .accentColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
     }

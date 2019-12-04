@@ -9,10 +9,19 @@
 import SwiftUI
 import Firebase
 
+struct DataMessges: Identifiable {
+    
+    var id: String
+    var user: String
+    var msg: String
+    var idUser: String
+    var dateMsg: String
+}
+
 final class SessionChat: ObservableObject {
     
     @Published var chatList = [String]()
-    @Published var msgs = [dataMessges]()
+    @Published var msgs = [DataMessges]()
     
     init() {
         loadMsgsList()
@@ -35,7 +44,7 @@ final class SessionChat: ObservableObject {
                     let dateMsg = i.document.get("dateMsg") as! String
                     let id = i.document.documentID
                     
-                    self.msgs.append(dataMessges(id: id, user: user, msg: msg, idUser: idUser, dateMsg: dateMsg))
+                    self.msgs.append(DataMessges(id: id, user: user, msg: msg, idUser: idUser, dateMsg: dateMsg))
                 }
             }
         }
@@ -62,13 +71,4 @@ final class SessionChat: ObservableObject {
             }
         }
     }
-}
-
-struct dataMessges: Identifiable {
-    
-    var id: String
-    var user: String
-    var msg: String
-    var idUser: String
-    var dateMsg: String
 }
