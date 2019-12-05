@@ -135,8 +135,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.firstname = "Error"
                     self.notifyAlertProfile = false
                     self.dateBirthDay = Date()
-                    self.email = "test@test.com"
+                    self.email = "error@error.com"
                     self.notifyMinute = 10
+                    self.rValue = 1
+                    self.gValue = 1
+                    self.bValue = 1
+                    self.adminSetting = false
             }
         }
     }
