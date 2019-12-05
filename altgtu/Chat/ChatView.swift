@@ -51,7 +51,7 @@ struct ChatView: View {
                 if typeMessage.isEmpty == false {
                     Button(action:{
                         self.session.currentTime()
-                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastnameProfile + " " + self.session.firstnameProfile)", idUser: self.currentUid, dateMsg: self.session.currentTimeAndDate ?? "error")
+                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastname + " " + self.session.firstname)", idUser: self.currentUid, dateMsg: self.session.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")

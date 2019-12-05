@@ -41,13 +41,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var currentLoginUser = Auth.auth().currentUser
     @Published var isLoggedIn = false
     @Published var session: User?
-    @Published var lastnameProfile: String!
-    @Published var firstnameProfile: String!
-    @Published var dateTimestamp: Timestamp!
+    @Published var lastname: String!
+    @Published var firstname: String!
     @Published var dateBirthDay: Date!
     @Published var notifyAlertProfile: Bool!
-    @Published var emailProfile: String!
-    @Published var url: String!
+    @Published var email: String!
+    @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
     @Published var choiseGroup = 0
     @Published var choiseFaculty = 0
@@ -108,35 +107,35 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
             db.collection("profile").document(currentUser.uid)
             .addSnapshotListener { documentSnapshot, error in
                 if let document = documentSnapshot {
-                    self.lastnameProfile = document.get("lastname") as? String
-                    self.firstnameProfile = document.get("firstname") as? String
-                    self.notifyAlertProfile = document.get("NotifyAlertProfile") as? Bool
-                    self.dateTimestamp = document.get("DateBirthDay") as? Timestamp
-                    self.dateBirthDay = self.dateTimestamp.dateValue()
-                    self.emailProfile = document.get("email") as? String
-                    self.url = document.get("urlImageProfile") as? String
-                    self.notifyMinute = document.get("NotifyMinute") as? Int
+                    self.lastname = document.get("lastname") as? String
+                    self.firstname = document.get("firstname") as? String
+                    self.notifyAlertProfile = document.get("notifyAlertProfile") as? Bool
+                    let dateTimestamp = document.get("dateBirthDay") as? Timestamp
+                    self.dateBirthDay = dateTimestamp!.dateValue()
+                    self.email = document.get("email") as? String
+                    self.urlImageProfile = document.get("urlImageProfile") as? String
+                    self.notifyMinute = document.get("notifyMinute") as? Int
                     self.rValue = document.get("rValue") as? Double
                     self.gValue = document.get("gValue") as? Double
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
-                    print(self.lastnameProfile ?? "Ошибка, нет Фамилии!")
-                    print(self.firstnameProfile ?? "Ошибка, нет Имени!")
+                    print(self.lastname ?? "Ошибка, нет Фамилии!")
+                    print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.notifyAlertProfile ?? "Ошибка, уведомления!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
-                    print(self.emailProfile ?? "Ошибка, нет Почты!")
-                    print(self.url ?? "Ошибка, нет Фото!")
+                    print(self.email ?? "Ошибка, нет Почты!")
+                    print(self.urlImageProfile ?? "Ошибка, нет Фото!")
                     print(self.notifyMinute ?? "Ошибка, нет времени уведомления!")
                     print(self.rValue ?? "Ошибка красный цвет!")
                     print(self.bValue ?? "Ошибка синий цвет!")
                     print(self.gValue ?? "Ошибка зеленый цвет!")
                 } else {
                     print("Document does not exist")
-                    self.lastnameProfile = "Error"
-                    self.firstnameProfile = "Error"
+                    self.lastname = "Error"
+                    self.firstname = "Error"
                     self.notifyAlertProfile = false
                     self.dateBirthDay = Date()
-                    self.emailProfile = "test@test.com"
+                    self.email = "test@test.com"
                     self.notifyMinute = 10
             }
         }
@@ -147,12 +146,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         let db = Firestore.firestore()
         let docRef = db.collection("profile").document(currentUser.uid)
             docRef.updateData([
-                "lastname": lastnameProfile!,
-                "firstname": firstnameProfile!,
-                "NotifyAlertProfile": notifyAlertProfile!,
-                "DateBirthDay": dateBirthDay!,
-                "email": emailProfile!,
-                "NotifyMinute": notifyMinute!,
+                "lastname": lastname!,
+                "firstname": firstname!,
+                "notifyAlertProfile": notifyAlertProfile!,
+                "dateBirthDay": dateBirthDay!,
+                "email": email!,
+                "notifyMinute": notifyMinute!,
                 "rValue": rValue!,
                 "gValue": gValue!,
                 "bValue": bValue!
@@ -182,12 +181,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 guard let downloadURL = url else {
                   return
                 }
-                self.url = downloadURL.absoluteString
-                print("url image: \(String(describing: self.url))")
+                self.urlImageProfile = downloadURL.absoluteString
+                print("url image: \(String(describing: self.urlImageProfile))")
                 let db = Firestore.firestore()
                 let docRef = db.collection("profile").document(currentUser.uid)
                     docRef.updateData([
-                        "urlImageProfile": self.url as Any
+                        "urlImageProfile": self.urlImageProfile as Any
                 ]){ err in
                     if let err = err {
                         print("Error updating document: \(err)")
@@ -195,8 +194,8 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                         db.collection("profile").document(currentUser.uid)
                         .addSnapshotListener { documentSnapshot, error in
                             if let document = documentSnapshot {
-                                self.url = document.get("urlImageProfile") as? String
-                                print(self.url ?? "Ошибка, нет Фото!")
+                                self.urlImageProfile = document.get("urlImageProfile") as? String
+                                print(self.urlImageProfile ?? "Ошибка, нет Фото!")
                                 } else {
                                     print("Image does not exist")
                                 }

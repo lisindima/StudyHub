@@ -111,7 +111,7 @@ extension Text {
     func customTitleText() -> Text {
         self
             .fontWeight(.black)
-            .font(.system(size: 36))
+            .font(.system(size: 32))
     }
 }
 

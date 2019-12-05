@@ -31,7 +31,7 @@ struct ProfileView: View {
         print(elements)
     }
     
-    var SliderModalPresentation: some View {
+    var sliderModalPresentation: some View {
         NavigationView {
             Form {
                 Section(header: Text("Главное").bold(), footer: Text("Здесь настраивается время отсрочки уведомлений, например, для уведомлений о начале пары.")) {
@@ -90,10 +90,10 @@ struct ProfileView: View {
                     .padding(.vertical)
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
-                    TextField("\(session.lastnameProfile)", text: $session.lastnameProfile)
-                    TextField("\(session.firstnameProfile)", text: $session.firstnameProfile)
+                    TextField("\(session.lastname)", text: $session.lastname)
+                    TextField("\(session.firstname)", text: $session.firstname)
                     DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
-                    TextField("\(session.emailProfile)", text: $session.emailProfile)
+                    TextField("\(session.email)", text: $session.email)
                     HStack {
                         Button("Изменить фотографию") {
                             self.modalView = 1
@@ -226,7 +226,7 @@ struct ProfileView: View {
                         .padding(.bottom, -130)
                     VStack {
                         HStack {
-                            Text((session.lastnameProfile ?? "Загрузка...") + " " + (session.firstnameProfile ?? ""))
+                            Text((session.lastname ?? "Загрузка...") + " " + (session.firstname ?? ""))
                                 .bold()
                                 .font(.title)
                             if session.adminSetting {
@@ -277,7 +277,7 @@ struct ProfileView: View {
             .sheet(isPresented: $isPresented, onDismiss: {
                 self.session.updateDataFromDatabase()
             }, content: {
-                self.SliderModalPresentation
+                self.sliderModalPresentation
             })
         }
         .navigationViewStyle(StackNavigationViewStyle())

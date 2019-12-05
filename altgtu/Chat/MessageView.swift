@@ -22,7 +22,7 @@ struct MessageView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                URLImage(URL(string:"\(session.url ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                URLImage(URL(string:"\(session.urlImageProfile ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                     ProgressView($0) { progress in
                         ZStack {
                             if progress > 0.0 {
@@ -112,7 +112,7 @@ struct MessageView1: View {
                             .foregroundColor(.gray)
                     }.padding(.trailing, 3)
                 }
-                URLImage(URL(string:"\(session.url ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                URLImage(URL(string:"\(session.urlImageProfile ?? "")")!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                     ProgressView($0) { progress in
                         ZStack {
                             if progress > 0.0 {

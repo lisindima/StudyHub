@@ -56,7 +56,7 @@ struct CardList: View {
                             }
                             .padding(.leading, 15)
                             Spacer()
-                            URLImage(URL(string:"\(session.url ?? "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                            URLImage(URL(string:"\(session.urlImageProfile ?? "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                                 ProgressView($0) { progress in
                                     ZStack {
                                         if progress > 0.0 {

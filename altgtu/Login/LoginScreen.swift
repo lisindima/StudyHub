@@ -35,10 +35,10 @@ func signUp () {
                     "firstname": self.firstname,
                     "lastname": self.lastname,
                     "email": self.email,
-                    "NotifyAlertProfile": false,
-                    "DateBirthDay": NSDate(),
+                    "notifyAlertProfile": false,
+                    "dateBirthDay": NSDate(),
                     "adminSetting": false,
-                    "NotifyMinute": 10,
+                    "notifyMinute": 10,
                     "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
                         ])
         {
@@ -112,7 +112,7 @@ func signUp () {
                     .padding()
                 Spacer()
             }
-            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
             .navigationBarTitle("Регистрация")
             .alert(isPresented: self.$showAlert){
                 Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
@@ -169,7 +169,7 @@ struct ResetPassword: View {
                 .padding()
             Spacer()
         }
-        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Восстановление")
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
@@ -266,7 +266,7 @@ struct EmailLoginScreen: View {
                             .padding(.bottom)
                         }.padding(.bottom)
                     }
-                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
                     .navigationBarTitle("Вход")
                     .edgesIgnoringSafeArea(.bottom)
                     .alert(isPresented: self.$showAlert) {
@@ -312,11 +312,11 @@ struct AuthenticationScreen : View {
                             .frame(width: 150, height: 150)
                         Text("Личный кабинет")
                             .fontWeight(.black)
-                            .font(.system(size: 36))
+                            .font(.system(size: 32))
                             .multilineTextAlignment(.center)
                         Text("АлтГТУ")
                             .fontWeight(.black)
-                            .font(.system(size: 36))
+                            .font(.system(size: 32))
                             .padding(.bottom, 10)
                             .multilineTextAlignment(.center)
                         Text("Самый простой способ узнать расписание и")
@@ -357,7 +357,7 @@ struct AuthenticationScreen : View {
                         }
                     }.padding(.bottom, 40)
                 }
-                .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
                 .edgesIgnoringSafeArea(.top)
                 .sheet(isPresented: self.$showSpashScreen) {
                     SplashScreen()
