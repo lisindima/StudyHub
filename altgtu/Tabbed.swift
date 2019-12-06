@@ -56,7 +56,7 @@ struct Tabbed : View {
                     }
                 }.tag(3)
         }
-        .accentColor(Color(red: session.rValue ?? 10, green: session.gValue ?? 10, blue: session.bValue ?? 10, opacity: 1.0))
+        .accentColor(Color(red: 10/255.0, green: 10/255.0, blue: 10/255.0, opacity: 1.0))
         .onAppear(perform: fetchUserData)
         .edgesIgnoringSafeArea(.top)
     }

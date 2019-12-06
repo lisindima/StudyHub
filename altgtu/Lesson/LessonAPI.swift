@@ -13,24 +13,34 @@ class LessonAPI: ObservableObject {
     
     @Published var scheduleModel: Schedules = [ScheduleModel]()
     
+    let apiUrl = "https://gist.githubusercontent.com/lisindima/a15a61abb015ae38374bfb7a4e54cf2e/raw/c862faf545848ff135a6fcb5aa8b98b57d569b54/gistfile1.txt"
+    
     init() {
         loadLesson()
     }
     func loadLesson() {
-        guard let url: URL = URL(string: "https://gist.githubusercontent.com/lisindima/a15a61abb015ae38374bfb7a4e54cf2e/raw/c862faf545848ff135a6fcb5aa8b98b57d569b54/gistfile1.txt") else { return }
+        guard let url = URL(string: apiUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            do {
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let response = response as? HTTPURLResponse else {return}
+            if response.statusCode == 200 {
                 guard let json = data else { return }
-                let swift = try JSONDecoder().decode(Schedules.self, from: json)
                 DispatchQueue.main.async {
-                    self.scheduleModel = swift
+                    do {
+                        let swift = try JSONDecoder().decode(Schedules.self, from: json)
+                        self.scheduleModel = swift
+                    }
+                    catch {
+                        print(error)
+                    }
                 }
+            }else{
+                print("Lesson: \(response.statusCode)")
             }
-            catch {
-                print(error)
-            }
-        }
-        .resume()
+        }.resume()
     }
 }
 

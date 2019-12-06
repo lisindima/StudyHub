@@ -19,7 +19,7 @@
 		CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* Lesson.swift */; };
 		CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED73232E5AC50047A8A0 /* CustomInput.swift */; };
 		CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED74232E5AC50047A8A0 /* CustomButton.swift */; };
-		CB0AED79232E5AC50047A8A0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* Session.swift */; };
+		CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* SessionStore.swift */; };
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
 		CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED7C232E5AE20047A8A0 /* LottieView.swift */; };
 		CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */; };
@@ -150,7 +150,7 @@
 		CB0AED68232E5A7B0047A8A0 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		CB0AED73232E5AC50047A8A0 /* CustomInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
 		CB0AED74232E5AC50047A8A0 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		CB0AED75232E5AC50047A8A0 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CB0AED75232E5AC50047A8A0 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		CB0AED7C232E5AE20047A8A0 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -350,7 +350,7 @@
 			children = (
 				CB0AED56232E5A210047A8A0 /* ContentView.swift */,
 				CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */,
-				CB0AED75232E5AC50047A8A0 /* Session.swift */,
+				CB0AED75232E5AC50047A8A0 /* SessionStore.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -752,7 +752,7 @@
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
-				CB0AED79232E5AC50047A8A0 /* Session.swift in Sources */,
+				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
 				CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */,
 				CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,

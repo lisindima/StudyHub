@@ -39,7 +39,7 @@ class NewsViewModel: ObservableObject {
                     }
                 }
             }else{
-                print("HTTPURLResponse code: \(response.statusCode)")
+                print("News: \(response.statusCode)")
             }
         }.resume()
     }
@@ -63,7 +63,7 @@ class NewsViewModel: ObservableObject {
                     }
                 }
             }else{
-                print("HTTPURLResponse code: \(response.statusCode)")
+                print("CategoryNews: \(response.statusCode)")
             }
         }.resume()
     }

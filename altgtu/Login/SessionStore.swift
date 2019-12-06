@@ -1,5 +1,5 @@
 //
-//  Session.swift
+//  SessionStore.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 14.09.2019.

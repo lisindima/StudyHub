@@ -47,7 +47,7 @@ struct ProfileView: View {
                         Image(systemName: "r.circle")
                             .foregroundColor(Color.red.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $session.rValue, in: 0.0...1.0)
+                        Slider(value: $session.rValue, in: 0.0...255.0)
                             .accentColor(Color.red.opacity(session.rValue))
                         Image(systemName: "r.circle.fill")
                             .foregroundColor(Color.red)
@@ -57,7 +57,7 @@ struct ProfileView: View {
                         Image(systemName: "g.circle")
                             .foregroundColor(Color.green.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $session.gValue, in: 0.0...1.0)
+                        Slider(value: $session.gValue, in: 0.0...255.0)
                             .accentColor(Color.green.opacity(session.gValue))
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(Color.green)
@@ -67,7 +67,7 @@ struct ProfileView: View {
                         Image(systemName: "b.circle")
                             .foregroundColor(Color.blue.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $session.bValue, in: 0.0...1.0)
+                        Slider(value: $session.bValue, in: 0.0...255.0)
                             .accentColor(Color.blue.opacity(session.bValue))
                         Image(systemName: "b.circle.fill")
                             .foregroundColor(Color.blue)
@@ -78,11 +78,11 @@ struct ProfileView: View {
                             .cornerRadius(8)
                             .shadow(radius: 5)
                             .frame(height: 60)
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         HStack {
-                            Text("R: \(Int(session.rValue * 255.0))")
-                            Text("G: \(Int(session.gValue * 255.0))")
-                            Text("B: \(Int(session.bValue * 255.0))")
+                            Text("R: \(Int(session.rValue))")
+                            Text("G: \(Int(session.gValue))")
+                            Text("B: \(Int(session.bValue))")
                         }
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
@@ -102,7 +102,7 @@ struct ProfileView: View {
                         
                             Spacer()
                         Image(systemName: "photo")
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
@@ -132,7 +132,7 @@ struct ProfileView: View {
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                             Spacer()
                         Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     HStack {
                         Button("Оценить") {
@@ -140,7 +140,7 @@ struct ProfileView: View {
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                             Spacer()
                         Image(systemName: "star")
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     NavigationLink(destination: License()) {
                         Text("Лицензии")
@@ -158,7 +158,7 @@ struct ProfileView: View {
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                             Spacer()
                         Image(systemName: "trash")
-                            .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     Button("Удалить аккаунт") {
                         self.showActionSheet = true
@@ -205,11 +205,11 @@ struct ProfileView: View {
                 {
                     Text("Готово")
                         .bold()
-                        .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
             })
         }
         .onAppear(perform: test)
-        .accentColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+        .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
@@ -218,7 +218,7 @@ struct ProfileView: View {
             VStack {
                 VStack {
                     Header()
-                        .foregroundColor(Color(red: session.rValue, green: session.gValue, blue: session.bValue, opacity: 1.0))
+                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 130)
                     ProfileImage()

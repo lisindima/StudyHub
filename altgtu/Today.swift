@@ -64,7 +64,7 @@ struct Card : View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.init(red: 68 / 255, green: 41 / 255, blue: 182 / 255))
+                .fill(Color.init(red: 68/255, green: 41/255, blue: 182/255))
                 .frame(height: 230)
                 .cornerRadius(10)
                 .padding(16)
