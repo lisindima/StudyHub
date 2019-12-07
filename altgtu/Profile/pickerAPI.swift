@@ -12,14 +12,9 @@ import Combine
 class PickerAPI: ObservableObject {
     
     @Published var groupModel: GroupModel = [GroupModelElement]()
-    @Published var elements: [GroupModelElement] = [GroupModelElement]()
     
     let apiUrl = "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group"
         
-    init() {
-        loadPickerData()
-    }
-    
     func loadPickerData() {
         guard let url = URL(string: apiUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in

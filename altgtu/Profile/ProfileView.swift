@@ -21,7 +21,7 @@ struct ProfileView: View {
     
 @Environment(\.colorScheme) var colorScheme: ColorScheme
 @EnvironmentObject var session: SessionStore
-@EnvironmentObject var pickerModel: PickerAPI
+@EnvironmentObject var pickerAPI: PickerAPI
 //@ObservedObject var pickerModel: PickerAPI = PickerAPI()
     
     let currentUser = Auth.auth().currentUser!
@@ -80,9 +80,9 @@ struct ProfileView: View {
                             .frame(height: 60)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         HStack {
-                            Text("R: \(Int(session.rValue))")
-                            Text("G: \(Int(session.gValue))")
-                            Text("B: \(Int(session.bValue))")
+                            Text("R:\(Int(session.rValue))")
+                            Text("G:\(Int(session.gValue))")
+                            Text("B:\(Int(session.bValue))")
                         }
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
