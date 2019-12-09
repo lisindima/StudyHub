@@ -222,7 +222,7 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 VStack {
-                    Header()
+                    Rectangle()
                         .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 130)

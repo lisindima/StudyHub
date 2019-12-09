@@ -1,5 +1,5 @@
 //
-//  HeaderProfileView.swift
+//  ProfileImage.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 26.09.2019.
@@ -8,12 +8,6 @@
 
 import SwiftUI
 import URLImage
-
-struct Header: View {
-    var body: some View {
-        Rectangle()
-    }
-}
 
 struct ProfileImage: View {
     

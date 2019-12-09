@@ -36,7 +36,7 @@
 		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB4B284223823FED00E11A47 /* 27-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB4B284123823FEC00E11A47 /* 27-loading.json */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
-		CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* HeaderProfileView.swift */; };
+		CB4FA013234396110049D271 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* ProfileImage.swift */; };
 		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
 		CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
@@ -169,7 +169,7 @@
 		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB4B284123823FEC00E11A47 /* 27-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27-loading.json"; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		CB4FA012234396110049D271 /* HeaderProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
+		CB4FA012234396110049D271 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
 		CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -341,7 +341,7 @@
 			children = (
 				CB6EBF4F23977BC700D9E771 /* Models */,
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
-				CB4FA012234396110049D271 /* HeaderProfileView.swift */,
+				CB4FA012234396110049D271 /* ProfileImage.swift */,
 				CBDE62942352129E00E588EC /* PickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
@@ -768,7 +768,7 @@
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
 				CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */,
-				CB4FA013234396110049D271 /* HeaderProfileView.swift in Sources */,
+				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */,
 				CB0AED5F232E5A210047A8A0 /* ContentView.swift in Sources */,
