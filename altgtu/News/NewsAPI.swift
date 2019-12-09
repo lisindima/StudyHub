@@ -14,14 +14,15 @@ class NewsViewModel: ObservableObject {
     @Published var news: News?
     @Published var articles: [Articles] = []
     
-    let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=762c4a68394f46f5b493923c11dc7e8b"
+    let apiKey = "762c4a68394f46f5b493923c11dc7e8b"
+    let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey="
     
     init() {
         loadNews()
     }
     
     func loadNews() {
-        guard let url = URL(string: apiUrl) else { return }
+        guard let url = URL(string: apiUrl + apiKey) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
                 print(err.localizedDescription)
@@ -45,7 +46,7 @@ class NewsViewModel: ObservableObject {
     }
     
     func fetchCategoryNews(category: String){
-        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=762c4a68394f46f5b493923c11dc7e8b\(category)") else { return }
+        guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=ru&apiKey=\(apiKey)\(category)") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             if let err = err {
                 print(err.localizedDescription)

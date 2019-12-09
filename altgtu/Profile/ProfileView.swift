@@ -81,8 +81,12 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         HStack {
                             Text("R:\(Int(session.rValue))")
+                                .padding(.leading, 55)
+                            Spacer()
                             Text("G:\(Int(session.gValue))")
+                            Spacer()
                             Text("B:\(Int(session.bValue))")
+                                .padding(.trailing, 55)
                         }
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
@@ -107,6 +111,19 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                 }
+                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
+                    Toggle(isOn: $session.notifyAlertProfile.animation()) {
+                            Text("ПИН-код")
+                    }
+                    if session.notifyAlertProfile {
+                        NavigationLink(destination: License()) {
+                            Text("Настройка пароля")
+                        }
+                    }
+                    NavigationLink(destination: SetAuth()) {
+                        Text("Вариаты авторизации")
+                    }
+                }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
                     Picker(selection: $session.choiseFaculty, label: Text("Выбранный факультет")) {
                         ForEach(0 ..< session.faculty.count) {
@@ -127,23 +144,6 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Информация").bold()) {
-                    HStack {
-                        Button("Поделиться") {
-                            self.modalView = 2
-                            self.isShowingModalView = true
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
-                            Spacer()
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                    }
-                    HStack {
-                        Button("Оценить") {
-                            UIApplication.shared.open(URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!)
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
-                            Spacer()
-                        Image(systemName: "star")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                    }
                     NavigationLink(destination: License()) {
                         Text("Лицензии")
                     }
@@ -156,61 +156,81 @@ struct ProfileView: View {
                 }
                 Section(header: Text("Другое").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет его освободить.")) {
                     HStack {
+                        Button("Оценить") {
+                            UIApplication.shared.open(URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!)
+                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        Spacer()
+                        Image(systemName: "star")
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                    }
+                    HStack {
+                        Button("Поделиться") {
+                            self.modalView = 2
+                            self.isShowingModalView = true
+                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        Spacer()
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                    }
+                    HStack {
                         Button("Очистить кэш изображений") {
                             URLImageService.shared.cleanFileCache()
                             URLImageService.shared.resetFileCache()
                             self.showAlertCache = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                            Spacer()
+                        Spacer()
                         Image(systemName: "trash")
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
-                    Button("Удалить аккаунт") {
-                        self.showActionSheet = true
-                        }
-                        .foregroundColor(.red)
+                    HStack {
+                        Button("Удалить аккаунт") {
+                            self.showActionSheet = true
+                        }.foregroundColor(.red)
+                        Spacer()
+                        Image(systemName: "flame")
+                            .foregroundColor(.red)
                     }
-                
                 }
-                .sheet(isPresented: $isShowingModalView, onDismiss: {
-                    if self.modalView == 1 {
-                        self.session.uploadImageToCloudStorage()
-                    }
-                    if self.modalView == 2 {
-                        print("SHARE")
-                    }
-                }, content: {
-                    if self.modalView == 1 {
-                        ImagePicker(imageFromPicker: self.$session.imageProfile)
-                    }
-                    if self.modalView == 2 {
-                        ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
-                    }
-                })
-                .actionSheet(isPresented: $showActionSheet) {
-                    ActionSheet(title: Text("Вы уверены, что хотите удалить свой аккаунт?"), message: Text("Вы не сможете восстановить его после удаления!"), buttons: [.destructive(Text("Удалить аккаунт")) {
-                            self.session.currentLoginUser?.delete { error in
-                              if let error = error {
-                                    print("Error delete users: \(error)")
-                              } else {
-                                    self.session.signOut()
-                                    print("Deleting...")
-                                }
+            }
+            .sheet(isPresented: $isShowingModalView, onDismiss: {
+                if self.modalView == 1 {
+                    self.session.uploadImageToCloudStorage()
+                }
+                if self.modalView == 2 {
+                    print("SHARE")
+                }
+            }, content: {
+                if self.modalView == 1 {
+                    ImagePicker(imageFromPicker: self.$session.imageProfile)
+                }
+                if self.modalView == 2 {
+                    ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
+                }
+            })
+            .actionSheet(isPresented: $showActionSheet) {
+                ActionSheet(title: Text("Вы уверены, что хотите удалить свой аккаунт?"), message: Text("Вы не сможете восстановить его после удаления!"), buttons: [.destructive(Text("Удалить аккаунт")) {
+                        self.session.currentLoginUser?.delete { error in
+                            if let error = error {
+                                print("Error delete users: \(error)")
+                            } else {
+                                self.session.signOut()
+                                print("Deleting...")
                             }
-                        }, .cancel()
-                    ])
-                }
-                .alert(isPresented: $showAlertCache) {
-                    Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Хорошо")))
-                }
-                .navigationBarTitle(Text("Настройки"), displayMode: .inline)
-                .navigationBarItems(trailing: Button (action: {
-                        self.isPresented = false
-                })
-                {
-                    Text("Готово")
-                        .bold()
-                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        }
+                    }, .cancel()
+                ])
+            }
+            .alert(isPresented: $showAlertCache) {
+                Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Хорошо")))
+            }
+            .navigationBarTitle(Text("Настройки"), displayMode: .inline)
+            .navigationBarItems(trailing: Button (action: {
+                    self.isPresented = false
+            })
+            {
+                Text("Готово")
+                    .bold()
+                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
             })
         }
         .onAppear(perform: test)

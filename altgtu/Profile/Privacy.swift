@@ -13,9 +13,18 @@ struct Privacy: View {
     private var urlSite: String = "https://www.altstu.ru/"
     
     var body: some View {
-        WebView(urlSite: urlSite)
-            .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
+        VStack {
+            WebView(urlSite: urlSite)
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
+        .navigationBarItems(trailing: Button (action: {
+                UIApplication.shared.open(URL(string: "https://www.altstu.ru/")!)
+            })
+            {
+                Image(systemName: "safari")
+                    .imageScale(.large)
+        })
     }
 }
 
