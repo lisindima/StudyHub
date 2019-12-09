@@ -45,6 +45,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var firstname: String!
     @Published var dateBirthDay: Date!
     @Published var notifyAlertProfile: Bool!
+    @Published var darkThemeOverride: Bool!
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
@@ -119,6 +120,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.gValue = document.get("gValue") as? Double
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
+                    self.darkThemeOverride = document.get("darkThemeOverride") as? Bool
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.notifyAlertProfile ?? "Ошибка, уведомления!")
@@ -141,6 +143,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.gValue = 1
                     self.bValue = 1
                     self.adminSetting = false
+                    self.darkThemeOverride = false
             }
         }
     }
@@ -158,7 +161,8 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 "notifyMinute": notifyMinute!,
                 "rValue": rValue!,
                 "gValue": gValue!,
-                "bValue": bValue!
+                "bValue": bValue!,
+                "darkThemeOverride": darkThemeOverride!
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")

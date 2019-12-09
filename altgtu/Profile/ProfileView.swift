@@ -86,14 +86,16 @@ struct ProfileView: View {
                         }
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
+                    }.padding(.vertical)
+                    Toggle(isOn: $session.darkThemeOverride) {
+                            Text("Принудительная темная тема")
                     }
-                    .padding(.vertical)
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("\(session.lastname)", text: $session.lastname)
                     TextField("\(session.firstname)", text: $session.firstname)
-                    DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     TextField("\(session.email)", text: $session.email)
+                    DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     HStack {
                         Button("Изменить фотографию") {
                             self.modalView = 1
@@ -144,6 +146,9 @@ struct ProfileView: View {
                     }
                     NavigationLink(destination: License()) {
                         Text("Лицензии")
+                    }
+                    NavigationLink(destination: Privacy()) {
+                        Text("Политика конфиденциальности")
                     }
                     NavigationLink(destination: InfoApp()) {
                         Text("О приложении")

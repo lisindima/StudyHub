@@ -13,12 +13,12 @@ struct Tabbed : View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: SessionChat
-    @ObservedObject var pickerModel: PickerAPI = PickerAPI()
+    //@ObservedObject var pickerModel: PickerAPI = PickerAPI()
     @State private var selection = 0
     
     func fetchUserData(){
         session.getDataFromDatabaseListen()
-        pickerModel.loadPickerData()
+        //pickerModel.loadPickerData()
     }
     
     var body: some View {
@@ -59,6 +59,7 @@ struct Tabbed : View {
         .accentColor(Color(red: 10/255.0, green: 10/255.0, blue: 10/255.0, opacity: 1.0))
         .onAppear(perform: fetchUserData)
         .edgesIgnoringSafeArea(.top)
+        //.preferredColorScheme(session.darkThemeOverride == true ? .dark : .light)
     }
 }
 
