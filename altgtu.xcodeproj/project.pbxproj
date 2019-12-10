@@ -74,6 +74,7 @@
 		CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660A23545C1200C43811 /* SwiftUICharts */; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
 		CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBF1E0E4234211990009E3BE /* SwiftUICharts */; };
+		CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +209,7 @@
 		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +361,7 @@
 				CB0AED56232E5A210047A8A0 /* ContentView.swift */,
 				CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */,
 				CB0AED75232E5AC50047A8A0 /* SessionStore.swift */,
+				CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
+				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
 				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,
 				CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,

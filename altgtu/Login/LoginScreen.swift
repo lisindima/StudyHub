@@ -385,8 +385,7 @@ struct LoadingView<Content>: View where Content: View {
                 VStack {
                     LottieView(filename: "27-loading")
                 }
-                .frame(width: 200,
-                       height: 200)
+                .frame(width: 200, height: 200)
                 .background(Color(#colorLiteral(red: 0.213772162, green: 0.2300552888, blue: 0.2528391964, alpha: 0.7704390405)))
                 .cornerRadius(20)
                 .opacity(self.isShowing ? 1 : 0)
