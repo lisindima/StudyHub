@@ -2,7 +2,7 @@
 //  TodayViewController.swift
 //  altgtuTodayWidget
 //
-//  Created by Дмитрий Лисин on 23.10.2019.
+//  Created by Дмитрий Лисин on 11.12.2019.
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 

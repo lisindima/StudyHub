@@ -23,6 +23,25 @@ struct LoadingScreen: View {
     }
 }
 
+struct LoadingLogic: View {
+    
+    @EnvironmentObject var session: SessionStore
+    
+    func getData() {
+        session.getDataFromDatabaseListen()
+    }
+    
+    var body: some View {
+        Group {
+            if session.lastname == nil {
+                LoadingScreen()
+            } else {
+                Tabbed()
+            }
+        }.onAppear(perform: getData)
+    }
+}
+
 struct LoadingScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoadingScreen()

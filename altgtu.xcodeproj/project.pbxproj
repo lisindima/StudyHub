@@ -32,6 +32,10 @@
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
 		CB276197235588820054C753 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276196235588820054C753 /* InfoApp.swift */; };
 		CB27619A2355A9A00054C753 /* LessonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* LessonWatch.swift */; };
+		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
+		CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32DAFB23A0B64800B25626 /* TodayViewController.swift */; };
+		CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */; };
+		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB3BFACE239E09F300894DFA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACD239E09F200894DFA /* WebView.swift */; };
 		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SetAuth.swift */; };
@@ -41,10 +45,6 @@
 		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
 		CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
-		CB6777BE23604B680019D6B6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
-		CB6777C123604B680019D6B6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6777C023604B680019D6B6 /* TodayViewController.swift */; };
-		CB6777C423604B680019D6B6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB6777C223604B680019D6B6 /* MainInterface.storyboard */; };
-		CB6777C823604B680019D6B6 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB6777BD23604B680019D6B6 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
 		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
@@ -78,11 +78,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CB6777C623604B680019D6B6 /* PBXContainerItemProxy */ = {
+		CB32DB0123A0B64800B25626 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CB6777BC23604B680019D6B6;
+			remoteGlobalIDString = CB32DAF723A0B64800B25626;
 			remoteInfo = altgtuTodayWidget;
 		};
 		CBE665E923543A1400C43811 /* PBXContainerItemProxy */ = {
@@ -119,7 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CB6777C823604B680019D6B6 /* Расписание.appex in Embed App Extensions */,
+				CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +167,10 @@
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* LessonWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWatch.swift; sourceTree = "<group>"; };
+		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB32DAFB23A0B64800B25626 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CB32DAFE23A0B64800B25626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CB32DB0023A0B64800B25626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB3BFACD239E09F200894DFA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* SetAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAuth.swift; sourceTree = "<group>"; };
@@ -176,16 +180,11 @@
 		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
 		CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		CB6777BD23604B680019D6B6 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB6777C023604B680019D6B6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		CB6777C323604B680019D6B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		CB6777C523604B680019D6B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB6D3F72235ADC6300E65661 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CB6D3F7A235B07CA00E65661 /* ModelNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNews.swift; sourceTree = "<group>"; };
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
-		CB92273F2374036F00A4A3DB /* Расписание.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Расписание.entitlements"; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -232,11 +231,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB6777BA23604B680019D6B6 /* Frameworks */ = {
+		CB32DAF523A0B64800B25626 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB6777BE23604B680019D6B6 /* NotificationCenter.framework in Frameworks */,
+				CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +275,7 @@
 				CB0AED3B232E59A10047A8A0 /* altgtu */,
 				CBE665DC23543A1000C43811 /* altgtuWatchApp */,
 				CBE665EB23543A1400C43811 /* altgtuWatchApp Extension */,
-				CB6777BF23604B680019D6B6 /* altgtuTodayWidget */,
+				CB32DAFA23A0B64800B25626 /* altgtuTodayWidget */,
 				CB0AED3A232E59A10047A8A0 /* Products */,
 				A95172305AFACAFD73D00422 /* Pods */,
 				A5C050C90CA7ACA36D5E738D /* Frameworks */,
@@ -289,7 +288,7 @@
 				CB0AED39232E59A10047A8A0 /* АлтГТУ.app */,
 				CBE665DB23543A1000C43811 /* altgtuWatchApp.app */,
 				CBE665E723543A1400C43811 /* altgtuWatchApp Extension.appex */,
-				CB6777BD23604B680019D6B6 /* Расписание.appex */,
+				CB32DAF823A0B64800B25626 /* Расписание.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,23 +430,22 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		CB32DAFA23A0B64800B25626 /* altgtuTodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CB32DAFB23A0B64800B25626 /* TodayViewController.swift */,
+				CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */,
+				CB32DB0023A0B64800B25626 /* Info.plist */,
+			);
+			path = altgtuTodayWidget;
+			sourceTree = "<group>";
+		};
 		CB6704EA23712BB200F875C3 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				CB6704EB23712F4000F875C3 /* LocalNotificationManager.swift */,
 			);
 			path = Notifications;
-			sourceTree = "<group>";
-		};
-		CB6777BF23604B680019D6B6 /* altgtuTodayWidget */ = {
-			isa = PBXGroup;
-			children = (
-				CB92273F2374036F00A4A3DB /* Расписание.entitlements */,
-				CB6777C023604B680019D6B6 /* TodayViewController.swift */,
-				CB6777C223604B680019D6B6 /* MainInterface.storyboard */,
-				CB6777C523604B680019D6B6 /* Info.plist */,
-			);
-			path = altgtuTodayWidget;
 			sourceTree = "<group>";
 		};
 		CB68AC7B239A3698007DAC27 /* Models */ = {
@@ -549,7 +547,7 @@
 			);
 			dependencies = (
 				CBE665FE23543A1500C43811 /* PBXTargetDependency */,
-				CB6777C723604B680019D6B6 /* PBXTargetDependency */,
+				CB32DB0223A0B64800B25626 /* PBXTargetDependency */,
 			);
 			name = altgtu;
 			packageProductDependencies = (
@@ -562,13 +560,13 @@
 			productReference = CB0AED39232E59A10047A8A0 /* АлтГТУ.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CB6777BC23604B680019D6B6 /* altgtuTodayWidget */ = {
+		CB32DAF723A0B64800B25626 /* altgtuTodayWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB6777C923604B680019D6B6 /* Build configuration list for PBXNativeTarget "altgtuTodayWidget" */;
+			buildConfigurationList = CB32DB0423A0B64900B25626 /* Build configuration list for PBXNativeTarget "altgtuTodayWidget" */;
 			buildPhases = (
-				CB6777B923604B680019D6B6 /* Sources */,
-				CB6777BA23604B680019D6B6 /* Frameworks */,
-				CB6777BB23604B680019D6B6 /* Resources */,
+				CB32DAF423A0B64800B25626 /* Sources */,
+				CB32DAF523A0B64800B25626 /* Frameworks */,
+				CB32DAF623A0B64800B25626 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -576,7 +574,7 @@
 			);
 			name = altgtuTodayWidget;
 			productName = altgtuTodayWidget;
-			productReference = CB6777BD23604B680019D6B6 /* Расписание.appex */;
+			productReference = CB32DAF823A0B64800B25626 /* Расписание.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		CBE665DA23543A1000C43811 /* altgtuWatchApp */ = {
@@ -624,15 +622,15 @@
 		CB0AED31232E59A10047A8A0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Dmitriy Lisin";
 				TargetAttributes = {
 					CB0AED38232E59A10047A8A0 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					CB6777BC23604B680019D6B6 = {
-						CreatedOnToolsVersion = 11.2;
+					CB32DAF723A0B64800B25626 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 					CBE665DA23543A1000C43811 = {
 						CreatedOnToolsVersion = 11.2;
@@ -664,7 +662,7 @@
 				CB0AED38232E59A10047A8A0 /* altgtu */,
 				CBE665DA23543A1000C43811 /* altgtuWatchApp */,
 				CBE665E623543A1400C43811 /* altgtuWatchApp Extension */,
-				CB6777BC23604B680019D6B6 /* altgtuTodayWidget */,
+				CB32DAF723A0B64800B25626 /* altgtuTodayWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -682,11 +680,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB6777BB23604B680019D6B6 /* Resources */ = {
+		CB32DAF623A0B64800B25626 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB6777C423604B680019D6B6 /* MainInterface.storyboard in Resources */,
+				CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,11 +797,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB6777B923604B680019D6B6 /* Sources */ = {
+		CB32DAF423A0B64800B25626 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB6777C123604B680019D6B6 /* TodayViewController.swift in Sources */,
+				CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,11 +822,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CB6777C723604B680019D6B6 /* PBXTargetDependency */ = {
+		CB32DB0223A0B64800B25626 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = CB6777BC23604B680019D6B6 /* altgtuTodayWidget */;
-			targetProxy = CB6777C623604B680019D6B6 /* PBXContainerItemProxy */;
+			target = CB32DAF723A0B64800B25626 /* altgtuTodayWidget */;
+			targetProxy = CB32DB0123A0B64800B25626 /* PBXContainerItemProxy */;
 		};
 		CBE665EA23543A1400C43811 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -852,10 +849,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		CB6777C223604B680019D6B6 /* MainInterface.storyboard */ = {
+		CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CB6777C323604B680019D6B6 /* Base */,
+				CB32DAFE23A0B64800B25626 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -1039,10 +1036,9 @@
 			};
 			name = Release;
 		};
-		CB6777CA23604B680019D6B6 /* Debug */ = {
+		CB32DB0523A0B64900B25626 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "altgtuTodayWidget/Расписание.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1056,16 +1052,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CB6777CB23604B680019D6B6 /* Release */ = {
+		CB32DB0623A0B64900B25626 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "altgtuTodayWidget/Расписание.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1079,7 +1073,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1200,11 +1193,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB6777C923604B680019D6B6 /* Build configuration list for PBXNativeTarget "altgtuTodayWidget" */ = {
+		CB32DB0423A0B64900B25626 /* Build configuration list for PBXNativeTarget "altgtuTodayWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CB6777CA23604B680019D6B6 /* Debug */,
-				CB6777CB23604B680019D6B6 /* Release */,
+				CB32DB0523A0B64900B25626 /* Debug */,
+				CB32DB0623A0B64900B25626 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
