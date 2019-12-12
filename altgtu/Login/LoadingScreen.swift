@@ -12,13 +12,18 @@ import Lottie
 struct LoadingScreen: View {
     var body: some View {
         VStack {
+            Spacer()
             Image("altgtu")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150, alignment: .center)
                 .shadow(radius: 10)
+            Spacer()
             LottieView(filename: "27-loading")
                 .frame(width: 200, height: 200)
+                .padding(.bottom, 35)
+            Text("Загрузка данных...")
+                .padding(.bottom)
         }
     }
 }
