@@ -162,6 +162,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 "rValue": rValue!,
                 "gValue": gValue!,
                 "bValue": bValue!,
+                "urlImageProfile": urlImageProfile!,
                 "darkThemeOverride": darkThemeOverride!
         ]) { err in
             if let err = err {

@@ -12,7 +12,6 @@ import Firebase
 struct Tabbed : View {
     
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var sessionChat: SessionChat
     @State private var selection = 0
     
     var body: some View {
@@ -42,6 +41,7 @@ struct Tabbed : View {
                     }
                 }.tag(2)
             ProfileView()
+                .environmentObject(PickerAPI())
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")
@@ -50,7 +50,7 @@ struct Tabbed : View {
                     }
                 }.tag(3)
         }
-        .accentColor(Color(red: 10/255.0, green: 10/255.0, blue: 10/255.0, opacity: 1.0))
+        .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)
     }
 }

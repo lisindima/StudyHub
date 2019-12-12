@@ -38,10 +38,8 @@ struct CardList: View {
                                 ActivityIndicator()
                             Spacer()
                         }
-                    }
-                    .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-                    .navigationBarTitle(Text("Сегодня"))
-                }
+                    }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                }.navigationViewStyle(StackNavigationViewStyle())
             } else {
                     ScrollView(showsIndicators: false) {
                         HStack {
@@ -51,8 +49,7 @@ struct CardList: View {
                                     .foregroundColor(.secondary)
                                 Text("Сегодня")
                                     .font(.largeTitle)
-                                    .fontWeight(.black)
-                                    .foregroundColor(.primary)
+                                    .fontWeight(.heavy)
                             }
                             .padding(.leading, 15)
                             Spacer()
@@ -60,15 +57,14 @@ struct CardList: View {
                                 ProgressView($0) { progress in
                                     ZStack {
                                         if progress > 0.0 {
-                                            CircleProgressView(progress).stroke(lineWidth: 8.0)
-                                                .frame(width: 35, height: 35)
+                                            ActivityIndicator()
                                         }
                                         else {
-                                            CircleActivityView().stroke(lineWidth: 50.0)
-                                                .frame(width: 35, height: 35)
+                                            ActivityIndicator()
                                         }
                                     }
-                                }.frame(width: 45, height: 45)
+                                }.padding(.trailing, 15)
+                                .frame(width: 45, height: 45)
                             }) { proxy in
                                     proxy.image
                                         .resizable()

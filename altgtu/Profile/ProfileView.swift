@@ -18,16 +18,18 @@ struct ProfileView: View {
 @State private var isShowingModalView: Bool = false
 @State private var showActionSheetExit: Bool = false
 @State private var modalView = 1
+@State private var showActionSheetImage: Bool = false
     
 @Environment(\.colorScheme) var colorScheme: ColorScheme
 @EnvironmentObject var session: SessionStore
 @EnvironmentObject var pickerAPI: PickerAPI
-//@ObservedObject var pickerModel: PickerAPI = PickerAPI()
-    
+
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
+    let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     func test() {
+        pickerAPI.loadPickerData()
         print(elements)
     }
     
@@ -102,11 +104,17 @@ struct ProfileView: View {
                     DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     HStack {
                         Button("Изменить фотографию") {
-                            self.modalView = 1
-                            self.isShowingModalView = true
+                            self.showActionSheetImage = true
+                        }.actionSheet(isPresented: $showActionSheetImage) {
+                            ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [.default(Text("Изменить фотографию")) {
+                                    self.modalView = 1
+                                    self.isShowingModalView = true
+                                },.destructive(Text("Удалить фотографию")) {
+                                    self.session.urlImageProfile = self.deletedUrlImageProfile
+                                }, .cancel()
+                            ])
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                        
-                            Spacer()
+                        Spacer()
                         Image(systemName: "photo")
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
@@ -249,6 +257,7 @@ struct ProfileView: View {
                     ProfileImage()
                         .offset(y: -120)
                         .padding(.bottom, -130)
+                        
                     VStack {
                         HStack {
                             Text((session.lastname ?? "Загрузка...") + " " + (session.firstname ?? ""))

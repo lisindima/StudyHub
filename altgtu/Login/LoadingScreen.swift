@@ -26,13 +26,16 @@ struct LoadingScreen: View {
 struct LoadingLogic: View {
     
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionChat: SessionChat
     
     func getData() {
         session.getDataFromDatabaseListen()
+        sessionChat.getDataFromDatabaseListenChat()
+        sessionChat.loadMsgsList()
     }
     
     var body: some View {
-        Group {
+        ZStack {
             if session.lastname == nil {
                 LoadingScreen()
             } else {
