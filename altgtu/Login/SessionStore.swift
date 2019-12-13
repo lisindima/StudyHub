@@ -62,6 +62,9 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var adminSetting: Bool!
     @Published var currentTimeAndDate: String!
     @Published var selectedSourceType: UIImagePickerController.SourceType!
+    @Published var pinCodeAccess: String!
+    @Published var boolCodeAccess: Bool!
+    @Published var biometricAccess: Bool!
     
     var handle: AuthStateDidChangeListenerHandle?
         
@@ -122,6 +125,9 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
                     self.darkThemeOverride = document.get("darkThemeOverride") as? Bool
+                    self.pinCodeAccess = document.get("pinCodeAccess") as? String
+                    self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
+                    self.biometricAccess = document.get("biometricAccess") as? Bool
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.notifyAlertProfile ?? "Ошибка, уведомления!")
@@ -145,6 +151,9 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.bValue = 1
                     self.adminSetting = false
                     self.darkThemeOverride = false
+                    self.pinCodeAccess = "0"
+                    self.boolCodeAccess = false
+                    self.biometricAccess = false
             }
         }
     }
@@ -164,7 +173,10 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 "gValue": gValue!,
                 "bValue": bValue!,
                 "urlImageProfile": urlImageProfile!,
-                "darkThemeOverride": darkThemeOverride!
+                "darkThemeOverride": darkThemeOverride!,
+                "pinCodeAccess": pinCodeAccess!,
+                "boolCodeAccess": boolCodeAccess!,
+                "biometricAccess": biometricAccess!
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")

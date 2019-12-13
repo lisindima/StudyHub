@@ -126,12 +126,12 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
-                    Toggle(isOn: $session.notifyAlertProfile.animation()) {
+                    Toggle(isOn: $session.boolCodeAccess.animation()) {
                             Text("ПИН-код")
                     }
-                    if session.notifyAlertProfile {
-                        NavigationLink(destination: License()) {
-                            Text("Настройка пароля")
+                    if session.boolCodeAccess {
+                        NavigationLink(destination: PinSetting(pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
+                            Text("Настройка ПИН-кода")
                         }
                     }
                     NavigationLink(destination: SetAuth()) {

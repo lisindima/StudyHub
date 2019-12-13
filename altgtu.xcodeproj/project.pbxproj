@@ -72,6 +72,10 @@
 		CBE665FF23543A1500C43811 /* altgtuWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CBE665DB23543A1000C43811 /* altgtuWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CBE6660923545C1200C43811 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660823545C1200C43811 /* URLImage */; };
 		CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660A23545C1200C43811 /* SwiftUICharts */; };
+		CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */; };
+		CBF0EE1C23A34144006CC917 /* KeyPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1B23A34144006CC917 /* KeyPad.swift */; };
+		CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1D23A341DD006CC917 /* SecureView.swift */; };
+		CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1F23A37A34006CC917 /* PinSetting.swift */; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
 		CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBF1E0E4234211990009E3BE /* SwiftUICharts */; };
 		CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */; };
@@ -207,6 +211,10 @@
 		CBE665F923543A1500C43811 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadButton.swift; sourceTree = "<group>"; };
+		CBF0EE1B23A34144006CC917 /* KeyPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPad.swift; sourceTree = "<group>"; };
+		CBF0EE1D23A341DD006CC917 /* SecureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureView.swift; sourceTree = "<group>"; };
+		CBF0EE1F23A37A34006CC917 /* PinSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetting.swift; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -304,6 +312,7 @@
 				CB12E7EB23596F7900115B2E /* Chat */,
 				CB0AED82232E5AE90047A8A0 /* SplashScreen */,
 				CB0AED7B232E5ACE0047A8A0 /* Lottie */,
+				CBF0EE1823A33D2F006CC917 /* SecureLogin */,
 				CB0AED72232E5AA80047A8A0 /* Login */,
 				CB0AED6B232E5A840047A8A0 /* Profile */,
 				CB0AED66232E5A680047A8A0 /* Lesson */,
@@ -350,6 +359,7 @@
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
 				CB3BFACF239E0C7F00894DFA /* Privacy.swift */,
+				CBF0EE1F23A37A34006CC917 /* PinSetting.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -526,6 +536,16 @@
 				CBE665F923543A1500C43811 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CBF0EE1823A33D2F006CC917 /* SecureLogin */ = {
+			isa = PBXGroup;
+			children = (
+				CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */,
+				CBF0EE1B23A34144006CC917 /* KeyPad.swift */,
+				CBF0EE1D23A341DD006CC917 /* SecureView.swift */,
+			);
+			path = SecureLogin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -769,6 +789,7 @@
 				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
+				CBF0EE1C23A34144006CC917 /* KeyPad.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
@@ -783,13 +804,16 @@
 				CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
+				CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
 				CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,
+				CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
 				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,
 				CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */,
+				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB3BFACE239E09F300894DFA /* WebView.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,

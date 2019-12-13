@@ -39,6 +39,9 @@ func signUp () {
                     "dateBirthDay": NSDate(),
                     "adminSetting": false,
                     "notifyMinute": 10,
+                    "pinCodeAccess": "0",
+                    "boolCodeAccess": false,
+                    "biometricAccess": false,
                     "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
                         ])
         {
@@ -67,7 +70,7 @@ func signUp () {
     
     var body : some View {
         LoadingView(isShowing: .constant(loading)) {
-            VStack {
+            VStack(alignment: .center) {
                 CustomInput(text: self.$lastname, name: "Фамилия")
                     .padding([.top, .horizontal])
                 CustomInput(text: self.$firstname, name: "Имя")
@@ -150,7 +153,7 @@ struct ResetPassword: View {
     }
 
     var body : some View {
-        VStack {
+        VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
                 .keyboardType(.emailAddress)
@@ -210,7 +213,7 @@ struct EmailLoginScreen: View {
     var body : some View {
         LoadingView(isShowing: .constant(loading)) {
             Group {
-                VStack {
+                VStack(alignment: .center) {
                     CustomInput(text: self.$email, name: "Эл.почта")
                         .padding([.top, .horizontal])
                         .keyboardType(.emailAddress)
@@ -304,7 +307,7 @@ struct AuthenticationScreen : View {
     var body: some View {
         Group {
             NavigationView {
-                VStack {
+                VStack(alignment: .center) {
                     Spacer()
                     VStack {
                         Image("altgtu")
