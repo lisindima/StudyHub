@@ -61,6 +61,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
     @Published var currentTimeAndDate: String!
+    @Published var selectedSourceType: UIImagePickerController.SourceType!
     
     var handle: AuthStateDidChangeListenerHandle?
         

@@ -106,9 +106,15 @@ struct ProfileView: View {
                         Button("Изменить фотографию") {
                             self.showActionSheetImage = true
                         }.actionSheet(isPresented: $showActionSheetImage) {
-                            ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [.default(Text("Изменить фотографию")) {
+                            ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
+                                  .default(Text("Сфотографировать")) {
                                     self.modalView = 1
                                     self.isShowingModalView = true
+                                    self.session.selectedSourceType = .camera
+                                },.default(Text("Выбрать из галереи")) {
+                                    self.modalView = 1
+                                    self.isShowingModalView = true
+                                    self.session.selectedSourceType = .photoLibrary
                                 },.destructive(Text("Удалить фотографию")) {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
                                 }, .cancel()
@@ -209,7 +215,8 @@ struct ProfileView: View {
                 }
             }, content: {
                 if self.modalView == 1 {
-                    ImagePicker(imageFromPicker: self.$session.imageProfile)
+                    ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$session.selectedSourceType)
+                        .edgesIgnoringSafeArea(.bottom)
                 }
                 if self.modalView == 2 {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
