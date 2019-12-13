@@ -44,11 +44,27 @@ struct LoadingLogic: View {
             if session.lastname == nil {
                 LoadingScreen()
             } else {
-                Tabbed()
+                PinLogic(boolCodeAccess: $session.boolCodeAccess)
             }
         }.onAppear(perform: getData)
     }
 }
+
+struct PinLogic: View {
+    
+    @Binding var boolCodeAccess: Bool
+    
+    var body: some View {
+        ZStack {
+            if boolCodeAccess == false {
+                Tabbed()
+            } else {
+                SecureView()
+            }
+        }
+    }
+}
+
 
 struct LoadingScreen_Previews: PreviewProvider {
     static var previews: some View {
