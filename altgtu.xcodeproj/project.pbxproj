@@ -14,7 +14,7 @@
 		CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED45232E59A30047A8A0 /* Assets.xcassets */; };
 		CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */; };
 		CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */; };
-		CB0AED5F232E5A210047A8A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED56232E5A210047A8A0 /* ContentView.swift */; };
+		CB0AED5F232E5A210047A8A0 /* AuthLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED56232E5A210047A8A0 /* AuthLogic.swift */; };
 		CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED67232E5A7B0047A8A0 /* LessonList.swift */; };
 		CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* Lesson.swift */; };
 		CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED73232E5AC50047A8A0 /* CustomInput.swift */; };
@@ -153,7 +153,7 @@
 		CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB0AED4B232E59A30047A8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB0AED4D232E59A30047A8A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB0AED56232E5A210047A8A0 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CB0AED56232E5A210047A8A0 /* AuthLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthLogic.swift; sourceTree = "<group>"; };
 		CB0AED67232E5A7B0047A8A0 /* LessonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonList.swift; sourceTree = "<group>"; };
 		CB0AED68232E5A7B0047A8A0 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		CB0AED73232E5AC50047A8A0 /* CustomInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 		CB0AED72232E5AA80047A8A0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CB0AED56232E5A210047A8A0 /* ContentView.swift */,
+				CB0AED56232E5A210047A8A0 /* AuthLogic.swift */,
 				CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */,
 				CB0AED75232E5AC50047A8A0 /* SessionStore.swift */,
 				CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */,
@@ -797,7 +797,7 @@
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */,
-				CB0AED5F232E5A210047A8A0 /* ContentView.swift in Sources */,
+				CB0AED5F232E5A210047A8A0 /* AuthLogic.swift in Sources */,
 				CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */,
 				CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,

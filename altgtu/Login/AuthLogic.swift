@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AuthLogic.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 14.09.2019.
@@ -9,7 +9,7 @@
 import SwiftUI
 import LocalAuthentication
 
-struct ContentView : View {
+struct AuthLogic : View {
     
     @EnvironmentObject var session: SessionStore
     

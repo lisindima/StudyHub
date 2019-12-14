@@ -9,10 +9,29 @@
 import SwiftUI
 import URLImage
 
-struct SecureView: View {
+struct SecureViewLogic: View {
+    @Binding var pinCodeAccessL: String
+    @State private var string: String
     @EnvironmentObject var session: SessionStore
-    @State private var string = "0"
+    
+    var body: some View {
+        ZStack {
+            if pinCodeAccessL == string {
+                Tabbed()
+            } else {
+                SecureView(string: $string)
+            }
+        }
+    }
+}
+
+struct SecureView: View {
+    
+    @EnvironmentObject var session: SessionStore
+    @Binding var string: String
+    
     let urltest = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+    
     var body: some View {
         VStack(alignment: .center) {
             URLImage(URL(string:"\(urltest)")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
@@ -49,14 +68,12 @@ struct SecureView: View {
             }.padding([.leading, .trailing])
             Divider()
             KeyPad(string: $string)
+            //CustomButton(
+              //  label: "Продолжить",
+                //action: checkPin
+            //)
         }
-        .font(.largeTitle)
+        //.font(.largeTitle)
         .padding()
-    }
-}
-
-struct SecureView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecureView()
     }
 }
