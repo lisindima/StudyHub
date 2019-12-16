@@ -18,7 +18,7 @@ struct InfoApp: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Spacer()
             Image("infoApp")
                 .resizable()
@@ -27,8 +27,10 @@ struct InfoApp: View {
                 .cornerRadius(30)
                 .shadow(radius: 10)
             Text("Личный кабинет АлтГТУ")
-                .font(.title)
-            HStack(spacing: 5) {
+                .fontWeight(.black)
+                .font(.system(size: 32))
+                .multilineTextAlignment(.center)
+            HStack {
                 Text("Версия \(appVersion)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -38,10 +40,43 @@ struct InfoApp: View {
             }.padding(.bottom)
             VStack(alignment: .leading) {
                 Text("Разработка и дизайн:").bold().font(.caption) + Text(" Дмитрий Лисин").font(.caption)
-                Text("Иконка приложения:").bold().font(.caption) + Text(" А хрен его знает...").font(.caption)
+                Text("Иконка приложения:").bold().font(.caption) + Text(" Дмитрий Лисин").font(.caption)
             }
             .padding(.horizontal)
-                Spacer()
+            .padding(.bottom)
+            HStack {
+                Button(
+                    action: {
+                        UIApplication.shared.open(URL(string: "https://github.com/lisindima")!)
+                    },
+                    label: {
+                        Image("github")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                })
+                .padding(.horizontal, 8)
+                Button(
+                    action: {
+                        UIApplication.shared.open(URL(string: "https://twitter.com/lisindima")!)
+                    },
+                    label: {
+                        Image("twitter")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                })
+                .padding(.horizontal, 8)
+                Button(
+                    action: {
+                        UIApplication.shared.open(URL(string: "https://vk.com/lisindima")!)
+                    },
+                    label: {
+                        Image("vk")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                })
+                .padding(.horizontal, 8)
+            }
+            Spacer()
             VStack(alignment: .leading) {
                 Button(
                     action: {
