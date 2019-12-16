@@ -44,8 +44,7 @@ struct LoadingLogic: View {
             if session.lastname == nil {
                 LoadingScreen()
             } else {
-                PinLogic(boolCodeAccessL: $session.boolCodeAccess)
-                    .environmentObject(SessionStore())
+                Tabbed()
             }
         }.onAppear(perform: getData)
     }
@@ -54,14 +53,14 @@ struct LoadingLogic: View {
 struct PinLogic: View {
     
     @EnvironmentObject var session: SessionStore
-    @Binding var boolCodeAccessL: Bool
+    //@Binding var boolCodeAccessL: Bool
     
     var body: some View {
         ZStack {
-            if boolCodeAccessL == false {
+            if session.boolCodeAccess == false {
                 Tabbed()
             } else {
-                SecureViewLogic(pinCodeAccessL: $session.pinCodeAccess)
+                //SecureViewLogic()
             }
         }
     }

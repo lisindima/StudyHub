@@ -35,7 +35,7 @@
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
 		CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32DAFB23A0B64800B25626 /* TodayViewController.swift */; };
 		CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */; };
-		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB3BFACE239E09F300894DFA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACD239E09F200894DFA /* WebView.swift */; };
 		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SetAuth.swift */; };
@@ -51,6 +51,7 @@
 		CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
+		CB8176DC23A72C3D0010FC17 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8176DB23A72C3D0010FC17 /* SearchBar.swift */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
@@ -189,6 +190,7 @@
 		CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		CB8176DB23A72C3D0010FC17 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 				CBB13F0523584F9E00D98C83 /* ShareSheet.swift */,
 				CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */,
 				CB3BFACD239E09F200894DFA /* WebView.swift */,
+				CB8176DB23A72C3D0010FC17 /* SearchBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
+				CB8176DC23A72C3D0010FC17 /* SearchBar.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
@@ -848,6 +852,7 @@
 /* Begin PBXTargetDependency section */
 		CB32DB0223A0B64800B25626 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = CB32DAF723A0B64800B25626 /* altgtuTodayWidget */;
 			targetProxy = CB32DB0123A0B64800B25626 /* PBXContainerItemProxy */;
 		};

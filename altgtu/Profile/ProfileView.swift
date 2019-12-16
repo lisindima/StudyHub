@@ -107,17 +107,17 @@ struct ProfileView: View {
                             self.showActionSheetImage = true
                         }.actionSheet(isPresented: $showActionSheetImage) {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
-                                  .default(Text("Сфотографировать")) {
+                                  .default(Text("Сделать фотографию")) {
                                     self.modalView = 1
                                     self.isShowingModalView = true
                                     self.session.selectedSourceType = .camera
-                                },.default(Text("Выбрать из галереи")) {
+                                },.default(Text("Выбрать фотографию")) {
                                     self.modalView = 1
                                     self.isShowingModalView = true
                                     self.session.selectedSourceType = .photoLibrary
                                 },.destructive(Text("Удалить фотографию")) {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
-                                }, .cancel()
+                                },.cancel()
                             ])
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                         Spacer()
