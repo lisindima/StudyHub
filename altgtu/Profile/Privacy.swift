@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Privacy: View {
     
-    private var urlSite: String = "https://www.altstu.ru/"
+    private var urlSite: String = "https://lisindmitriy.me/privacyaltgtu/"
     
     var body: some View {
         VStack {
@@ -19,7 +19,7 @@ struct Privacy: View {
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
-                UIApplication.shared.open(URL(string: "https://www.altstu.ru/")!)
+                UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
             })
             {
                 Image(systemName: "safari")

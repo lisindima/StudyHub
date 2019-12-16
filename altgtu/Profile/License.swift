@@ -20,6 +20,9 @@ struct License: View {
             NavigationLink(destination: ProtocolBuffersLicense()) {
                 Text("Protocol Buffers")
             }
+            NavigationLink(destination: KeyboardObservingLicense()) {
+                Text("Keyboard Observing")
+            }
         }
         .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
     }
@@ -101,6 +104,34 @@ struct ProtocolBuffersLicense: View {
         .navigationBarTitle(Text("Protocol Buffers"), displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
                 UIApplication.shared.open(URL(string: "https://github.com/protocolbuffers/protobuf")!)
+            })
+            {
+                Image(systemName: "safari")
+                    .imageScale(.large)
+        })
+    }
+}
+
+struct KeyboardObservingLicense: View {
+    var body: some View {
+        VStack {
+            ScrollView {
+                Text("""
+                MIT License
+
+                Copyright (c) 2019 Nick Fox
+
+                Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+                The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                """).padding()
+            }
+        }
+        .navigationBarTitle(Text("Keyboard Observing"), displayMode: .inline)
+        .navigationBarItems(trailing: Button (action: {
+                UIApplication.shared.open(URL(string: "https://github.com/nickffox/KeyboardObserving")!)
             })
             {
                 Image(systemName: "safari")

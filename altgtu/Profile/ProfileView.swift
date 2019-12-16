@@ -12,17 +12,17 @@ import URLImage
 
 struct ProfileView: View {
     
-@State private var showActionSheet: Bool = false
-@State private var showAlertCache: Bool = false
-@State private var isPresented: Bool = false
-@State private var isShowingModalView: Bool = false
-@State private var showActionSheetExit: Bool = false
-@State private var modalView = 1
-@State private var showActionSheetImage: Bool = false
+    @State private var showActionSheet: Bool = false
+    @State private var showAlertCache: Bool = false
+    @State private var isPresented: Bool = false
+    @State private var isShowingModalView: Bool = false
+    @State private var showActionSheetExit: Bool = false
+    @State private var modalView = 1
+    @State private var showActionSheetImage: Bool = false
     
-@Environment(\.colorScheme) var colorScheme: ColorScheme
-@EnvironmentObject var session: SessionStore
-@EnvironmentObject var pickerAPI: PickerAPI
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var pickerAPI: PickerAPI
 
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
