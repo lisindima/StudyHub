@@ -11,6 +11,7 @@ import SwiftUI
 struct ListChat: View {
     
     @EnvironmentObject var sessionChat: SessionChat
+    @State private var search : String = ""
     
     func delete(at offsets: IndexSet) {
         sessionChat.chatList.remove(atOffsets: offsets)
@@ -35,24 +36,28 @@ struct ListChat: View {
                 }
             } else {
                 NavigationView {
-                    List {
-                        ForEach(self.sessionChat.chatList, id: \.self) { item in
-                            NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
-                                ListItem(sessionChat: self._sessionChat, nameChat: item)
+                    VStack {
+                        SearchBar(text: $search)
+                        List {
+                            ForEach(self.sessionChat.chatList.filter{
+                                self.search.isEmpty ? true : $0.localizedStandardContains(self.search)
+                            }, id: \.self) { item in
+                                NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
+                                    ListItem(sessionChat: self._sessionChat, nameChat: item)
+                                }
                             }
+                            .onDelete(perform: delete)
+                            .onMove(perform: move)
                         }
-                        .onDelete(perform: delete)
-                        .onMove(perform: move)
+                        .navigationBarTitle(Text("Чат"))
+                        .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+                            print("plus")
+                        })
+                        {
+                            Image(systemName: "plus.bubble")
+                                .imageScale(.large)
+                        })
                     }
-                    .navigationBarTitle(Text("Чат"))
-                    .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                        print("plus")
-                    })
-                    {
-                        Image(systemName: "plus.bubble")
-                            .imageScale(.large)
-                    })
-                    
                 }
             }
         }

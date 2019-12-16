@@ -29,7 +29,7 @@ struct LoadingScreen: View {
 }
 
 struct LoadingLogic: View {
-    
+
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: SessionChat
     

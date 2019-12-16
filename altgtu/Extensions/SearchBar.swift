@@ -44,3 +44,6 @@ struct SearchBar: UIViewRepresentable {
         uiView.text = text
     }
 }
+
+
+
