@@ -12,7 +12,9 @@ struct ListChat: View {
     
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: SessionChat
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText : String = ""
+    
     
     func delete(at offsets: IndexSet) {
         sessionChat.chatList.remove(atOffsets: offsets)
@@ -41,12 +43,13 @@ struct ListChat: View {
                         HStack {
                             HStack {
                                 Image(systemName: "magnifyingglass")
-                                    .foregroundColor(Color(red: 150.0/255.0, green: 148.0/255.0, blue: 148.0/255.0))
+                                    .foregroundColor(.gray)
                                     .padding(.leading, 4)
                                 TextField("Поиск", text: $searchText)
+                                    .foregroundColor(.gray)
                             }
                             .padding(8)
-                            .background(Color(red: 237.0/255.0, green: 235.0/255.0, blue: 237.0/255.0, opacity: 1.0))
+                            .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
                             .cornerRadius(8)
                             if !self.searchText.isEmpty {
                                 Button(action: {
@@ -104,4 +107,9 @@ struct ListItem: View {
             }
         }
     }
+}
+
+extension Color {
+    static var lightThemeBackground = Color(red: 237.0/255.0, green: 235.0/255.0, blue: 237.0/255.0, opacity: 1.0)
+    static var darkThemeBackground = Color(red: 44.0/255.0, green: 44.0/255.0, blue: 46.0/255.0, opacity: 1.0)
 }
