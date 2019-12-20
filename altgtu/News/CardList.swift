@@ -13,6 +13,7 @@ struct CardList: View {
     
     @ObservedObject var newsVM = NewsViewModel()
     @EnvironmentObject var session: SessionStore
+    @State private var showDetailsNews: Bool = false
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -119,23 +120,27 @@ struct CardList: View {
                             ForEach(self.newsVM.articles, id: \.self) { i in
                                 CardView(article: i)
                                     .onTapGesture {
-                                        self.showNews(i)
+                                        self.showDetailsNews = true
                                     }
+                                    .sheet(isPresented: self.$showDetailsNews, onDismiss: {
+                                    
+                                    }, content: {
+                                        DetailsNews(article: i)
+                                    })
                                     .contextMenu {
                                         Button(action:
                                             {
                                                 self.showNews(i)
-                                            }){
-                                                HStack {
-                                                    Image(systemName: "globe")
-                                                    Text("Открыть")
+                                        }){
+                                            HStack {
+                                                Image(systemName: "safari")
+                                                Text("Открыть в Safari")
                                     }
                                 }
                             }
                         }
                     }
-                }
-                .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
             }
         }
     }

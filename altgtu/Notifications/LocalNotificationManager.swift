@@ -23,7 +23,6 @@ class LocalNotificationManager {
             .requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if granted == true && error == nil {
                     self.scheduleNotifications()
-                    // We have permission!
             }
         }
     }

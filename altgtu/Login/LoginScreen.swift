@@ -368,8 +368,7 @@ struct AuthenticationScreen : View {
                 .alert(isPresented: self.$showAlert) {
                     Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
                 }
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
+            }.navigationViewStyle(StackNavigationViewStyle())
         }.onAppear(perform: funcSplashScreen)
     }
 }

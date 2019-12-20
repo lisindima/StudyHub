@@ -62,7 +62,9 @@ struct ChatView: View {
                             .cornerRadius(8)
                         }
                     }
-                }.padding([.horizontal, .bottom])
+                }
+                .animation(.default)
+                .padding([.horizontal, .bottom])
             }
             .keyboardObserving()
             .navigationBarTitle(Text(titleChat), displayMode: .inline)

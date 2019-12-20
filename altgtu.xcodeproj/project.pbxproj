@@ -58,6 +58,7 @@
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
 		CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerAPI.swift */; };
+		CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* SessionChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */; };
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
@@ -196,6 +197,7 @@
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
 		CBDE62942352129E00E588EC /* PickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAPI.swift; sourceTree = "<group>"; };
+		CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsNews.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* SessionChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionChat.swift; sourceTree = "<group>"; };
 		CBE665DB23543A1000C43811 /* altgtuWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altgtuWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE665DE23543A1000C43811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				CB6D3F72235ADC6300E65661 /* CardView.swift */,
 				CB6D3F7E235B118200E65661 /* CardList.swift */,
 				CB6D3F7C235B0E6200E65661 /* NewsAPI.swift */,
+				CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
+				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,

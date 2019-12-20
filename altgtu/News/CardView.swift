@@ -27,7 +27,7 @@ struct CardView: View {
             })
             HStack {
                 VStack(alignment: .leading) {
-                    Text(article.source?.name ?? "Источник отсутствует")
+                    Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())
                         .font(.subheadline)
                         .padding(.bottom, 8)
                         .foregroundColor(.secondary)
@@ -37,7 +37,7 @@ struct CardView: View {
                         .foregroundColor(.primary)
                         .lineLimit(nil)
                         .padding(.bottom, 8)
-                    Text(article.author ?? "Автор отсутствует")
+                    Text(article.author?.uppercased() ?? "Автор отсутствует".uppercased())
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
