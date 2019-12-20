@@ -44,13 +44,13 @@ struct ListChat: View {
                             HStack {
                                 Image(systemName: "magnifyingglass")
                                     .foregroundColor(.gray)
-                                    .padding(.leading, 4)
+                                    .padding(.leading, 1)
                                 TextField("Поиск", text: $searchText)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.primary)
                             }
-                            .padding(8)
+                            .padding(6.5)
                             .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                            .cornerRadius(8)
+                            .cornerRadius(9)
                             if !self.searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -58,9 +58,11 @@ struct ListChat: View {
                                     Text("Отмена").foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 })
                             }
-                        }.padding(.horizontal)
+                        }
+                        .padding(.horizontal)
+                        .animation(.default)
                         List {
-                            ForEach(self.sessionChat.chatList.filter{
+                            ForEach(self.sessionChat.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                             }, id: \.self) { item in
                                 NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
@@ -81,8 +83,7 @@ struct ListChat: View {
                     }
                 }
             }
-        }
-        .onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
+        }.onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
     }
 }
 
@@ -110,6 +111,6 @@ struct ListItem: View {
 }
 
 extension Color {
-    static var lightThemeBackground = Color(red: 237.0/255.0, green: 235.0/255.0, blue: 237.0/255.0, opacity: 1.0)
-    static var darkThemeBackground = Color(red: 44.0/255.0, green: 44.0/255.0, blue: 46.0/255.0, opacity: 1.0)
+    static var lightThemeBackground = Color(red: 237.0/255.0, green: 238.0/255.0, blue: 240.0/255.0, opacity: 1.0)
+    static var darkThemeBackground = Color(red: 27.0/255.0, green: 28.0/255.0, blue: 30.0/255.0, opacity: 1.0)
 }
