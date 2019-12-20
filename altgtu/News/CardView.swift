@@ -37,7 +37,7 @@ struct CardView: View {
                         .foregroundColor(.primary)
                         .lineLimit(nil)
                         .padding(.bottom, 8)
-                    Text(article.author?.uppercased() ?? "Автор отсутствует".uppercased())
+                    Text(article.author ?? "Автор отсутствует")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

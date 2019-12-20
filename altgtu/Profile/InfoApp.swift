@@ -84,12 +84,12 @@ struct InfoApp: View {
             VStack(alignment: .leading) {
                 Button(
                     action: {
-                        UIApplication.shared.open(URL(string: "mailto:lisindima1996@gmail.com")!)
+                        UIApplication.shared.open(URL(string: "https://money.yandex.ru/to/410017490181618")!)
                     },
                     label: {
                         HStack {
-                            Image(systemName: "envelope")
-                            Text("Есть отзыв? Отправьте его по почте.")
+                            Image(systemName: "creditcard")
+                            Text("Поддержать разработчика денежкой.")
                         }
                 })
                 Button(

@@ -161,6 +161,9 @@ struct ProfileView: View {
                     NavigationLink(destination: License()) {
                         Text("Лицензии")
                     }
+                    NavigationLink(destination: Changelog()) {
+                        Text("Список изменений")
+                    }
                     NavigationLink(destination: Privacy()) {
                         Text("Политика конфиденциальности")
                     }

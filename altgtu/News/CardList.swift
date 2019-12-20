@@ -23,7 +23,7 @@ struct CardList: View {
     
     var currentDate = Date()
     
-    func showNews(_ news: Articles) {
+    func showNewsSafari(_ news: Articles) {
         if let url = URL(string: news.url!) {
             UIApplication.shared.open(url)
         }
@@ -130,7 +130,7 @@ struct CardList: View {
                                     .contextMenu {
                                         Button(action:
                                             {
-                                                self.showNews(i)
+                                                self.showNewsSafari(i)
                                         }){
                                             HStack {
                                                 Image(systemName: "safari")
