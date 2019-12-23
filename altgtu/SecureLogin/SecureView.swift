@@ -9,32 +9,29 @@
 import SwiftUI
 import URLImage
 
-struct SecureViewLogic: View {
-    @Binding var pinCodeAccessL: String
-    @State private var string: String
-    @EnvironmentObject var session: SessionStore
-    
-    var body: some View {
-        ZStack {
-            if pinCodeAccessL == string {
-                Tabbed()
-            } else {
-                SecureView(string: $string)
-            }
-        }
-    }
-}
-
 struct SecureView: View {
     
     @EnvironmentObject var session: SessionStore
-    @Binding var string: String
+    @State private var userInputPin: String = ""
+    @State private var showAlertPinCode: Bool = false
+    @Binding var access: Bool
     
-    let urltest = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+    let imagePlaceholder = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+    
+    func checkAccess() {
+        if userInputPin == session.pinCodeAccess {
+            self.userInputPin = ""
+            self.access = true
+        } else {
+            self.userInputPin = ""
+            self.access = false
+            self.showAlertPinCode = true
+        }
+    }
     
     var body: some View {
         VStack(alignment: .center) {
-            URLImage(URL(string:"\(urltest)")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+            URLImage(URL(string:"\(session.urlImageProfile ?? imagePlaceholder)")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                 ProgressView($0) { progress in
                     ZStack {
                         if progress > 0.0 {
@@ -56,24 +53,26 @@ struct SecureView: View {
                         .shadow(radius: 10)
                         .frame(width: 150, height: 150)
             }
-            Text("Здравствуйте, Дмитрий!")
+            Text("Здравствуйте, \(session.firstname ?? "студент")!")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .padding(.top)
             Spacer()
             HStack {
                 Spacer()
-                Text(string)
+                Text(userInputPin)
                 Spacer()
             }.padding([.leading, .trailing])
             Divider()
-            KeyPad(string: $string)
-            //CustomButton(
-              //  label: "Продолжить",
-                //action: checkPin
-            //)
+            KeyPad(userInputPin: $userInputPin)
+            CustomButton(
+              label: "Продолжить",
+              action: checkAccess
+            )
         }
-        //.font(.largeTitle)
         .padding()
+        .alert(isPresented: $showAlertPinCode) {
+            Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Ок")))
+        }
     }
 }

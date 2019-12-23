@@ -30,6 +30,7 @@ struct LoadingLogic: View {
 
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: SessionChat
+    @State private var access: Bool = false
     
     func getData() {
         session.getDataFromDatabaseListen()
@@ -39,31 +40,18 @@ struct LoadingLogic: View {
     
     var body: some View {
         ZStack {
-            if session.lastname == nil {
-                LoadingScreen()
-            } else {
+            if session.lastname != nil && session.boolCodeAccess == false {
                 Tabbed()
+            } else if session.lastname != nil && session.boolCodeAccess == true && access == false {
+                SecureView(access: $access)
+            } else if session.lastname != nil && session.boolCodeAccess == true && access == true {
+                Tabbed()
+            } else {
+                LoadingScreen()
             }
         }.onAppear(perform: getData)
     }
 }
-
-struct PinLogic: View {
-    
-    @EnvironmentObject var session: SessionStore
-    //@Binding var boolCodeAccessL: Bool
-    
-    var body: some View {
-        ZStack {
-            if session.boolCodeAccess == false {
-                Tabbed()
-            } else {
-                //SecureViewLogic()
-            }
-        }
-    }
-}
-
 
 struct LoadingScreen_Previews: PreviewProvider {
     static var previews: some View {

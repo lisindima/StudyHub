@@ -21,7 +21,7 @@ struct KeyPadRow: View {
 }
 
 struct KeyPad: View {
-    @Binding var string: String
+    @Binding var userInputPin: String
 
     var body: some View {
         VStack {
@@ -34,13 +34,13 @@ struct KeyPad: View {
 
     private func keyPressed(_ key: String) {
         switch key {
-        case "." where string.contains("."): break
-        case "." where string == "0": string += key
+        case "." where userInputPin.contains("."): break
+        case "." where userInputPin == "0": userInputPin += key
         case "⌫":
-            string.removeLast()
-            if string.isEmpty { string = "0" }
-        case _ where string == "0": string = key
-        default: string += key
+            userInputPin.removeLast()
+            if userInputPin.isEmpty { userInputPin = "0" }
+        case _ where userInputPin == "0": userInputPin = key
+        default: userInputPin += key
         }
     }
 }
