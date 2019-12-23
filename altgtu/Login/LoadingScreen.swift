@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Lottie
 
 struct LoadingScreen: View {
     var body: some View {
@@ -19,8 +18,7 @@ struct LoadingScreen: View {
                 .frame(width: 150, alignment: .center)
                 .shadow(radius: 10)
             Spacer()
-            LottieView(filename: "27-loading")
-                .frame(width: 200, height: 200)
+            ActivityIndicator()
                 .padding(.bottom, 35)
             Text("Загрузка данных...")
                 .padding(.bottom)

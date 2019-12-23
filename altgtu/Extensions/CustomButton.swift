@@ -11,7 +11,6 @@ import SwiftUI
 struct CustomButton : View {
     var label: String
     var action: () -> Void
-    var loading: Bool = false
     
     var body: some View {
         Button(action: action) {
@@ -25,7 +24,7 @@ struct CustomButton : View {
             }
         }
         .padding()
-        .background(loading ? Color.blue.opacity(0.3) : Color.blue)
+        .background(Color.mainColor)
         .cornerRadius(8)
     }
 }
