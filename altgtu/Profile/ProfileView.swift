@@ -98,9 +98,9 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
-                    TextField("\(session.lastname)", text: $session.lastname)
-                    TextField("\(session.firstname)", text: $session.firstname)
-                    TextField("\(session.email)", text: $session.email)
+                    TextField("Фамилия", text: $session.lastname)
+                    TextField("Имя", text: $session.firstname)
+                    TextField("Эл.почта", text: $session.email)
                     DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     HStack {
                         Button("Изменить фотографию") {
