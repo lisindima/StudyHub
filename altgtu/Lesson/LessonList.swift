@@ -11,18 +11,18 @@ import SwiftUI
 struct LessonList: View {
 
 @ObservedObject var api: LessonAPI = LessonAPI()
-@State private var weakType = 1
+    @State private var weakType: Int = 0
     
     var body: some View {
         NavigationView {
             VStack {
                 Picker("", selection: $weakType) {
-                    Text("1-ая неделя").tag(1)
-                    Text("2-ая неделя").tag(2)
+                    Text("1-ая неделя").tag(0)
+                    Text("2-ая неделя").tag(1)
                 }.pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
                 
-            if weakType == 1 {
+            if weakType == 0 {
                 List {
                     ForEach(self.api.scheduleModel) { todo in
                         NavigationLink(destination: LessonDetail(model: todo)) {
@@ -31,7 +31,7 @@ struct LessonList: View {
                     }
                 }
             }
-            if weakType == 2 {
+            if weakType == 1 {
                 List {
                     Text("Beep")
                     Text("Beep")

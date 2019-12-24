@@ -13,12 +13,15 @@ struct KeyPadButton: View {
 
     var body: some View {
         Button(action: { self.action(self.key) }) {
-            Color.clear
-                .border(Color.red, width: 1)
-                .frame(width: 80, height: 80)
-                .overlay(Text(key))
-                    .foregroundColor(.red)
-                
+            Text(key)
+                .fontWeight(.semibold)
+                .foregroundColor(.defaultColorApp)
+                .font(.system(size: 25))
+                .frame(width: 70, height: 70)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 100)
+                        .stroke(Color.defaultColorApp, lineWidth: 2)
+                )
         }
     }
 

@@ -24,7 +24,7 @@ struct CustomButton : View {
             }
         }
         .padding()
-        .background(Color.mainColor)
+        .background(Color.defaultColorApp)
         .cornerRadius(8)
     }
 }

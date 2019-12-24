@@ -126,13 +126,8 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
-                    Toggle(isOn: $session.boolCodeAccess.animation()) {
-                            Text("ПИН-код")
-                    }
-                    if session.boolCodeAccess {
-                        NavigationLink(destination: PinSetting(pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                            Text("Настройка ПИН-кода")
-                        }
+                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
+                        Text("Настройка ПИН-кода")
                     }
                     NavigationLink(destination: SetAuth()) {
                         Text("Вариаты авторизации")

@@ -370,7 +370,7 @@ struct AuthenticationScreen : View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .accentColor(Color.mainColor)
+            .accentColor(Color.defaultColorApp)
         }.onAppear(perform: funcSplashScreen)
     }
 }

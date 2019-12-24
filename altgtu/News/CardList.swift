@@ -114,8 +114,7 @@ struct CardList: View {
                                             .foregroundColor(.white)
                                             .cornerRadius(10)})
                                     }
-                                }
-                                .padding()
+                                }.padding()
                             }
                             ForEach(self.newsVM.articles, id: \.self) { i in
                                 CardView(article: i)

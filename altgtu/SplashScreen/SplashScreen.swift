@@ -52,7 +52,7 @@ struct InformationDetailView: View {
         HStack(alignment: .center) {
             Image(systemName: imageName)
                 .font(.largeTitle)
-                .foregroundColor(.mainColor)
+                .foregroundColor(.defaultColorApp)
                 .padding()
                 .accessibility(hidden: true)
             VStack(alignment: .leading) {
@@ -82,7 +82,7 @@ struct TitleView: View {
                 .customTitleText()
             Text("АлтГТУ")
                 .customTitleText()
-                .foregroundColor(.mainColor)
+                .foregroundColor(.defaultColorApp)
         }
     }
 }
@@ -96,7 +96,7 @@ struct ButtonModifier: ViewModifier {
             .padding()
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             .background(RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(Color.mainColor))
+                .fill(Color.defaultColorApp))
             .padding(.bottom)
     }
 }
@@ -116,5 +116,5 @@ extension Text {
 }
 
 extension Color {
-    static var mainColor = Color(UIColor.systemIndigo)
+    static var defaultColorApp = Color(UIColor.systemIndigo)
 }

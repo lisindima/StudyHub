@@ -11,38 +11,71 @@ import LocalAuthentication
 
 struct PinSetting: View {
     
+    @Binding var boolCodeAccess: Bool
     @Binding var pinCodeAccess: String
     @Binding var biometricAccess: Bool
-    @State private var test1: String = ""
-    @State private var test2: String = ""
+    @State private var setBoolCodeAccess: Bool = false
+    @State private var setPinCodeAccess: String = ""
+    @State private var repeatSetPinCode: String = ""
+    @State private var setDifficultPinCode: Int = 0
     var currentType = LAContext().biometryType
     
-    func test() {
-        pinCodeAccess = test1
+    func saveSetPinSetting() {
+        boolCodeAccess = setBoolCodeAccess
+        pinCodeAccess = setPinCodeAccess
     }
     
     var body: some View {
         VStack {
             Form {
-                SecureField("Пароль", text: $test1)
-                    .keyboardType(.numberPad)
-                if test1 != "" {
-                     SecureField("Повторите пароль", text: $test2)
-                        .keyboardType(.numberPad)
-                }
-                Toggle(isOn: $biometricAccess) {
-                    if currentType == .faceID {
-                        Text("Вход с помощью FaceID")
-                    } else if currentType == .touchID {
-                        Text("Вход с помощью TouchID")
-                    } else {
-                        Text("Не настроенно")
+                Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
+                    Toggle(isOn: $setBoolCodeAccess.animation()) {
+                            Text("ПИН-код")
                     }
                 }
-            }
-            if test1 == test2 && test1 != "" {
-                Button("Сохранить") {
-                    self.test()
+                if setBoolCodeAccess {
+                    Section(footer: Text("Здесь вы можете выбрать длину пин-кода.")) {
+                        Picker("", selection: $setDifficultPinCode) {
+                            Text("4-ех значный").tag(0)
+                            Text("8-ми значный").tag(1)
+                        }.pickerStyle(SegmentedPickerStyle())
+                    }
+                }
+                if setBoolCodeAccess {
+                    Section() {
+                        SecureField("Пароль", text: $setPinCodeAccess)
+                            .disabled(setPinCodeAccess.count > 3)
+                            .keyboardType(.numberPad)
+                        if setPinCodeAccess != "" {
+                             SecureField("Повторите пароль", text: $repeatSetPinCode)
+                                .disabled(repeatSetPinCode.count > 3)
+                                .keyboardType(.numberPad)
+                        }
+                    }
+                }
+                if currentType == .none {
+                        
+                } else {
+                    Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
+                    Toggle(isOn: $biometricAccess) {
+                            if currentType == .faceID {
+                                Text("Вход с помощью FaceID")
+                            } else if currentType == .touchID {
+                                Text("Вход с помощью TouchID")
+                            }
+                        }
+                    }
+                }
+                if setPinCodeAccess == repeatSetPinCode && setPinCodeAccess != "" {
+                    Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
+                        HStack {
+                            Spacer()
+                            Button("Сохранить") {
+                                self.saveSetPinSetting()
+                            }
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
@@ -70,9 +103,11 @@ extension LAContext {
                 return .touchID
             case .faceID:
                 return .faceID
+            @unknown default:
+                return .none
             }
         } else {
-            return  self.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touchID : .none
+            return  self.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .faceID : .none
         }
     }
 }
