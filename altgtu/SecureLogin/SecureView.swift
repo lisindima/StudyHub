@@ -34,20 +34,18 @@ struct SecureView: View {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "We need to unlock your data."
+            let reason = "Для защиты данных в приложении!"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {
                     if success {
                         self.access = true
-                        print("все работает")
                     } else {
                         self.access = false
-                        print("ошибка")
                     }
                 }
             }
         } else {
-            print("не настроенно")
+            print("Не настроено FaceID или TouchID")
         }
     }
     

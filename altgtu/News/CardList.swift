@@ -71,7 +71,6 @@ struct CardList: View {
                                         .resizable()
                                         .scaledToFill()
                                         .clipShape(Circle())
-                                        .overlay(Circle().stroke(Color.gray, lineWidth: 1))
                                         .frame(width: 45, height: 45)
                                         .padding(.trailing, 15)
                             }

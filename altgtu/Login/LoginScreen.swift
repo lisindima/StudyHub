@@ -12,48 +12,48 @@ import AuthenticationServices
 
 struct SignUpView : View {
     
-@State private var email: String = ""
-@State private var password: String = ""
-@State private var firstname: String = ""
-@State private var lastname: String = ""
-@State private var loading = false
-@State private var error = false
-@State private var showAlert = false
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var firstname: String = ""
+    @State private var lastname: String = ""
+    @State private var loading = false
+    @State private var error = false
+    @State private var showAlert = false
     
-@EnvironmentObject var session: SessionStore
+    @EnvironmentObject var session: SessionStore
 
-func signUp () {
-    let generator = UINotificationFeedbackGenerator()
-    generator.notificationOccurred(.success)
-    loading = true
-    error = false
-    session.signUp(email: email, password: password) { (result, error) in
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-            db.collection("profile").document(currentUser.uid)
-                .setData([
-                    "firstname": self.firstname,
-                    "lastname": self.lastname,
-                    "email": self.email,
-                    "notifyAlertProfile": false,
-                    "dateBirthDay": NSDate(),
-                    "adminSetting": false,
-                    "notifyMinute": 10,
-                    "pinCodeAccess": "0",
-                    "boolCodeAccess": false,
-                    "biometricAccess": false,
-                    "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
-                        ])
-        {
-            err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            }
-                else
+    func signUp () {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        loading = true
+        error = false
+        session.signUp(email: email, password: password) { (result, error) in
+            let currentUser = Auth.auth().currentUser!
+            let db = Firestore.firestore()
+                db.collection("profile").document(currentUser.uid)
+                    .setData([
+                        "firstname": self.firstname,
+                        "lastname": self.lastname,
+                        "email": self.email,
+                        "notifyAlertProfile": false,
+                        "dateBirthDay": NSDate(),
+                        "adminSetting": false,
+                        "notifyMinute": 10,
+                        "pinCodeAccess": "0",
+                        "boolCodeAccess": false,
+                        "biometricAccess": false,
+                        "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+                            ])
             {
-                print("Document successfully written!")
+                err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                }
+                    else
+                {
+                    print("Document successfully written!")
+                }
             }
-        }
                 self.loading = false
             if error != nil
             {
@@ -128,12 +128,12 @@ func signUp () {
 
 struct ResetPassword: View {
     
-@State private var email: String = ""
-@State private var loading = false
-@State private var error = false
-@State private var showAlert = false
+    @State private var email: String = ""
+    @State private var loading = false
+    @State private var error = false
+    @State private var showAlert = false
 
-@EnvironmentObject var session: SessionStore
+    @EnvironmentObject var session: SessionStore
     
     func sendPasswordReset () {
         let generator = UINotificationFeedbackGenerator()
@@ -183,13 +183,13 @@ struct ResetPassword: View {
 
 struct EmailLoginScreen: View {
     
-@State private var email: String = ""
-@State private var password: String = ""
-@State private var loading = false
-@State private var error = false
-@State private var showAlert = false
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var loading = false
+    @State private var error = false
+    @State private var showAlert = false
 
-@EnvironmentObject var session: SessionStore
+    @EnvironmentObject var session: SessionStore
     
     func signIn () {
         let generator = UINotificationFeedbackGenerator()
@@ -282,15 +282,15 @@ struct EmailLoginScreen: View {
 
 struct AuthenticationScreen : View {
     
-@State private var email: String = ""
-@State private var password: String = ""
-@State private var loading = false
-@State private var error = false
-@State private var showAlert = false
-@State private var showSpashScreen = false
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var loading = false
+    @State private var error = false
+    @State private var showAlert = false
+    @State private var showSpashScreen = false
 
-@EnvironmentObject var session: SessionStore
-@Environment(\.colorScheme) var colorScheme: ColorScheme
+    @EnvironmentObject var session: SessionStore
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     func funcSplashScreen() {
         let defaults = UserDefaults.standard
@@ -400,8 +400,8 @@ struct LoadingView<Content>: View where Content: View {
 }
 final class SignInWithAppleWhite: UIViewRepresentable {
         
-  func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-    return ASAuthorizationAppleIDButton(type: .default, style: .white)
+    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+        return ASAuthorizationAppleIDButton(type: .default, style: .white)
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
@@ -410,8 +410,8 @@ final class SignInWithAppleWhite: UIViewRepresentable {
 
 final class SignInWithAppleBlack: UIViewRepresentable {
         
-  func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-    return ASAuthorizationAppleIDButton(type: .default, style: .black)
+    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+        return ASAuthorizationAppleIDButton(type: .default, style: .black)
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
