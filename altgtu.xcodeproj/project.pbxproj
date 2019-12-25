@@ -75,7 +75,6 @@
 		CBE6660923545C1200C43811 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660823545C1200C43811 /* URLImage */; };
 		CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660A23545C1200C43811 /* SwiftUICharts */; };
 		CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */; };
-		CBF0EE1C23A34144006CC917 /* KeyPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1B23A34144006CC917 /* KeyPad.swift */; };
 		CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1D23A341DD006CC917 /* SecureView.swift */; };
 		CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1F23A37A34006CC917 /* PinSetting.swift */; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
@@ -216,7 +215,6 @@
 		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadButton.swift; sourceTree = "<group>"; };
-		CBF0EE1B23A34144006CC917 /* KeyPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPad.swift; sourceTree = "<group>"; };
 		CBF0EE1D23A341DD006CC917 /* SecureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureView.swift; sourceTree = "<group>"; };
 		CBF0EE1F23A37A34006CC917 /* PinSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetting.swift; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -548,7 +546,6 @@
 			isa = PBXGroup;
 			children = (
 				CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */,
-				CBF0EE1B23A34144006CC917 /* KeyPad.swift */,
 				CBF0EE1D23A341DD006CC917 /* SecureView.swift */,
 			);
 			path = SecureLogin;
@@ -797,7 +794,6 @@
 				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
-				CBF0EE1C23A34144006CC917 /* KeyPad.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,

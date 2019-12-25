@@ -25,6 +25,14 @@ struct PinSetting: View {
         pinCodeAccess = setPinCodeAccess
     }
     
+    func disaapper() {
+        print("закрыто")
+    }
+    
+    func testtesttest() {
+        print("открыто")
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -79,6 +87,8 @@ struct PinSetting: View {
                 }
             }
         }
+        .onDisappear(perform: disaapper)
+        .onAppear(perform: testtesttest)
         .navigationBarTitle(Text("Настройка ПИН-кода"), displayMode: .inline)
     }
 }
