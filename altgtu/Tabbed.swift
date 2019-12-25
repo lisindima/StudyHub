@@ -32,6 +32,14 @@ struct Tabbed : View {
                         Text("Расписание")
                     }
                 }.tag(1)
+            Text("Заметки")
+                .tabItem {
+                    VStack {
+                        Image(systemName: "square.and.pencil")
+                            .imageScale(.large)
+                        Text("Заметки")
+                    }
+                }.tag(2)
             ListChat()
                 .tabItem {
                     VStack{
@@ -39,7 +47,7 @@ struct Tabbed : View {
                             .imageScale(.large)
                         Text("Чат")
                     }
-                }.tag(2)
+                }.tag(3)
             ProfileView()
                 .environmentObject(PickerAPI())
                 .tabItem {
@@ -48,7 +56,7 @@ struct Tabbed : View {
                             .imageScale(.large)
                         Text("Профиль")
                     }
-                }.tag(3)
+                }.tag(4)
         }
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)

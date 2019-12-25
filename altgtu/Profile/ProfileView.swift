@@ -218,6 +218,7 @@ struct ProfileView: View {
                 }
                 if self.modalView == 2 {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
+                        .edgesIgnoringSafeArea(.bottom)
                 }
             })
             .actionSheet(isPresented: $showActionSheet) {
