@@ -49,12 +49,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
-    @Published var choiseGroup = 0
-    @Published var choiseFaculty = 0
-    @Published var choiseNews = 0
-    @Published var group = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
-    @Published var faculty = ["ФИТ", "ГФ", "ФСТ"]
-    @Published var news = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
+    @Published var choiseGroup: Int = 0
+    @Published var choiseFaculty: Int = 0
+    @Published var choiseNews: Int = 0
+    @Published var group: Array = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
+    @Published var faculty: Array = ["ФИТ", "ГФ", "ФСТ"]
+    @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
