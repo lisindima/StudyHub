@@ -17,7 +17,7 @@ struct ProfileView: View {
     @State private var isPresented: Bool = false
     @State private var isShowingModalView: Bool = false
     @State private var showActionSheetExit: Bool = false
-    @State private var modalView = 1
+    @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -108,11 +108,11 @@ struct ProfileView: View {
                         }.actionSheet(isPresented: $showActionSheetImage) {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
                                   .default(Text("Сделать фотографию")) {
-                                    self.modalView = 1
+                                    self.setModalView = 1
                                     self.isShowingModalView = true
                                     self.session.selectedSourceType = .camera
                                 },.default(Text("Выбрать фотографию")) {
-                                    self.modalView = 1
+                                    self.setModalView = 1
                                     self.isShowingModalView = true
                                     self.session.selectedSourceType = .photoLibrary
                                 },.destructive(Text("Удалить фотографию")) {
@@ -177,7 +177,7 @@ struct ProfileView: View {
                     }
                     HStack {
                         Button("Поделиться") {
-                            self.modalView = 2
+                            self.setModalView = 2
                             self.isShowingModalView = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                         Spacer()
@@ -205,18 +205,18 @@ struct ProfileView: View {
                 }
             }
             .sheet(isPresented: $isShowingModalView, onDismiss: {
-                if self.modalView == 1 {
+                if self.setModalView == 1 {
                     self.session.uploadImageToCloudStorage()
                 }
-                if self.modalView == 2 {
+                if self.setModalView == 2 {
                     print("SHARE")
                 }
             }, content: {
-                if self.modalView == 1 {
+                if self.setModalView == 1 {
                     ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$session.selectedSourceType)
                         .edgesIgnoringSafeArea(.bottom)
                 }
-                if self.modalView == 2 {
+                if self.setModalView == 2 {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                         .edgesIgnoringSafeArea(.bottom)
                 }
@@ -260,21 +260,28 @@ struct ProfileView: View {
                         .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 130)
-                    ProfileImage()
-                        .offset(y: -120)
-                        .padding(.bottom, -130)
+                    ZStack {
+                        ProfileImage()
+                            .offset(y: -120)
+                            .padding(.bottom, -130)
+                        if session.adminSetting {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(colorScheme == .light ? .white : .black)
+                                    .shadow(radius: 10)
+                                Image(systemName: "checkmark.seal.fill")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.blue)
+                            
+                            }.offset(x: 80, y: 25)
+                        }
+                    }
                         
                     VStack {
-                        HStack {
-                            Text((session.lastname ?? "Загрузка...") + " " + (session.firstname ?? ""))
-                                .bold()
-                                .font(.title)
-                            if session.adminSetting {
-                                Image(systemName: "checkmark.seal.fill")
-                                    .imageScale(.large)
-                                    .foregroundColor(.blue)
-                            }
-                        }
+                        Text((session.lastname!) + " " + (session.firstname!))
+                            .bold()
+                            .font(.title)
                         Text(currentUser.email!)
                             .font(.subheadline)
                             .foregroundColor(.gray)

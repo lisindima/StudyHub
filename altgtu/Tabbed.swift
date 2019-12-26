@@ -32,7 +32,7 @@ struct Tabbed : View {
                         Text("Расписание")
                     }
                 }.tag(1)
-            Text("Заметки")
+            Note()
                 .tabItem {
                     VStack {
                         Image(systemName: "square.and.pencil")
