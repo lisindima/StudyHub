@@ -11,6 +11,7 @@ import LocalAuthentication
 
 struct PinSetting: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @Binding var boolCodeAccess: Bool
     @Binding var pinCodeAccess: String
     @Binding var biometricAccess: Bool
@@ -22,14 +23,10 @@ struct PinSetting: View {
 
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
-    func saveSetPinSetting() {
+    private func saveSetPinSetting() {
         boolCodeAccess = setBoolCodeAccess
         pinCodeAccess = setPinCodeAccess
         self.showAlert = true
-    }
-    
-    func disaapper() {
-        print("закрыто")
     }
     
     func checkCurrentBiometricType() {
@@ -68,7 +65,7 @@ struct PinSetting: View {
                         }
                     }
                 }
-                if setBoolCodeAccess {
+                if setPinCodeAccess == repeatSetPinCode && setBoolCodeAccess == true && setPinCodeAccess != "" {
                     Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
                         if currentBiometricType == .none {
                             Text("Функция не доступна")
@@ -96,11 +93,13 @@ struct PinSetting: View {
                 }
             }
         }
-        .onDisappear(perform: disaapper)
         .onAppear(perform: checkCurrentBiometricType)
         .navigationBarTitle(Text("Настройка входа"), displayMode: .inline)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Хорошо")))
+            Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Хорошо")) {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            )
         }
     }
 }
