@@ -127,7 +127,7 @@ struct ProfileView: View {
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
                     NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                        Text("Настройка ПИН-кода")
+                        Text("Настройка входа")
                     }
                     NavigationLink(destination: SetAuth()) {
                         Text("Вариаты авторизации")

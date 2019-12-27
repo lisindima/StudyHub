@@ -9,18 +9,20 @@
 import SwiftUI
 
 struct KeyPadButton: View {
+    
+    @EnvironmentObject var session: SessionStore
     var key: String
 
     var body: some View {
         Button(action: { self.action(self.key) }) {
             Text(key)
                 .fontWeight(.semibold)
-                .foregroundColor(.defaultColorApp)
+                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                 .font(.system(size: 25))
                 .frame(width: 70, height: 70)
                 .overlay(
                     RoundedRectangle(cornerRadius: 100)
-                        .stroke(Color.defaultColorApp, lineWidth: 2)
+                        .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
                 )
         }
     }

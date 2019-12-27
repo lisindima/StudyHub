@@ -14,16 +14,18 @@ struct PinSetting: View {
     @Binding var boolCodeAccess: Bool
     @Binding var pinCodeAccess: String
     @Binding var biometricAccess: Bool
-    //@State private var setBoolCodeAccess: Bool = false
+    @State private var activateSecure: Bool = false
+    @State private var setBoolCodeAccess: Bool = false
+    @State private var showAlert: Bool = false
     @State private var setPinCodeAccess: String = ""
     @State private var repeatSetPinCode: String = ""
-    @State private var setDifficultPinCode: Int = 0
 
     let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     func saveSetPinSetting() {
-        //boolCodeAccess = setBoolCodeAccess
+        boolCodeAccess = setBoolCodeAccess
         pinCodeAccess = setPinCodeAccess
+        self.showAlert = true
     }
     
     func disaapper() {
@@ -44,46 +46,45 @@ struct PinSetting: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
-                    Toggle(isOn: $boolCodeAccess.animation()) {
-                            Text("ПИН-код")
+                Section(header: Text("Активация").bold(), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
+                    Toggle(isOn: $activateSecure.animation()) {
+                            Text("Активировать")
                     }
                 }
-                if boolCodeAccess {
-                    Section(footer: Text("Здесь вы можете выбрать длину пин-кода.")) {
-                        Picker("", selection: $setDifficultPinCode) {
-                            Text("4-ех значный").tag(0)
-                            Text("8-ми значный").tag(1)
-                        }.pickerStyle(SegmentedPickerStyle())
-                    }
-                }
-                if boolCodeAccess {
-                    Section() {
-                        SecureField("Пароль", text: $setPinCodeAccess)
-                            .disabled(setPinCodeAccess.count > 3)
-                            .keyboardType(.numberPad)
-                        if setPinCodeAccess != "" {
-                             SecureField("Повторите пароль", text: $repeatSetPinCode)
-                                .disabled(repeatSetPinCode.count > 3)
-                                .keyboardType(.numberPad)
+                if activateSecure {
+                    Section(header: Text("Стандартная аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью кода.")) {
+                        Toggle(isOn: $setBoolCodeAccess.animation()) {
+                                Text("Вход с помощью кода")
                         }
-                    }
-                }
-                if currentBiometricType == .none {
-                        
-                } else {
-                    Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
-                    Toggle(isOn: $biometricAccess) {
-                            if currentBiometricType == .faceID {
-                                Text("Вход с помощью FaceID")
-                            } else if currentBiometricType == .touchID {
-                                Text("Вход с помощью TouchID")
+                        if setBoolCodeAccess {
+                            SecureField("Пароль", text: $setPinCodeAccess)
+                                .disabled(setPinCodeAccess.count > 3)
+                                .keyboardType(.numberPad)
+                            if setPinCodeAccess != "" {
+                                 SecureField("Повторите пароль", text: $repeatSetPinCode)
+                                    .disabled(repeatSetPinCode.count > 3)
+                                    .keyboardType(.numberPad)
                             }
                         }
                     }
                 }
-                if setPinCodeAccess == repeatSetPinCode && setPinCodeAccess != "" {
-                    Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
+                if setBoolCodeAccess {
+                    Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
+                        if currentBiometricType == .none {
+                            Text("Функция не доступна")
+                        } else if currentBiometricType == .faceID {
+                            Toggle(isOn: $biometricAccess) {
+                                Text("Вход с помощью FaceID")
+                            }
+                        } else if currentBiometricType == .touchID {
+                            Toggle(isOn: $biometricAccess) {
+                                Text("Вход с помощью FaceID")
+                            }
+                        }
+                    }
+                }
+                if setPinCodeAccess == repeatSetPinCode && setBoolCodeAccess == true && setPinCodeAccess != "" {
+                    Section {
                         HStack {
                             Spacer()
                             Button("Сохранить") {
@@ -97,7 +98,10 @@ struct PinSetting: View {
         }
         .onDisappear(perform: disaapper)
         .onAppear(perform: checkCurrentBiometricType)
-        .navigationBarTitle(Text("Настройка ПИН-кода"), displayMode: .inline)
+        .navigationBarTitle(Text("Настройка входа"), displayMode: .inline)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Хорошо")))
+        }
     }
 }
 

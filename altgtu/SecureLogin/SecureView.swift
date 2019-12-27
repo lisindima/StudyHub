@@ -87,7 +87,7 @@ struct SecureView: View {
                     Image(systemName: userInputPin.count >= 2 ? "largecircle.fill.circle" : "circle")
                     Image(systemName: userInputPin.count >= 3 ? "largecircle.fill.circle" : "circle")
                     Image(systemName: userInputPin.count >= 4 ? "largecircle.fill.circle" : "circle")
-                }.foregroundColor(.defaultColorApp)
+                }.foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                 Spacer()
                 VStack {
                     HStack {
@@ -118,12 +118,12 @@ struct SecureView: View {
                         })
                         {
                             Image(systemName: "faceid")
-                                .foregroundColor(.defaultColorApp)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color.defaultColorApp, lineWidth: 2)
+                                        .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
                                 )
                         }
                         KeyPadButton(key: "0")
@@ -134,12 +134,12 @@ struct SecureView: View {
                         })
                         {
                             Image(systemName: "delete.left")
-                                .foregroundColor(.defaultColorApp)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color.defaultColorApp, lineWidth: 2)
+                                        .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
                                 )
                         }.disabled(userInputPin.count == 0)
                     }
@@ -160,7 +160,7 @@ struct SecureView: View {
             }
             .onAppear(perform: biometricAccess)
             .alert(isPresented: $showAlertPinCode) {
-                Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Ок")))
+                Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Хорошо")))
             }
     }
 }
