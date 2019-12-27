@@ -20,7 +20,7 @@ struct PinSetting: View {
     @State private var setPinCodeAccess: String = ""
     @State private var repeatSetPinCode: String = ""
 
-    let currentBiometricType = BiometricTypeStore.shared.biometricType
+    private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     func saveSetPinSetting() {
         boolCodeAccess = setBoolCodeAccess
