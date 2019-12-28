@@ -1269,7 +1269,7 @@
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.8;
+				minimumVersion = 0.9.9;
 			};
 		};
 		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
@@ -1277,7 +1277,7 @@
 			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
+				minimumVersion = 0.2.1;
 			};
 		};
 		CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
@@ -1293,7 +1293,7 @@
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.2;
+				minimumVersion = 1.4.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

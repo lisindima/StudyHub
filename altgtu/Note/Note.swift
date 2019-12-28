@@ -11,7 +11,7 @@ import SwiftUI
 struct Note: View {
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack {
                 Text("Заметки")
             }
             .navigationBarTitle(Text("Заметки"))
