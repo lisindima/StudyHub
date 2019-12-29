@@ -316,7 +316,7 @@ struct ProfileView: View {
                         .foregroundColor(.white)
             })
             .actionSheet(isPresented: $showActionSheetExit) {
-                ActionSheet(title: Text("Вы уверены, хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
+                ActionSheet(title: Text("Вы уверены, что хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
                         self.session.signOut()
                     }, .cancel()
                 ])

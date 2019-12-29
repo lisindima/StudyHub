@@ -11,7 +11,7 @@ import URLImage
 
 struct CardList: View {
     
-    @ObservedObject var newsVM = NewsViewModel()
+    @ObservedObject var newsApi = NewsAPI()
     @EnvironmentObject var session: SessionStore
     @State private var showDetailsNews: Bool = false
     
@@ -31,12 +31,13 @@ struct CardList: View {
     
     var body: some View {
         Group {
-            if newsVM.articles.isEmpty {
+            if newsApi.articles.isEmpty {
                 NavigationView {
                     VStack(alignment: .center) {
                         HStack {
                             Spacer()
                                 ActivityIndicator()
+                                    .onAppear(perform: newsApi.loadNews)
                             Spacer()
                         }
                     }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
@@ -79,7 +80,7 @@ struct CardList: View {
                             ScrollView(.horizontal, showsIndicators: false){
                                VStack (alignment: .leading){
                                    HStack{
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "")}, label: {Text("Популярное")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "")}, label: {Text("Популярное")
                                             .frame(width: 120, height: 110)
                                             .background(Color.red)
                                             .foregroundColor(.white)
@@ -87,27 +88,27 @@ struct CardList: View {
                                         Divider()
                                             .frame(height: 90)
                                             .padding(.horizontal, 8)
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "&category=sports")}, label: {Text("Спорт")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=sports")}, label: {Text("Спорт")
                                             .frame(width: 120, height: 110)
                                             .background(Color.gray)
                                             .foregroundColor(.white)
                                             .cornerRadius(10)})
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "&category=entertainment")}, label: {Text("Развлечение")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")}, label: {Text("Развлечение")
                                             .frame(width: 120, height: 110)
                                             .background(Color.blue)
                                             .foregroundColor(.white)
                                             .cornerRadius(10)})
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "&category=technology")}, label: {Text("Технологии")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=technology")}, label: {Text("Технологии")
                                             .frame(width: 120, height: 110)
                                             .background(Color.green)
                                             .foregroundColor(.white)
                                             .cornerRadius(10)})
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "&category=health")}, label: {Text("Здоровье")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=health")}, label: {Text("Здоровье")
                                             .frame(width: 120, height: 110)
                                             .background(Color.purple)
                                             .foregroundColor(.white)
                                             .cornerRadius(10)})
-                                        Button(action: {self.newsVM.fetchCategoryNews(category: "&category=business")}, label: {Text("Бизнес")
+                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=business")}, label: {Text("Бизнес")
                                             .frame(width: 120, height: 110)
                                             .background(Color.yellow)
                                             .foregroundColor(.white)
@@ -115,7 +116,7 @@ struct CardList: View {
                                     }
                                 }.padding()
                             }
-                            ForEach(self.newsVM.articles, id: \.self) { i in
+                            ForEach(self.newsApi.articles, id: \.self) { i in
                                 CardView(article: i)
                                     .onTapGesture {
                                         self.showDetailsNews = true
