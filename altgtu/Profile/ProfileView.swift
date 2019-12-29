@@ -82,12 +82,12 @@ struct ProfileView: View {
                             .frame(height: 60)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         HStack {
-                            Spacer(minLength: 6)
+                            Spacer(minLength: 10)
                             Text("R:\(Int(session.rValue))")
                             Text("G:\(Int(session.gValue))")
                                 .padding(.horizontal, 20)
                             Text("B:\(Int(session.bValue))")
-                            Spacer(minLength: 6)
+                            Spacer(minLength: 10)
                         }
                         
                         .font(Font.custom("Futura", size: 24))
