@@ -39,7 +39,7 @@ struct User {
 final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegate {
 
     @Published var currentLoginUser = Auth.auth().currentUser
-    @Published var isLoggedIn = false
+    @Published var isLoggedIn: Bool = false
     @Published var session: User?
     @Published var lastname: String!
     @Published var firstname: String!
@@ -319,12 +319,11 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         return hashString
     }
     
-    func signOut () -> Bool {
+    func signOut() {
         do {
             try Auth.auth().signOut()
-            return true
-        } catch {
-            return false
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
     

@@ -33,6 +33,7 @@ struct Tabbed : View {
                     }
                 }.tag(1)
             Note()
+                .environmentObject(NoteStore())
                 .tabItem {
                     VStack {
                         Image(systemName: "square.and.pencil")

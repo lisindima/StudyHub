@@ -10,18 +10,17 @@ import SwiftUI
 
 struct LoadingScreen: View {
     var body: some View {
-        VStack {
-            Spacer()
-            Image("altgtu")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, alignment: .center)
-                .shadow(radius: 10)
-            Spacer()
-            ActivityIndicator()
-                .padding(.bottom, 35)
-            Text("Загрузка данных...")
-                .padding(.bottom)
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                VStack {
+                    ActivityIndicator()
+                    Text("ЗАГРУЗКА")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+            }
         }
     }
 }
@@ -29,23 +28,20 @@ struct LoadingScreen: View {
 struct LoadingLogic: View {
 
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var sessionChat: SessionChat
     @State private var access: Bool = false
     
     func getData() {
         session.getDataFromDatabaseListen()
-        sessionChat.getDataFromDatabaseListenChat()
-        sessionChat.loadMsgsList()
     }
     
     var body: some View {
         ZStack {
             if session.lastname != nil && session.boolCodeAccess == false {
                 Tabbed()
-            } else if session.lastname != nil && session.boolCodeAccess == true && access == false {
-                SecureView(access: $access)
             } else if session.lastname != nil && session.boolCodeAccess == true && access == true {
                 Tabbed()
+            } else if session.lastname != nil && session.boolCodeAccess == true && access == false {
+                SecureView(access: $access)
             } else {
                 LoadingScreen()
             }

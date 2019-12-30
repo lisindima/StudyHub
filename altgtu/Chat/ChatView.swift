@@ -14,7 +14,7 @@ struct ChatView: View {
     
     @EnvironmentObject var sessionChat: SessionChat
     @EnvironmentObject var session: SessionStore
-    @ObservedObject var msg = SessionChat()
+    @ObservedObject var message = SessionChat()
     @State private var typeMessage: String = ""
     
     let currentUid = Auth.auth().currentUser!.uid
@@ -23,9 +23,9 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(msg.msgs) { i in
-                    if self.currentUid == i.idUser {
-                        MessageView(message: i.msg, sender: i.user, timeMsg: i.dateMsg)
+                ForEach(message.messages) { item in
+                    if self.currentUid == item.idUser {
+                        MessageView(message: item.message, sender: item.user, timeMsg: item.dateMessage)
                             .padding(.top, 6)
                             .contextMenu {
                                 Button(action:
@@ -40,7 +40,7 @@ struct ChatView: View {
                         }
                     }
                     else {
-                        MessageView1(message: i.msg, sender: i.user, timeMsg: i.dateMsg)
+                        MessageView1(message: item.message, sender: item.user, timeMsg: item.dateMessage)
                             .padding(.top, 6)
                     }
                 }
@@ -51,7 +51,7 @@ struct ChatView: View {
                 if typeMessage.isEmpty == false {
                     Button(action:{
                         self.session.currentTime()
-                        self.sessionChat.addMsg(msg: self.typeMessage, user: "\(self.session.lastname + " " + self.session.firstname)", idUser: self.currentUid, dateMsg: self.session.currentTimeAndDate ?? "error")
+                        self.sessionChat.addMessages(message: self.typeMessage, user: "\(self.session.lastname + " " + self.session.firstname)", idUser: self.currentUid, dateMessage: self.session.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")

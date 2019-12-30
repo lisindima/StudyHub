@@ -36,8 +36,13 @@ struct CardList: View {
                     VStack(alignment: .center) {
                         HStack {
                             Spacer()
+                            VStack {
                                 ActivityIndicator()
                                     .onAppear(perform: newsApi.loadNews)
+                                Text("ЗАГРУЗКА")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                             Spacer()
                         }
                     }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)

@@ -10,41 +10,20 @@ import SwiftUI
 import FloatingButton
 
 struct MainButton: View {
-
+    
     var imageName: String
     var colorHex: String
-
-    var width: CGFloat = 50
+    var sizeButton: CGFloat = 50
 
     var body: some View {
         ZStack {
             Color(hex: colorHex)
-                .frame(width: width, height: width)
-                .cornerRadius(width/2)
+                .frame(width: sizeButton, height: sizeButton)
+                .cornerRadius(sizeButton/2)
                 .shadow(color: Color(hex: colorHex).opacity(0.3), radius: 15, x: 0, y: 15)
-            Image(systemName: imageName).foregroundColor(.white)
-        }
-    }
-}
-
-struct IconButton: View {
-
-    var imageName: String
-    var color: Color
-
-    let imageWidth: CGFloat = 20
-    let buttonWidth: CGFloat = 45
-
-    var body: some View {
-        ZStack {
-            self.color
-
             Image(systemName: imageName)
-                .frame(width: self.imageWidth, height: self.imageWidth)
                 .foregroundColor(.white)
         }
-        .frame(width: self.buttonWidth, height: self.buttonWidth)
-        .cornerRadius(self.buttonWidth / 2)
     }
 }
 
@@ -52,7 +31,6 @@ struct IconAndTextButton: View {
 
     var imageName: String
     var buttonText: String
-
     let imageWidth: CGFloat = 22
 
     var body: some View {

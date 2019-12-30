@@ -9,25 +9,21 @@
 import SwiftUI
 import Firebase
 
-struct DataMessges: Identifiable {
+struct DataMessages: Identifiable {
     
     var id: String
     var user: String
-    var msg: String
+    var message: String
     var idUser: String
-    var dateMsg: String
+    var dateMessage: String
 }
 
 final class SessionChat: ObservableObject {
     
-    @Published var chatList = [String]()
-    @Published var msgs = [DataMessges]()
+    @Published var chatList: Array = [String]()
+    @Published var messages: Array = [DataMessages]()
     
-    init() {
-        loadMsgsList()
-    }
-    
-    func loadMsgsList() {
+    func loadMessageList() {
         print("Чат")
         let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
@@ -39,20 +35,20 @@ final class SessionChat: ObservableObject {
             for i in querySnapshot!.documentChanges {
                 if i.type == .added {
                     let user = i.document.get("user") as! String
-                    let msg = i.document.get("msg") as! String
+                    let message = i.document.get("msg") as! String
                     let idUser = i.document.get("idUser") as! String
-                    let dateMsg = i.document.get("dateMsg") as! String
+                    let dateMessage = i.document.get("dateMsg") as! String
                     let id = i.document.documentID
                     
-                    self.msgs.append(DataMessges(id: id, user: user, msg: msg, idUser: idUser, dateMsg: dateMsg))
+                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
                 }
             }
         }
     }
     
-    func addMsg(msg: String, user: String, idUser: String, dateMsg: String) {
+    func addMessages(message: String, user: String, idUser: String, dateMessage: String) {
         let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("msg").addDocument(data: ["msg": msg, "user": user, "idUser": idUser, "dateMsg": dateMsg]) { (err) in
+        db.collection("chatRoom").document("Test2").collection("msg").addDocument(data: ["msg": message, "user": user, "idUser": idUser, "dateMsg": dateMessage]) { (err) in
         if err != nil {
             print((err?.localizedDescription)!)
             return

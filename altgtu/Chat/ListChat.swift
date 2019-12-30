@@ -15,12 +15,11 @@ struct ListChat: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText : String = ""
     
-    
-    func delete(at offsets: IndexSet) {
+    private func delete(at offsets: IndexSet) {
         sessionChat.chatList.remove(atOffsets: offsets)
     }
     
-    func move(from source: IndexSet, to destination: Int) {
+    private func move(from source: IndexSet, to destination: Int) {
         sessionChat.chatList.move(fromOffsets: source, toOffset: destination)
     }
     
@@ -31,11 +30,16 @@ struct ListChat: View {
                     VStack(alignment: .center) {
                         HStack {
                             Spacer()
+                            VStack {
                                 ActivityIndicator()
+                                    .onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
+                                Text("ЗАГРУЗКА")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
                             Spacer()
                         }
-                    }
-                    .navigationBarTitle(Text("Чат"))
+                    }.navigationBarTitle(Text("Чат"))
                 }
             } else {
                 NavigationView {
@@ -48,9 +52,9 @@ struct ListChat: View {
                                 TextField("Поиск", text: $searchText)
                                     .foregroundColor(.primary)
                             }
-                            .padding(6.5)
-                            .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                            .cornerRadius(9)
+                                .padding(6.5)
+                                .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
+                                .cornerRadius(9)
                             if !self.searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -59,8 +63,8 @@ struct ListChat: View {
                                 })
                             }
                         }
-                        .padding(.horizontal)
-                        .animation(.default)
+                            .padding(.horizontal)
+                            .animation(.default)
                         List {
                             ForEach(self.sessionChat.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
@@ -83,7 +87,7 @@ struct ListChat: View {
                     }
                 }
             }
-        }.onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
+        }
     }
 }
 
