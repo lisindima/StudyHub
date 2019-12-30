@@ -47,7 +47,7 @@ struct Note: View {
                             }
                             Spacer()
                         }
-                    }.navigationBarTitle(Text("Заметки"))
+                    }
                 }
             } else {
                 NavigationView {
@@ -62,52 +62,52 @@ struct Note: View {
                             }
                                 .padding(6.5)
                                 .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                                .cornerRadius(9)
-                            if !self.searchText.isEmpty {
-                                Button(action: {
-                                    self.searchText = ""
-                                }, label: {
-                                    Text("Отмена").foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                    .cornerRadius(9)
+                                if !self.searchText.isEmpty {
+                            Button(action: {
+                                self.searchText = ""
+                            }, label: {
+                                Text("Отмена").foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 })
                             }
                         }
                             .padding(.horizontal)
                             .animation(.default)
                         ZStack {
-                            ScrollView {
+                            List {
                                 ForEach(noteStore.noteList.filter {
-                                    self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
-                                }, id: \.self) { item in
+                                    self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)}, id: \.self) { item in
                                     Text(item)
-                                }
                             }
-                            VStack {
+                                .onDelete(perform: delete)
+                                .onMove(perform: move)
+                        }
+                        VStack {
+                            Spacer()
+                                .layoutPriority(10)
+                            HStack {
                                 Spacer()
                                     .layoutPriority(10)
-                                HStack {
-                                    Spacer()
-                                        .layoutPriority(10)
-                                    FloatingButton(mainButtonView: mainButton, buttons: textButtons)
-                                        .straight()
-                                        .direction(.top)
-                                        .alignment(.right)
-                                        .spacing(10)
-                                        .initialOpacity(0)
+                                FloatingButton(mainButtonView: mainButton, buttons: textButtons)
+                                    .straight()
+                                    .direction(.top)
+                                    .alignment(.right)
+                                    .spacing(10)
+                                    .initialOpacity(0)
                                 }.padding(20)
                             }
                         }
                     }
                     .actionSheet(isPresented: $showActionSheetSort) {
                         ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
-                                
-                            }, .default(Text("По дате создания")) {
-                                
-                            }, .cancel()
-                        ])
+                                    
+                        }, .default(Text("По дате создания")) {
+                                    
+                        }, .cancel()])
                     }
                     .navigationBarTitle(Text("Заметки"))
                     .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                        self.showActionSheetSort = true
+                            self.showActionSheetSort = true
                     })
                     {
                         Image(systemName: "line.horizontal.3.decrease.circle")
@@ -118,6 +118,7 @@ struct Note: View {
         }
     }
 }
+
 
 struct Note_Previews: PreviewProvider {
     static var previews: some View {

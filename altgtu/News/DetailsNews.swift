@@ -29,7 +29,7 @@ struct DetailsNews: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 })
-                Text(article.description ?? "Нету")
+                Text(article.description ?? "Описание отсутствует")
                     .font(.system(size: CGFloat(sizeFont)))
                 Spacer()
             }

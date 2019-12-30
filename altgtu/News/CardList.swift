@@ -48,29 +48,29 @@ struct CardList: View {
                     }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
                 }.navigationViewStyle(StackNavigationViewStyle())
             } else {
-                    ScrollView(showsIndicators: false) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text("\(currentDate, formatter: dateFormatter)")
-                                    .font(.headline)
-                                    .foregroundColor(.secondary)
-                                Text("Сегодня")
-                                    .font(.largeTitle)
-                                    .fontWeight(.heavy)
-                            }
+                ScrollView(showsIndicators: false) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("\(currentDate, formatter: dateFormatter)")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                            Text("Сегодня")
+                                .font(.largeTitle)
+                                .fontWeight(.heavy)
+                        }
                             .padding(.leading, 15)
-                            Spacer()
-                            URLImage(URL(string:"\(session.urlImageProfile ?? "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
-                                ProgressView($0) { progress in
-                                    ZStack {
-                                        if progress > 0.0 {
-                                            ActivityIndicator()
-                                        }
-                                        else {
-                                            ActivityIndicator()
-                                        }
+                        Spacer()
+                        URLImage(URL(string:"\(session.urlImageProfile ?? "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                            ProgressView($0) { progress in
+                                ZStack {
+                                    if progress > 0.0 {
+                                        ActivityIndicator()
+                                    } else {
+                                        ActivityIndicator()
                                     }
-                                }.padding(.trailing, 15)
+                                }
+                            }
+                                .padding(.trailing, 15)
                                 .frame(width: 45, height: 45)
                             }) { proxy in
                                     proxy.image
