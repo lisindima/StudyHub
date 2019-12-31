@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import AuthenticationServices
 
-struct SignUpView : View {
+struct SignUpView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -64,7 +64,7 @@ struct SignUpView : View {
         }
     }
     
-    var body : some View {
+    var body: some View {
         VStack(alignment: .center) {
             CustomInput(text: $lastname, name: "Фамилия")
                 .padding([.top, .horizontal])
@@ -125,7 +125,7 @@ struct ResetPassword: View {
 
     @EnvironmentObject var session: SessionStore
     
-    func sendPasswordReset () {
+    func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
@@ -145,7 +145,7 @@ struct ResetPassword: View {
         }
     }
 
-    var body : some View {
+    var body: some View {
         VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
@@ -180,7 +180,7 @@ struct EmailLoginScreen: View {
 
     @EnvironmentObject var session: SessionStore
     
-    func signIn () {
+    func signIn() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
@@ -196,7 +196,7 @@ struct EmailLoginScreen: View {
         }
     }
 
-    var body : some View {
+    var body: some View {
         VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
@@ -261,7 +261,7 @@ struct EmailLoginScreen: View {
     }
 }
 
-struct AuthenticationScreen : View {
+struct AuthenticationScreen: View {
     
     @State private var showSpashScreen: Bool = false
 
@@ -281,91 +281,68 @@ struct AuthenticationScreen : View {
     }
     
     var body: some View {
-        Group {
-            NavigationView {
-                VStack(alignment: .center) {
-                    Spacer()
-                    VStack {
-                        Image("altgtu")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                        Text("Личный кабинет")
-                            .font(.system(size: 32, weight: .black))
-                            .multilineTextAlignment(.center)
-                        Text("АлтГТУ")
-                            .font(.system(size: 32, weight: .black))
-                            .padding(.bottom, 10)
-                            .multilineTextAlignment(.center)
-                        Text("Самый простой способ узнать расписание и")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(nil)
-                            .padding(.horizontal)
-                        Text("быть в курсе всех событий.")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .multilineTextAlignment(.center)
-                            .lineLimit(nil)
-                            .padding([.horizontal, .bottom])
-                    }.padding(.top, 30)
-                    Spacer()
-                    VStack {
-                        if self.colorScheme == .light {
-                            SignInWithAppleBlack()
-                                .frame(height: 55)
-                                .cornerRadius(8)
-                                .padding()
-                                .onTapGesture(perform: self.session.startSignInWithAppleFlow)
-                        } else {
-                            SignInWithAppleWhite()
-                                .frame(height: 55)
-                                .cornerRadius(8)
-                                .padding()
-                                .onTapGesture(perform: self.session.startSignInWithAppleFlow)
-                        }
-                        Text("-или-")
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
-                        NavigationLink(destination: EmailLoginScreen()) {
+        NavigationView {
+            VStack(alignment: .center) {
+                Spacer()
+                VStack {
+                    Image("altgtu")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                    Text("Личный кабинет")
+                        .font(.system(size: 32, weight: .black))
+                        .multilineTextAlignment(.center)
+                    Text("АлтГТУ")
+                        .font(.system(size: 32, weight: .black))
+                        .padding(.bottom, 10)
+                        .multilineTextAlignment(.center)
+                    Text("Самый простой способ узнать расписание и")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                        .padding(.horizontal)
+                    Text("быть в курсе всех событий.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(nil)
+                        .padding([.horizontal, .bottom])
+                }.padding(.top, 30)
+                Spacer()
+                VStack {
+                    if self.colorScheme == .light {
+                        SignInWithAppleBlack()
+                            .frame(height: 55)
+                            .cornerRadius(8)
+                            .padding()
+                            .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                    } else {
+                        SignInWithAppleWhite()
+                            .frame(height: 55)
+                            .cornerRadius(8)
+                            .padding()
+                            .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                    }
+                    Text("-или-")
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                    NavigationLink(destination: EmailLoginScreen()) {
                         Text("Войти с помощью эл.почты")
                             .font(.headline)
                             .foregroundColor(self.colorScheme == .light ? .black : .white)
                             .padding()
-                        }
-                    }.padding(.bottom, 40)
-                }
-                .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
-                .edgesIgnoringSafeArea(.top)
-                .sheet(isPresented: self.$showSpashScreen) {
+                    }
+                }.padding(.bottom, 40)
+            }
+            .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
+            .edgesIgnoringSafeArea(.top)
+            .sheet(isPresented: self.$showSpashScreen) {
                     SplashScreen()
-                }
             }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .accentColor(Color.defaultColorApp)
-        }.onAppear(perform: funcSplashScreen)
-    }
-}
-
-struct LoadingView<Content>: View where Content: View {
-
-    @Binding var isShowing: Bool
-    var content: () -> Content
-
-    var body: some View {
-        ZStack {
-            self.content()
-                .disabled(self.isShowing)
-                .blur(radius: self.isShowing ? 3 : 0)
-            VStack {
-                LottieView(filename: "27-loading")
-            }
-            .frame(width: 200, height: 200)
-            .background(Color(#colorLiteral(red: 0.213772162, green: 0.2300552888, blue: 0.2528391964, alpha: 0.7704390405)))
-            .cornerRadius(20)
-            .opacity(self.isShowing ? 1 : 0)
-
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(Color.defaultColorApp)
+        .onAppear(perform: funcSplashScreen)
     }
 }
 
