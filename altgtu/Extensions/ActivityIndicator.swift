@@ -17,5 +17,7 @@ struct ActivityIndicator: UIViewRepresentable {
         return indicator
     }
 
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) { }
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+        
+    }
 }

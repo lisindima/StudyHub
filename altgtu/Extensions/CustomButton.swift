@@ -9,8 +9,10 @@
 import SwiftUI
 
 struct CustomButton : View {
+    
     var label: String
     var action: () -> Void
+    var loading: Bool
     
     var body: some View {
         Button(action: action) {
@@ -20,11 +22,29 @@ struct CustomButton : View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
+                if loading {
+                    ActivityIndicatorButton()
+                }
                 Spacer()
             }
         }
         .padding()
         .background(Color.defaultColorApp)
         .cornerRadius(8)
+    }
+}
+
+struct ActivityIndicatorButton: UIViewRepresentable {
+    typealias UIViewType = UIActivityIndicatorView
+
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorButton>) -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView()
+        indicator.startAnimating()
+        indicator.color = .white
+        return indicator
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicatorButton>) {
+        
     }
 }

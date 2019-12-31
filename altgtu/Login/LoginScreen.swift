@@ -26,8 +26,8 @@ struct SignUpView : View {
         generator.notificationOccurred(.success)
         loading = true
         session.signUp(email: email, password: password) { (result, error) in
-            self.loading = false
             if error != nil {
+                self.loading = false
                 self.showAlert = true
                 self.email = ""
                 self.password = ""
@@ -65,55 +65,52 @@ struct SignUpView : View {
     }
     
     var body : some View {
-        LoadingView(isShowing: .constant(loading)) {
-            VStack(alignment: .center) {
-                CustomInput(text: self.$lastname, name: "Фамилия")
-                    .padding([.top, .horizontal])
-                CustomInput(text: self.$firstname, name: "Имя")
-                    .padding([.top, .horizontal])
-                CustomInput(text: self.$email, name: "Эл.почта")
-                    .padding()
-                    .keyboardType(.emailAddress)
-                VStack(alignment: .trailing) {
-                    HStack {
-                        SecureField("Пароль", text: self.$password)
-                            if self.password.isEmpty {
+        VStack(alignment: .center) {
+            CustomInput(text: $lastname, name: "Фамилия")
+                .padding([.top, .horizontal])
+            CustomInput(text: $firstname, name: "Имя")
+                .padding([.top, .horizontal])
+            CustomInput(text: $email, name: "Эл.почта")
+                .padding()
+                .keyboardType(.emailAddress)
+            VStack(alignment: .trailing) {
+                HStack {
+                    SecureField("Пароль", text: $password)
+                        if password.isEmpty {
                     
-                            }
-                            if 0 < self.password.count && self.password.count < 8 {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                            }
-                            if 8 <= self.password.count{
-                                Image(systemName: "checkmark.circle")
-                                .foregroundColor(.green)
-                            }
                         }
-                            .modifier(InputModifier())
-                    Text("Требуется минимум 8 символов.")
-                        .font(.footnote)
-                        .foregroundColor(Color.gray)
-                }
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
-                CustomButton(label: "Зарегистрироваться", action: self.signUp)
-                    .disabled(self.loading)
-                    .padding()
-                Divider()
-                Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
+                        if 0 < password.count && password.count < 8 {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.red)
+                        }
+                        if 8 <= password.count{
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                        }
+                    }.modifier(InputModifier())
+                Text("Требуется минимум 8 символов.")
                     .font(.footnote)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(nil)
-                    .padding()
-                Spacer()
+                    .foregroundColor(Color.gray)
             }
-            .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
-            .navigationBarTitle("Регистрация")
-            .alert(isPresented: self.$showAlert){
-                Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
-            }
-            .edgesIgnoringSafeArea(.bottom)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
+            CustomButton(label: loading == true ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading)
+                .disabled(loading)
+                .padding()
+            Divider()
+            Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .padding()
+            Spacer()
+        }
+        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
+        .navigationBarTitle("Регистрация")
+        .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
         }
     }
 }
@@ -133,8 +130,8 @@ struct ResetPassword: View {
         generator.notificationOccurred(.success)
         loading = true
         session.sendPasswordReset(email: email) { (error) in
-            self.loading = false
             if error != nil {
+                self.loading = false
                 self.email = ""
                 self.choiceAlert = 1
                 self.showAlert = true
@@ -153,7 +150,7 @@ struct ResetPassword: View {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
                 .keyboardType(.emailAddress)
-            CustomButton(label: "Восстановить аккаунт", action: sendPasswordReset)
+            CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -188,8 +185,8 @@ struct EmailLoginScreen: View {
         generator.notificationOccurred(.success)
         loading = true
         session.signIn(email: email, password: password) { (result, error) in
-            self.loading = false
             if error != nil {
+                self.loading = false
                 self.showAlert = true
                 self.email = ""
                 self.password = ""
@@ -200,70 +197,66 @@ struct EmailLoginScreen: View {
     }
 
     var body : some View {
-        LoadingView(isShowing: .constant(loading)) {
-            Group {
-                VStack(alignment: .center) {
-                    CustomInput(text: self.$email, name: "Эл.почта")
-                        .padding([.top, .horizontal])
-                        .keyboardType(.emailAddress)
-                    VStack(alignment: .trailing) {
-                        HStack {
-                            SecureField("Пароль", text: self.$password)
-                            if self.password.isEmpty {
+        VStack(alignment: .center) {
+            CustomInput(text: $email, name: "Эл.почта")
+                .padding([.top, .horizontal])
+                .keyboardType(.emailAddress)
+            VStack(alignment: .trailing) {
+                HStack {
+                    SecureField("Пароль", text: $password)
+                    if password.isEmpty {
                     
-                            }
-                            if 0 < self.password.count && self.password.count < 8 {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                            }
-                            if 8 <= self.password.count{
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.green)
-                            }
-                        }
-                            .modifier(InputModifier())
-                            .padding([.horizontal, .top])
-                        NavigationLink(destination: ResetPassword()) {
-                            Text("Забыли пароль?")
-                                .font(.footnote)
-                                .padding(.horizontal)
-                                .padding(.bottom, 8)
-                        }
                     }
-                    CustomButton(label: "Войти", action: self.signIn)
-                        .disabled(self.loading)
-                        .padding()
-                    Divider()
-                    Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(nil)
-                        .padding()
-                    Spacer()
-                    VStack {
-                        Divider()
-                            .padding(.bottom)
-                        HStack(alignment: .center) {
-                            Text("У вас еще нет аккаунта?")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                            NavigationLink(destination: SignUpView()) {
-                                Text("Регистрация")
-                                    .font(.footnote)
-                            }
-                        }
-                        .padding(.top, 5)
-                        .padding(.bottom)
-                    }.padding(.bottom)
+                    if 0 < password.count && password.count < 8 {
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                    }
+                    if 8 <= password.count{
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                    }
                 }
-                .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
-                .navigationBarTitle("Вход")
-                .edgesIgnoringSafeArea(.bottom)
-                .alert(isPresented: self.$showAlert) {
-                    Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
+                    .modifier(InputModifier())
+                    .padding([.horizontal, .top])
+                NavigationLink(destination: ResetPassword()) {
+                    Text("Забыли пароль?")
+                        .font(.footnote)
+                        .padding(.horizontal)
+                        .padding(.bottom, 8)
                 }
             }
+            CustomButton(label: loading == true ? "Загрузка" : "Войти", action: signIn, loading: loading)
+                .disabled(loading)
+                .padding()
+            Divider()
+            Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .padding()
+            Spacer()
+            VStack {
+                Divider()
+                    .padding(.bottom)
+                HStack(alignment: .center) {
+                    Text("У вас еще нет аккаунта?")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    NavigationLink(destination: SignUpView()) {
+                        Text("Регистрация")
+                            .font(.footnote)
+                    }
+                }
+                    .padding(.top, 5)
+                    .padding(.bottom)
+            }.padding(.bottom)
+        }
+        .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
+        .navigationBarTitle("Вход")
+        .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $showAlert) {
+                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
         }
     }
 }
