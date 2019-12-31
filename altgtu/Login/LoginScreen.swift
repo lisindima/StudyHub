@@ -16,25 +16,34 @@ struct SignUpView : View {
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
-    @State private var loading = false
-    @State private var error = false
-    @State private var showAlert = false
+    @State private var loading: Bool = false
+    @State private var showAlert: Bool = false
     
     @EnvironmentObject var session: SessionStore
 
-    func signUp () {
+    func signUp() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        error = false
         session.signUp(email: email, password: password) { (result, error) in
-            let currentUser = Auth.auth().currentUser!
-            let db = Firestore.firestore()
-            db.collection("profile").document(currentUser.uid)
-                .setData([
+            self.loading = false
+            if error != nil {
+                self.showAlert = true
+                self.email = ""
+                self.password = ""
+                self.firstname = ""
+                self.lastname = ""
+            } else {
+                let currentUser = Auth.auth().currentUser!
+                let db = Firestore.firestore()
+                db.collection("profile").document(currentUser.uid).setData([
                     "firstname": self.firstname,
                     "lastname": self.lastname,
                     "email": self.email,
+                    "rValue": 88.0,
+                    "gValue": 86.0,
+                    "bValue": 214.0,
+                    "darkThemeOverride": false,
                     "notifyAlertProfile": false,
                     "dateBirthDay": NSDate(),
                     "adminSetting": false,
@@ -43,27 +52,14 @@ struct SignUpView : View {
                     "boolCodeAccess": false,
                     "biometricAccess": false,
                     "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
-                ])
-            {
-                err in
-                if let err = err {
-                    print("Error writing document: \(err)")
+                ]) {
+                    err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
                 }
-                    else
-                {
-                    print("Document successfully written!")
-                }
-            }
-                self.loading = false
-            if error != nil
-            {
-                self.showAlert.toggle()
-                self.error = true
-            }
-                else
-            {
-                self.email = ""
-                self.password = ""
             }
         }
     }
@@ -126,9 +122,9 @@ struct SignUpView : View {
 struct ResetPassword: View {
     
     @State private var email: String = ""
-    @State private var loading = false
-    @State private var error = false
-    @State private var showAlert = false
+    @State private var loading: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var choiceAlert: Int = 1
 
     @EnvironmentObject var session: SessionStore
     
@@ -136,15 +132,18 @@ struct ResetPassword: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        error = true
-        showAlert = true
-        session.sendPasswordReset(email: email) { (result, error) in
+        session.sendPasswordReset(email: email) { (error) in
             self.loading = false
             if error != nil {
-            }
-                else
-            {
                 self.email = ""
+                self.choiceAlert = 1
+                self.showAlert = true
+                print("Ошибка, пользователя не существует!")
+            } else {
+                self.email = ""
+                self.choiceAlert = 2
+                self.showAlert = true
+                print("Письмо отправлено!")
             }
         }
     }
@@ -169,7 +168,7 @@ struct ResetPassword: View {
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Восстановление")
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
+            Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
         }
         .edgesIgnoringSafeArea(.bottom)
     }
@@ -179,9 +178,8 @@ struct EmailLoginScreen: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var loading = false
-    @State private var error = false
-    @State private var showAlert = false
+    @State private var loading: Bool = false
+    @State private var showAlert: Bool = false
 
     @EnvironmentObject var session: SessionStore
     
@@ -189,17 +187,14 @@ struct EmailLoginScreen: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        error = false
         session.signIn(email: email, password: password) { (result, error) in
             self.loading = false
             if error != nil {
-                self.showAlert.toggle()
-                self.error = true
-            }
-                else
-            {
+                self.showAlert = true
                 self.email = ""
                 self.password = ""
+            } else {
+        
             }
         }
     }
@@ -275,12 +270,7 @@ struct EmailLoginScreen: View {
 
 struct AuthenticationScreen : View {
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var loading = false
-    @State private var error = false
-    @State private var showAlert = false
-    @State private var showSpashScreen = false
+    @State private var showSpashScreen: Bool = false
 
     @EnvironmentObject var session: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -356,9 +346,6 @@ struct AuthenticationScreen : View {
                 .edgesIgnoringSafeArea(.top)
                 .sheet(isPresented: self.$showSpashScreen) {
                     SplashScreen()
-                }
-                .alert(isPresented: self.$showAlert) {
-                    Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())

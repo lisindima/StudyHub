@@ -21,7 +21,7 @@ struct Note: View {
     let textButtons = (0..<ButtonData.iconAndTextTitles.count).reversed().map { i in
         AnyView(IconAndTextButton(imageName: ButtonData.iconAndTextImageNames[i], buttonText: ButtonData.iconAndTextTitles[i]))
     }
-    let mainButton = AnyView(MainButton(imageName: "heart.fill", colorHex: "eb3b5a", sizeButton: 60))
+    let mainButton = AnyView(MainButton(imageName: "plus", colorHex: "eb3b5a", sizeButton: 60))
     
     private func delete(at offsets: IndexSet) {
         noteStore.noteList.remove(atOffsets: offsets)

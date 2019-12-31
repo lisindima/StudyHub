@@ -63,7 +63,7 @@ struct IconAndTextButton: View {
 
 struct ButtonData {
     static let iconAndTextImageNames = [
-        "plus.circle.fill",
+        "pencil.circle.fill",
         "camera.circle.fill"
     ]
     static let iconAndTextTitles = [

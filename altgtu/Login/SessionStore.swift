@@ -355,9 +355,9 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     
     func sendPasswordReset(
         email: String,
-        handler: @escaping AuthDataResultCallback
+        handler: @escaping SendPasswordResetCallback
     ) {
-        Auth.auth().sendPasswordReset(withEmail: email)
+        Auth.auth().sendPasswordReset(withEmail: email, completion: handler)
     }
     
     func updateEmail(
