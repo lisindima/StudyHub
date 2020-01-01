@@ -373,6 +373,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     ) {
         Auth.auth().currentUser?.updatePassword(to: password)
     }
+    
+    func sendEmailVerification() {
+        Auth.auth().currentUser?.sendEmailVerification { (error) in
+
+        }
+    }
 }
 
 extension SessionStore: ASAuthorizationControllerDelegate {

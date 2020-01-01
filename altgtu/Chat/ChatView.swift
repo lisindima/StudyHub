@@ -12,9 +12,9 @@ import Firebase
 
 struct ChatView: View {
     
-    @EnvironmentObject var sessionChat: SessionChat
+    @EnvironmentObject var sessionChat: ChatStore
     @EnvironmentObject var session: SessionStore
-    @ObservedObject var message = SessionChat()
+    @ObservedObject var message = ChatStore()
     @State private var typeMessage: String = ""
     
     let currentUid = Auth.auth().currentUser!.uid

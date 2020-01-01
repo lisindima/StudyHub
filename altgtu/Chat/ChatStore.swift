@@ -1,5 +1,5 @@
 //
-//  SessionChat.swift
+//  ChatStore.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 29.10.2019.
@@ -18,7 +18,7 @@ struct DataMessages: Identifiable {
     var dateMessage: String
 }
 
-final class SessionChat: ObservableObject {
+final class ChatStore: ObservableObject {
     
     @Published var chatList: Array = [String]()
     @Published var messages: Array = [DataMessages]()

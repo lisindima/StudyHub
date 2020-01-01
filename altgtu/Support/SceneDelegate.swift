@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: AuthLogic()
                     .environmentObject(SessionStore())
-                    .environmentObject(SessionChat()))
+                    .environmentObject(ChatStore()))
                 self.window = window
                 window.makeKeyAndVisible()
         }

@@ -11,7 +11,7 @@ import SwiftUI
 struct ListChat: View {
     
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var sessionChat: SessionChat
+    @EnvironmentObject var sessionChat: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText : String = ""
     
@@ -93,7 +93,7 @@ struct ListChat: View {
 
 struct ListItem: View {
     
-    @EnvironmentObject var sessionChat: SessionChat
+    @EnvironmentObject var sessionChat: ChatStore
     
     var nameChat: String
     var body: some View {

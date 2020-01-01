@@ -57,6 +57,7 @@ struct SignUpView: View {
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
+                        self.session.sendEmailVerification()
                         print("Document successfully written!")
                     }
                 }
@@ -347,12 +348,13 @@ struct AuthenticationScreen: View {
 }
 
 final class SignInWithAppleWhite: UIViewRepresentable {
-        
+    
     func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
         return ASAuthorizationAppleIDButton(type: .default, style: .white)
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
+    
     }
 }
 
@@ -363,6 +365,7 @@ final class SignInWithAppleBlack: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
+    
     }
 }
 
