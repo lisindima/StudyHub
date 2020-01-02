@@ -13,15 +13,16 @@ struct CardList: View {
     
     @ObservedObject var newsApi = NewsAPI()
     @EnvironmentObject var session: SessionStore
+    
     @State private var showDetailsNews: Bool = false
+    
+    private var currentDate = Date()
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
         return dateFormatter
     }()
-    
-    var currentDate = Date()
     
     func showNewsSafari(_ news: Articles) {
         if let url = URL(string: news.url!) {
@@ -60,7 +61,7 @@ struct CardList: View {
                         }
                             .padding(.leading, 15)
                         Spacer()
-                        URLImage(URL(string:"\(session.urlImageProfile ?? "https://icon-library.net/images/no-image-icon/no-image-icon-13.jpg")")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                        URLImage(URL(string:"\(session.urlImageProfile!)")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
                             ProgressView($0) { progress in
                                 ZStack {
                                     if progress > 0.0 {

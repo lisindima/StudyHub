@@ -25,7 +25,7 @@ struct ChatView: View {
             ScrollView {
                 ForEach(message.messages) { item in
                     if self.currentUid == item.idUser {
-                        MessageView(message: item.message, sender: item.user, timeMsg: item.dateMessage)
+                        MessageView(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                             .contextMenu {
                                 Button(action:
@@ -40,7 +40,7 @@ struct ChatView: View {
                         }
                     }
                     else {
-                        MessageView1(message: item.message, sender: item.user, timeMsg: item.dateMessage)
+                        MessageView1(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                     }
                 }

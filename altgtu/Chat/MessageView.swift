@@ -17,7 +17,7 @@ struct MessageView: View {
     
     var message: String
     var sender: String
-    var timeMsg: String
+    var timeMessage: String
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -61,7 +61,7 @@ struct MessageView: View {
                             Spacer()
                     }
                     HStack {
-                        Text(timeMsg)
+                        Text(timeMessage)
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
                         Spacer()
@@ -82,7 +82,7 @@ struct MessageView1: View {
 
     var message: String
     var sender: String
-    var timeMsg: String
+    var timeMessage: String
     
     var body: some View {
         VStack(alignment: .trailing) {
@@ -107,7 +107,7 @@ struct MessageView1: View {
                     }
                     HStack {
                         Spacer()
-                        Text(timeMsg)
+                        Text(timeMessage)
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
                     }.padding(.trailing, 3)
