@@ -299,21 +299,19 @@ struct ProfileView: View {
                             .padding()
                 })
             }
-            .navigationBarItems(leading: Button (action: {
-                        self.showActionSheetExit = true
-                })
-                {
-                    Image(systemName: "square.and.arrow.down")
-                        .imageScale(.large)
-                        .rotationEffect(.degrees(90))
-                        .foregroundColor(.white)
-            }, trailing: Button (action: {
-                        self.isPresented = true
-                })
-                {
-                    Image(systemName: "gear")
-                        .imageScale(.large)
-                        .foregroundColor(.white)
+            .navigationBarItems(leading: Button(action: {
+                self.showActionSheetExit = true
+            }) {
+                Image(systemName: "square.and.arrow.down")
+                    .imageScale(.large)
+                    .rotationEffect(.degrees(90))
+                    .foregroundColor(.white)
+            }, trailing: Button(action: {
+                self.isPresented = true
+            }) {
+                Image(systemName: "gear")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
             })
             .actionSheet(isPresented: $showActionSheetExit) {
                 ActionSheet(title: Text("Вы уверены, что хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {

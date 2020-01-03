@@ -82,7 +82,6 @@ struct TitleView: View {
                 .customTitleText()
             Text("АлтГТУ")
                 .customTitleText()
-                .foregroundColor(.defaultColorApp)
         }
     }
 }

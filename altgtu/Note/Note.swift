@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import FloatingButton
 
 struct Note: View {
     
@@ -17,11 +16,6 @@ struct Note: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    let textButtons = (0..<ButtonData.iconAndTextTitles.count).reversed().map { i in
-        AnyView(IconAndTextButton(imageName: ButtonData.iconAndTextImageNames[i], buttonText: ButtonData.iconAndTextTitles[i]))
-    }
-    let mainButton = AnyView(MainButton(imageName: "plus", colorHex: "eb3b5a", sizeButton: 60))
     
     private func delete(at offsets: IndexSet) {
         noteStore.noteList.remove(atOffsets: offsets)
@@ -67,7 +61,8 @@ struct Note: View {
                             Button(action: {
                                 self.searchText = ""
                             }, label: {
-                                Text("Отмена").foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                Text("Отмена")
+                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 })
                             }
                         }
@@ -78,22 +73,26 @@ struct Note: View {
                                 ForEach(noteStore.noteList.filter {
                                     self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)}, id: \.self) { item in
                                     Text(item)
+                                }
+                                    .onDelete(perform: delete)
+                                    .onMove(perform: move)
                             }
-                                .onDelete(perform: delete)
-                                .onMove(perform: move)
-                        }
-                        VStack {
-                            Spacer()
-                                .layoutPriority(10)
-                            HStack {
+                            VStack {
                                 Spacer()
-                                    .layoutPriority(10)
-                                FloatingButton(mainButtonView: mainButton, buttons: textButtons)
-                                    .straight()
-                                    .direction(.top)
-                                    .alignment(.right)
-                                    .spacing(10)
-                                    .initialOpacity(0)
+                                HStack {
+                                    Spacer()
+                                    Button(action: {
+                                        print("plus")
+                                    }) {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 60, height: 60)
+                                                .shadow(radius: 10)
+                                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                            Image(systemName: "plus")
+                                                .foregroundColor(.white)
+                                        }
+                                    }
                                 }.padding(20)
                             }
                         }
@@ -107,9 +106,8 @@ struct Note: View {
                     }
                     .navigationBarTitle(Text("Заметки"))
                     .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                            self.showActionSheetSort = true
-                    })
-                    {
+                        self.showActionSheetSort = true
+                    }) {
                         Image(systemName: "line.horizontal.3.decrease.circle")
                             .imageScale(.large)
                     })
