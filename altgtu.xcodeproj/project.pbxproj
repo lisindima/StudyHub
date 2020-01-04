@@ -24,7 +24,6 @@
 		CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED7C232E5AE20047A8A0 /* LottieView.swift */; };
 		CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */; };
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
-		CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED88232E5B080047A8A0 /* Today.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12E7ED23596F9E00115B2E /* ChatView.swift */; };
 		CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* LessonDetail.swift */; };
@@ -166,7 +165,6 @@
 		CB0AED7C232E5AE20047A8A0 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
-		CB0AED88232E5B080047A8A0 /* Today.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "АлтГТУ.entitlements"; sourceTree = "<group>"; };
 		CB12E7ED23596F9E00115B2E /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -310,9 +308,9 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
+				CBAF3CA523BF3EE6009D0ED2 /* Bert */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
-				CB0AED88232E5B080047A8A0 /* Today.swift */,
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB28B8D92361459900A93F28 /* News */,
 				CBB01FE423B45522001D4CBB /* Note */,
@@ -497,6 +495,13 @@
 				CB4B284123823FEC00E11A47 /* 27-loading.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		CBAF3CA523BF3EE6009D0ED2 /* Bert */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bert;
 			sourceTree = "<group>";
 		};
 		CBB01FE423B45522001D4CBB /* Note */ = {
@@ -813,7 +818,6 @@
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
-				CB0AED8B232E5B080047A8A0 /* Today.swift in Sources */,
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */,

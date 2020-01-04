@@ -57,12 +57,12 @@ struct Note: View {
                                 .padding(6.5)
                                 .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
                                     .cornerRadius(9)
-                                if !self.searchText.isEmpty {
-                            Button(action: {
-                                self.searchText = ""
-                            }, label: {
-                                Text("Отмена")
-                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            if !self.searchText.isEmpty {
+                                Button(action: {
+                                    self.searchText = ""
+                                }, label: {
+                                    Text("Отмена")
+                                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                 })
                             }
                         }
