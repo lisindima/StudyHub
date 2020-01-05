@@ -48,7 +48,7 @@ struct SignUpView: View {
                     "dateBirthDay": NSDate(),
                     "adminSetting": false,
                     "notifyMinute": 10,
-                    "pinCodeAccess": "0",
+                    "pinCodeAccess": "",
                     "boolCodeAccess": false,
                     "biometricAccess": false,
                     "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"

@@ -21,12 +21,7 @@ struct User {
     var photoURL: URL?
     var displayName: String?
     
-    static let `default` = Self(
-        uid: "stockID",
-        displayName: "test test",
-        email: "test@test.com",
-        photoURL: nil
-    )
+    static let `default` = Self(uid: "stockID", displayName: "test test", email: "test@test.com", photoURL: nil)
     
     init(uid: String, displayName: String?, email: String?, photoURL: URL?) {
         self.uid = uid
@@ -146,12 +141,12 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.dateBirthDay = Date()
                     self.email = "error@error.com"
                     self.notifyMinute = 10
-                    self.rValue = 1
-                    self.gValue = 1
-                    self.bValue = 1
+                    self.rValue = 88.0
+                    self.gValue = 86.0
+                    self.bValue = 214.0
                     self.adminSetting = false
                     self.darkThemeOverride = false
-                    self.pinCodeAccess = "0"
+                    self.pinCodeAccess = ""
                     self.boolCodeAccess = false
                     self.biometricAccess = false
             }

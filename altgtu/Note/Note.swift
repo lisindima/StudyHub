@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Note: View {
     
+    @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
     @State private var searchText: String = ""
     
@@ -17,17 +18,13 @@ struct Note: View {
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    private func delete(at offsets: IndexSet) {
-        noteStore.noteList.remove(atOffsets: offsets)
-    }
-    
     private func move(from source: IndexSet, to destination: Int) {
-        noteStore.noteList.move(fromOffsets: source, toOffset: destination)
+        noteStore.dataNote.move(fromOffsets: source, toOffset: destination)
     }
     
     var body: some View {
         Group {
-            if noteStore.noteList.isEmpty {
+            if noteStore.dataNote.isEmpty {
                 NavigationView {
                     VStack(alignment: .center) {
                         HStack {
@@ -56,7 +53,7 @@ struct Note: View {
                             }
                                 .padding(6.5)
                                 .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                                    .cornerRadius(9)
+                                .cornerRadius(9)
                             if !self.searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -70,11 +67,14 @@ struct Note: View {
                             .animation(.default)
                         ZStack {
                             List {
-                                ForEach(noteStore.noteList.filter {
-                                    self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)}, id: \.self) { item in
-                                    Text(item)
+                                ForEach(noteStore.dataNote) { item in
+                                    NavigationLink(destination: NoteDetails(dataNote: item)) {
+                                        Text(item.note)
+                                    }
                                 }
-                                    .onDelete(perform: delete)
+                                    .onDelete { (index) in
+                                        self.noteStore.deleteNote(datas: self.noteStore, index: index)
+                                    }
                                     .onMove(perform: move)
                             }
                             VStack {
@@ -82,7 +82,7 @@ struct Note: View {
                                 HStack {
                                     Spacer()
                                     Button(action: {
-                                        print("plus")
+                                        self.showAddNewNote = true
                                     }) {
                                         ZStack {
                                             Circle()
@@ -97,6 +97,12 @@ struct Note: View {
                             }
                         }
                     }
+                    .sheet(isPresented: $showAddNewNote, onDismiss: {
+                        
+                    }, content: {
+                        NewNote()
+                            .environmentObject(NoteStore())
+                    })
                     .actionSheet(isPresented: $showActionSheetSort) {
                         ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
                                     
@@ -113,6 +119,36 @@ struct Note: View {
                     })
                 }
             }
+        }
+    }
+}
+
+struct NewNote: View {
+    
+    @EnvironmentObject var noteStore: NoteStore
+    @State private var textNote: String = ""
+    
+    func addNote() {
+        noteStore.addNote(note: textNote)
+    }
+    
+    var body: some View {
+        VStack {
+            TextField("Заметка", text: $textNote)
+            Button(action: addNote) {
+                Text("Сохранить")
+            }
+        }
+    }
+}
+
+struct NoteDetails: View {
+    
+    var dataNote: DataNote
+    
+    var body: some View {
+        VStack {
+            Text(dataNote.note)
         }
     }
 }

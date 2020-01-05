@@ -9,15 +9,6 @@
 import SwiftUI
 import Firebase
 
-struct DataMessages: Identifiable {
-    
-    var id: String
-    var user: String
-    var message: String
-    var idUser: String
-    var dateMessage: String
-}
-
 final class ChatStore: ObservableObject {
     
     @Published var chatList: Array = [String]()
@@ -32,13 +23,13 @@ final class ChatStore: ObservableObject {
                 print((err?.localizedDescription)!)
                 return
             }
-            for i in querySnapshot!.documentChanges {
-                if i.type == .added {
-                    let user = i.document.get("user") as! String
-                    let message = i.document.get("msg") as! String
-                    let idUser = i.document.get("idUser") as! String
-                    let dateMessage = i.document.get("dateMsg") as! String
-                    let id = i.document.documentID
+            for item in querySnapshot!.documentChanges {
+                if item.type == .added {
+                    let user = item.document.get("user") as! String
+                    let message = item.document.get("msg") as! String
+                    let idUser = item.document.get("idUser") as! String
+                    let dateMessage = item.document.get("dateMsg") as! String
+                    let id = item.document.documentID
                     
                     self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
                 }
@@ -67,4 +58,13 @@ final class ChatStore: ObservableObject {
             }
         }
     }
+}
+
+struct DataMessages: Identifiable {
+    
+    var id: String
+    var user: String
+    var message: String
+    var idUser: String
+    var dateMessage: String
 }
