@@ -33,7 +33,6 @@ struct User {
 
 final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegate {
 
-    @Published var currentLoginUser = Auth.auth().currentUser
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
     @Published var lastname: String!
@@ -50,7 +49,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var group: Array = ["БИ-51", "ПИЭ-51", "8ПИЭ-91"]
     @Published var faculty: Array = ["ФИТ", "ГФ", "ФСТ"]
     @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
-    @Published var imageProfile = UIImage()
+    @Published var imageProfile: UIImage = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
     @Published var bValue: Double!
@@ -270,18 +269,18 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
             let randoms: [UInt8] = (0 ..< 16).map { _ in
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-            if errorCode != errSecSuccess {
-                fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-        }
-            return random
-        }
-        randoms.forEach { random in
-            if length == 0 {
-                return
-        }
-            if random < charset.count {
-                result.append(charset[Int(random)])
-                remainingLength -= 1
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            randoms.forEach { random in
+                if length == 0 {
+                    return
+                }
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
                 }
             }
         }
@@ -298,7 +297,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(nonce)
 
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self as ASAuthorizationControllerDelegate
         authorizationController.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         authorizationController.performRequests()
@@ -310,7 +309,6 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         let hashString = hashedData.compactMap {
             return String(format: "%02x", $0)
         }.joined()
-
         return hashString
     }
     
@@ -322,7 +320,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         }
     }
     
-    func unbind () {
+    func unbind() {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
@@ -332,41 +330,24 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         unbind()
     }
     
-    func signUp(
-        email: String,
-        password: String,
-        handler: @escaping AuthDataResultCallback
-    ) {
+    func signUp(email: String, password: String, handler: @escaping AuthDataResultCallback) {
         Auth.auth().createUser(withEmail: email, password: password, completion: handler)
     }
     
-    func signIn(
-        email: String,
-        password: String,
-        handler: @escaping AuthDataResultCallback
-    ) {
+    func signIn(email: String, password: String, handler: @escaping AuthDataResultCallback) {
         Auth.auth().signIn(withEmail: email, password: password, completion: handler)
     }
     
-    func sendPasswordReset(
-        email: String,
-        handler: @escaping SendPasswordResetCallback
-    ) {
+    func sendPasswordReset(email: String, handler: @escaping SendPasswordResetCallback) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: handler)
     }
     
-    func updateEmail(
-        email: String,
-        handler: @escaping AuthDataResultCallback
-    ) {
-        Auth.auth().currentUser?.updateEmail(to: email)
+    func updateEmail(email: String, handler: @escaping UserProfileChangeCallback) {
+        Auth.auth().currentUser?.updateEmail(to: email, completion: handler)
     }
     
-    func updatePassword(
-        password: String,
-        handler: @escaping AuthDataResultCallback
-    ) {
-        Auth.auth().currentUser?.updatePassword(to: password)
+    func updatePassword(password: String, handler: @escaping UserProfileChangeCallback) {
+        Auth.auth().currentUser?.updatePassword(to: password, completion: handler)
     }
     
     func sendEmailVerification() {
@@ -375,42 +356,39 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         }
     }
     
-    func reauthenticateUser() {
-        
+    func reauthenticateUser(email: String, password: String) {
+        let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+            } else {
+                print("User re-authenticated.")
+            }
+        })
     }
 }
 
 extension SessionStore: ASAuthorizationControllerDelegate {
-
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-      guard let nonce = currentNonce else {
-        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-      }
-      guard let appleIDToken = appleIDCredential.identityToken else {
-        print("Unable to fetch identity token")
-        return
-      }
-      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-        return
-      }
-      // Initialize a Firebase credential.
-      let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                idToken: idTokenString,
-                                                rawNonce: nonce)
-      // Sign in with Firebase.
-      Auth.auth().signIn(with: credential) { (authResult, error) in
-        if (error != nil) {
-          // Error. If error.code == .MissingOrInvalidNonce, make sure
-          // you're sending the SHA256-hashed nonce as a hex string with
-          // your request to Apple.
-            print(error?.localizedDescription as Any)
-          return
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
         }
-        // User is signed in to Firebase with Apple.
-        // ...
-      }
+        guard let appleIDToken = appleIDCredential.identityToken else {
+            print("Unable to fetch identity token")
+            return
+        }
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+            return
+        }
+        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if (error != nil) {
+                    print(error?.localizedDescription as Any)
+                    return
+                }
+            }
+        }
     }
-  }
 }

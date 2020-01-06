@@ -207,30 +207,26 @@ struct ProfileView: View {
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 if self.setModalView == 1 {
                     self.session.uploadImageToCloudStorage()
-                }
-                if self.setModalView == 2 {
+                } else if self.setModalView == 2 {
                     print("SHARE")
+                } else if self.setModalView == 3 {
+                   print("Credential")
                 }
             }, content: {
                 if self.setModalView == 1 {
                     ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$session.selectedSourceType)
                         .edgesIgnoringSafeArea(.bottom)
-                }
-                if self.setModalView == 2 {
+                } else if self.setModalView == 2 {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                         .edgesIgnoringSafeArea(.bottom)
+                } else if self.setModalView == 3 {
+                    Credential()
                 }
             })
             .actionSheet(isPresented: $showActionSheet) {
                 ActionSheet(title: Text("Вы уверены, что хотите удалить свой аккаунт?"), message: Text("Вы не сможете восстановить его после удаления!"), buttons: [.destructive(Text("Удалить аккаунт")) {
-                        self.session.currentLoginUser?.delete { error in
-                            if let error = error {
-                                print("Error delete users: \(error)")
-                            } else {
-                                self.session.signOut()
-                                print("Deleting...")
-                            }
-                        }
+                        self.setModalView = 3
+                        self.isShowingModalView = true
                     }, .cancel()
                 ])
             }
