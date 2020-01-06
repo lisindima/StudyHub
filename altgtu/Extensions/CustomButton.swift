@@ -22,9 +22,8 @@ struct CustomButton : View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                if loading {
-                    ActivityIndicatorButton()
-                }
+                //ActivityIndicatorButton()
+                //    .opacity(loading == true ? 1 : 0)
                 Spacer()
             }
         }

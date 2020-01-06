@@ -374,6 +374,10 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
 
         }
     }
+    
+    func reauthenticateUser() {
+        
+    }
 }
 
 extension SessionStore: ASAuthorizationControllerDelegate {

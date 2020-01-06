@@ -21,7 +21,7 @@ struct SignUpView: View {
     
     @EnvironmentObject var session: SessionStore
 
-    func signUp() {
+    private func signUp() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
@@ -126,7 +126,7 @@ struct ResetPassword: View {
 
     @EnvironmentObject var session: SessionStore
     
-    func sendPasswordReset() {
+    private func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
@@ -136,7 +136,7 @@ struct ResetPassword: View {
                 self.email = ""
                 self.choiceAlert = 1
                 self.showAlert = true
-                print("Ошибка, пользователя не существует!")
+                print("Ошибка, пользователь не существует!")
             } else {
                 self.email = ""
                 self.choiceAlert = 2
@@ -165,10 +165,10 @@ struct ResetPassword: View {
         }
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Восстановление")
+        .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
             Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -181,7 +181,7 @@ struct EmailLoginScreen: View {
 
     @EnvironmentObject var session: SessionStore
     
-    func signIn() {
+    private func signIn() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
@@ -269,7 +269,7 @@ struct AuthenticationScreen: View {
     @EnvironmentObject var session: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    func funcSplashScreen() {
+    private func funcSplashScreen() {
         let defaults = UserDefaults.standard
             if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
                 print("НЕ первый запуск")

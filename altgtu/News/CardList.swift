@@ -83,59 +83,37 @@ struct CardList: View {
                             }
                         }.padding(.top, 30)
                         VStack(alignment: .center) {
-                            ScrollView(.horizontal, showsIndicators: false){
-                               VStack (alignment: .leading){
-                                   HStack{
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "")}, label: {Text("Популярное")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.red)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                        Divider()
-                                            .frame(height: 90)
-                                            .padding(.horizontal, 8)
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=sports")}, label: {Text("Спорт")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.gray)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")}, label: {Text("Развлечение")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.blue)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=technology")}, label: {Text("Технологии")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.green)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=health")}, label: {Text("Здоровье")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.purple)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                        Button(action: {self.newsApi.fetchCategoryNews(category: "&category=business")}, label: {Text("Бизнес")
-                                            .frame(width: 120, height: 110)
-                                            .background(Color.yellow)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)})
-                                    }
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "")})
+                                        .padding(.trailing)
+                                    SelectNewsButton(nameButton: "Спорт", colorButton: Color.gray, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
+                                        .padding(.horizontal)
+                                    SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")})
+                                        .padding(.horizontal)
+                                    SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=technology")})
+                                        .padding(.horizontal)
+                                    SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=health")})
+                                        .padding(.horizontal)
+                                    SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=business")})
+                                        .padding(.leading)
+                                        .padding(.trailing, 10)
                                 }.padding()
                             }
-                            ForEach(self.newsApi.articles, id: \.self) { i in
-                                CardView(article: i)
+                            ForEach(self.newsApi.articles, id: \.self) { item in
+                                CardView(article: item)
                                     .onTapGesture {
                                         self.showDetailsNews = true
                                     }
                                     .sheet(isPresented: self.$showDetailsNews, onDismiss: {
                                     
                                     }, content: {
-                                        DetailsNews(article: i)
+                                        DetailsNews(article: item)
                                     })
                                     .contextMenu {
                                         Button(action:
                                             {
-                                                self.showNewsSafari(i)
+                                                self.showNewsSafari(item)
                                         }){
                                             HStack {
                                                 Image(systemName: "safari")
@@ -146,6 +124,35 @@ struct CardList: View {
                         }
                     }
                 }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+            }
+        }
+    }
+}
+
+struct SelectNewsButton: View {
+    
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+
+    var nameButton: String
+    var colorButton: Color
+    var sizeButton: CGFloat
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                    .frame(width: sizeButton, height: sizeButton)
+                    .background(colorButton)
+                    .offset(x: 10, y: 10)
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                    .frame(width: sizeButton, height: sizeButton)
+                    .background(Color.white)
+                Text(nameButton)
+                    .foregroundColor(colorButton)
+                    .fontWeight(.semibold)
             }
         }
     }
