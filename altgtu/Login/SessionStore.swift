@@ -354,17 +354,6 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
 
         }
     }
-    
-    func reauthenticateUser(email: String, password: String) {
-        let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
-            if error != nil {
-                print(error?.localizedDescription as Any)
-            } else {
-                print("User re-authenticated.")
-            }
-        })
-    }
 }
 
 extension SessionStore: ASAuthorizationControllerDelegate {

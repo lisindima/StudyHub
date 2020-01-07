@@ -227,7 +227,7 @@ struct ProfileView: View {
                 } else if self.setModalView == 2 {
                     print("SHARE")
                 } else if self.setModalView == 3 {
-                   print("Credential")
+                   print("CredentialDeleteUser")
                 }
             }, content: {
                 if self.setModalView == 1 {
@@ -237,7 +237,7 @@ struct ProfileView: View {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                         .edgesIgnoringSafeArea(.bottom)
                 } else if self.setModalView == 3 {
-                    Credential()
+                    CredentialDeleteUser()
                 }
             })
             .actionSheet(isPresented: $showActionSheet) {
