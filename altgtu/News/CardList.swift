@@ -87,7 +87,7 @@ struct CardList: View {
                                 HStack {
                                     SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "")})
                                         .padding(.trailing)
-                                    SelectNewsButton(nameButton: "Спорт", colorButton: Color.gray, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
+                                    SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
                                         .padding(.horizontal)
                                     SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")})
                                         .padding(.horizontal)
@@ -142,14 +142,22 @@ struct SelectNewsButton: View {
         Button(action: action) {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                    .fill(colorButton)
                     .frame(width: sizeButton, height: sizeButton)
-                    .background(colorButton)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                            .frame(width: sizeButton, height: sizeButton)
+                    )
                     .offset(x: 10, y: 10)
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                    .fill(colorScheme == .dark ? Color.black : Color.white)
                     .frame(width: sizeButton, height: sizeButton)
-                    .background(Color.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
+                            .frame(width: sizeButton, height: sizeButton)
+                    )
                 Text(nameButton)
                     .foregroundColor(colorButton)
                     .fontWeight(.semibold)
