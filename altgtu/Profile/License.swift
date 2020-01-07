@@ -20,7 +20,9 @@ struct License: View {
             NavigationLink(destination: KeyboardObservingLicense()) {
                 Text("Keyboard Observing")
             }
-        }.navigationBarTitle(Text("Лицензии"), displayMode: .inline)
+        }
+            .environment(\.horizontalSizeClass, .regular)
+            .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
     }
 }
 

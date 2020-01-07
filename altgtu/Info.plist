@@ -53,35 +53,29 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeHome</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Главная</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).first</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeBookmark</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Расписание</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).lesson</string>
+			<string>shortcutItem.lesson</string>
 		</dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeCompose</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Заметки</string>
+            <key>UIApplicationShortcutItemSubtitle</key>
+            <string>Добавить новую</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>shortcutItem.note</string>
+        </dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeMessage</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Чат</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).chat</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeContact</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Профиль</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).profile</string>
+			<string>shortcutItem.chat</string>
 		</dict>
 	</array>
 	<key>UILaunchStoryboardName</key>

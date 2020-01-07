@@ -19,6 +19,7 @@ struct ProfileView: View {
     @State private var showActionSheetExit: Bool = false
     @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
+    @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
@@ -100,7 +101,6 @@ struct ProfileView: View {
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("Фамилия", text: $session.lastname)
                     TextField("Имя", text: $session.firstname)
-                    TextField("Эл.почта", text: $session.email)
                     DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
                     HStack {
                         Button("Изменить фотографию") {
@@ -109,12 +109,12 @@ struct ProfileView: View {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
                                   .default(Text("Сделать фотографию")) {
                                     self.setModalView = 1
+                                    self.selectedSourceType = .camera
                                     self.isShowingModalView = true
-                                    self.session.selectedSourceType = .camera
                                 },.default(Text("Выбрать фотографию")) {
                                     self.setModalView = 1
+                                    self.selectedSourceType = .photoLibrary
                                     self.isShowingModalView = true
-                                    self.session.selectedSourceType = .photoLibrary
                                 },.destructive(Text("Удалить фотографию")) {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
                                 },.cancel()
@@ -131,6 +131,22 @@ struct ProfileView: View {
                     }
                     NavigationLink(destination: SetAuth()) {
                         Text("Вариаты авторизации")
+                    }
+                    HStack {
+                        Button("Изменить эл.почту") {
+                            print("почта")
+                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        Spacer()
+                        Image(systemName: "envelope")
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                    }
+                    HStack {
+                        Button("Изменить пароль") {
+                            print("пароль")
+                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        Spacer()
+                        Image(systemName: "lock.shield")
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
@@ -204,6 +220,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            .environment(\.horizontalSizeClass, .regular)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 if self.setModalView == 1 {
                     self.session.uploadImageToCloudStorage()
@@ -214,7 +231,7 @@ struct ProfileView: View {
                 }
             }, content: {
                 if self.setModalView == 1 {
-                    ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$session.selectedSourceType)
+                    ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
                         .edgesIgnoringSafeArea(.bottom)
                 } else if self.setModalView == 2 {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
