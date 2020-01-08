@@ -95,7 +95,7 @@ struct SignUpView: View {
             }
                 .padding(.horizontal)
                 .padding(.bottom, 8)
-            CustomButton(label: loading == true ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading)
+            CustomButton(label: loading == true ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -151,7 +151,7 @@ struct ResetPassword: View {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
                 .keyboardType(.emailAddress)
-            CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading)
+            CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -226,7 +226,7 @@ struct EmailLoginScreen: View {
                         .padding(.bottom, 8)
                 }
             }
-            CustomButton(label: loading == true ? "Загрузка" : "Войти", action: signIn, loading: loading)
+            CustomButton(label: loading == true ? "Загрузка" : "Войти", action: signIn, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()

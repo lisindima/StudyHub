@@ -373,7 +373,7 @@ extension SessionStore: ASAuthorizationControllerDelegate {
         let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if (error != nil) {
-                    print(error?.localizedDescription as Any)
+                    print((error?.localizedDescription)!)
                     return
                 }
             }

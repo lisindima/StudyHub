@@ -23,7 +23,7 @@ struct CredentialDeleteUser: View {
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
             if error != nil {
-                print(error?.localizedDescription as Any)
+                print((error?.localizedDescription)!)
             } else {
                 print("User re-authenticated.")
             }
@@ -54,11 +54,11 @@ struct CredentialDeleteUser: View {
                         .modifier(InputModifier())
                         .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: reauthenticateUser, loading: loading)
+                CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
                     .disabled(loading)
                     .padding()
                 Divider()
-                Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
+                Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.leading)
@@ -66,7 +66,7 @@ struct CredentialDeleteUser: View {
                     .padding()
                 Spacer()
             }
-            .navigationBarTitle(Text("Введите свои учетные данные"))
+            .navigationBarTitle(Text("Удаление аккаунта"))
             .edgesIgnoringSafeArea(.bottom)
             .alert(isPresented: $showAlert) {
                 Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
