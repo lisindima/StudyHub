@@ -96,7 +96,7 @@ struct PinSetting: View {
         .onAppear(perform: checkCurrentBiometricType)
         .navigationBarTitle(Text("Настройка входа"), displayMode: .inline)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Хорошо")) {
+            Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Закрыть")) {
                     self.presentationMode.wrappedValue.dismiss()
                 }
             )

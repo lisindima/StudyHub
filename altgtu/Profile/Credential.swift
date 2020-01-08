@@ -13,10 +13,10 @@ struct DeleteUser: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-    @State private var textError: String = ""
 
     @EnvironmentObject var session: SessionStore
     
@@ -86,9 +86,9 @@ struct DeleteUser: View {
             .alert(isPresented: $showAlert) {
                 switch activeAlert {
                     case .first:
-                        return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Хорошо")))
+                        return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
                     case .second:
-                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь:)"), dismissButton: .default(Text("Выйти")) {
+                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь:)"), dismissButton: .default(Text("Закрыть")) {
                             //self.session.signOut()
                         }
                     )
@@ -102,11 +102,14 @@ struct ChangeEmail: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var newEmail: String = ""
+    @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
+    @State private var testBool: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-    @State private var textError: String = ""
 
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
@@ -120,23 +123,31 @@ struct ChangeEmail: View {
                 print(self.textError)
             } else {
                 print("User re-authenticated.")
-                self.session.updateEmail(email: self.email) { (error) in
-                    if error != nil {
-                        self.textError = (error?.localizedDescription)!
-                        self.showAlert = true
-                    } else {
-                        self.loading = false
-                        self.activeAlert = .second
-                        self.showAlert = true
-                    }
-                }
+                self.loading = false
+                self.testBool = true
+                
             }
         })
     }
+    
+    private func changeEmail() {
+        self.loading = true
+        self.session.updateEmail(email: self.newEmail) { (error) in
+            if error != nil {
+                self.loading = false
+                self.textError = (error?.localizedDescription)!
+                self.showAlert = true
+            } else {
+                self.loading = false
+                self.activeAlert = .second
+                self.showAlert = true
+            }
+        }
+    }
 
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
+        VStack(alignment: .center) {
+            if testBool == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .keyboardType(.emailAddress)
@@ -158,7 +169,22 @@ struct ChangeEmail: View {
                         .modifier(InputModifier())
                         .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
+                CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
+                    .disabled(loading)
+                    .padding()
+                Divider()
+                Text("Чтобы изменить эл.почту вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .padding()
+                Spacer()
+            } else {
+                CustomInput(text: $newEmail, name: "Введите новую эл.почту")
+                    .padding([.top, .horizontal])
+                    .keyboardType(.emailAddress)
+                CustomButton(label: loading == true ? "Загрузка" : "Изменить эл.почту", action: changeEmail, loading: loading, colorButton: Color.green)
                     .disabled(loading)
                     .padding()
                 Divider()
@@ -170,18 +196,18 @@ struct ChangeEmail: View {
                     .padding()
                 Spacer()
             }
-            .navigationBarTitle(Text("Удаление аккаунта"))
-            .edgesIgnoringSafeArea(.bottom)
-            .alert(isPresented: $showAlert) {
-                switch activeAlert {
-                    case .first:
-                        return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Хорошо")))
-                    case .second:
-                        return Alert(title: Text("Эл.почта изменена!"), message: Text("Вы успешно изменили свою электронную почту."), dismissButton: .default(Text("Выйти")) {
-                            //self.session.signOut()
-                        }
-                    )
-                }
+        }
+        .navigationBarTitle(Text("Изменение эл.почты"), displayMode: .inline)
+        .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $showAlert) {
+            switch activeAlert {
+                case .first:
+                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+                case .second:
+                    return Alert(title: Text("Эл.почта изменена!"), message: Text("Вы успешно изменили свою электронную почту."), dismissButton: .default(Text("Закрыть")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                )
             }
         }
     }
@@ -191,11 +217,14 @@ struct ChangePassword: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var textError: String = ""
+    @State private var newPassword: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
+    @State private var testBool: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-    @State private var textError: String = ""
 
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
@@ -209,23 +238,30 @@ struct ChangePassword: View {
                 print(self.textError)
             } else {
                 print("User re-authenticated.")
-                Auth.auth().currentUser?.delete { error in
-                    if error != nil {
-                        self.textError = (error?.localizedDescription)!
-                        self.showAlert = true
-                    } else {
-                        self.loading = false
-                        self.activeAlert = .second
-                        self.showAlert = true
-                    }
-                }
+                self.loading = false
+                self.testBool = true
             }
         })
     }
+    
+    private func changePassword() {
+        self.loading = true
+        self.session.updatePassword(password: self.newPassword) { (error) in
+            if error != nil {
+                self.loading = false
+                self.textError = (error?.localizedDescription)!
+                self.showAlert = true
+            } else {
+                self.loading = false
+                self.activeAlert = .second
+                self.showAlert = true
+            }
+        }
+    }
 
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
+        VStack(alignment: .center) {
+            if testBool == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .keyboardType(.emailAddress)
@@ -247,11 +283,41 @@ struct ChangePassword: View {
                         .modifier(InputModifier())
                         .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
+                CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
                     .disabled(loading)
                     .padding()
                 Divider()
-                Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
+                Text("Чтобы изменить пароль вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .padding()
+                Spacer()
+            } else {
+                VStack(alignment: .trailing) {
+                    HStack {
+                        SecureField("Пароль", text: $newPassword)
+                        if newPassword.isEmpty {
+                        
+                        }
+                        if 0 < newPassword.count && newPassword.count < 8 {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.red)
+                        }
+                        if 8 <= newPassword.count{
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                        }
+                    }
+                        .modifier(InputModifier())
+                        .padding([.horizontal, .top])
+                }
+                CustomButton(label: loading == true ? "Загрузка" : "Изменить пароль", action: changePassword, loading: loading, colorButton: Color.green)
+                    .disabled(loading)
+                    .padding()
+                Divider()
+                Text("Чтобы изменить пароль вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.leading)
@@ -259,18 +325,18 @@ struct ChangePassword: View {
                     .padding()
                 Spacer()
             }
-            .navigationBarTitle(Text("Удаление аккаунта"))
-            .edgesIgnoringSafeArea(.bottom)
-            .alert(isPresented: $showAlert) {
-                switch activeAlert {
-                    case .first:
-                        return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Хорошо")))
-                    case .second:
-                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь:)"), dismissButton: .default(Text("Выйти")) {
-                            //self.session.signOut()
-                        }
-                    )
-                }
+        }
+        .navigationBarTitle(Text("Изменение пароля"), displayMode: .inline)
+        .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $showAlert) {
+            switch activeAlert {
+                case .first:
+                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+                case .second:
+                    return Alert(title: Text("Пароль изменен!"), message: Text("Вы успешно изменили свой пароль."), dismissButton: .default(Text("Закрыть")) {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                )
             }
         }
     }

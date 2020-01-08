@@ -111,7 +111,7 @@ struct SignUpView: View {
         .navigationBarTitle("Регистрация")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Хорошо")))
+            Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }
@@ -167,7 +167,7 @@ struct ResetPassword: View {
         .navigationBarTitle("Восстановление")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
+            Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }
@@ -257,7 +257,7 @@ struct EmailLoginScreen: View {
         .navigationBarTitle("Вход")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Хорошо")))
+                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }

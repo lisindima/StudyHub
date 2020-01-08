@@ -132,21 +132,21 @@ struct ProfileView: View {
                     NavigationLink(destination: SetAuth()) {
                         Text("Вариаты авторизации")
                     }
-                    HStack {
-                        Button("Изменить эл.почту") {
-                            print("почта")
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
+                    NavigationLink(destination: ChangeEmail()
+                        .environmentObject(SessionStore())
+                    ) {
                         Image(systemName: "envelope")
+                            .frame(width: 24, height: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Изменить эл.почту")
                     }
-                    HStack {
-                        Button("Изменить пароль") {
-                            print("пароль")
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
+                    NavigationLink(destination: ChangePassword()
+                        .environmentObject(SessionStore())
+                    ) {
                         Image(systemName: "lock.shield")
+                            .frame(width: 24, height: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Изменить пароль")
                     }
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
@@ -249,7 +249,7 @@ struct ProfileView: View {
                 ])
             }
             .alert(isPresented: $showAlertCache) {
-                Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Хорошо")))
+                Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
             }
             .navigationBarTitle(Text("Настройки"), displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {

@@ -190,7 +190,7 @@ struct SecureView: View {
             }
             .onAppear(perform: session.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
             .alert(isPresented: $showAlertPinCode) {
-                Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Хорошо")))
+                Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Закрыть")))
             }
     }
 }
