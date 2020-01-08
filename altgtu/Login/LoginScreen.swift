@@ -73,22 +73,24 @@ struct SignUpView: View {
                 .padding([.top, .horizontal])
             CustomInput(text: $email, name: "Эл.почта")
                 .padding()
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             VStack(alignment: .trailing) {
                 HStack {
                     SecureField("Пароль", text: $password)
-                        if password.isEmpty {
+                        .textContentType(.newPassword)
+                    if password.isEmpty {
                     
-                        }
-                        if 0 < password.count && password.count < 8 {
-                            Image(systemName: "xmark.circle")
-                                .foregroundColor(.red)
-                        }
-                        if 8 <= password.count{
-                            Image(systemName: "checkmark.circle")
-                                .foregroundColor(.green)
-                        }
-                    }.modifier(InputModifier())
+                    }
+                    if 0 < password.count && password.count < 8 {
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                    }
+                    if 8 <= password.count{
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                    }
+                }.modifier(InputModifier())
                 Text("Требуется минимум 8 символов.")
                     .font(.footnote)
                     .foregroundColor(Color.gray)
@@ -150,6 +152,7 @@ struct ResetPassword: View {
         VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
@@ -201,10 +204,12 @@ struct EmailLoginScreen: View {
         VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
                 .padding([.top, .horizontal])
+                .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             VStack(alignment: .trailing) {
                 HStack {
                     SecureField("Пароль", text: $password)
+                        .textContentType(.password)
                     if password.isEmpty {
                     
                     }

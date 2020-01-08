@@ -50,10 +50,12 @@ struct DeleteUser: View {
             VStack(alignment: .center) {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
+                    .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                 VStack(alignment: .trailing) {
                     HStack {
                         SecureField("Пароль", text: $password)
+                            .textContentType(.password)
                         if password.isEmpty {
                         
                         }
@@ -150,10 +152,12 @@ struct ChangeEmail: View {
             if testBool == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
+                    .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                 VStack(alignment: .trailing) {
                     HStack {
                         SecureField("Пароль", text: $password)
+                            .textContentType(.password)
                         if password.isEmpty {
                         
                         }
@@ -183,6 +187,7 @@ struct ChangeEmail: View {
             } else {
                 CustomInput(text: $newEmail, name: "Введите новую эл.почту")
                     .padding([.top, .horizontal])
+                    .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                 CustomButton(label: loading == true ? "Загрузка" : "Изменить эл.почту", action: changeEmail, loading: loading, colorButton: Color.green)
                     .disabled(loading)
@@ -264,10 +269,12 @@ struct ChangePassword: View {
             if testBool == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
+                    .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                 VStack(alignment: .trailing) {
                     HStack {
                         SecureField("Пароль", text: $password)
+                            .textContentType(.password)
                         if password.isEmpty {
                         
                         }
@@ -298,6 +305,7 @@ struct ChangePassword: View {
                 VStack(alignment: .trailing) {
                     HStack {
                         SecureField("Пароль", text: $newPassword)
+                            .textContentType(.newPassword)
                         if newPassword.isEmpty {
                         
                         }
