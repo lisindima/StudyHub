@@ -237,7 +237,8 @@ struct ProfileView: View {
                     ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
                         .edgesIgnoringSafeArea(.bottom)
                 } else if self.setModalView == 3 {
-                    CredentialDeleteUser()
+                    DeleteUser()
+                        .environmentObject(SessionStore())
                 }
             })
             .actionSheet(isPresented: $showActionSheet) {
@@ -333,7 +334,7 @@ struct ProfileView: View {
                 ])
             }
             .sheet(isPresented: $isPresented, onDismiss: {
-                self.session.updateDataFromDatabase()
+                self.session.session == nil ? print("Сессии нет, данные не сохраняются") : self.session.updateDataFromDatabase()
             }, content: {
                 self.sliderModalPresentation
             })
