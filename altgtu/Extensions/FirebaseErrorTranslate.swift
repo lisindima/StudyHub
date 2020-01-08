@@ -12,39 +12,39 @@ import Firebase
 extension AuthErrorCode {
     var description: String? {
         switch self {
-        case .emailAlreadyInUse:
-            return "Этот адрес электронной почты уже используется другим пользователем."
-        case .userDisabled:
-            return "Этот пользователь был отключен."
-        case .operationNotAllowed:
-            return "Операция не разрешена"
-        case .invalidEmail:
-            return "Адрес электронной почты имеет неправильный формат."
-        case .wrongPassword:
-            return "Пароль неверен или у пользователя нет пароля."
-        case .userNotFound:
-            return "Учетная запись пользователя не найдена с указанным адресом электронной почты"
-        case .networkError:
-            return "Проблема при попытке подключения к серверу."
-        case .weakPassword:
-            return "Очень слабый или неверный пароль."
-        case .missingEmail:
-            return "Вам необходимо зарегистрировать электронную почту."
-        case .internalError:
-            return "Внутренняя ошибка."
-        case .invalidCustomToken:
-            return "Неверный пользовательский токен."
-        case .tooManyRequests:
-            return "Слишком много запросов отправлены на сервер, повторите попытку позже."
-        default:
-            return nil
+            case .emailAlreadyInUse:
+                return "Этот адрес электронной почты уже используется другим пользователем."
+            case .userDisabled:
+                return "Этот пользователь был отключен."
+            case .operationNotAllowed:
+                return "Операция не разрешена"
+            case .invalidEmail:
+                return "Адрес электронной почты имеет неправильный формат."
+            case .wrongPassword:
+                return "Пароль неверен или у пользователя нет пароля."
+            case .userNotFound:
+                return "Учетная запись пользователя не найдена с указанным адресом электронной почты"
+            case .networkError:
+                return "Проблема при попытке подключения к серверу."
+            case .weakPassword:
+                return "Очень слабый или неверный пароль."
+            case .missingEmail:
+                return "Вам необходимо зарегистрировать электронную почту."
+            case .internalError:
+                return "Внутренняя ошибка."
+            case .invalidCustomToken:
+                return "Неверный пользовательский токен."
+            case .tooManyRequests:
+                return "Слишком много запросов отправлены на сервер, повторите попытку позже."
+            default:
+                return nil
         }
     }
 }
 
-    extension FirestoreErrorCode {
-        var description: String? {
-            switch self {
+extension FirestoreErrorCode {
+    var description: String? {
+        switch self {
             case .cancelled:
                 return "Операция отменена."
             case .unknown:
@@ -71,30 +71,32 @@ extension AuthErrorCode {
                 return "Неаутентифицированный пользователь."
             default:
                 return nil
-            }
-        } }
+        }
+    }
+}
 
 extension StorageErrorCode {
     var description: String? {
         switch self {
-        case .unknown:
-            return "Неизвестная ошибка."
-        case .quotaExceeded:
-            return "Пространство для сохранения файлов было превышено."
-        case .unauthenticated:
-            return "Неаутентифицированный пользователь."
-        case .unauthorized:
-            return "Пользователь не авторизован для выполнения этой операции."
-        case .retryLimitExceeded:
-            return "Превышен тайм-аут. Пожалуйста, попробуйте еще раз."
-        case .downloadSizeExceeded:
-            return "Размер загрузки превышает объем памяти."
-        case .cancelled:
-            return "Операция отменена."
-        default:
-            return nil
+            case .unknown:
+                return "Неизвестная ошибка."
+            case .quotaExceeded:
+                return "Пространство для сохранения файлов было превышено."
+            case .unauthenticated:
+                return "Неаутентифицированный пользователь."
+            case .unauthorized:
+                return "Пользователь не авторизован для выполнения этой операции."
+            case .retryLimitExceeded:
+                return "Превышен тайм-аут. Пожалуйста, попробуйте еще раз."
+            case .downloadSizeExceeded:
+                return "Размер загрузки превышает объем памяти."
+            case .cancelled:
+                return "Операция отменена."
+            default:
+                return nil
         }
-    } }
+    }
+}
 
 public extension Error {
     var localizedDescription: String {
