@@ -16,15 +16,22 @@ struct CredentialDeleteUser: View {
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
     @State private var choiceAlert: Int = 1
+    @State private var textError: String = ""
 
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
+        self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
             if error != nil {
-                print((error?.localizedDescription)!)
+                self.loading = false
+                self.textError = (error?.localizedDescription)!
+                self.showAlert = true
+                print(self.textError)
+                //print((error?.localizedDescription)!)
             } else {
+                self.loading = false
                 print("User re-authenticated.")
             }
         })
@@ -69,7 +76,7 @@ struct CredentialDeleteUser: View {
             .navigationBarTitle(Text("Удаление аккаунта"))
             .edgesIgnoringSafeArea(.bottom)
             .alert(isPresented: $showAlert) {
-                Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Хорошо")))
+                Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Хорошо")))
             }
         }
     }
