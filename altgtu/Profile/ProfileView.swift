@@ -39,10 +39,22 @@ struct ProfileView: View {
             Form {
                 Section(header: Text("Главное").bold(), footer: Text("Здесь настраивается время отсрочки уведомлений, например, для уведомлений о начале пары.")) {
                     Toggle(isOn: $session.notifyAlertProfile.animation()) {
+                        HStack {
+                            Image(systemName: "bell")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                             Text("Уведомления")
+                        }
                     }
                     if session.notifyAlertProfile {
-                        Stepper("\(session.notifyMinute) мин", value: $session.notifyMinute, in: 5...30)
+                        Stepper(value: $session.notifyMinute, in: 5...30) {
+                            HStack {
+                                Image(systemName: "timer")
+                                    .frame(width: 24)
+                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                Text("\(session.notifyMinute) мин")
+                            }
+                        }
                     }
                 }
                 Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
@@ -101,8 +113,18 @@ struct ProfileView: View {
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("Фамилия", text: $session.lastname)
                     TextField("Имя", text: $session.firstname)
-                    DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {Text("Дата рождения")})
+                    DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {
+                        HStack {
+                            Image(systemName: "calendar")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Text("Дата рождения")
+                        }
+                    })
                     HStack {
+                        Image(systemName: "photo")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Изменить фотографию") {
                             self.showActionSheetImage = true
                         }.actionSheet(isPresented: $showActionSheetImage) {
@@ -120,49 +142,67 @@ struct ProfileView: View {
                                 },.cancel()
                             ])
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
-                        Image(systemName: "photo")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
                     NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                        Text("Настройка входа")
+                        Image(systemName: "faceid")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Код-пароль и Face ID")
                     }
                     NavigationLink(destination: SetAuth()) {
+                        Image(systemName: "list.dash")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Вариаты авторизации")
                     }
                     NavigationLink(destination: ChangeEmail()
                         .environmentObject(SessionStore())
                     ) {
                         Image(systemName: "envelope")
-                            .frame(width: 24, height: 24)
+                            .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Изменить эл.почту")
                     }
                     NavigationLink(destination: ChangePassword()
                         .environmentObject(SessionStore())
                     ) {
-                        Image(systemName: "lock.shield")
-                            .frame(width: 24, height: 24)
+                        Image(systemName: "lock")
+                            .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Изменить пароль")
                     }
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                    Picker(selection: $session.choiseFaculty, label: Text("Выбранный факультет")) {
+                    Picker(selection: $session.choiseFaculty, label: HStack {
+                        Image(systemName: "list.bullet.below.rectangle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Выбранный факультет")
+                    }) {
                         ForEach(0 ..< session.faculty.count) {
                             Text(self.session.faculty[$0])
                         }
                     }
-                    Picker(selection: $session.choiseGroup, label: Text("Выбранная группа")) {
+                    Picker(selection: $session.choiseGroup, label: HStack {
+                        Image(systemName: "list.bullet.below.rectangle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Выбранная группа")
+                    }) {
                         ForEach(0 ..< elements.count) {
                             Text(self.elements[$0].name)
                         }
                     }
                 }
                 Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\" по умолчанию.")) {
-                    Picker(selection: $session.choiseNews, label: Text("Выбранная тема")) {
+                    Picker(selection: $session.choiseNews, label: HStack {
+                        Image(systemName: "list.bullet.below.rectangle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Выбранная тема")
+                    }) {
                         ForEach(0 ..< session.news.count) {
                             Text(self.session.news[$0])
                         }
@@ -170,53 +210,65 @@ struct ProfileView: View {
                 }
                 Section(header: Text("Информация").bold()) {
                     NavigationLink(destination: License()) {
+                        Image(systemName: "doc.plaintext")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Лицензии")
                     }
                     NavigationLink(destination: Changelog()) {
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Список изменений")
                     }
                     NavigationLink(destination: Privacy()) {
+                        Image(systemName: "lock.shield")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Политика конфиденциальности")
                     }
                     NavigationLink(destination: InfoApp()) {
+                        Image(systemName: "info.circle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("О приложении")
                     }
                 }
                 Section(header: Text("Другое").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет его освободить.")) {
                     HStack {
+                        Image(systemName: "star")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Оценить") {
                             UIApplication.shared.open(URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!)
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
-                        Image(systemName: "star")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     HStack {
+                        Image(systemName: "square.and.arrow.up")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Поделиться") {
                             self.setModalView = 2
                             self.isShowingModalView = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
-                        Image(systemName: "square.and.arrow.up")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     HStack {
+                        Image(systemName: "trash")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Очистить кэш изображений") {
                             URLImageService.shared.cleanFileCache()
                             URLImageService.shared.resetFileCache()
                             self.showAlertCache = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
-                        Spacer()
-                        Image(systemName: "trash")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                     }
                     HStack {
+                        Image(systemName: "flame")
+                            .frame(width: 24)
+                            .foregroundColor(.red)
                         Button("Удалить аккаунт") {
                             self.showActionSheet = true
                         }.foregroundColor(.red)
-                        Spacer()
-                        Image(systemName: "flame")
-                            .foregroundColor(.red)
                     }
                 }
             }

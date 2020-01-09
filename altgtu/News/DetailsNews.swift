@@ -20,7 +20,7 @@ struct DetailsNews: View {
     var body: some View {
         NavigationView {
             VStack {
-                URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental : true, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: { _ in
+                URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: { _ in
                     EmptyView()
                 },
                 content:

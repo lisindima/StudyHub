@@ -63,7 +63,7 @@ struct SecureView: View {
         
     var body: some View {
             VStack(alignment: .center) {
-                URLImage(URL(string:"\(session.urlImageProfile ?? imagePlaceholder)")!, incremental : false, expireAfter : Date ( timeIntervalSinceNow : 31_556_926.0 ), placeholder: {
+                URLImage(URL(string:"\(session.urlImageProfile ?? imagePlaceholder)")!, incremental: false, expireAfter: Date( timeIntervalSinceNow: 31_556_926.0), placeholder: {
                     ProgressView($0) { progress in
                         ZStack {
                             if progress > 0.0 {

@@ -38,7 +38,6 @@
 		CB3BFACE239E09F300894DFA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACD239E09F200894DFA /* WebView.swift */; };
 		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SetAuth.swift */; };
-		CB4B284223823FED00E11A47 /* 27-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB4B284123823FEC00E11A47 /* 27-loading.json */; };
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* ProfileImage.swift */; };
@@ -181,7 +180,6 @@
 		CB3BFACD239E09F200894DFA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* SetAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAuth.swift; sourceTree = "<group>"; };
-		CB4B284123823FEC00E11A47 /* 27-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27-loading.json"; sourceTree = "<group>"; };
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 		CB6EBF5023977BE200D9E771 /* Files */ = {
 			isa = PBXGroup;
 			children = (
-				CB4B284123823FEC00E11A47 /* 27-loading.json */,
 			);
 			path = Files;
 			sourceTree = "<group>";
@@ -721,7 +718,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
-				CB4B284223823FED00E11A47 /* 27-loading.json in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
