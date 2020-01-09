@@ -16,6 +16,7 @@ struct SignUpView: View {
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
+    @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
     
@@ -27,6 +28,7 @@ struct SignUpView: View {
         loading = true
         session.signUp(email: email, password: password) { (result, error) in
             if error != nil {
+                self.textError = (error?.localizedDescription)!
                 self.loading = false
                 self.showAlert = true
                 self.email = ""
@@ -55,6 +57,7 @@ struct SignUpView: View {
                 ]) {
                     err in
                     if let err = err {
+                        self.textError = err.localizedDescription
                         print("Error writing document: \(err)")
                     } else {
                         self.session.sendEmailVerification()
@@ -113,7 +116,7 @@ struct SignUpView: View {
         .navigationBarTitle("Регистрация")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Некорректные данные!"), message: Text("Возможно, что эта почта уже использовалась для регистрации или пароль слишком короткий!"), dismissButton: .default(Text("Закрыть")))
+            Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }
@@ -122,9 +125,10 @@ struct SignUpView: View {
 struct ResetPassword: View {
     
     @State private var email: String = ""
+    @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-    @State private var choiceAlert: Int = 1
+    @State private var activeAlert: ActiveAlert = .first
 
     @EnvironmentObject var session: SessionStore
     
@@ -134,14 +138,16 @@ struct ResetPassword: View {
         loading = true
         session.sendPasswordReset(email: email) { (error) in
             if error != nil {
+                self.textError = (error?.localizedDescription)!
                 self.loading = false
                 self.email = ""
-                self.choiceAlert = 1
+                self.activeAlert = .first
                 self.showAlert = true
                 print("Ошибка, пользователь не существует!")
             } else {
+                self.loading = false
                 self.email = ""
-                self.choiceAlert = 2
+                self.activeAlert = .second
                 self.showAlert = true
                 print("Письмо отправлено!")
             }
@@ -170,7 +176,12 @@ struct ResetPassword: View {
         .navigationBarTitle("Восстановление")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-            Alert(title: Text(choiceAlert == 1 ? "Ошибка!" : "Проверьте почту!"), message: Text(choiceAlert == 1 ? "Пользователь с этой почтой не зарегистрирован в приложении!" : "Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
+            switch activeAlert {
+                case .first:
+                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+                case .second:
+                    return Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
+            }
         }
     }
 }
@@ -179,6 +190,7 @@ struct EmailLoginScreen: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
 
@@ -190,6 +202,7 @@ struct EmailLoginScreen: View {
         loading = true
         session.signIn(email: email, password: password) { (result, error) in
             if error != nil {
+                self.textError = (error?.localizedDescription)!
                 self.loading = false
                 self.showAlert = true
                 self.email = ""
@@ -262,7 +275,7 @@ struct EmailLoginScreen: View {
         .navigationBarTitle("Вход")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-                Alert(title: Text("Неправильный логин или пароль!"), message: Text("Проверьте правильность введенных данных учетной записи!"), dismissButton: .default(Text("Закрыть")))
+                Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }

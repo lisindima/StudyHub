@@ -21,6 +21,8 @@ struct DeleteUser: View {
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
@@ -46,7 +48,6 @@ struct DeleteUser: View {
     }
 
     var body: some View {
-        NavigationView {
             VStack(alignment: .center) {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
@@ -83,7 +84,7 @@ struct DeleteUser: View {
                     .padding()
                 Spacer()
             }
-            .navigationBarTitle(Text("Удаление аккаунта"))
+            .navigationBarTitle(Text("Удаление аккаунта"), displayMode: .inline)
             .edgesIgnoringSafeArea(.bottom)
             .alert(isPresented: $showAlert) {
                 switch activeAlert {
@@ -96,7 +97,7 @@ struct DeleteUser: View {
                     )
                 }
             }
-        }
+        
     }
 }
 
@@ -115,6 +116,8 @@ struct ChangeEmail: View {
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
@@ -133,6 +136,8 @@ struct ChangeEmail: View {
     }
     
     private func changeEmail() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         self.loading = true
         self.session.updateEmail(email: self.newEmail) { (error) in
             if error != nil {
@@ -233,6 +238,8 @@ struct ChangePassword: View {
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
@@ -250,6 +257,8 @@ struct ChangePassword: View {
     }
     
     private func changePassword() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         self.loading = true
         self.session.updatePassword(password: self.newPassword) { (error) in
             if error != nil {

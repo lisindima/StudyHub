@@ -17,13 +17,13 @@ extension AuthErrorCode {
             case .userDisabled:
                 return "Этот пользователь был отключен."
             case .operationNotAllowed:
-                return "Операция не разрешена"
+                return "Операция не разрешена."
             case .invalidEmail:
                 return "Адрес электронной почты имеет неправильный формат."
             case .wrongPassword:
                 return "Пароль неверен или у пользователя нет пароля."
             case .userNotFound:
-                return "Учетная запись пользователя не найдена с указанным адресом электронной почты"
+                return "Учетная запись пользователя не найдена с указанным адресом электронной почты."
             case .networkError:
                 return "Проблема при попытке подключения к серверу."
             case .weakPassword:

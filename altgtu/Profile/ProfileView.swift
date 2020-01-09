@@ -10,8 +10,15 @@ import SwiftUI
 import Firebase
 import URLImage
 
+struct ToggleModel {
+    var isDark: Bool = false {
+        didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light }
+    }
+}
+
 struct ProfileView: View {
     
+    @State var toggleModel: ToggleModel = ToggleModel()
     @State private var showActionSheet: Bool = false
     @State private var showAlertCache: Bool = false
     @State private var isPresented: Bool = false
@@ -106,8 +113,13 @@ struct ProfileView: View {
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
-                    Toggle(isOn: $session.darkThemeOverride) {
-                            Text("Принудительная темная тема")
+                    Toggle(isOn: $toggleModel.isDark) {
+                        HStack {
+                            Image(systemName: "moon.circle")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Text("Темная тема")
+                        }
                     }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
@@ -262,6 +274,7 @@ struct ProfileView: View {
                             self.showAlertCache = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                     }
+                    /*
                     HStack {
                         Image(systemName: "flame")
                             .frame(width: 24)
@@ -269,6 +282,16 @@ struct ProfileView: View {
                         Button("Удалить аккаунт") {
                             self.showActionSheet = true
                         }.foregroundColor(.red)
+                    }
+                    */
+                }
+                Section {
+                    NavigationLink(destination: DeleteUser()) {
+                        Image(systemName: "flame")
+                            .frame(width: 24)
+                            .foregroundColor(.red)
+                        Text("Удалить аккаунт")
+                            .foregroundColor(.red)
                     }
                 }
             }
