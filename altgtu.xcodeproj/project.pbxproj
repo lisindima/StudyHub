@@ -360,8 +360,8 @@
 			children = (
 				CB6EBF4F23977BC700D9E771 /* Models */,
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
-				CB3BFAD1239E37DA00894DFA /* SetAuth.swift */,
 				CB4FA012234396110049D271 /* ProfileImage.swift */,
+				CB3BFAD1239E37DA00894DFA /* SetAuth.swift */,
 				CBDE62942352129E00E588EC /* PickerAPI.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,

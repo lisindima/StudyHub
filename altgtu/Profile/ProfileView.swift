@@ -10,15 +10,8 @@ import SwiftUI
 import Firebase
 import URLImage
 
-struct ToggleModel {
-    var isDark: Bool = false {
-        didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light }
-    }
-}
-
 struct ProfileView: View {
     
-    @State var toggleModel: ToggleModel = ToggleModel()
     @State private var showActionSheet: Bool = false
     @State private var showAlertCache: Bool = false
     @State private var isPresented: Bool = false
@@ -113,7 +106,7 @@ struct ProfileView: View {
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
-                    Toggle(isOn: $toggleModel.isDark) {
+                    Toggle(isOn: $session.darkThemeOverride) {
                         HStack {
                             Image(systemName: "moon.circle")
                                 .frame(width: 24)

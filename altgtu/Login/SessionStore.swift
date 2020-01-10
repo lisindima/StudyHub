@@ -39,7 +39,6 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var firstname: String!
     @Published var dateBirthDay: Date!
     @Published var notifyAlertProfile: Bool!
-    @Published var darkThemeOverride: Bool!
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
@@ -58,6 +57,10 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
     @Published var pinCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
+    
+    var darkThemeOverride: Bool = false {
+        didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
+    }
     
     var handle: AuthStateDidChangeListenerHandle?
         
@@ -117,7 +120,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     self.gValue = document.get("gValue") as? Double
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
-                    self.darkThemeOverride = document.get("darkThemeOverride") as? Bool
+                    self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
                     self.pinCodeAccess = document.get("pinCodeAccess") as? String
                     self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                     self.biometricAccess = document.get("biometricAccess") as? Bool
@@ -166,7 +169,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                 "gValue": gValue!,
                 "bValue": bValue!,
                 "urlImageProfile": urlImageProfile!,
-                "darkThemeOverride": darkThemeOverride!,
+                "darkThemeOverride": darkThemeOverride,
                 "pinCodeAccess": pinCodeAccess!,
                 "boolCodeAccess": boolCodeAccess!,
                 "biometricAccess": biometricAccess!
