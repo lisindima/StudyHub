@@ -17,6 +17,7 @@ struct ProfileView: View {
     @State private var isPresented: Bool = false
     @State private var isShowingModalView: Bool = false
     @State private var showActionSheetExit: Bool = false
+    @State private var showQRReader: Bool = false
     @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
@@ -267,16 +268,6 @@ struct ProfileView: View {
                             self.showAlertCache = true
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                     }
-                    /*
-                    HStack {
-                        Image(systemName: "flame")
-                            .frame(width: 24)
-                            .foregroundColor(.red)
-                        Button("Удалить аккаунт") {
-                            self.showActionSheet = true
-                        }.foregroundColor(.red)
-                    }
-                    */
                 }
                 Section {
                     NavigationLink(destination: DeleteUser()) {
@@ -370,25 +361,42 @@ struct ProfileView: View {
                     }.padding()
                 }
                 Spacer()
-                Button (action:
-                    {
-                        self.session.setNotification()
-                        self.session.readCard()
-                    }, label: {
-                        Text("Тест")
+                /*
+                Button(action: {
+                    self.session.setNotification()
+                    self.session.readCard()
+                }, label: {
+                    Text("Тест")
+                        .bold()
+                        .foregroundColor(.red)
+                        .padding()
+                })
+                */
+                Button(action: {
+                    self.showActionSheetExit = true
+                }, label: {
+                    HStack {
+                        Image(systemName: "square.and.arrow.down")
+                            .imageScale(.large)
+                            .rotationEffect(.degrees(90))
+                            .foregroundColor(.red)
+                        Text("Выйти")
                             .bold()
                             .foregroundColor(.red)
-                            .padding()
-                })
+                    }
+                }).padding()
             }
             .navigationBarItems(leading: Button(action: {
-                self.showActionSheetExit = true
+                self.showQRReader = true
             }) {
-                Image(systemName: "square.and.arrow.down")
+                Image(systemName: "qrcode")
                     .imageScale(.large)
-                    .rotationEffect(.degrees(90))
                     .foregroundColor(.white)
-            }, trailing: Button(action: {
+            }.sheet(isPresented: $showQRReader, onDismiss: {
+    
+            }, content: {
+                QRReader()
+            }), trailing: Button(action: {
                 self.isPresented = true
             }) {
                 Image(systemName: "gear")

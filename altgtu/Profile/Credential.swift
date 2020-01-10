@@ -91,8 +91,8 @@ struct DeleteUser: View {
                     case .first:
                         return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
                     case .second:
-                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь:)"), dismissButton: .default(Text("Закрыть")) {
-                            //self.session.signOut()
+                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь!"), dismissButton: .default(Text("Закрыть")) {
+                            print("Удалено")
                         }
                     )
                 }
@@ -109,7 +109,7 @@ struct ChangeEmail: View {
     @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-    @State private var testBool: Bool = false
+    @State private var changeView: Bool = false
     @State private var activeAlert: ActiveAlert = .first
 
     @Environment(\.presentationMode) var presentationMode
@@ -129,7 +129,7 @@ struct ChangeEmail: View {
             } else {
                 print("User re-authenticated.")
                 self.loading = false
-                self.testBool = true
+                self.changeView = true
                 
             }
         })
@@ -154,7 +154,7 @@ struct ChangeEmail: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            if testBool == false {
+            if changeView == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)
@@ -231,7 +231,7 @@ struct ChangePassword: View {
     @State private var newPassword: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-    @State private var testBool: Bool = false
+    @State private var changeView: Bool = false
     @State private var activeAlert: ActiveAlert = .first
 
     @Environment(\.presentationMode) var presentationMode
@@ -251,7 +251,7 @@ struct ChangePassword: View {
             } else {
                 print("User re-authenticated.")
                 self.loading = false
-                self.testBool = true
+                self.changeView = true
             }
         })
     }
@@ -275,7 +275,7 @@ struct ChangePassword: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            if testBool == false {
+            if changeView == false {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)

@@ -51,6 +51,8 @@
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
+		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
+		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
@@ -192,6 +194,7 @@
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 			files = (
 				CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */,
 				05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */,
+				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB1F6DAC2339F64E00604C50 /* URLImage in Frameworks */,
 				CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
@@ -369,6 +373,7 @@
 				CBE010E923ACC0D6009DB0E8 /* Changelog.swift */,
 				CBF0EE1F23A37A34006CC917 /* PinSetting.swift */,
 				CB76FDBA23C345BE00FDDE5E /* Credential.swift */,
+				CB8EF87723C85D6D00992764 /* QRReader.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				CBF1E0E4234211990009E3BE /* SwiftUICharts */,
 				CB6D3F70235AC6F200E65661 /* Lottie */,
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
+				CB8EF87A23C86B6E00992764 /* CodeScanner */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* АлтГТУ.app */;
@@ -699,6 +705,7 @@
 				CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */,
 				CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
+				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -830,6 +837,7 @@
 				CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,
 				CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */,
+				CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */,
@@ -1300,6 +1308,14 @@
 				minimumVersion = 3.1.5;
 			};
 		};
+		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
@@ -1325,6 +1341,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		CBE6660823545C1200C43811 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
