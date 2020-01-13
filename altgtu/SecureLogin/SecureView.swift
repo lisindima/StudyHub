@@ -121,11 +121,11 @@ struct SecureView: View {
                     HStack {
                         if currentBiometricType == .none {
                             Circle()
-                                .foregroundColor(colorScheme == .light ? .white : .black)
+                                .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
                         } else if session.biometricAccess == false {
                             Circle()
-                                .foregroundColor(colorScheme == .light ? .white : .black)
+                                .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
                         } else if currentBiometricType == .touchID && session.biometricAccess == true {
                             Button (action: {
@@ -144,8 +144,7 @@ struct SecureView: View {
                         } else if currentBiometricType == .faceID && session.biometricAccess == true {
                             Button (action: {
                                 self.biometricAccess()
-                            })
-                            {
+                            }) {
                                 Image(systemName: "faceid")
                                     .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                                     .font(.system(size: 25))

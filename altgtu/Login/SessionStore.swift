@@ -185,32 +185,32 @@ final class SessionStore: NSObject, ObservableObject {
         let storageRef = storage.reference()
         var photoRef = storageRef.child("photoProfile/\(currentUser.uid).jpeg")
         let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
-            photoRef = storage.reference(forURL: storagePath)
+        photoRef = storage.reference(forURL: storagePath)
         let data = imageProfile.jpegData(compressionQuality: 1)
         if data == nil {
             print("Фото не выбрано")
-        }else{
+        } else {
             print("Фото выбрано")
-            _ = photoRef.putData(data!, metadata: nil) { (metadata, error) in
+            let uploadImageTask = photoRef.putData(data!, metadata: nil) { (metadata, error) in
                 photoRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                  return
-                }
-                self.urlImageProfile = downloadURL.absoluteString
-                print("url image: \(String(describing: self.urlImageProfile))")
-                let db = Firestore.firestore()
-                let docRef = db.collection("profile").document(currentUser.uid)
+                    guard let downloadURL = url else {
+                      return
+                    }
+                    self.urlImageProfile = downloadURL.absoluteString
+                    print("url image: \(String(describing: self.urlImageProfile))")
+                    let db = Firestore.firestore()
+                    let docRef = db.collection("profile").document(currentUser.uid)
                     docRef.updateData([
                         "urlImageProfile": self.urlImageProfile as Any
-                ]){ err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        db.collection("profile").document(currentUser.uid)
-                        .addSnapshotListener { documentSnapshot, error in
-                            if let document = documentSnapshot {
-                                self.urlImageProfile = document.get("urlImageProfile") as? String
-                                print(self.urlImageProfile ?? "Ошибка, нет Фото!")
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            db.collection("profile").document(currentUser.uid)
+                            .addSnapshotListener { documentSnapshot, error in
+                                if let document = documentSnapshot {
+                                    self.urlImageProfile = document.get("urlImageProfile") as? String
+                                    print(self.urlImageProfile ?? "Ошибка, нет Фото!")
                                 } else {
                                     print("Image does not exist")
                                 }
@@ -219,6 +219,11 @@ final class SessionStore: NSObject, ObservableObject {
                         }
                     }
                 }
+            }
+            uploadImageTask.observe(.progress) { snapshot in
+              let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)
+                print(percentComplete)
             }
         }
     }
