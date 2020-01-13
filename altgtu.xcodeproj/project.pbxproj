@@ -26,6 +26,7 @@
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12E7ED23596F9E00115B2E /* ChatView.swift */; };
+		CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AC523CC07B500424FD2 /* NFCStore.swift */; };
 		CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* LessonDetail.swift */; };
 		CB1F6DAC2339F64E00604C50 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F6DAB2339F64E00604C50 /* URLImage */; };
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
@@ -171,6 +172,7 @@
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "АлтГТУ.entitlements"; sourceTree = "<group>"; };
 		CB12E7ED23596F9E00115B2E /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		CB179AC523CC07B500424FD2 /* NFCStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCStore.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* LessonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetail.swift; sourceTree = "<group>"; };
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
+				CB179AC423CC079C00424FD2 /* NFC */,
 				CBAF3CA523BF3EE6009D0ED2 /* Bert */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
@@ -424,6 +427,14 @@
 				CB5DE17F236AB98D001AC3E3 /* ListChat.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		CB179AC423CC079C00424FD2 /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				CB179AC523CC07B500424FD2 /* NFCStore.swift */,
+			);
+			path = NFC;
 			sourceTree = "<group>";
 		};
 		CB27619323556A1F0054C753 /* Login */ = {
@@ -818,6 +829,7 @@
 				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* LocalNotificationManager.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
+				CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,

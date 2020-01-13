@@ -10,7 +10,6 @@ import SwiftUI
 import Foundation
 import Firebase
 import Combine
-import CoreNFC
 import AuthenticationServices
 import CryptoKit
 
@@ -31,7 +30,7 @@ struct User {
     }
 }
 
-final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegate {
+final class SessionStore: NSObject, ObservableObject {
 
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
@@ -93,9 +92,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                     email: user.email,
                     photoURL: user.photoURL
                 )
-            }
-                else
-            {
+            } else {
                 self.isLoggedIn = false
                 self.session = nil
             }
@@ -182,7 +179,7 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
         }
     }
     
-    func uploadImageToCloudStorage() {
+    func uploadProfileImageToCloudStorage() {
         let currentUser = Auth.auth().currentUser!
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -191,9 +188,9 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
             photoRef = storage.reference(forURL: storagePath)
         let data = imageProfile.jpegData(compressionQuality: 1)
         if data == nil {
-            print("упс")
+            print("Фото не выбрано")
         }else{
-            print("ок")
+            print("Фото выбрано")
             _ = photoRef.putData(data!, metadata: nil) { (metadata, error) in
                 photoRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
@@ -220,40 +217,6 @@ final class SessionStore: NSObject, ObservableObject, NFCTagReaderSessionDelegat
                             }
                             print("Image successfully updated")
                         }
-                    }
-                }
-            }
-        }
-    }
-    
-    var readerSession: NFCTagReaderSession?
-
-    func readCard() {
-        readerSession = NFCTagReaderSession(pollingOption: .iso14443, delegate: self)
-        readerSession?.alertMessage = "Приложите свой пропуск для сканирования."
-        readerSession?.begin()
-    }
-    
-    func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
-
-    }
-    
-    func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
-        print(error.localizedDescription)
-    }
-    
-    func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
-        if case let NFCTag.iso7816(tag) = tags.first! {
-            
-            session.connect(to: tags.first!) { (error: Error?) in
-                
-                let myAPDU = NFCISO7816APDU(instructionClass:0, instructionCode:0xB0, p1Parameter:0, p2Parameter:0, data: Data(), expectedResponseLength:16)
-                tag.sendCommand(apdu: myAPDU) { (response: Data, sw1: UInt8, sw2: UInt8, error: Error?)
-                    in
-                    
-                    guard error != nil && !(sw1 == 0x90 && sw2 == 0) else {
-                        session.invalidate(errorMessage: "Application failure")
-                        return
                     }
                 }
             }

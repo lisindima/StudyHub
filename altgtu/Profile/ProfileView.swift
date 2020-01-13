@@ -25,6 +25,7 @@ struct ProfileView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var pickerAPI: PickerAPI
+    @EnvironmentObject var nfc: NFCStore
 
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
@@ -282,7 +283,7 @@ struct ProfileView: View {
             .environment(\.horizontalSizeClass, .regular)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 if self.setModalView == 1 {
-                    self.session.uploadImageToCloudStorage()
+                    self.session.uploadProfileImageToCloudStorage()
                 } else if self.setModalView == 2 {
                     print("SHARE")
                 } else if self.setModalView == 3 {
@@ -364,7 +365,7 @@ struct ProfileView: View {
                 /*
                 Button(action: {
                     self.session.setNotification()
-                    self.session.readCard()
+                    self.nfc.readCard()
                 }, label: {
                     Text("Тест")
                         .bold()

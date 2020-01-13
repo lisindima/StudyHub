@@ -51,6 +51,7 @@ struct Tabbed : View {
                 }.tag(3)
             ProfileView()
                 .environmentObject(PickerAPI())
+                .environmentObject(NFCStore())
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")
