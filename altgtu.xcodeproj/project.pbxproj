@@ -27,6 +27,9 @@
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12E7ED23596F9E00115B2E /* ChatView.swift */; };
 		CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AC523CC07B500424FD2 /* NFCStore.swift */; };
+		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
+		CB179AD023CC315600424FD2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACF23CC315600424FD2 /* Extensions.swift */; };
+		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* LessonDetail.swift */; };
 		CB1F6DAC2339F64E00604C50 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CB1F6DAB2339F64E00604C50 /* URLImage */; };
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
@@ -173,6 +176,9 @@
 		CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "АлтГТУ.entitlements"; sourceTree = "<group>"; };
 		CB12E7ED23596F9E00115B2E /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CB179AC523CC07B500424FD2 /* NFCStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCStore.swift; sourceTree = "<group>"; };
+		CB179ACA23CC182F00424FD2 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		CB179ACF23CC315600424FD2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* LessonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetail.swift; sourceTree = "<group>"; };
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
+				CB179ACE23CC305E00424FD2 /* CircleProgress */,
+				CB179AC923CC181D00424FD2 /* Banner */,
 				CB179AC423CC079C00424FD2 /* NFC */,
 				CBAF3CA523BF3EE6009D0ED2 /* Bert */,
 				CB12E7EA23596F5400115B2E /* Support */,
@@ -435,6 +443,23 @@
 				CB179AC523CC07B500424FD2 /* NFCStore.swift */,
 			);
 			path = NFC;
+			sourceTree = "<group>";
+		};
+		CB179AC923CC181D00424FD2 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				CB179ACA23CC182F00424FD2 /* Banner.swift */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		CB179ACE23CC305E00424FD2 /* CircleProgress */ = {
+			isa = PBXGroup;
+			children = (
+				CB179ACF23CC315600424FD2 /* Extensions.swift */,
+				CB179AD123CC331B00424FD2 /* CircleProgress.swift */,
+			);
+			path = CircleProgress;
 			sourceTree = "<group>";
 		};
 		CB27619323556A1F0054C753 /* Login */ = {
@@ -848,8 +873,10 @@
 				CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */,
 				CBB13F0623584F9E00D98C83 /* ShareSheet.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,
+				CB179AD023CC315600424FD2 /* Extensions.swift in Sources */,
 				CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */,
 				CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */,
+				CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */,
@@ -864,6 +891,7 @@
 				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB3BFACE239E09F300894DFA /* WebView.swift in Sources */,
+				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 				CB6D3F7D235B0E6200E65661 /* NewsAPI.swift in Sources */,
 			);

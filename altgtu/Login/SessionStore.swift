@@ -56,6 +56,7 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var pinCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
+    @Published var percentComplete: Double = 0.0
     
     var darkThemeOverride: Bool = false {
         didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
@@ -221,9 +222,8 @@ final class SessionStore: NSObject, ObservableObject {
                 }
             }
             uploadImageTask.observe(.progress) { snapshot in
-              let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
-                / Double(snapshot.progress!.totalUnitCount)
-                print(percentComplete)
+                self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+                print(self.percentComplete)
             }
         }
     }

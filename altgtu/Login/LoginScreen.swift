@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 import AuthenticationServices
 
+// MARK: - Регистрация
+
 struct SignUpView: View {
     
     @State private var email: String = ""
@@ -121,6 +123,7 @@ struct SignUpView: View {
     }
 }
 
+// MARK: - Восстановление пароля
 
 struct ResetPassword: View {
     
@@ -185,6 +188,8 @@ struct ResetPassword: View {
         }
     }
 }
+
+// MARK: - Вход с помощью почты и пароля
 
 struct EmailLoginScreen: View {
     
@@ -279,6 +284,8 @@ struct EmailLoginScreen: View {
         }
     }
 }
+
+// MARK: - Вход с помощью Apple
 
 struct AuthenticationScreen: View {
     

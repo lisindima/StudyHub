@@ -21,6 +21,8 @@ struct ProfileView: View {
     @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
+    @State private var showBanner: Bool = false
+    @State private var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "Загрузка", subtitle: "Нажмите для скрытия уведомления")
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
@@ -362,17 +364,16 @@ struct ProfileView: View {
                     }.padding()
                 }
                 Spacer()
-                /*
                 Button(action: {
-                    self.session.setNotification()
-                    self.nfc.readCard()
+                    self.showBanner = true
+                    //self.session.setNotification()
+                    //self.nfc.readCard()
                 }, label: {
                     Text("Тест")
                         .bold()
                         .foregroundColor(.red)
                         .padding()
                 })
-                */
                 Button(action: {
                     self.showActionSheetExit = true
                 }, label: {
@@ -416,6 +417,7 @@ struct ProfileView: View {
                 self.sliderModalPresentation
             })
         }
+        .banner(data: $bannerData, show: $showBanner)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
