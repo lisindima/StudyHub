@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import URLImage
+import StoreKit
 
 struct ProfileView: View {
     
@@ -146,7 +147,7 @@ struct ProfileView: View {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
                                 },.cancel()
                             ])
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        }.foregroundColor(.primary)
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
@@ -245,8 +246,8 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Оценить") {
-                            UIApplication.shared.open(URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!)
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                            SKStoreReviewController.requestReview()
+                        }.foregroundColor(.primary)
                     }
                     HStack {
                         Image(systemName: "square.and.arrow.up")
@@ -254,7 +255,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Поделиться") {
                             self.tappedShare()
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        }.foregroundColor(.primary)
                     }
                     HStack {
                         Image(systemName: "trash")
@@ -264,7 +265,7 @@ struct ProfileView: View {
                             URLImageService.shared.cleanFileCache()
                             URLImageService.shared.resetFileCache()
                             self.showAlertCache = true
-                        }.foregroundColor(colorScheme == .light ? .black : .white)
+                        }.foregroundColor(.primary)
                     }
                 }
                 Section {
@@ -284,14 +285,6 @@ struct ProfileView: View {
                 ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
                     .edgesIgnoringSafeArea(.bottom)
             })
-            /*
-            .actionSheet(isPresented: $showActionSheet) {
-                ActionSheet(title: Text("Вы уверены, что хотите удалить свой аккаунт?"), message: Text("Вы не сможете восстановить его после удаления!"), buttons: [.destructive(Text("Удалить аккаунт")) {
-                        //self.isShowingModalView = true
-                    }, .cancel()
-                ])
-            }
-            */
             .alert(isPresented: $showAlertCache) {
                 Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
             }
