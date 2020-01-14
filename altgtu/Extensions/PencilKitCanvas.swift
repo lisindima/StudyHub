@@ -12,7 +12,6 @@ import PencilKit
 struct PencilKitCanvas: UIViewRepresentable {
     func makeUIView(context: Context) -> PKCanvasView {
         let canvas = PKCanvasView()
-        canvas.tool = PKInkingTool(.pen, color: .red, width: 10)
         return canvas
     }
         
