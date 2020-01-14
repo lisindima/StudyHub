@@ -57,6 +57,7 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
     @Published var percentComplete: Double = 0.0
+    @Published var showBanner: Bool = false
     
     var darkThemeOverride: Bool = false {
         didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
@@ -192,6 +193,7 @@ final class SessionStore: NSObject, ObservableObject {
             print("Фото не выбрано")
         } else {
             print("Фото выбрано")
+            showBanner = true
             let uploadImageTask = photoRef.putData(data!, metadata: nil) { (metadata, error) in
                 photoRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
@@ -206,17 +208,21 @@ final class SessionStore: NSObject, ObservableObject {
                     ]) { err in
                         if let err = err {
                             print("Error updating document: \(err)")
+                            self.showBanner = false
                         } else {
                             db.collection("profile").document(currentUser.uid)
                             .addSnapshotListener { documentSnapshot, error in
                                 if let document = documentSnapshot {
                                     self.urlImageProfile = document.get("urlImageProfile") as? String
                                     print(self.urlImageProfile ?? "Ошибка, нет Фото!")
+                                    self.showBanner = false
                                 } else {
                                     print("Image does not exist")
+                                    self.showBanner = false
                                 }
                             }
                             print("Image successfully updated")
+                            self.showBanner = false
                         }
                     }
                 }

@@ -89,7 +89,8 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "creditcard")
-                            Text("Поддержать разработчика денежкой.")
+                                .frame(width: 24)
+                            Text("Поддержать разработчика.")
                         }
                 })
                 Button(
@@ -99,6 +100,7 @@ struct InfoApp: View {
                     label: {
                         HStack {
                             Image(systemName: "ant")
+                                .frame(width: 24)
                             Text("Принять участие в бета-тестирование.")
                         }
                 })

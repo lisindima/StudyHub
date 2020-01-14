@@ -14,15 +14,13 @@ struct ProfileView: View {
     
     @State private var showActionSheet: Bool = false
     @State private var showAlertCache: Bool = false
-    @State private var isPresented: Bool = false
+    @State private var showSettingModal: Bool = false
     @State private var isShowingModalView: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
     @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
-    @State private var showBanner: Bool = false
-    @State private var bannerData: BannerModifier.BannerData = BannerModifier.BannerData(title: "Загрузка", subtitle: "Нажмите для скрытия уведомления")
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
@@ -315,7 +313,7 @@ struct ProfileView: View {
             }
             .navigationBarTitle(Text("Настройки"), displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
-                    self.isPresented = false
+                    self.showSettingModal = false
             })
             {
                 Text("Готово")
@@ -364,16 +362,18 @@ struct ProfileView: View {
                     }.padding()
                 }
                 Spacer()
+                /*
                 Button(action: {
-                    self.showBanner = true
-                    //self.session.setNotification()
-                    //self.nfc.readCard()
+                    self.session.showBanner = true
+                    self.session.setNotification()
+                    self.nfc.readCard()
                 }, label: {
                     Text("Тест")
                         .bold()
                         .foregroundColor(.red)
                         .padding()
                 })
+                */
                 Button(action: {
                     self.showActionSheetExit = true
                 }, label: {
@@ -399,7 +399,7 @@ struct ProfileView: View {
             }, content: {
                 QRReader()
             }), trailing: Button(action: {
-                self.isPresented = true
+                self.showSettingModal = true
             }) {
                 Image(systemName: "gear")
                     .imageScale(.large)
@@ -411,13 +411,12 @@ struct ProfileView: View {
                     }, .cancel()
                 ])
             }
-            .sheet(isPresented: $isPresented, onDismiss: {
+            .sheet(isPresented: $showSettingModal, onDismiss: {
                 self.session.session == nil ? print("Сессии нет, данные не сохраняются") : self.session.updateDataFromDatabase()
             }, content: {
                 self.sliderModalPresentation
             })
         }
-        .banner(data: $bannerData, show: $showBanner)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

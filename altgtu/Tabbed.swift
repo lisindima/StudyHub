@@ -12,7 +12,8 @@ import Firebase
 struct Tabbed : View {
     
     @EnvironmentObject var session: SessionStore
-    @State private var selection = 0
+    
+    @State private var selection: Int = 0
     
     var body: some View {
         TabView(selection: $selection) {
@@ -60,6 +61,7 @@ struct Tabbed : View {
                     }
                 }.tag(4)
         }
+        .banner(isPresented: $session.showBanner)
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)
     }

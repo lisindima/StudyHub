@@ -59,16 +59,16 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>shortcutItem.lesson</string>
 		</dict>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeCompose</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>Заметки</string>
-            <key>UIApplicationShortcutItemSubtitle</key>
-            <string>Добавить новую</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>shortcutItem.note</string>
-        </dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeCompose</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Добавить новую</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Заметки</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>shortcutItem.note</string>
+		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeMessage</string>

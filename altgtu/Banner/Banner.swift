@@ -10,50 +10,38 @@ import SwiftUI
 
 struct BannerModifier: ViewModifier {
     
-    struct BannerData {
-        var title: String
-        var subtitle: String
-    }
-    
-    @Binding var data: BannerData
-    @Binding var show: Bool
+    @Binding var showBanner: Bool
     
     func body(content: Content) -> some View {
         ZStack {
-            if show {
+            if showBanner {
                 VStack {
                     HStack {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(data.title)
+                            Text("Загрузка")
                                 .bold()
-                            Text(data.subtitle)
-                                .font(Font.system(size: 15, weight: Font.Weight.light, design: Font.Design.default))
+                            Text("Нажмите для скрытия уведомления")
+                                .font(Font.system(size: 12, weight: Font.Weight.light, design: Font.Design.default))
                         }
                         Spacer()
                         CircleProgress()
-                            .padding()
                     }
                     .foregroundColor(Color.white)
-                    .padding(12)
+                    .padding(16)
                     .background(Color.backroundColor)
                     .cornerRadius(8)
                     Spacer()
                 }
                 .zIndex(1)
-                .padding()
+                .padding(.horizontal)
+                .padding(.top, 40)
                 .animation(.easeInOut)
                 .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
                 .onTapGesture {
                     withAnimation {
-                        self.show = false
+                        self.showBanner = false
                     }
-                }.onAppear(perform: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-                        withAnimation {
-                            self.show = false
-                        }
-                    }
-                })
+                }
             }
             content
         }
@@ -62,7 +50,7 @@ struct BannerModifier: ViewModifier {
 }
 
 extension View {
-    func banner(data: Binding<BannerModifier.BannerData>, show: Binding<Bool>) -> some View {
-        self.modifier(BannerModifier(data: data, show: show))
+    func banner(isPresented: Binding<Bool>) -> some View {
+        self.modifier(BannerModifier(showBanner: isPresented))
     }
 }
