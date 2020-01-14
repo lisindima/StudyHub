@@ -1,5 +1,5 @@
 //
-//  LocalNotificationManager.swift
+//  NotificationStore.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 05.11.2019.
@@ -11,11 +11,18 @@ import UserNotifications
 struct Notification {
     var id: String
     var title: String
+    var body: String
 }
 
-class LocalNotificationManager {
+class NotificationStore: ObservableObject {
+    
     var notifications = [Notification]()
     
+    func setNotification() -> Void {
+        let manager = NotificationStore()
+        manager.addNotification(title: "Тестовое уведомление", body: "Тест")
+        manager.schedule()
+    }
     
     func requestPermission() -> Void {
         UNUserNotificationCenter
@@ -27,14 +34,15 @@ class LocalNotificationManager {
         }
     }
     
-    func addNotification(title: String) -> Void {
-        notifications.append(Notification(id: UUID().uuidString, title: title))
+    func addNotification(title: String, body: String) -> Void {
+        notifications.append(Notification(id: UUID().uuidString, title: title, body: body))
     }
     
     func scheduleNotifications() -> Void {
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
+            content.body = notification.body
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)

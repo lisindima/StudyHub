@@ -51,6 +51,7 @@ struct Tabbed: View {
                     }
                 }.tag(3)
             ProfileView()
+                .environmentObject(NotificationStore())
                 .environmentObject(PickerAPI())
                 .environmentObject(NFCStore())
                 .tabItem {

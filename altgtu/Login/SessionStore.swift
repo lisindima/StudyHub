@@ -77,12 +77,6 @@ final class SessionStore: NSObject, ObservableObject {
         self.currentTimeAndDate = formatter.string(from: now)
     }
     
-    func setNotification() -> Void {
-        let manager = LocalNotificationManager()
-        manager.addNotification(title: "Тестовое уведомление")
-        manager.schedule()
-    }
-    
     func listen() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
