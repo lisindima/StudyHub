@@ -9,7 +9,7 @@
 import SwiftUI
 import Firebase
 
-struct Tabbed : View {
+struct Tabbed: View {
     
     @EnvironmentObject var session: SessionStore
     

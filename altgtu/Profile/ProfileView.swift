@@ -18,7 +18,6 @@ struct ProfileView: View {
     @State private var isShowingModalView: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
-    @State private var setModalView: Int = 1
     @State private var showActionSheetImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
@@ -31,9 +30,10 @@ struct ProfileView: View {
     var elements: [GroupModelElement] = [GroupModelElement]()
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
-    func test() {
-        pickerAPI.loadPickerData()
-        print(elements)
+    private func tappedShare() {
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(UIActivityViewController(activityItems: ["Удобное расписание в приложение АлтГТУ!", URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!], applicationActivities: nil), animated: true, completion: nil)
+        }
     }
     
     var sliderModalPresentation: some View {
@@ -137,11 +137,9 @@ struct ProfileView: View {
                         }.actionSheet(isPresented: $showActionSheetImage) {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
                                   .default(Text("Сделать фотографию")) {
-                                    self.setModalView = 1
                                     self.selectedSourceType = .camera
                                     self.isShowingModalView = true
                                 },.default(Text("Выбрать фотографию")) {
-                                    self.setModalView = 1
                                     self.selectedSourceType = .photoLibrary
                                     self.isShowingModalView = true
                                 },.destructive(Text("Удалить фотографию")) {
@@ -255,8 +253,7 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Поделиться") {
-                            self.setModalView = 2
-                            self.isShowingModalView = true
+                            self.tappedShare()
                         }.foregroundColor(colorScheme == .light ? .black : .white)
                     }
                     HStack {
@@ -282,32 +279,19 @@ struct ProfileView: View {
             }
             .environment(\.horizontalSizeClass, .regular)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
-                if self.setModalView == 1 {
-                    self.session.uploadProfileImageToCloudStorage()
-                } else if self.setModalView == 2 {
-                    print("SHARE")
-                } else if self.setModalView == 3 {
-                   print("CredentialDeleteUser")
-                }
+                self.session.uploadProfileImageToCloudStorage()
             }, content: {
-                if self.setModalView == 1 {
-                    ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
-                        .edgesIgnoringSafeArea(.bottom)
-                } else if self.setModalView == 2 {
-                    ShareSheet(sharing: ["Удобное расписание в приложение АлтГТУ! https://apps.apple.com/ru/app/altgtu/id1481944453"])
-                        .edgesIgnoringSafeArea(.bottom)
-                } else if self.setModalView == 3 {
-                    DeleteUser()
-                        .environmentObject(SessionStore())
-                }
+                ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
+                    .edgesIgnoringSafeArea(.bottom)
             })
+            /*
             .actionSheet(isPresented: $showActionSheet) {
                 ActionSheet(title: Text("Вы уверены, что хотите удалить свой аккаунт?"), message: Text("Вы не сможете восстановить его после удаления!"), buttons: [.destructive(Text("Удалить аккаунт")) {
-                        self.setModalView = 3
-                        self.isShowingModalView = true
+                        //self.isShowingModalView = true
                     }, .cancel()
                 ])
             }
+            */
             .alert(isPresented: $showAlertCache) {
                 Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
             }
@@ -321,7 +305,6 @@ struct ProfileView: View {
                     .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
             })
         }
-        .onAppear(perform: test)
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
     }
