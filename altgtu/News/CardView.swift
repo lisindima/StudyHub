@@ -14,6 +14,8 @@ struct CardView: View {
     let article: Articles
     let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     var body: some View {
         VStack {
             URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental: true, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
@@ -28,27 +30,20 @@ struct CardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())
-                        .font(.subheadline)
+                        .font(Font.custom("HelveticaNeue-Bold", size: 12))
+                        .foregroundColor(Color.gray)
                         .padding(.bottom, 8)
-                        .foregroundColor(.secondary)
                     Text(article.title)
-                        .font(.headline)
-                        .fontWeight(.black)
-                        .foregroundColor(.primary)
+                        .fontWeight(Font.Weight.heavy)
                         .lineLimit(nil)
                         .padding(.bottom, 8)
-                    Text(article.author ?? "Автор отсутствует")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
                 }.layoutPriority(100)
                 Spacer()
             }.padding()
         }
+        .background(colorScheme == .dark ? Color.black : Color.white)
         .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
-        )
+        .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
         .padding()
     }
 }
