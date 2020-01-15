@@ -6,6 +6,7 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
+import SwiftUI
 import UserNotifications
 
 struct Notification {
@@ -16,7 +17,35 @@ struct Notification {
 
 class NotificationStore: ObservableObject {
     
+    @Published var enabled: UNAuthorizationStatus = .notDetermined
+    
+    static let shared = NotificationStore()
     var notifications = [Notification]()
+    var center: UNUserNotificationCenter = .current()
+
+    init() {
+        center.getNotificationSettings {
+            self.enabled = $0.authorizationStatus
+        }
+    }
+    
+    func refresh() {
+        center.getNotificationSettings { setting in
+            DispatchQueue.main.async {
+                self.enabled = setting.authorizationStatus
+            }
+        }
+    }
+    
+    func requestAuth() {
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
+            if granted {
+                self.enabled = .authorized
+            } else {
+                self.enabled = .denied
+            }
+        }
+    }
     
     func setNotification() -> Void {
         let manager = NotificationStore()
@@ -32,6 +61,11 @@ class NotificationStore: ObservableObject {
                     self.scheduleNotifications()
             }
         }
+    }
+    
+    func cancelNotifications() {
+        center.removeAllDeliveredNotifications()
+        center.removeAllPendingNotificationRequests()
     }
     
     func addNotification(title: String, body: String) -> Void {

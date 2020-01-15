@@ -9,7 +9,7 @@
 import Foundation
 
 struct Articles: Codable, Hashable, Identifiable {
-    let id: UUID?
+    let id: String?
     let source: Source?
     let author: String?
     let title: String
@@ -26,7 +26,7 @@ struct Source: Codable, Hashable, Identifiable {
 }
 
 struct News: Codable, Hashable, Identifiable {
-    var id: UUID?
+    var id: String?
     let status: String
     let totalResults: Int
     let articles: [Articles]

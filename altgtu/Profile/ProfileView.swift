@@ -39,29 +39,28 @@ struct ProfileView: View {
         }
     }
     
+    private func openSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString),UIApplication.shared.canOpenURL(settingsURL)
+        else {
+            return
+        }
+        UIApplication.shared.open(settingsURL)
+    }
+    
+    var footerNotification: some View {
+        switch notification.enabled {
+        case .denied:
+            return Text("Чтобы активировать уведомления перейдите в настройки.")
+        case .notDetermined:
+            return Text("Чтобы активировать уведомления перейдите в настройки.")
+        default:
+            return Text("Здесь настраивается время отсрочки уведомлений от начала пары.")
+        }
+    }
+    
     var sliderModalPresentation: some View {
         NavigationView {
             Form {
-                Section(header: Text("Главное").bold(), footer: Text("Здесь настраивается время отсрочки уведомлений, например, для уведомлений о начале пары.")) {
-                    Toggle(isOn: $session.notifyAlertProfile.animation()) {
-                        HStack {
-                            Image(systemName: "bell")
-                                .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                            Text("Уведомления")
-                        }
-                    }
-                    if session.notifyAlertProfile {
-                        Stepper(value: $session.notifyMinute, in: 5...30) {
-                            HStack {
-                                Image(systemName: "timer")
-                                    .frame(width: 24)
-                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                                Text("\(session.notifyMinute) мин")
-                            }
-                        }
-                    }
-                }
                 Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
                     HStack {
                         Image(systemName: "r.circle")
@@ -150,6 +149,46 @@ struct ProfileView: View {
                                 },.cancel()
                             ])
                         }.foregroundColor(.primary)
+                    }
+                }
+                Section(header: Text("Уведомления").bold(), footer: footerNotification) {
+                    if notification.enabled == .authorized {
+                        HStack {
+                            Image(systemName: "gear")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Button("Открыть настройки") {
+                                self.openSettings()
+                            }.foregroundColor(.primary)
+                        }
+                        Stepper(value: $session.notifyMinute, in: 5...30) {
+                            HStack {
+                                Image(systemName: "timer")
+                                    .frame(width: 24)
+                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                Text("\(session.notifyMinute) мин")
+                            }
+                        }
+                    }
+                    if notification.enabled == .notDetermined {
+                        HStack {
+                            Image(systemName: "bell")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Button("Включить уведомления") {
+                                self.notification.requestAuth()
+                            }.foregroundColor(.primary)
+                        }
+                    }
+                    if notification.enabled == .denied {
+                       HStack {
+                            Image(systemName: "gear")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Button("Открыть настройки") {
+                                self.openSettings()
+                            }.foregroundColor(.primary)
+                        }
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {

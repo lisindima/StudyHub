@@ -1,17 +1,14 @@
 //
-//  Lesson.swift
-//  altgtu
+//  TodayWidgetView.swift
+//  altgtuTodayWidget
 //
-//  Created by Дмитрий Лисин on 14.09.2019.
-//  Copyright © 2019 Dmitriy Lisin. All rights reserved.
+//  Created by Дмитрий Лисин on 15.01.2020.
+//  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
 import SwiftUI
 
-struct Lesson: View {
-
-var model: ScheduleModel
-    
+struct TodayWidgetView: View {
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 10)
@@ -19,35 +16,32 @@ var model: ScheduleModel
                 .foregroundColor(.red)
             VStack {
                 HStack {
-                    Text("\(model.timeStart)-\(model.timeEnd)")
+                    Text("11:35-13:05")
                         .font(.footnote)
                         .bold()
                         .foregroundColor(.red)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
-                    Text(model.name)
+                    Text("Программирование")
                         .bold()
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
-                    Text(model.prepod)
-                        .font(.footnote)
+                    Text("Жуковский М.С")
+                    .   font(.footnote)
                     Spacer()
-                    Text(model.audit)
+                    Text("315 ГК")
                         .font(.footnote)
                 }
             
             }.padding(.leading, 5)
         }.padding()
-        .contextMenu {
-            Button(action: { print("Действие 1")}){
-                HStack {
-                    Image(systemName: "star")
-                    Text("Действие 1")
-                }
-            }
-        }
     }
 }
 
+struct TodayWidgetView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodayWidgetView()
+    }
+}

@@ -6,14 +6,17 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import NotificationCenter
 
-class TodayViewController: UIViewController, NCWidgetProviding {
-        
+class TodayViewController: UIHostingController<TodayWidgetView>, NCWidgetProviding {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: TodayWidgetView())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .clear
     }
         
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {

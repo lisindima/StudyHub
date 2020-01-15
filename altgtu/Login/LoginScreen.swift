@@ -48,7 +48,6 @@ struct SignUpView: View {
                     "gValue": 86.0,
                     "bValue": 214.0,
                     "darkThemeOverride": false,
-                    "notifyAlertProfile": false,
                     "dateBirthDay": NSDate(),
                     "adminSetting": false,
                     "notifyMinute": 10,

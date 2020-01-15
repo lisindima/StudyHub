@@ -37,7 +37,6 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var lastname: String!
     @Published var firstname: String!
     @Published var dateBirthDay: Date!
-    @Published var notifyAlertProfile: Bool!
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
@@ -103,7 +102,6 @@ final class SessionStore: NSObject, ObservableObject {
                 if let document = documentSnapshot {
                     self.lastname = document.get("lastname") as? String
                     self.firstname = document.get("firstname") as? String
-                    self.notifyAlertProfile = document.get("notifyAlertProfile") as? Bool
                     let dateTimestamp = document.get("dateBirthDay") as? Timestamp
                     self.dateBirthDay = dateTimestamp!.dateValue()
                     self.email = document.get("email") as? String
@@ -119,7 +117,6 @@ final class SessionStore: NSObject, ObservableObject {
                     self.biometricAccess = document.get("biometricAccess") as? Bool
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
-                    print(self.notifyAlertProfile ?? "Ошибка, уведомления!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
                     print(self.email ?? "Ошибка, нет Почты!")
                     print(self.urlImageProfile ?? "Ошибка, нет Фото!")
@@ -131,7 +128,6 @@ final class SessionStore: NSObject, ObservableObject {
                     print("Document does not exist")
                     self.lastname = "Error"
                     self.firstname = "Error"
-                    self.notifyAlertProfile = false
                     self.dateBirthDay = Date()
                     self.email = "error@error.com"
                     self.notifyMinute = 10
@@ -154,7 +150,6 @@ final class SessionStore: NSObject, ObservableObject {
             docRef.updateData([
                 "lastname": lastname!,
                 "firstname": firstname!,
-                "notifyAlertProfile": notifyAlertProfile!,
                 "dateBirthDay": dateBirthDay!,
                 "email": email!,
                 "notifyMinute": notifyMinute!,

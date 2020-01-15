@@ -69,6 +69,7 @@
 		CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerAPI.swift */; };
 		CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
+		CBE3554723CEEC3E00F608F4 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */; };
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
@@ -216,6 +217,7 @@
 		CBDE62942352129E00E588EC /* PickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAPI.swift; sourceTree = "<group>"; };
 		CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsNews.swift; sourceTree = "<group>"; };
 		CBE010E923ACC0D6009DB0E8 /* Changelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changelog.swift; sourceTree = "<group>"; };
+		CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetView.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		CBE665DB23543A1000C43811 /* altgtuWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = altgtuWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE665DE23543A1000C43811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				CB32DAFB23A0B64800B25626 /* TodayViewController.swift */,
+				CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */,
 				CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */,
 				CB32DB0023A0B64800B25626 /* Info.plist */,
 			);
@@ -631,6 +634,7 @@
 				7674E8C86BF4E9E78518AB40 /* [CP] Embed Pods Frameworks */,
 				CB25040C23505E1600D2E41A /* Embed Watch Content */,
 				CB6777A5236046610019D6B6 /* Embed App Extensions */,
+				CBE3554823CEF33100F608F4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -816,6 +820,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-altgtu/Pods-altgtu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CBE3554823CEF33100F608F4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun agvtool next-version -all\n";
+		};
 		EC4ADE232421431A244A74BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -905,6 +926,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE3554723CEEC3E00F608F4 /* TodayWidgetView.swift in Sources */,
 				CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1095,7 +1117,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1122,7 +1144,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1145,7 +1167,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1166,7 +1188,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1188,7 +1210,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1214,7 +1236,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1241,7 +1263,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;
@@ -1262,7 +1284,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;
