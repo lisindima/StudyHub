@@ -23,11 +23,13 @@ class NotificationStore: ObservableObject {
     var notifications = [Notification]()
     var center: UNUserNotificationCenter = .current()
 
+    /*
     init() {
         center.getNotificationSettings {
             self.enabled = $0.authorizationStatus
         }
     }
+    */
     
     func refresh() {
         center.getNotificationSettings { setting in
@@ -39,10 +41,12 @@ class NotificationStore: ObservableObject {
     
     func requestAuth() {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
-            if granted {
-                self.enabled = .authorized
-            } else {
-                self.enabled = .denied
+            DispatchQueue.main.async {
+                if granted {
+                    self.enabled = .authorized
+                } else {
+                    self.enabled = .denied
+                }
             }
         }
     }
