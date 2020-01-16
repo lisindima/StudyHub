@@ -108,7 +108,7 @@ struct CardList: View {
                                     .sheet(isPresented: self.$showDetailsNews, onDismiss: {
                                     
                                     }, content: {
-                                        DetailsNews(article: item)
+                                        DetailsNews()
                                     })
                                     .contextMenu {
                                         Button(action:
