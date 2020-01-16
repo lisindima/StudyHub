@@ -112,19 +112,11 @@ struct ProfileView: View {
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
-                    Toggle(isOn: $session.darkThemeOverride) {
-                        HStack {
-                            Image(systemName: "moon.circle")
-                                .frame(width: 24)
-                                .foregroundColor(.accentColor)
-                            Text("Темная тема")
-                        }
-                    }
                     HStack {
                         Image(systemName: "map")
                             .frame(width: 24)
                             .foregroundColor(.accentColor)
-                        Button("Поменять обложку") {
+                        Button("Изменить обложку") {
                             self.isShowingModalViewUnsplash = true
                         }
                         .foregroundColor(.primary)
@@ -134,6 +126,14 @@ struct ProfileView: View {
                             UnsplashImagePicker()
                                 .edgesIgnoringSafeArea(.bottom)
                         })
+                    }
+                    Toggle(isOn: $session.darkThemeOverride) {
+                        HStack {
+                            Image(systemName: "moon.circle")
+                                .frame(width: 24)
+                                .foregroundColor(.accentColor)
+                            Text("Темная тема")
+                        }
                     }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
@@ -242,19 +242,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
-                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                        Image(systemName: "faceid")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Код-пароль и Face ID")
-                    }
-                    NavigationLink(destination: SetAuth()) {
-                        Image(systemName: "list.dash")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Вариаты авторизации")
-                    }
+                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
                     NavigationLink(destination: ChangeEmail()
                         .environmentObject(SessionStore())
                     ) {
@@ -270,6 +258,18 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(.accentColor)
                         Text("Изменить пароль")
+                    }
+                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
+                        Image(systemName: "faceid")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Код-пароль и Face ID")
+                    }
+                    NavigationLink(destination: SetAuth()) {
+                        Image(systemName: "list.dash")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Вариаты авторизации")
                     }
                 }
                 Section(header: Text("Информация").bold()) {
