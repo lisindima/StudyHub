@@ -8,5 +8,6 @@ target 'altgtu' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
+  pod 'UnsplashPhotoPicker'
   # Pods for altgtu
 end

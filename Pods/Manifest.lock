@@ -278,12 +278,14 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.2)
+  - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
+  - UnsplashPhotoPicker
 
 SPEC REPOS:
   trunk:
@@ -311,6 +313,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
+    - UnsplashPhotoPicker
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -337,7 +340,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
+  UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: bfddeb055e268fd5405fc673a5865cbef0a4cb32
+PODFILE CHECKSUM: 7314927439fcab71393bc5950d57d923f97fd7a5
 
 COCOAPODS: 1.9.0.beta.2

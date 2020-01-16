@@ -360,7 +360,8 @@ struct ChangePassword: View {
 }
 
 enum ActiveAlert {
-    case first, second
+    case first
+    case second
 }
 
 struct Credential_Previews: PreviewProvider {

@@ -16,6 +16,7 @@ struct ProfileView: View {
     @State private var showAlertCache: Bool = false
     @State private var showSettingModal: Bool = false
     @State private var isShowingModalView: Bool = false
+    @State private var isShowingModalViewUnsplash: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
     @State private var showActionSheetImage: Bool = false
@@ -119,6 +120,21 @@ struct ProfileView: View {
                             Text("Темная тема")
                         }
                     }
+                    HStack {
+                        Image(systemName: "map")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Button("Поменять обложку") {
+                            self.isShowingModalViewUnsplash = true
+                        }
+                        .foregroundColor(.primary)
+                        .sheet(isPresented: $isShowingModalViewUnsplash, onDismiss: {
+                            print("UNSPLASH")
+                        }, content: {
+                            UnsplashImagePicker()
+                                .edgesIgnoringSafeArea(.bottom)
+                        })
+                    }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     TextField("Фамилия", text: $session.lastname)
@@ -192,36 +208,6 @@ struct ProfileView: View {
                         }
                     }
                 }
-                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
-                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                        Image(systemName: "faceid")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Код-пароль и Face ID")
-                    }
-                    NavigationLink(destination: SetAuth()) {
-                        Image(systemName: "list.dash")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Вариаты авторизации")
-                    }
-                    NavigationLink(destination: ChangeEmail()
-                        .environmentObject(SessionStore())
-                    ) {
-                        Image(systemName: "envelope")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Изменить эл.почту")
-                    }
-                    NavigationLink(destination: ChangePassword()
-                        .environmentObject(SessionStore())
-                    ) {
-                        Image(systemName: "lock")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Изменить пароль")
-                    }
-                }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
                     Picker(selection: $session.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
@@ -254,6 +240,36 @@ struct ProfileView: View {
                         ForEach(0 ..< session.news.count, id: \.self) {
                             Text(self.session.news[$0])
                         }
+                    }
+                }
+                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, установить параметры доступа к приложению.")) {
+                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
+                        Image(systemName: "faceid")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Код-пароль и Face ID")
+                    }
+                    NavigationLink(destination: SetAuth()) {
+                        Image(systemName: "list.dash")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Вариаты авторизации")
+                    }
+                    NavigationLink(destination: ChangeEmail()
+                        .environmentObject(SessionStore())
+                    ) {
+                        Image(systemName: "envelope")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Изменить эл.почту")
+                    }
+                    NavigationLink(destination: ChangePassword()
+                        .environmentObject(SessionStore())
+                    ) {
+                        Image(systemName: "lock")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Text("Изменить пароль")
                     }
                 }
                 Section(header: Text("Информация").bold()) {
