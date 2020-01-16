@@ -34,7 +34,7 @@ struct Label: View {
                 .font(.system(size: 18))
                 .fontWeight(.heavy)
                 .foregroundColor(.white)
-        }
+        }.animation(nil)
     }
 }
 

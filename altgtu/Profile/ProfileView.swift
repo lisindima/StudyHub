@@ -155,10 +155,10 @@ struct ProfileView: View {
                 Section(header: Text("Уведомления").bold(), footer: footerNotification) {
                     if notification.enabled == .authorized {
                         HStack {
-                            Image(systemName: "gear")
+                            Image(systemName: "bell")
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                            Button("Открыть настройки") {
+                            Button("Выключить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
                         }
@@ -183,10 +183,10 @@ struct ProfileView: View {
                     }
                     if notification.enabled == .denied {
                        HStack {
-                            Image(systemName: "gear")
+                            Image(systemName: "bell")
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                            Button("Открыть настройки") {
+                            Button("Включить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
                         }
