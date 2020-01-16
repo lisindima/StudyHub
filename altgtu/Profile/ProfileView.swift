@@ -68,7 +68,7 @@ struct ProfileView: View {
                             .foregroundColor(Color.red.opacity(0.5))
                             .font(.system(size: 20))
                         Slider(value: $session.rValue, in: 0.0...255.0)
-                            .accentColor(Color.red.opacity(session.rValue))
+                            .accentColor(Color.red.opacity(session.rValue / 255.0))
                         Image(systemName: "r.circle.fill")
                             .foregroundColor(Color.red)
                             .font(.system(size: 25))
@@ -78,7 +78,7 @@ struct ProfileView: View {
                             .foregroundColor(Color.green.opacity(0.5))
                             .font(.system(size: 20))
                         Slider(value: $session.gValue, in: 0.0...255.0)
-                            .accentColor(Color.green.opacity(session.gValue))
+                            .accentColor(Color.green.opacity(session.gValue / 255.0))
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(Color.green)
                             .font(.system(size: 25))
@@ -88,7 +88,7 @@ struct ProfileView: View {
                             .foregroundColor(Color.blue.opacity(0.5))
                             .font(.system(size: 20))
                         Slider(value: $session.bValue, in: 0.0...255.0)
-                            .accentColor(Color.blue.opacity(session.bValue))
+                            .accentColor(Color.blue.opacity(session.bValue / 255.0))
                         Image(systemName: "b.circle.fill")
                             .foregroundColor(Color.blue)
                             .font(.system(size: 25))
@@ -98,7 +98,7 @@ struct ProfileView: View {
                             .cornerRadius(8)
                             .shadow(radius: 5)
                             .frame(height: 60)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         HStack {
                             Spacer(minLength: 10)
                             Text("R:\(Int(session.rValue))")
@@ -115,7 +115,7 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: "moon.circle")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(.accentColor)
                             Text("Темная тема")
                         }
                     }
@@ -127,14 +127,14 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: "calendar")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(.accentColor)
                             Text("Дата рождения")
                         }
                     })
                     HStack {
                         Image(systemName: "photo")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Button("Изменить фотографию") {
                             self.showActionSheetImage = true
                         }.actionSheet(isPresented: $showActionSheetImage) {
@@ -157,7 +157,7 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(.accentColor)
                             Button("Выключить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
@@ -166,7 +166,7 @@ struct ProfileView: View {
                             HStack {
                                 Image(systemName: "timer")
                                     .frame(width: 24)
-                                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                    .foregroundColor(.accentColor)
                                 Text("\(session.notifyMinute) мин")
                             }
                         }
@@ -175,7 +175,7 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(.accentColor)
                             Button("Включить уведомления") {
                                 self.notification.requestPermission()
                             }.foregroundColor(.primary)
@@ -185,7 +185,7 @@ struct ProfileView: View {
                        HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(.accentColor)
                             Button("Включить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
@@ -196,13 +196,13 @@ struct ProfileView: View {
                     NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
                         Image(systemName: "faceid")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Код-пароль и Face ID")
                     }
                     NavigationLink(destination: SetAuth()) {
                         Image(systemName: "list.dash")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Вариаты авторизации")
                     }
                     NavigationLink(destination: ChangeEmail()
@@ -210,7 +210,7 @@ struct ProfileView: View {
                     ) {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Изменить эл.почту")
                     }
                     NavigationLink(destination: ChangePassword()
@@ -218,7 +218,7 @@ struct ProfileView: View {
                     ) {
                         Image(systemName: "lock")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Изменить пароль")
                     }
                 }
@@ -226,7 +226,7 @@ struct ProfileView: View {
                     Picker(selection: $session.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Выбранный факультет")
                     }) {
                         ForEach(0 ..< session.faculty.count, id: \.self) {
@@ -236,7 +236,7 @@ struct ProfileView: View {
                     Picker(selection: $session.choiseGroup, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Выбранная группа")
                     }) {
                         ForEach(0 ..< elements.count, id: \.self) {
@@ -248,7 +248,7 @@ struct ProfileView: View {
                     Picker(selection: $session.choiseNews, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Выбранная тема")
                     }) {
                         ForEach(0 ..< session.news.count, id: \.self) {
@@ -260,25 +260,25 @@ struct ProfileView: View {
                     NavigationLink(destination: License()) {
                         Image(systemName: "doc.plaintext")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Лицензии")
                     }
                     NavigationLink(destination: Changelog()) {
                         Image(systemName: "doc.text.magnifyingglass")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Список изменений")
                     }
                     NavigationLink(destination: Privacy()) {
                         Image(systemName: "lock.shield")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("Политика конфиденциальности")
                     }
                     NavigationLink(destination: InfoApp()) {
                         Image(systemName: "info.circle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Text("О приложении")
                     }
                 }
@@ -286,7 +286,7 @@ struct ProfileView: View {
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Button("Оценить") {
                             SKStoreReviewController.requestReview()
                         }.foregroundColor(.primary)
@@ -294,7 +294,7 @@ struct ProfileView: View {
                     HStack {
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Button("Поделиться") {
                             self.tappedShare()
                         }.foregroundColor(.primary)
@@ -302,7 +302,7 @@ struct ProfileView: View {
                     HStack {
                         Image(systemName: "trash")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(.accentColor)
                         Button("Очистить кэш изображений") {
                             URLImageService.shared.cleanFileCache()
                             URLImageService.shared.resetFileCache()
@@ -338,7 +338,7 @@ struct ProfileView: View {
             {
                 Text("Готово")
                     .bold()
-                    .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                    .foregroundColor(.accentColor)
             })
         }
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
@@ -436,6 +436,7 @@ struct ProfileView: View {
                 self.sliderModalPresentation
             })
         }
+        .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
