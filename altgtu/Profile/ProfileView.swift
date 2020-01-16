@@ -23,9 +23,10 @@ struct ProfileView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var notification: NotificationStore
     @EnvironmentObject var pickerAPI: PickerAPI
     @EnvironmentObject var nfc: NFCStore
+    
+    @ObservedObject var notification = NotificationStore.shared
 
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
@@ -176,7 +177,7 @@ struct ProfileView: View {
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                             Button("Включить уведомления") {
-                                self.notification.requestAuth()
+                                self.notification.requestPermission()
                             }.foregroundColor(.primary)
                         }
                     }
@@ -228,7 +229,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Выбранный факультет")
                     }) {
-                        ForEach(0 ..< session.faculty.count) {
+                        ForEach(0 ..< session.faculty.count, id: \.self) {
                             Text(self.session.faculty[$0])
                         }
                     }
@@ -238,7 +239,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Выбранная группа")
                     }) {
-                        ForEach(0 ..< elements.count) {
+                        ForEach(0 ..< elements.count, id: \.self) {
                             Text(self.elements[$0].name)
                         }
                     }
@@ -250,7 +251,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Выбранная тема")
                     }) {
-                        ForEach(0 ..< session.news.count) {
+                        ForEach(0 ..< session.news.count, id: \.self) {
                             Text(self.session.news[$0])
                         }
                     }
@@ -320,6 +321,7 @@ struct ProfileView: View {
                 }
             }
             .environment(\.horizontalSizeClass, .regular)
+            .onAppear(perform: notification.refreshNotificationStatus)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 self.session.uploadProfileImageToCloudStorage()
             }, content: {
