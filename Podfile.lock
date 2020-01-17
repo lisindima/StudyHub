@@ -211,7 +211,7 @@ PODS:
     - "gRPC-C++ (= 0.0.9)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 0.3.901)
-  - FirebaseInstallations (1.0.0):
+  - FirebaseInstallations (1.1.0):
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
@@ -285,7 +285,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
-  - UnsplashPhotoPicker
+  - UnsplashPhotoPicker (from `https://github.com/lisindima/unsplash-photopicker-ios.git`)
 
 SPEC REPOS:
   trunk:
@@ -313,7 +313,15 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
-    - UnsplashPhotoPicker
+
+EXTERNAL SOURCES:
+  UnsplashPhotoPicker:
+    :git: https://github.com/lisindima/unsplash-photopicker-ios.git
+
+CHECKOUT OPTIONS:
+  UnsplashPhotoPicker:
+    :commit: 4c234b539adbb32eec5bfd2c355a7a0f48a45406
+    :git: https://github.com/lisindima/unsplash-photopicker-ios.git
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -326,7 +334,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseFirestore: b7e6adda31974dbd259fc25b541e8850420c92ed
-  FirebaseInstallations: ae1dbf899b1f071b1f93dff78f748380bb6616d0
+  FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
   FirebaseMessaging: 448cf4c727f3c95f4f90816907d67306ba785cfe
   FirebaseStorage: 6c5263796af3b1be82ed173598aade47535fe125
@@ -342,6 +350,6 @@ SPEC CHECKSUMS:
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: 7314927439fcab71393bc5950d57d923f97fd7a5
+PODFILE CHECKSUM: a1dcb93e7f25c8560bfeac37be095932ddeef418
 
 COCOAPODS: 1.9.0.beta.2
