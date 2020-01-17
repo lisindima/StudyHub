@@ -59,6 +59,7 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var percentComplete: Double = 0.0
     @Published var showBanner: Bool = false
     @Published var choiseTypeBackroundProfile: Bool = false
+    @Published var userTypeAuth: ActiveAuthType = .email
     //@Published var imageFromUnsplashPicker: URL?
     
     var darkThemeOverride: Bool = false {
@@ -69,6 +70,12 @@ final class SessionStore: NSObject, ObservableObject {
         
     init(session: User? = nil) {
         self.session = session
+    }
+    
+    enum ActiveAuthType {
+        case appleid
+        case email
+        case unknown
     }
     
     func currentTime() {
@@ -83,6 +90,21 @@ final class SessionStore: NSObject, ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 print("User: \(user)")
+                if let providerData = Auth.auth().currentUser?.providerData {
+                    for userInfo in providerData {
+                        switch userInfo.providerID {
+                        case "password":
+                            print("Вход через почту и пароль")
+                            self.userTypeAuth = .email
+                        case "apple.com":
+                            print("Вход через Apple ID")
+                            self.userTypeAuth = .appleid
+                        default:
+                            print("Вход через \(userInfo.providerID)")
+                            self.userTypeAuth = .unknown
+                        }
+                    }
+                }
                 self.isLoggedIn = true
                 self.session = User(
                     uid: user.uid,

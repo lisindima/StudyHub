@@ -244,21 +244,23 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
-                    NavigationLink(destination: ChangeEmail()
-                        .environmentObject(SessionStore())
-                    ) {
-                        Image(systemName: "envelope")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Изменить эл.почту")
-                    }
-                    NavigationLink(destination: ChangePassword()
-                        .environmentObject(SessionStore())
-                    ) {
-                        Image(systemName: "lock")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Text("Изменить пароль")
+                    if session.userTypeAuth == .email {
+                        NavigationLink(destination: ChangeEmail()
+                            .environmentObject(SessionStore())
+                        ) {
+                            Image(systemName: "envelope")
+                                .frame(width: 24)
+                                .foregroundColor(.accentColor)
+                            Text("Изменить эл.почту")
+                        }
+                        NavigationLink(destination: ChangePassword()
+                            .environmentObject(SessionStore())
+                        ) {
+                            Image(systemName: "lock")
+                                .frame(width: 24)
+                                .foregroundColor(.accentColor)
+                            Text("Изменить пароль")
+                        }
                     }
                     NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
                         Image(systemName: "faceid")
@@ -374,7 +376,7 @@ struct ProfileView: View {
                     } else {
                         URLImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!, incremental: false, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
                             Rectangle()
-                                .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(self.colorScheme == .light ? .white : .black)
                                 .edgesIgnoringSafeArea(.top)
                                 .frame(height: 130)
                         },
