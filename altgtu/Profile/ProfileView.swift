@@ -122,6 +122,7 @@ struct ProfileView: View {
                         .foregroundColor(.primary)
                         .sheet(isPresented: $isShowingModalViewUnsplash, onDismiss: {
                             print("UNSPLASH")
+                            //self.session.setUnsplashImageForProfileBackground()
                         }, content: {
                             UnsplashImagePicker()
                                 .edgesIgnoringSafeArea(.bottom)
@@ -365,10 +366,27 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 VStack {
-                    Rectangle()
-                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        .edgesIgnoringSafeArea(.top)
-                        .frame(height: 130)
+                    if session.choiseTypeBackroundProfile == false {
+                        Rectangle()
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .edgesIgnoringSafeArea(.top)
+                            .frame(height: 130)
+                    } else {
+                        URLImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!, incremental: false, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
+                            Rectangle()
+                                .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
+                                .edgesIgnoringSafeArea(.top)
+                                .frame(height: 130)
+                        },
+                        content:
+                        { proxy in
+                            proxy.image
+                                .resizable()
+                                .edgesIgnoringSafeArea(.top)
+                                .frame(height: 130)
+                                .aspectRatio(contentMode: .fit)
+                        })
+                    }
                     ZStack {
                         ProfileImage()
                             .offset(y: -120)

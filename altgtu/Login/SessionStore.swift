@@ -12,6 +12,7 @@ import Firebase
 import Combine
 import AuthenticationServices
 import CryptoKit
+import UnsplashPhotoPicker
 
 struct User {
     
@@ -57,6 +58,8 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var biometricAccess: Bool!
     @Published var percentComplete: Double = 0.0
     @Published var showBanner: Bool = false
+    @Published var choiseTypeBackroundProfile: Bool = false
+    //@Published var imageFromUnsplashPicker: URL?
     
     var darkThemeOverride: Bool = false {
         didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
@@ -115,6 +118,7 @@ final class SessionStore: NSObject, ObservableObject {
                     self.pinCodeAccess = document.get("pinCodeAccess") as? String
                     self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                     self.biometricAccess = document.get("biometricAccess") as? Bool
+                    self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as! Bool
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
@@ -160,7 +164,8 @@ final class SessionStore: NSObject, ObservableObject {
                 "darkThemeOverride": darkThemeOverride,
                 "pinCodeAccess": pinCodeAccess!,
                 "boolCodeAccess": boolCodeAccess!,
-                "biometricAccess": biometricAccess!
+                "biometricAccess": biometricAccess!,
+                "choiseTypeBackroundProfile": choiseTypeBackroundProfile
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -221,6 +226,10 @@ final class SessionStore: NSObject, ObservableObject {
                 print(self.percentComplete)
             }
         }
+    }
+    
+    func setUnsplashImageForProfileBackground() {
+        
     }
     
     private func randomNonceString(length: Int = 32) -> String {
