@@ -14,11 +14,6 @@ class LessonAPI: ObservableObject {
     @Published var scheduleModel: Schedules = [ScheduleModel]()
     
     let apiUrl = "https://gist.githubusercontent.com/lisindima/a15a61abb015ae38374bfb7a4e54cf2e/raw/c862faf545848ff135a6fcb5aa8b98b57d569b54/gistfile1.txt"
-    /*
-    init() {
-        loadLesson()
-    }
-    */
     
     func loadLesson() {
         guard let url = URL(string: apiUrl) else { return }
@@ -34,15 +29,13 @@ class LessonAPI: ObservableObject {
                     do {
                         let swift = try JSONDecoder().decode(Schedules.self, from: json)
                         self.scheduleModel = swift
-                    }
-                    catch {
+                    } catch {
                         print(error)
                     }
                 }
-            }else{
+            } else {
                 print("Lesson: \(response.statusCode)")
             }
         }.resume()
     }
 }
-

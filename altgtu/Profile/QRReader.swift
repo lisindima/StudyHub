@@ -22,13 +22,13 @@ struct QRReader: View {
     func generatedQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")
-
+        
         if let outputImage = filter.outputImage {
             if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
                 return UIImage(cgImage: cgimg)
             }
         }
-            return UIImage(systemName: "xmark.circle") ?? UIImage()
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
     
     var body: some View {
@@ -71,8 +71,8 @@ struct QRReader: View {
                     Text("QR-сканер").tag(0)
                     Text("Мой QR").tag(1)
                 }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding()
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
                 Spacer()
             }
         }

@@ -28,23 +28,23 @@ struct ProfileView: View {
     @EnvironmentObject var nfc: NFCStore
     
     @ObservedObject var notification = NotificationStore.shared
-
+    
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     private func tappedShare() {
         DispatchQueue.main.async {
-            UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
+            UIApplication.shared.windows.first {$0.isKeyWindow}?.rootViewController?.presentedViewController?.present(
                 UIActivityViewController(activityItems: ["Удобное расписание в приложение АлтГТУ!", URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!], applicationActivities: nil), animated: true, completion: nil
             )
         }
     }
     
     private func openSettings() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString),UIApplication.shared.canOpenURL(settingsURL)
-        else {
-            return
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL)
+            else {
+                return
         }
         UIApplication.shared.open(settingsURL)
     }
@@ -108,7 +108,7 @@ struct ProfileView: View {
                             Text("B:\(Int(session.bValue))")
                             Spacer(minLength: 10)
                         }
-                        
+                            
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
@@ -156,15 +156,15 @@ struct ProfileView: View {
                             self.showActionSheetImage = true
                         }.actionSheet(isPresented: $showActionSheetImage) {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
-                                  .default(Text("Сделать фотографию")) {
+                                .default(Text("Сделать фотографию")) {
                                     self.selectedSourceType = .camera
                                     self.isShowingModalView = true
-                                },.default(Text("Выбрать фотографию")) {
+                                }, .default(Text("Выбрать фотографию")) {
                                     self.selectedSourceType = .photoLibrary
                                     self.isShowingModalView = true
-                                },.destructive(Text("Удалить фотографию")) {
+                                }, .destructive(Text("Удалить фотографию")) {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
-                                },.cancel()
+                                }, .cancel()
                             ])
                         }.foregroundColor(.primary)
                     }
@@ -199,7 +199,7 @@ struct ProfileView: View {
                         }
                     }
                     if notification.enabled == .denied {
-                       HStack {
+                        HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
                                 .foregroundColor(.accentColor)
@@ -342,19 +342,18 @@ struct ProfileView: View {
             .environment(\.horizontalSizeClass, .regular)
             .onAppear(perform: notification.refreshNotificationStatus)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
-                self.session.uploadProfileImageToCloudStorage()
+                self.session.uploadProfileImageToStorage()
             }, content: {
                 ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
                     .edgesIgnoringSafeArea(.bottom)
             })
-            .alert(isPresented: $showAlertCache) {
-                Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
+                .alert(isPresented: $showAlertCache) {
+                    Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
             }
             .navigationBarTitle(Text("Настройки"), displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                    self.showSettingModal = false
-            })
-            {
+            .navigationBarItems(trailing: Button(action: {
+                self.showSettingModal = false
+            }) {
                 Text("Готово")
                     .bold()
                     .foregroundColor(.accentColor)
@@ -374,19 +373,18 @@ struct ProfileView: View {
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)
                     } else {
-                        URLImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!, incremental: false, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
+                        URLImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!, incremental: false, expireAfter: Date(timeIntervalSinceNow: 3600.0), placeholder: { _ in
                             Rectangle()
                                 .foregroundColor(self.colorScheme == .light ? .white : .black)
                                 .edgesIgnoringSafeArea(.top)
                                 .frame(height: 130)
                         },
-                        content:
-                        { proxy in
-                            proxy.image
-                                .resizable()
-                                .edgesIgnoringSafeArea(.top)
-                                .frame(height: 130)
-                                .aspectRatio(contentMode: .fit)
+                                 content: { proxy in
+                                    proxy.image
+                                        .resizable()
+                                        .edgesIgnoringSafeArea(.top)
+                                        .frame(height: 130)
+                                        .aspectRatio(contentMode: .fit)
                         })
                     }
                     ZStack {
@@ -402,11 +400,10 @@ struct ProfileView: View {
                                 Image(systemName: "checkmark.seal.fill")
                                     .font(.largeTitle)
                                     .foregroundColor(.blue)
-                            
+                                
                             }.offset(x: 80, y: 25)
                         }
                     }
-                        
                     VStack {
                         Text((session.lastname!) + " " + (session.firstname!))
                             .bold()
@@ -418,17 +415,17 @@ struct ProfileView: View {
                 }
                 Spacer()
                 /*
-                Button(action: {
-                    self.session.showBanner = true
-                    self.session.setNotification()
-                    self.nfc.readCard()
-                }, label: {
-                    Text("Тест")
-                        .bold()
-                        .foregroundColor(.red)
-                        .padding()
-                })
-                */
+                 Button(action: {
+                 self.session.showBanner = true
+                 self.session.setNotification()
+                 self.nfc.readCard()
+                 }, label: {
+                 Text("Тест")
+                 .bold()
+                 .foregroundColor(.red)
+                 .padding()
+                 })
+                 */
                 Button(action: {
                     self.showActionSheetExit = true
                 }, label: {
@@ -450,7 +447,7 @@ struct ProfileView: View {
                     .imageScale(.large)
                     .foregroundColor(.white)
             }.sheet(isPresented: $showQRReader, onDismiss: {
-    
+                
             }, content: {
                 QRReader()
             }), trailing: Button(action: {
@@ -462,7 +459,7 @@ struct ProfileView: View {
             })
             .actionSheet(isPresented: $showActionSheetExit) {
                 ActionSheet(title: Text("Вы уверены, что хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
-                        self.session.signOut()
+                    self.session.signOut()
                     }, .cancel()
                 ])
             }

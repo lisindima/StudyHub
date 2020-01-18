@@ -15,7 +15,7 @@ public class ScheduleModel: Codable, Identifiable {
     public let timeStart: String
     public let timeEnd: String
     public let audit: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name = "Name"
@@ -24,7 +24,7 @@ public class ScheduleModel: Codable, Identifiable {
         case timeEnd = "TimeEnd"
         case audit = "Audit"
     }
-
+    
     public init(id: Int, name: String, prepod: String, timeStart: String, timeEnd: String, audit: String) {
         self.id = id
         self.name = name

@@ -9,7 +9,7 @@
 import SwiftUI
 import LocalAuthentication
 
-struct AuthLogic : View {
+struct AuthLogic: View {
     
     @EnvironmentObject var session: SessionStore
     
@@ -19,7 +19,7 @@ struct AuthLogic : View {
     
     var body: some View {
         Group {
-            if (session.session != nil) {
+            if session.session != nil {
                 LoadingLogic()
             } else {
                 AuthenticationScreen()

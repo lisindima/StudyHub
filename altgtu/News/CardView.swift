@@ -21,11 +21,11 @@ struct CardView: View {
             URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental: true, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
                 EmptyView()
             },
-            content:
-            { proxy in
-                proxy.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                     content:
+                { proxy in
+                    proxy.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
             })
             HStack {
                 VStack(alignment: .leading) {

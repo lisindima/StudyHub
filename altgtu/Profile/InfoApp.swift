@@ -49,62 +49,50 @@ struct InfoApp: View {
             .padding(.horizontal)
             .padding(.bottom)
             HStack {
-                Button(
-                    action: {
-                        UIApplication.shared.open(URL(string: "https://github.com/lisindima")!)
-                    },
-                    label: {
-                        Image("github")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                })
-                .padding(.horizontal, 8)
-                Button(
-                    action: {
-                        UIApplication.shared.open(URL(string: "https://twitter.com/lisindima")!)
-                    },
-                    label: {
-                        Image("twitter")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                })
-                .padding(.horizontal, 8)
-                Button(
-                    action: {
-                        UIApplication.shared.open(URL(string: "https://vk.com/lisindima")!)
-                    },
-                    label: {
-                        Image("vk")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                })
-                .padding(.horizontal, 8)
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://github.com/lisindima")!)
+                }, label: {
+                    Image("github")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }).padding(.horizontal, 8)
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://twitter.com/lisindima")!)
+                }, label: {
+                    Image("twitter")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }).padding(.horizontal, 8)
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://vk.com/lisindima")!)
+                }, label: {
+                    Image("vk")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }).padding(.horizontal, 8)
             }
             Spacer()
             VStack(alignment: .leading) {
-                Button(
-                    action: {
-                        UIApplication.shared.open(URL(string: "https://money.yandex.ru/to/410017490181618")!)
-                    },
-                    label: {
-                        HStack {
-                            Image(systemName: "creditcard")
-                                .frame(width: 24)
-                            Text("Поддержать разработчика.")
-                        }
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://money.yandex.ru/to/410017490181618")!)
+                }, label: {
+                    HStack {
+                        Image(systemName: "creditcard")
+                            .frame(width: 24)
+                        Text("Поддержать разработчика.")
+                    }
                 })
-                Button(
-                    action: {
-                        UIApplication.shared.open(URL(string: "https://testflight.apple.com/join/xE99ppRh")!)
-                    },
-                    label: {
-                        HStack {
-                            Image(systemName: "ant")
-                                .frame(width: 24)
-                            Text("Принять участие в бета-тестирование.")
-                        }
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://testflight.apple.com/join/xE99ppRh")!)
+                }, label: {
+                    HStack {
+                        Image(systemName: "ant")
+                            .frame(width: 24)
+                        Text("Принять участие в бета-тестирование.")
+                    }
                 })
-            }.padding(.bottom)
+            }
+            .padding(.bottom)
             .navigationBarTitle(Text("О приложении"), displayMode: .inline)
         }
     }

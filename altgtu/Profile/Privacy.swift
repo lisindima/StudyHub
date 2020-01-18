@@ -18,12 +18,11 @@ struct Privacy: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
-                UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
-            })
-            {
-                Image(systemName: "safari")
-                    .imageScale(.large)
+        .navigationBarItems(trailing: Button(action: {
+            UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+        }) {
+            Image(systemName: "safari")
+                .imageScale(.large)
         })
     }
 }

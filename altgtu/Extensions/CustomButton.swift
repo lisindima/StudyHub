@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CustomButton : View {
+struct CustomButton: View {
     
     var label: String
     var action: () -> Void
@@ -37,14 +37,14 @@ struct CustomButton : View {
 
 struct ActivityIndicatorButton: UIViewRepresentable {
     typealias UIViewType = UIActivityIndicatorView
-
+    
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorButton>) -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView()
         indicator.startAnimating()
         indicator.color = .white
         return indicator
     }
-
+    
     func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicatorButton>) {
         
     }

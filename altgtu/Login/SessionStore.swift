@@ -32,7 +32,7 @@ struct User {
 }
 
 final class SessionStore: NSObject, ObservableObject {
-
+    
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
     @Published var lastname: String!
@@ -67,7 +67,7 @@ final class SessionStore: NSObject, ObservableObject {
     }
     
     var handle: AuthStateDidChangeListenerHandle?
-        
+    
     init(session: User? = nil) {
         self.session = session
     }
@@ -122,7 +122,7 @@ final class SessionStore: NSObject, ObservableObject {
     func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-            db.collection("profile").document(currentUser.uid)
+        db.collection("profile").document(currentUser.uid)
             .addSnapshotListener { documentSnapshot, error in
                 if let document = documentSnapshot {
                     self.lastname = document.get("lastname") as? String
@@ -150,8 +150,8 @@ final class SessionStore: NSObject, ObservableObject {
                     print(self.rValue ?? "Ошибка красный цвет!")
                     print(self.bValue ?? "Ошибка синий цвет!")
                     print(self.gValue ?? "Ошибка зеленый цвет!")
-                } else {
-                    print("Document does not exist")
+                } else if error != nil {
+                    print((error?.localizedDescription)!)
                     self.lastname = "Error"
                     self.firstname = "Error"
                     self.dateBirthDay = Date()
@@ -165,7 +165,7 @@ final class SessionStore: NSObject, ObservableObject {
                     self.pinCodeAccess = ""
                     self.boolCodeAccess = false
                     self.biometricAccess = false
-            }
+                }
         }
     }
     
@@ -173,21 +173,21 @@ final class SessionStore: NSObject, ObservableObject {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         let docRef = db.collection("profile").document(currentUser.uid)
-            docRef.updateData([
-                "lastname": lastname!,
-                "firstname": firstname!,
-                "dateBirthDay": dateBirthDay!,
-                "email": email!,
-                "notifyMinute": notifyMinute!,
-                "rValue": rValue!,
-                "gValue": gValue!,
-                "bValue": bValue!,
-                "urlImageProfile": urlImageProfile!,
-                "darkThemeOverride": darkThemeOverride,
-                "pinCodeAccess": pinCodeAccess!,
-                "boolCodeAccess": boolCodeAccess!,
-                "biometricAccess": biometricAccess!,
-                "choiseTypeBackroundProfile": choiseTypeBackroundProfile
+        docRef.updateData([
+            "lastname": lastname!,
+            "firstname": firstname!,
+            "dateBirthDay": dateBirthDay!,
+            "email": email!,
+            "notifyMinute": notifyMinute!,
+            "rValue": rValue!,
+            "gValue": gValue!,
+            "bValue": bValue!,
+            "urlImageProfile": urlImageProfile!,
+            "darkThemeOverride": darkThemeOverride,
+            "pinCodeAccess": pinCodeAccess!,
+            "boolCodeAccess": boolCodeAccess!,
+            "biometricAccess": biometricAccess!,
+            "choiseTypeBackroundProfile": choiseTypeBackroundProfile
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -197,7 +197,7 @@ final class SessionStore: NSObject, ObservableObject {
         }
     }
     
-    func uploadProfileImageToCloudStorage() {
+    func uploadProfileImageToStorage() {
         let currentUser = Auth.auth().currentUser!
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -213,7 +213,7 @@ final class SessionStore: NSObject, ObservableObject {
             let uploadImageTask = photoRef.putData(data!, metadata: nil) { (metadata, error) in
                 photoRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
-                      return
+                        return
                     }
                     self.urlImageProfile = downloadURL.absoluteString
                     print("url image: \(String(describing: self.urlImageProfile))")
@@ -227,15 +227,15 @@ final class SessionStore: NSObject, ObservableObject {
                             self.showBanner = false
                         } else {
                             db.collection("profile").document(currentUser.uid)
-                            .addSnapshotListener { documentSnapshot, error in
-                                if let document = documentSnapshot {
-                                    self.urlImageProfile = document.get("urlImageProfile") as? String
-                                    print(self.urlImageProfile ?? "Ошибка, нет Фото!")
-                                    self.showBanner = false
-                                } else {
-                                    print("Image does not exist")
-                                    self.showBanner = false
-                                }
+                                .addSnapshotListener { documentSnapshot, error in
+                                    if let document = documentSnapshot {
+                                        self.urlImageProfile = document.get("urlImageProfile") as? String
+                                        print(self.urlImageProfile ?? "Ошибка, нет Фото!")
+                                        self.showBanner = false
+                                    } else if error != nil {
+                                        print((error?.localizedDescription)!)
+                                        self.showBanner = false
+                                    }
                             }
                             print("Image successfully updated")
                             self.showBanner = false
@@ -260,7 +260,7 @@ final class SessionStore: NSObject, ObservableObject {
             Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
-
+        
         while remainingLength > 0 {
             let randoms: [UInt8] = (0 ..< 16).map { _ in
                 var random: UInt8 = 0
@@ -284,7 +284,7 @@ final class SessionStore: NSObject, ObservableObject {
     }
     
     fileprivate var currentNonce: String?
-
+    
     func startSignInWithAppleFlow() {
         let nonce = randomNonceString()
         currentNonce = nonce
@@ -292,13 +292,13 @@ final class SessionStore: NSObject, ObservableObject {
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(nonce)
-
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self as ASAuthorizationControllerDelegate
         authorizationController.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         authorizationController.performRequests()
     }
-
+    
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -312,7 +312,7 @@ final class SessionStore: NSObject, ObservableObject {
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print("Error signing out: %@", signOutError)
         }
     }
     
@@ -348,7 +348,7 @@ final class SessionStore: NSObject, ObservableObject {
     
     func sendEmailVerification() {
         Auth.auth().currentUser?.sendEmailVerification { (error) in
-
+            
         }
     }
 }
@@ -358,18 +358,18 @@ extension SessionStore: ASAuthorizationControllerDelegate {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
-        }
-        guard let appleIDToken = appleIDCredential.identityToken else {
-            print("Unable to fetch identity token")
-            return
-        }
-        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-            print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-            return
-        }
-        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             Auth.auth().signIn(with: credential) { (authResult, error) in
-                if (error != nil) {
+                if error != nil {
                     print((error?.localizedDescription)!)
                     return
                 }

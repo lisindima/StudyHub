@@ -31,6 +31,3 @@ struct News: Codable, Hashable, Identifiable {
     let totalResults: Int
     let articles: [Articles]
 }
-
-
-

@@ -12,7 +12,7 @@ import SwiftUICharts
 struct SetAuth: View {
     var body: some View {
         VStack {
-            LineView(data: [8,23,54,32,12,37,7,23,43], title: "Тест")
+            LineView(data: [8, 23, 54, 32, 12, 37, 7, 23, 43], title: "Тест")
                 .padding()
             Spacer()
                 .layoutPriority(10)

@@ -10,7 +10,7 @@ import SwiftUI
 import URLImage
 
 struct MessageView: View {
-
+    
     @EnvironmentObject var session: SessionStore
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
@@ -18,29 +18,28 @@ struct MessageView: View {
     var message: String
     var sender: String
     var timeMessage: String
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                URLImage(URL(string:"\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
+                URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
                     ProgressView($0) { progress in
                         ZStack {
                             if progress > 0.0 {
                                 CircleProgressView(progress).stroke(lineWidth: 8.0)
-                            }
-                            else {
+                            } else {
                                 CircleActivityView().stroke(lineWidth: 50.0)
                             }
                         }
                     }.frame(width: 50, height: 50)
                 }) { proxy in
-                        proxy.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(Circle())
-                            .clipped()
-                            .shadow(radius: 5)
-                            .frame(width: 50, height: 50)
+                    proxy.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .clipped()
+                        .shadow(radius: 5)
+                        .frame(width: 50, height: 50)
                 }
                 VStack {
                     HStack {
@@ -49,7 +48,7 @@ struct MessageView: View {
                             .font(.footnote)
                         Spacer()
                     }.padding(.leading, 3)
-                    .padding(.bottom, 3)
+                        .padding(.bottom, 3)
                     HStack {
                         VStack(alignment: .leading) {
                             Text(message)
@@ -58,7 +57,7 @@ struct MessageView: View {
                                 .font(.body)
                                 .cornerRadius(5)
                         }.padding(.bottom, 3)
-                            Spacer()
+                        Spacer()
                     }
                     HStack {
                         Text(timeMessage)
@@ -79,7 +78,7 @@ struct MessageView1: View {
     @EnvironmentObject var session: SessionStore
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
-
+    
     var message: String
     var sender: String
     var timeMessage: String
@@ -94,7 +93,7 @@ struct MessageView1: View {
                             .foregroundColor(accentColor)
                             .font(.footnote)
                     }.padding(.trailing, 3)
-                    .padding(.bottom, 3)
+                        .padding(.bottom, 3)
                     HStack {
                         Spacer()
                         VStack(alignment: .trailing) {
@@ -112,25 +111,24 @@ struct MessageView1: View {
                             .foregroundColor(.gray)
                     }.padding(.trailing, 3)
                 }
-                URLImage(URL(string:"\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
+                URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
                     ProgressView($0) { progress in
                         ZStack {
                             if progress > 0.0 {
                                 CircleProgressView(progress).stroke(lineWidth: 8.0)
-                            }
-                            else {
+                            } else {
                                 CircleActivityView().stroke(lineWidth: 50.0)
                             }
                         }
                     }.frame(width: 50, height: 50)
                 }) { proxy in
-                        proxy.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(Circle())
-                            .clipped()
-                            .shadow(radius: 5)
-                            .frame(width: 50, height: 50)
+                    proxy.image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .clipped()
+                        .shadow(radius: 5)
+                        .frame(width: 50, height: 50)
                 }
             }
         }

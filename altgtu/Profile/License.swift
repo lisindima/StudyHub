@@ -24,8 +24,8 @@ struct License: View {
                 Text("Unsplash Photo Picker")
             }
         }
-            .environment(\.horizontalSizeClass, .regular)
-            .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
+        .environment(\.horizontalSizeClass, .regular)
+        .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
     }
 }
 
@@ -47,7 +47,7 @@ struct URLImageLicense: View {
             }
         }
         .navigationBarTitle(Text("URLImage"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
+        .navigationBarItems(trailing: Button(action: {
             UIApplication.shared.open(URL(string: "https://github.com/dmytro-anokhin/url-image")!)
         }) {
             Image(systemName: "safari")
@@ -74,7 +74,7 @@ struct LottieLicense: View {
             }
         }
         .navigationBarTitle(Text("Lottie"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
+        .navigationBarItems(trailing: Button(action: {
             UIApplication.shared.open(URL(string: "https://github.com/airbnb/lottie-ios")!)
         }) {
             Image(systemName: "safari")
@@ -101,7 +101,7 @@ struct KeyboardObservingLicense: View {
             }
         }
         .navigationBarTitle(Text("Keyboard Observing"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
+        .navigationBarItems(trailing: Button(action: {
             UIApplication.shared.open(URL(string: "https://github.com/nickffox/KeyboardObserving")!)
         }) {
             Image(systemName: "safari")
@@ -128,7 +128,7 @@ struct UnsplashLicense: View {
             }
         }
         .navigationBarTitle(Text("Unsplash Photo Picker"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
+        .navigationBarItems(trailing: Button(action: {
             UIApplication.shared.open(URL(string: "https://github.com/unsplash/unsplash-photopicker-ios")!)
         }) {
             Image(systemName: "safari")

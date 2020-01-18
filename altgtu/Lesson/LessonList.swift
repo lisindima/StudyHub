@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct LessonList: View {
-
-@ObservedObject var api: LessonAPI = LessonAPI()
+    
+    @ObservedObject var api: LessonAPI = LessonAPI()
     @State private var weakType: Int = 0
     
     var body: some View {
@@ -19,26 +19,25 @@ struct LessonList: View {
                 Picker("", selection: $weakType) {
                     Text("1-ая неделя").tag(0)
                     Text("2-ая неделя").tag(1)
-                }.pickerStyle(SegmentedPickerStyle())
+                }
+                .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-                
-            if weakType == 0 {
-                List {
-                    ForEach(self.api.scheduleModel) { todo in
-                        NavigationLink(destination: LessonDetail(model: todo)) {
-                            Lesson(model: todo)
+                if weakType == 0 {
+                    List {
+                        ForEach(self.api.scheduleModel) { todo in
+                            NavigationLink(destination: LessonDetail(model: todo)) {
+                                Lesson(model: todo)
+                            }
                         }
                     }
                 }
-            }
-            if weakType == 1 {
-                List {
-                    Text("Beep")
-                    Text("Beep")
+                if weakType == 1 {
+                    List {
+                        Text("Beep")
+                        Text("Beep")
                     }
                 }
-            }
-            .navigationBarTitle(Text("Расписание"))
+            }.navigationBarTitle(Text("Расписание"))
         }
     }
 }

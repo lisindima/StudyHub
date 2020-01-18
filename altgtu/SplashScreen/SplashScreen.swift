@@ -47,7 +47,7 @@ struct InformationDetailView: View {
     var title: String = "title"
     var subTitle: String = "subTitle"
     var imageName: String = "car"
-
+    
     var body: some View {
         HStack(alignment: .center) {
             Image(systemName: imageName)
@@ -85,7 +85,6 @@ struct TitleView: View {
         }
     }
 }
-
 
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {

@@ -59,9 +59,9 @@ struct CardList: View {
                                 .font(.largeTitle)
                                 .fontWeight(.heavy)
                         }
-                            .padding(.leading, 15)
+                        .padding(.leading, 15)
                         Spacer()
-                        URLImage(URL(string:"\(session.urlImageProfile!)")!, incremental: false, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
+                        URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: false, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
                             ProgressView($0) { progress in
                                 ZStack {
                                     if progress > 0.0 {
@@ -71,55 +71,54 @@ struct CardList: View {
                                     }
                                 }
                             }
-                                .padding(.trailing, 15)
+                            .padding(.trailing, 15)
+                            .frame(width: 45, height: 45)
+                        }) { proxy in
+                            proxy.image
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
                                 .frame(width: 45, height: 45)
-                            }) { proxy in
-                                    proxy.image
-                                        .resizable()
-                                        .scaledToFill()
-                                        .clipShape(Circle())
-                                        .frame(width: 45, height: 45)
-                                        .padding(.trailing, 15)
+                                .padding(.trailing, 15)
+                        }
+                    }.padding(.top, 30)
+                    VStack(alignment: .center) {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "")})
+                                    .padding(.trailing)
+                                SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
+                                    .padding(.horizontal)
+                                SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")})
+                                    .padding(.horizontal)
+                                SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=technology")})
+                                    .padding(.horizontal)
+                                SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=health")})
+                                    .padding(.horizontal)
+                                SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=business")})
+                                    .padding(.leading)
+                                    .padding(.trailing, 10)
+                            }.padding()
+                        }
+                        ForEach(self.newsApi.articles, id: \.self) { item in
+                            CardView(article: item)
+                                .onTapGesture {
+                                    self.showDetailsNews = true
                             }
-                        }.padding(.top, 30)
-                        VStack(alignment: .center) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "")})
-                                        .padding(.trailing)
-                                    SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
-                                        .padding(.horizontal)
-                                    SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")})
-                                        .padding(.horizontal)
-                                    SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=technology")})
-                                        .padding(.horizontal)
-                                    SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=health")})
-                                        .padding(.horizontal)
-                                    SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=business")})
-                                        .padding(.leading)
-                                        .padding(.trailing, 10)
-                                }.padding()
-                            }
-                            ForEach(self.newsApi.articles, id: \.self) { item in
-                                CardView(article: item)
-                                    .onTapGesture {
-                                        self.showDetailsNews = true
+                            .sheet(isPresented: self.$showDetailsNews, onDismiss: {
+                                
+                            }, content: {
+                                DetailsNews()
+                            })
+                                .contextMenu {
+                                    Button(action: {
+                                        self.showNewsSafari(item)
+                                    }) {
+                                        HStack {
+                                            Image(systemName: "safari")
+                                            Text("Открыть в Safari")
+                                        }
                                     }
-                                    .sheet(isPresented: self.$showDetailsNews, onDismiss: {
-                                    
-                                    }, content: {
-                                        DetailsNews()
-                                    })
-                                    .contextMenu {
-                                        Button(action:
-                                            {
-                                                self.showNewsSafari(item)
-                                        }){
-                                            HStack {
-                                                Image(systemName: "safari")
-                                                Text("Открыть в Safari")
-                                    }
-                                }
                             }
                         }
                     }
@@ -132,7 +131,7 @@ struct CardList: View {
 struct SelectNewsButton: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-
+    
     var nameButton: String
     var colorButton: Color
     var sizeButton: CGFloat
@@ -148,7 +147,7 @@ struct SelectNewsButton: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
                             .frame(width: sizeButton, height: sizeButton)
-                    )
+                )
                     .offset(x: 10, y: 10)
                 RoundedRectangle(cornerRadius: 10)
                     .fill(colorScheme == .dark ? Color.black : Color.white)
@@ -157,7 +156,7 @@ struct SelectNewsButton: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
                             .frame(width: sizeButton, height: sizeButton)
-                    )
+                )
                 Text(nameButton)
                     .foregroundColor(colorButton)
                     .fontWeight(.semibold)

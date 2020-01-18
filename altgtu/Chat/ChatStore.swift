@@ -19,31 +19,30 @@ final class ChatStore: ObservableObject {
         let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
             .addSnapshotListener { (querySnapshot, err) in
-            if err != nil {
-                print((err?.localizedDescription)!)
-                return
-            }
-            for item in querySnapshot!.documentChanges {
-                if item.type == .added {
-                    let user = item.document.get("user") as! String
-                    let message = item.document.get("msg") as! String
-                    let idUser = item.document.get("idUser") as! String
-                    let dateMessage = item.document.get("dateMsg") as! String
-                    let id = item.document.documentID
-                    
-                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
+                if err != nil {
+                    print((err?.localizedDescription)!)
+                    return
                 }
-            }
+                for item in querySnapshot!.documentChanges {
+                    if item.type == .added {
+                        let user = item.document.get("user") as! String
+                        let message = item.document.get("msg") as! String
+                        let idUser = item.document.get("idUser") as! String
+                        let dateMessage = item.document.get("dateMsg") as! String
+                        let id = item.document.documentID
+                        self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
+                    }
+                }
         }
     }
     
     func addMessages(message: String, user: String, idUser: String, dateMessage: String) {
         let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("msg").addDocument(data: ["msg": message, "user": user, "idUser": idUser, "dateMsg": dateMessage]) { (err) in
-        if err != nil {
-            print((err?.localizedDescription)!)
-            return
-        }
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
             print("success")
         }
     }

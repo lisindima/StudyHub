@@ -12,7 +12,7 @@ struct KeyPadButton: View {
     
     @EnvironmentObject var session: SessionStore
     var key: String
-
+    
     var body: some View {
         Button(action: { self.action(self.key) }) {
             Text(key)
@@ -23,14 +23,14 @@ struct KeyPadButton: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 100)
                         .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
-                )
+            )
         }
     }
-
+    
     enum ActionKey: EnvironmentKey {
         static var defaultValue: (String) -> Void { { _ in } }
     }
-
+    
     @Environment(\.keyPadButtonAction) var action: (String) -> Void
 }
 

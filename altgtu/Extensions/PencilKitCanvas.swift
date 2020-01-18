@@ -14,8 +14,8 @@ struct PencilKitCanvas: UIViewRepresentable {
         let canvas = PKCanvasView()
         return canvas
     }
-        
+    
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
-            
+        
     }
 }

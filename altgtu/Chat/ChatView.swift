@@ -28,28 +28,26 @@ struct ChatView: View {
                         MessageView(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                             .contextMenu {
-                                Button(action:
-                                    {
-    
-                                    }){
-                                HStack {
-                                    Image(systemName: "trash")
-                                    Text("Удалить")
+                                Button(action: {
+                                    print("Удалено")
+                                }) {
+                                    HStack {
+                                        Image(systemName: "trash")
+                                        Text("Удалить")
+                                    }
                                 }
-                            }
                         }
-                    }
-                    else {
+                    } else {
                         MessageView1(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                     }
                 }
             }
-                Spacer()
+            Spacer()
             HStack {
                 CustomInput(text: $typeMessage, name: "Введите сообщение")
                 if typeMessage.isEmpty == false {
-                    Button(action:{
+                    Button(action: {
                         self.session.currentTime()
                         self.sessionChat.addMessages(message: self.typeMessage, user: "\(self.session.lastname + " " + self.session.firstname)", idUser: self.currentUid, dateMessage: self.session.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
@@ -60,20 +58,19 @@ struct ChatView: View {
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(8)
-                        }
                     }
                 }
-                .animation(.default)
-                .padding([.horizontal, .bottom])
             }
-            .keyboardObserving()
-            .navigationBarTitle(Text(titleChat), displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                    print("plus")
-                })
-                {
-                    Image(systemName: "info.circle")
-                        .imageScale(.large)
+            .animation(.default)
+            .padding([.horizontal, .bottom])
+        }
+        .keyboardObserving()
+        .navigationBarTitle(Text(titleChat), displayMode: .inline)
+        .navigationBarItems(trailing: Button (action: {
+            print("plus")
+        }) {
+            Image(systemName: "info.circle")
+                .imageScale(.large)
         })
     }
 }

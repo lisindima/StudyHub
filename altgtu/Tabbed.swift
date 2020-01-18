@@ -24,7 +24,7 @@ struct Tabbed: View {
                             .imageScale(.large)
                         Text("Сегодня")
                     }
-                }.tag(0)
+            }.tag(0)
             LessonList()
                 .tabItem {
                     VStack {
@@ -32,7 +32,7 @@ struct Tabbed: View {
                             .imageScale(.large)
                         Text("Расписание")
                     }
-                }.tag(1)
+            }.tag(1)
             Note()
                 .environmentObject(NoteStore())
                 .tabItem {
@@ -41,15 +41,15 @@ struct Tabbed: View {
                             .imageScale(.large)
                         Text("Заметки")
                     }
-                }.tag(2)
+            }.tag(2)
             ListChat()
                 .tabItem {
-                    VStack{
+                    VStack {
                         Image(systemName: "bubble.left")
                             .imageScale(.large)
                         Text("Чат")
                     }
-                }.tag(3)
+            }.tag(3)
             ProfileView()
                 .environmentObject(NotificationStore())
                 .environmentObject(PickerAPI())
@@ -60,7 +60,7 @@ struct Tabbed: View {
                             .imageScale(.large)
                         Text("Профиль")
                     }
-                }.tag(4)
+            }.tag(4)
         }
         .banner(isPresented: $session.showBanner)
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))

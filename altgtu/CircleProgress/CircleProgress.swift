@@ -53,7 +53,7 @@ struct Outline: View {
                         .trim(from: 0, to: CGFloat(percentage) * 0.01)
                         .stroke(style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center, startAngle: .zero, endAngle: .init(degrees: 360)))
-                ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+            ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
         }
     }
 }
@@ -71,7 +71,7 @@ struct Track: View {
                     Circle()
                         .stroke(style: StrokeStyle(lineWidth: 8))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
-                )
+            )
         }
     }
 }

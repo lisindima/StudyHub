@@ -17,13 +17,13 @@ class NotificationStore: ObservableObject {
     static let shared = NotificationStore()
     var notifications = [Notification]()
     var center: UNUserNotificationCenter = .current()
-
+    
     init() {
         center.getNotificationSettings {
             self.enabled = $0.authorizationStatus
         }
     }
-
+    
     func refreshNotificationStatus() {
         center.getNotificationSettings { setting in
             DispatchQueue.main.async {

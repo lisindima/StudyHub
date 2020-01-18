@@ -46,7 +46,7 @@ struct BannerModifier: ViewModifier {
             content
         }
     }
-
+    
 }
 
 extension View {

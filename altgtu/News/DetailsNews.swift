@@ -59,7 +59,7 @@ struct DetailsNews: View {
         let blur = (height - max(offset, 0)) / height
         return blur * 6
     }
-
+    
     private func getHeaderTitleOffset() -> CGFloat {
         let currentYPos = titleRect.midY
         if currentYPos < headerImageRect.maxY {
@@ -126,7 +126,7 @@ struct DetailsNews: View {
                 .clipped()
                 .offset(x: 0, y: self.getOffsetForHeaderImage(geometry))
             }.frame(height: imageHeight)
-            .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
+                .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
         }.edgesIgnoringSafeArea(.all)
     }
 }

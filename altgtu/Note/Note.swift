@@ -51,9 +51,9 @@ struct Note: View {
                                 TextField("Поиск", text: $searchText)
                                     .foregroundColor(.primary)
                             }
-                                .padding(6.5)
-                                .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                                .cornerRadius(9)
+                            .padding(6.5)
+                            .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
+                            .cornerRadius(9)
                             if !self.searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -63,8 +63,8 @@ struct Note: View {
                                 })
                             }
                         }
-                            .padding(.horizontal)
-                            .animation(.default)
+                        .padding(.horizontal)
+                        .animation(.default)
                         ZStack {
                             List {
                                 ForEach(noteStore.dataNote) { item in
@@ -72,10 +72,10 @@ struct Note: View {
                                         Text(item.note)
                                     }
                                 }
-                                    .onDelete { (index) in
-                                        self.noteStore.deleteNote(datas: self.noteStore, index: index)
-                                    }
-                                    .onMove(perform: move)
+                                .onDelete { (index) in
+                                    self.noteStore.deleteNote(datas: self.noteStore, index: index)
+                                }
+                                .onMove(perform: move)
                             }
                             VStack {
                                 Spacer()
@@ -103,12 +103,12 @@ struct Note: View {
                         NewNote()
                             .environmentObject(NoteStore())
                     })
-                    .actionSheet(isPresented: $showActionSheetSort) {
-                        ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
+                        .actionSheet(isPresented: $showActionSheetSort) {
+                            ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
+                                
+                                }, .default(Text("По дате создания")) {
                                     
-                        }, .default(Text("По дате создания")) {
-                                    
-                        }, .cancel()])
+                                }, .cancel()])
                     }
                     .navigationBarTitle(Text("Заметки"))
                     .navigationBarItems(leading: EditButton(), trailing: Button (action: {
@@ -152,7 +152,6 @@ struct NoteDetails: View {
         }
     }
 }
-
 
 struct Note_Previews: PreviewProvider {
     static var previews: some View {

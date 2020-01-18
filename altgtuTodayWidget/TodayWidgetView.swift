@@ -12,7 +12,7 @@ struct TodayWidgetView: View {
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width:10)
+                .frame(width: 10)
                 .foregroundColor(.red)
             VStack {
                 HStack {
@@ -34,7 +34,6 @@ struct TodayWidgetView: View {
                     Text("315 ГК")
                         .font(.footnote)
                 }
-            
             }.padding(.leading, 5)
         }.padding()
     }

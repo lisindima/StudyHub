@@ -13,7 +13,7 @@ import AuthenticationServices
 // MARK: - Регистрация
 
 struct SignUpView: View {
-    
+
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var firstname: String = ""
@@ -21,7 +21,7 @@ struct SignUpView: View {
     @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-    
+
     @EnvironmentObject var session: SessionStore
 
     private func signUp() {
@@ -68,7 +68,7 @@ struct SignUpView: View {
             }
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .center) {
             CustomInput(text: $lastname, name: "Фамилия")
@@ -84,13 +84,12 @@ struct SignUpView: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.newPassword)
                     if password.isEmpty {
-                    
                     }
                     if 0 < password.count && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
-                    if 8 <= password.count{
+                    if 8 <= password.count {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
@@ -99,8 +98,8 @@ struct SignUpView: View {
                     .font(.footnote)
                     .foregroundColor(Color.gray)
             }
-                .padding(.horizontal)
-                .padding(.bottom, 8)
+            .padding(.horizontal)
+            .padding(.bottom, 8)
             CustomButton(label: loading == true ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
@@ -125,7 +124,7 @@ struct SignUpView: View {
 // MARK: - Восстановление пароля
 
 struct ResetPassword: View {
-    
+
     @State private var email: String = ""
     @State private var textError: String = ""
     @State private var loading: Bool = false
@@ -133,7 +132,7 @@ struct ResetPassword: View {
     @State private var activeAlert: ActiveAlert = .first
 
     @EnvironmentObject var session: SessionStore
-    
+
     private func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -179,10 +178,10 @@ struct ResetPassword: View {
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
             switch activeAlert {
-                case .first:
-                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-                case .second:
-                    return Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
+            case .first:
+                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+            case .second:
+                return Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
             }
         }
     }
@@ -191,7 +190,7 @@ struct ResetPassword: View {
 // MARK: - Вход с помощью почты и пароля
 
 struct EmailLoginScreen: View {
-    
+
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var textError: String = ""
@@ -199,7 +198,7 @@ struct EmailLoginScreen: View {
     @State private var showAlert: Bool = false
 
     @EnvironmentObject var session: SessionStore
-    
+
     private func signIn() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -212,7 +211,7 @@ struct EmailLoginScreen: View {
                 self.email = ""
                 self.password = ""
             } else {
-        
+                
             }
         }
     }
@@ -228,19 +227,18 @@ struct EmailLoginScreen: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
                     if password.isEmpty {
-                    
                     }
                     if 0 < password.count && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
-                    if 8 <= password.count{
+                    if 8 <= password.count {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
                 }
-                    .modifier(InputModifier())
-                    .padding([.horizontal, .top])
+                .modifier(InputModifier())
+                .padding([.horizontal, .top])
                 NavigationLink(destination: ResetPassword()) {
                     Text("Забыли пароль?")
                         .font(.footnote)
@@ -271,15 +269,15 @@ struct EmailLoginScreen: View {
                             .font(.footnote)
                     }
                 }
-                    .padding(.top, 5)
-                    .padding(.bottom)
+                .padding(.top, 5)
+                .padding(.bottom)
             }.padding(.bottom)
         }
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Вход")
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
-                Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+            Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
         }
     }
 }
@@ -287,24 +285,24 @@ struct EmailLoginScreen: View {
 // MARK: - Вход с помощью Apple
 
 struct AuthenticationScreen: View {
-    
+
     @State private var showSpashScreen: Bool = false
 
     @EnvironmentObject var session: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     private func funcSplashScreen() {
         let defaults = UserDefaults.standard
-            if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
-                print("НЕ первый запуск")
-                self.showSpashScreen = false
-            }else{
-                defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-                print("Первый запуск")
-                self.showSpashScreen = true
+        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
+            print("НЕ первый запуск")
+            self.showSpashScreen = false
+        } else {
+            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            print("Первый запуск")
+            self.showSpashScreen = true
         }
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
@@ -362,7 +360,7 @@ struct AuthenticationScreen: View {
             .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
             .edgesIgnoringSafeArea(.top)
             .sheet(isPresented: self.$showSpashScreen) {
-                    SplashScreen()
+                SplashScreen()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -372,28 +370,28 @@ struct AuthenticationScreen: View {
 }
 
 final class SignInWithAppleWhite: UIViewRepresentable {
-    
+
     func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
         return ASAuthorizationAppleIDButton(type: .default, style: .white)
     }
-    
+
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
-    
+        
     }
 }
 
 final class SignInWithAppleBlack: UIViewRepresentable {
-        
+
     func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
         return ASAuthorizationAppleIDButton(type: .default, style: .black)
     }
-    
+
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
-    
+        
     }
 }
 
-struct Authenticate_Previews : PreviewProvider {
+struct Authenticate_Previews: PreviewProvider {
     static var previews: some View {
         AuthenticationScreen()
             .environmentObject(SessionStore())

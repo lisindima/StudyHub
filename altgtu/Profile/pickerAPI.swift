@@ -14,7 +14,7 @@ class PickerAPI: ObservableObject {
     @Published var groupModel: GroupModel = [GroupModelElement]()
     
     let apiUrl = "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group"
-        
+    
     func loadPickerData() {
         guard let url = URL(string: apiUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -29,13 +29,12 @@ class PickerAPI: ObservableObject {
                     do {
                         let swift = try JSONDecoder().decode(GroupModel.self, from: json)
                         self.groupModel = swift
-                
-                    }
-                    catch {
+                        
+                    } catch {
                         print(error)
                     }
                 }
-            }else{
+            } else {
                 print("Picker: \(response.statusCode)")
             }
         }.resume()

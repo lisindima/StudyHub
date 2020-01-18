@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct Lesson: View {
-
-var model: ScheduleModel
+    
+    var model: ScheduleModel
     
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 10)
-                .frame(width:10)
+                .frame(width: 10)
                 .foregroundColor(.red)
             VStack {
                 HStack {
@@ -37,11 +37,14 @@ var model: ScheduleModel
                     Text(model.audit)
                         .font(.footnote)
                 }
-            
+                
             }.padding(.leading, 5)
-        }.padding()
+        }
+        .padding()
         .contextMenu {
-            Button(action: { print("Действие 1")}){
+            Button(action: {
+                print("Действие 1")
+            }) {
                 HStack {
                     Image(systemName: "star")
                     Text("Действие 1")
@@ -50,4 +53,3 @@ var model: ScheduleModel
         }
     }
 }
-

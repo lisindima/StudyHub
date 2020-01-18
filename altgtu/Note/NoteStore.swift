@@ -18,17 +18,17 @@ final class NoteStore: ObservableObject {
         let currentUser = Auth.auth().currentUser!
         db.collection("note").document(currentUser.uid).collection("noteCollection")
             .addSnapshotListener { (querySnapshot, err) in
-            if err != nil {
-                print((err?.localizedDescription)!)
-                return
-            }
-            for item in querySnapshot!.documentChanges {
-                if item.type == .added {
-                    let id = item.document.documentID
-                    let note = item.document.get("note") as! String
-                    self.dataNote.append(DataNote(id: id, note: note))
+                if err != nil {
+                    print((err?.localizedDescription)!)
+                    return
                 }
-            }
+                for item in querySnapshot!.documentChanges {
+                    if item.type == .added {
+                        let id = item.document.documentID
+                        let note = item.document.get("note") as! String
+                        self.dataNote.append(DataNote(id: id, note: note))
+                    }
+                }
         }
     }
     
@@ -36,10 +36,10 @@ final class NoteStore: ObservableObject {
         let db = Firestore.firestore()
         let currentUser = Auth.auth().currentUser!
         db.collection("note").document(currentUser.uid).collection("noteCollection").addDocument(data: ["note": note]) { (err) in
-        if err != nil {
-            print((err?.localizedDescription)!)
-            return
-        }
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
             print("Заметка сохранена")
         }
     }

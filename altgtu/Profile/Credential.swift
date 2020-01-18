@@ -17,7 +17,7 @@ struct DeleteUser: View {
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-
+    
     @EnvironmentObject var session: SessionStore
     
     private func reauthenticateUser() {
@@ -46,57 +46,57 @@ struct DeleteUser: View {
             }
         })
     }
-
+    
     var body: some View {
-            VStack(alignment: .center) {
-                CustomInput(text: $email, name: "Эл.почта")
-                    .padding([.top, .horizontal])
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                VStack(alignment: .trailing) {
-                    HStack {
-                        SecureField("Пароль", text: $password)
-                            .textContentType(.password)
-                        if password.isEmpty {
+        VStack(alignment: .center) {
+            CustomInput(text: $email, name: "Эл.почта")
+                .padding([.top, .horizontal])
+                .textContentType(.emailAddress)
+                .keyboardType(.emailAddress)
+            VStack(alignment: .trailing) {
+                HStack {
+                    SecureField("Пароль", text: $password)
+                        .textContentType(.password)
+                    if password.isEmpty {
                         
-                        }
-                        if 0 < password.count && password.count < 8 {
-                            Image(systemName: "xmark.circle")
-                                .foregroundColor(.red)
-                        }
-                        if 8 <= password.count{
-                            Image(systemName: "checkmark.circle")
-                                .foregroundColor(.green)
-                        }
                     }
-                        .modifier(InputModifier())
-                        .padding([.horizontal, .top])
+                    if 0 < password.count && password.count < 8 {
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                    }
+                    if 8 <= password.count {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                    }
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
-                    .disabled(loading)
-                    .padding()
-                Divider()
-                Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(nil)
-                    .padding()
-                Spacer()
+                .modifier(InputModifier())
+                .padding([.horizontal, .top])
             }
-            .navigationBarTitle(Text("Удаление аккаунта"), displayMode: .inline)
-            .edgesIgnoringSafeArea(.bottom)
-            .alert(isPresented: $showAlert) {
-                switch activeAlert {
-                    case .first:
-                        return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-                    case .second:
-                        return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь!"), dismissButton: .default(Text("Закрыть")) {
-                            print("Удалено")
-                        }
-                    )
-                }
+            CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
+                .disabled(loading)
+                .padding()
+            Divider()
+            Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .padding()
+            Spacer()
+        }
+        .navigationBarTitle(Text("Удаление аккаунта"), displayMode: .inline)
+        .edgesIgnoringSafeArea(.bottom)
+        .alert(isPresented: $showAlert) {
+            switch activeAlert {
+            case .first:
+                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+            case .second:
+                return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь!"), dismissButton: .default(Text("Закрыть")) {
+                    print("Удалено")
+                    }
+                )
             }
+        }
         
     }
 }
@@ -111,7 +111,7 @@ struct ChangeEmail: View {
     @State private var showAlert: Bool = false
     @State private var changeView: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var session: SessionStore
     
@@ -151,7 +151,7 @@ struct ChangeEmail: View {
             }
         }
     }
-
+    
     var body: some View {
         VStack(alignment: .center) {
             if changeView == false {
@@ -164,19 +164,19 @@ struct ChangeEmail: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {
-                        
+                            
                         }
                         if 0 < password.count && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= password.count{
+                        if 8 <= password.count {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }
                     }
-                        .modifier(InputModifier())
-                        .padding([.horizontal, .top])
+                    .modifier(InputModifier())
+                    .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
                     .disabled(loading)
@@ -211,11 +211,11 @@ struct ChangeEmail: View {
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
             switch activeAlert {
-                case .first:
-                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-                case .second:
-                    return Alert(title: Text("Эл.почта изменена!"), message: Text("Вы успешно изменили свою электронную почту."), dismissButton: .default(Text("Закрыть")) {
-                        self.presentationMode.wrappedValue.dismiss()
+            case .first:
+                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+            case .second:
+                return Alert(title: Text("Эл.почта изменена!"), message: Text("Вы успешно изменили свою электронную почту."), dismissButton: .default(Text("Закрыть")) {
+                    self.presentationMode.wrappedValue.dismiss()
                     }
                 )
             }
@@ -233,7 +233,7 @@ struct ChangePassword: View {
     @State private var showAlert: Bool = false
     @State private var changeView: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var session: SessionStore
     
@@ -272,7 +272,7 @@ struct ChangePassword: View {
             }
         }
     }
-
+    
     var body: some View {
         VStack(alignment: .center) {
             if changeView == false {
@@ -285,19 +285,19 @@ struct ChangePassword: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {
-                        
+                            
                         }
                         if 0 < password.count && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= password.count{
+                        if 8 <= password.count {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }
                     }
-                        .modifier(InputModifier())
-                        .padding([.horizontal, .top])
+                    .modifier(InputModifier())
+                    .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
                     .disabled(loading)
@@ -316,19 +316,19 @@ struct ChangePassword: View {
                         SecureField("Пароль", text: $newPassword)
                             .textContentType(.newPassword)
                         if newPassword.isEmpty {
-                        
+                            
                         }
                         if 0 < newPassword.count && newPassword.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= newPassword.count{
+                        if 8 <= newPassword.count {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }
                     }
-                        .modifier(InputModifier())
-                        .padding([.horizontal, .top])
+                    .modifier(InputModifier())
+                    .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading == true ? "Загрузка" : "Изменить пароль", action: changePassword, loading: loading, colorButton: Color.green)
                     .disabled(loading)
@@ -347,11 +347,11 @@ struct ChangePassword: View {
         .edgesIgnoringSafeArea(.bottom)
         .alert(isPresented: $showAlert) {
             switch activeAlert {
-                case .first:
-                    return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-                case .second:
-                    return Alert(title: Text("Пароль изменен!"), message: Text("Вы успешно изменили свой пароль."), dismissButton: .default(Text("Закрыть")) {
-                        self.presentationMode.wrappedValue.dismiss()
+            case .first:
+                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
+            case .second:
+                return Alert(title: Text("Пароль изменен!"), message: Text("Вы успешно изменили свой пароль."), dismissButton: .default(Text("Закрыть")) {
+                    self.presentationMode.wrappedValue.dismiss()
                     }
                 )
             }

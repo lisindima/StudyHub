@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct InputModifier : ViewModifier {
+struct InputModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
@@ -18,7 +18,7 @@ struct InputModifier : ViewModifier {
     }
 }
 
-struct CustomInput : View {
+struct CustomInput: View {
     @Binding var text: String
     var name: String
     
@@ -31,6 +31,6 @@ struct CustomInput : View {
 struct CustomInput_Previews: PreviewProvider {
     static var previews: some View {
         CustomInput(text: .constant(""), name: "Some name")
-        .padding()
+            .padding()
     }
 }

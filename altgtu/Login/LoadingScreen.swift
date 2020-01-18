@@ -26,7 +26,7 @@ struct LoadingScreen: View {
 }
 
 struct LoadingLogic: View {
-
+    
     @EnvironmentObject var session: SessionStore
     @State private var access: Bool = false
     

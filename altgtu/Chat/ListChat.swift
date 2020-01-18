@@ -13,7 +13,7 @@ struct ListChat: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var sessionChat: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State private var searchText : String = ""
+    @State private var searchText: String = ""
     
     private func delete(at offsets: IndexSet) {
         sessionChat.chatList.remove(atOffsets: offsets)
@@ -52,9 +52,9 @@ struct ListChat: View {
                                 TextField("Поиск", text: $searchText)
                                     .foregroundColor(.primary)
                             }
-                                .padding(6.5)
-                                .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                                .cornerRadius(9)
+                            .padding(6.5)
+                            .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
+                            .cornerRadius(9)
                             if !self.searchText.isEmpty {
                                 Button(action: {
                                     self.searchText = ""
@@ -63,8 +63,8 @@ struct ListChat: View {
                                 })
                             }
                         }
-                            .padding(.horizontal)
-                            .animation(.default)
+                        .padding(.horizontal)
+                        .animation(.default)
                         List {
                             ForEach(self.sessionChat.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
@@ -77,10 +77,9 @@ struct ListChat: View {
                             .onMove(perform: move)
                         }
                         .navigationBarTitle(Text("Чат"))
-                        .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+                        .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                             print("plus")
-                        })
-                        {
+                        }) {
                             Image(systemName: "plus.bubble")
                                 .imageScale(.large)
                         })
@@ -97,12 +96,12 @@ struct ListItem: View {
     
     var nameChat: String
     var body: some View {
-       HStack {
+        HStack {
             Image("avatar")
-               .resizable()
-               .frame(width: 50, height: 50)
-               .clipShape(Circle())
-               .clipped()
+                .resizable()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .clipped()
             VStack(alignment: .leading) {
                 Text(nameChat)
                     .bold()
