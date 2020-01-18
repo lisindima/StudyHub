@@ -270,9 +270,6 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
-  - Kingfisher/Core (5.13.0)
-  - Kingfisher/SwiftUI (5.13.0):
-    - Kingfisher/Core
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -288,7 +285,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
-  - Kingfisher/SwiftUI
   - UnsplashPhotoPicker (from `https://github.com/lisindima/unsplash-photopicker-ios.git`)
 
 SPEC REPOS:
@@ -313,7 +309,6 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - Kingfisher
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -349,13 +344,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
-  Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: 43d30e304f2050e4f5c1737395599ab319c11c38
+PODFILE CHECKSUM: a1dcb93e7f25c8560bfeac37be095932ddeef418
 
 COCOAPODS: 1.9.0.beta.2

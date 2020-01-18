@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import struct Kingfisher.KFImage
+import KingfisherSwiftUI
 
 struct ProfileImage: View {
     
