@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import struct Kingfisher.KFImage
 
 struct MessageView: View {
     
@@ -22,25 +22,13 @@ struct MessageView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
-                    ProgressView($0) { progress in
-                        ZStack {
-                            if progress > 0.0 {
-                                CircleProgressView(progress).stroke(lineWidth: 8.0)
-                            } else {
-                                CircleActivityView().stroke(lineWidth: 50.0)
-                            }
-                        }
-                    }.frame(width: 50, height: 50)
-                }) { proxy in
-                    proxy.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .clipped()
-                        .shadow(radius: 5)
-                        .frame(width: 50, height: 50)
-                }
+                KFImage(URL(string: session.urlImageProfile))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .clipped()
+                    .shadow(radius: 5)
+                    .frame(width: 50, height: 50)
                 VStack {
                     HStack {
                         Text(sender.uppercased())
@@ -111,25 +99,13 @@ struct MessageView1: View {
                             .foregroundColor(.gray)
                     }.padding(.trailing, 3)
                 }
-                URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: true, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
-                    ProgressView($0) { progress in
-                        ZStack {
-                            if progress > 0.0 {
-                                CircleProgressView(progress).stroke(lineWidth: 8.0)
-                            } else {
-                                CircleActivityView().stroke(lineWidth: 50.0)
-                            }
-                        }
-                    }.frame(width: 50, height: 50)
-                }) { proxy in
-                    proxy.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .clipped()
-                        .shadow(radius: 5)
-                        .frame(width: 50, height: 50)
-                }
+                KFImage(URL(string: session.urlImageProfile))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                    .clipped()
+                    .shadow(radius: 5)
+                    .frame(width: 50, height: 50)
             }
         }
         .padding(.trailing)

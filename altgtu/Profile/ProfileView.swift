@@ -8,7 +8,7 @@
 
 import SwiftUI
 import Firebase
-import URLImage
+import struct Kingfisher.KFImage
 import StoreKit
 
 struct ProfileView: View {
@@ -323,8 +323,8 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(.accentColor)
                         Button("Очистить кэш изображений") {
-                            URLImageService.shared.cleanFileCache()
-                            URLImageService.shared.resetFileCache()
+                            //URLImageService.shared.cleanFileCache()
+                            //URLImageService.shared.resetFileCache()
                             self.showAlertCache = true
                         }.foregroundColor(.primary)
                     }
@@ -373,19 +373,11 @@ struct ProfileView: View {
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)
                     } else {
-                        URLImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!, incremental: false, expireAfter: Date(timeIntervalSinceNow: 3600.0), placeholder: { _ in
-                            Rectangle()
-                                .foregroundColor(self.colorScheme == .light ? .white : .black)
-                                .edgesIgnoringSafeArea(.top)
-                                .frame(height: 130)
-                        },
-                                 content: { proxy in
-                                    proxy.image
-                                        .resizable()
-                                        .edgesIgnoringSafeArea(.top)
-                                        .frame(height: 130)
-                                        .aspectRatio(contentMode: .fit)
-                        })
+                        KFImage(URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"))
+                            .resizable()
+                            .edgesIgnoringSafeArea(.top)
+                            .frame(height: 130)
+                            .aspectRatio(contentMode: .fit)
                     }
                     ZStack {
                         ProfileImage()

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import struct Kingfisher.KFImage
 
 struct CardView: View {
     
@@ -18,15 +18,9 @@ struct CardView: View {
     
     var body: some View {
         VStack {
-            URLImage(URL(string: article.urlToImage ?? noImageUrl)!, incremental: true, expireAfter: Date (timeIntervalSinceNow: 3600.0), placeholder: { _ in
-                EmptyView()
-            },
-                     content:
-                { proxy in
-                    proxy.image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-            })
+            KFImage(URL(string: article.urlToImage ?? noImageUrl)!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             HStack {
                 VStack(alignment: .leading) {
                     Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())

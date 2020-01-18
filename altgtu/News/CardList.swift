@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import struct Kingfisher.KFImage
 
 struct CardList: View {
     
@@ -61,26 +61,12 @@ struct CardList: View {
                         }
                         .padding(.leading, 15)
                         Spacer()
-                        URLImage(URL(string: "\(session.urlImageProfile!)")!, incremental: false, expireAfter: Date(timeIntervalSinceNow: 31_556_926.0), placeholder: {
-                            ProgressView($0) { progress in
-                                ZStack {
-                                    if progress > 0.0 {
-                                        ActivityIndicator()
-                                    } else {
-                                        ActivityIndicator()
-                                    }
-                                }
-                            }
-                            .padding(.trailing, 15)
+                        KFImage(URL(string: session.urlImageProfile)!)
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
                             .frame(width: 45, height: 45)
-                        }) { proxy in
-                            proxy.image
-                                .resizable()
-                                .scaledToFill()
-                                .clipShape(Circle())
-                                .frame(width: 45, height: 45)
-                                .padding(.trailing, 15)
-                        }
+                            .padding(.trailing, 15)
                     }.padding(.top, 30)
                     VStack(alignment: .center) {
                         ScrollView(.horizontal, showsIndicators: false) {

@@ -12,7 +12,6 @@ import Firebase
 import Combine
 import AuthenticationServices
 import CryptoKit
-import UnsplashPhotoPicker
 
 struct User {
     

@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import URLImage
+import struct Kingfisher.KFImage
 import LocalAuthentication
 
 struct SecureView: View {
@@ -63,25 +63,13 @@ struct SecureView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            URLImage(URL(string: "\(session.urlImageProfile ?? imagePlaceholder)")!, incremental: false, expireAfter: Date( timeIntervalSinceNow: 31_556_926.0), placeholder: {
-                ProgressView($0) { progress in
-                    ZStack {
-                        if progress > 0.0 {
-                            CircleProgressView(progress).stroke(lineWidth: 8.0)
-                        } else {
-                            CircleActivityView().stroke(lineWidth: 15.0)
-                        }
-                    }
-                }.frame(width: 90, height: 90)
-            }) { proxy in
-                proxy.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .clipped()
-                    .shadow(radius: 10)
-                    .frame(width: 90, height: 90)
-            }
+            KFImage(URL(string: session.urlImageProfile ?? imagePlaceholder))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+                .clipped()
+                .shadow(radius: 10)
+                .frame(width: 90, height: 90)
             Text("Привет, \(session.firstname ?? "студент")!")
                 .fontWeight(.bold)
                 .font(.system(size: 25))
@@ -91,7 +79,7 @@ struct SecureView: View {
                 Image(systemName: userInputPin.count >= 1 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputPin.count >= 2 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputPin.count >= 3 ? "largecircle.fill.circle" : "circle")
-                Image(systemName: userInputPin.count >= 4 ? "largecircle.fill.circle" : "circle")
+                Image(systemName: userInputPin.count == 4 ? "largecircle.fill.circle" : "circle")
             }.foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
             Spacer()
             VStack {
