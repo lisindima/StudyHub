@@ -18,7 +18,6 @@ struct SecureView: View {
     @State private var showAlertPinCode: Bool = false
     @Binding var access: Bool
     
-    private let imagePlaceholder = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
@@ -63,7 +62,10 @@ struct SecureView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            KFImage(URL(string: session.urlImageProfile ?? imagePlaceholder))
+            KFImage(URL(string: session.urlImageProfile)!)
+                .placeholder {
+                    ActivityIndicator()
+                }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())

@@ -32,8 +32,9 @@ struct ProfileView: View {
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+    let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
 
-    private func tappedShare() {
+    private func showShareView() {
         DispatchQueue.main.async {
             UIApplication.shared.windows.first {$0.isKeyWindow}?.rootViewController?.presentedViewController?.present(
                 UIActivityViewController(activityItems: ["Удобное расписание в приложение АлтГТУ!", URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!], applicationActivities: nil), animated: true, completion: nil
@@ -315,7 +316,7 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(.accentColor)
                         Button("Поделиться") {
-                            self.tappedShare()
+                            self.showShareView()
                         }.foregroundColor(.primary)
                     }
                     HStack {
@@ -373,7 +374,13 @@ struct ProfileView: View {
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)
                     } else {
-                        KFImage(URL(string: session.urlImageProfile))
+                        KFImage(unsplashPlaceholder)
+                            .placeholder {
+                                Rectangle()
+                                    .foregroundColor(colorScheme == .light ? .white : .black)
+                                    .edgesIgnoringSafeArea(.top)
+                                    .frame(height: 130)
+                            }
                             .resizable()
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)

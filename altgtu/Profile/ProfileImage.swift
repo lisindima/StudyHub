@@ -16,6 +16,15 @@ struct ProfileImage: View {
     var body: some View {
         VStack {
             KFImage(URL(string: session.urlImageProfile))
+                .placeholder {
+                    ZStack {
+                        Circle()
+                            .foregroundColor(.white)
+                            .shadow(radius: 10)
+                            .frame(width: 210, height: 210)
+                        ActivityIndicator()
+                    }
+                }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
