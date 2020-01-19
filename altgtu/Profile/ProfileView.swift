@@ -34,6 +34,11 @@ struct ProfileView: View {
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
+    func onAppearFunc() {
+        session.calculateImageCache()
+        notification.refreshNotificationStatus()
+    }
+    
     private func showShareView() {
         DispatchQueue.main.async {
             UIApplication.shared.windows.first {$0.isKeyWindow}?.rootViewController?.presentedViewController?.present(
@@ -302,7 +307,24 @@ struct ProfileView: View {
                         Text("О приложении")
                     }
                 }
-                Section(header: Text("Другое").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет его освободить.")) {
+                Section(header: Text("Кэш изображений").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
+                    Rectangle()
+                        .cornerRadius(8)
+                        .shadow(radius: 5)
+                        .frame(height: 60)
+                        .foregroundColor(.accentColor)
+                        .padding(.vertical)
+                    HStack {
+                        Image(systemName: "trash")
+                            .frame(width: 24)
+                            .foregroundColor(.accentColor)
+                        Button("Очистить кэш изображений") {
+                            self.session.clearImageCache()
+                            self.showAlertCache = true
+                        }.foregroundColor(.primary)
+                    }
+                }
+                Section(header: Text("Другое").bold()) {
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 24)
@@ -319,16 +341,6 @@ struct ProfileView: View {
                             self.showShareView()
                         }.foregroundColor(.primary)
                     }
-                    HStack {
-                        Image(systemName: "trash")
-                            .frame(width: 24)
-                            .foregroundColor(.accentColor)
-                        Button("Очистить кэш изображений") {
-                            //URLImageService.shared.cleanFileCache()
-                            //URLImageService.shared.resetFileCache()
-                            self.showAlertCache = true
-                        }.foregroundColor(.primary)
-                    }
                 }
                 Section {
                     NavigationLink(destination: DeleteUser()) {
@@ -341,7 +353,7 @@ struct ProfileView: View {
                 }
             }
             .environment(\.horizontalSizeClass, .regular)
-            .onAppear(perform: notification.refreshNotificationStatus)
+            .onAppear(perform: onAppearFunc)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 self.session.uploadProfileImageToStorage()
             }, content: {

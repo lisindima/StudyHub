@@ -25,7 +25,7 @@ struct UnsplashImagePicker: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> UnsplashImagePicker.Coordinator {
-        Coordinator(self)
+        return Coordinator(self)
     }
     
     class Coordinator: NSObject, UnsplashPhotoPickerDelegate, UINavigationControllerDelegate {

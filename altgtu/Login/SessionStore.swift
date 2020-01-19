@@ -12,6 +12,7 @@ import Firebase
 import Combine
 import AuthenticationServices
 import CryptoKit
+import Kingfisher
 
 struct User {
     
@@ -83,6 +84,25 @@ final class SessionStore: NSObject, ObservableObject {
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "HH:mm:ss_dd.MM.yyyy"
         self.currentTimeAndDate = formatter.string(from: now)
+    }
+    
+    func calculateImageCache() {
+        ImageCache.default.calculateDiskStorageSize { result in
+            switch result {
+            case .success(let size):
+                print("Disk cache size: \(Double(size) / 1024 / 1024) MB")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func clearImageCache() {
+        ImageCache.default.clearMemoryCache()
+        ImageCache.default.clearDiskCache {
+            self.calculateImageCache()
+            print("Кэш очищен")
+        }
     }
     
     func listen() {

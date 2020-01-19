@@ -320,7 +320,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UnsplashPhotoPicker:
-    :commit: 4c234b539adbb32eec5bfd2c355a7a0f48a45406
+    :commit: 9804df6b97a4507b0de1d3b536a85c7b0ad542e4
     :git: https://github.com/lisindima/unsplash-photopicker-ios.git
 
 SPEC CHECKSUMS:

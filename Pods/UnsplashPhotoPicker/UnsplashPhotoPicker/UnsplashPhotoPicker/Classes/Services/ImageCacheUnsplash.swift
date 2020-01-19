@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageCache {
+class ImageCacheUnsplash {
 
     static let cache = URLCache(
         memoryCapacity: Configuration.shared.memoryCapacity,
