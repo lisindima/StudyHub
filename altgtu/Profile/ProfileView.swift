@@ -35,6 +35,10 @@ struct ProfileView: View {
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
+    init() {
+        UISwitch.appearance().onTintColor = UIColor.systemIndigo
+    }
+    
     func onAppearFunc() {
         imageCache.calculateImageCache()
         notification.refreshNotificationStatus()
