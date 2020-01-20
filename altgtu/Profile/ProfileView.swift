@@ -26,6 +26,7 @@ struct ProfileView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var pickerAPI: PickerAPI
     @EnvironmentObject var nfc: NFCStore
+    @EnvironmentObject var imageCache: ImageCacheStore
     
     @ObservedObject var notification = NotificationStore.shared
     
@@ -35,7 +36,7 @@ struct ProfileView: View {
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
     func onAppearFunc() {
-        session.calculateImageCache()
+        imageCache.calculateImageCache()
         notification.refreshNotificationStatus()
     }
     
@@ -114,7 +115,6 @@ struct ProfileView: View {
                             Text("B:\(Int(session.bValue))")
                             Spacer(minLength: 10)
                         }
-                            
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
@@ -308,18 +308,38 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Кэш изображений").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
-                    Rectangle()
-                        .cornerRadius(8)
-                        .shadow(radius: 5)
-                        .frame(height: 60)
-                        .foregroundColor(.accentColor)
-                        .padding(.vertical)
+                    ZStack {
+                        GeometryReader { geometry in
+                            ZStack(alignment: .leading) {
+                                Rectangle()
+                                    .frame(height: 60)
+                                    .cornerRadius(8)
+                                    .shadow(radius: 5)
+                                    .foregroundColor(.accentColor)
+                                    .opacity(0.3)
+                                Rectangle()
+                                    .frame(width: (100 / 350) * geometry.size.width, height: 60)
+                                    .cornerRadius(8)
+                                    .shadow(radius: 5)
+                                    .foregroundColor(.accentColor)
+                                HStack {
+                                    Spacer()
+                                    Text("100 MB / 350 MB")
+                                        .foregroundColor(.white)
+                                        .font(Font.custom("Futura", size: 24))
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                    .frame(height: 60)
+                    .padding(.vertical)
                     HStack {
                         Image(systemName: "trash")
                             .frame(width: 24)
                             .foregroundColor(.accentColor)
                         Button("Очистить кэш изображений") {
-                            self.session.clearImageCache()
+                            self.imageCache.clearImageCache()
                             self.showAlertCache = true
                         }.foregroundColor(.primary)
                     }
