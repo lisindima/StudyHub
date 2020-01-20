@@ -12,17 +12,29 @@ import Kingfisher
 class ImageCacheStore: ObservableObject {
     
     @Published var sizeImageCache: Int = 0
+    @Published var sizeLimitImageCache: Int = 0
+    
+    init() {
+        calculateImageCache()
+        setCacheSizeLimit()
+    }
     
     func calculateImageCache() {
         ImageCache.default.calculateDiskStorageSize { result in
             switch result {
             case .success(let size):
-                self.sizeImageCache = Int(size)
-                print("Disk cache size: \(Double(size) / 1024 / 1024) MB")
+                self.sizeImageCache = Int(size) / 1024 / 1024
+                print("\(self.sizeImageCache) МБ")
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func setCacheSizeLimit() {
+        ImageCache.default.diskStorage.config.sizeLimit = 350 * 1024 * 1024
+        self.sizeLimitImageCache = Int(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024)
+        print("Лимит кэша изображений установлен на: \(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024) МБ")
     }
     
     func clearImageCache() {

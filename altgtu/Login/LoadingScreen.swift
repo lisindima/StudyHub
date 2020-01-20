@@ -28,6 +28,8 @@ struct LoadingScreen: View {
 struct LoadingLogic: View {
     
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var imageCache: ImageCacheStore
+    
     @State private var access: Bool = false
     
     func getData() {
