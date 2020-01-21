@@ -39,8 +39,9 @@ struct ProfileView: View {
         UISwitch.appearance().onTintColor = UIColor.systemIndigo
     }
     
-    func onAppearFunc() {
+    func startSettingView() {
         imageCache.calculateImageCache()
+        imageCache.setCacheSizeLimit()
         notification.refreshNotificationStatus()
     }
     
@@ -378,7 +379,7 @@ struct ProfileView: View {
                 }
             }
             .environment(\.horizontalSizeClass, .regular)
-            .onAppear(perform: onAppearFunc)
+            .onAppear(perform: startSettingView)
             .sheet(isPresented: $isShowingModalView, onDismiss: {
                 self.session.uploadProfileImageToStorage()
             }, content: {

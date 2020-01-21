@@ -14,11 +14,6 @@ class ImageCacheStore: ObservableObject {
     @Published var sizeImageCache: Int = 0
     @Published var sizeLimitImageCache: Int = 0
     
-    init() {
-        calculateImageCache()
-        setCacheSizeLimit()
-    }
-    
     func calculateImageCache() {
         ImageCache.default.calculateDiskStorageSize { result in
             switch result {

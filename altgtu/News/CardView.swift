@@ -19,6 +19,9 @@ struct CardView: View {
     var body: some View {
         VStack {
             KFImage(URL(string: article.urlToImage ?? noImageUrl)!)
+                .placeholder {
+                    ActivityIndicator()
+                }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             HStack {
