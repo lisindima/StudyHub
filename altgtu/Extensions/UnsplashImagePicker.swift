@@ -11,7 +11,7 @@ import UnsplashPhotoPicker
 
 struct UnsplashImagePicker: UIViewControllerRepresentable {
     
-    var urlUnsplashImage = [UnsplashPhoto]()
+    @Binding var unsplashImage: [UnsplashPhoto]
     
     let configuration = UnsplashPhotoPickerConfiguration(
         accessKey: "f99d21d6eb682196455dd29b621688aff2d525c7c3a7f95bfcb05d497f38f5dc",
@@ -19,23 +19,25 @@ struct UnsplashImagePicker: UIViewControllerRepresentable {
         allowsMultipleSelection: false)
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<UnsplashImagePicker>) -> UnsplashPhotoPicker {
-        let unsplashImagePicker = UnsplashPhotoPicker(configuration: configuration)
-        unsplashImagePicker.delegate = context.coordinator
-        return unsplashImagePicker
+        let unsplashPhotoPicker = UnsplashPhotoPicker(configuration: configuration)
+        unsplashPhotoPicker.photoPickerDelegate = context.coordinator
+        return unsplashPhotoPicker
     }
     
     func makeCoordinator() -> UnsplashImagePicker.Coordinator {
         return Coordinator(self)
     }
     
-    class Coordinator: NSObject, UnsplashPhotoPickerDelegate, UINavigationControllerDelegate {
+    class Coordinator: UnsplashPhotoPickerDelegate {
+        
         var parent: UnsplashImagePicker
+        
         init(_ parent: UnsplashImagePicker) {
             self.parent = parent
         }
         
         func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
-            print(photos)
+            parent.unsplashImage = photos
         }
         
         func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {

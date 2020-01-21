@@ -12,6 +12,7 @@ import Firebase
 import Combine
 import AuthenticationServices
 import CryptoKit
+import UnsplashPhotoPicker
 
 struct User {
     
@@ -57,9 +58,10 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var biometricAccess: Bool!
     @Published var percentComplete: Double = 0.0
     @Published var showBanner: Bool = false
-    @Published var choiseTypeBackroundProfile: Bool = false
     @Published var userTypeAuth: ActiveAuthType = .email
-    //@Published var imageFromUnsplashPicker: URL?
+    @Published var choiseTypeBackroundProfile: Bool = false
+    @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
+    @Published var setImageForBackroundProfile: String!
     
     var darkThemeOverride: Bool = false {
         didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
@@ -250,7 +252,7 @@ final class SessionStore: NSObject, ObservableObject {
     }
     
     func setUnsplashImageForProfileBackground() {
-        
+        print(imageFromUnsplashPicker)
     }
     
     private func randomNonceString(length: Int = 32) -> String {

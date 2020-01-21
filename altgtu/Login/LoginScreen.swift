@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Firebase
-import AuthenticationServices
 
 // MARK: - Регистрация
 
@@ -366,28 +365,6 @@ struct AuthenticationScreen: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color.defaultColorApp)
         .onAppear(perform: funcSplashScreen)
-    }
-}
-
-final class SignInWithAppleWhite: UIViewRepresentable {
-
-    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-        return ASAuthorizationAppleIDButton(type: .default, style: .white)
-    }
-
-    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
-        
-    }
-}
-
-final class SignInWithAppleBlack: UIViewRepresentable {
-
-    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-        return ASAuthorizationAppleIDButton(type: .default, style: .black)
-    }
-
-    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
-        
     }
 }
 

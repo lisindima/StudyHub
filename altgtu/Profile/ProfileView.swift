@@ -132,10 +132,9 @@ struct ProfileView: View {
                         }
                         .foregroundColor(.primary)
                         .sheet(isPresented: $isShowingModalViewUnsplash, onDismiss: {
-                            print("UNSPLASH")
-                            //self.session.setUnsplashImageForProfileBackground()
+                            self.session.setUnsplashImageForProfileBackground()
                         }, content: {
-                            UnsplashImagePicker()
+                            UnsplashImagePicker(unsplashImage: self.$session.imageFromUnsplashPicker)
                                 .edgesIgnoringSafeArea(.bottom)
                         })
                     }
