@@ -88,7 +88,7 @@
 		CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660A23545C1200C43811 /* SwiftUICharts */; };
 		CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */; };
 		CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1D23A341DD006CC917 /* SecureView.swift */; };
-		CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1F23A37A34006CC917 /* PinSetting.swift */; };
+		CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
 		CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBF1E0E4234211990009E3BE /* SwiftUICharts */; };
 		CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */; };
@@ -240,7 +240,7 @@
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPadButton.swift; sourceTree = "<group>"; };
 		CBF0EE1D23A341DD006CC917 /* SecureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureView.swift; sourceTree = "<group>"; };
-		CBF0EE1F23A37A34006CC917 /* PinSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinSetting.swift; sourceTree = "<group>"; };
+		CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAndCodeSecure.swift; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -391,7 +391,7 @@
 				CB6EBF462390276B00D9E771 /* License.swift */,
 				CB3BFACF239E0C7F00894DFA /* Privacy.swift */,
 				CBE010E923ACC0D6009DB0E8 /* Changelog.swift */,
-				CBF0EE1F23A37A34006CC917 /* PinSetting.swift */,
+				CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */,
 				CB76FDBA23C345BE00FDDE5E /* Credential.swift */,
 				CB8EF87723C85D6D00992764 /* QRReader.swift */,
 			);
@@ -895,7 +895,7 @@
 				CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
-				CBF0EE2023A37A34006CC917 /* PinSetting.swift in Sources */,
+				CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
 				CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,

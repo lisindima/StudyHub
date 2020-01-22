@@ -11,8 +11,8 @@ import Kingfisher
 
 class ImageCacheStore: ObservableObject {
     
-    @Published var sizeImageCache: Int = 0
-    @Published var sizeLimitImageCache: Int = 0
+    @Published var sizeImageCache: Int = 1
+    @Published var sizeLimitImageCache: Int = 350
     
     func calculateImageCache() {
         ImageCache.default.calculateDiskStorageSize { result in

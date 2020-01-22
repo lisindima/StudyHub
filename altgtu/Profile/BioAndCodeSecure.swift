@@ -1,5 +1,5 @@
 //
-//  PinSetting.swift
+//  BioAndCodeSecure.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 13.12.2019.
@@ -9,7 +9,7 @@
 import SwiftUI
 import LocalAuthentication
 
-struct PinSetting: View {
+struct BioAndCodeSecure: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var boolCodeAccess: Bool

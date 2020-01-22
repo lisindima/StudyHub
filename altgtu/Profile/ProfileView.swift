@@ -35,10 +35,6 @@ struct ProfileView: View {
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
-    init() {
-        UISwitch.appearance().onTintColor = UIColor.systemIndigo
-    }
-    
     func startSettingView() {
         imageCache.calculateImageCache()
         imageCache.setCacheSizeLimit()
@@ -135,6 +131,7 @@ struct ProfileView: View {
                             self.session.setUnsplashImageForProfileBackground()
                         }, content: {
                             UnsplashImagePicker(unsplashImage: self.$session.imageFromUnsplashPicker)
+                                .accentColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
                                 .edgesIgnoringSafeArea(.bottom)
                         })
                     }
@@ -254,6 +251,23 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
+                    NavigationLink(destination: BioAndCodeSecure(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
+                        HStack {
+                            Image(systemName: "faceid")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            Text("Код-пароль и Face ID")
+                            Spacer()
+                            Text(session.boolCodeAccess == true ? "Вкл" : "Выкл")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    NavigationLink(destination: SetAuth()) {
+                        Image(systemName: "list.dash")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Text("Вариаты авторизации")
+                    }
                     if session.userTypeAuth == .email {
                         NavigationLink(destination: ChangeEmail()
                             .environmentObject(SessionStore())
@@ -271,18 +285,6 @@ struct ProfileView: View {
                                 .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                             Text("Изменить пароль")
                         }
-                    }
-                    NavigationLink(destination: PinSetting(boolCodeAccess: $session.boolCodeAccess, pinCodeAccess: $session.pinCodeAccess, biometricAccess: $session.biometricAccess)) {
-                        Image(systemName: "faceid")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Код-пароль и Face ID")
-                    }
-                    NavigationLink(destination: SetAuth()) {
-                        Image(systemName: "list.dash")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Вариаты авторизации")
                     }
                 }
                 Section(header: Text("Информация").bold()) {
@@ -382,6 +384,7 @@ struct ProfileView: View {
                 self.session.uploadProfileImageToStorage()
             }, content: {
                 ImagePicker(imageFromPicker: self.$session.imageProfile, selectedSourceType: self.$selectedSourceType)
+                    .accentColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
                     .edgesIgnoringSafeArea(.bottom)
             })
             .alert(isPresented: $showAlertCache) {
