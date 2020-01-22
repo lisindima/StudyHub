@@ -26,7 +26,6 @@ struct ProfileView: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var pickerAPI: PickerAPI
     @EnvironmentObject var nfc: NFCStore
-    @EnvironmentObject var imageCache: ImageCacheStore
     
     @ObservedObject var notification = NotificationStore.shared
     
@@ -36,8 +35,8 @@ struct ProfileView: View {
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
     func startSettingView() {
-        imageCache.calculateImageCache()
-        imageCache.setCacheSizeLimit()
+        session.calculateImageCache()
+        session.setCacheSizeLimit()
         notification.refreshNotificationStatus()
     }
     
@@ -287,6 +286,43 @@ struct ProfileView: View {
                         }
                     }
                 }
+                Section(header: Text("Кэш изображений").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
+                    ZStack {
+                        GeometryReader { geometry in
+                            ZStack(alignment: .leading) {
+                                Rectangle()
+                                    .frame(height: 60)
+                                    .cornerRadius(8)
+                                    .shadow(radius: 5)
+                                    .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 0.3))
+                                Rectangle()
+                                    .frame(width: (CGFloat(self.session.sizeImageCache) / CGFloat(self.session.sizeLimitImageCache)) * geometry.size.width, height: 60)
+                                    .cornerRadius(8)
+                                    .shadow(radius: 5)
+                                    .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
+                                    .animation(.linear)
+                                HStack {
+                                    Spacer()
+                                    Text("\(self.session.sizeImageCache) MB / \(self.session.sizeLimitImageCache) MB")
+                                        .foregroundColor(.white)
+                                        .font(Font.custom("Futura", size: 24))
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
+                    .frame(height: 60)
+                    .padding(.vertical)
+                    HStack {
+                        Image(systemName: "trash")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Button("Очистить кэш изображений") {
+                            self.session.clearImageCache()
+                            self.showAlertCache = true
+                        }.foregroundColor(.primary)
+                    }
+                }
                 Section(header: Text("Информация").bold()) {
                     NavigationLink(destination: License()) {
                         Image(systemName: "doc.plaintext")
@@ -311,43 +347,6 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("О приложении")
-                    }
-                }
-                Section(header: Text("Кэш изображений").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
-                    ZStack {
-                        GeometryReader { geometry in
-                            ZStack(alignment: .leading) {
-                                Rectangle()
-                                    .frame(height: 60)
-                                    .cornerRadius(8)
-                                    .shadow(radius: 5)
-                                    .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 0.3))
-                                Rectangle()
-                                    .frame(width: (CGFloat(self.imageCache.sizeImageCache) / CGFloat(self.imageCache.sizeLimitImageCache)) * geometry.size.width, height: 60)
-                                    .cornerRadius(8)
-                                    .shadow(radius: 5)
-                                    .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
-                                    .animation(.linear)
-                                HStack {
-                                    Spacer()
-                                    Text("\(self.imageCache.sizeImageCache) MB / \(self.imageCache.sizeLimitImageCache) MB")
-                                        .foregroundColor(.white)
-                                        .font(Font.custom("Futura", size: 24))
-                                    Spacer()
-                                }
-                            }
-                        }
-                    }
-                    .frame(height: 60)
-                    .padding(.vertical)
-                    HStack {
-                        Image(systemName: "trash")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Button("Очистить кэш изображений") {
-                            self.imageCache.clearImageCache()
-                            self.showAlertCache = true
-                        }.foregroundColor(.primary)
                     }
                 }
                 Section(header: Text("Другое").bold()) {

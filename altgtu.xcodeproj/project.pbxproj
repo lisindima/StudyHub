@@ -43,7 +43,6 @@
 		CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SetAuth.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
 		CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */; };
-		CB4874B123D547E100DEB38F /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B023D547E100DEB38F /* ImageCacheStore.swift */; };
 		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
@@ -195,7 +194,6 @@
 		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* SetAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAuth.swift; sourceTree = "<group>"; };
 		CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagePicker.swift; sourceTree = "<group>"; };
-		CB4874B023D547E100DEB38F /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
 		CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -337,7 +335,6 @@
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
-				CB4874B023D547E100DEB38F /* ImageCacheStore.swift */,
 				CB28B8D92361459900A93F28 /* News */,
 				CBB01FE423B45522001D4CBB /* Note */,
 				CB12E7EB23596F7900115B2E /* Chat */,
@@ -861,7 +858,6 @@
 				CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */,
 				CB276197235588820054C753 /* InfoApp.swift in Sources */,
 				CBB01FE623B4553E001D4CBB /* Note.swift in Sources */,
-				CB4874B123D547E100DEB38F /* ImageCacheStore.swift in Sources */,
 				CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
