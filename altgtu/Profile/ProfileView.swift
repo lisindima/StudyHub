@@ -20,6 +20,7 @@ struct ProfileView: View {
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
     @State private var showActionSheetImage: Bool = false
+    @State private var showActionSheetUnsplash: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -123,9 +124,18 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Изменить обложку") {
-                            self.isShowingModalViewUnsplash = true
+                            self.showActionSheetUnsplash = true
                         }
                         .foregroundColor(.primary)
+                        .actionSheet(isPresented: $showActionSheetUnsplash) {
+                            ActionSheet(title: Text("Изменение обложки"), message: Text("Здесь вы можете поменять внешний вид обложки в своем профиле."), buttons: [
+                                .default(Text("Выбрать из Unsplash")) {
+                                    self.isShowingModalViewUnsplash = true
+                                }, .destructive(Text("Удалить обложку")) {
+                                    self.session.choiseTypeBackroundProfile = false
+                                }, .cancel()
+                            ])
+                        }
                         .sheet(isPresented: $isShowingModalViewUnsplash, onDismiss: {
                             self.session.setUnsplashImageForProfileBackground()
                         }, content: {
@@ -160,7 +170,9 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Изменить фотографию") {
                             self.showActionSheetImage = true
-                        }.actionSheet(isPresented: $showActionSheetImage) {
+                        }
+                        .foregroundColor(.primary)
+                        .actionSheet(isPresented: $showActionSheetImage) {
                             ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
                                 .default(Text("Сделать фотографию")) {
                                     self.selectedSourceType = .camera
@@ -172,7 +184,7 @@ struct ProfileView: View {
                                     self.session.urlImageProfile = self.deletedUrlImageProfile
                                 }, .cancel()
                             ])
-                        }.foregroundColor(.primary)
+                        }
                     }
                 }
                 Section(header: Text("Уведомления").bold(), footer: footerNotification) {
