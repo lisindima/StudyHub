@@ -60,8 +60,8 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var percentComplete: Double = 0.0
     @Published var showBanner: Bool = false
     @Published var userTypeAuth: ActiveAuthType = .email
-    @Published var choiseTypeBackroundProfile: Bool = false
-    @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
+    @Published var choiseTypeBackroundProfile: Bool!
+    @Published var imageFromUnsplashPicker:[UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
     
     var darkThemeOverride: Bool = false {
@@ -142,7 +142,8 @@ final class SessionStore: NSObject, ObservableObject {
                     self.pinCodeAccess = document.get("pinCodeAccess") as? String
                     self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                     self.biometricAccess = document.get("biometricAccess") as? Bool
-                    self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as! Bool
+                    self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
+                    self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
@@ -189,7 +190,8 @@ final class SessionStore: NSObject, ObservableObject {
             "pinCodeAccess": pinCodeAccess!,
             "boolCodeAccess": boolCodeAccess!,
             "biometricAccess": biometricAccess!,
-            "choiseTypeBackroundProfile": choiseTypeBackroundProfile
+            "setImageForBackroundProfile": setImageForBackroundProfile!,
+            "choiseTypeBackroundProfile": choiseTypeBackroundProfile!
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -253,7 +255,16 @@ final class SessionStore: NSObject, ObservableObject {
     }
     
     func setUnsplashImageForProfileBackground() {
-        print(imageFromUnsplashPicker)
+        if imageFromUnsplashPicker.first == nil {
+            print("Обложка не выбрана")
+        } else {
+            print("Обложка выбрана")
+            let selectImage = imageFromUnsplashPicker.first
+            let urlsToImage = selectImage?.urls[.regular]
+            print(String(describing: urlsToImage))
+            setImageForBackroundProfile = urlsToImage?.absoluteString
+            choiseTypeBackroundProfile = true
+        }
     }
     
     private func randomNonceString(length: Int = 32) -> String {

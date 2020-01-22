@@ -330,14 +330,14 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
+				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB179ACE23CC305E00424FD2 /* CircleProgress */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB179AC423CC079C00424FD2 /* NFC */,
 				CBAF3CA523BF3EE6009D0ED2 /* Bert */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
-				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
-				CB4874C023D813C300DEB38F /* ImageCacheStore.swift */,
+				CB4874C223D8161C00DEB38F /* ImageCache */,
 				CB28B8D92361459900A93F28 /* News */,
 				CBB01FE423B45522001D4CBB /* Note */,
 				CB12E7EB23596F7900115B2E /* Chat */,
@@ -509,6 +509,14 @@
 				CB32DB0023A0B64800B25626 /* Info.plist */,
 			);
 			path = altgtuTodayWidget;
+			sourceTree = "<group>";
+		};
+		CB4874C223D8161C00DEB38F /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				CB4874C023D813C300DEB38F /* ImageCacheStore.swift */,
+			);
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 		CB6704EA23712BB200F875C3 /* Notifications */ = {

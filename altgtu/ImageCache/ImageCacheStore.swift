@@ -13,7 +13,7 @@ import Kingfisher
 
 class ImageCacheStore: ObservableObject {
 
-    @Published var sizeImageCache: Int = 1
+    @Published var sizeImageCache: Int = 0
     @Published var sizeLimitImageCache: Int = 350
     
     static let shared = ImageCacheStore()
