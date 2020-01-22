@@ -63,8 +63,6 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool = false
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
-    @Published var sizeImageCache: Int!
-    @Published var sizeLimitImageCache: Int!
     
     var darkThemeOverride: Bool = false {
         didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
@@ -88,32 +86,6 @@ final class SessionStore: NSObject, ObservableObject {
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "HH:mm:ss_dd.MM.yyyy"
         self.currentTimeAndDate = formatter.string(from: now)
-    }
-    
-    func calculateImageCache() {
-        ImageCache.default.calculateDiskStorageSize { result in
-            switch result {
-            case .success(let size):
-                self.sizeImageCache = Int(size) / 1024 / 1024
-                print("\(self.sizeImageCache!) МБ")
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    func setCacheSizeLimit() {
-        ImageCache.default.diskStorage.config.sizeLimit = 350 * 1024 * 1024
-        self.sizeLimitImageCache = Int(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024)
-        print("Лимит кэша изображений установлен на: \(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024) МБ")
-    }
-    
-    func clearImageCache() {
-        ImageCache.default.clearMemoryCache()
-        ImageCache.default.clearDiskCache {
-            self.calculateImageCache()
-            print("Кэш очищен")
-        }
     }
     
     func listen() {
@@ -171,8 +143,6 @@ final class SessionStore: NSObject, ObservableObject {
                     self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                     self.biometricAccess = document.get("biometricAccess") as? Bool
                     self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as! Bool
-                    self.sizeImageCache = document.get("sizeImageCache") as? Int
-                    self.sizeLimitImageCache = document.get("sizeLimitImageCache") as? Int
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
@@ -219,9 +189,7 @@ final class SessionStore: NSObject, ObservableObject {
             "pinCodeAccess": pinCodeAccess!,
             "boolCodeAccess": boolCodeAccess!,
             "biometricAccess": biometricAccess!,
-            "choiseTypeBackroundProfile": choiseTypeBackroundProfile,
-            "sizeImageCache": sizeImageCache!,
-            "sizeLimitImageCache": sizeLimitImageCache!
+            "choiseTypeBackroundProfile": choiseTypeBackroundProfile
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")

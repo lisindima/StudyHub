@@ -28,6 +28,7 @@ struct ProfileView: View {
     @EnvironmentObject var nfc: NFCStore
     
     @ObservedObject var notification = NotificationStore.shared
+    @ObservedObject var imageCache = ImageCacheStore.shared
     
     let currentUser = Auth.auth().currentUser!
     var elements: [GroupModelElement] = [GroupModelElement]()
@@ -35,8 +36,8 @@ struct ProfileView: View {
     let unsplashPlaceholder: URL = URL(string: "https://images.unsplash.com/photo-1578241561880-0a1d5db3cb8a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
     
     func startSettingView() {
-        session.calculateImageCache()
-        session.setCacheSizeLimit()
+        imageCache.calculateImageCache()
+        imageCache.setCacheSizeLimit()
         notification.refreshNotificationStatus()
     }
     
@@ -296,14 +297,14 @@ struct ProfileView: View {
                                     .shadow(radius: 5)
                                     .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 0.3))
                                 Rectangle()
-                                    .frame(width: (CGFloat(self.session.sizeImageCache) / CGFloat(self.session.sizeLimitImageCache)) * geometry.size.width, height: 60)
+                                    .frame(width: (CGFloat(self.imageCache.sizeImageCache) / CGFloat(self.imageCache.sizeLimitImageCache)) * geometry.size.width, height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
                                     .foregroundColor(Color(red: self.session.rValue/255.0, green: self.session.gValue/255.0, blue: self.session.bValue/255.0, opacity: 1.0))
                                     .animation(.linear)
                                 HStack {
                                     Spacer()
-                                    Text("\(self.session.sizeImageCache) MB / \(self.session.sizeLimitImageCache) MB")
+                                    Text("\(self.imageCache.sizeImageCache) MB / \(self.imageCache.sizeLimitImageCache) MB")
                                         .foregroundColor(.white)
                                         .font(Font.custom("Futura", size: 24))
                                     Spacer()
@@ -318,7 +319,7 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Очистить кэш изображений") {
-                            self.session.clearImageCache()
+                            self.imageCache.clearImageCache()
                             self.showAlertCache = true
                         }.foregroundColor(.primary)
                     }
