@@ -83,5 +83,3 @@ public struct UnsplashPhoto: Codable {
     }
 
 }
-
-public typealias Photo = [UnsplashPhoto]
