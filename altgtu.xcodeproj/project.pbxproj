@@ -1385,8 +1385,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -32,7 +32,7 @@ struct User {
     }
 }
 
-final class SessionStore: NSObject, ObservableObject {
+class SessionStore: NSObject, ObservableObject {
     
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
@@ -61,7 +61,7 @@ final class SessionStore: NSObject, ObservableObject {
     @Published var showBanner: Bool = false
     @Published var userTypeAuth: ActiveAuthType = .email
     @Published var choiseTypeBackroundProfile: Bool!
-    @Published var imageFromUnsplashPicker:[UnsplashPhoto] = [UnsplashPhoto]()
+    @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
     
     var darkThemeOverride: Bool = false {
@@ -255,7 +255,7 @@ final class SessionStore: NSObject, ObservableObject {
     }
     
     func setUnsplashImageForProfileBackground() {
-        if imageFromUnsplashPicker.first == nil {
+        if imageFromUnsplashPicker.isEmpty {
             print("Обложка не выбрана")
         } else {
             print("Обложка выбрана")
@@ -264,6 +264,7 @@ final class SessionStore: NSObject, ObservableObject {
             print(String(describing: urlsToImage))
             setImageForBackroundProfile = urlsToImage?.absoluteString
             choiseTypeBackroundProfile = true
+            imageFromUnsplashPicker.removeAll()
         }
     }
     

@@ -5,9 +5,9 @@
         "package": "SwiftUICharts",
         "repositoryURL": "https://github.com/AppPear/ChartView.git",
         "state": {
-          "branch": "master",
-          "revision": "37c51d9b468759e3f30d18f9846de8201edb32eb",
-          "version": null
+          "branch": null,
+          "revision": "88db9aeafee3ba9bbca127c746517f04bdbe7bbf",
+          "version": "1.4.7"
         }
       },
       {
