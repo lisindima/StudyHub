@@ -69,7 +69,7 @@
 		CBB273F123CD868F00030050 /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273F023CD868F00030050 /* PencilView.swift */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
-		CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerAPI.swift */; };
+		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
 		CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
 		CBE3554723CEEC3E00F608F4 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */; };
@@ -219,7 +219,7 @@
 		CBB273F023CD868F00030050 /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
-		CBDE62942352129E00E588EC /* PickerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerAPI.swift; sourceTree = "<group>"; };
+		CBDE62942352129E00E588EC /* PickerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerStore.swift; sourceTree = "<group>"; };
 		CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsNews.swift; sourceTree = "<group>"; };
 		CBE010E923ACC0D6009DB0E8 /* Changelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changelog.swift; sourceTree = "<group>"; };
 		CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetView.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
 				CB4FA012234396110049D271 /* ProfileImage.swift */,
 				CB3BFAD1239E37DA00894DFA /* SetAuth.swift */,
-				CBDE62942352129E00E588EC /* PickerAPI.swift */,
+				CBDE62942352129E00E588EC /* PickerStore.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
 				CB3BFACF239E0C7F00894DFA /* Privacy.swift */,
@@ -862,7 +862,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBDE62952352129E00E588EC /* PickerAPI.swift in Sources */,
+				CBDE62952352129E00E588EC /* PickerStore.swift in Sources */,
 				CBB273F123CD868F00030050 /* PencilView.swift in Sources */,
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
 				CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */,

@@ -25,17 +25,17 @@ struct ProfileView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var pickerAPI: PickerAPI
     @EnvironmentObject var nfc: NFCStore
     
     @ObservedObject var notification = NotificationStore.shared
     @ObservedObject var imageCache = ImageCacheStore.shared
+    @ObservedObject var picker = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser!
-    var elements: [GroupModelElement] = [GroupModelElement]()
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     func startSettingView() {
+        picker.loadPickerData()
         imageCache.calculateImageCache()
         imageCache.setCacheSizeLimit()
         notification.refreshNotificationStatus()
@@ -154,8 +154,18 @@ struct ProfileView: View {
                     }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
-                    TextField("Фамилия", text: $session.lastname)
-                    TextField("Имя", text: $session.firstname)
+                    HStack {
+                        Image(systemName: "person.crop.circle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        TextField("Фамилия", text: $session.lastname)
+                    }
+                    HStack {
+                        Image(systemName: "person.crop.circle")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        TextField("Имя", text: $session.firstname)
+                    }
                     DatePicker(selection: $session.dateBirthDay, displayedComponents: [.date], label: {
                         HStack {
                             Image(systemName: "calendar")
@@ -244,8 +254,8 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Выбранная группа")
                     }) {
-                        ForEach(0 ..< elements.count, id: \.self) {
-                            Text(self.elements[$0].name)
+                        ForEach(0 ..< picker.groupModel.count, id: \.self) {
+                            Text(self.picker.groupModel[$0].name)
                         }
                     }
                 }

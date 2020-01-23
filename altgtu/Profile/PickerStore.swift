@@ -1,5 +1,5 @@
 //
-//  PickerAPI.swift
+//  PickerStore.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 12.10.2019.
@@ -9,9 +9,11 @@
 import SwiftUI
 import Combine
 
-class PickerAPI: ObservableObject {
+class PickerStore: ObservableObject {
     
     @Published var groupModel: GroupModel = [GroupModelElement]()
+    
+    static let shared = PickerStore()
     
     let apiUrl = "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group"
     
