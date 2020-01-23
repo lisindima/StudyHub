@@ -17,7 +17,7 @@ class PickerStore: ObservableObject {
     
     let apiUrl = "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group"
     
-    func loadPickerData() {
+    func loadPickerDataGroup() {
         guard let url = URL(string: apiUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -31,7 +31,7 @@ class PickerStore: ObservableObject {
                     do {
                         let swift = try JSONDecoder().decode(GroupModel.self, from: json)
                         self.groupModel = swift
-                        
+                        print("Данные групп загружены")
                     } catch {
                         print(error)
                     }

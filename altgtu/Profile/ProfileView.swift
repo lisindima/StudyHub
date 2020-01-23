@@ -35,10 +35,14 @@ struct ProfileView: View {
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     func startSettingView() {
-        picker.loadPickerData()
         imageCache.calculateImageCache()
-        imageCache.setCacheSizeLimit()
         notification.refreshNotificationStatus()
+        if imageCache.sizeLimitImageCache == 0 {
+            imageCache.setCacheSizeLimit()
+        }
+        if picker.groupModel.isEmpty {
+            picker.loadPickerDataGroup()
+        }
     }
     
     private func showShareView() {

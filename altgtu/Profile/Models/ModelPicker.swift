@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct GroupModelElement: Codable, Hashable, Identifiable {
-    public let startYear: Int?
-    public let name: String
-    public let facultyID: String?
-    public let specialityID: String?
-    public let groupBr: Int?
-    public let id: String
+struct GroupModelElement: Codable, Hashable, Identifiable {
+    let startYear: Int?
+    let name: String
+    let facultyID: String?
+    let specialityID: String?
+    let groupBr: Int?
+    let id: String
 }
 
-public typealias GroupModel = [GroupModelElement]
+typealias GroupModel = [GroupModelElement]
