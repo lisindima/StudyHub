@@ -36,7 +36,6 @@ struct CustomButton: View {
 }
 
 struct ActivityIndicatorButton: UIViewRepresentable {
-    typealias UIViewType = UIActivityIndicatorView
     
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorButton>) -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView()

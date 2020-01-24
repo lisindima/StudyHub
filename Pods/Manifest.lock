@@ -212,11 +212,6 @@ PODS:
     - GoogleUtilities/Logger (~> 6.5)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.2.0)
-  - FirebaseCrashlytics (4.0.0-beta.1):
-    - FirebaseAnalyticsInterop (~> 1.2)
-    - FirebaseCore (>= 6.3.2, ~> 6.3)
-    - FirebaseInstanceID (~> 4.1)
-    - PromisesObjC (~> 1.2)
   - FirebaseFirestore (1.9.0):
     - abseil/algorithm (= 0.20190808)
     - abseil/base (= 0.20190808)
@@ -313,7 +308,6 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
-  - FirebaseCrashlytics (~> 4.0.0-beta.1)
   - UnsplashPhotoPicker (from `https://github.com/lisindima/unsplash-photopicker-ios.git`)
 
 SPEC REPOS:
@@ -328,7 +322,6 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
-    - FirebaseCrashlytics
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseInstanceID
@@ -352,7 +345,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UnsplashPhotoPicker:
-    :commit: b63dd3645e09bc12faca6743757bc95850e59d76
+    :commit: a9568c0727e3dee2d52920a31c843ba87446b23d
     :git: https://github.com/lisindima/unsplash-photopicker-ios.git
 
 SPEC CHECKSUMS:
@@ -366,7 +359,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 4aeb81ff53dcd9a3634ca725dc1fb8c2a4622046
   FirebaseCoreDiagnostics: 5e78803ab276bc5b50340e3c539c06c3de35c649
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
-  FirebaseCrashlytics: 98c17c7e764cfe17422ffb7510b44f7085d586aa
   FirebaseFirestore: b7e6adda31974dbd259fc25b541e8850420c92ed
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
   FirebaseInstanceID: 6668efc1655a4052c083f287a7141f1ead12f9c2
@@ -385,6 +377,6 @@ SPEC CHECKSUMS:
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: f8bda845a1c24109d9764e300391c57f6de51e9b
+PODFILE CHECKSUM: 28a96aa9f2a638df1a01ee78c5dedfa7b9cc020a
 
 COCOAPODS: 1.9.0.beta.2

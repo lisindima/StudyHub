@@ -23,7 +23,7 @@ class ImageCacheStore: ObservableObject {
             switch result {
             case .success(let size):
                 self.sizeImageCache = Int(size) / 1024 / 1024
-                print("\(self.sizeImageCache) МБ")
+                print("Размер кэша: \(self.sizeImageCache) МБ")
             case .failure(let error):
                 print(error)
             }

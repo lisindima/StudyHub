@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct ActivityIndicator: UIViewRepresentable {
-    typealias UIViewType = UIActivityIndicatorView
+    
+    var styleSpinner: UIActivityIndicatorView.Style
     
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView()
+        let indicator = UIActivityIndicatorView(style: styleSpinner)
         indicator.startAnimating()
         return indicator
     }

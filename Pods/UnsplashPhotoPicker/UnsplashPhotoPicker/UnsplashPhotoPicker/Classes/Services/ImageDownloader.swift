@@ -11,7 +11,7 @@ import UIKit
 class ImageDownloader {
 
     private var imageDataTask: URLSessionDataTask?
-    private let cache = ImageCacheUnsplash.cache
+    private let cache = ImageCache.cache
 
     private(set) var isCancelled = false
 

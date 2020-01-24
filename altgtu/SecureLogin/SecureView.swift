@@ -64,7 +64,7 @@ struct SecureView: View {
         VStack(alignment: .center) {
             KFImage(URL(string: session.urlImageProfile)!)
                 .placeholder {
-                    ActivityIndicator()
+                    ActivityIndicator(styleSpinner: .medium)
                 }
                 .resizable()
                 .aspectRatio(contentMode: .fill)

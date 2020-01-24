@@ -9,7 +9,6 @@ target 'altgtu' do
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
-  pod 'FirebaseCrashlytics', '~> 4.0.0-beta.1'
   pod 'UnsplashPhotoPicker', :git => 'https://github.com/lisindima/unsplash-photopicker-ios.git'
   # Pods for altgtu
 end

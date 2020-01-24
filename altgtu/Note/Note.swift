@@ -30,11 +30,8 @@ struct Note: View {
                         HStack {
                             Spacer()
                             VStack {
-                                ActivityIndicator()
+                                ActivityIndicator(styleSpinner: .large)
                                     .onAppear(perform: noteStore.getDataFromDatabaseListenNote)
-                                Text("ЗАГРУЗКА")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
                             }
                             Spacer()
                         }

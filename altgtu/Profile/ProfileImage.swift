@@ -22,7 +22,7 @@ struct ProfileImage: View {
                             .foregroundColor(.white)
                             .shadow(radius: 10)
                             .frame(width: 210, height: 210)
-                        ActivityIndicator()
+                        ActivityIndicator(styleSpinner: .large)
                     }
                 }
                 .resizable()

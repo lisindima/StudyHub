@@ -30,10 +30,10 @@ public struct UnsplashPhotoPickerConfiguration {
     public var diskCapacity = defaultDiskCapacity
 
     /// The default memory capacity used by the cache.
-    public static let defaultMemoryCapacity: Int = ImageCacheUnsplash.memoryCapacity
+    public static let defaultMemoryCapacity: Int = ImageCache.memoryCapacity
 
     /// The default disk capacity used by the cache.
-    public static let defaultDiskCapacity: Int = ImageCacheUnsplash.diskCapacity
+    public static let defaultDiskCapacity: Int = ImageCache.diskCapacity
 
     /// The Unsplash API url.
     let apiURL = "https://api.unsplash.com/"

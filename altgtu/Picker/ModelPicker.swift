@@ -18,3 +18,10 @@ struct GroupModelElement: Codable, Hashable, Identifiable {
 }
 
 typealias GroupModel = [GroupModelElement]
+
+struct FacultyModelElement: Codable, Hashable, Identifiable {
+    let id: String
+    let name: String
+}
+
+typealias FacultyModel = [FacultyModelElement]

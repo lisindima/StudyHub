@@ -31,11 +31,8 @@ struct ListChat: View {
                         HStack {
                             Spacer()
                             VStack {
-                                ActivityIndicator()
+                                ActivityIndicator(styleSpinner: .large)
                                     .onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
-                                Text("ЗАГРУЗКА")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
                             }
                             Spacer()
                         }

@@ -45,7 +45,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseGroup: Int = 0
     @Published var choiseFaculty: Int = 0
     @Published var choiseNews: Int = 0
-    @Published var faculty: Array = ["ФИТ", "ГФ", "ФСТ"]
     @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile: UIImage = UIImage()
     @Published var rValue: Double!
@@ -144,6 +143,8 @@ class SessionStore: NSObject, ObservableObject {
                     self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
                     self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
                     self.choiseNews = document.get("choiseNews") as! Int
+                    self.choiseGroup = document.get("choiseGroup") as! Int
+                    self.choiseFaculty = document.get("choiseFaculty") as! Int
                     print(self.lastname ?? "Ошибка, нет Фамилии!")
                     print(self.firstname ?? "Ошибка, нет Имени!")
                     print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
@@ -186,6 +187,8 @@ class SessionStore: NSObject, ObservableObject {
             "gValue": gValue!,
             "bValue": bValue!,
             "choiseNews": choiseNews,
+            "choiseGroup": choiseGroup,
+            "choiseFaculty": choiseFaculty,
             "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
             "pinCodeAccess": pinCodeAccess!,

@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
+import StoreKit
 import Firebase
 import KingfisherSwiftUI
-import StoreKit
 
 struct ProfileView: View {
     
@@ -40,8 +40,11 @@ struct ProfileView: View {
         if imageCache.sizeLimitImageCache == 0 {
             imageCache.setCacheSizeLimit()
         }
+        if picker.facultyModel.isEmpty {
+            picker.loadPickerFaculty()
+        }
         if picker.groupModel.isEmpty {
-            picker.loadPickerDataGroup()
+            picker.loadPickerGroup()
         }
     }
     
@@ -248,8 +251,8 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Text("Выбранный факультет")
                     }) {
-                        ForEach(0 ..< session.faculty.count, id: \.self) {
-                            Text(self.session.faculty[$0])
+                        ForEach(0 ..< picker.facultyModel.count, id: \.self) {
+                            Text(self.picker.facultyModel[$0].name)
                         }
                     }
                     Picker(selection: $session.choiseGroup, label: HStack {

@@ -14,10 +14,7 @@ struct LoadingScreen: View {
             HStack {
                 Spacer()
                 VStack {
-                    ActivityIndicator()
-                    Text("ЗАГРУЗКА")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                    ActivityIndicator(styleSpinner: .large)
                 }
                 Spacer()
             }

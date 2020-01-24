@@ -16,7 +16,7 @@ struct CardList: View {
     
     @State private var showDetailsNews: Bool = false
     
-    private var currentDate = Date()
+    private var currentDate: Date = Date()
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -38,11 +38,8 @@ struct CardList: View {
                         HStack {
                             Spacer()
                             VStack {
-                                ActivityIndicator()
+                                ActivityIndicator(styleSpinner: .large)
                                     .onAppear(perform: newsApi.loadNews)
-                                Text("ЗАГРУЗКА")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
                             }
                             Spacer()
                         }
@@ -63,7 +60,7 @@ struct CardList: View {
                         Spacer()
                         KFImage(URL(string: session.urlImageProfile)!)
                             .placeholder {
-                                ActivityIndicator()
+                                ActivityIndicator(styleSpinner: .medium)
                             }
                             .resizable()
                             .scaledToFill()
