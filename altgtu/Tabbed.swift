@@ -62,6 +62,7 @@ struct Tabbed: View {
             }.tag(4)
         }
         .banner(isPresented: $session.showBanner)
+        .onAppear(perform: session.setInstabugColor)
         .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)
     }

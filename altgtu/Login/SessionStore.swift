@@ -14,6 +14,7 @@ import AuthenticationServices
 import CryptoKit
 import UnsplashPhotoPicker
 import Kingfisher
+import Instabug
 
 struct User {
     
@@ -76,6 +77,10 @@ class SessionStore: NSObject, ObservableObject {
         case appleid
         case email
         case unknown
+    }
+    
+    func setInstabugColor() {
+        Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
     }
     
     func currentTime() {

@@ -9,6 +9,7 @@
 import SwiftUI
 import StoreKit
 import Firebase
+import Instabug
 import KingfisherSwiftUI
 
 struct ProfileView: View {
@@ -402,7 +403,7 @@ struct ProfileView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Сообщить об ошибке") {
-                            print("Сообщить об ошибке")
+                            Instabug.show()
                         }.foregroundColor(.primary)
                     }
                 }
@@ -541,6 +542,7 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showSettingModal, onDismiss: {
                 self.session.session == nil ? print("Сессии нет, данные не сохраняются") : self.session.updateDataFromDatabase()
+                self.session.setInstabugColor()
             }, content: {
                 self.sliderModalPresentation
             })
