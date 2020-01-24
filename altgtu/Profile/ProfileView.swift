@@ -249,29 +249,29 @@ struct ProfileView: View {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Выбранный факультет")
+                        Text("Факультет")
                     }) {
                         ForEach(0 ..< picker.facultyModel.count, id: \.self) {
                             Text(self.picker.facultyModel[$0].name)
                         }
-                    }
+                    }.lineLimit(1)
                     Picker(selection: $session.choiseGroup, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Выбранная группа")
+                        Text("Группа")
                     }) {
                         ForEach(0 ..< picker.groupModel.count, id: \.self) {
                             Text(self.picker.groupModel[$0].name)
                         }
-                    }
+                    }.lineLimit(1)
                 }
                 Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\" по умолчанию.")) {
                     Picker(selection: $session.choiseNews, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Выбранная тема")
+                        Text("Тема")
                     }) {
                         ForEach(0 ..< session.news.count, id: \.self) {
                             Text(self.session.news[$0])
@@ -395,6 +395,14 @@ struct ProfileView: View {
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
                         Button("Поделиться") {
                             self.showShareView()
+                        }.foregroundColor(.primary)
+                    }
+                    HStack {
+                        Image(systemName: "ant")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                        Button("Сообщить об ошибке") {
+                            print("Сообщить об ошибке")
                         }.foregroundColor(.primary)
                     }
                 }
