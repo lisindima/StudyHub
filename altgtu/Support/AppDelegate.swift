@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Instabug.trackUserSteps = false
         Instabug.reproStepsMode = .disable
         BugReporting.shouldCaptureViewHierarchy = false
+        BugReporting.promptOptionsEnabledReportTypes = [.bug, .feedback]
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
