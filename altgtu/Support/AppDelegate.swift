@@ -25,11 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.shake])
+        Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.none])
         Instabug.trackUserSteps = false
         Instabug.reproStepsMode = .disable
         BugReporting.shouldCaptureViewHierarchy = false
         BugReporting.promptOptionsEnabledReportTypes = [.bug, .feedback]
+        Replies.enabled = false
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate

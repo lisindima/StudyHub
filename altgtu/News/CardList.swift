@@ -24,10 +24,9 @@ struct CardList: View {
         return dateFormatter
     }()
     
-    func showNewsSafari(_ news: Articles) {
-        if let url = URL(string: news.url!) {
-            UIApplication.shared.open(url)
-        }
+    func openDetailsNews(_ news: Articles) {
+        print(news.title)
+        showDetailsNews = true
     }
     
     var body: some View {
@@ -55,8 +54,7 @@ struct CardList: View {
                             Text("Сегодня")
                                 .font(.largeTitle)
                                 .fontWeight(.heavy)
-                        }
-                        .padding(.leading, 15)
+                        }.padding(.leading, 15)
                         Spacer()
                         KFImage(URL(string: session.urlImageProfile)!)
                             .placeholder {
@@ -87,25 +85,17 @@ struct CardList: View {
                             }.padding()
                         }
                         ForEach(self.newsApi.articles, id: \.self) { item in
-                            CardView(article: item)
-                                .onTapGesture {
-                                    self.showDetailsNews = true
+                            Button(action: {
+                                self.openDetailsNews(item)
+                            }) {
+                                CardView(article: item)
                             }
+                            .buttonStyle(PlainButtonStyle())
                             .sheet(isPresented: self.$showDetailsNews, onDismiss: {
                                 
                             }, content: {
-                                DetailsNews()
+                                DetailsNews(article: item)
                             })
-                                .contextMenu {
-                                    Button(action: {
-                                        self.showNewsSafari(item)
-                                    }) {
-                                        HStack {
-                                            Image(systemName: "safari")
-                                            Text("Открыть в Safari")
-                                        }
-                                    }
-                            }
                         }
                     }
                 }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)

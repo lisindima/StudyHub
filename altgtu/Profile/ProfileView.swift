@@ -295,7 +295,7 @@ struct ProfileView: View {
                         Image(systemName: "list.dash")
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                        Text("Вариаты авторизации")
+                        Text("Связанные аккаунты")
                     }
                     if session.userTypeAuth == .email {
                         NavigationLink(destination: ChangeEmail()

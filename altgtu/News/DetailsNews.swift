@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 extension Font {
     static func avenirNext(size: Int) -> Font {
@@ -25,6 +26,9 @@ struct DetailsNews: View {
     @ObservedObject private var articleContent: ViewFrame = ViewFrame()
     @State private var titleRect: CGRect = .zero
     @State private var headerImageRect: CGRect = .zero
+    
+    let article: Articles
+    let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
     
     func getScrollOffset(_ geometry: GeometryProxy) -> CGFloat {
         geometry.frame(in: .global).minY
@@ -77,7 +81,7 @@ struct DetailsNews: View {
             VStack {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Image("person")
+                        Image("avatar")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 55, height: 55)
@@ -87,18 +91,16 @@ struct DetailsNews: View {
                             Text("Article Written By")
                                 .font(.avenirNext(size: 12))
                                 .foregroundColor(.gray)
-                            Text("Brandon Baars")
+                            Text(article.source?.name ?? "")
                                 .font(.avenirNext(size: 17))
                         }
                     }
                     Text("02 January 2019 • 5 min read")
                         .font(.avenirNextRegular(size: 12))
                         .foregroundColor(.gray)
-                    
-                    Text("How to build a parallax scroll view")
+                    Text(article.title)
                         .font(.avenirNext(size: 28))
-                        .background(GeometryGetter(rect: self.$titleRect)) // 2
-                    
+                        .background(GeometryGetter(rect: self.$titleRect))
                     Text(loremIpsum)
                         .lineLimit(nil)
                         .font(.avenirNextRegular(size: 17))
@@ -110,7 +112,10 @@ struct DetailsNews: View {
             .background(GeometryGetter(rect: $articleContent.frame))
             GeometryReader { geometry in
                 ZStack(alignment: .bottom) {
-                    Image("background_image")
+                    KFImage(URL(string: self.article.urlToImage ?? self.noImageUrl)!)
+                        .placeholder {
+                            ActivityIndicator(styleSpinner: .medium)
+                        }
                         .resizable()
                         .scaledToFill()
                         .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry))
@@ -124,15 +129,10 @@ struct DetailsNews: View {
                 }
                 .clipped()
                 .offset(x: 0, y: self.getOffsetForHeaderImage(geometry))
-            }.frame(height: imageHeight)
-                .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
+            }
+            .frame(height: imageHeight)
+            .offset(x: 0, y: -(articleContent.startingRect?.maxY ?? UIScreen.main.bounds.height))
         }.edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailsNews()
     }
 }
 
