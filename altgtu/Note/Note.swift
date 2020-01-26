@@ -24,7 +24,7 @@ struct Note: View {
     
     var body: some View {
         Group {
-            if noteStore.dataNote.isEmpty {
+            if noteStore.statusNote == .loading {
                 NavigationView {
                     VStack(alignment: .center) {
                         HStack {
@@ -35,9 +35,24 @@ struct Note: View {
                             }
                             Spacer()
                         }
-                    }
+                    }.navigationBarTitle(Text("Заметки"))
                 }
-            } else {
+            } else if noteStore.statusNote == .emptyNote {
+                NavigationView {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text("Нет заметок")
+                                    .font(.headline)
+                                Text("Создайте свою первую заметку!")
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                    }.navigationBarTitle(Text("Заметки"))
+                }
+            } else if noteStore.statusNote == .showNote {
                 NavigationView {
                     VStack {
                         HStack {
@@ -100,12 +115,12 @@ struct Note: View {
                         NewNote()
                             .environmentObject(NoteStore())
                     })
-                        .actionSheet(isPresented: $showActionSheetSort) {
-                            ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
+                    .actionSheet(isPresented: $showActionSheetSort) {
+                        ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
                                 
-                                }, .default(Text("По дате создания")) {
+                        }, .default(Text("По дате создания")) {
                                     
-                                }, .cancel()])
+                        }, .cancel()])
                     }
                     .navigationBarTitle(Text("Заметки"))
                     .navigationBarItems(leading: EditButton(), trailing: Button (action: {

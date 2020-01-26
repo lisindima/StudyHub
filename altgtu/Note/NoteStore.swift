@@ -12,23 +12,29 @@ import Firebase
 final class NoteStore: ObservableObject {
     
     @Published var dataNote: Array = [DataNote]()
+    @Published var statusNote: StatusNode = .loading
     
     func getDataFromDatabaseListenNote() {
+        statusNote = .loading
         let db = Firestore.firestore()
         let currentUser = Auth.auth().currentUser!
-        db.collection("note").document(currentUser.uid).collection("noteCollection")
-            .addSnapshotListener { (querySnapshot, err) in
-                if err != nil {
-                    print((err?.localizedDescription)!)
-                    return
-                }
+        db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { (querySnapshot, err) in
+            if err != nil {
+                self.statusNote = .emptyNote
+                print((err?.localizedDescription)!)
+                return
+            } else if querySnapshot!.isEmpty {
+                self.statusNote = .emptyNote
+            } else {
                 for item in querySnapshot!.documentChanges {
                     if item.type == .added {
                         let id = item.document.documentID
                         let note = item.document.get("note") as! String
                         self.dataNote.append(DataNote(id: id, note: note))
+                        self.statusNote = .showNote
                     }
                 }
+            }
         }
     }
     
@@ -58,6 +64,12 @@ final class NoteStore: ObservableObject {
             datas.dataNote.remove(atOffsets: index)
         }
     }
+}
+
+enum StatusNode {
+    case loading
+    case emptyNote
+    case showNote
 }
 
 struct DataNote: Identifiable {
