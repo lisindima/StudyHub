@@ -30,9 +30,11 @@ struct SearchBar: UIViewRepresentable {
     }
     
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
-        let searchsBar = UISearchBar(frame: .zero)
-        searchsBar.delegate = context.coordinator
-        return searchsBar
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.placeholder = "Поиск"
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.delegate = context.coordinator
+        return searchBar
     }
     
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {

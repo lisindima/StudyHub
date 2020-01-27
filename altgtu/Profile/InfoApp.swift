@@ -79,7 +79,7 @@ struct InfoApp: View {
                     HStack {
                         Image(systemName: "creditcard")
                             .frame(width: 24)
-                        Text("Поддержать разработчика.")
+                        Text("Поддержать разработчика")
                     }
                 })
                 Button(action: {
@@ -88,7 +88,7 @@ struct InfoApp: View {
                     HStack {
                         Image(systemName: "ant")
                             .frame(width: 24)
-                        Text("Принять участие в бета-тестирование.")
+                        Text("Принять участие в бета-тестирование")
                     }
                 })
             }

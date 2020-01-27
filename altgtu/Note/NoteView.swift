@@ -12,7 +12,6 @@ struct NoteView: View {
     
     @EnvironmentObject var noteStore: NoteStore
     
-    
     var body: some View {
         Group {
             if noteStore.statusNote == .loading {

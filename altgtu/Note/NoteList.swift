@@ -26,6 +26,7 @@ struct NoteList: View {
         NavigationView {
             VStack {
                 SearchBar(text: $searchText)
+                    .padding(.horizontal, 6)
                 ZStack {
                     List {
                         ForEach(noteStore.dataNote) { item in
@@ -41,20 +42,20 @@ struct NoteList: View {
                     VStack {
                         Spacer()
                         HStack {
-                            Spacer()
                             Button(action: {
                                 self.showAddNewNote = true
                             }) {
-                                ZStack {
-                                    Circle()
-                                        .frame(width: 60, height: 60)
-                                        .shadow(radius: 10)
-                                        .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                                    Image(systemName: "plus")
-                                        .foregroundColor(.white)
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                    Text("Новая заметка")
+                                        .font(.system(.body, design: .rounded))
+                                        .fontWeight(.semibold)
                                 }
                             }
-                        }.padding(20)
+                            Spacer()
+                        }.padding()
                     }
                 }
             }
@@ -64,12 +65,13 @@ struct NoteList: View {
                 NewNote()
                     .environmentObject(NoteStore())
             })
-                .actionSheet(isPresented: $showActionSheetSort) {
-                    ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [.default(Text("По названию")) {
-                        
-                        }, .default(Text("По дате создания")) {
+            .actionSheet(isPresented: $showActionSheetSort) {
+                ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
+                .default(Text("По названию")) {
+    
+                }, .default(Text("По дате создания")) {
                             
-                        }, .cancel()])
+                }, .cancel()])
             }
             .navigationBarTitle(Text("Заметки"))
             .navigationBarItems(leading: EditButton(), trailing: Button (action: {

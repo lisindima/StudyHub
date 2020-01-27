@@ -42,6 +42,7 @@ struct ListChat: View {
                 NavigationView {
                     VStack {
                         SearchBar(text: $searchText)
+                            .padding(.horizontal, 6)
                         List {
                             ForEach(self.sessionChat.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
