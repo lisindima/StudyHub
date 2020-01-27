@@ -8,20 +8,6 @@
 
 import SwiftUI
 
-struct LoadingScreen: View {
-    var body: some View {
-        VStack(alignment: .center) {
-            HStack {
-                Spacer()
-                VStack {
-                    ActivityIndicator(styleSpinner: .large)
-                }
-                Spacer()
-            }
-        }
-    }
-}
-
 struct LoadingLogic: View {
     
     @EnvironmentObject var session: SessionStore
@@ -41,14 +27,8 @@ struct LoadingLogic: View {
             } else if session.lastname != nil && session.boolCodeAccess == true && access == false {
                 SecureView(access: $access)
             } else {
-                LoadingScreen()
+                ActivityIndicator(styleSpinner: .large)
             }
         }.onAppear(perform: getData)
-    }
-}
-
-struct LoadingScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingScreen()
     }
 }

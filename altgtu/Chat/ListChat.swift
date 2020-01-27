@@ -41,27 +41,7 @@ struct ListChat: View {
             } else {
                 NavigationView {
                     VStack {
-                        HStack {
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.gray)
-                                    .padding(.leading, 1)
-                                TextField("Поиск", text: $searchText)
-                                    .foregroundColor(.primary)
-                            }
-                            .padding(6.5)
-                            .background(colorScheme == .dark ? Color.darkThemeBackground : Color.lightThemeBackground)
-                            .cornerRadius(9)
-                            if !self.searchText.isEmpty {
-                                Button(action: {
-                                    self.searchText = ""
-                                }, label: {
-                                    Text("Отмена").foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
-                                })
-                            }
-                        }
-                        .padding(.horizontal)
-                        .animation(.default)
+                        SearchBar(text: $searchText)
                         List {
                             ForEach(self.sessionChat.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)

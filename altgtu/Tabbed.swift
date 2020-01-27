@@ -33,7 +33,7 @@ struct Tabbed: View {
                         Text("Расписание")
                     }
             }.tag(1)
-            Note()
+            NoteView()
                 .environmentObject(NoteStore())
                 .tabItem {
                     VStack {

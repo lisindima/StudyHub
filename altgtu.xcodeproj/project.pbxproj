@@ -63,8 +63,12 @@
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
+		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
+		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
+		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
+		CBA7271223DE8AEF0094372B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7271123DE8AEF0094372B /* SearchBar.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
-		CBB01FE623B4553E001D4CBB /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB01FE523B4553E001D4CBB /* Note.swift */; };
+		CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB01FE523B4553E001D4CBB /* NoteView.swift */; };
 		CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */; };
 		CBB273F123CD868F00030050 /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273F023CD868F00030050 /* PencilView.swift */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
@@ -213,8 +217,12 @@
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
+		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
+		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
+		CBA7270F23DE79960094372B /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
+		CBA7271123DE8AEF0094372B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		CBB01FE523B4553E001D4CBB /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		CBB01FE523B4553E001D4CBB /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvas.swift; sourceTree = "<group>"; };
 		CBB273F023CD868F00030050 /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -568,9 +576,12 @@
 		CBB01FE423B45522001D4CBB /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				CBB01FE523B4553E001D4CBB /* Note.swift */,
+				CBB01FE523B4553E001D4CBB /* NoteView.swift */,
 				CB9C08BB23B9DA24006743F9 /* NoteStore.swift */,
 				CBB273F023CD868F00030050 /* PencilView.swift */,
+				CBA7270B23DE78E50094372B /* NoteList.swift */,
+				CBA7270D23DE796E0094372B /* NoteEmpty.swift */,
+				CBA7270F23DE79960094372B /* NoteLoading.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -587,6 +598,7 @@
 				CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */,
 				CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */,
 				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
+				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -867,8 +879,9 @@
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
 				CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */,
 				CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */,
+				CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */,
 				CB276197235588820054C753 /* InfoApp.swift in Sources */,
-				CBB01FE623B4553E001D4CBB /* Note.swift in Sources */,
+				CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */,
 				CB3BFAD2239E37DA00894DFA /* SetAuth.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* ChatView.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
@@ -878,6 +891,7 @@
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
 				CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */,
 				CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */,
+				CBA7271223DE8AEF0094372B /* SearchBar.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
@@ -888,12 +902,14 @@
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
+				CBA7270C23DE78E50094372B /* NoteList.swift in Sources */,
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */,
 				CB0AED5F232E5A210047A8A0 /* AuthLogic.swift in Sources */,
 				CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */,
+				CBA7271023DE79960094372B /* NoteLoading.swift in Sources */,
 				CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,
 				CB179AD023CC315600424FD2 /* Extensions.swift in Sources */,

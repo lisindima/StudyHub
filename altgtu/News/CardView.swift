@@ -32,7 +32,7 @@ struct CardView: View {
                         .padding(.bottom, 8)
                     Text(article.title)
                         .fontWeight(Font.Weight.heavy)
-                        .lineLimit(nil)
+                        .lineLimit(4)
                         .padding(.bottom, 8)
                 }.layoutPriority(100)
                 Spacer()
