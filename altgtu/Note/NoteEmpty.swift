@@ -15,36 +15,32 @@ struct NoteEmpty: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
-                ZStack {
+            ZStack {
+                VStack {
+                    LottieView(filename: "14571-search-loading-animation")
+                        .frame(width: 200, height: 200)
+                    Text("Нет заметок")
+                        .font(.headline)
+                    Text("Создайте свою первую заметку")
+                        .font(.subheadline)
+                }
+                VStack {
+                    Spacer()
                     HStack {
-                        Spacer()
-                        VStack {
-                            Text("Нет заметок")
-                                .font(.headline)
-                            Text("Создайте свою первую заметку")
-                                .font(.subheadline)
+                        Button(action: {
+                            self.showAddNewNote = true
+                        }) {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                Text("Новая заметка")
+                                    .font(.system(.body, design: .rounded))
+                                    .fontWeight(.semibold)
+                            }
                         }
                         Spacer()
-                    }
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Button(action: {
-                                self.showAddNewNote = true
-                            }) {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .frame(width: 24, height: 24)
-                                    Text("Новая заметка")
-                                        .font(.system(.body, design: .rounded))
-                                        .fontWeight(.semibold)
-                                }
-                            }
-                            Spacer()
-                        }.padding()
-                    }
+                    }.padding()
                 }
             }
             .sheet(isPresented: $showAddNewNote, onDismiss: {

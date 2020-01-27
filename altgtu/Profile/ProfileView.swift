@@ -291,7 +291,7 @@ struct ProfileView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    NavigationLink(destination: SetAuth()) {
+                    NavigationLink(destination: LinkedAccounts().environmentObject(session)) {
                         Image(systemName: "list.dash")
                             .frame(width: 24)
                             .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))

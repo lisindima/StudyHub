@@ -14,9 +14,7 @@ struct NoteLoading: View {
             VStack(alignment: .center) {
                 HStack {
                     Spacer()
-                    VStack {
-                        ActivityIndicator(styleSpinner: .large)
-                    }
+                    ActivityIndicator(styleSpinner: .large)
                     Spacer()
                 }
             }.navigationBarTitle(Text("Заметки"))
