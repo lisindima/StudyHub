@@ -19,11 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Self.shared = self //Принудительное переключение в темную тему!
         
+        let rootView = AuthLogic()
+            .environmentObject(SessionStore())
+            .environmentObject(ChatStore())
+            .environmentObject(NotificationStore())
+            .environmentObject(NFCStore())
+            .environmentObject(NoteStore())
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: AuthLogic()
-                .environmentObject(SessionStore())
-                .environmentObject(ChatStore()))
+            window.rootViewController = UIHostingController(rootView: rootView)
             self.window = window
             window.makeKeyAndVisible()
         }

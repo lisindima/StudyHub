@@ -34,7 +34,6 @@ struct Tabbed: View {
                     }
             }.tag(1)
             NoteView()
-                .environmentObject(NoteStore())
                 .tabItem {
                     VStack {
                         Image(systemName: "square.and.pencil")
@@ -51,8 +50,6 @@ struct Tabbed: View {
                     }
             }.tag(3)
             ProfileView()
-                .environmentObject(NotificationStore())
-                .environmentObject(NFCStore())
                 .tabItem {
                     VStack {
                         Image(systemName: "person.crop.circle")
