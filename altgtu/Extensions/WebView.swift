@@ -11,6 +11,7 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     
+    @Binding var showActivityIndicator: Bool
     var urlSite: String
     
     func makeUIView(context: Context) -> WKWebView {
@@ -20,7 +21,7 @@ struct WebView: UIViewRepresentable {
         let request = URLRequest(url: url)
         let wkWebView = WKWebView()
         wkWebView.load(request)
-        wkWebView.navigationDelegate = context.coordinator
+        wkWebView.uiDelegate = context.coordinator
         return wkWebView
     }
     
@@ -28,13 +29,12 @@ struct WebView: UIViewRepresentable {
         return Coordinator(self)
     }
     
-    class Coordinator: NSObject, WKNavigationDelegate {
+    class Coordinator: NSObject, WKUIDelegate {
         var parent: WebView
         
         init(_ parent: WebView) {
             self.parent = parent
         }
-        
     }
     
     

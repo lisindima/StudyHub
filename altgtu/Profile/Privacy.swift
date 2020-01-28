@@ -10,18 +10,25 @@ import SwiftUI
 
 struct Privacy: View {
     
+    @State private var showActivityIndicator: Bool = true
     private var urlSite: String = "https://lisindmitriy.me/privacyaltgtu/"
     
     var body: some View {
-        WebView(urlSite: urlSite)
-            .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
-            }) {
-                Image(systemName: "safari")
-                    .imageScale(.large)
-            })
+        VStack {
+            if showActivityIndicator {
+                ActivityIndicator(styleSpinner: .large)
+            } else {
+                WebView(showActivityIndicator: $showActivityIndicator, urlSite: urlSite)
+            }
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+        }) {
+            Image(systemName: "safari")
+                .imageScale(.large)
+        })
     }
 }
 
