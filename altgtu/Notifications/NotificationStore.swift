@@ -11,7 +11,7 @@ import UserNotifications
 
 class NotificationStore: ObservableObject {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     @Published var enabled: UNAuthorizationStatus = .notDetermined
     
     static let shared = NotificationStore()
@@ -59,7 +59,7 @@ class NotificationStore: ObservableObject {
             let content = UNMutableNotificationContent()
             content.title = notification.title
             content.body = notification.body
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60 * session.notifyMinute), repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60 * sessionStore.notifyMinute), repeats: false)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) { error in
                 guard error == nil else { return }

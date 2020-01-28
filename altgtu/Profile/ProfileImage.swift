@@ -11,11 +11,11 @@ import KingfisherSwiftUI
 
 struct ProfileImage: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     var body: some View {
         VStack {
-            KFImage(URL(string: session.urlImageProfile))
+            KFImage(URL(string: sessionStore.urlImageProfile))
                 .placeholder {
                     ZStack {
                         Circle()

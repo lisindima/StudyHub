@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Foundation
 import WebKit
 
 struct WebView: UIViewRepresentable {
@@ -21,8 +20,23 @@ struct WebView: UIViewRepresentable {
         let request = URLRequest(url: url)
         let wkWebView = WKWebView()
         wkWebView.load(request)
+        wkWebView.navigationDelegate = context.coordinator
         return wkWebView
     }
+    
+    func makeCoordinator() -> WebView.Coordinator {
+        return Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: WebView
+        
+        init(_ parent: WebView) {
+            self.parent = parent
+        }
+        
+    }
+    
     
     func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) {
         

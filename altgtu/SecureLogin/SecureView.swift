@@ -12,7 +12,7 @@ import LocalAuthentication
 
 struct SecureView: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var userInputPin: String = ""
     @State private var showAlertPinCode: Bool = false
@@ -21,10 +21,10 @@ struct SecureView: View {
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
-        if userInputPin == session.pinCodeAccess && userInputPin.count == 4 {
+        if userInputPin == sessionStore.pinCodeAccess && userInputPin.count == 4 {
             self.userInputPin = ""
             self.access = true
-        } else if userInputPin != session.pinCodeAccess && userInputPin.count == 4 {
+        } else if userInputPin != sessionStore.pinCodeAccess && userInputPin.count == 4 {
             self.userInputPin = ""
             self.access = false
             self.showAlertPinCode = true
@@ -62,7 +62,7 @@ struct SecureView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            KFImage(URL(string: session.urlImageProfile)!)
+            KFImage(URL(string: sessionStore.urlImageProfile)!)
                 .placeholder {
                     ActivityIndicator(styleSpinner: .medium)
                 }
@@ -72,7 +72,7 @@ struct SecureView: View {
                 .clipped()
                 .shadow(radius: 10)
                 .frame(width: 90, height: 90)
-            Text("Привет, \(session.firstname ?? "студент")!")
+            Text("Привет, \(sessionStore.firstname ?? "студент")!")
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .padding(.top)
@@ -82,7 +82,7 @@ struct SecureView: View {
                 Image(systemName: userInputPin.count >= 2 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputPin.count >= 3 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputPin.count == 4 ? "largecircle.fill.circle" : "circle")
-            }.foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+            }.foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             Spacer()
             VStack {
                 HStack {
@@ -112,34 +112,34 @@ struct SecureView: View {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if session.biometricAccess == false {
+                    } else if sessionStore.biometricAccess == false {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if currentBiometricType == .touchID && session.biometricAccess == true {
+                    } else if currentBiometricType == .touchID && sessionStore.biometricAccess == true {
                         Button(action: {
                             self.biometricAccess()
                         }) {
                             Image("touchid30")
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                        .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
                             )
                         }
-                    } else if currentBiometricType == .faceID && session.biometricAccess == true {
+                    } else if currentBiometricType == .faceID && sessionStore.biometricAccess == true {
                         Button(action: {
                             self.biometricAccess()
                         }) {
                             Image(systemName: "faceid")
-                                .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                        .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
                             )
                         }
                     }
@@ -150,18 +150,18 @@ struct SecureView: View {
                         self.userInputPin.removeLast()
                     }) {
                         Image(systemName: "delete.left")
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             .font(.system(size: 25))
                             .frame(width: 70, height: 70)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                    .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
                         )
                     }.disabled(userInputPin.count == 0)
                 }
             }.environment(\.keyPadButtonAction, self.keyPressed(_:))
             Button(action: {
-                self.session.signOut()
+                self.sessionStore.signOut()
             }) {
                 Text("Выйти")
                     .bold()
@@ -173,7 +173,7 @@ struct SecureView: View {
             print(value)
             self.checkAccess()
         }
-        .onAppear(perform: session.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
+        .onAppear(perform: sessionStore.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
         .alert(isPresented: $showAlertPinCode) {
             Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Закрыть")))
         }

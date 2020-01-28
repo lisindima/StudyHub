@@ -12,6 +12,11 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+    var sessionStore: SessionStore = SessionStore()
+    var chatStore: ChatStore = ChatStore()
+    var notificationStore: NotificationStore = NotificationStore()
+    var nfcStore: NFCStore = NFCStore()
+    var noteStore: NoteStore = NoteStore()
     
     private(set) static var shared: SceneDelegate? //Принудительное переключение в темную тему!
     
@@ -20,11 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Self.shared = self //Принудительное переключение в темную тему!
         
         let rootView = AuthLogic()
-            .environmentObject(SessionStore())
-            .environmentObject(ChatStore())
-            .environmentObject(NotificationStore())
-            .environmentObject(NFCStore())
-            .environmentObject(NoteStore())
+            .environmentObject(sessionStore)
+            .environmentObject(chatStore)
+            .environmentObject(notificationStore)
+            .environmentObject(nfcStore)
+            .environmentObject(noteStore)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

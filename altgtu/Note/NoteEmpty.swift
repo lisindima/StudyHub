@@ -47,7 +47,7 @@ struct NoteEmpty: View {
                 
             }, content: {
                 NewNote()
-                    .environmentObject(NoteStore())
+                    .environmentObject(self.noteStore)
             })
             .navigationBarTitle(Text("Заметки"))
         }

@@ -14,7 +14,6 @@ struct NoteList: View {
     @State private var showActionSheetSort: Bool = false
     @State private var searchText: String = ""
     
-    @EnvironmentObject var session: SessionStore
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
@@ -63,7 +62,7 @@ struct NoteList: View {
                 
             }, content: {
                 NewNote()
-                    .environmentObject(NoteStore())
+                    .environmentObject(self.noteStore)
             })
             .actionSheet(isPresented: $showActionSheetSort) {
                 ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [

@@ -11,8 +11,8 @@ import KingfisherSwiftUI
 
 struct CardList: View {
     
-    @ObservedObject var newsApi = NewsAPI()
-    @EnvironmentObject var session: SessionStore
+    @ObservedObject var newsApi: NewsAPI = NewsAPI()
+    @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
     
@@ -56,7 +56,7 @@ struct CardList: View {
                                 .fontWeight(.heavy)
                         }.padding(.leading, 15)
                         Spacer()
-                        KFImage(URL(string: session.urlImageProfile)!)
+                        KFImage(URL(string: sessionStore.urlImageProfile)!)
                             .placeholder {
                                 ActivityIndicator(styleSpinner: .medium)
                             }

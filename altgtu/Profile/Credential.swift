@@ -18,7 +18,7 @@ struct DeleteUser: View {
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -113,7 +113,7 @@ struct ChangeEmail: View {
     @State private var activeAlert: ActiveAlert = .first
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -139,7 +139,7 @@ struct ChangeEmail: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         self.loading = true
-        self.session.updateEmail(email: self.newEmail) { (error) in
+        self.sessionStore.updateEmail(email: self.newEmail) { (error) in
             if error != nil {
                 self.loading = false
                 self.textError = (error?.localizedDescription)!
@@ -235,7 +235,7 @@ struct ChangePassword: View {
     @State private var activeAlert: ActiveAlert = .first
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -260,7 +260,7 @@ struct ChangePassword: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         self.loading = true
-        self.session.updatePassword(password: self.newPassword) { (error) in
+        self.sessionStore.updatePassword(password: self.newPassword) { (error) in
             if error != nil {
                 self.loading = false
                 self.textError = (error?.localizedDescription)!

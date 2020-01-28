@@ -11,7 +11,7 @@ import Firebase
 
 struct Tabbed: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     @State private var selection: Int = 0
     
@@ -58,9 +58,9 @@ struct Tabbed: View {
                     }
             }.tag(4)
         }
-        .banner(isPresented: $session.showBanner)
-        .onAppear(perform: session.setInstabugColor)
-        .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+        .banner(isPresented: $sessionStore.showBanner)
+        .onAppear(perform: sessionStore.setInstabugColor)
+        .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)
     }
 }

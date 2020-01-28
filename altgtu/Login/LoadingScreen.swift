@@ -10,21 +10,21 @@ import SwiftUI
 
 struct LoadingLogic: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     @State private var access: Bool = false
     
     func getData() {
-        session.getDataFromDatabaseListen()
+        sessionStore.getDataFromDatabaseListen()
     }
     
     var body: some View {
         ZStack {
-            if session.lastname != nil && session.boolCodeAccess == false {
+            if sessionStore.lastname != nil && sessionStore.boolCodeAccess == false {
                 Tabbed()
-            } else if session.lastname != nil && session.boolCodeAccess == true && access == true {
+            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess == true && access == true {
                 Tabbed()
-            } else if session.lastname != nil && session.boolCodeAccess == true && access == false {
+            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess == true && access == false {
                 SecureView(access: $access)
             } else {
                 ActivityIndicator(styleSpinner: .large)

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LinkedAccounts: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     var body: some View {
         Form {
@@ -20,7 +20,7 @@ struct LinkedAccounts: View {
                         Text("")
                             .font(.title)
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Вход через Apple")
                         Spacer()
                         Text("Выкл")
@@ -31,7 +31,7 @@ struct LinkedAccounts: View {
                     HStack {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Вход через почту и пароль")
                         Spacer()
                         Text("Вкл")

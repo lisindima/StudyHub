@@ -10,15 +10,15 @@ import SwiftUI
 
 struct CircleProgress: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     var body: some View {
         VStack {
             ZStack {
                 Pulsation()
                 Track()
-                Label(percentage: session.percentComplete)
-                Outline(percentage: session.percentComplete)
+                Label(percentage: sessionStore.percentComplete)
+                Outline(percentage: sessionStore.percentComplete)
             }
         }
     }

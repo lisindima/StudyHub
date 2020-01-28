@@ -11,15 +11,15 @@ import LocalAuthentication
 
 struct AuthLogic: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     func getUser() {
-        session.listen()
+        sessionStore.listen()
     }
     
     var body: some View {
         Group {
-            if session.session != nil {
+            if sessionStore.session != nil {
                 LoadingLogic()
             } else {
                 AuthenticationScreen()

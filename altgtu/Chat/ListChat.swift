@@ -10,29 +10,28 @@ import SwiftUI
 
 struct ListChat: View {
     
-    @EnvironmentObject var session: SessionStore
-    @EnvironmentObject var sessionChat: ChatStore
+    @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText: String = ""
     
     private func delete(at offsets: IndexSet) {
-        sessionChat.chatList.remove(atOffsets: offsets)
+        chatStore.chatList.remove(atOffsets: offsets)
     }
     
     private func move(from source: IndexSet, to destination: Int) {
-        sessionChat.chatList.move(fromOffsets: source, toOffset: destination)
+        chatStore.chatList.move(fromOffsets: source, toOffset: destination)
     }
     
     var body: some View {
         Group {
-            if sessionChat.chatList.isEmpty {
+            if chatStore.chatList.isEmpty {
                 NavigationView {
                     VStack(alignment: .center) {
                         HStack {
                             Spacer()
                             VStack {
                                 ActivityIndicator(styleSpinner: .large)
-                                    .onAppear(perform: sessionChat.getDataFromDatabaseListenChat)
+                                    .onAppear(perform: chatStore.getDataFromDatabaseListenChat)
                             }
                             Spacer()
                         }
@@ -44,11 +43,11 @@ struct ListChat: View {
                         SearchBar(text: $searchText)
                             .padding(.horizontal, 6)
                         List {
-                            ForEach(self.sessionChat.chatList.filter {
+                            ForEach(self.chatStore.chatList.filter {
                                 self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                             }, id: \.self) { item in
-                                NavigationLink(destination: ChatView(sessionChat: self._sessionChat, titleChat: item)) {
-                                    ListItem(sessionChat: self._sessionChat, nameChat: item)
+                                NavigationLink(destination: ChatView(chatStore: self._chatStore, titleChat: item)) {
+                                    ListItem(chatStore: self._chatStore, nameChat: item)
                                 }
                             }
                             .onDelete(perform: delete)
@@ -70,7 +69,7 @@ struct ListChat: View {
 
 struct ListItem: View {
     
-    @EnvironmentObject var sessionChat: ChatStore
+    @EnvironmentObject var chatStore: ChatStore
     
     var nameChat: String
     var body: some View {

@@ -12,8 +12,8 @@ import Firebase
 
 struct ChatView: View {
     
-    @EnvironmentObject var sessionChat: ChatStore
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var chatStore: ChatStore
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var message = ChatStore()
     @State private var typeMessage: String = ""
     
@@ -48,8 +48,8 @@ struct ChatView: View {
                 CustomInput(text: $typeMessage, name: "Введите сообщение")
                 if typeMessage.isEmpty == false {
                     Button(action: {
-                        self.session.currentTime()
-                        self.sessionChat.addMessages(message: self.typeMessage, user: "\(self.session.lastname + " " + self.session.firstname)", idUser: self.currentUid, dateMessage: self.session.currentTimeAndDate ?? "error")
+                        self.sessionStore.currentTime()
+                        self.chatStore.addMessages(message: self.typeMessage, user: "\(self.sessionStore.lastname + " " + self.sessionStore.firstname)", idUser: self.currentUid, dateMessage: self.sessionStore.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")

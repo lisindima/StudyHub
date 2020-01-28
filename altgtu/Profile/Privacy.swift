@@ -13,17 +13,15 @@ struct Privacy: View {
     private var urlSite: String = "https://lisindmitriy.me/privacyaltgtu/"
     
     var body: some View {
-        VStack {
-            WebView(urlSite: urlSite)
-        }
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-            UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
-        }) {
-            Image(systemName: "safari")
-                .imageScale(.large)
-        })
+        WebView(urlSite: urlSite)
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+            }) {
+                Image(systemName: "safari")
+                    .imageScale(.large)
+            })
     }
 }
 

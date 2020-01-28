@@ -21,13 +21,13 @@ struct SignUpView: View {
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
 
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
 
     private func signUp() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        session.signUp(email: email, password: password) { (result, error) in
+        sessionStore.signUp(email: email, password: password) { (result, error) in
             if error != nil {
                 self.textError = (error?.localizedDescription)!
                 self.loading = false
@@ -62,7 +62,7 @@ struct SignUpView: View {
                         self.textError = err.localizedDescription
                         print("Error writing document: \(err)")
                     } else {
-                        self.session.sendEmailVerification()
+                        self.sessionStore.sendEmailVerification()
                         print("Document successfully written!")
                     }
                 }
@@ -132,13 +132,13 @@ struct ResetPassword: View {
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
 
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
 
     private func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        session.sendPasswordReset(email: email) { (error) in
+        sessionStore.sendPasswordReset(email: email) { (error) in
             if error != nil {
                 self.textError = (error?.localizedDescription)!
                 self.loading = false
@@ -198,13 +198,13 @@ struct EmailLoginScreen: View {
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
 
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
 
     private func signIn() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        session.signIn(email: email, password: password) { (result, error) in
+        sessionStore.signIn(email: email, password: password) { (result, error) in
             if error != nil {
                 self.textError = (error?.localizedDescription)!
                 self.loading = false
@@ -287,7 +287,7 @@ struct AuthenticationScreen: View {
 
     @State private var showSpashScreen: Bool = false
 
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     private func funcSplashScreen() {
@@ -337,13 +337,13 @@ struct AuthenticationScreen: View {
                             .frame(height: 55)
                             .cornerRadius(8)
                             .padding()
-                            .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                            .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
                     } else {
                         SignInWithAppleWhite()
                             .frame(height: 55)
                             .cornerRadius(8)
                             .padding()
-                            .onTapGesture(perform: self.session.startSignInWithAppleFlow)
+                            .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
                     }
                     Text("-или-")
                         .foregroundColor(.gray)
@@ -365,12 +365,5 @@ struct AuthenticationScreen: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(Color.defaultColorApp)
         .onAppear(perform: funcSplashScreen)
-    }
-}
-
-struct Authenticate_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthenticationScreen()
-            .environmentObject(SessionStore())
     }
 }

@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct MessageView: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
     
@@ -22,7 +22,7 @@ struct MessageView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                KFImage(URL(string: session.urlImageProfile))
+                KFImage(URL(string: sessionStore.urlImageProfile))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())
@@ -63,7 +63,7 @@ struct MessageView: View {
 
 struct MessageView1: View {
     
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     @State var accentColor: Color = .gray
     @State var messageColor: Color = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.7)
     
@@ -99,7 +99,7 @@ struct MessageView1: View {
                             .foregroundColor(.gray)
                     }.padding(.trailing, 3)
                 }
-                KFImage(URL(string: session.urlImageProfile))
+                KFImage(URL(string: sessionStore.urlImageProfile))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())

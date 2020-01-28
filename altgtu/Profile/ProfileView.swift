@@ -17,7 +17,7 @@ struct ProfileView: View {
     @State private var showQRReader: Bool = false
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var sessionStore: SessionStore
     
     let currentUser = Auth.auth().currentUser!
     
@@ -25,13 +25,13 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 VStack {
-                    if session.choiseTypeBackroundProfile == false {
+                    if sessionStore.choiseTypeBackroundProfile == false {
                         Rectangle()
-                            .foregroundColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)
                     } else {
-                        KFImage(URL(string: session.setImageForBackroundProfile))
+                        KFImage(URL(string: sessionStore.setImageForBackroundProfile))
                             .placeholder {
                                 Rectangle()
                                     .foregroundColor(colorScheme == .light ? .white : .black)
@@ -47,7 +47,7 @@ struct ProfileView: View {
                         ProfileImage()
                             .offset(y: -120)
                             .padding(.bottom, -130)
-                        if session.adminSetting {
+                        if sessionStore.adminSetting {
                             ZStack {
                                 Circle()
                                     .frame(width: 50, height: 50)
@@ -61,7 +61,7 @@ struct ProfileView: View {
                         }
                     }
                     VStack {
-                        Text((session.lastname!) + " " + (session.firstname!))
+                        Text((sessionStore.lastname!) + " " + (sessionStore.firstname!))
                             .bold()
                             .font(.title)
                         Text(currentUser.email!)
@@ -86,7 +86,7 @@ struct ProfileView: View {
             }
             .actionSheet(isPresented: $showActionSheetExit) {
                 ActionSheet(title: Text("Вы уверены, что хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
-                    self.session.signOut()
+                    self.sessionStore.signOut()
                     }, .cancel()
                 ])
             }
@@ -108,14 +108,14 @@ struct ProfileView: View {
                     .foregroundColor(.white)
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
-                self.session.session == nil ? print("Сессии нет, данные не сохраняются") : self.session.updateDataFromDatabase()
-                self.session.setInstabugColor()
+                self.sessionStore.session == nil ? print("Сессии нет, данные не сохраняются") : self.sessionStore.updateDataFromDatabase()
+                self.sessionStore.setInstabugColor()
             }, content: {
                 SettingView()
-                    .environmentObject(self.session)
+                    .environmentObject(self.sessionStore)
             })
         }
-        .accentColor(Color(red: session.rValue/255.0, green: session.gValue/255.0, blue: session.bValue/255.0, opacity: 1.0))
+        .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
