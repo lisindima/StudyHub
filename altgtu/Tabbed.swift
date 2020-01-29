@@ -15,6 +15,10 @@ struct Tabbed: View {
     
     @State private var selection: Int = 0
     
+    func startTabView() {
+        sessionStore.setInstabugColor()
+    }
+    
     var body: some View {
         TabView(selection: $selection) {
             CardList()
@@ -41,7 +45,7 @@ struct Tabbed: View {
                         Text("Заметки")
                     }
             }.tag(2)
-            ListChat()
+            ChatList()
                 .tabItem {
                     VStack {
                         Image(systemName: "bubble.left")
@@ -59,7 +63,7 @@ struct Tabbed: View {
             }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
-        .onAppear(perform: sessionStore.setInstabugColor)
+        .onAppear(perform: startTabView)
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
         .edgesIgnoringSafeArea(.top)
     }

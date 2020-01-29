@@ -28,7 +28,9 @@ struct NoteList: View {
                     .padding(.horizontal, 6)
                 ZStack {
                     List {
-                        ForEach(noteStore.dataNote) { item in
+                        ForEach(noteStore.dataNote.filter {
+                            self.searchText.isEmpty ? true : $0.note.localizedStandardContains(self.searchText)
+                        }, id: \.id) { item in
                             NavigationLink(destination: NoteDetails(dataNote: item)) {
                                 Text(item.note)
                             }

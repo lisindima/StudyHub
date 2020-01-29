@@ -72,7 +72,7 @@ enum StatusNode {
     case showNote
 }
 
-struct DataNote: Identifiable {
+struct DataNote: Identifiable, Hashable {
     var id: String
     var note: String
 }

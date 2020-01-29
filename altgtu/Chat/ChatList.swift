@@ -1,5 +1,5 @@
 //
-//  ListChat.swift
+//  ChatList.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 31.10.2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ListChat: View {
+struct ChatList: View {
     
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme

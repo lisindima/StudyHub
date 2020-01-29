@@ -14,7 +14,7 @@ struct ChatView: View {
     
     @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject var message = ChatStore()
+    @ObservedObject var message: ChatStore = ChatStore()
     @State private var typeMessage: String = ""
     
     let currentUid = Auth.auth().currentUser!.uid

@@ -49,7 +49,7 @@
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* ProfileImage.swift */; };
-		CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ListChat.swift */; };
+		CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ChatList.swift */; };
 		CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* NotificationStore.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
@@ -207,7 +207,7 @@
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
-		CB5DE17F236AB98D001AC3E3 /* ListChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChat.swift; sourceTree = "<group>"; };
+		CB5DE17F236AB98D001AC3E3 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		CB6704EB23712F4000F875C3 /* NotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CB6D3F72235ADC6300E65661 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -453,7 +453,7 @@
 				CB12E7ED23596F9E00115B2E /* ChatView.swift */,
 				CBABB1292366F5420087AD18 /* MessageView.swift */,
 				CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */,
-				CB5DE17F236AB98D001AC3E3 /* ListChat.swift */,
+				CB5DE17F236AB98D001AC3E3 /* ChatList.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -938,7 +938,7 @@
 				CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,
 				CB179AD023CC315600424FD2 /* Extensions.swift in Sources */,
-				CB5DE180236AB98D001AC3E3 /* ListChat.swift in Sources */,
+				CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */,
 				CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */,
 				CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */,
 				CB4377B823DFDC200002C47C /* SettingView.swift in Sources */,
