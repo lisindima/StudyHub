@@ -9,10 +9,11 @@
 import SwiftUI
 import Firebase
 
-final class ChatStore: ObservableObject {
+class ChatStore: ObservableObject {
     
     @Published var chatList: Array = [String]()
     @Published var messages: Array = [DataMessages]()
+    @Published var statusChat: StatusChat = .loading
     
     func loadMessageList() {
         print("Чат")
@@ -48,15 +49,27 @@ final class ChatStore: ObservableObject {
     }
     
     func getDataFromDatabaseListenChat() {
+        statusChat = .loading
         let db = Firestore.firestore()
         db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
+            if err != nil {
+                self.statusChat = .emptyChat
+                print((err?.localizedDescription)!)
+                return
+            } else if querySnapshot!.isEmpty {
+                self.statusChat = .emptyChat
             } else if let querySnapshot = querySnapshot {
                 self.chatList = querySnapshot.documents.map { $0.documentID }
+                self.statusChat = .showChat
             }
         }
     }
+}
+
+enum StatusChat {
+    case loading
+    case emptyChat
+    case showChat
 }
 
 struct DataMessages: Identifiable {

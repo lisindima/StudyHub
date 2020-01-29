@@ -38,7 +38,7 @@ struct CardView: View {
                 Spacer()
             }.padding()
         }
-        .background(colorScheme == .dark ? Color.black : Color.white)
+        .background(colorScheme == .dark ? Color.darkThemeBackground : Color.white)
         .cornerRadius(10)
         .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
         .padding()

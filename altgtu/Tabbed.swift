@@ -45,12 +45,12 @@ struct Tabbed: View {
                         Text("Заметки")
                     }
             }.tag(2)
-            ChatList()
+            ChatView()
                 .tabItem {
                     VStack {
                         Image(systemName: "bubble.left")
                             .imageScale(.large)
-                        Text("Чат")
+                        Text("Сообщения")
                     }
             }.tag(3)
             ProfileView()

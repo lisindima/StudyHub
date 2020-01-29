@@ -13,6 +13,7 @@ struct ChatList: View {
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText: String = ""
+    @State private var showActionSheetSort: Bool = false
     
     private func delete(at offsets: IndexSet) {
         chatStore.chatList.remove(atOffsets: offsets)
@@ -23,45 +24,56 @@ struct ChatList: View {
     }
     
     var body: some View {
-        Group {
-            if chatStore.chatList.isEmpty {
-                NavigationView {
-                    VStack(alignment: .center) {
-                        HStack {
-                            Spacer()
-                            VStack {
-                                ActivityIndicator(styleSpinner: .large)
-                                    .onAppear(perform: chatStore.getDataFromDatabaseListenChat)
+        NavigationView {
+            VStack {
+                SearchBar(text: $searchText)
+                    .padding(.horizontal, 6)
+                ZStack {
+                    List {
+                        ForEach(self.chatStore.chatList.filter {
+                            self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
+                        }, id: \.self) { item in
+                            NavigationLink(destination: MessageList(chatStore: self._chatStore, titleChat: item)) {
+                                ListItem(chatStore: self._chatStore, nameChat: item)
                             }
-                            Spacer()
                         }
-                    }.navigationBarTitle(Text("Чат"))
-                }
-            } else {
-                NavigationView {
+                        .onDelete(perform: delete)
+                        .onMove(perform: move)
+                    }
                     VStack {
-                        SearchBar(text: $searchText)
-                            .padding(.horizontal, 6)
-                        List {
-                            ForEach(self.chatStore.chatList.filter {
-                                self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
-                            }, id: \.self) { item in
-                                NavigationLink(destination: ChatView(chatStore: self._chatStore, titleChat: item)) {
-                                    ListItem(chatStore: self._chatStore, nameChat: item)
+                        Spacer()
+                        HStack {
+                            Button(action: {
+                                print("Новое сообщение")
+                            }) {
+                                HStack {
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                    Text("Новое сообщение")
+                                        .font(.system(.body, design: .rounded))
+                                        .fontWeight(.semibold)
                                 }
                             }
-                            .onDelete(perform: delete)
-                            .onMove(perform: move)
-                        }
-                        .navigationBarTitle(Text("Чат"))
-                        .navigationBarItems(leading: EditButton(), trailing: Button(action: {
-                            print("plus")
-                        }) {
-                            Image(systemName: "plus.bubble")
-                                .imageScale(.large)
-                        })
+                            Spacer()
+                        }.padding()
                     }
                 }
+                .navigationBarTitle(Text("Сообщения"))
+                .actionSheet(isPresented: $showActionSheetSort) {
+                    ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
+                        .default(Text("По названию")) {
+                            
+                        }, .default(Text("По дате создания")) {
+                            
+                        }, .cancel()])
+                }
+                .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+                    self.showActionSheetSort = true
+                }) {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                        .imageScale(.large)
+                })
             }
         }
     }

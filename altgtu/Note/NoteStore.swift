@@ -9,10 +9,10 @@
 import SwiftUI
 import Firebase
 
-final class NoteStore: ObservableObject {
+class NoteStore: ObservableObject {
     
     @Published var dataNote: Array = [DataNote]()
-    @Published var statusNote: StatusNode = .loading
+    @Published var statusNote: StatusNote = .loading
     
     func getDataFromDatabaseListenNote() {
         statusNote = .loading
@@ -66,7 +66,7 @@ final class NoteStore: ObservableObject {
     }
 }
 
-enum StatusNode {
+enum StatusNote {
     case loading
     case emptyNote
     case showNote

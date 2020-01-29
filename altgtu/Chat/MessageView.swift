@@ -61,7 +61,7 @@ struct MessageView: View {
     }
 }
 
-struct MessageView1: View {
+struct MessageViewOther: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @State var accentColor: Color = .gray
