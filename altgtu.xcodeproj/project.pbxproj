@@ -667,6 +667,7 @@
 				7674E8C86BF4E9E78518AB40 /* [CP] Embed Pods Frameworks */,
 				CB25040C23505E1600D2E41A /* Embed Watch Content */,
 				CB6777A5236046610019D6B6 /* Embed App Extensions */,
+				CB4377B923E05BED0002C47C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -851,6 +852,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-altgtu/Pods-altgtu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CB4377B923E05BED0002C47C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#--- SCRIPT BEGIN --- \n# SKIP_SIMULATOR_BUILDS=1 \n    SCRIPT_SRC=$(find \"$PROJECT_DIR\" -name 'Instabug_dsym_upload.sh' | head -1) \n    if [ ! \"${SCRIPT_SRC}\" ]; then \n        echo \"Instabug: err: script not found. Make sure that you're including Instabug.bundle in your project directory\"\n        exit 1\n    fi\n    APP_TOKEN=\"ca8e774a198603b2bdd7a94fc7963b16\"\n    source \"${SCRIPT_SRC}\"\n#--- SCRIPT END ---\n";
 		};
 		EC4ADE232421431A244A74BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1051,7 +1069,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
