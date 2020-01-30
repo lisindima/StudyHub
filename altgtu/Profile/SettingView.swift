@@ -275,7 +275,7 @@ struct SettingView: View {
                     }
                 }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
-                    NavigationLink(destination: BioAndCodeSecure(boolCodeAccess: $sessionStore.boolCodeAccess, pinCodeAccess: $sessionStore.pinCodeAccess, biometricAccess: $sessionStore.biometricAccess)) {
+                    NavigationLink(destination: BioAndCodeSecure().environmentObject(sessionStore)) {
                         HStack {
                             Image(systemName: "faceid")
                                 .frame(width: 24)

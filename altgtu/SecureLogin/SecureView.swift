@@ -14,22 +14,29 @@ struct SecureView: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    @State private var userInputPin: String = ""
-    @State private var showAlertPinCode: Bool = false
+    @State private var userInputCode: String = ""
+    @State private var changeColor: Bool = false
     @Binding var access: Bool
     
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
-        if userInputPin == sessionStore.pinCodeAccess && userInputPin.count == 4 {
-            self.userInputPin = ""
-            self.access = true
-        } else if userInputPin != sessionStore.pinCodeAccess && userInputPin.count == 4 {
-            self.userInputPin = ""
-            self.access = false
-            self.showAlertPinCode = true
-        } else {
-            
+        if userInputCode == sessionStore.secureCodeAccess && userInputCode.count == 4 {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.userInputCode = ""
+                self.access = true
+            }
+        } else if userInputCode != sessionStore.secureCodeAccess && userInputCode.count == 4 {
+            self.changeColor = true
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.userInputCode = ""
+                self.access = false
+                self.changeColor = false
+            }
         }
     }
     
@@ -57,7 +64,7 @@ struct SecureView: View {
     }
     
     private func keyPressed(_ key: String) {
-        userInputPin += key
+        userInputCode += key
     }
     
     var body: some View {
@@ -78,11 +85,11 @@ struct SecureView: View {
                 .padding(.top)
             Spacer()
             HStack {
-                Image(systemName: userInputPin.count >= 1 ? "largecircle.fill.circle" : "circle")
-                Image(systemName: userInputPin.count >= 2 ? "largecircle.fill.circle" : "circle")
-                Image(systemName: userInputPin.count >= 3 ? "largecircle.fill.circle" : "circle")
-                Image(systemName: userInputPin.count == 4 ? "largecircle.fill.circle" : "circle")
-            }.foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                Image(systemName: userInputCode.count >= 1 ? "largecircle.fill.circle" : "circle")
+                Image(systemName: userInputCode.count >= 2 ? "largecircle.fill.circle" : "circle")
+                Image(systemName: userInputCode.count >= 3 ? "largecircle.fill.circle" : "circle")
+                Image(systemName: userInputCode.count == 4 ? "largecircle.fill.circle" : "circle")
+            }.foregroundColor(changeColor == false ? Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0) : .red)
             Spacer()
             VStack {
                 HStack {
@@ -91,7 +98,7 @@ struct SecureView: View {
                         .padding(.horizontal)
                     KeyPadButton(key: "3")
                 }
-                .disabled(userInputPin.count > 3)
+                .disabled(userInputCode.count > 3)
                 .padding(.bottom)
                 HStack {
                     KeyPadButton(key: "4")
@@ -99,14 +106,14 @@ struct SecureView: View {
                         .padding(.horizontal)
                     KeyPadButton(key: "6")
                 }
-                .disabled(userInputPin.count > 3)
+                .disabled(userInputCode.count > 3)
                 .padding(.bottom)
                 HStack {
                     KeyPadButton(key: "7")
                     KeyPadButton(key: "8")
                         .padding(.horizontal)
                     KeyPadButton(key: "9")
-                }.disabled(userInputPin.count > 3)
+                }.disabled(userInputCode.count > 3)
                 HStack {
                     if currentBiometricType == .none {
                         Circle()
@@ -144,10 +151,10 @@ struct SecureView: View {
                         }
                     }
                     KeyPadButton(key: "0")
-                        .disabled(userInputPin.count > 3)
+                        .disabled(userInputCode.count > 3)
                         .padding(.horizontal)
                     Button(action: {
-                        self.userInputPin.removeLast()
+                        self.userInputCode.removeLast()
                     }) {
                         Image(systemName: "delete.left")
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -157,7 +164,7 @@ struct SecureView: View {
                                 RoundedRectangle(cornerRadius: 100)
                                     .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
                         )
-                    }.disabled(userInputPin.count == 0)
+                    }.disabled(userInputCode.count == 0)
                 }
             }.environment(\.keyPadButtonAction, self.keyPressed(_:))
             Button(action: {
@@ -169,13 +176,9 @@ struct SecureView: View {
             }.padding(.top)
         }
         .padding()
-        .onReceive([self.userInputPin].publisher.first()) { (value) in
-            print(value)
-            self.checkAccess()
-        }
         .onAppear(perform: sessionStore.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
-        .alert(isPresented: $showAlertPinCode) {
-            Alert(title: Text("Ошибка!"), message: Text("Код неверный."), dismissButton: .default(Text("Закрыть")))
+        .onReceive([self.userInputCode].publisher.first()) { (value) in
+            self.checkAccess()
         }
     }
 }

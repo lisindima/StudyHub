@@ -11,21 +11,20 @@ import LocalAuthentication
 
 struct BioAndCodeSecure: View {
     
+    @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.presentationMode) var presentationMode
-    @Binding var boolCodeAccess: Bool
-    @Binding var pinCodeAccess: String
-    @Binding var biometricAccess: Bool
+    
     @State private var activateSecure: Bool = false
     @State private var setBoolCodeAccess: Bool = false
     @State private var showAlert: Bool = false
-    @State private var setPinCodeAccess: String = ""
-    @State private var repeatSetPinCode: String = ""
+    @State private var setSecureCodeAccess: String = ""
+    @State private var repeatSetSecureCode: String = ""
     
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func saveSetPinSetting() {
-        boolCodeAccess = setBoolCodeAccess
-        pinCodeAccess = setPinCodeAccess
+        sessionStore.boolCodeAccess = setBoolCodeAccess
+        sessionStore.secureCodeAccess = setSecureCodeAccess
         self.showAlert = true
     }
     
@@ -54,33 +53,33 @@ struct BioAndCodeSecure: View {
                             Text("Вход с помощью кода")
                         }
                         if setBoolCodeAccess {
-                            SecureField("Пароль", text: $setPinCodeAccess)
-                                .disabled(setPinCodeAccess.count > 3)
+                            SecureField("Пароль", text: $setSecureCodeAccess)
+                                .disabled(setSecureCodeAccess.count > 3)
                                 .keyboardType(.numberPad)
-                            if setPinCodeAccess != "" {
-                                SecureField("Повторите пароль", text: $repeatSetPinCode)
-                                    .disabled(repeatSetPinCode.count > 3)
+                            if setSecureCodeAccess != "" {
+                                SecureField("Повторите пароль", text: $repeatSetSecureCode)
+                                    .disabled(repeatSetSecureCode.count > 3)
                                     .keyboardType(.numberPad)
                             }
                         }
                     }
                 }
-                if setPinCodeAccess == repeatSetPinCode && setBoolCodeAccess == true && setPinCodeAccess != "" {
+                if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
                     Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
                         if currentBiometricType == .none {
                             Text("Функция не доступна")
                         } else if currentBiometricType == .faceID {
-                            Toggle(isOn: $biometricAccess) {
+                            Toggle(isOn: $sessionStore.biometricAccess) {
                                 Text("Вход с помощью FaceID")
                             }
                         } else if currentBiometricType == .touchID {
-                            Toggle(isOn: $biometricAccess) {
+                            Toggle(isOn: $sessionStore.biometricAccess) {
                                 Text("Вход с помощью FaceID")
                             }
                         }
                     }
                 }
-                if setPinCodeAccess == repeatSetPinCode && setBoolCodeAccess == true && setPinCodeAccess != "" {
+                if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
                     Section {
                         HStack {
                             Spacer()

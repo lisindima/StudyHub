@@ -53,7 +53,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
     @Published var currentTimeAndDate: String!
-    @Published var pinCodeAccess: String!
+    @Published var secureCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
     @Published var percentComplete: Double = 0.0
@@ -142,7 +142,7 @@ class SessionStore: NSObject, ObservableObject {
                     self.bValue = document.get("bValue") as? Double
                     self.adminSetting = document.get("adminSetting") as? Bool
                     self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
-                    self.pinCodeAccess = document.get("pinCodeAccess") as? String
+                    self.secureCodeAccess = document.get("pinCodeAccess") as? String
                     self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                     self.biometricAccess = document.get("biometricAccess") as? Bool
                     self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
@@ -171,7 +171,7 @@ class SessionStore: NSObject, ObservableObject {
                     self.bValue = 214.0
                     self.adminSetting = false
                     self.darkThemeOverride = false
-                    self.pinCodeAccess = ""
+                    self.secureCodeAccess = ""
                     self.boolCodeAccess = false
                     self.biometricAccess = false
                 }
@@ -196,7 +196,7 @@ class SessionStore: NSObject, ObservableObject {
             "choiseFaculty": choiseFaculty,
             "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
-            "pinCodeAccess": pinCodeAccess!,
+            "pinCodeAccess": secureCodeAccess!,
             "boolCodeAccess": boolCodeAccess!,
             "biometricAccess": biometricAccess!,
             "setImageForBackroundProfile": setImageForBackroundProfile!,
