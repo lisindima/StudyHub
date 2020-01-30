@@ -2,7 +2,7 @@
 //  Extensions.swift
 //  altgtu
 //
-//  Created by Дмитрий Лисин on 13.01.2020.
+//  Created by Дмитрий Лисин on 30.01.2020.
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
@@ -16,4 +16,10 @@ extension Color {
     static let outlineColor = Color.rgb(red: 54, green: 255, blue: 203)
     static let trackColor = Color.rgb(red: 45, green: 56, blue: 95)
     static let pulsatingColor = Color.rgb(red: 73, green: 113, blue: 148)
+}
+
+extension View {
+    func banner(isPresented: Binding<Bool>) -> some View {
+        self.modifier(BannerModifier(showBanner: isPresented))
+    }
 }

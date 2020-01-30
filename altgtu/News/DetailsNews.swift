@@ -88,20 +88,20 @@ struct DetailsNews: View {
                             .clipShape(Circle())
                             .shadow(radius: 4)
                         VStack(alignment: .leading) {
-                            Text("Article Written By")
+                            Text("Статья написана:")
                                 .font(.avenirNext(size: 12))
                                 .foregroundColor(.gray)
                             Text(article.source?.name ?? "")
                                 .font(.avenirNext(size: 17))
                         }
                     }
-                    Text("02 January 2019 • 5 min read")
+                    Text("\(article.publishedAt ?? "02 January 2019") • Читать 5 мин.")
                         .font(.avenirNextRegular(size: 12))
                         .foregroundColor(.gray)
                     Text(article.title)
                         .font(.avenirNext(size: 28))
                         .background(GeometryGetter(rect: self.$titleRect))
-                    Text(loremIpsum)
+                    Text(article.description ?? loremIpsum)
                         .lineLimit(nil)
                         .font(.avenirNextRegular(size: 17))
                 }
@@ -122,9 +122,9 @@ struct DetailsNews: View {
                         .blur(radius: self.getBlurRadiusForImage(geometry))
                         .clipped()
                         .background(GeometryGetter(rect: self.$headerImageRect))
-                    Text("How to build a parallax scroll view")
+                    Text(self.article.title)
                         .font(.avenirNext(size: 17))
-                        .foregroundColor(.white)
+                        .foregroundColor(.primary)
                         .offset(x: 0, y: self.getHeaderTitleOffset())
                 }
                 .clipped()

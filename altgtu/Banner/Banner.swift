@@ -47,9 +47,3 @@ struct BannerModifier: ViewModifier {
         }
     }
 }
-
-extension View {
-    func banner(isPresented: Binding<Bool>) -> some View {
-        self.modifier(BannerModifier(showBanner: isPresented))
-    }
-}

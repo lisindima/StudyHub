@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct CardList: View {
     
-    @ObservedObject var newsApi: NewsAPI = NewsAPI()
+    @ObservedObject var newsStore: NewsStore = NewsStore()
     @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
@@ -31,73 +31,67 @@ struct CardList: View {
     
     var body: some View {
         Group {
-            if newsApi.articles.isEmpty {
+            if newsStore.articles.isEmpty {
                 NavigationView {
                     VStack(alignment: .center) {
                         HStack {
                             Spacer()
                             VStack {
                                 ActivityIndicator(styleSpinner: .large)
-                                    .onAppear(perform: newsApi.loadNews)
+                                    .onAppear(perform: newsStore.loadNews)
                             }
                             Spacer()
                         }
                     }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
                 }.navigationViewStyle(StackNavigationViewStyle())
             } else {
-                ScrollView(showsIndicators: false) {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("\(currentDate, formatter: dateFormatter)")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            Text("Сегодня")
-                                .font(.largeTitle)
-                                .fontWeight(.heavy)
-                        }.padding(.leading, 15)
-                        Spacer()
-                        KFImage(URL(string: sessionStore.urlImageProfile)!)
-                            .placeholder {
-                                ActivityIndicator(styleSpinner: .medium)
-                            }
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 45, height: 45)
-                            .padding(.trailing, 15)
-                    }.padding(.top, 30)
-                    VStack(alignment: .center) {
+                NavigationView {
+                    ScrollView(showsIndicators: false) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("\(currentDate, formatter: dateFormatter)")
+                                    .font(.headline)
+                                    .foregroundColor(.secondary)
+                                Text("Сегодня")
+                                    .font(.largeTitle)
+                                    .fontWeight(.heavy)
+                            }.padding(.leading, 15)
+                            Spacer()
+                            KFImage(URL(string: sessionStore.urlImageProfile)!)
+                                .placeholder {
+                                    ActivityIndicator(styleSpinner: .medium)
+                                }
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 45, height: 45)
+                                .padding(.trailing, 15)
+                        }.padding(.top, 30)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "")})
+                                SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "")})
                                     .padding(.trailing)
-                                SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=sports")})
+                                SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=sports")})
                                     .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=entertainment")})
+                                SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=entertainment")})
                                     .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=technology")})
+                                SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=technology")})
                                     .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=health")})
+                                SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=health")})
                                     .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsApi.fetchCategoryNews(category: "&category=business")})
+                                SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=business")})
                                     .padding(.leading)
                                     .padding(.trailing, 10)
                             }.padding()
                         }
-                        ForEach(self.newsApi.articles, id: \.self) { item in
-                            Button(action: {
-                                self.openDetailsNews(item)
-                            }) {
+                        ForEach(self.newsStore.articles, id: \.self) { item in
+                            NavigationLink(destination: DetailsNews(article: item)) {
                                 CardView(article: item)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .sheet(isPresented: self.$showDetailsNews, onDismiss: {
-                                
-                            }, content: {
-                                DetailsNews(article: item)
-                            })
                         }
                     }
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
                 }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
             }
         }

@@ -1,5 +1,5 @@
 //
-//  NewsAPI.swift
+//  NewsStore.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 19.10.2019.
@@ -9,7 +9,7 @@
 import Combine
 import SwiftUI
 
-class NewsAPI: ObservableObject {
+class NewsStore: ObservableObject {
     
     @Published var news: News?
     @Published var articles: [Articles] = []

@@ -19,6 +19,7 @@ struct CardView: View {
     var body: some View {
         VStack {
             KFImage(URL(string: article.urlToImage ?? noImageUrl)!)
+                .renderingMode(.original)
                 .placeholder {
                     ActivityIndicator(styleSpinner: .medium)
                 }
@@ -31,6 +32,7 @@ struct CardView: View {
                         .foregroundColor(Color.gray)
                         .padding(.bottom, 8)
                     Text(article.title)
+                        .foregroundColor(.primary)
                         .fontWeight(Font.Weight.heavy)
                         .lineLimit(4)
                         .padding(.bottom, 8)
