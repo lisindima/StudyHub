@@ -109,7 +109,7 @@ struct ProfileView: View {
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
                 self.sessionStore.session == nil ? print("Сессии нет, данные не сохраняются") : self.sessionStore.updateDataFromDatabase()
-                self.sessionStore.setInstabugColor()
+                self.sessionStore.settingInstabug()
             }, content: {
                 SettingView()
                     .environmentObject(self.sessionStore)

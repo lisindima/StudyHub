@@ -16,7 +16,7 @@ struct Tabbed: View {
     @State private var selection: Int = 0
     
     func startTabView() {
-        sessionStore.setInstabugColor()
+        sessionStore.settingInstabug()
     }
     
     var body: some View {

@@ -35,6 +35,8 @@ struct User {
 
 class SessionStore: NSObject, ObservableObject {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
     @Published var lastname: String!
@@ -64,7 +66,10 @@ class SessionStore: NSObject, ObservableObject {
     @Published var setImageForBackroundProfile: String!
     
     var darkThemeOverride: Bool = false {
-        didSet { SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified }
+        didSet {
+            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
+            settingInstabug()
+        }
     }
     
     var handle: AuthStateDidChangeListenerHandle?
@@ -79,7 +84,13 @@ class SessionStore: NSObject, ObservableObject {
         case unknown
     }
     
-    func setInstabugColor() {
+    func settingInstabug() {
+        if darkThemeOverride {
+            Instabug.setColorTheme(.dark)
+        } else {
+            Instabug.setColorTheme(colorScheme == .dark ? .dark : .light)
+        }
+        Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
         Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
     }
     
