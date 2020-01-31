@@ -9,6 +9,7 @@
 import SwiftUI
 import StoreKit
 import Instabug
+import PartialSheet
 import KingfisherSwiftUI
 
 struct SettingView: View {
@@ -18,6 +19,7 @@ struct SettingView: View {
     @State private var isShowingModalViewUnsplash: Bool = false
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
+    @State private var showPartialSheet: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -122,6 +124,22 @@ struct SettingView: View {
                         .font(Font.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
+                    Toggle(isOn: $sessionStore.darkThemeOverride) {
+                        HStack {
+                            Image(systemName: "moon.circle")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            Text("Темная тема")
+                        }
+                    }
+                    HStack {
+                        Image(systemName: "app")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        Button("Изменить иконку") {
+                            self.showPartialSheet = true
+                        }.foregroundColor(.primary)
+                    }
                     HStack {
                         Image(systemName: "map")
                             .frame(width: 24)
@@ -146,14 +164,6 @@ struct SettingView: View {
                                 .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
                                 .edgesIgnoringSafeArea(.bottom)
                         })
-                    }
-                    Toggle(isOn: $sessionStore.darkThemeOverride) {
-                        HStack {
-                            Image(systemName: "moon.circle")
-                                .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Text("Темная тема")
-                        }
                     }
                 }
                 Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
@@ -435,5 +445,8 @@ struct SettingView: View {
         }
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
+        .partialSheet(presented: $showPartialSheet, backgroundColor: colorScheme == .dark ? .darkThemeBackground : .white) {
+            ChangeIcons()
+        }
     }
 }

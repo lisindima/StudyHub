@@ -24,11 +24,6 @@ struct CardList: View {
         return dateFormatter
     }()
     
-    func openDetailsNews(_ news: Articles) {
-        print(news.title)
-        showDetailsNews = true
-    }
-    
     var body: some View {
         Group {
             if newsStore.articles.isEmpty {

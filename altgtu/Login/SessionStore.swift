@@ -87,8 +87,6 @@ class SessionStore: NSObject, ObservableObject {
     func settingInstabug() {
         if darkThemeOverride {
             Instabug.setColorTheme(.dark)
-        } else {
-            Instabug.setColorTheme(colorScheme == .dark ? .dark : .light)
         }
         Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
         Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
