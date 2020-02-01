@@ -43,6 +43,9 @@
 		CB37694123E2CA3D0015B61E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Extensions.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
 		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
+		CB37695823E5CD7E0015B61E /* altIconApp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* altIconApp@2x.png */; };
+		CB37695A23E5CD850015B61E /* altIconApp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* altIconApp@3x.png */; };
+		CB37695C23E5CD9F0015B61E /* altIconApp.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* altIconApp.png */; };
 		CB3BFACE239E09F300894DFA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACD239E09F200894DFA /* WebView.swift */; };
 		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */; };
@@ -96,12 +99,10 @@
 		CBE665F723543A1500C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665F623543A1500C43811 /* Assets.xcassets */; };
 		CBE665FA23543A1500C43811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665F923543A1500C43811 /* Preview Assets.xcassets */; };
 		CBE665FF23543A1500C43811 /* altgtuWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CBE665DB23543A1000C43811 /* altgtuWatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CBE6660A23545C1200C43811 /* SwiftUICharts */; };
 		CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1923A340B8006CC917 /* KeyPadButton.swift */; };
 		CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1D23A341DD006CC917 /* SecureView.swift */; };
 		CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
-		CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CBF1E0E4234211990009E3BE /* SwiftUICharts */; };
 		CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF16FF239F861C0030FBA3 /* LoadingScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +207,9 @@
 		CB32DB0023A0B64800B25626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB37694023E2CA3D0015B61E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CB37694523E3F54F0015B61E /* ChangeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIcons.swift; sourceTree = "<group>"; };
+		CB37695723E5CD7E0015B61E /* altIconApp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altIconApp@2x.png"; sourceTree = "<group>"; };
+		CB37695923E5CD850015B61E /* altIconApp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altIconApp@3x.png"; sourceTree = "<group>"; };
+		CB37695B23E5CD9F0015B61E /* altIconApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altIconApp.png; sourceTree = "<group>"; };
 		CB3BFACD239E09F200894DFA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccounts.swift; sourceTree = "<group>"; };
@@ -280,7 +284,6 @@
 			files = (
 				CB37694923E40D860015B61E /* PartialSheet in Frameworks */,
 				CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */,
-				CBF1E0E5234211990009E3BE /* SwiftUICharts in Frameworks */,
 				05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */,
@@ -300,7 +303,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBE6660B23545C1200C43811 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +354,7 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
+				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB179AC423CC079C00424FD2 /* NFC */,
@@ -537,6 +540,16 @@
 			path = altgtuTodayWidget;
 			sourceTree = "<group>";
 		};
+		CB37694C23E5BDC40015B61E /* AlternateIcon */ = {
+			isa = PBXGroup;
+			children = (
+				CB37695B23E5CD9F0015B61E /* altIconApp.png */,
+				CB37695723E5CD7E0015B61E /* altIconApp@2x.png */,
+				CB37695923E5CD850015B61E /* altIconApp@3x.png */,
+			);
+			path = AlternateIcon;
+			sourceTree = "<group>";
+		};
 		CB4874C223D8161C00DEB38F /* ImageCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,7 +703,6 @@
 			);
 			name = altgtu;
 			packageProductDependencies = (
-				CBF1E0E4234211990009E3BE /* SwiftUICharts */,
 				CB6D3F70235AC6F200E65661 /* Lottie */,
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
@@ -750,7 +762,6 @@
 			);
 			name = "altgtuWatchApp Extension";
 			packageProductDependencies = (
-				CBE6660A23545C1200C43811 /* SwiftUICharts */,
 			);
 			productName = "altgtuWatchApp Extension";
 			productReference = CBE665E723543A1400C43811 /* altgtuWatchApp Extension.appex */;
@@ -790,7 +801,6 @@
 			);
 			mainGroup = CB0AED30232E59A10047A8A0;
 			packageReferences = (
-				CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */,
 				CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
@@ -817,6 +827,9 @@
 				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
+				CB37695A23E5CD850015B61E /* altIconApp@3x.png in Resources */,
+				CB37695823E5CD7E0015B61E /* altIconApp@2x.png in Resources */,
+				CB37695C23E5CD9F0015B61E /* altIconApp.png in Resources */,
 				CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
 			);
@@ -1433,14 +1446,6 @@
 				minimumVersion = 1.0.1;
 			};
 		};
-		CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.7;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1468,16 +1473,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
-		};
-		CBE6660A23545C1200C43811 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-		CBF1E0E4234211990009E3BE /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBF1E0E3234211990009E3BE /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 

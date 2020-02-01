@@ -20,22 +20,16 @@ struct User {
     
     var uid: String
     var email: String?
-    var photoURL: URL?
-    var displayName: String?
     
-    static let `default` = Self(uid: "stockID", displayName: "test test", email: "test@test.com", photoURL: nil)
+    static let `default` = Self(uid: "stockID", email: "stockEmail")
     
-    init(uid: String, displayName: String?, email: String?, photoURL: URL?) {
+    init(uid: String, email: String?) {
         self.uid = uid
         self.email = email
-        self.photoURL = photoURL
-        self.displayName = displayName
     }
 }
 
 class SessionStore: NSObject, ObservableObject {
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @Published var isLoggedIn: Bool = false
     @Published var session: User?
@@ -87,6 +81,8 @@ class SessionStore: NSObject, ObservableObject {
     func settingInstabug() {
         if darkThemeOverride {
             Instabug.setColorTheme(.dark)
+        } else {
+            Instabug.setColorTheme(.light)
         }
         Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
         Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
@@ -122,9 +118,7 @@ class SessionStore: NSObject, ObservableObject {
                 self.isLoggedIn = true
                 self.session = User(
                     uid: user.uid,
-                    displayName: user.displayName,
-                    email: user.email,
-                    photoURL: user.photoURL
+                    email: user.email
                 )
             } else {
                 self.isLoggedIn = false

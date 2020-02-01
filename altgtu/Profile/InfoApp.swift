@@ -10,6 +10,8 @@ import SwiftUI
 
 struct InfoApp: View {
     
+    @ObservedObject var iconStore: IconStore = IconStore()
+    
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     }
@@ -20,7 +22,7 @@ struct InfoApp: View {
     var body: some View {
         VStack(alignment: .center) {
             Spacer()
-            Image("infoApp")
+            Image(iconStore.nameIcon == .primary ? "infoApp" : "altIconApp")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)

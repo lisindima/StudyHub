@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var notificationStore: NotificationStore = NotificationStore()
     var nfcStore: NFCStore = NFCStore()
     var noteStore: NoteStore = NoteStore()
+    var iconStore: IconStore = IconStore()
     
     private(set) static var shared: SceneDelegate? //Принудительное переключение в темную тему!
     
@@ -30,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(notificationStore)
             .environmentObject(nfcStore)
             .environmentObject(noteStore)
+            .environmentObject(iconStore)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

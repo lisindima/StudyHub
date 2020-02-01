@@ -12,7 +12,7 @@ import CodeScanner
 
 struct QRReader: View {
     
-    @State private var choiseView: Int = 0
+    @State private var choiseView: Int = 1
     
     var name: String = "dima"
     var emailAddress: String = "lisindima1996@gmail.com"
@@ -47,6 +47,7 @@ struct QRReader: View {
                         Spacer()
                         Image(systemName: "viewfinder")
                             .resizable()
+                            .foregroundColor(.white)
                             .opacity(0.5)
                             .padding(.top)
                             .frame(width: 300, height: 300)
@@ -59,12 +60,17 @@ struct QRReader: View {
                     }
                 }
             } else if choiseView == 1 {
-                Image(uiImage: generatedQRCode(from: "\(name)\n\(emailAddress)"))
-                    .interpolation(.none)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .frame(width: 300, height: 300)
+                VStack(alignment: .center) {
+                    Image(uiImage: generatedQRCode(from: "\(name)\n\(emailAddress)"))
+                        .interpolation(.none)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(10)
+                        .frame(width: 300, height: 300)
+                        .padding(.bottom)
+                    Text("Сканируйте этот QR-код")
+                    Text("приложением АлтГТУ")
+                }.font(.system(.body, design: .rounded))
             }
             VStack {
                 Picker("", selection: $choiseView) {

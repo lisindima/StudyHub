@@ -87,7 +87,9 @@ struct CardList: View {
                     }
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
-                }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
+                }
+                .navigationViewStyle(StackNavigationViewStyle())
+                .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
             }
         }
     }
