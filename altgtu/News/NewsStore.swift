@@ -14,6 +14,8 @@ class NewsStore: ObservableObject {
     @Published var news: News?
     @Published var articles: [Articles] = []
     
+    static let shared = NewsStore()
+    
     let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey="
     let apiKey = "762c4a68394f46f5b493923c11dc7e8b"
     

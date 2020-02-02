@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct CardList: View {
     
-    @ObservedObject var newsStore: NewsStore = NewsStore()
+    @ObservedObject var newsStore: NewsStore = NewsStore.shared
     @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
