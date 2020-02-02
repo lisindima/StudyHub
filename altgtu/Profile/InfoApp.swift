@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InfoApp: View {
     
-    @ObservedObject var iconStore: IconStore = IconStore()
+    @ObservedObject var iconStore: IconStore = IconStore.shared
     
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
@@ -95,6 +95,7 @@ struct InfoApp: View {
                 })
             }
             .padding(.bottom)
+            .onAppear(perform: iconStore.getNameIcon)
             .navigationBarTitle(Text("О приложении"), displayMode: .inline)
         }
     }

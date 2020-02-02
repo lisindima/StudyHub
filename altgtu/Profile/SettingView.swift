@@ -26,9 +26,9 @@ struct SettingView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var sessionStore: SessionStore
     
-    @ObservedObject var notification = NotificationStore.shared
-    @ObservedObject var imageCache = ImageCacheStore.shared
-    @ObservedObject var picker = PickerStore.shared
+    @ObservedObject var notification: NotificationStore = NotificationStore.shared
+    @ObservedObject var imageCache: ImageCacheStore = ImageCacheStore.shared
+    @ObservedObject var picker: PickerStore = PickerStore.shared
     
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     

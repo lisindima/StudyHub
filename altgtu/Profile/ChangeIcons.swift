@@ -11,6 +11,7 @@ import SwiftUI
 class IconStore: ObservableObject {
     
     @Published var nameIcon: ActiveIconName = .primary
+    static let shared = IconStore()
     
     func getNameIcon() {
         if UIApplication.shared.alternateIconName == nil {
@@ -46,7 +47,7 @@ class IconStore: ObservableObject {
 struct ChangeIcons: View {
     
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject var iconStore: IconStore = IconStore()
+    @ObservedObject var iconStore: IconStore = IconStore.shared
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
