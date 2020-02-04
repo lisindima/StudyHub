@@ -39,7 +39,9 @@ struct NoteList: View {
                             self.noteStore.deleteNote(datas: self.noteStore, index: index)
                         }
                         .onMove(perform: move)
-                    }
+                    }.gesture(DragGesture().onChanged { _ in
+                        UIApplication.shared.endEditing(true)
+                    })
                     VStack {
                         Spacer()
                         HStack {

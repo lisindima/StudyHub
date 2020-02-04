@@ -39,7 +39,9 @@ struct ChatList: View {
                         }
                         .onDelete(perform: delete)
                         .onMove(perform: move)
-                    }
+                    }.gesture(DragGesture().onChanged { _ in
+                        UIApplication.shared.endEditing(true)
+                    })
                     VStack {
                         Spacer()
                         HStack {
