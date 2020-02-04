@@ -12,7 +12,7 @@ struct SearchBar: UIViewRepresentable {
     
     @Binding var text: String
     
-    class Coordinator: NSObject,UISearchBarDelegate {
+    class Coordinator: NSObject, UISearchBarDelegate {
         
         @Binding var text: String
         
@@ -22,6 +22,16 @@ struct SearchBar: UIViewRepresentable {
         
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             text = searchText
+        }
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.showsCancelButton = false
+            searchBar.endEditing(true)
+            text = ""
+        }
+        
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            searchBar.showsCancelButton = true
         }
     }
     
@@ -39,14 +49,5 @@ struct SearchBar: UIViewRepresentable {
     
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = text
-    }
-}
-
-extension UIApplication {
-    func endEditing(_ force: Bool) {
-        self.windows
-            .filter{$0.isKeyWindow}
-            .first?
-            .endEditing(force)
     }
 }
