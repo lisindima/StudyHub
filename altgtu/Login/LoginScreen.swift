@@ -294,7 +294,7 @@ struct AuthenticationScreen: View {
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
             print("НЕ первый запуск")
-            self.showSpashScreen = false
+            self.showSpashScreen = true
         } else {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             print("Первый запуск")
@@ -359,7 +359,7 @@ struct AuthenticationScreen: View {
             .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
             .edgesIgnoringSafeArea(.top)
             .sheet(isPresented: self.$showSpashScreen) {
-                SplashScreen()
+                SplashScreen(dismissSheet: self.$showSpashScreen)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

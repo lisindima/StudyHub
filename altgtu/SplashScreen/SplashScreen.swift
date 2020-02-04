@@ -10,23 +10,25 @@ import SwiftUI
 
 struct SplashScreen: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var dismissSheet: Bool
     
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            TitleView()
-            InformationContainerView()
-            Spacer(minLength: 30)
-            Button(action: {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Продолжить")
-                    .customButton()
+        NavigationView {
+            VStack(alignment: .center) {
+                Spacer()
+                TitleView()
+                    .padding(.bottom)
+                InformationContainerView()
+                Spacer(minLength: 30)
+                NavigationLink(destination: PrivacySplashScreen(dismissSheet: $dismissSheet)) {
+                    Text("Продолжить")
+                        .customButton()
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
             }
-            .padding(.horizontal)
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
@@ -52,6 +54,7 @@ struct InformationDetailView: View {
         HStack(alignment: .center) {
             Image(systemName: imageName)
                 .font(.largeTitle)
+                .frame(width: 30)
                 .foregroundColor(.defaultColorApp)
                 .padding()
                 .accessibility(hidden: true)
@@ -72,11 +75,11 @@ struct InformationDetailView: View {
 struct TitleView: View {
     var body: some View {
         VStack {
-            Image("altgtu")
+            Image("infoApp")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 150, alignment: .center)
-                .accessibility(hidden: true)
+                .frame(width: 150)
+                .cornerRadius(30)
                 .shadow(radius: 10)
             Text("Личный кабинет")
                 .customTitleText()
@@ -109,7 +112,7 @@ extension Text {
     func customTitleText() -> Text {
         self
             .fontWeight(.black)
-            .font(.system(size: 32))
+            .font(.system(size: 28))
     }
 }
 

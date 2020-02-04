@@ -70,6 +70,7 @@
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
 		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
 		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
+		CB97AFB523E91FF400921F0F /* PrivacySplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
@@ -231,6 +232,7 @@
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
 		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
+		CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySplashScreen.swift; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */,
+				CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				CBDE62952352129E00E588EC /* PickerStore.swift in Sources */,
 				CBB273F123CD868F00030050 /* PencilView.swift in Sources */,
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
+				CB97AFB523E91FF400921F0F /* PrivacySplashScreen.swift in Sources */,
 				CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */,
 				CB11A8CE23E1E1D4006E568C /* ChatView.swift in Sources */,
 				CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */,

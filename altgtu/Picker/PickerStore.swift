@@ -13,11 +13,11 @@ class PickerStore: ObservableObject {
     
     @Published var facultyModel: FacultyModel = [FacultyModelElement]()
     @Published var groupModel: GroupModel = [GroupModelElement]()
-    
+
     static let shared = PickerStore()
     
-    let apiFaculty = "https://gist.githubusercontent.com/lisindima/8fd6a24a3f8a20bfc2cacd9aa3d1435b/raw/233adeacb2185a7d5969f5f0095f5b5bd31e8bbe/faculty"
-    let apiGroup = "https://gist.githubusercontent.com/lisindima/a3246c9eebae2e152c1f8211d10d4255/raw/30ee8647261b839c3a00024a851a340295300787/group"
+    let apiFaculty = "https://altstuapi.herokuapp.com/faculty"
+    let apiGroup = "https://altstuapi.herokuapp.com/18"
     
     func loadPickerFaculty() {
         guard let url = URL(string: apiFaculty) else { return }
