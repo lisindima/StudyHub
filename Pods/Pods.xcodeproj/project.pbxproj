@@ -19874,6 +19874,22 @@
 			};
 			name = Debug;
 		};
+		0BBB953701E9CDE97B4EEFC1F8157649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505F0A3C9D080DDD98EC67721E221BE8 /* Instabug.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		0D8BBB96AE9D1DFFEAF36F6AC1CC15AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89EBC5AFFF7B671291529C179938FEE3 /* FirebaseCoreDiagnostics.release.xcconfig */;
@@ -20371,21 +20387,22 @@
 			};
 			name = Release;
 		};
-		54213F77D63D55B0597DBF2FF9EC91A9 /* Debug */ = {
+		563A871C7CB1BA43CF4F6C9C7DCC44F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 505F0A3C9D080DDD98EC67721E221BE8 /* Instabug.debug.xcconfig */;
+			baseConfigurationReference = 6AD9A3DC7B4CDEF6D361103D920D9F82 /* Instabug.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		59614CCF653C424454C0135E6EB06147 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -20769,23 +20786,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		88E801966E5C97C7E75E3D5AF38DD0C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AD9A3DC7B4CDEF6D361103D920D9F82 /* Instabug.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -21975,8 +21975,8 @@
 		F5983A7EE90E6C5C34577BF136CE10DD /* Build configuration list for PBXAggregateTarget "Instabug" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				54213F77D63D55B0597DBF2FF9EC91A9 /* Debug */,
-				88E801966E5C97C7E75E3D5AF38DD0C0 /* Release */,
+				0BBB953701E9CDE97B4EEFC1F8157649 /* Debug */,
+				563A871C7CB1BA43CF4F6C9C7DCC44F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
