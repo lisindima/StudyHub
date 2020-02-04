@@ -84,8 +84,10 @@ class SessionStore: NSObject, ObservableObject {
         } else {
             Instabug.setColorTheme(.light)
         }
-        Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
-        Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
+        if Auth.auth().currentUser != nil {
+            Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
+            Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
+        }
     }
     
     func currentTime() {
