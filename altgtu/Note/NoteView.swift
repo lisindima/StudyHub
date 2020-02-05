@@ -30,17 +30,30 @@ struct NewNote: View {
     
     @EnvironmentObject var noteStore: NoteStore
     @State private var textNote: String = ""
+    @State private var showPencilView: Bool = false
     
     func addNote() {
         noteStore.addNote(note: textNote)
     }
     
     var body: some View {
-        VStack {
-            TextField("Заметка", text: $textNote)
-            Button(action: addNote) {
-                Text("Сохранить")
+        NavigationView {
+            VStack {
+                TextView(text: $textNote)
+                Button(action: addNote) {
+                    Text("Сохранить")
+                }
             }
+            .sheet(isPresented: $showPencilView) {
+                PencilView()
+            }
+            .navigationBarTitle("Новая заметка", displayMode: .inline)
+            .navigationBarItems(trailing: Button (action: {
+                self.showPencilView = true
+            }) {
+                Image(systemName: "pencil.tip.crop.circle.badge.plus")
+                    .imageScale(.large)
+            })
         }
     }
 }

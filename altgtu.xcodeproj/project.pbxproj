@@ -71,6 +71,7 @@
 		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
 		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
 		CB97AFB523E91FF400921F0F /* PrivacySplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */; };
+		CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFBB23EAA12B00921F0F /* TextView.swift */; };
 		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
 		CB9BBDCC234C6DDC00F89529 /* LessonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
@@ -233,6 +234,7 @@
 		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
 		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
 		CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySplashScreen.swift; sourceTree = "<group>"; };
+		CB97AFBB23EAA12B00921F0F /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* LessonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonAPI.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */,
 				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
 				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
+				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -971,6 +974,7 @@
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
 				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,
+				CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */,
 				CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */,
 				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,

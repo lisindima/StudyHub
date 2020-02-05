@@ -11,6 +11,7 @@ import SwiftUI
 struct PencilView: View {
     var body: some View {
         PencilKitCanvas()
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
