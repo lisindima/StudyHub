@@ -31,7 +31,8 @@ struct User {
 
 class SessionStore: NSObject, ObservableObject {
     
-    @Published var isLoggedIn: Bool = false
+    @ObservedObject var picker: PickerStore = PickerStore.shared
+    
     @Published var session: User?
     @Published var lastname: String!
     @Published var firstname: String!
@@ -40,7 +41,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
     @Published var choiseGroup: Int = 0
-    @Published var choiseFaculty: Int = 0
     @Published var choiseNews: Int = 0
     @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile: UIImage = UIImage()
@@ -59,14 +59,20 @@ class SessionStore: NSObject, ObservableObject {
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
     
+    var choiseFaculty: Int = 0 {
+        didSet {
+            if !picker.facultyModel.isEmpty {
+                picker.loadPickerGroup(choiseFaculty: choiseGroup)
+            }
+        }
+    }
+    
     var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
             settingInstabug()
         }
     }
-    
-    var handle: AuthStateDidChangeListenerHandle?
     
     init(session: User? = nil) {
         self.session = session
@@ -117,13 +123,11 @@ class SessionStore: NSObject, ObservableObject {
                         }
                     }
                 }
-                self.isLoggedIn = true
                 self.session = User(
                     uid: user.uid,
                     email: user.email
                 )
             } else {
-                self.isLoggedIn = false
                 self.session = nil
             }
         }
@@ -132,54 +136,31 @@ class SessionStore: NSObject, ObservableObject {
     func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-        db.collection("profile").document(currentUser.uid)
-            .addSnapshotListener { documentSnapshot, error in
-                if let document = documentSnapshot {
-                    self.lastname = document.get("lastname") as? String
-                    self.firstname = document.get("firstname") as? String
-                    let dateTimestamp = document.get("dateBirthDay") as? Timestamp
-                    self.dateBirthDay = dateTimestamp!.dateValue()
-                    self.email = document.get("email") as? String
-                    self.urlImageProfile = document.get("urlImageProfile") as? String
-                    self.notifyMinute = document.get("notifyMinute") as? Int
-                    self.rValue = document.get("rValue") as? Double
-                    self.gValue = document.get("gValue") as? Double
-                    self.bValue = document.get("bValue") as? Double
-                    self.adminSetting = document.get("adminSetting") as? Bool
-                    self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
-                    self.secureCodeAccess = document.get("pinCodeAccess") as? String
-                    self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
-                    self.biometricAccess = document.get("biometricAccess") as? Bool
-                    self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
-                    self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
-                    self.choiseNews = document.get("choiseNews") as! Int
-                    self.choiseGroup = document.get("choiseGroup") as! Int
-                    self.choiseFaculty = document.get("choiseFaculty") as! Int
-                    print(self.lastname ?? "Ошибка, нет Фамилии!")
-                    print(self.firstname ?? "Ошибка, нет Имени!")
-                    print(self.dateBirthDay ?? "Ошибка, нет Даты рождения!")
-                    print(self.email ?? "Ошибка, нет Почты!")
-                    print(self.urlImageProfile ?? "Ошибка, нет Фото!")
-                    print(self.notifyMinute ?? "Ошибка, нет времени уведомления!")
-                    print(self.rValue ?? "Ошибка красный цвет!")
-                    print(self.bValue ?? "Ошибка синий цвет!")
-                    print(self.gValue ?? "Ошибка зеленый цвет!")
-                } else if error != nil {
-                    print((error?.localizedDescription)!)
-                    self.lastname = "Error"
-                    self.firstname = "Error"
-                    self.dateBirthDay = Date()
-                    self.email = "error@error.com"
-                    self.notifyMinute = 10
-                    self.rValue = 88.0
-                    self.gValue = 86.0
-                    self.bValue = 214.0
-                    self.adminSetting = false
-                    self.darkThemeOverride = false
-                    self.secureCodeAccess = ""
-                    self.boolCodeAccess = false
-                    self.biometricAccess = false
-                }
+        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
+            if let document = documentSnapshot {
+                self.lastname = document.get("lastname") as? String
+                self.firstname = document.get("firstname") as? String
+                let dateTimestamp = document.get("dateBirthDay") as? Timestamp
+                self.dateBirthDay = dateTimestamp!.dateValue()
+                self.email = document.get("email") as? String
+                self.urlImageProfile = document.get("urlImageProfile") as? String
+                self.notifyMinute = document.get("notifyMinute") as? Int
+                self.rValue = document.get("rValue") as? Double
+                self.gValue = document.get("gValue") as? Double
+                self.bValue = document.get("bValue") as? Double
+                self.adminSetting = document.get("adminSetting") as? Bool
+                self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
+                self.secureCodeAccess = document.get("pinCodeAccess") as? String
+                self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
+                self.biometricAccess = document.get("biometricAccess") as? Bool
+                self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
+                self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
+                self.choiseNews = document.get("choiseNews") as! Int
+                self.choiseGroup = document.get("choiseGroup") as! Int
+                self.choiseFaculty = document.get("choiseFaculty") as! Int
+            } else if error != nil {
+                print((error?.localizedDescription)!)
+            }
         }
     }
     
@@ -343,6 +324,8 @@ class SessionStore: NSObject, ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
+    
+    var handle: AuthStateDidChangeListenerHandle?
     
     func unbind() {
         if let handle = handle {

@@ -19,7 +19,7 @@ class PickerStore: ObservableObject {
     let apiFaculty = "https://altstuapi.herokuapp.com/faculty"
     let apiGroup = "https://altstuapi.herokuapp.com/"
     
-    func loadPickerFaculty() {
+    func loadPickerFaculty(choiseFaculty: Int) {
         guard let url = URL(string: apiFaculty) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -33,7 +33,7 @@ class PickerStore: ObservableObject {
                     do {
                         let swift = try JSONDecoder().decode(FacultyModel.self, from: json)
                         self.facultyModel = swift
-                        self.loadPickerGroup()
+                        self.loadPickerGroup(choiseFaculty: choiseFaculty)
                         print("Данные факультетов загружены")
                     } catch {
                         print(error)
@@ -45,8 +45,8 @@ class PickerStore: ObservableObject {
         }.resume()
     }
     
-    func loadPickerGroup() {
-        guard let url = URL(string: apiGroup + facultyModel[7].id) else { return }
+    func loadPickerGroup(choiseFaculty: Int) {
+        guard let url = URL(string: apiGroup + facultyModel[choiseFaculty].id) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)

@@ -39,7 +39,7 @@ struct SettingView: View {
             imageCache.setCacheSizeLimit()
         }
         if picker.facultyModel.isEmpty {
-            picker.loadPickerFaculty()
+            picker.loadPickerFaculty(choiseFaculty: sessionStore.choiseFaculty)
         }
     }
     
@@ -445,15 +445,6 @@ struct SettingView: View {
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             })
         }
-        /*
-        .onReceive([sessionStore.choiseFaculty].publisher.first()) { (value) in
-            if self.picker.facultyModel.isEmpty {
-                
-            } else {
-                self.picker.loadPickerGroup()
-            }
-        }
-        */
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
         .navigationViewStyle(StackNavigationViewStyle())
         .partialSheet(presented: $showPartialSheet, backgroundColor: colorScheme == .dark ? .darkThemeBackground : .white) {
