@@ -8,18 +8,28 @@
 
 import SwiftUI
 import Combine
+import Firebase
 
 class PickerStore: ObservableObject {
     
     @Published var facultyModel: FacultyModel = [FacultyModelElement]()
     @Published var groupModel: GroupModel = [GroupModelElement]()
+    @Published var choiseGroup: Int = 0
+    
+    var choiseFaculty: Int = 0 {
+        didSet {
+            if !facultyModel.isEmpty {
+                loadPickerGroup()
+            }
+        }
+    }
 
     static let shared = PickerStore()
     
     let apiFaculty = "https://altstuapi.herokuapp.com/faculty"
     let apiGroup = "https://altstuapi.herokuapp.com/"
     
-    func loadPickerFaculty(choiseFaculty: Int) {
+    func loadPickerFaculty() {
         guard let url = URL(string: apiFaculty) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -33,7 +43,7 @@ class PickerStore: ObservableObject {
                     do {
                         let swift = try JSONDecoder().decode(FacultyModel.self, from: json)
                         self.facultyModel = swift
-                        self.loadPickerGroup(choiseFaculty: choiseFaculty)
+                        self.loadPickerGroup()
                         print("Данные факультетов загружены")
                     } catch {
                         print(error)
@@ -45,7 +55,7 @@ class PickerStore: ObservableObject {
         }.resume()
     }
     
-    func loadPickerGroup(choiseFaculty: Int) {
+    func loadPickerGroup() {
         guard let url = URL(string: apiGroup + facultyModel[choiseFaculty].id) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -69,5 +79,36 @@ class PickerStore: ObservableObject {
                 print("Picker: \(response.statusCode)")
             }
         }.resume()
+    }
+    
+    func getDataFromDatabaseListenPicker() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
+            if let document = documentSnapshot {
+                self.choiseGroup = document.get("choiseGroup") as! Int
+                self.choiseFaculty = document.get("choiseFaculty") as! Int
+                print("\(self.choiseGroup) группа выбрана")
+                print("\(self.choiseFaculty) факультет выбран")
+            } else if error != nil {
+                print((error?.localizedDescription)!)
+            }
+        }
+    }
+    
+    func updateDataFromDatabasePicker() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
+        docRef.updateData([
+            "choiseGroup": choiseGroup,
+            "choiseFaculty": choiseFaculty
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Пикеры обновлены")
+            }
+        }
     }
 }

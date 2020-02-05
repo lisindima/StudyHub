@@ -31,8 +31,6 @@ struct User {
 
 class SessionStore: NSObject, ObservableObject {
     
-    @ObservedObject var picker: PickerStore = PickerStore.shared
-    
     @Published var session: User?
     @Published var lastname: String!
     @Published var firstname: String!
@@ -40,7 +38,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
-    @Published var choiseGroup: Int = 0
     @Published var choiseNews: Int = 0
     @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
     @Published var imageProfile: UIImage = UIImage()
@@ -58,14 +55,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool!
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
-    
-    var choiseFaculty: Int = 0 {
-        didSet {
-            if !picker.facultyModel.isEmpty {
-                picker.loadPickerGroup(choiseFaculty: choiseGroup)
-            }
-        }
-    }
     
     var darkThemeOverride: Bool = false {
         didSet {
@@ -156,8 +145,6 @@ class SessionStore: NSObject, ObservableObject {
                 self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
                 self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
                 self.choiseNews = document.get("choiseNews") as! Int
-                self.choiseGroup = document.get("choiseGroup") as! Int
-                self.choiseFaculty = document.get("choiseFaculty") as! Int
             } else if error != nil {
                 print((error?.localizedDescription)!)
             }
@@ -178,8 +165,6 @@ class SessionStore: NSObject, ObservableObject {
             "gValue": gValue!,
             "bValue": bValue!,
             "choiseNews": choiseNews,
-            "choiseGroup": choiseGroup,
-            "choiseFaculty": choiseFaculty,
             "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
             "pinCodeAccess": secureCodeAccess!,
@@ -191,7 +176,7 @@ class SessionStore: NSObject, ObservableObject {
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
-                print("Document successfully updated")
+                print("Профиль обновлен")
             }
         }
     }

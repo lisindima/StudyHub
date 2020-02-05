@@ -26,20 +26,21 @@ struct SettingView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var sessionStore: SessionStore
     
-    @ObservedObject var notification: NotificationStore = NotificationStore.shared
-    @ObservedObject var imageCache: ImageCacheStore = ImageCacheStore.shared
-    @ObservedObject var picker: PickerStore = PickerStore.shared
+    @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
+    @ObservedObject var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
+    @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     func startSettingView() {
-        imageCache.calculateImageCache()
-        notification.refreshNotificationStatus()
-        if imageCache.sizeLimitImageCache == 0 {
-            imageCache.setCacheSizeLimit()
+        imageCacheStore.calculateImageCache()
+        notificationStore.refreshNotificationStatus()
+        if imageCacheStore.sizeLimitImageCache == 0 {
+            imageCacheStore.setCacheSizeLimit()
         }
-        if picker.facultyModel.isEmpty {
-            picker.loadPickerFaculty(choiseFaculty: sessionStore.choiseFaculty)
+        if pickerStore.facultyModel.isEmpty {
+            pickerStore.getDataFromDatabaseListenPicker()
+            pickerStore.loadPickerFaculty()
         }
     }
     
@@ -60,7 +61,7 @@ struct SettingView: View {
     }
     
     var footerNotification: some View {
-        switch notification.enabled {
+        switch notificationStore.enabled {
         case .denied:
             return Text("Чтобы активировать уведомления перейдите в настройки.")
         case .notDetermined:
@@ -142,7 +143,11 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Изменить обложку") {
-                            self.showActionSheetUnsplash = true
+                            if self.sessionStore.choiseTypeBackroundProfile {
+                                self.showActionSheetUnsplash = true
+                            } else {
+                                self.isShowingModalViewUnsplash = true
+                            }
                         }
                         .foregroundColor(.primary)
                         .actionSheet(isPresented: $showActionSheetUnsplash) {
@@ -208,7 +213,7 @@ struct SettingView: View {
                     }
                 }
                 Section(header: Text("Уведомления").bold(), footer: footerNotification) {
-                    if notification.enabled == .authorized {
+                    if notificationStore.enabled == .authorized {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
@@ -226,17 +231,17 @@ struct SettingView: View {
                             }
                         }
                     }
-                    if notification.enabled == .notDetermined {
+                    if notificationStore.enabled == .notDetermined {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             Button("Включить уведомления") {
-                                self.notification.requestPermission()
+                                self.notificationStore.requestPermission()
                             }.foregroundColor(.primary)
                         }
                     }
-                    if notification.enabled == .denied {
+                    if notificationStore.enabled == .denied {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
@@ -248,24 +253,24 @@ struct SettingView: View {
                     }
                 }
                 Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                    Picker(selection: $sessionStore.choiseFaculty, label: HStack {
+                    Picker(selection: $pickerStore.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Факультет")
                     }) {
-                        ForEach(0 ..< picker.facultyModel.count, id: \.self) {
-                            Text(self.picker.facultyModel[$0].name)
+                        ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
+                            Text(self.pickerStore.facultyModel[$0].name)
                         }
                     }.lineLimit(1)
-                    Picker(selection: $sessionStore.choiseGroup, label: HStack {
+                    Picker(selection: $pickerStore.choiseGroup, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Группа")
                     }) {
-                        ForEach(0 ..< picker.groupModel.count, id: \.self) {
-                            Text(self.picker.groupModel[$0].name)
+                        ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
+                            Text(self.pickerStore.groupModel[$0].name)
                         }
                     }.lineLimit(1)
                 }
@@ -333,14 +338,14 @@ struct SettingView: View {
                                     .shadow(radius: 5)
                                     .foregroundColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 0.3))
                                 Rectangle()
-                                    .frame(width: (CGFloat(self.imageCache.sizeImageCache) / CGFloat(self.imageCache.sizeLimitImageCache)) * geometry.size.width, height: 60)
+                                    .frame(width: (CGFloat(self.imageCacheStore.sizeImageCache) / CGFloat(self.imageCacheStore.sizeLimitImageCache)) * geometry.size.width, height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
                                     .foregroundColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
                                     .animation(.linear)
                                 HStack {
                                     Spacer()
-                                    Text("\(self.imageCache.sizeImageCache) MB / \(self.imageCache.sizeLimitImageCache) MB")
+                                    Text("\(self.imageCacheStore.sizeImageCache) MB / \(self.imageCacheStore.sizeLimitImageCache) MB")
                                         .foregroundColor(.white)
                                         .font(Font.custom("Futura", size: 24))
                                     Spacer()
@@ -355,7 +360,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Очистить кэш изображений") {
-                            self.imageCache.clearImageCache()
+                            self.imageCacheStore.clearImageCache()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                 self.showAlertCache = true
                             }

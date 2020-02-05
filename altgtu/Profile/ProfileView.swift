@@ -18,6 +18,7 @@ struct ProfileView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser!
     
@@ -108,8 +109,13 @@ struct ProfileView: View {
                     .foregroundColor(.white)
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
-                self.sessionStore.session == nil ? print("Сессии нет, данные не сохраняются") : self.sessionStore.updateDataFromDatabase()
-                self.sessionStore.settingInstabug()
+                if self.sessionStore.session == nil {
+                    print("Сессии нет, данные не сохраняются")
+                } else {
+                    self.sessionStore.updateDataFromDatabase()
+                    self.sessionStore.settingInstabug()
+                    self.pickerStore.updateDataFromDatabasePicker()
+                }
             }, content: {
                 SettingView()
                     .environmentObject(self.sessionStore)
