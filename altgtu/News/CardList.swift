@@ -15,6 +15,7 @@ struct CardList: View {
     @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
+    @State var selectedTab: String = "Популярное"
     
     private let stringDate: String = {
         var currentDate: Date = Date()
@@ -66,20 +67,35 @@ struct CardList: View {
                         }.padding(.top, 30)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                SelectNewsButton(nameButton: "Популярное", colorButton: Color.red, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "")})
-                                    .padding(.trailing)
-                                SelectNewsButton(nameButton: "Спорт", colorButton: Color.orange, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=sports")})
-                                    .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Развлечение", colorButton: Color.blue, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=entertainment")})
-                                    .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Технологии", colorButton: Color.green, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=technology")})
-                                    .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Здоровье", colorButton: Color.purple, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=health")})
-                                    .padding(.horizontal)
-                                SelectNewsButton(nameButton: "Бизнес", colorButton: Color.yellow, sizeButton: 120, action: {self.newsStore.fetchCategoryNews(category: "&category=business")})
-                                    .padding(.leading)
-                                    .padding(.trailing, 10)
-                            }.padding()
+                                ForEach(sessionStore.news, id: \.self) { item in
+                                    Button(action: {
+                                        self.selectedTab = item
+                                        if item == "Популярное" {
+                                            self.newsStore.fetchCategoryNews(category: "")
+                                        } else if item == "Спорт" {
+                                            self.newsStore.fetchCategoryNews(category: "&category=sports")
+                                        } else if item == "Развлечение" {
+                                            self.newsStore.fetchCategoryNews(category: "&category=entertainment")
+                                        } else if item == "Технологии" {
+                                            self.newsStore.fetchCategoryNews(category: "&category=technology")
+                                        } else if item == "Здоровье" {
+                                            self.newsStore.fetchCategoryNews(category: "&category=health")
+                                        } else if item == "Бизнес" {
+                                            self.newsStore.fetchCategoryNews(category: "&category=business")
+                                        }
+                                    }) {
+                                        VStack {
+                                            Text(item)
+                                                .fontWeight(.semibold)
+                                                .fixedSize(horizontal: false, vertical: true)
+                                                .foregroundColor(.secondary)
+                                            Capsule()
+                                                .fill(self.selectedTab == item ? Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0) : Color.clear)
+                                                .frame(height: 6)
+                                        }.frame(width: 120)
+                                    }
+                                }
+                            }.padding(.horizontal)
                         }
                         ForEach(self.newsStore.articles, id: \.self) { item in
                             NavigationLink(destination: DetailsNews(article: item)) {
@@ -92,43 +108,6 @@ struct CardList: View {
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
                 .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)
-            }
-        }
-    }
-}
-
-struct SelectNewsButton: View {
-    
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    var nameButton: String
-    var colorButton: Color
-    var sizeButton: CGFloat
-    var action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(colorButton)
-                    .frame(width: sizeButton, height: sizeButton)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
-                            .frame(width: sizeButton, height: sizeButton)
-                )
-                    .offset(x: 10, y: 10)
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(colorScheme == .dark ? Color.black : Color.white)
-                    .frame(width: sizeButton, height: sizeButton)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 3)
-                            .frame(width: sizeButton, height: sizeButton)
-                )
-                Text(nameButton)
-                    .foregroundColor(colorButton)
-                    .fontWeight(.semibold)
             }
         }
     }

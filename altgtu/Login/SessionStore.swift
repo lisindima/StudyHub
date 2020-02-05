@@ -39,7 +39,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
     @Published var choiseNews: Int = 0
-    @Published var news: Array = ["Бизнес", "Развлечения", "Здоровье", "Спорт", "Технологии"]
+    @Published var news: Array = ["Популярное", "Спорт", "Развлечение", "Технологии", "Здоровье", "Бизнес"]
     @Published var imageProfile: UIImage = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
