@@ -16,12 +16,12 @@ struct CardList: View {
     
     @State private var showDetailsNews: Bool = false
     
-    private var currentDate: Date = Date()
-    
-    private let dateFormatter: DateFormatter = {
+    private let stringDate: String = {
+        var currentDate: Date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
-        return dateFormatter
+        let createStringDate = dateFormatter.string(from: currentDate)
+        return createStringDate
     }()
     
     var body: some View {
@@ -44,9 +44,11 @@ struct CardList: View {
                     ScrollView(showsIndicators: false) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("\(currentDate, formatter: dateFormatter)")
-                                    .font(.headline)
+                                Text("\(stringDate)".uppercased())
+                                    .font(.system(size: 13))
+                                    .bold()
                                     .foregroundColor(.secondary)
+                                    .padding(.bottom, 3)
                                 Text("Сегодня")
                                     .font(.largeTitle)
                                     .fontWeight(.heavy)

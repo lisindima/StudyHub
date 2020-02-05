@@ -39,8 +39,8 @@ struct SettingView: View {
             imageCacheStore.setCacheSizeLimit()
         }
         if pickerStore.facultyModel.isEmpty {
-            pickerStore.getDataFromDatabaseListenPicker()
             pickerStore.loadPickerFaculty()
+            pickerStore.getDataFromDatabaseListenPicker()
         }
     }
     
