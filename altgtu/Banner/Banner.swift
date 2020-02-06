@@ -12,6 +12,10 @@ struct BannerModifier: ViewModifier {
     
     @Binding var showBanner: Bool
     
+    init(showBanner: Binding<Bool>) {
+        _showBanner = showBanner
+    }
+    
     func body(content: Content) -> some View {
         ZStack {
             if showBanner {
@@ -34,7 +38,6 @@ struct BannerModifier: ViewModifier {
                 }
                 .zIndex(1)
                 .padding(.horizontal)
-                .padding(.top, 40)
                 .animation(.easeInOut)
                 .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
                 .onTapGesture {

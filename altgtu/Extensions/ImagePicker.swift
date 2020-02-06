@@ -13,6 +13,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var imageFromPicker: UIImage
     @Binding var selectedSourceType: UIImagePickerController.SourceType
     
+    init(imageFromPicker: Binding<UIImage>, selectedSourceType: Binding<UIImagePickerController.SourceType>) {
+        _imageFromPicker = imageFromPicker
+        _selectedSourceType = selectedSourceType
+    }
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = selectedSourceType

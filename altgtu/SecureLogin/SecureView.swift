@@ -18,6 +18,10 @@ struct SecureView: View {
     @State private var changeColor: Bool = false
     @Binding var access: Bool
     
+    init(access: Binding<Bool>) {
+        _access = access
+    }
+    
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
