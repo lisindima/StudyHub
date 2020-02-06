@@ -29,7 +29,7 @@ struct SplashScreen: View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

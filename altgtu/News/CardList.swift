@@ -17,6 +17,11 @@ struct CardList: View {
     @State private var showDetailsNews: Bool = false
     @State var selectedTab: String = "Популярное"
     
+    func setSelectedNews() {
+        let selectedNews = sessionStore.news[sessionStore.choiseNews]
+        selectedTab = selectedNews
+    }
+    
     private let stringDate: String = {
         var currentDate: Date = Date()
         let dateFormatter = DateFormatter()
@@ -34,7 +39,10 @@ struct CardList: View {
                             Spacer()
                             VStack {
                                 ActivityIndicator(styleSpinner: .large)
-                                    .onAppear(perform: newsStore.loadNews)
+                                    .onAppear {
+                                        self.setSelectedNews()
+                                        self.newsStore.loadNews()
+                                }
                             }
                             Spacer()
                         }

@@ -393,7 +393,7 @@ struct SettingView: View {
                         Text("О приложении")
                     }
                 }
-                Section(header: Text("Другое").bold()) {
+                Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 24)

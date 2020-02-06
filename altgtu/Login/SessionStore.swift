@@ -21,8 +21,6 @@ struct User {
     var uid: String
     var email: String?
     
-    static let `default` = Self(uid: "stockID", email: "stockEmail")
-    
     init(uid: String, email: String?) {
         self.uid = uid
         self.email = email
@@ -55,8 +53,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool!
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
-    
-    var darkThemeOverride: Bool = false {
+    @Published var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
             settingInstabug()
