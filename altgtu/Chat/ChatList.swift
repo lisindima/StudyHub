@@ -83,6 +83,9 @@ struct ListItem: View {
     
     @EnvironmentObject var chatStore: ChatStore
     
+    @State private var numberUnreadMessages: Int = 5
+    @State private var unreadMessages: Bool = true
+    
     var nameChat: String
     var body: some View {
         HStack {
@@ -94,9 +97,16 @@ struct ListItem: View {
             VStack(alignment: .leading) {
                 Text(nameChat)
                     .bold()
-                Text("Автор: сообщение")
+                Text("Вы: Привет!")
                     .font(.footnote)
                     .foregroundColor(.gray)
+            }
+            if unreadMessages {
+                Spacer()
+                Image(systemName: "\(numberUnreadMessages).circle")
+                    .imageScale(.large)
+                    .foregroundColor(.green)
+                    .padding(.trailing, 5)
             }
         }
     }

@@ -43,7 +43,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var gValue: Double!
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
-    @Published var currentTimeAndDate: String!
     @Published var secureCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
@@ -80,14 +79,6 @@ class SessionStore: NSObject, ObservableObject {
             Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
             Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
         }
-    }
-    
-    func currentTime() {
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "HH:mm:ss_dd.MM.yyyy"
-        self.currentTimeAndDate = formatter.string(from: now)
     }
     
     func listen() {

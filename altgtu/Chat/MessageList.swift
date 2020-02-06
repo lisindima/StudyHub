@@ -27,16 +27,6 @@ struct MessageList: View {
                     if self.currentUid == item.idUser {
                         MessageView(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
-                            .contextMenu {
-                                Button(action: {
-                                    print("Удалено")
-                                }) {
-                                    HStack {
-                                        Image(systemName: "trash")
-                                        Text("Удалить")
-                                    }
-                                }
-                        }
                     } else {
                         MessageViewOther(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
@@ -48,8 +38,6 @@ struct MessageList: View {
                 CustomInput(text: $typeMessage, name: "Введите сообщение")
                 if typeMessage.isEmpty == false {
                     Button(action: {
-                        self.sessionStore.currentTime()
-                        self.chatStore.addMessages(message: self.typeMessage, user: "\(self.sessionStore.lastname + " " + self.sessionStore.firstname)", idUser: self.currentUid, dateMessage: self.sessionStore.currentTimeAndDate ?? "error")
                         self.typeMessage = ""
                     }) {
                         Image(systemName: "chevron.right.circle.fill")

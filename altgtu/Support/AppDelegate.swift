@@ -12,19 +12,14 @@ import Firebase
 import Instabug
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    func userNotificationCenter(
-        _ center: UNUserNotificationCenter,
-        willPresent notification: UNNotification,
-        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
-        -> Void) {
-        completionHandler([.alert, .badge, .sound])
-    }
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        Messaging.messaging().delegate = self
+        
         Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.shake])
         Instabug.trackUserSteps = false
         Instabug.reproStepsMode = .disable

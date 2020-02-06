@@ -14,6 +14,8 @@ class NoteStore: ObservableObject {
     @Published var dataNote: Array = [DataNote]()
     @Published var statusNote: StatusNote = .loading
     
+    static let shared = NoteStore()
+    
     func getDataFromDatabaseListenNote() {
         statusNote = .loading
         let db = Firestore.firestore()

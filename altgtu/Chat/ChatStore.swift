@@ -15,6 +15,8 @@ class ChatStore: ObservableObject {
     @Published var messages: Array = [DataMessages]()
     @Published var statusChat: StatusChat = .loading
     
+    static let shared = ChatStore()
+    
     func loadMessageList() {
         print("Чат")
         let db = Firestore.firestore()

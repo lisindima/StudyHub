@@ -468,10 +468,10 @@
 		CB12E7EB23596F7900115B2E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */,
 				CB12E7ED23596F9E00115B2E /* MessageList.swift */,
 				CBABB1292366F5420087AD18 /* MessageView.swift */,
 				CB11A8CD23E1E1D4006E568C /* ChatView.swift */,
-				CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */,
 				CB5DE17F236AB98D001AC3E3 /* ChatList.swift */,
 				CB11A8C923E1DEEB006E568C /* ChatLoading.swift */,
 				CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */,
