@@ -87,12 +87,11 @@ struct CardList: View {
                                         VStack {
                                             Text(item)
                                                 .fontWeight(.semibold)
-                                                .fixedSize(horizontal: false, vertical: true)
                                                 .foregroundColor(.secondary)
                                             Capsule()
                                                 .fill(self.selectedTab == item ? Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0) : Color.clear)
                                                 .frame(height: 6)
-                                        }.frame(width: 120)
+                                        }.frame(width: 110)
                                     }
                                 }
                             }.padding(.horizontal)
