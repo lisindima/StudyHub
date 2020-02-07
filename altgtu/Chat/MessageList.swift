@@ -35,25 +35,20 @@ struct MessageList: View {
             }
             Spacer()
             HStack {
-                CustomInput(text: $typeMessage, name: "Введите сообщение")
-                if typeMessage.isEmpty == false {
-                    Button(action: {
-                        self.typeMessage = ""
-                    }) {
-                        Image(systemName: "chevron.right.circle.fill")
-                            .font(.largeTitle)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                    }
+                CustomInputChat(text: $typeMessage, name: "Введите сообщение")
+                Button(action: {
+                    self.typeMessage = ""
+                }) {
+                    Image(systemName: "chevron.right.circle.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.accentColor)
                 }
             }
             .animation(.default)
             .padding([.horizontal, .bottom])
         }
         .keyboardObserving()
-        .navigationBarTitle(Text(titleChat), displayMode: .inline)
+        .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
             print("plus")
         }) {

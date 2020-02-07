@@ -28,6 +28,26 @@ struct CustomInput: View {
     }
 }
 
+struct InputModifierChat: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(8)
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(lineWidth: 1)
+                .foregroundColor(Color.gray.opacity(0.4)))
+    }
+}
+
+struct CustomInputChat: View {
+    @Binding var text: String
+    var name: String
+    
+    var body: some View {
+        TextField(name, text: $text)
+            .modifier(InputModifierChat())
+    }
+}
+
 struct CustomInput_Previews: PreviewProvider {
     static var previews: some View {
         CustomInput(text: .constant(""), name: "Some name")

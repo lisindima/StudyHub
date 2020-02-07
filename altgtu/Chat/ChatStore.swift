@@ -17,25 +17,27 @@ class ChatStore: ObservableObject {
     
     static let shared = ChatStore()
     
+    init() {
+        loadMessageList()
+    }
+    
     func loadMessageList() {
-        print("Чат")
         let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg")
-            .addSnapshotListener { (querySnapshot, err) in
-                if err != nil {
-                    print((err?.localizedDescription)!)
-                    return
+        db.collection("chatRoom").document("Test2").collection("msg").order(by: "dateMsg").addSnapshotListener { (querySnapshot, err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            for item in querySnapshot!.documentChanges {
+                if item.type == .added {
+                    let user = item.document.get("user") as! String
+                    let message = item.document.get("msg") as! String
+                    let idUser = item.document.get("idUser") as! String
+                    let dateMessage = item.document.get("dateMsg") as! String
+                    let id = item.document.documentID
+                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
                 }
-                for item in querySnapshot!.documentChanges {
-                    if item.type == .added {
-                        let user = item.document.get("user") as! String
-                        let message = item.document.get("msg") as! String
-                        let idUser = item.document.get("idUser") as! String
-                        let dateMessage = item.document.get("dateMsg") as! String
-                        let id = item.document.documentID
-                        self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
-                    }
-                }
+            }
         }
     }
     

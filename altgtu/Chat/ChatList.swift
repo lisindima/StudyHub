@@ -89,30 +89,28 @@ struct ListItem: View {
     var nameChat: String
     var body: some View {
         HStack {
-            Image("avatar")
+            Image("altIconApp")
                 .resizable()
                 .frame(width: 50, height: 50)
                 .clipShape(Circle())
                 .clipped()
             VStack(alignment: .leading) {
-                Text(nameChat)
+                Text("Лисин Дмитрий")
                     .bold()
                 Text("Вы: Привет!")
                     .font(.footnote)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }
-            if unreadMessages {
-                Spacer()
-                Image(systemName: "\(numberUnreadMessages).circle")
-                    .imageScale(.large)
-                    .foregroundColor(.green)
-                    .padding(.trailing, 5)
-            }
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text("23:05")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+                Image(systemName: "\(numberUnreadMessages).circle.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(.accentColor)
+                    .opacity(unreadMessages == true ? 1.0 : 0.0)
+            }.padding(.trailing, 6)
         }
     }
-}
-
-extension Color {
-    static var lightThemeBackground = Color(red: 237.0/255.0, green: 238.0/255.0, blue: 240.0/255.0, opacity: 1.0)
-    static var darkThemeBackground = Color(red: 27.0/255.0, green: 28.0/255.0, blue: 30.0/255.0, opacity: 1.0)
 }
