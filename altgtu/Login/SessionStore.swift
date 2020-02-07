@@ -36,8 +36,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
-    @Published var choiseNews: Int = 0
-    @Published var news: Array = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
     @Published var imageProfile: UIImage = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
@@ -132,7 +130,6 @@ class SessionStore: NSObject, ObservableObject {
                 self.biometricAccess = document.get("biometricAccess") as? Bool
                 self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
                 self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
-                self.choiseNews = document.get("choiseNews") as! Int
             } else if error != nil {
                 print((error?.localizedDescription)!)
             }
@@ -152,7 +149,6 @@ class SessionStore: NSObject, ObservableObject {
             "rValue": rValue!,
             "gValue": gValue!,
             "bValue": bValue!,
-            "choiseNews": choiseNews,
             "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
             "pinCodeAccess": secureCodeAccess!,

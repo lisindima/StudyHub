@@ -274,18 +274,6 @@ struct SettingView: View {
                         }
                     }.lineLimit(1)
                 }
-                Section(header: Text("Новости").bold(), footer: Text("Укажите более подходящую тему новостей для вас, которые будут отображаться в разделе \"Сегодня\" по умолчанию.")) {
-                    Picker(selection: $sessionStore.choiseNews, label: HStack {
-                        Image(systemName: "list.bullet.below.rectangle")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                        Text("Тема")
-                    }) {
-                        ForEach(0 ..< sessionStore.news.count, id: \.self) {
-                            Text(self.sessionStore.news[$0])
-                        }
-                    }
-                }
                 Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
                     NavigationLink(destination: BioAndCodeSecure().environmentObject(sessionStore)) {
                         HStack {

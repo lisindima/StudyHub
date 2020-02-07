@@ -15,12 +15,8 @@ struct CardList: View {
     @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
-    @State var selectedTab: String = "Популярное"
-    
-    func setSelectedNews() {
-        let selectedNews = sessionStore.news[sessionStore.choiseNews]
-        selectedTab = selectedNews
-    }
+    @State private var selectedTab: String = "Популярное"
+    @State private var news: Array = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
     
     private let stringDate: String = {
         var currentDate: Date = Date()
@@ -39,10 +35,7 @@ struct CardList: View {
                             Spacer()
                             VStack {
                                 ActivityIndicator(styleSpinner: .large)
-                                    .onAppear {
-                                        self.setSelectedNews()
-                                        self.newsStore.loadNews()
-                                }
+                                    .onAppear(perform: newsStore.loadNews)
                             }
                             Spacer()
                         }
@@ -75,7 +68,7 @@ struct CardList: View {
                         }.padding(.top, 30)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(sessionStore.news, id: \.self) { item in
+                                ForEach(news, id: \.self) { item in
                                     Button(action: {
                                         self.selectedTab = item
                                         if item == "Популярное" {

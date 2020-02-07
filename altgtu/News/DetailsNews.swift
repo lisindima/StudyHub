@@ -81,7 +81,7 @@ struct DetailsNews: View {
             VStack {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Image("avatar")
+                        Image("altIconApp")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 55, height: 55)

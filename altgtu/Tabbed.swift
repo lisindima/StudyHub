@@ -12,7 +12,6 @@ import Firebase
 struct Tabbed: View {
     
     @EnvironmentObject var sessionStore: SessionStore
-    
     @State private var selection: Int = 0
     
     func startTabView() {
@@ -21,45 +20,30 @@ struct Tabbed: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            CardList()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "doc.richtext")
-                            .imageScale(.large)
-                        Text("Сегодня")
-                    }
+            CardList().tabItem {
+                Image(systemName: "doc.richtext")
+                    .imageScale(.large)
+                Text("Сегодня")
             }.tag(0)
-            LessonList()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "calendar")
-                            .imageScale(.large)
-                        Text("Расписание")
-                    }
+            LessonList().tabItem {
+                Image(systemName: "calendar")
+                    .imageScale(.large)
+                Text("Расписание")
             }.tag(1)
-            NoteView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "square.and.pencil")
-                            .imageScale(.large)
-                        Text("Заметки")
-                    }
+            NoteView().tabItem {
+                Image(systemName: "square.and.pencil")
+                    .imageScale(.large)
+                Text("Заметки")
             }.tag(2)
-            ChatView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "bubble.left")
-                            .imageScale(.large)
-                        Text("Сообщения")
-                    }
+            ChatView().tabItem {
+                Image(systemName: "bubble.left")
+                    .imageScale(.large)
+                Text("Сообщения")
             }.tag(3)
-            ProfileView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                            .imageScale(.large)
-                        Text("Профиль")
-                    }
+            ProfileView().tabItem {
+                Image(systemName: "person.crop.circle")
+                    .imageScale(.large)
+                Text("Профиль")
             }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
