@@ -9,6 +9,7 @@
 import SwiftUI
 import Firebase
 import KingfisherSwiftUI
+import Instabug
 
 struct ProfileView: View {
     
@@ -113,7 +114,7 @@ struct ProfileView: View {
                     print("Сессии нет, данные не сохраняются")
                 } else {
                     self.sessionStore.updateDataFromDatabase()
-                    self.sessionStore.settingInstabug()
+                    self.sessionStore.settingUserInstabug()
                     self.pickerStore.updateDataFromDatabasePicker()
                 }
             }, content: {

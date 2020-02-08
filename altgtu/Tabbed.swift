@@ -15,36 +15,41 @@ struct Tabbed: View {
     @State private var selection: Int = 0
     
     func startTabView() {
-        sessionStore.settingInstabug()
+        sessionStore.settingUserInstabug()
     }
     
     var body: some View {
         TabView(selection: $selection) {
-            CardList().tabItem {
-                Image(systemName: "doc.richtext")
-                    .imageScale(.large)
-                Text("Сегодня")
-            }.tag(0)
-            LessonList().tabItem {
-                Image(systemName: "calendar")
-                    .imageScale(.large)
-                Text("Расписание")
-            }.tag(1)
-            NoteView().tabItem {
-                Image(systemName: "square.and.pencil")
-                    .imageScale(.large)
-                Text("Заметки")
-            }.tag(2)
-            ChatView().tabItem {
-                Image(systemName: "bubble.left")
-                    .imageScale(.large)
-                Text("Сообщения")
-            }.tag(3)
-            ProfileView().tabItem {
-                Image(systemName: "person.crop.circle")
-                    .imageScale(.large)
-                Text("Профиль")
-            }.tag(4)
+            CardList()
+                .tabItem {
+                    Image(systemName: "doc.richtext")
+                        .imageScale(.large)
+                    Text("Сегодня")
+                }.tag(0)
+            LessonList()
+                .tabItem {
+                    Image(systemName: "calendar")
+                        .imageScale(.large)
+                    Text("Расписание")
+                }.tag(1)
+            NoteView()
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                        .imageScale(.large)
+                    Text("Заметки")
+                }.tag(2)
+            ChatView()
+                .tabItem {
+                    Image(systemName: "bubble.left")
+                        .imageScale(.large)
+                    Text("Сообщения")
+                }.tag(3)
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                        .imageScale(.large)
+                    Text("Профиль")
+                }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
         .onAppear(perform: startTabView)

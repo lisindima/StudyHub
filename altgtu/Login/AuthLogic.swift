@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import LocalAuthentication
 
 struct AuthLogic: View {
     

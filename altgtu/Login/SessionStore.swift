@@ -53,7 +53,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
-            settingInstabug()
         }
     }
     
@@ -67,12 +66,7 @@ class SessionStore: NSObject, ObservableObject {
         case unknown
     }
     
-    func settingInstabug() {
-        if darkThemeOverride {
-            Instabug.setColorTheme(.dark)
-        } else {
-            Instabug.setColorTheme(.light)
-        }
+    func settingUserInstabug() {
         if Auth.auth().currentUser != nil {
             Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
             Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
