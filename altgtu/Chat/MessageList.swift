@@ -18,6 +18,7 @@ struct MessageList: View {
     @State private var typeMessage: String = ""
     
     let currentUid = Auth.auth().currentUser!.uid
+    let receiverFCMToken = "fp-vzEkPzUl_vmFIr7oklo:APA91bEPxtpzxkgLNCqzc_e9jPWv_E9VXiDLedIS4tG6JskSJxR0perifenaN05-uHmlizC3ipsHRzYHjyuYeN7MKogouYl1Scix7SjFgZkJtf_H4tFLVY0F8m3E_m5MwRIbQdojLeOD"
     var titleChat: String
     
     var body: some View {
@@ -37,6 +38,8 @@ struct MessageList: View {
             HStack {
                 CustomInputChat(text: $typeMessage, name: "Введите сообщение")
                 Button(action: {
+                    print(self.receiverFCMToken)
+                    self.chatStore.sendMessage(datas: self.message, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
                     self.typeMessage = ""
                 }) {
                     Image(systemName: "chevron.right.circle.fill")

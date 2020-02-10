@@ -9,7 +9,6 @@
 import SwiftUI
 import Firebase
 import KingfisherSwiftUI
-import Instabug
 
 struct ProfileView: View {
     
