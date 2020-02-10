@@ -13,6 +13,7 @@ struct NoteList: View {
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
     @State private var searchText: String = ""
+    @State private var hideNavigationBar: Bool = false
     
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -24,7 +25,7 @@ struct NoteList: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText)
+                SearchBar(text: $searchText, editing: $hideNavigationBar)
                     .padding(.horizontal, 6)
                 ZStack {
                     List {
@@ -74,6 +75,7 @@ struct NoteList: View {
                             
                 }, .cancel()])
             }
+            .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle(Text("Заметки"))
             .navigationBarItems(leading: EditButton(), trailing: Button (action: {
                 self.showActionSheetSort = true

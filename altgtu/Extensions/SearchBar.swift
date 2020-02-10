@@ -11,13 +11,16 @@ import SwiftUI
 struct SearchBar: UIViewRepresentable {
     
     @Binding var text: String
+    @Binding var editing: Bool
     
     class Coordinator: NSObject, UISearchBarDelegate {
         
         @Binding var text: String
+        @Binding var editing: Bool
         
-        init(text: Binding<String>) {
+        init(text: Binding<String>, editing: Binding<Bool>) {
             _text = text
+            _editing = editing
         }
         
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -27,16 +30,18 @@ struct SearchBar: UIViewRepresentable {
         func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
             searchBar.showsCancelButton = false
             searchBar.endEditing(true)
+            editing = false
             text = ""
         }
         
         func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             searchBar.showsCancelButton = true
+            editing = true
         }
     }
     
     func makeCoordinator() -> SearchBar.Coordinator {
-        return Coordinator(text: $text)
+        return Coordinator(text: $text, editing: $editing)
     }
     
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {

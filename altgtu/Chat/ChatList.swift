@@ -14,6 +14,7 @@ struct ChatList: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var searchText: String = ""
     @State private var showActionSheetSort: Bool = false
+    @State private var hideNavigationBar: Bool = false
     
     private func delete(at offsets: IndexSet) {
         chatStore.chatList.remove(atOffsets: offsets)
@@ -26,7 +27,7 @@ struct ChatList: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText)
+                SearchBar(text: $searchText, editing: $hideNavigationBar)
                     .padding(.horizontal, 6)
                 ZStack {
                     List {
@@ -59,6 +60,7 @@ struct ChatList: View {
                         }.padding()
                     }
                 }
+                .navigationBarHidden(hideNavigationBar)
                 .navigationBarTitle(Text("Сообщения"))
                 .actionSheet(isPresented: $showActionSheetSort) {
                     ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [

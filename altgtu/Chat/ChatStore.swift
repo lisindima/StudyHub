@@ -86,10 +86,10 @@ class ChatStore: ObservableObject {
         isNotRead += 1
         let urlString = "https://fcm.googleapis.com/fcm/send"
         let url = NSURL(string: urlString)!
-        let paramString: [String : Any] = ["to" : token,
+        let paramString: [String : Any] = ["to": token,
                                            "priority": "high",
-                                           "notification" : ["title" : title, "body" : body,"badge" : isNotRead],
-                                           "data" : ["user" : "test_id"]
+                                           "notification": ["title": title, "body": body,"badge": isNotRead],
+                                           "data": ["user": "test_id"]
         ]
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
