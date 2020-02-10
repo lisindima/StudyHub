@@ -21,6 +21,16 @@ struct MessageList: View {
     let receiverFCMToken = "fp-vzEkPzUl_vmFIr7oklo:APA91bEPxtpzxkgLNCqzc_e9jPWv_E9VXiDLedIS4tG6JskSJxR0perifenaN05-uHmlizC3ipsHRzYHjyuYeN7MKogouYl1Scix7SjFgZkJtf_H4tFLVY0F8m3E_m5MwRIbQdojLeOD"
     var titleChat: String
     
+    func checkRead() {
+        print("Проверка на чтение")
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        for data in message.messages {
+            if self.currentUid != data.idUser && data.isRead == false {
+                self.message.updateData(id: data.id, isRead: true)
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -46,11 +56,10 @@ struct MessageList: View {
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 }
-            }
-            .animation(.default)
-            .padding([.horizontal, .bottom])
+            }.padding([.horizontal, .bottom])
         }
         .keyboardObserving()
+        .onAppear(perform: checkRead)
         .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
             print("plus")

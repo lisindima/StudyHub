@@ -55,7 +55,19 @@ class ChatStore: ObservableObject {
                 print((err?.localizedDescription)!)
                 return
             }
-            print("success")
+            print("Сообщение отправлено!")
+        }
+    }
+    
+    func updateData(id: String, isRead: Bool) {
+        let db = Firestore.firestore()
+        db.collection("chatRoom").document("Test2").collection("messages").document(id).updateData(["isRead": isRead]) { (err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }else {
+                print("Сообщения прочитаны!")
+            }
         }
     }
     
