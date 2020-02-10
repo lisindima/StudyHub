@@ -35,8 +35,9 @@ class ChatStore: ObservableObject {
                     let message = item.document.get("message") as! String
                     let idUser = item.document.get("idUser") as! String
                     let dateMessage = item.document.get("dateMsg") as! String
+                    let isRead = item.document.get("isRead") as! Bool
                     let id = item.document.documentID
-                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage))
+                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
                 }
             }
         }

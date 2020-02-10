@@ -25,7 +25,6 @@ struct MessageViewOther: View {
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())
                     .clipped()
-                    .shadow(radius: 5)
                     .frame(width: 50, height: 50)
                 VStack {
                     HStack {
@@ -70,7 +69,7 @@ struct MessageView: View {
                     .frame(width: 10, height: 10)
                     .foregroundColor(.accentColor)
                     .opacity(isRead == true ? 0.0 : 0.5)
-                    .padding(.top, 20)
+                    .padding(.top, 23)
                 VStack(alignment: .trailing) {
                     Text(message)
                         .padding(.all, 10)
