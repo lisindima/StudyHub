@@ -59,19 +59,26 @@ struct MessageView: View {
     var message: String
     var sender: String
     var timeMessage: String
+    var isRead: Bool
     
     var body: some View {
         VStack(alignment: .trailing) {
+            Spacer()
             HStack {
-                Spacer()
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .frame(width: 10, height: 10)
+                    .foregroundColor(.accentColor)
+                    .opacity(isRead == true ? 0.0 : 0.5)
+                    .padding(.top, 20)
                 VStack(alignment: .trailing) {
                     Text(message)
                         .padding(.all, 10)
                         .background(Color(UIColor.secondarySystemBackground))
                         .font(.body)
                         .cornerRadius(5)
-                }.padding(.bottom, 3)
-            }
+                }
+            }.padding(.bottom, -3)
             HStack {
                 Spacer()
                 Text("12:35")

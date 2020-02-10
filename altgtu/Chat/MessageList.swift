@@ -36,7 +36,7 @@ struct MessageList: View {
             ScrollView {
                 ForEach(message.messages) { item in
                     if self.currentUid == item.idUser {
-                        MessageView(message: item.message, sender: item.user, timeMessage: item.dateMessage)
+                        MessageView(message: item.message, sender: item.user, timeMessage: item.dateMessage, isRead: item.isRead)
                             .padding(.top, 6)
                     } else {
                         MessageViewOther(message: item.message, sender: item.user, timeMessage: item.dateMessage)
