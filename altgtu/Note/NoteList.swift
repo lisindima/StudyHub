@@ -61,6 +61,7 @@ struct NoteList: View {
                     }
                 }
             }
+            .animation(.interactiveSpring())
             .sheet(isPresented: $showAddNewNote, onDismiss: {
                 
             }, content: {

@@ -60,6 +60,7 @@ struct ChatList: View {
                         }.padding()
                     }
                 }
+                .animation(.interactiveSpring())
                 .navigationBarHidden(hideNavigationBar)
                 .navigationBarTitle(Text("Сообщения"))
                 .actionSheet(isPresented: $showActionSheetSort) {

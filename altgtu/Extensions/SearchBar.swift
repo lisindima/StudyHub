@@ -35,7 +35,7 @@ struct SearchBar: UIViewRepresentable {
         }
         
         func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            searchBar.showsCancelButton = true
+            searchBar.setShowsCancelButton(true, animated: true)
             editing = true
         }
     }
