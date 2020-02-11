@@ -42,7 +42,7 @@ struct MessageList: View {
                         MessageViewOther(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                     }
-                }
+                }.padding(.vertical)
             }
             Spacer()
             HStack {
