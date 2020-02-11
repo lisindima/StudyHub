@@ -60,24 +60,24 @@ struct ChatList: View {
                         }.padding()
                     }
                 }
-                .animation(.interactiveSpring())
-                .navigationBarHidden(hideNavigationBar)
-                .navigationBarTitle(Text("Сообщения"))
-                .actionSheet(isPresented: $showActionSheetSort) {
-                    ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
-                        .default(Text("По названию")) {
-                            
-                        }, .default(Text("По дате создания")) {
-                            
-                        }, .cancel()])
-                }
-                .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                    self.showActionSheetSort = true
-                }) {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .imageScale(.large)
-                })
             }
+            .animation(.interactiveSpring())
+            .navigationBarHidden(hideNavigationBar)
+            .navigationBarTitle(Text("Сообщения"))
+            .actionSheet(isPresented: $showActionSheetSort) {
+                ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
+                    .default(Text("По названию")) {
+                        
+                    }, .default(Text("По дате создания")) {
+                        
+                    }, .cancel()])
+            }
+            .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+                self.showActionSheetSort = true
+            }) {
+                Image(systemName: "line.horizontal.3.decrease.circle")
+                    .imageScale(.large)
+            })
         }
     }
 }

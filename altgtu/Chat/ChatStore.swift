@@ -24,7 +24,7 @@ class ChatStore: ObservableObject {
     
     func loadMessageList() {
         let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("messages").addSnapshotListener { (querySnapshot, err) in
+        db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { (querySnapshot, err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -34,7 +34,11 @@ class ChatStore: ObservableObject {
                     let user = item.document.get("user") as! String
                     let message = item.document.get("message") as! String
                     let idUser = item.document.get("idUser") as! String
-                    let dateMessage = item.document.get("dateMsg") as! String
+                    let timeStamp = item.document.get("dateMsg") as! Timestamp
+                    let aDate = timeStamp.dateValue()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH:mm"
+                    let dateMessage = formatter.string(from: aDate)
                     let isRead = item.document.get("isRead") as! Bool
                     let id = item.document.documentID
                     self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
@@ -49,7 +53,7 @@ class ChatStore: ObservableObject {
             "message": message,
             "user": user,
             "idUser": idUser,
-            "dateMsg": makeToday(),
+            "dateMsg": Timestamp(),
             "isRead": false
         ]) { (err) in
             if err != nil {
@@ -101,7 +105,7 @@ class ChatStore: ObservableObject {
         let url = NSURL(string: urlString)!
         let paramString: [String : Any] = ["to": token,
                                            "priority": "high",
-                                           "notification": ["title": title, "body": body,"badge": isNotRead],
+                                           "notification": ["title": title, "body": body, "sound": "default", "badge": isNotRead],
                                            "data": ["user": "test_id"]
         ]
         let request = NSMutableURLRequest(url: url as URL)
@@ -122,13 +126,6 @@ class ChatStore: ObservableObject {
             }
         }
         task.resume()
-    }
-    
-    func makeToday() -> String {
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: date)
     }
 }
 

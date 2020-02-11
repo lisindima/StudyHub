@@ -109,8 +109,9 @@ class SessionStore: NSObject, ObservableObject {
             if let document = documentSnapshot {
                 self.lastname = document.get("lastname") as? String
                 self.firstname = document.get("firstname") as? String
-                let dateTimestamp = document.get("dateBirthDay") as? Timestamp
-                self.dateBirthDay = dateTimestamp!.dateValue()
+                if let dateTimestamp = document.get("dateBirthDay") as? Timestamp {
+                    self.dateBirthDay = dateTimestamp.dateValue()
+                }
                 self.email = document.get("email") as? String
                 self.urlImageProfile = document.get("urlImageProfile") as? String
                 self.notifyMinute = document.get("notifyMinute") as? Int
