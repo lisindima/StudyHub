@@ -15,6 +15,13 @@ struct ChatList: View {
     @State private var searchText: String = ""
     @State private var showActionSheetSort: Bool = false
     @State private var hideNavigationBar: Bool = false
+    @State private var numberUnreadMessages: Int = 0
+    
+    func checkNumberUnreadMessages() {
+        let countFalse = chatStore.messages.filter{ !$0.isRead }.count
+        numberUnreadMessages = countFalse
+        print(numberUnreadMessages, "непрочитанных сообщений")
+    }
     
     private func delete(at offsets: IndexSet) {
         chatStore.chatList.remove(atOffsets: offsets)
@@ -35,7 +42,7 @@ struct ChatList: View {
                             self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                         }, id: \.self) { item in
                             NavigationLink(destination: MessageList(titleChat: item)) {
-                                ListItem(nameChat: item)
+                                ListItem(numberUnreadMessages: self.$numberUnreadMessages, nameChat: item)
                             }
                         }
                         .onDelete(perform: delete)
@@ -61,6 +68,7 @@ struct ChatList: View {
                     }
                 }
             }
+            .onAppear(perform: checkNumberUnreadMessages)
             .animation(.interactiveSpring())
             .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle(Text("Сообщения"))
@@ -84,7 +92,7 @@ struct ChatList: View {
 
 struct ListItem: View {
     
-    @State private var numberUnreadMessages: Int = 1
+    @Binding var numberUnreadMessages: Int
     
     var nameChat: String
     var body: some View {
