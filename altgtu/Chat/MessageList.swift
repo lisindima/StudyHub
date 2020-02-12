@@ -17,9 +17,10 @@ struct MessageList: View {
     @ObservedObject var message: ChatStore = ChatStore()
     @State private var typeMessage: String = ""
     
+    var titleChat: String
+    
     let currentUid = Auth.auth().currentUser!.uid
     let receiverFCMToken = "fp-vzEkPzUl_vmFIr7oklo:APA91bEPxtpzxkgLNCqzc_e9jPWv_E9VXiDLedIS4tG6JskSJxR0perifenaN05-uHmlizC3ipsHRzYHjyuYeN7MKogouYl1Scix7SjFgZkJtf_H4tFLVY0F8m3E_m5MwRIbQdojLeOD"
-    var titleChat: String
     
     func checkRead() {
         print("Проверка на чтение")

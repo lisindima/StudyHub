@@ -34,8 +34,8 @@ struct ChatList: View {
                         ForEach(self.chatStore.chatList.filter {
                             self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                         }, id: \.self) { item in
-                            NavigationLink(destination: MessageList(chatStore: self._chatStore, titleChat: item)) {
-                                ListItem(chatStore: self._chatStore, nameChat: item)
+                            NavigationLink(destination: MessageList(titleChat: item)) {
+                                ListItem(nameChat: item)
                             }
                         }
                         .onDelete(perform: delete)
@@ -84,10 +84,7 @@ struct ChatList: View {
 
 struct ListItem: View {
     
-    @EnvironmentObject var chatStore: ChatStore
-    
-    @State private var numberUnreadMessages: Int = 5
-    @State private var unreadMessages: Bool = true
+    @State private var numberUnreadMessages: Int = 1
     
     var nameChat: String
     var body: some View {
@@ -112,7 +109,7 @@ struct ListItem: View {
                 Image(systemName: "\(numberUnreadMessages).circle.fill")
                     .imageScale(.medium)
                     .foregroundColor(.accentColor)
-                    .opacity(unreadMessages == true ? 1.0 : 0.0)
+                    .opacity(numberUnreadMessages >= 1 ? 1.0 : 0.0)
             }.padding(.trailing, 6)
         }
     }
