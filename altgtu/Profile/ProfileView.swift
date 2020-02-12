@@ -101,6 +101,7 @@ struct ProfileView: View {
                 
             }, content: {
                 QRReader()
+                    .environmentObject(self.sessionStore)
             }), trailing: Button(action: {
                 self.showSettingModal = true
             }) {

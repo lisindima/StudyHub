@@ -8,21 +8,22 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+import Firebase
 import CodeScanner
+import KingfisherSwiftUI
 
 struct QRReader: View {
     
+    @EnvironmentObject var sessionStore: SessionStore
     @State private var choiseView: Int = 1
     
-    var name: String = "dima"
-    var emailAddress: String = "lisindima1996@gmail.com"
+    let currentUid = Auth.auth().currentUser?.uid
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
     func generatedQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")
-        
         if let outputImage = filter.outputImage {
             if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
                 return UIImage(cgImage: cgimg)
@@ -35,7 +36,7 @@ struct QRReader: View {
         ZStack {
             if choiseView == 0 {
                 ZStack {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Лисин Дмитрий") { result in
+                    CodeScannerView(codeTypes: [.qr], simulatedData: "ZvUdV2YKhIfNuzds6UhhV8rqbCu1") { result in
                         switch result {
                         case .success(let code):
                             print("Found code: \(code)")
@@ -61,22 +62,38 @@ struct QRReader: View {
                 }
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
-                    Image(uiImage: generatedQRCode(from: "\(name)\n\(emailAddress)"))
-                        .interpolation(.none)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(10)
-                        .frame(width: 300, height: 300)
-                        .padding(.bottom)
+                    ZStack {
+                        Image(uiImage: generatedQRCode(from: currentUid!))
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .frame(width: 300, height: 300)
+                            .padding(.bottom)
+                        Circle()
+                            .foregroundColor(.white)
+                            .frame(width: 60, height: 60)
+                        KFImage(URL(string: sessionStore.urlImageProfile))
+                            .placeholder {
+                                ActivityIndicator(styleSpinner: .medium)
+                            }
+                            .resizable()
+                            .clipShape(Circle())
+                            .clipped()
+                            .frame(width: 50, height: 50)
+                    }
                     Text("Сканируйте этот QR-код")
                     Text("приложением АлтГТУ")
                 }.font(.system(.body, design: .rounded))
             }
             VStack {
                 Picker("", selection: $choiseView) {
-                    Text("QR-сканер").tag(0)
-                    Text("Мой QR").tag(1)
+                    Text("QR-сканер")
+                        .tag(0)
+                    Text("Мой QR")
+                        .tag(1)
                 }
+                .labelsHidden()
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
                 Spacer()
