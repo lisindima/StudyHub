@@ -135,7 +135,7 @@ enum StatusChat {
     case showChat
 }
 
-struct DataMessages: Identifiable {
+struct DataMessages: Codable, Hashable, Identifiable {
     
     var id: String
     var user: String

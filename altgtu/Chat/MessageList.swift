@@ -43,21 +43,12 @@ struct MessageList: View {
                         MessageViewOther(message: item.message, sender: item.user, timeMessage: item.dateMessage)
                             .padding(.top, 6)
                     }
-                }.padding(.vertical)
-            }
-            Spacer()
-            HStack {
-                CustomInputChat(text: $typeMessage, name: "Введите сообщение")
-                Button(action: {
-                    print(self.receiverFCMToken)
-                    self.chatStore.sendMessage(datas: self.message, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
-                    self.typeMessage = ""
-                }) {
-                    Image(systemName: "chevron.right.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
                 }
-            }.padding([.horizontal, .bottom])
+            }
+            ChatTextField(sendAction: {_ in
+                self.chatStore.sendMessage(datas: self.message, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
+                self.typeMessage = ""
+            }, messageText: $typeMessage)
         }
         .keyboardObserving()
         .onAppear(perform: checkRead)
