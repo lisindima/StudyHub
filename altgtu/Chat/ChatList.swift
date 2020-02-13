@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ChatList: View {
     
@@ -42,7 +43,14 @@ struct ChatList: View {
                             self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                         }, id: \.self) { item in
                             NavigationLink(destination: MessageList(titleChat: item)) {
-                                ListItem(numberUnreadMessages: self.$numberUnreadMessages, nameChat: item)
+                                ListItem(
+                                    numberUnreadMessages: self.$numberUnreadMessages,
+                                    userOnline: true,
+                                    nameChat: item,
+                                    lastMessageidUser: self.chatStore.messages.last!.idUser,
+                                    lastMessage: self.chatStore.messages.last!.message,
+                                    lastMessageDate: self.chatStore.messages.last!.dateMessage
+                                )
                             }
                         }
                         .onDelete(perform: delete)
@@ -92,33 +100,53 @@ struct ChatList: View {
 
 struct ListItem: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var numberUnreadMessages: Int
+    var userOnline: Bool
+    
+    let currentUid = Auth.auth().currentUser?.uid
     
     var nameChat: String
+    var lastMessageidUser: String
+    var lastMessage: String
+    var lastMessageDate: String
+    
     var body: some View {
         HStack {
-            Image("altIconApp")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .clipped()
+            ZStack {
+                Image("altIconApp")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .clipped()
+                Circle()
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
+                    .frame(width: 15, height: 15)
+                    .offset(x: 17, y: 17)
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .frame(width: 9, height: 9)
+                    .foregroundColor(.green)
+                    .opacity(0.8)
+                    .offset(x: 17, y: 17)
+            }
             VStack(alignment: .leading) {
                 Text("Лисин Дмитрий")
                     .bold()
-                Text("Вы: Привет!")
+                Text(lastMessageidUser == currentUid ? "Вы: \(lastMessage)" : "\(lastMessage)")
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("23:05")
+                Text("\(lastMessageDate)")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")
                     .imageScale(.medium)
                     .foregroundColor(.accentColor)
                     .opacity(numberUnreadMessages >= 1 ? 1.0 : 0.0)
-            }.padding(.trailing, 6)
+            }
         }
     }
 }

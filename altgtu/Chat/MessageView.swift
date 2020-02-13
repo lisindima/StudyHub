@@ -13,7 +13,6 @@ import Firebase
 struct MessageView: View {
     
     var message: String
-    var sender: String
     var timeMessage: String
     var isRead: Bool
     
@@ -29,9 +28,8 @@ struct MessageView: View {
                     .padding(.top, 23)
                 VStack(alignment: .trailing) {
                     Text(message)
-                        .padding(.all, 10)
+                        .padding(10)
                         .background(Color(UIColor.secondarySystemBackground))
-                        .font(.body)
                         .cornerRadius(5)
                 }
             }.padding(.bottom, -3)
@@ -52,7 +50,6 @@ struct MessageViewOther: View {
     @EnvironmentObject var sessionStore: SessionStore
     
     var message: String
-    var sender: String
     var timeMessage: String
     
     var body: some View {
@@ -63,18 +60,15 @@ struct MessageViewOther: View {
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())
                     .clipped()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 37, height: 37)
                 VStack {
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text(message)
-                                .padding(.all, 10)
-                                .background(Color(UIColor.secondarySystemBackground))
-                                .font(.body)
-                                .cornerRadius(5)
-                        }.padding(.bottom, 3)
+                        Text(message)
+                            .padding(10)
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(5)
                         Spacer()
-                    }
+                    }.padding(.bottom, 3)
                     HStack {
                         Text(timeMessage)
                             .font(.system(size: 10))

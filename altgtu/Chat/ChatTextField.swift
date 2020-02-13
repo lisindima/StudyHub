@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ChatTextField: View {
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     let sendAction: (String) -> Void
     
     @Binding var messageText: String
@@ -18,7 +20,7 @@ struct ChatTextField: View {
         VStack(spacing: 0) {
             Rectangle()
                 .frame(height: 1)
-                .foregroundColor(.white)
+                .foregroundColor(colorScheme == .dark ? .black : .white)
                 .shadow(radius: 3, x: 0, y: -2)
             HStack {
                 TextField("Введите сообщение", text: $messageText)
@@ -31,7 +33,7 @@ struct ChatTextField: View {
                 }
             }
             .padding([.leading, .trailing])
-            .background(Color.white)
+            .background(colorScheme == .dark ? Color.black : Color.white)
         }.frame(height: 60)
     }
     
