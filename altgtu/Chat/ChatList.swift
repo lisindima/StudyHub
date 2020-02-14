@@ -19,8 +19,9 @@ struct ChatList: View {
     @State private var numberUnreadMessages: Int = 0
     
     func checkNumberUnreadMessages() {
-        let countFalse = chatStore.messages.filter{ !$0.isRead }.count
-        numberUnreadMessages = countFalse
+        numberUnreadMessages = chatStore.messages.filter {
+            Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
+        }.count
         print(numberUnreadMessages, "непрочитанных сообщений")
     }
     
