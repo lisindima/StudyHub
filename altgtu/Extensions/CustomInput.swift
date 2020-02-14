@@ -14,7 +14,7 @@ struct InputModifier: ViewModifier {
         content
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(lineWidth: 1)
-                .foregroundColor(Color.gray.opacity(0.4)))
+                .foregroundColor(Color.secondary.opacity(0.4)))
     }
 }
 

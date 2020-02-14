@@ -20,7 +20,8 @@ struct SettingView: View {
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showPartialSheet: Bool = false
-    @State private var firebaseServiceStatus: FirebaseServiceStatus = .loading
+    @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
+    @State private var subscribeApplication: Bool = true
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -75,7 +76,32 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("")) {
+                Section {
+                    if subscribeApplication {
+                        HStack {
+                            Image(systemName: "plus.app.fill")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            Button(action: {}) {
+                                VStack(alignment: .leading) {
+                                    Text("Отменить подписку")
+                                        .foregroundColor(.primary)
+                                    Text("Подписка активна до: 23.11.2020.")
+                                        .font(.system(size: 11))
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                    } else {
+                        HStack {
+                            Image(systemName: "plus.app.fill")
+                                .frame(width: 24)
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            Button("Оформить подписку") {
+                                print("Подписка")
+                            }.foregroundColor(.primary)
+                        }
+                    }
                     if firebaseServiceStatus == .normal {
                         HStack {
                             Image(systemName: "icloud")
@@ -83,7 +109,7 @@ struct SettingView: View {
                                 .foregroundColor(.green)
                             VStack(alignment: .leading) {
                                 Text("Синхронизация работает")
-                                Text("Все сервисы работают в штатном режиме.")
+                                Text("Все сервисы работают в обычном режиме.")
                                     .font(.system(size: 11))
                                     .foregroundColor(.secondary)
                             }
@@ -92,7 +118,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "exclamationmark.icloud")
                                 .frame(width: 24)
-                                .foregroundColor(.orange)
+                                .foregroundColor(.yellow)
                             VStack(alignment: .leading) {
                                 Text("Наблюдаются неполадки")
                                 Text("Cихронизация может занять больше времени.")
