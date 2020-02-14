@@ -20,6 +20,7 @@ struct SettingView: View {
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showPartialSheet: Bool = false
+    @State private var firebaseServiceStatus: FirebaseServiceStatus = .loading
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -74,6 +75,56 @@ struct SettingView: View {
     var body: some View {
         NavigationView {
             Form {
+                Section(header: Text("")) {
+                    if firebaseServiceStatus == .normal {
+                        HStack {
+                            Image(systemName: "icloud")
+                                .frame(width: 24)
+                                .foregroundColor(.green)
+                            VStack(alignment: .leading) {
+                                Text("Синхронизация работает")
+                                Text("Все сервисы работают в штатном режиме.")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    } else if firebaseServiceStatus == .problem {
+                        HStack {
+                            Image(systemName: "exclamationmark.icloud")
+                                .frame(width: 24)
+                                .foregroundColor(.orange)
+                            VStack(alignment: .leading) {
+                                Text("Наблюдаются неполадки")
+                                Text("Cихронизация может занять больше времени.")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    } else if firebaseServiceStatus == .failure {
+                        HStack {
+                            Image(systemName: "xmark.icloud")
+                                .frame(width: 24)
+                                .foregroundColor(.red)
+                            VStack(alignment: .leading) {
+                                Text("Синхронизация не работает")
+                                Text("Данные пользователей сохраняются локально.")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    } else if firebaseServiceStatus == .loading {
+                       HStack {
+                            ActivityIndicator(styleSpinner: .medium)
+                                .frame(width: 24)
+                            VStack(alignment: .leading) {
+                                Text("Загрузка")
+                                Text("Проверяем работоспособность сервера.")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                }
                 Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
                     HStack {
                         Image(systemName: "r.circle")
@@ -444,4 +495,11 @@ struct SettingView: View {
             ChangeIcons()
         }
     }
+}
+
+enum FirebaseServiceStatus {
+    case normal
+    case problem
+    case failure
+    case loading
 }
