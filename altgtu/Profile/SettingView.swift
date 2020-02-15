@@ -54,6 +54,10 @@ struct SettingView: View {
         }
     }
     
+    private func openSubscription() {
+        UIApplication.shared.open(URL(string: "https://apps.apple.com/account/subscriptions")!)
+    }
+    
     private func openSettings() {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL)
             else {
@@ -82,7 +86,7 @@ struct SettingView: View {
                             Image(systemName: "plus.app.fill")
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Button(action: {}) {
+                            Button(action: openSubscription) {
                                 VStack(alignment: .leading) {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
