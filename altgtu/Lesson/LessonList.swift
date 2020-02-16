@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LessonList: View {
     
-    @ObservedObject var api: LessonAPI = LessonAPI()
+    @ObservedObject var lessonStore: LessonStore = LessonStore()
     @State private var weakType: Int = 0
     
     var body: some View {
@@ -24,9 +24,9 @@ struct LessonList: View {
                 .padding(.horizontal)
                 if weakType == 0 {
                     List {
-                        ForEach(self.api.scheduleModel) { todo in
-                            NavigationLink(destination: LessonDetail(model: todo)) {
-                                Lesson(model: todo)
+                        ForEach(self.lessonStore.scheduleModel, id: \.id) { item in
+                            NavigationLink(destination: LessonDetail(model: item)) {
+                                Lesson(model: item)
                             }
                         }
                     }

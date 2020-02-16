@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class ScheduleModel: Codable, Identifiable {
-    public let id: Int
-    public let name: String
-    public let prepod: String
-    public let timeStart: String
-    public let timeEnd: String
-    public let audit: String
+struct ScheduleModel: Codable, Identifiable {
+    let id: Int
+    let name: String
+    let prepod: String
+    let timeStart: String
+    let timeEnd: String
+    let audit: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -25,7 +25,7 @@ public class ScheduleModel: Codable, Identifiable {
         case audit = "Audit"
     }
     
-    public init(id: Int, name: String, prepod: String, timeStart: String, timeEnd: String, audit: String) {
+    init(id: Int, name: String, prepod: String, timeStart: String, timeEnd: String, audit: String) {
         self.id = id
         self.name = name
         self.prepod = prepod
@@ -35,4 +35,4 @@ public class ScheduleModel: Codable, Identifiable {
     }
 }
 
-public typealias Schedules = [ScheduleModel]
+typealias Schedules = [ScheduleModel]

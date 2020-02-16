@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import Firebase
+import Alamofire
 
 class PickerStore: ObservableObject {
     
@@ -30,55 +31,24 @@ class PickerStore: ObservableObject {
     let apiGroup = "https://altstuapi.herokuapp.com/"
     
     func loadPickerFaculty() {
-        guard let url = URL(string: apiFaculty) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            guard let response = response as? HTTPURLResponse else {return}
-            if response.statusCode == 200 {
-                guard let json = data else { return }
-                DispatchQueue.main.async {
-                    do {
-                        let swift = try JSONDecoder().decode(FacultyModel.self, from: json)
-                        self.facultyModel = swift
-                        self.loadPickerGroup()
-                        print("Данные факультетов загружены")
-                    } catch {
-                        print(error)
-                    }
-                }
-            } else {
-                print("Picker: \(response.statusCode)")
-            }
-        }.resume()
+        AF.request(apiFaculty)
+        .validate()
+        .responseDecodable(of: FacultyModel.self) { (response) in
+          guard let faculty = response.value else { return }
+            self.facultyModel = faculty
+            print("Данные факультетов загружены")
+            self.loadPickerGroup()
+        }
     }
     
     func loadPickerGroup() {
-        guard let url = URL(string: apiGroup + facultyModel[choiseFaculty].id) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            guard let response = response as? HTTPURLResponse else {return}
-            if response.statusCode == 200 {
-                guard let json = data else { return }
-                DispatchQueue.main.async {
-                    do {
-                        let swift = try JSONDecoder().decode(GroupModel.self, from: json)
-                        self.groupModel = swift
-                        print("Данные групп загружены")
-                        print("\(url)")
-                    } catch {
-                        print(error)
-                    }
-                }
-            } else {
-                print("Picker: \(response.statusCode)")
-            }
-        }.resume()
+        AF.request(apiGroup + facultyModel[choiseFaculty].id)
+        .validate()
+        .responseDecodable(of: GroupModel.self) { (response) in
+          guard let group = response.value else { return }
+            self.groupModel = group
+            print("Данные групп загружены")
+        }
     }
     
     func getDataFromDatabaseListenPicker() {
