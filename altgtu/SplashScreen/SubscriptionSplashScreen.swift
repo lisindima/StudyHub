@@ -21,7 +21,7 @@ struct SubscriptionSplashScreen: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
-                            .frame(width: 150, height: 80)
+                            .frame(width: 150, height: 72)
                         VStack {
                             Text("Ежемесячно")
                                 .bold()
@@ -35,7 +35,7 @@ struct SubscriptionSplashScreen: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            .frame(width: 150, height: 80)
+                            .frame(width: 150, height: 72)
                         VStack {
                             Text("Ежегодно")
                                 .bold()
@@ -50,7 +50,7 @@ struct SubscriptionSplashScreen: View {
                 Text("Восстановить платеж")
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-            }.padding(.top)
+            }.padding(.vertical)
         }
     }
 }
