@@ -85,6 +85,7 @@
 		CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */; };
 		CBB273F123CD868F00030050 /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273F023CD868F00030050 /* PencilView.swift */; };
 		CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA4C4F23F684A60018168D /* StoreKit.framework */; };
+		CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA4C5223F7FE7E0018168D /* Alamofire */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
 		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
@@ -291,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB37694923E40D860015B61E /* PartialSheet in Frameworks */,
+				CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */,
 				05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */,
@@ -721,6 +723,7 @@
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
 				CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */,
 				CB37694823E40D860015B61E /* PartialSheet */,
+				CBCA4C5223F7FE7E0018168D /* Alamofire */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* АлтГТУ.app */;
@@ -819,6 +822,7 @@
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				CB4874AD23D3732200DEB38F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */,
+				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -1466,6 +1470,14 @@
 				minimumVersion = 1.0.2;
 			};
 		};
+		CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1493,6 +1505,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
+		};
+		CBCA4C5223F7FE7E0018168D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 

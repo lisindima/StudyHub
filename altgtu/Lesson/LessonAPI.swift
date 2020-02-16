@@ -6,8 +6,8 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import Combine
 import SwiftUI
+import Combine
 
 class LessonAPI: ObservableObject {
     
