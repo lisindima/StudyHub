@@ -165,12 +165,19 @@
 			<key>orderHint</key>
 			<integer>28</integer>
 		</dict>
-		<key>UnsplashPhotoPicker.xcscheme</key>
+		<key>Purchases.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>29</integer>
+		</dict>
+		<key>UnsplashPhotoPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>30</integer>
 		</dict>
 		<key>abseil.xcscheme</key>
 		<dict>

@@ -1,0 +1,62 @@
+//
+//  SubscriptionSplashScreen.swift
+//  altgtu
+//
+//  Created by Дмитрий Лисин on 16.02.2020.
+//  Copyright © 2020 Dmitriy Lisin. All rights reserved.
+//
+
+import SwiftUI
+import Purchases
+
+struct SubscriptionSplashScreen: View {
+    
+    @EnvironmentObject var sessionStore: SessionStore
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Button(action: {}) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
+                            .frame(width: 150, height: 80)
+                        VStack {
+                            Text("Ежемесячно")
+                                .bold()
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            Text("75,00 ₽")
+                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        }
+                    }
+                }.padding(.trailing, 8)
+                Button(action: {}) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .frame(width: 150, height: 80)
+                        VStack {
+                            Text("Ежегодно")
+                                .bold()
+                                .foregroundColor(.white)
+                            Text("699,00 ₽")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }.padding(.leading, 8)
+            }
+            Button(action: {}) {
+                Text("Восстановить платеж")
+                    .font(.footnote)
+                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+            }.padding(.top)
+        }
+    }
+}
+
+struct SubscriptionSplashScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SubscriptionSplashScreen()
+    }
+}

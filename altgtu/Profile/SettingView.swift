@@ -20,8 +20,9 @@ struct SettingView: View {
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showPartialSheet: Bool = false
+    @State private var showSubcriptionSheet: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
-    @State private var subscribeApplication: Bool = true
+    @State private var subscribeApplication: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -102,8 +103,13 @@ struct SettingView: View {
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             Button("Оформить подписку") {
-                                print("Подписка")
-                            }.foregroundColor(.primary)
+                                self.showSubcriptionSheet = true
+                            }
+                            .foregroundColor(.primary)
+                            .sheet(isPresented: $showSubcriptionSheet) {
+                                SubscriptionSplashScreen()
+                                    .environmentObject(self.sessionStore)
+                            }
                         }
                     }
                     if firebaseServiceStatus == .normal {
