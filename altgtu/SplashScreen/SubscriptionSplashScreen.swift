@@ -15,6 +15,12 @@ struct SubscriptionSplashScreen: View {
     
     var body: some View {
         VStack {
+            ScrollView {
+                TitleSubscriptionView()
+                    .padding(.bottom)
+                    .padding(.top, 50)
+                SubscriptionContainerView()
+            }
             Spacer()
             HStack {
                 Button(action: {}) {
@@ -52,6 +58,33 @@ struct SubscriptionSplashScreen: View {
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             }.padding(.vertical)
         }
+    }
+}
+
+struct TitleSubscriptionView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "plus.app.fill")
+                .resizable()
+                .frame(width: 70, height: 70)
+            Text("Оформление")
+                .customTitleText()
+            Text("подписки")
+                .customTitleText()
+        }
+    }
+}
+
+struct SubscriptionContainerView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            InformationDetailView(title: "Синхронизация", subTitle: "Все ваши данные легко синхронизируются с любыми вашими устройствоми, которые также используют это приложение.", imageName: "arrow.2.circlepath")
+            InformationDetailView(title: "Шифрование", subTitle: "Все личные данные профиля и переписок надежно шифруются сквозным шифрованием, ключ к этим данным есть только у вас.", imageName: "lock.shield")
+            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
+            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
+            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
+            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
+        }.padding(.horizontal)
     }
 }
 
