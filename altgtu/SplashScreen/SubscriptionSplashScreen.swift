@@ -19,7 +19,10 @@ struct SubscriptionSplashScreen: View {
                 TitleSubscriptionView()
                     .padding(.bottom)
                     .padding(.top, 50)
+                    .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                 SubscriptionContainerView()
+                    .padding(.bottom, 50)
+                    .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             }
             Spacer()
             HStack {
@@ -67,10 +70,16 @@ struct TitleSubscriptionView: View {
             Image(systemName: "plus.app.fill")
                 .resizable()
                 .frame(width: 70, height: 70)
+                .foregroundColor(.accentColor)
             Text("Оформление")
                 .customTitleText()
             Text("подписки")
                 .customTitleText()
+            Text("После приобретения подписки вы получите больше функций для еще лучшего опыта использования приложения.")
+                .font(.system(size: 15))
+                .multilineTextAlignment(.center)
+                .padding(.top)
+                .padding(.horizontal)
         }
     }
 }
@@ -78,12 +87,12 @@ struct TitleSubscriptionView: View {
 struct SubscriptionContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
-            InformationDetailView(title: "Синхронизация", subTitle: "Все ваши данные легко синхронизируются с любыми вашими устройствоми, которые также используют это приложение.", imageName: "arrow.2.circlepath")
-            InformationDetailView(title: "Шифрование", subTitle: "Все личные данные профиля и переписок надежно шифруются сквозным шифрованием, ключ к этим данным есть только у вас.", imageName: "lock.shield")
-            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
-            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
-            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
-            InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
+            InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
+            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
+            InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
+            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
+            InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
+            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
         }.padding(.horizontal)
     }
 }

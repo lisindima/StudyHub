@@ -24,6 +24,7 @@ struct PrivacySplashScreen: View {
             TitlePrivacyView()
                 .padding(.bottom)
             PrivacyContainerView()
+                .accentColor(.defaultColorApp)
             Spacer(minLength: 30)
             Button(action: {
                 let generator = UINotificationFeedbackGenerator()

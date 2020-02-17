@@ -19,6 +19,7 @@ struct SplashScreen: View {
                 TitleView()
                     .padding(.bottom)
                 InformationContainerView()
+                    .accentColor(.defaultColorApp)
                 Spacer(minLength: 30)
                 NavigationLink(destination: PrivacySplashScreen(dismissSheet: $dismissSheet)) {
                     Text("Продолжить")
@@ -55,7 +56,7 @@ struct InformationDetailView: View {
             Image(systemName: imageName)
                 .font(.largeTitle)
                 .frame(width: 30)
-                .foregroundColor(.defaultColorApp)
+                .foregroundColor(.accentColor)
                 .padding()
                 .accessibility(hidden: true)
             VStack(alignment: .leading) {
