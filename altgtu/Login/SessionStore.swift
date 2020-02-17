@@ -15,6 +15,7 @@ import CryptoKit
 import UnsplashPhotoPicker
 import Kingfisher
 import Instabug
+import Purchases
 
 struct User {
     
@@ -56,6 +57,8 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
     init(session: User? = nil) {
         self.session = session
     }
@@ -76,7 +79,13 @@ class SessionStore: NSObject, ObservableObject {
     func listen() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                print("User: \(user)")
+                Purchases.shared.identify(user.uid, { (info, error) in
+                    if let error = error {
+                        print("Ошибка Purchases: \(error.localizedDescription)")
+                    } else {
+                        print("Пользователь \(user.uid) успешно вошёл!")
+                    }
+                })
                 if let providerData = Auth.auth().currentUser?.providerData {
                     for userInfo in providerData {
                         switch userInfo.providerID {
@@ -97,6 +106,9 @@ class SessionStore: NSObject, ObservableObject {
                     email: user.email
                 )
             } else {
+                Purchases.shared.reset({ (info, error) in
+                    print("Пользователь вышел!")
+                })
                 self.session = nil
             }
         }
@@ -288,8 +300,6 @@ class SessionStore: NSObject, ObservableObject {
             print("Error signing out: %@", signOutError)
         }
     }
-    
-    var handle: AuthStateDidChangeListenerHandle?
     
     func unbind() {
         if let handle = handle {
