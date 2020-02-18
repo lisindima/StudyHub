@@ -218,7 +218,7 @@ struct SettingView: View {
                         }
                     }
                     HStack {
-                        Image(systemName: "app.badge")
+                        Image(systemName: "app")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Изменить иконку") {

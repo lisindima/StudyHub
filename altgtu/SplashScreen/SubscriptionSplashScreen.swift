@@ -13,10 +13,45 @@ struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     
+    @State private var offering: Purchases.Offering?
+    @State private var offeringId: String?
+    
+    func buyMonthSubscription() {
+        let packageMonth = offering?.monthly
+        Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
+            print("Куплено!")
+        }
+    }
+    
+    func buyAnnualSubscription() {
+        let packageMonth = offering?.annual
+        Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
+            print("Куплено!")
+        }
+    }
+    
+    func restoreSubscription() {
+        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let purchaserInfo = purchaserInfo {
+                    if purchaserInfo.entitlements.active.isEmpty {
+                        print("Restore Unsuccessful")
+                    } else {
+                        print("Успешно")
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchProduct() {
         Purchases.shared.offerings { (offerings, error) in
-            if let packages = offerings?.current?.availablePackages {
-                print(packages)
+            if let offeringId = self.offeringId {
+                self.offering = offerings?.offering(identifier: offeringId)
+            } else {
+                self.offering = offerings?.current
             }
         }
     }
@@ -34,7 +69,7 @@ struct SubscriptionSplashScreen: View {
             }
             Spacer()
             HStack {
-                Button(action: {}) {
+                Button(action: buyMonthSubscription) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
@@ -48,7 +83,7 @@ struct SubscriptionSplashScreen: View {
                         }
                     }
                 }.padding(.trailing, 8)
-                Button(action: {}) {
+                Button(action: buyAnnualSubscription) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -63,7 +98,7 @@ struct SubscriptionSplashScreen: View {
                     }
                 }.padding(.leading, 8)
             }.padding(.top)
-            Button(action: {}) {
+            Button(action: restoreSubscription) {
                 Text("Восстановить платеж")
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -95,12 +130,11 @@ struct TitleSubscriptionView: View {
 struct SubscriptionContainerView: View {
     var body: some View {
         VStack(alignment: .leading) {
+            InformationDetailView(title: "Изменение иконки", subTitle: "Измените стандартную иконку приложения на любую другую, которая придется по вкусу!", imageName: "app")
+            InformationDetailView(title: "Изменение цвета акцентов", subTitle: "Вы сможете менять цвета акцентов в приложении, на абсолютно любые цвета!.", imageName: "paintbrush")
+            InformationDetailView(title: "Тёмная тема", subTitle: "Темная тема теперь всегда! Конечно, если вы этого захотите)", imageName: "moon.circle")
+            InformationDetailView(title: "Изменение обложки профиля", subTitle: "Для тех кто хочет выделиться! Установите вместо обычной цветной обложки, фотографию из Unsplash!", imageName: "rectangle")
             InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
-            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
-            InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
-            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
-            InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
-            InformationDetailView(title: "Оформление", subTitle: "Открывается возможность менять цвета акцентов в приложение, менять иконку приложения и тд.", imageName: "app")
         }.padding(.horizontal)
     }
 }
