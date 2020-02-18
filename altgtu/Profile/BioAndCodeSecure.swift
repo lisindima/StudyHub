@@ -40,59 +40,58 @@ struct BioAndCodeSecure: View {
     }
     
     var body: some View {
-        VStack {
-            Form {
-                Section(header: Text("Активация").bold(), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
-                    Toggle(isOn: $activateSecure.animation()) {
-                        Text("Активировать")
-                    }
+        Form {
+            Section(header: Text("Активация").bold(), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
+                Toggle(isOn: $activateSecure.animation()) {
+                    Text("Активировать")
                 }
-                if activateSecure {
-                    Section(header: Text("Стандартная аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью кода.")) {
-                        Toggle(isOn: $setBoolCodeAccess.animation()) {
-                            Text("Вход с помощью кода")
-                        }
-                        if setBoolCodeAccess {
-                            SecureField("Пароль", text: $setSecureCodeAccess)
-                                .disabled(setSecureCodeAccess.count > 3)
+            }
+            if activateSecure {
+                Section(header: Text("Стандартная аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью кода.")) {
+                    Toggle(isOn: $setBoolCodeAccess.animation()) {
+                        Text("Вход с помощью кода")
+                    }
+                    if setBoolCodeAccess {
+                        SecureField("Пароль", text: $setSecureCodeAccess)
+                            .disabled(setSecureCodeAccess.count > 3)
+                            .keyboardType(.numberPad)
+                        if setSecureCodeAccess != "" {
+                            SecureField("Повторите пароль", text: $repeatSetSecureCode)
+                                .disabled(repeatSetSecureCode.count > 3)
                                 .keyboardType(.numberPad)
-                            if setSecureCodeAccess != "" {
-                                SecureField("Повторите пароль", text: $repeatSetSecureCode)
-                                    .disabled(repeatSetSecureCode.count > 3)
-                                    .keyboardType(.numberPad)
-                            }
                         }
                     }
                 }
-                if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
-                    Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
-                        if currentBiometricType == .none {
-                            Text("Функция не доступна")
-                        } else if currentBiometricType == .faceID {
-                            Toggle(isOn: $sessionStore.biometricAccess) {
-                                Text("Вход с помощью FaceID")
-                            }
-                        } else if currentBiometricType == .touchID {
-                            Toggle(isOn: $sessionStore.biometricAccess) {
-                                Text("Вход с помощью FaceID")
-                            }
+            }
+            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
+                Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
+                    if currentBiometricType == .none {
+                        Text("Функция не доступна")
+                    } else if currentBiometricType == .faceID {
+                        Toggle(isOn: $sessionStore.biometricAccess) {
+                            Text("Вход с помощью FaceID")
+                        }
+                    } else if currentBiometricType == .touchID {
+                        Toggle(isOn: $sessionStore.biometricAccess) {
+                            Text("Вход с помощью FaceID")
                         }
                     }
                 }
-                if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
-                    Section {
-                        HStack {
-                            Spacer()
-                            Button("Сохранить") {
-                                self.saveSetPinSetting()
-                            }
-                            Spacer()
+            }
+            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
+                Section {
+                    HStack {
+                        Spacer()
+                        Button("Сохранить") {
+                            self.saveSetPinSetting()
                         }
+                        Spacer()
                     }
                 }
             }
         }
         .onAppear(perform: checkCurrentBiometricType)
+        .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("Код-пароль и Face ID"), displayMode: .inline)
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Закрыть")) {

@@ -13,6 +13,14 @@ struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     
+    func fetchProduct() {
+        Purchases.shared.offerings { (offerings, error) in
+            if let packages = offerings?.current?.availablePackages {
+                print(packages)
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -54,13 +62,13 @@ struct SubscriptionSplashScreen: View {
                         }
                     }
                 }.padding(.leading, 8)
-            }
+            }.padding(.top)
             Button(action: {}) {
                 Text("Восстановить платеж")
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             }.padding(.vertical)
-        }
+        }.onAppear(perform: fetchProduct)
     }
 }
 

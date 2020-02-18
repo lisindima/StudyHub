@@ -24,15 +24,6 @@ struct ScheduleModel: Codable, Identifiable {
         case timeEnd = "TimeEnd"
         case audit = "Audit"
     }
-    
-    init(id: Int, name: String, prepod: String, timeStart: String, timeEnd: String, audit: String) {
-        self.id = id
-        self.name = name
-        self.prepod = prepod
-        self.timeStart = timeStart
-        self.timeEnd = timeEnd
-        self.audit = audit
-    }
 }
 
 typealias Schedules = [ScheduleModel]
