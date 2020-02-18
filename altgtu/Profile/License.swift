@@ -21,7 +21,7 @@ struct License: View {
                     .onAppear(perform: licenseStore.loadLicense)
             } else {
                 Form {
-                    ForEach(licenseStore.licenseModel, id: \.id) { license in
+                    ForEach(licenseStore.licenseModel.sorted { $0.nameFramework < $1.nameFramework }, id: \.id) { license in
                         NavigationLink(destination: LicenseDetail(nameFramework: license.nameFramework, urlFramework: license.urlFramework, textLicenseFramework: license.textLicenseFramework)) {
                             Text(license.nameFramework)
                         }
