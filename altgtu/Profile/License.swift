@@ -12,16 +12,13 @@ import Alamofire
 
 struct License: View {
     
-    @ObservedObject var licenseStore: LicenseStore = LicenseStore()
+    @ObservedObject var licenseStore: LicenseStore = LicenseStore.shared
     
     var body: some View {
         VStack {
             if licenseStore.licenseModel.isEmpty {
-                ZStack {
-                    Color(UIColor.secondarySystemBackground)
-                        .edgesIgnoringSafeArea(.all)
-                    ActivityIndicator(styleSpinner: .large)
-                }.onAppear(perform: licenseStore.loadLicense)
+                ActivityIndicator(styleSpinner: .large)
+                    .onAppear(perform: licenseStore.loadLicense)
             } else {
                 Form {
                     ForEach(licenseStore.licenseModel, id: \.id) { license in
@@ -63,6 +60,8 @@ struct LicenseDetail: View {
 class LicenseStore: ObservableObject {
     
     @Published var licenseModel: LicenseModel = [LicenseModelElement]()
+    
+    static let shared = LicenseStore()
     
     func loadLicense() {
         AF.request("https://altstuapi.herokuapp.com/license")
