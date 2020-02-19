@@ -16,7 +16,6 @@ struct SubscriptionSplashScreen: View {
     @State private var offering: Purchases.Offering?
     @State private var offeringId: String?
     
-    
     func buyMonthSubscription() {
         let packageMonth = offering?.monthly
         Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in

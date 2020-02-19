@@ -9,6 +9,7 @@
 import SwiftUI
 import StoreKit
 import Instabug
+import Purchases
 import PartialSheet
 import KingfisherSwiftUI
 
@@ -24,6 +25,7 @@ struct SettingView: View {
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
     @State private var subscribeApplication: Bool = false
     @State private var subscribeExpirationDate: String = ""
+    @State private var subscribeExpirationDateHour: String = ""
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -36,7 +38,18 @@ struct SettingView: View {
     
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
+    private let stringDate: String = {
+        var currentDate: Date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
+        let createStringDate = dateFormatter.string(from: currentDate)
+        return createStringDate
+    }()
+
+    
     func startSettingView() {
+        imageCacheStore.calculateImageCache()
+        notificationStore.refreshNotificationStatus()
         if !sessionStore.purchasesInfo!.activeSubscriptions.isEmpty {
             subscribeExpirationDate = {
                 let dateFormatter = DateFormatter()
@@ -44,9 +57,15 @@ struct SettingView: View {
                 let createStringDate = dateFormatter.string(from: sessionStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
                 return createStringDate
             }()
+            if stringDate == subscribeExpirationDate {
+                subscribeExpirationDateHour = {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.setLocalizedDateFormatFromTemplate("HH-mm")
+                    let createStringDate = dateFormatter.string(from: sessionStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
+                    return createStringDate
+                }()
+            }
         }
-        imageCacheStore.calculateImageCache()
-        notificationStore.refreshNotificationStatus()
         if imageCacheStore.sizeLimitImageCache == 0 {
             imageCacheStore.setCacheSizeLimit()
         }
@@ -100,9 +119,15 @@ struct SettingView: View {
                                 VStack(alignment: .leading) {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
-                                    Text("Подписка активна до: \(subscribeExpirationDate)")
-                                        .font(.system(size: 11))
-                                        .foregroundColor(.secondary)
+                                    if stringDate == subscribeExpirationDate {
+                                        Text("Подписка закончится сегодня в: \(subscribeExpirationDateHour)")
+                                            .font(.system(size: 11))
+                                            .foregroundColor(.secondary)
+                                    } else {
+                                        Text("Подписка активна до: \(subscribeExpirationDate)")
+                                            .font(.system(size: 11))
+                                            .foregroundColor(.secondary)
+                                    }
                                 }
                             }
                         }
