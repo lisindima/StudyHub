@@ -14,10 +14,6 @@ struct Tabbed: View {
     @EnvironmentObject var sessionStore: SessionStore
     @State private var selection: Int = 0
     
-    func startTabView() {
-        sessionStore.settingUserInstabug()
-    }
-    
     var body: some View {
         TabView(selection: $selection) {
             CardList()
@@ -52,7 +48,7 @@ struct Tabbed: View {
                 }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
-        .onAppear(perform: startTabView)
+        .onAppear(perform: sessionStore.settingUserInstabug)
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
     }
 }

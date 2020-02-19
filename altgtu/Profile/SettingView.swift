@@ -23,6 +23,7 @@ struct SettingView: View {
     @State private var showSubcriptionSheet: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
     @State private var subscribeApplication: Bool = false
+    @State private var subscribeExpirationDate: String = ""
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -36,6 +37,14 @@ struct SettingView: View {
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     func startSettingView() {
+        if !sessionStore.purchasesInfo!.activeSubscriptions.isEmpty {
+            subscribeExpirationDate = {
+                let dateFormatter = DateFormatter()
+                dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
+                let createStringDate = dateFormatter.string(from: sessionStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
+                return createStringDate
+            }()
+        }
         imageCacheStore.calculateImageCache()
         notificationStore.refreshNotificationStatus()
         if imageCacheStore.sizeLimitImageCache == 0 {
@@ -82,7 +91,7 @@ struct SettingView: View {
         NavigationView {
             Form {
                 Section {
-                    if subscribeApplication {
+                    if !sessionStore.purchasesInfo!.activeSubscriptions.isEmpty {
                         HStack {
                             Image(systemName: "plus.app.fill")
                                 .frame(width: 24)
@@ -91,7 +100,7 @@ struct SettingView: View {
                                 VStack(alignment: .leading) {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
-                                    Text("Подписка активна до: 23.11.2020.")
+                                    Text("Подписка активна до: \(subscribeExpirationDate)")
                                         .font(.system(size: 11))
                                         .foregroundColor(.secondary)
                                 }

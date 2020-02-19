@@ -51,6 +51,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool!
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
+    @Published var purchasesInfo: Purchases.PurchaserInfo?
     @Published var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
@@ -84,6 +85,14 @@ class SessionStore: NSObject, ObservableObject {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
                         print("Пользователь \(user.uid) успешно вошёл!")
+                        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else {
+                                self.purchasesInfo = purchaserInfo
+                                print("Смотрим подписки!")
+                            }
+                        }
                     }
                 })
                 if let providerData = Auth.auth().currentUser?.providerData {
