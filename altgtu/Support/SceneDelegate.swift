@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var nfcStore: NFCStore = NFCStore()
     var noteStore: NoteStore = NoteStore()
     var iconStore: IconStore = IconStore()
+    var purchasesStore: PurchasesStore = PurchasesStore()
     
     private(set) static var shared: SceneDelegate? //Принудительное переключение в темную тему!
     
@@ -32,6 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(nfcStore)
             .environmentObject(noteStore)
             .environmentObject(iconStore)
+            .environmentObject(purchasesStore)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -53,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         NotificationStore.shared.refreshNotificationStatus()
-        SessionStore.shared.listenPurchases()
+        PurchasesStore.shared.listenPurchases()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {

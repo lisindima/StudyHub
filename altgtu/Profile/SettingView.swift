@@ -22,10 +22,10 @@ struct SettingView: View {
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showPartialSheet: Bool = false
     @State private var showSubcriptionSheet: Bool = false
-    @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
     @State private var subscribeApplication: Bool = false
     @State private var subscribeExpirationDate: String = ""
     @State private var subscribeExpirationDateHour: String = ""
+    @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
@@ -34,6 +34,7 @@ struct SettingView: View {
     
     @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
     @ObservedObject var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
+    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
@@ -50,18 +51,18 @@ struct SettingView: View {
     func startSettingView() {
         imageCacheStore.calculateImageCache()
         notificationStore.refreshNotificationStatus()
-        if !sessionStore.purchasesInfo!.activeSubscriptions.isEmpty {
+        if !purchasesStore.purchasesInfo!.activeSubscriptions.isEmpty {
             subscribeExpirationDate = {
                 let dateFormatter = DateFormatter()
                 dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
-                let createStringDate = dateFormatter.string(from: sessionStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
+                let createStringDate = dateFormatter.string(from: purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
                 return createStringDate
             }()
             if stringDate == subscribeExpirationDate {
                 subscribeExpirationDateHour = {
                     let dateFormatter = DateFormatter()
                     dateFormatter.setLocalizedDateFormatFromTemplate("HH-mm")
-                    let createStringDate = dateFormatter.string(from: sessionStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
+                    let createStringDate = dateFormatter.string(from: purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
                     return createStringDate
                 }()
             }
@@ -110,7 +111,7 @@ struct SettingView: View {
         NavigationView {
             Form {
                 Section {
-                    if !sessionStore.purchasesInfo!.activeSubscriptions.isEmpty {
+                    if !purchasesStore.purchasesInfo!.activeSubscriptions.isEmpty {
                         HStack {
                             Image(systemName: "plus.app.fill")
                                 .frame(width: 24)

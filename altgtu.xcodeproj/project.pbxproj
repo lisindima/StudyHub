@@ -35,6 +35,7 @@
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
 		CB276197235588820054C753 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276196235588820054C753 /* InfoApp.swift */; };
 		CB27619A2355A9A00054C753 /* LessonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* LessonWatch.swift */; };
+		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
 		CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32DAFB23A0B64800B25626 /* TodayViewController.swift */; };
 		CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */; };
@@ -205,6 +206,7 @@
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* LessonWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWatch.swift; sourceTree = "<group>"; };
+		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB32DAFB23A0B64800B25626 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		CB32DAFE23A0B64800B25626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -366,11 +368,12 @@
 		CB0AED3B232E59A10047A8A0 /* altgtu */ = {
 			isa = PBXGroup;
 			children = (
-				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
+				CB12E7EA23596F5400115B2E /* Support */,
+				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB179AC423CC079C00424FD2 /* NFC */,
-				CB12E7EA23596F5400115B2E /* Support */,
+				CB31F0BE23FEC194003EF59D /* Purchases */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
 				CB4874C223D8161C00DEB38F /* ImageCache */,
 				CB28B8D92361459900A93F28 /* News */,
@@ -540,6 +543,14 @@
 				CBE010E523AC73A2009DB0E8 /* DetailsNews.swift */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		CB31F0BE23FEC194003EF59D /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */,
+			);
+			path = Purchases;
 			sourceTree = "<group>";
 		};
 		CB32DAFA23A0B64800B25626 /* altgtuTodayWidget */ = {
@@ -975,6 +986,7 @@
 				CB9BBDCC234C6DDC00F89529 /* LessonStore.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,
 				CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */,
+				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
 				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,

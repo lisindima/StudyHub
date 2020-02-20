@@ -30,6 +30,8 @@ struct User {
 
 class SessionStore: NSObject, ObservableObject {
     
+    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
+    
     @Published var session: User?
     @Published var lastname: String!
     @Published var firstname: String!
@@ -51,14 +53,11 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool!
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
-    @Published var purchasesInfo: Purchases.PurchaserInfo?
     @Published var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
         }
     }
-    
-    static let shared = SessionStore()
     
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -79,17 +78,6 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
-    func listenPurchases() {
-        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                self.purchasesInfo = purchaserInfo
-                print("Смотрим подписки!")
-            }
-        }
-    }
-    
     func listen() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
@@ -98,7 +86,7 @@ class SessionStore: NSObject, ObservableObject {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
                         print("Пользователь \(user.uid) успешно вошёл!")
-                        self.listenPurchases()
+                        self.purchasesStore.listenPurchases()
                     }
                 })
                 if let providerData = Auth.auth().currentUser?.providerData {

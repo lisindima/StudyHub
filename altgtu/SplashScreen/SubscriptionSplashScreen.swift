@@ -12,6 +12,7 @@ import Purchases
 struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     
     @State private var offering: Purchases.Offering?
     @State private var offeringId: String?
@@ -49,7 +50,7 @@ struct SubscriptionSplashScreen: View {
                             self.showAlertSubscription = true
                             print(error.localizedDescription)
                         } else {
-                            self.sessionStore.purchasesInfo = purchaserInfo
+                            self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
                             print("Обновляем подписки!")
                         }
@@ -82,7 +83,7 @@ struct SubscriptionSplashScreen: View {
                             self.showAlertSubscription = true
                             print(error.localizedDescription)
                         } else {
-                            self.sessionStore.purchasesInfo = purchaserInfo
+                            self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
                             print("Обновляем подписки!")
                         }
@@ -109,7 +110,7 @@ struct SubscriptionSplashScreen: View {
                                 self.showAlertSubscription = true
                                 print(error.localizedDescription)
                             } else {
-                                self.sessionStore.purchasesInfo = purchaserInfo
+                                self.purchasesStore.purchasesInfo = purchaserInfo
                                 self.setAlertMessage = .restoreSuccessful
                                 self.showAlertSubscription = true
                                 print("Обновляем подписки!")
