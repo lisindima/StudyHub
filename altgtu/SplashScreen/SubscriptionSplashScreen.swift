@@ -18,29 +18,41 @@ struct SubscriptionSplashScreen: View {
     @State private var showAlertSubscription: Bool = false
     @State private var loadingMonthlySubscription: Bool = false
     @State private var loadingAnnualSubscription: Bool = false
+    @State private var setAlertMessage: SetAlertMessage = .error
+    
+    enum SetAlertMessage {
+        case error
+        case restoreUnsuccessful
+        case restoreSuccessful
+    }
     
     func buyMonthSubscription() {
         loadingMonthlySubscription = true
         let packageMonth = offering?.monthly
         Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            if let error = error {
-                if userCancelled == true {
-                    self.showAlertSubscription = true
-                    self.loadingMonthlySubscription = false
-                    print("Отменено пользователем!")
-                } else {
-                    self.loadingMonthlySubscription = false
-                    print(error.localizedDescription)
-                }
-            } else {
-                Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                    if let error = error {
+            if purchaserInfo?.entitlements.active.first != nil {
+                if let error = error {
+                    if userCancelled == true {
                         self.loadingMonthlySubscription = false
-                        print(error.localizedDescription)
+                        print("Отменено пользователем!")
                     } else {
-                        self.sessionStore.purchasesInfo = purchaserInfo
                         self.loadingMonthlySubscription = false
-                        print("Обновляем подписки!")
+                        self.setAlertMessage = .error
+                        self.showAlertSubscription = true
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                        if let error = error {
+                            self.loadingMonthlySubscription = false
+                            self.setAlertMessage = .error
+                            self.showAlertSubscription = true
+                            print(error.localizedDescription)
+                        } else {
+                            self.sessionStore.purchasesInfo = purchaserInfo
+                            self.loadingMonthlySubscription = false
+                            print("Обновляем подписки!")
+                        }
                     }
                 }
             }
@@ -51,24 +63,29 @@ struct SubscriptionSplashScreen: View {
         loadingAnnualSubscription = true
         let packageMonth = offering?.annual
         Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            if let error = error {
-                if userCancelled == true {
-                    self.showAlertSubscription = true
-                    self.loadingAnnualSubscription = false
-                    print("Отменено пользователем!")
-                } else {
-                    self.loadingAnnualSubscription = false
-                    print(error.localizedDescription)
-                }
-            } else {
-                Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                    if let error = error {
+            if purchaserInfo?.entitlements.active.first != nil {
+                if let error = error {
+                    if userCancelled == true {
                         self.loadingAnnualSubscription = false
-                        print(error.localizedDescription)
+                        print("Отменено пользователем!")
                     } else {
-                        self.sessionStore.purchasesInfo = purchaserInfo
                         self.loadingAnnualSubscription = false
-                        print("Обновляем подписки!")
+                        self.setAlertMessage = .error
+                        self.showAlertSubscription = true
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                        if let error = error {
+                            self.loadingAnnualSubscription = false
+                            self.setAlertMessage = .error
+                            self.showAlertSubscription = true
+                            print(error.localizedDescription)
+                        } else {
+                            self.sessionStore.purchasesInfo = purchaserInfo
+                            self.loadingAnnualSubscription = false
+                            print("Обновляем подписки!")
+                        }
                     }
                 }
             }
@@ -83,8 +100,21 @@ struct SubscriptionSplashScreen: View {
                 if let purchaserInfo = purchaserInfo {
                     if purchaserInfo.entitlements.active.isEmpty {
                         print("Restore Unsuccessful")
+                        self.setAlertMessage = .restoreUnsuccessful
+                        self.showAlertSubscription = true
                     } else {
-                        print("Успешно")
+                        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                            if let error = error {
+                                self.setAlertMessage = .error
+                                self.showAlertSubscription = true
+                                print(error.localizedDescription)
+                            } else {
+                                self.sessionStore.purchasesInfo = purchaserInfo
+                                self.setAlertMessage = .restoreSuccessful
+                                self.showAlertSubscription = true
+                                print("Обновляем подписки!")
+                            }
+                        }
                     }
                 }
             }
@@ -98,6 +128,28 @@ struct SubscriptionSplashScreen: View {
             } else {
                 self.offering = offerings?.current
             }
+        }
+    }
+    
+    var titleAlert: Text {
+        switch setAlertMessage {
+        case .error:
+            return Text("Ошибка!.")
+        case .restoreUnsuccessful:
+            return Text("Подписка не найдена!")
+        case .restoreSuccessful:
+            return Text("Подписка восстановлена!")
+        }
+    }
+    
+    var messageAlert: Text {
+        switch setAlertMessage {
+        case .error:
+            return Text("Произошла ошибка, повторите попытку через несколько минут.")
+        case .restoreUnsuccessful:
+            return Text("Если вы уверены, что у вас есть действующая подписка, напишите мне на почту me@lisindmitriy.me.")
+        case .restoreSuccessful:
+            return Text("Действующая подписка успешно восстановлена.")
         }
     }
     
@@ -151,15 +203,27 @@ struct SubscriptionSplashScreen: View {
                     }
                 }.padding(.leading, 8)
             }.padding(.top)
-            Button(action: restoreSubscription) {
-                Text("Восстановить платеж")
-                    .font(.footnote)
-                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+            HStack {
+                Button(action: restoreSubscription) {
+                    Text("Восстановить платеж")
+                        .font(.footnote)
+                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                }
+                Button(action: {}) {
+                    Text("Политика")
+                        .font(.footnote)
+                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                }
+                Button(action: {}) {
+                    Text("Правила")
+                        .font(.footnote)
+                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                }
             }.padding(.vertical)
         }
         .onAppear(perform: fetchProduct)
         .alert(isPresented: $showAlertSubscription) {
-            Alert(title: Text("Оплата не завершена!"), message: Text("Процесс оплаты подписки отменил пользователь."), dismissButton: .default(Text("Закрыть")))
+            Alert(title: titleAlert, message: messageAlert, dismissButton: .default(Text("Закрыть")))
         }
     }
 }
@@ -191,6 +255,7 @@ struct SubscriptionContainerView: View {
             InformationDetailView(title: "Изменение цвета акцентов", subTitle: "Вы сможете менять цвета акцентов в приложении, на абсолютно любые цвета!.", imageName: "paintbrush")
             InformationDetailView(title: "Тёмная тема", subTitle: "Темная тема теперь всегда! Конечно, если вы этого захотите)", imageName: "moon.circle")
             InformationDetailView(title: "Изменение обложки профиля", subTitle: "Для тех кто хочет выделиться! Установите вместо обычной цветной обложки, фотографию из Unsplash!", imageName: "rectangle")
+            InformationDetailView(title: "Удаление рекламы", subTitle: "Полное удаление рекламы из приложения.", imageName: "tag")
             InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
         }.padding(.horizontal)
     }

@@ -58,6 +58,8 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
+    static let shared = SessionStore()
+    
     var handle: AuthStateDidChangeListenerHandle?
     
     init(session: User? = nil) {
@@ -77,6 +79,17 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
+    func listenPurchases() {
+        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.purchasesInfo = purchaserInfo
+                print("Смотрим подписки!")
+            }
+        }
+    }
+    
     func listen() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
@@ -85,14 +98,7 @@ class SessionStore: NSObject, ObservableObject {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
                         print("Пользователь \(user.uid) успешно вошёл!")
-                        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                            if let error = error {
-                                print(error.localizedDescription)
-                            } else {
-                                self.purchasesInfo = purchaserInfo
-                                print("Смотрим подписки!")
-                            }
-                        }
+                        self.listenPurchases()
                     }
                 })
                 if let providerData = Auth.auth().currentUser?.providerData {

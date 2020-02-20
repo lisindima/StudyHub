@@ -95,7 +95,7 @@ struct SettingView: View {
         UIApplication.shared.open(settingsURL)
     }
     
-    var footerNotification: some View {
+    var footerNotification: Text {
         switch notificationStore.enabled {
         case .denied:
             return Text("Чтобы активировать уведомления перейдите в настройки.")
@@ -120,11 +120,11 @@ struct SettingView: View {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
                                     if stringDate == subscribeExpirationDate {
-                                        Text("Подписка закончится: Сегодня, \(subscribeExpirationDateHour)")
+                                        Text("Подписка продлится: Сегодня, \(subscribeExpirationDateHour)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     } else {
-                                        Text("Подписка закончится: \(subscribeExpirationDate)")
+                                        Text("Подписка продлится: \(subscribeExpirationDate)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     }

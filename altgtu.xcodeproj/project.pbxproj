@@ -10,7 +10,6 @@
 		05C6726924FDCDF05CB2242B /* Pods_altgtu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA63DDAF2F7D8929BFB2E7A /* Pods_altgtu.framework */; platformFilter = ios; };
 		CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */; };
 		CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */; };
-		CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED40232E59A10047A8A0 /* altgtu.xcdatamodeld */; };
 		CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED45232E59A30047A8A0 /* Assets.xcassets */; };
 		CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */; };
 		CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */; };
@@ -179,7 +178,6 @@
 		CB0AED39232E59A10047A8A0 /* АлтГТУ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "АлтГТУ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB0AED41232E59A10047A8A0 /* altgtu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = altgtu.xcdatamodel; sourceTree = "<group>"; };
 		CB0AED45232E59A30047A8A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB0AED4B232E59A30047A8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 				CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */,
 				CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */,
 				CB0AED4D232E59A30047A8A0 /* Info.plist */,
-				CB0AED40232E59A10047A8A0 /* altgtu.xcdatamodeld */,
 				CB0AED47232E59A30047A8A0 /* Preview Content */,
 			);
 			path = altgtu;
@@ -947,7 +944,6 @@
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
-				CB0AED42232E59A10047A8A0 /* altgtu.xcdatamodeld in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
 				CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */,
@@ -1508,19 +1504,6 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		CB0AED40232E59A10047A8A0 /* altgtu.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CB0AED41232E59A10047A8A0 /* altgtu.xcdatamodel */,
-			);
-			currentVersion = CB0AED41232E59A10047A8A0 /* altgtu.xcdatamodel */;
-			path = altgtu.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CB0AED31232E59A10047A8A0 /* Project object */;
 }
