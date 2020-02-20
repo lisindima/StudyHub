@@ -120,11 +120,11 @@ struct SettingView: View {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
                                     if stringDate == subscribeExpirationDate {
-                                        Text("Подписка закончится сегодня в: \(subscribeExpirationDateHour)")
+                                        Text("Подписка закончится: Сегодня, \(subscribeExpirationDateHour)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     } else {
-                                        Text("Подписка активна до: \(subscribeExpirationDate)")
+                                        Text("Подписка закончится: \(subscribeExpirationDate)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     }
