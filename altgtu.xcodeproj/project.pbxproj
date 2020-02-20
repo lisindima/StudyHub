@@ -372,7 +372,6 @@
 				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB179AC423CC079C00424FD2 /* NFC */,
-				CBAF3CA523BF3EE6009D0ED2 /* Bert */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
 				CB4874C223D8161C00DEB38F /* ImageCache */,
@@ -614,13 +613,6 @@
 				CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */,
 			);
 			path = Files;
-			sourceTree = "<group>";
-		};
-		CBAF3CA523BF3EE6009D0ED2 /* Bert */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Bert;
 			sourceTree = "<group>";
 		};
 		CBB01FE423B45522001D4CBB /* Note */ = {

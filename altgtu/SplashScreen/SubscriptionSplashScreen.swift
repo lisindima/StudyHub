@@ -15,18 +15,63 @@ struct SubscriptionSplashScreen: View {
     
     @State private var offering: Purchases.Offering?
     @State private var offeringId: String?
+    @State private var showAlertSubscription: Bool = false
+    @State private var loadingMonthlySubscription: Bool = false
+    @State private var loadingAnnualSubscription: Bool = false
     
     func buyMonthSubscription() {
+        loadingMonthlySubscription = true
         let packageMonth = offering?.monthly
         Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            print("Куплено!")
+            if let error = error {
+                if userCancelled == true {
+                    self.showAlertSubscription = true
+                    self.loadingMonthlySubscription = false
+                    print("Отменено пользователем!")
+                } else {
+                    self.loadingMonthlySubscription = false
+                    print(error.localizedDescription)
+                }
+            } else {
+                Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                    if let error = error {
+                        self.loadingMonthlySubscription = false
+                        print(error.localizedDescription)
+                    } else {
+                        self.sessionStore.purchasesInfo = purchaserInfo
+                        self.loadingMonthlySubscription = false
+                        print("Обновляем подписки!")
+                    }
+                }
+            }
         }
     }
     
     func buyAnnualSubscription() {
+        loadingAnnualSubscription = true
         let packageMonth = offering?.annual
         Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            print("Куплено!")
+            if let error = error {
+                if userCancelled == true {
+                    self.showAlertSubscription = true
+                    self.loadingAnnualSubscription = false
+                    print("Отменено пользователем!")
+                } else {
+                    self.loadingAnnualSubscription = false
+                    print(error.localizedDescription)
+                }
+            } else {
+                Purchases.shared.purchaserInfo { (purchaserInfo, error) in
+                    if let error = error {
+                        self.loadingAnnualSubscription = false
+                        print(error.localizedDescription)
+                    } else {
+                        self.sessionStore.purchasesInfo = purchaserInfo
+                        self.loadingAnnualSubscription = false
+                        print("Обновляем подписки!")
+                    }
+                }
+            }
         }
     }
     
@@ -74,12 +119,16 @@ struct SubscriptionSplashScreen: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
                             .frame(width: 150, height: 72)
-                        VStack {
-                            Text("Ежемесячно")
-                                .bold()
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Text("75,00 ₽")
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        if loadingMonthlySubscription {
+                            ActivityIndicator(styleSpinner: .medium)
+                        } else {
+                            VStack {
+                                Text("Ежемесячно")
+                                    .bold()
+                                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                Text("75,00 ₽")
+                                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            }
                         }
                     }
                 }.padding(.trailing, 8)
@@ -88,12 +137,16 @@ struct SubscriptionSplashScreen: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             .frame(width: 150, height: 72)
-                        VStack {
-                            Text("Ежегодно")
-                                .bold()
-                                .foregroundColor(.white)
-                            Text("699,00 ₽")
-                                .foregroundColor(.white)
+                        if loadingAnnualSubscription {
+                            ActivityIndicator(styleSpinner: .medium)
+                        } else {
+                            VStack {
+                                Text("Ежегодно")
+                                    .bold()
+                                    .foregroundColor(.white)
+                                Text("699,00 ₽")
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }.padding(.leading, 8)
@@ -103,7 +156,11 @@ struct SubscriptionSplashScreen: View {
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             }.padding(.vertical)
-        }.onAppear(perform: fetchProduct)
+        }
+        .onAppear(perform: fetchProduct)
+        .alert(isPresented: $showAlertSubscription) {
+            Alert(title: Text("Оплата не завершена!"), message: Text("Процесс оплаты подписки отменил пользователь."), dismissButton: .default(Text("Закрыть")))
+        }
     }
 }
 
