@@ -52,6 +52,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
+                            self.purchasesStore.getSubscriptionsExpirationDate()
                             print("Обновляем подписки!")
                         }
                     }
@@ -85,6 +86,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
+                            self.purchasesStore.getSubscriptionsExpirationDate()
                             print("Обновляем подписки!")
                         }
                     }
@@ -113,6 +115,7 @@ struct SubscriptionSplashScreen: View {
                                 self.purchasesStore.purchasesInfo = purchaserInfo
                                 self.setAlertMessage = .restoreSuccessful
                                 self.showAlertSubscription = true
+                                self.purchasesStore.getSubscriptionsExpirationDate()
                                 print("Обновляем подписки!")
                             }
                         }

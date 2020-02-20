@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         Self.shared = self //Принудительное переключение в темную тему!
         
-        let rootView = AuthLogic()
+        let rootView = RootView()
             .environmentObject(sessionStore)
             .environmentObject(chatStore)
             .environmentObject(notificationStore)
@@ -56,6 +56,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         NotificationStore.shared.refreshNotificationStatus()
         PurchasesStore.shared.listenPurchases()
+        PurchasesStore.shared.getSubscriptionsExpirationDate()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
