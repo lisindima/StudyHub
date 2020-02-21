@@ -23,7 +23,7 @@ struct SettingView: View {
     @State private var showPartialSheet: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var subscribeApplication: Bool = false
-    @State private var firebaseServiceStatus: FirebaseServiceStatus = .problem
+    @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme

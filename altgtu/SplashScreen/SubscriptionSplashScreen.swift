@@ -138,7 +138,7 @@ struct SubscriptionSplashScreen: View {
     var titleAlert: Text {
         switch setAlertMessage {
         case .error:
-            return Text("Ошибка!.")
+            return Text("Ошибка!")
         case .restoreUnsuccessful:
             return Text("Подписка не найдена!")
         case .restoreSuccessful:
@@ -151,7 +151,7 @@ struct SubscriptionSplashScreen: View {
         case .error:
             return Text("Произошла ошибка, повторите попытку через несколько минут.")
         case .restoreUnsuccessful:
-            return Text("Если вы уверены, что у вас есть действующая подписка, напишите мне на почту me@lisindmitriy.me.")
+            return Text("Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.")
         case .restoreSuccessful:
             return Text("Действующая подписка успешно восстановлена.")
         }
@@ -213,11 +213,17 @@ struct SubscriptionSplashScreen: View {
                         .font(.footnote)
                         .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                 }
+                Text("|")
+                    .font(.footnote)
+                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                 Button(action: {}) {
                     Text("Политика")
                         .font(.footnote)
                         .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                 }
+                Text("|")
+                    .font(.footnote)
+                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                 Button(action: {}) {
                     Text("Правила")
                         .font(.footnote)
@@ -257,7 +263,7 @@ struct SubscriptionContainerView: View {
         VStack(alignment: .leading) {
             InformationDetailView(title: "Изменение иконки", subTitle: "Измените стандартную иконку приложения на любую другую, которая придется по вкусу!", imageName: "app")
             InformationDetailView(title: "Изменение цвета акцентов", subTitle: "Вы сможете менять цвета акцентов в приложении, на абсолютно любые цвета!.", imageName: "paintbrush")
-            InformationDetailView(title: "Тёмная тема", subTitle: "Темная тема теперь всегда! Конечно, если вы этого захотите)", imageName: "moon.circle")
+            InformationDetailView(title: "Тёмная тема", subTitle: "Темная тема теперь всегда! Конечно, если вы этого захотите)", imageName: "moon")
             InformationDetailView(title: "Изменение обложки профиля", subTitle: "Для тех кто хочет выделиться! Установите вместо обычной цветной обложки, фотографию из Unsplash!", imageName: "rectangle")
             InformationDetailView(title: "Удаление рекламы", subTitle: "Полное удаление рекламы из приложения.", imageName: "tag")
             InformationDetailView(title: "Поддержка", subTitle: "Оформляя подписку вы поддерживаете разработчика и позволяете развиваться приложению.", imageName: "heart")
