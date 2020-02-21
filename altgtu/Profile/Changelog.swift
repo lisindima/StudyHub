@@ -44,6 +44,7 @@ struct Changelog: View {
                                             .padding(.bottom, 5)
                                         Text(changelog.whatsNew)
                                             .foregroundColor(.secondary)
+                                            .font(.system(size: 15))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.vertical, 5)
@@ -55,6 +56,7 @@ struct Changelog: View {
                                             .padding(.bottom, 5)
                                         Text(changelog.bugFixes)
                                             .foregroundColor(.secondary)
+                                            .font(.system(size: 15))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.vertical, 5)
