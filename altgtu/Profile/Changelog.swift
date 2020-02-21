@@ -28,38 +28,36 @@ struct Changelog: View {
                     ForEach(changelogStore.сhangelogModel.sorted { $0.version > $1.version }, id: \.id) { changelog in
                         Section(header:
                             HStack(alignment: .bottom) {
-                                if self.appVersion == changelog.version {
-                                    Text(changelog.version)
-                                        .font(.title)
-                                        .bold()
-                                        .foregroundColor(.primary)
-                                    Spacer()
-                                    Text("Текущая версия")
-                                } else {
-                                    Text(changelog.version)
-                                        .font(.title)
-                                        .bold()
-                                        .foregroundColor(.primary)
-                                    Spacer()
-                                    Text(changelog.dateBuild)
-                                }
-                            }.padding(.top)
+                                Text(changelog.version)
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text(self.appVersion == changelog.version ? "Текущая версия" : changelog.dateBuild)
+                            }.padding(.top, 5)
                         ) {
                             VStack(alignment: .leading) {
                                 if !changelog.whatsNew.isEmpty {
-                                    Text("Что нового:")
-                                        .bold()
-                                        .padding(.bottom, 5)
-                                    Text(changelog.whatsNew)
-                                        .foregroundColor(.secondary)
+                                    VStack(alignment: .leading) {
+                                        Text("Что нового:")
+                                            .bold()
+                                            .padding(.bottom, 5)
+                                        Text(changelog.whatsNew)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.vertical, 5)
                                 }
                                 if !changelog.bugFixes.isEmpty {
-                                    Text("Исправленные ошибки:")
-                                        .bold()
-                                        .padding(.bottom, 5)
-                                        .padding(.top)
-                                    Text(changelog.bugFixes)
-                                        .foregroundColor(.secondary)
+                                    VStack(alignment: .leading) {
+                                        Text("Исправленные ошибки:")
+                                            .bold()
+                                            .padding(.bottom, 5)
+                                        Text(changelog.bugFixes)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.vertical, 5)
                                 }
                             }
                         }
@@ -84,7 +82,7 @@ class ChangelogStore: ObservableObject {
         .responseDecodable(of: ChangelogModel.self) { (response) in
             guard let сhangelog = response.value else { return }
             self.сhangelogModel = сhangelog
-            print("Лицензии загружены")
+            print("Список изменений загружен")
         }
     }
 }
