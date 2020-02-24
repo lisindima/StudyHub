@@ -10,7 +10,6 @@ import SwiftUI
 
 struct PrivacySplashScreen: View {
     
-    @Environment(\.presentationMode) var presentationMode
     @State private var showPolicyView: Bool = false
     @Binding var dismissSheet: Bool
     

@@ -13,6 +13,7 @@ struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var offering: Purchases.Offering?
     @State private var offeringId: String?
@@ -53,6 +54,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
+                            self.presentationMode.wrappedValue.dismiss()
                             print("Обновляем подписки!")
                         }
                     }
@@ -87,6 +89,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
+                            self.presentationMode.wrappedValue.dismiss()
                             print("Обновляем подписки!")
                         }
                     }
