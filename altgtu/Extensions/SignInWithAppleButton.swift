@@ -14,16 +14,29 @@ struct SignInWithAppleButton: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
-        SignInWithAppleView(style: colorScheme == .dark ? .white : .black)
+        Group {
+            if colorScheme == .light {
+                SignInWithAppleView(colorScheme: .light)
+            } else {
+                SignInWithAppleView(colorScheme: .dark)
+            }
+        }
     }
 }
 
 struct SignInWithAppleView: UIViewRepresentable {
     
-    var style : ASAuthorizationAppleIDButton.Style = .white
+    var colorScheme: ColorScheme
     
     func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
-        return ASAuthorizationAppleIDButton(type: .default, style: style)
+        switch colorScheme {
+        case .light:
+            return ASAuthorizationAppleIDButton(type: .default, style: .black)
+        case .dark:
+            return ASAuthorizationAppleIDButton(type: .default, style: .white)
+        @unknown default:
+            return ASAuthorizationAppleIDButton(type: .default, style: .black)
+        }
     }
 
     func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {

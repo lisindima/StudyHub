@@ -178,7 +178,7 @@ struct SettingView: View {
                         Slider(value: $sessionStore.rValue, in: 0.0...255.0)
                             .accentColor(Color.red.opacity(sessionStore.rValue / 255.0))
                         Image(systemName: "r.circle.fill")
-                            .foregroundColor(Color.red)
+                            .foregroundColor(.red)
                             .font(.system(size: 25))
                     }.padding(.vertical)
                     HStack {
@@ -188,7 +188,7 @@ struct SettingView: View {
                         Slider(value: $sessionStore.gValue, in: 0.0...255.0)
                             .accentColor(Color.green.opacity(sessionStore.gValue / 255.0))
                         Image(systemName: "g.circle.fill")
-                            .foregroundColor(Color.green)
+                            .foregroundColor(.green)
                             .font(.system(size: 25))
                     }.padding(.vertical)
                     HStack {
@@ -198,7 +198,7 @@ struct SettingView: View {
                         Slider(value: $sessionStore.bValue, in: 0.0...255.0)
                             .accentColor(Color.blue.opacity(sessionStore.bValue / 255.0))
                         Image(systemName: "b.circle.fill")
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(.blue)
                             .font(.system(size: 25))
                     }.padding(.vertical)
                     ZStack {
