@@ -332,19 +332,11 @@ struct AuthenticationScreen: View {
                 }.padding(.top, 30)
                 Spacer()
                 VStack {
-                    if self.colorScheme == .light {
-                        SignInWithAppleBlack()
-                            .frame(height: 55)
-                            .cornerRadius(8)
-                            .padding()
-                            .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
-                    } else {
-                        SignInWithAppleWhite()
-                            .frame(height: 55)
-                            .cornerRadius(8)
-                            .padding()
-                            .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
-                    }
+                    SignInWithAppleButton()
+                        .frame(height: 55)
+                        .cornerRadius(8)
+                        .padding()
+                        .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
                     Text("-или-")
                         .foregroundColor(.secondary)
                         .font(.subheadline)

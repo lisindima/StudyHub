@@ -29,7 +29,7 @@ struct TodayWidgetView: View {
                 }.padding(.bottom, 5)
                 HStack {
                     Text("Жуковский М.С")
-                    .   font(.footnote)
+                        .font(.footnote)
                     Spacer()
                     Text("315 ГК")
                         .font(.footnote)

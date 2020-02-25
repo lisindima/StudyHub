@@ -215,7 +215,7 @@ struct SettingView: View {
                             Text("B:\(Int(sessionStore.bValue))")
                             Spacer(minLength: 10)
                         }
-                        .font(Font.custom("Futura", size: 24))
+                        .font(.custom("Futura", size: 24))
                         .foregroundColor(.white)
                     }.padding(.vertical)
                     Toggle(isOn: $sessionStore.darkThemeOverride) {
@@ -431,7 +431,7 @@ struct SettingView: View {
                                     Spacer()
                                     Text("\(self.imageCacheStore.sizeImageCache) MB / \(self.imageCacheStore.sizeLimitImageCache) MB")
                                         .foregroundColor(.white)
-                                        .font(Font.custom("Futura", size: 24))
+                                        .font(.custom("Futura", size: 24))
                                     Spacer()
                                 }
                             }

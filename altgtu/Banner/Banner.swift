@@ -25,7 +25,7 @@ struct BannerModifier: ViewModifier {
                             Text("Загрузка")
                                 .bold()
                             Text("Нажмите для скрытия уведомления")
-                                .font(Font.system(size: 12, weight: Font.Weight.light, design: Font.Design.default))
+                                .font(.system(size: 12, weight: .light, design: .default))
                         }
                         Spacer()
                         CircleProgress()

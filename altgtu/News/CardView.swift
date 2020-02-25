@@ -28,12 +28,12 @@ struct CardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())
-                        .font(Font.custom("HelveticaNeue-Bold", size: 12))
-                        .foregroundColor(Color.secondary)
+                        .font(.custom("HelveticaNeue-Bold", size: 12))
+                        .foregroundColor(.secondary)
                         .padding(.bottom, 8)
                     Text(article.title)
                         .foregroundColor(.primary)
-                        .fontWeight(Font.Weight.heavy)
+                        .fontWeight(.heavy)
                         .lineLimit(4)
                         .padding(.bottom, 8)
                 }.layoutPriority(100)
