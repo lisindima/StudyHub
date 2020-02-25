@@ -27,8 +27,8 @@ class PickerStore: ObservableObject {
 
     static let shared = PickerStore()
     
-    let apiFaculty = "https://altstuapi.herokuapp.com/faculty"
-    let apiGroup = "https://altstuapi.herokuapp.com/"
+    let apiFaculty = "https://api.lisindmitriy.me/faculty"
+    let apiGroup = "https://api.lisindmitriy.me/"
     
     func loadPickerFaculty() {
         AF.request(apiFaculty)

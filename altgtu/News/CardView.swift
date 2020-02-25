@@ -29,7 +29,7 @@ struct CardView: View {
                 VStack(alignment: .leading) {
                     Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())
                         .font(Font.custom("HelveticaNeue-Bold", size: 12))
-                        .foregroundColor(Color.gray)
+                        .foregroundColor(Color.secondary)
                         .padding(.bottom, 8)
                     Text(article.title)
                         .foregroundColor(.primary)

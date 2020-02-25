@@ -31,6 +31,7 @@ class PurchasesStore: ObservableObject {
                 print(error.localizedDescription)
             } else {
                 self.purchasesInfo = purchaserInfo
+                self.getSubscriptionsExpirationDate()
                 print("Смотрим подписки!")
             }
         }

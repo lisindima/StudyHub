@@ -57,7 +57,7 @@ struct QRReader: View {
                             .bold()
                             .font(.system(size: 20))
                             .foregroundColor(.white)
-                            .padding(.bottom)
+                            .padding(.bottom, 30)
                     }
                 }
             } else if choiseView == 1 {

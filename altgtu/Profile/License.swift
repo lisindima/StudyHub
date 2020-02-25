@@ -64,7 +64,7 @@ class LicenseStore: ObservableObject {
     static let shared = LicenseStore()
     
     func loadLicense() {
-        AF.request("https://altstuapi.herokuapp.com/license")
+        AF.request("https://api.lisindmitriy.me/license")
         .validate()
         .responseDecodable(of: LicenseModel.self) { (response) in
             guard let license = response.value else { return }

@@ -53,7 +53,6 @@ struct ProfileView: View {
                                 Circle()
                                     .frame(width: 50, height: 50)
                                     .foregroundColor(colorScheme == .light ? .white : .black)
-                                    .shadow(radius: 10)
                                 Image(systemName: "checkmark.seal.fill")
                                     .font(.largeTitle)
                                     .foregroundColor(.blue)
@@ -67,7 +66,7 @@ struct ProfileView: View {
                             .font(.title)
                         Text(currentUser.email!)
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }.padding()
                 }
                 Spacer()
@@ -101,6 +100,7 @@ struct ProfileView: View {
                 
             }, content: {
                 QRReader()
+                    .edgesIgnoringSafeArea(.bottom)
                     .environmentObject(self.sessionStore)
             }), trailing: Button(action: {
                 self.showSettingModal = true

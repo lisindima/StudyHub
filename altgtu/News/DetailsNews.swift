@@ -90,14 +90,14 @@ struct DetailsNews: View {
                         VStack(alignment: .leading) {
                             Text("Статья написана:")
                                 .font(.avenirNext(size: 12))
-                                .foregroundColor(.gray)
+                                .foregroundColor(.secondary)
                             Text(article.source?.name ?? "")
                                 .font(.avenirNext(size: 17))
                         }
                     }
                     Text("\(article.publishedAt ?? "02 January 2019") • Читать 5 мин.")
                         .font(.avenirNextRegular(size: 12))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                     Text(article.title)
                         .font(.avenirNext(size: 28))
                         .background(GeometryGetter(rect: self.$titleRect))

@@ -20,7 +20,6 @@ struct ProfileImage: View {
                     ZStack {
                         Circle()
                             .foregroundColor(.white)
-                            .shadow(radius: 10)
                             .frame(width: 210, height: 210)
                         ActivityIndicator(styleSpinner: .large)
                     }
@@ -29,7 +28,6 @@ struct ProfileImage: View {
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
                 .clipped()
-                .shadow(radius: 10)
                 .frame(width: 210, height: 210)
         }
     }

@@ -39,10 +39,10 @@ struct InfoApp: View {
             HStack {
                 Text("Версия \(appVersion)")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                 Text("Сборка \(buildVersion)")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }.padding(.bottom)
             VStack(alignment: .leading) {
                 Text("Разработка и дизайн:").bold().font(.caption) + Text(" Дмитрий Лисин").font(.caption)

@@ -79,7 +79,7 @@ class ChangelogStore: ObservableObject {
     static let shared = ChangelogStore()
     
     func loadChangelog() {
-        AF.request("https://altstuapi.herokuapp.com/changelog")
+        AF.request("https://api.lisindmitriy.me/changelog")
         .validate()
         .responseDecodable(of: ChangelogModel.self) { (response) in
             guard let сhangelog = response.value else { return }
