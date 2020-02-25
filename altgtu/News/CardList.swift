@@ -97,7 +97,7 @@ struct CardList: View {
                                 }
                             }.padding(.horizontal)
                         }
-                        ForEach(self.newsStore.articles, id: \.self) { item in
+                        ForEach(self.newsStore.articles, id: \.id) { item in
                             NavigationLink(destination: DetailsNews(article: item)) {
                                 CardView(article: item)
                             }

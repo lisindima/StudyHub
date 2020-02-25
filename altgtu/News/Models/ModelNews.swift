@@ -9,7 +9,7 @@
 import Foundation
 
 struct Articles: Codable, Hashable, Identifiable {
-    let id: String?
+    let id: UUID = UUID()
     let source: Source?
     let author: String?
     let title: String
