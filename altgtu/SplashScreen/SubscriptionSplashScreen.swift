@@ -177,7 +177,7 @@ struct SubscriptionSplashScreen: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
-                            .frame(width: 150, height: 72)
+                            .frame(maxWidth: .infinity, maxHeight: 72)
                         if loadingMonthlySubscription {
                             ActivityIndicator(styleSpinner: .medium)
                         } else {
@@ -190,12 +190,12 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                }.padding(.trailing, 8)
+                }.padding(.trailing, 4)
                 Button(action: buyAnnualSubscription) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            .frame(width: 150, height: 72)
+                            .frame(maxWidth: .infinity, maxHeight: 72)
                         if loadingAnnualSubscription {
                             ActivityIndicator(styleSpinner: .medium)
                         } else {
@@ -208,8 +208,10 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                }.padding(.leading, 8)
-            }.padding(.top)
+                }.padding(.leading, 4)
+            }
+            .padding(.top)
+            .padding(.horizontal)
             HStack {
                 Button(action: restoreSubscription) {
                     Text("Восстановить платеж")
