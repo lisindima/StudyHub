@@ -22,6 +22,7 @@ struct TextView: UIViewRepresentable {
         textView.isScrollEnabled = true
         textView.isEditable = true
         textView.isUserInteractionEnabled = true
+        textView.allowsEditingTextAttributes = true
         return textView
     }
 

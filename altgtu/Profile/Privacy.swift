@@ -14,12 +14,10 @@ struct Privacy: View {
     private var urlSite: String = "https://lisindmitriy.me/privacyaltgtu/"
     
     var body: some View {
-        VStack {
-            if showActivityIndicator {
-                ActivityIndicator(styleSpinner: .large)
-            } else {
-                WebView(showActivityIndicator: $showActivityIndicator, urlSite: urlSite)
-            }
+        ZStack {
+            WebView(showActivityIndicator: $showActivityIndicator, urlSite: urlSite)
+            ActivityIndicator(styleSpinner: .large)
+                .opacity(showActivityIndicator ? 1.0 : 0.0)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle(Text("Политика конфиденциальности"), displayMode: .inline)

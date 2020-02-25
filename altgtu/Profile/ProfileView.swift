@@ -73,15 +73,10 @@ struct ProfileView: View {
                 Button(action: {
                     self.showActionSheetExit = true
                 }, label: {
-                    HStack {
-                        Image(systemName: "square.and.arrow.down")
-                            .imageScale(.large)
-                            .rotationEffect(.degrees(90))
-                            .foregroundColor(.red)
-                        Text("Выйти")
-                            .bold()
-                            .foregroundColor(.red)
-                    }
+                    Text("Выйти")
+                        .bold()
+                        .font(.system(size: 15))
+                        .foregroundColor(.red)
                 }).padding()
             }
             .actionSheet(isPresented: $showActionSheetExit) {

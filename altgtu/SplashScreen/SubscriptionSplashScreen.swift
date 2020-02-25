@@ -210,7 +210,7 @@ struct SubscriptionSplashScreen: View {
                     }
                 }.padding(.leading, 4)
             }
-            .padding(.top)
+            .padding(.top, 8)
             .padding(.horizontal)
             HStack {
                 Button(action: restoreSubscription) {
