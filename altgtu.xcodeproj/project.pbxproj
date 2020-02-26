@@ -14,8 +14,8 @@
 		CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */; };
 		CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */; };
 		CB0AED5F232E5A210047A8A0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED56232E5A210047A8A0 /* RootView.swift */; };
-		CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED67232E5A7B0047A8A0 /* LessonList.swift */; };
-		CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* Lesson.swift */; };
+		CB0AED69232E5A7B0047A8A0 /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED67232E5A7B0047A8A0 /* ScheduleList.swift */; };
+		CB0AED6A232E5A7B0047A8A0 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* Schedule.swift */; };
 		CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED73232E5AC50047A8A0 /* CustomInput.swift */; };
 		CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED74232E5AC50047A8A0 /* CustomButton.swift */; };
 		CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* SessionStore.swift */; };
@@ -31,7 +31,7 @@
 		CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AC523CC07B500424FD2 /* NFCStore.swift */; };
 		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
-		CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* LessonDetail.swift */; };
+		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
 		CB276197235588820054C753 /* InfoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB276196235588820054C753 /* InfoApp.swift */; };
 		CB27619A2355A9A00054C753 /* LessonWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* LessonWatch.swift */; };
@@ -73,8 +73,7 @@
 		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
 		CB97AFB523E91FF400921F0F /* PrivacySplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */; };
 		CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFBB23EAA12B00921F0F /* TextView.swift */; };
-		CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */; };
-		CB9BBDCC234C6DDC00F89529 /* LessonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* LessonStore.swift */; };
+		CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
@@ -184,8 +183,8 @@
 		CB0AED4B232E59A30047A8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB0AED4D232E59A30047A8A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB0AED56232E5A210047A8A0 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		CB0AED67232E5A7B0047A8A0 /* LessonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonList.swift; sourceTree = "<group>"; };
-		CB0AED68232E5A7B0047A8A0 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		CB0AED67232E5A7B0047A8A0 /* ScheduleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
+		CB0AED68232E5A7B0047A8A0 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		CB0AED73232E5AC50047A8A0 /* CustomInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
 		CB0AED74232E5AC50047A8A0 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CB0AED75232E5AC50047A8A0 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
@@ -202,7 +201,7 @@
 		CB179AC523CC07B500424FD2 /* NFCStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCStore.swift; sourceTree = "<group>"; };
 		CB179ACA23CC182F00424FD2 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
-		CB1F6DA82338DDB000604C50 /* LessonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetail.swift; sourceTree = "<group>"; };
+		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
 		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB276196235588820054C753 /* InfoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoApp.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* LessonWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWatch.swift; sourceTree = "<group>"; };
@@ -240,8 +239,7 @@
 		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
 		CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySplashScreen.swift; sourceTree = "<group>"; };
 		CB97AFBB23EAA12B00921F0F /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLesson.swift; sourceTree = "<group>"; };
-		CB9BBDCB234C6DDC00F89529 /* LessonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonStore.swift; sourceTree = "<group>"; };
+		CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
@@ -385,7 +383,7 @@
 				CB0AED72232E5AA80047A8A0 /* Login */,
 				CB53B43623D987E300982219 /* Picker */,
 				CB0AED6B232E5A840047A8A0 /* Profile */,
-				CB0AED66232E5A680047A8A0 /* Lesson */,
+				CB0AED66232E5A680047A8A0 /* Schedule */,
 				CBD896B22378FDAE008CF480 /* Extensions */,
 				CB0AED45232E59A30047A8A0 /* Assets.xcassets */,
 				CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */,
@@ -405,16 +403,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		CB0AED66232E5A680047A8A0 /* Lesson */ = {
+		CB0AED66232E5A680047A8A0 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CB68AC7B239A3698007DAC27 /* Models */,
-				CB0AED68232E5A7B0047A8A0 /* Lesson.swift */,
-				CB0AED67232E5A7B0047A8A0 /* LessonList.swift */,
-				CB1F6DA82338DDB000604C50 /* LessonDetail.swift */,
-				CB9BBDCB234C6DDC00F89529 /* LessonStore.swift */,
+				CB0AED68232E5A7B0047A8A0 /* Schedule.swift */,
+				CB0AED67232E5A7B0047A8A0 /* ScheduleList.swift */,
+				CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */,
+				CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */,
 			);
-			path = Lesson;
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 		CB0AED6B232E5A840047A8A0 /* Profile */ = {
@@ -597,14 +594,6 @@
 				CB6704EB23712F4000F875C3 /* NotificationStore.swift */,
 			);
 			path = Notifications;
-			sourceTree = "<group>";
-		};
-		CB68AC7B239A3698007DAC27 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CB9BBDC9234C6BAE00F89529 /* ModelLesson.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CB6EBF4A23975B8F00D9E771 /* Models */ = {
@@ -943,7 +932,7 @@
 				CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */,
 				CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* MessageList.swift in Sources */,
-				CB0AED69232E5A7B0047A8A0 /* LessonList.swift in Sources */,
+				CB0AED69232E5A7B0047A8A0 /* ScheduleList.swift in Sources */,
 				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */,
@@ -956,7 +945,7 @@
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
-				CB0AED6A232E5A7B0047A8A0 /* Lesson.swift in Sources */,
+				CB0AED6A232E5A7B0047A8A0 /* Schedule.swift in Sources */,
 				CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
@@ -978,18 +967,17 @@
 				CB4377B823DFDC200002C47C /* SettingView.swift in Sources */,
 				CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */,
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
-				CB1F6DA92338DDB000604C50 /* LessonDetail.swift in Sources */,
+				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
-				CB9BBDCC234C6DDC00F89529 /* LessonStore.swift in Sources */,
+				CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */,
 				CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */,
 				CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */,
 				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
-				CB9BBDCA234C6BAE00F89529 /* ModelLesson.swift in Sources */,
 				CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */,
 				CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */,
 				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
@@ -1197,7 +1185,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1207,7 +1195,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = "АлтГТУ";
 				SUPPORTS_MACCATALYST = NO;
@@ -1224,7 +1212,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1234,7 +1222,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = "АлтГТУ";
 				SUPPORTS_MACCATALYST = NO;
@@ -1247,7 +1235,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1256,7 +1244,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1270,7 +1258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = altgtuTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1279,7 +1267,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1294,7 +1282,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1304,7 +1292,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1320,7 +1308,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtuWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1330,7 +1318,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1347,11 +1335,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1368,11 +1356,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 325;
+				CURRENT_PROJECT_VERSION = 350;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = altgtuWatchApp_Extension;
 				INFOPLIST_FILE = altgtuWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

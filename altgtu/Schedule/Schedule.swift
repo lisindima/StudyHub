@@ -1,5 +1,5 @@
 //
-//  Lesson.swift
+//  Schedule.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 14.09.2019.
@@ -8,48 +8,37 @@
 
 import SwiftUI
 
-struct Lesson: View {
+struct Schedule: View {
     
-    var model: ScheduleModel
+    var scheduleModel: ScheduleModelElement
     
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 10)
-                .foregroundColor(.red)
+                .foregroundColor(.accentColor)
             VStack {
                 HStack {
-                    Text("\(model.timeStart)-\(model.timeEnd)")
+                    Text(scheduleModel.time)
                         .font(.footnote)
                         .bold()
-                        .foregroundColor(.red)
+                        .foregroundColor(.accentColor)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
-                    Text(model.name)
+                    Text(scheduleModel.name)
                         .bold()
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
-                    Text(model.prepod)
+                    Text("Жуковский М.C.")
+                        .foregroundColor(.secondary)
                         .font(.footnote)
                     Spacer()
-                    Text(model.audit)
+                    Text(scheduleModel.audit)
                         .font(.footnote)
                 }
-                
             }.padding(.leading, 5)
-        }
-        .padding()
-        .contextMenu {
-            Button(action: {
-                print("Действие 1")
-            }) {
-                HStack {
-                    Image(systemName: "star")
-                    Text("Действие 1")
-                }
-            }
-        }
+        }.padding()
     }
 }
