@@ -36,7 +36,7 @@ struct Login: View {
     var body: some View {
         Group {
             if signInSuccess {
-                LessonWatch(signInSuccess: $signInSuccess)
+                ScheduleListWatch(signInSuccess: $signInSuccess)
             } else {
                 LoginScreenWatch(signInSuccess: $signInSuccess)
             }

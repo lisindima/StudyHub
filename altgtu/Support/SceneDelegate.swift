@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var noteStore: NoteStore = NoteStore()
     var iconStore: IconStore = IconStore()
     var purchasesStore: PurchasesStore = PurchasesStore()
+    var scheduleStore: ScheduleStore = ScheduleStore()
     
     private(set) static var shared: SceneDelegate? //Принудительное переключение в темную тему!
     
@@ -34,6 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(noteStore)
             .environmentObject(iconStore)
             .environmentObject(purchasesStore)
+            .environmentObject(scheduleStore)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

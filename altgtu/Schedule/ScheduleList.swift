@@ -30,24 +30,16 @@ struct ScheduleList: View {
                     if week == 1 {
                         List {
                             ForEach(self.scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
-                                Section(header: Text(schedule.dayOfWeek)) {
-                                    Schedule(scheduleModel: schedule)
-                                }
+                                Schedule(scheduleModel: schedule)
                             }
                         }
-                        .listStyle(GroupedListStyle())
-                        .environment(\.horizontalSizeClass, .regular)
                     }
                     if week == 2 {
                         List {
                             ForEach(self.scheduleStore.scheduleModel.sorted { $0.week > $1.week }, id: \.id) { schedule in
-                                Section(header: Text(schedule.dayOfWeek)) {
-                                    Schedule(scheduleModel: schedule)
-                                }
+                                Schedule(scheduleModel: schedule)
                             }
                         }
-                        .listStyle(GroupedListStyle())
-                        .environment(\.horizontalSizeClass, .regular)
                     }
                 }.navigationBarTitle(Text("Расписание"))
             }
