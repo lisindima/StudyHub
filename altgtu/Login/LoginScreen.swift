@@ -294,7 +294,7 @@ struct AuthenticationScreen: View {
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
             print("НЕ первый запуск")
-            self.showSpashScreen = false
+            self.showSpashScreen = true
         } else {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
             print("Первый запуск")

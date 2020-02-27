@@ -25,11 +25,7 @@ struct PrivacySplashScreen: View {
             PrivacyContainerView()
                 .accentColor(.defaultColorApp)
             Spacer(minLength: 30)
-            Button(action: {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
-                self.dismissSheet = false
-            }) {
+            NavigationLink(destination: PermissionSplashScreen()) {
                 Text("Продолжить")
                     .customButton()
             }
