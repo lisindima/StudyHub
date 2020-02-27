@@ -34,7 +34,7 @@ class PickerStore: ObservableObject {
         AF.request(apiFaculty)
         .validate()
         .responseDecodable(of: FacultyModel.self) { (response) in
-          guard let faculty = response.value else { return }
+            guard let faculty = response.value else { return }
             self.facultyModel = faculty
             print("Данные факультетов загружены")
             self.loadPickerGroup()
@@ -45,7 +45,7 @@ class PickerStore: ObservableObject {
         AF.request(apiGroup + facultyModel[choiseFaculty].id)
         .validate()
         .responseDecodable(of: GroupModel.self) { (response) in
-          guard let group = response.value else { return }
+            guard let group = response.value else { return }
             self.groupModel = group
             print("Данные групп загружены")
         }

@@ -20,7 +20,7 @@ class ScheduleStore: ObservableObject {
         AF.request("https://api.lisindmitriy.me/schedule")
         .validate()
         .responseDecodable(of: ScheduleModel.self) { (response) in
-          guard let schedule = response.value else { return }
+            guard let schedule = response.value else { return }
             self.scheduleModel = schedule
             print("Расписание группы загружено")
         }

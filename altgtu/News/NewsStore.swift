@@ -23,7 +23,7 @@ class NewsStore: ObservableObject {
         AF.request(apiUrl + apiKey)
         .validate()
         .responseDecodable(of: News.self) { (response) in
-          guard let news = response.value else { return }
+            guard let news = response.value else { return }
             self.articles = news.articles
         }
     }
@@ -32,7 +32,7 @@ class NewsStore: ObservableObject {
         AF.request(apiUrl + apiKey + category)
         .validate()
         .responseDecodable(of: News.self) { (response) in
-          guard let news = response.value else { return }
+            guard let news = response.value else { return }
             self.articles = news.articles
         }
     }
