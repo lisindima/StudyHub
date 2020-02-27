@@ -105,7 +105,7 @@ struct ProfileView: View {
                     .foregroundColor(.white)
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
-                if self.sessionStore.session == nil {
+                if self.sessionStore.user == nil {
                     print("Сессии нет, данные не сохраняются")
                 } else {
                     self.sessionStore.updateDataFromDatabase()

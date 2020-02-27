@@ -12,17 +12,13 @@ struct RootView: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     
-    func getUser() {
-        sessionStore.listen()
-    }
-    
     var body: some View {
         Group {
-            if sessionStore.session != nil {
+            if sessionStore.user != nil {
                 LoadingLogic()
             } else {
                 AuthenticationScreen()
             }
-        }.onAppear(perform: getUser)
+        }.onAppear(perform: sessionStore.listen)
     }
 }

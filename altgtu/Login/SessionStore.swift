@@ -21,7 +21,7 @@ class SessionStore: NSObject, ObservableObject {
     
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     
-    @Published var session: User?
+    @Published var user: User?
     @Published var lastname: String!
     @Published var firstname: String!
     @Published var dateBirthDay: Date!
@@ -50,8 +50,8 @@ class SessionStore: NSObject, ObservableObject {
     
     var handle: AuthStateDidChangeListenerHandle?
     
-    init(session: User? = nil) {
-        self.session = session
+    init(user: User? = nil) {
+        self.user = user
     }
     
     enum ActiveAuthType {
@@ -93,12 +93,12 @@ class SessionStore: NSObject, ObservableObject {
                         }
                     }
                 }
-                self.session = user
+                self.user = user
             } else {
                 Purchases.shared.reset({ (info, error) in
                     print("Пользователь вышел!")
                 })
-                self.session = nil
+                self.user = nil
             }
         }
     }
