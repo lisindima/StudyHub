@@ -17,17 +17,6 @@ import Kingfisher
 import Instabug
 import Purchases
 
-struct User {
-    
-    var uid: String
-    var email: String?
-    
-    init(uid: String, email: String?) {
-        self.uid = uid
-        self.email = email
-    }
-}
-
 class SessionStore: NSObject, ObservableObject {
     
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
@@ -104,10 +93,7 @@ class SessionStore: NSObject, ObservableObject {
                         }
                     }
                 }
-                self.session = User(
-                    uid: user.uid,
-                    email: user.email
-                )
+                self.session = user
             } else {
                 Purchases.shared.reset({ (info, error) in
                     print("Пользователь вышел!")
