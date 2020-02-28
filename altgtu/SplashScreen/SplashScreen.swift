@@ -45,8 +45,7 @@ struct InformationContainerView: View {
             InformationDetailView(title: "Расписание", subTitle: "Просмотр расписания всех факультетов и групп университета.", imageName: "calendar")
             InformationDetailView(title: "Общение", subTitle: "Начните общаться со своими одногруппниками используя удобный чат со сквозным шифрованием.", imageName: "bubble.left")
             InformationDetailView(title: "Новости", subTitle: "Узнавайте все новости из мира и жизни университета.", imageName: "doc.richtext")
-        }
-        .padding(.horizontal)
+        }.padding(.horizontal)
     }
 }
 

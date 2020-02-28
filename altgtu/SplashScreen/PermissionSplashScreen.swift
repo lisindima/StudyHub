@@ -44,6 +44,8 @@ struct PermissionSplashScreen: View {
 
 struct PermissionContainerView: View {
     
+    @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
+    
     @State private var permissionPhoto: Bool = false
     @State private var permissionCamera: Bool = false
     @State private var permissionNotification: Bool = false
@@ -62,8 +64,8 @@ struct PermissionContainerView: View {
 
 struct PermissionInformationToggle: View {
     
+    @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
     @Binding var permissionActivate: Bool
-    @State private var fakeState: Bool = false
     
     var title: String
     var subTitle: String
@@ -88,14 +90,14 @@ struct PermissionInformationToggle: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
-            VStack(alignment: .trailing) {
-                if !permissionActivate {
+            HStack {
+                if !permissionActivate && notificationStore.enabled == .notDetermined {
                     Toggle(isOn: $permissionActivate) {
                         Text("")
                     }.labelsHidden()
-                } else if !fakeState {
+                } else if permissionActivate && notificationStore.enabled == .notDetermined {
                     ActivityIndicator(styleSpinner: .medium)
-                } else if permissionActivate {
+                } else if permissionActivate && notificationStore.enabled == .authorized {
                     Image(systemName: "checkmark.circle.fill")
                 }
             }

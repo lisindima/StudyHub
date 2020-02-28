@@ -180,7 +180,7 @@ struct SecureView: View {
         }
         .padding()
         .onAppear(perform: sessionStore.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
-        .onReceive([self.userInputCode].publisher.first()) { (value) in
+        .onReceive(self.userInputCode.publisher.first()) { _ in
             self.checkAccess()
         }
     }

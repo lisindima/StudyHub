@@ -28,18 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, Purcha
         BugReporting.promptOptionsEnabledReportTypes = [.bug, .feedback]
         Replies.enabled = false
         
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: {_, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
-        application.registerForRemoteNotifications()
         return true
     }
     
