@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, Purcha
         Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.shake])
         Instabug.trackUserSteps = false
         Instabug.reproStepsMode = .disable
+        Instabug.tintColor = .systemIndigo
         BugReporting.shouldCaptureViewHierarchy = false
         BugReporting.promptOptionsEnabledReportTypes = [.bug, .feedback]
         Replies.enabled = false

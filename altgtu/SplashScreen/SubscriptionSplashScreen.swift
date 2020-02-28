@@ -7,13 +7,13 @@
 //
 
 import SwiftUI
+import SPAlert
 import Purchases
 
 struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
-    @Environment(\.presentationMode) var presentationMode
     
     @State private var offering: Purchases.Offering?
     @State private var offeringId: String?
@@ -39,8 +39,7 @@ struct SubscriptionSplashScreen: View {
                         print("Отменено пользователем!")
                     } else {
                         self.loadingMonthlySubscription = false
-                        self.setAlertMessage = .error
-                        self.showAlertSubscription = true
+                        SPAlert.present(title: "Произошла ошибка!", message: "Произошла ошибка, повторите попытку через несколько минут.", preset: .error)
                         print(error.localizedDescription)
                     }
                 } else {
@@ -54,8 +53,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
-                            self.presentationMode.wrappedValue.dismiss()
-                            print("Обновляем подписки!")
+                            SPAlert.present(title: "Подписка оформлена!", message: "Вы успешно оформили подписку, вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
                 }
@@ -74,8 +72,7 @@ struct SubscriptionSplashScreen: View {
                         print("Отменено пользователем!")
                     } else {
                         self.loadingAnnualSubscription = false
-                        self.setAlertMessage = .error
-                        self.showAlertSubscription = true
+                        SPAlert.present(title: "Произошла ошибка!", message: "Произошла ошибка, повторите попытку через несколько минут.", preset: .error)
                         print(error.localizedDescription)
                     }
                 } else {
@@ -89,8 +86,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
-                            self.presentationMode.wrappedValue.dismiss()
-                            print("Обновляем подписки!")
+                            SPAlert.present(title: "Подписка оформлена!", message: "Вы успешно оформили подписку, вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
                 }
@@ -116,8 +112,7 @@ struct SubscriptionSplashScreen: View {
                                 print(error.localizedDescription)
                             } else {
                                 self.purchasesStore.purchasesInfo = purchaserInfo
-                                self.setAlertMessage = .restoreSuccessful
-                                self.showAlertSubscription = true
+                                SPAlert.present(title: "Подписка восстановлена!", message: "Подписка была восстановлена, премиум функции активированы.", preset: .heart)
                                 self.purchasesStore.getSubscriptionsExpirationDate()
                                 print("Обновляем подписки!")
                             }

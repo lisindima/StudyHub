@@ -94,15 +94,19 @@ struct PermissionInformationToggle: View {
                 if !permissionActivate && notificationStore.enabled == .notDetermined {
                     Toggle(isOn: $permissionActivate) {
                         Text("")
-                    }.labelsHidden()
+                    }
+                    .labelsHidden()
+                    .frame(width: 50)
                 } else if permissionActivate && notificationStore.enabled == .notDetermined {
                     ActivityIndicator(styleSpinner: .medium)
-                } else if permissionActivate && notificationStore.enabled == .authorized {
+                        .frame(width: 50)
+                } else if notificationStore.enabled == .authorized {
                     Image(systemName: "checkmark.circle.fill")
+                        .frame(width: 50)
+                        .foregroundColor(.accentColor)
+                        .imageScale(.large)
                 }
             }
-            .padding(.trailing)
-            .frame(width: 50)
         }
     }
 }
