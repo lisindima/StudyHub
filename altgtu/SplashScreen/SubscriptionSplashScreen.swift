@@ -25,7 +25,6 @@ struct SubscriptionSplashScreen: View {
     enum SetAlertMessage {
         case error
         case restoreUnsuccessful
-        case restoreSuccessful
     }
     
     func buyMonthSubscription() {
@@ -139,8 +138,6 @@ struct SubscriptionSplashScreen: View {
             return Text("Ошибка!")
         case .restoreUnsuccessful:
             return Text("Подписка не найдена!")
-        case .restoreSuccessful:
-            return Text("Подписка восстановлена!")
         }
     }
     
@@ -150,8 +147,6 @@ struct SubscriptionSplashScreen: View {
             return Text("Произошла ошибка, повторите попытку через несколько минут.")
         case .restoreUnsuccessful:
             return Text("Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.")
-        case .restoreSuccessful:
-            return Text("Действующая подписка успешно восстановлена.")
         }
     }
     
