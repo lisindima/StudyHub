@@ -14,19 +14,24 @@ struct SplashScreen: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
-                Spacer()
-                TitleView()
-                    .padding(.bottom)
-                InformationContainerView()
-                    .accentColor(.defaultColorApp)
-                Spacer(minLength: 30)
-                NavigationLink(destination: PrivacySplashScreen(dismissSheet: $dismissSheet)) {
-                    Text("Продолжить")
-                        .customButton()
+            VStack {
+                ScrollView {
+                    TitleView()
+                        .padding(.bottom)
+                        .padding(.top, 50)
+                    InformationContainerView()
+                        .padding(.bottom, 50)
+                        .accentColor(.defaultColorApp)
                 }
+                Spacer()
+                HStack {
+                    NavigationLink(destination: PrivacySplashScreen(dismissSheet: $dismissSheet)) {
+                        Text("Продолжить")
+                            .customButton()
+                    }
+                }
+                .padding(.top, 8)
                 .padding(.horizontal)
-                .padding(.top, 20)
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)

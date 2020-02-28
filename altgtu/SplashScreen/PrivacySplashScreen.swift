@@ -18,28 +18,34 @@ struct PrivacySplashScreen: View {
     }
     
     var body: some View {
-        VStack(alignment: .center) {
+        VStack {
+            ScrollView {
+                TitlePrivacyView()
+                    .padding(.bottom)
+                    .padding(.top, 50)
+                    .accentColor(.defaultColorApp)
+                PrivacyContainerView()
+                    .padding(.bottom, 50)
+                    .accentColor(.defaultColorApp)
+            }
             Spacer()
-            TitlePrivacyView()
-                .padding(.bottom)
-            PrivacyContainerView()
-                .accentColor(.defaultColorApp)
-            Spacer(minLength: 30)
-            NavigationLink(destination: PermissionSplashScreen()) {
-                Text("Продолжить")
-                    .customButton()
-            }
-            .padding(.horizontal)
-            .padding(.top, 20)
-            Text("Продолжая вы соглашаетесь с этой")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-            Button(action: showPolicy) {
-                Text("Политикой конфиденциальности.")
+            VStack {
+                NavigationLink(destination: PermissionSplashScreen(dismissSheet: $dismissSheet)) {
+                    Text("Продолжить")
+                        .customButton()
+                }
+                Text("Продолжая вы соглашаетесь с этой")
                     .font(.footnote)
-                    .bold()
-                    .foregroundColor(.defaultColorApp)
+                    .foregroundColor(.secondary)
+                Button(action: showPolicy) {
+                    Text("Политикой конфиденциальности.")
+                        .font(.footnote)
+                        .bold()
+                        .foregroundColor(.defaultColorApp)
+                }
             }
+            .padding(.top, 8)
+            .padding(.horizontal)
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
@@ -62,6 +68,10 @@ struct PrivacyContainerView: View {
 struct TitlePrivacyView: View {
     var body: some View {
         VStack {
+            Image(systemName: "lock.icloud.fill")
+                .resizable()
+                .frame(width: 100, height: 70)
+                .foregroundColor(.accentColor)
             Text("Ваши данные и")
                 .customTitleText()
             Text("конфиденциальность")

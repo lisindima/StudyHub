@@ -95,9 +95,9 @@ class SessionStore: NSObject, ObservableObject {
                 }
                 self.user = user
             } else {
-                Purchases.shared.reset({ (info, error) in
+                Purchases.shared.reset { (info, error) in
                     print("Пользователь вышел!")
-                })
+                }
                 self.user = nil
             }
         }

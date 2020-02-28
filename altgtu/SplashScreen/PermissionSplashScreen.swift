@@ -9,25 +9,33 @@
 import SwiftUI
 
 struct PermissionSplashScreen: View {
-
+    
+    @Binding var dismissSheet: Bool
+    
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            TitlePermissionView()
-                .padding(.bottom)
-            PermissionContainerView()
-                .accentColor(.defaultColorApp)
-            Spacer(minLength: 30)
-            Button(action: {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.success)
-                //self.dismissSheet = false
-            }) {
-                Text("Продолжить")
-                    .customButton()
+        VStack {
+            ScrollView {
+                TitlePermissionView()
+                    .padding(.bottom)
+                    .padding(.top, 50)
+                    .accentColor(.defaultColorApp)
+                PermissionContainerView()
+                    .padding(.bottom, 50)
+                    .accentColor(.defaultColorApp)
             }
+            Spacer()
+            HStack {
+                Button(action: {
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
+                    self.dismissSheet = false
+                }) {
+                    Text("Продолжить")
+                        .customButton()
+                }
+            }
+            .padding(.top, 8)
             .padding(.horizontal)
-            .padding(.top, 20)
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
@@ -100,16 +108,14 @@ struct PermissionInformationToggle: View {
 struct TitlePermissionView: View {
     var body: some View {
         VStack {
+            Image(systemName: "questionmark.square.fill")
+                .resizable()
+                .frame(width: 70, height: 70)
+                .foregroundColor(.accentColor)
             Text("Запрос на")
                 .customTitleText()
             Text("разрешения")
                 .customTitleText()
         }
-    }
-}
-
-struct PermissionSplashScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        PermissionSplashScreen()
     }
 }
