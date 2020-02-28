@@ -10,12 +10,7 @@ import SwiftUI
 
 struct PrivacySplashScreen: View {
     
-    @State private var showPolicyView: Bool = false
     @Binding var dismissSheet: Bool
-    
-    func showPolicy() {
-        showPolicyView = true
-    }
     
     var body: some View {
         VStack {
@@ -37,7 +32,9 @@ struct PrivacySplashScreen: View {
                 Text("Продолжая вы соглашаетесь с этой")
                     .font(.footnote)
                     .foregroundColor(.secondary)
-                Button(action: showPolicy) {
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+                }) {
                     Text("Политикой конфиденциальности.")
                         .font(.footnote)
                         .bold()
@@ -49,9 +46,6 @@ struct PrivacySplashScreen: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
-        .sheet(isPresented: $showPolicyView) {
-            Privacy()
-        }
     }
 }
 

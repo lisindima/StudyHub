@@ -216,7 +216,9 @@ struct SubscriptionSplashScreen: View {
                 Text("|")
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                Button(action: {}) {
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+                }) {
                     Text("Политика")
                         .font(.footnote)
                         .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -224,7 +226,9 @@ struct SubscriptionSplashScreen: View {
                 Text("|")
                     .font(.footnote)
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                Button(action: {}) {
+                Button(action: {
+                    UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+                }) {
                     Text("Правила")
                         .font(.footnote)
                         .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))

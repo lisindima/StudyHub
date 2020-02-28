@@ -464,12 +464,6 @@ struct SettingView: View {
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Список изменений")
                     }
-                    NavigationLink(destination: Privacy()) {
-                        Image(systemName: "lock.shield")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                        Text("Политика конфиденциальности")
-                    }
                     NavigationLink(destination: InfoApp()) {
                         Image(systemName: "info.circle")
                             .frame(width: 24)

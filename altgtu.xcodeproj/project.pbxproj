@@ -46,8 +46,6 @@
 		CB37695823E5CD7E0015B61E /* altIconApp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* altIconApp@2x.png */; };
 		CB37695A23E5CD850015B61E /* altIconApp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* altIconApp@3x.png */; };
 		CB37695C23E5CD9F0015B61E /* altIconApp.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* altIconApp.png */; };
-		CB3BFACE239E09F300894DFA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACD239E09F200894DFA /* WebView.swift */; };
-		CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFACF239E0C7F00894DFA /* Privacy.swift */; };
 		CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
@@ -221,8 +219,6 @@
 		CB37695723E5CD7E0015B61E /* altIconApp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altIconApp@2x.png"; sourceTree = "<group>"; };
 		CB37695923E5CD850015B61E /* altIconApp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altIconApp@3x.png"; sourceTree = "<group>"; };
 		CB37695B23E5CD9F0015B61E /* altIconApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altIconApp.png; sourceTree = "<group>"; };
-		CB3BFACD239E09F200894DFA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		CB3BFACF239E0C7F00894DFA /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccounts.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagePicker.swift; sourceTree = "<group>"; };
@@ -432,7 +428,6 @@
 				CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */,
 				CB276196235588820054C753 /* InfoApp.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
-				CB3BFACF239E0C7F00894DFA /* Privacy.swift */,
 				CBE010E923ACC0D6009DB0E8 /* Changelog.swift */,
 				CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */,
 				CB76FDBA23C345BE00FDDE5E /* Credential.swift */,
@@ -642,7 +637,6 @@
 				CB0AED73232E5AC50047A8A0 /* CustomInput.swift */,
 				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
 				CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */,
-				CB3BFACD239E09F200894DFA /* WebView.swift */,
 				CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */,
 				CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */,
 				CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */,
@@ -993,11 +987,9 @@
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingScreen.swift in Sources */,
 				CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */,
-				CB3BFAD0239E0C7F00894DFA /* Privacy.swift in Sources */,
 				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB37694123E2CA3D0015B61E /* Extensions.swift in Sources */,
-				CB3BFACE239E09F300894DFA /* WebView.swift in Sources */,
 				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 				CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */,
