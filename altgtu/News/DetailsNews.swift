@@ -23,7 +23,7 @@ struct DetailsNews: View {
     private let imageHeight: CGFloat = 300
     private let collapsedImageHeight: CGFloat = 75
     
-    @ObservedObject private var articleContent: ViewFrame = ViewFrame()
+    @ObservedObject var articleContent: ViewFrame = ViewFrame()
     @State private var titleRect: CGRect = .zero
     @State private var headerImageRect: CGRect = .zero
     
