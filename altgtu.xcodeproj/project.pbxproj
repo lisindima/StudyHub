@@ -739,6 +739,8 @@
 			dependencies = (
 			);
 			name = altgtuTodayWidget;
+			packageProductDependencies = (
+			);
 			productName = altgtuTodayWidget;
 			productReference = CB32DAF823A0B64800B25626 /* Расписание.appex */;
 			productType = "com.apple.product-type.app-extension";
