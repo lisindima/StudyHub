@@ -27,17 +27,10 @@ struct ChatTextField: View {
                 TextField("Новое сообщение...", text: $messageText)
                     .padding(.horizontal)
             }
-            if !messageText.isEmpty {
-                Button(action: action) {
-                    Image(systemName: "paperplane")
-                        .imageScale(.large)
-                }
-            } else {
-                Button(action: { print("Микрофон") }) {
-                    Image(systemName: "mic")
-                        .imageScale(.large)
-                }
-            }
+            Button(action: action) {
+                Image(systemName: "paperplane")
+                    .imageScale(.large)
+            }.disabled(messageText.isEmpty)
         }
     }
 }

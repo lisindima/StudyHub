@@ -40,6 +40,7 @@ struct MessageView: View {
                     .foregroundColor(.secondary)
             }.padding(.trailing, 3)
         }
+        .fixedSize(horizontal: false, vertical: true)
         .padding(.trailing)
         .padding(.leading, 30)
     }
@@ -78,6 +79,7 @@ struct MessageViewOther: View {
                 }
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
         .padding(.leading)
         .padding(.trailing, 30)
     }

@@ -61,12 +61,6 @@ struct MessageList: View {
         .keyboardObserving()
         .onAppear(perform: checkRead)
         .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
-        .navigationBarItems(trailing: Button (action: {
-            print("plus")
-        }) {
-            Image(systemName: "info.circle")
-                .imageScale(.large)
-        })
     }
 }
 
