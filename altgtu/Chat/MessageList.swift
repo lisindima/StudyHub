@@ -51,10 +51,12 @@ struct MessageList: View {
             }
             .scaleEffect(x: -1.0, y: 1.0)
             .rotationEffect(.degrees(180))
-            ChatTextField(sendAction: {_ in
+            ChatTextField(action: {
                 self.chatStore.sendMessage(datas: self.message, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
                 self.typeMessage = ""
             }, messageText: $typeMessage)
+                .padding(.horizontal)
+                .padding(.bottom, 10)
         }
         .keyboardObserving()
         .onAppear(perform: checkRead)
