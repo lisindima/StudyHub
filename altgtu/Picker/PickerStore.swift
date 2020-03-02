@@ -36,8 +36,8 @@ class PickerStore: ObservableObject {
         .responseDecodable(of: FacultyModel.self) { (response) in
             guard let faculty = response.value else { return }
             self.facultyModel = faculty
-            print("Данные факультетов загружены")
             self.loadPickerGroup()
+            print("Данные факультетов загружены")
         }
     }
     
@@ -58,8 +58,6 @@ class PickerStore: ObservableObject {
             if let document = documentSnapshot {
                 self.choiseGroup = document.get("choiseGroup") as! Int
                 self.choiseFaculty = document.get("choiseFaculty") as! Int
-                print("\(self.choiseGroup) группа выбрана")
-                print("\(self.choiseFaculty) факультет выбран")
             } else if error != nil {
                 print((error?.localizedDescription)!)
             }

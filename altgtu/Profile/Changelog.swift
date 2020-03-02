@@ -47,7 +47,10 @@ struct Changelog: View {
                                             .font(.system(size: 15))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.vertical, 5)
+                                    .padding(.vertical, 3)
+                                }
+                                if !changelog.whatsNew.isEmpty && !changelog.bugFixes.isEmpty {
+                                    Divider()
                                 }
                                 if !changelog.bugFixes.isEmpty {
                                     VStack(alignment: .leading) {
@@ -59,7 +62,7 @@ struct Changelog: View {
                                             .font(.system(size: 15))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.vertical, 5)
+                                    .padding(.vertical, 3)
                                 }
                             }
                         }

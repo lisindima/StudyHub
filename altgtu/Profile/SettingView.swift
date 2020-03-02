@@ -523,7 +523,7 @@ struct SettingView: View {
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                Text("Готово")
+                Text("Закрыть")
                     .bold()
                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
             })
