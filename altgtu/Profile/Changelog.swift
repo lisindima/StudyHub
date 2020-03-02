@@ -34,17 +34,23 @@ struct Changelog: View {
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Text(self.appVersion == changelog.version ? "Текущая версия" : changelog.dateBuild)
-                            }.padding(.top, 5)
+                            }
                         ) {
                             VStack(alignment: .leading) {
                                 if !changelog.whatsNew.isEmpty {
                                     VStack(alignment: .leading) {
                                         Text("Что нового:")
                                             .bold()
-                                            .padding(.bottom, 5)
+                                            .foregroundColor(.purple)
+                                            .padding(5)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 5)
+                                                    .foregroundColor(Color.purple.opacity(0.2))
+                                            )
+                                            .padding(.bottom, 3)
                                         Text(changelog.whatsNew)
                                             .foregroundColor(.secondary)
-                                            .font(.system(size: 15))
+                                            .font(.system(size: 16))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.vertical, 3)
@@ -56,10 +62,16 @@ struct Changelog: View {
                                     VStack(alignment: .leading) {
                                         Text("Исправленные ошибки:")
                                             .bold()
-                                            .padding(.bottom, 5)
+                                            .foregroundColor(.green)
+                                            .padding(5)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 5)
+                                                    .foregroundColor(Color.green.opacity(0.2))
+                                            )
+                                            .padding(.bottom, 3)
                                         Text(changelog.bugFixes)
                                             .foregroundColor(.secondary)
-                                            .font(.system(size: 15))
+                                            .font(.system(size: 16))
                                     }
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.vertical, 3)
