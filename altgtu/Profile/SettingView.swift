@@ -523,7 +523,7 @@ struct SettingView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("Создано с ❤️ Лисиным Дмитрием!)
+                                Text("Создано с ❤️ Лисиным Дмитрием!")
                                     .foregroundColor(.secondary)
                                     .fontWeight(.semibold)
                                     .font(.system(size: 14))
