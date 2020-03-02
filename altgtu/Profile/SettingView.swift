@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import StoreKit
 import Instabug
 import Purchases
 import PartialSheet
@@ -467,7 +466,7 @@ struct SettingView: View {
                         }.foregroundColor(.primary)
                     }
                 }
-                Section(header: Text("Информация").bold()) {
+                Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
                     NavigationLink(destination: License()) {
                         Image(systemName: "doc.plaintext")
                             .frame(width: 24)
@@ -475,20 +474,21 @@ struct SettingView: View {
                         Text("Лицензии")
                     }
                     NavigationLink(destination: Changelog()) {
-                        Image(systemName: "doc.text.magnifyingglass")
+                        Image(systemName: "wand.and.stars.inverse")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                        Text("Список изменений")
+                        Text("Что нового?")
                     }
-                }
-                Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Оценить") {
-                            SKStoreReviewController.requestReview()
+                            UIApplication.shared.open(URL(string: "https://itunes.apple.com/app/id1481944453?action=write-review")!)
                         }.foregroundColor(.primary)
+                        Spacer()
+                        Image(systemName: "arrow.up.right.square")
+                            .foregroundColor(.secondary)
                     }
                     HStack {
                         Image(systemName: "square.and.arrow.up")
@@ -507,21 +507,23 @@ struct SettingView: View {
                         }.foregroundColor(.primary)
                     }
                 }
-                Group {
-                    Section {
-                        NavigationLink(destination: DeleteUser()) {
-                            Image(systemName: "flame")
-                                .frame(width: 24)
-                                .foregroundColor(.red)
-                            Text("Удалить аккаунт")
-                                .foregroundColor(.red)
-                        }
+                Section {
+                    NavigationLink(destination: DeleteUser()) {
+                        Image(systemName: "flame")
+                            .frame(width: 24)
+                            .foregroundColor(.red)
+                        Text("Удалить аккаунт")
+                            .foregroundColor(.red)
                     }
-                    Section {
+                }
+                Section {
+                    Button(action: {
+                        print("Подробнее")
+                    }) {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("Создано с ❤️ Дмитрием Лисиным")
+                                Text("Создано с ❤️ Лисиным Дмитрием!)
                                     .foregroundColor(.secondary)
                                     .fontWeight(.semibold)
                                     .font(.system(size: 14))

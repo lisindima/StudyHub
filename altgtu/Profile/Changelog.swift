@@ -39,7 +39,7 @@ struct Changelog: View {
                             VStack(alignment: .leading) {
                                 if !changelog.whatsNew.isEmpty {
                                     VStack(alignment: .leading) {
-                                        Text("Что нового:")
+                                        Text("Новое:")
                                             .bold()
                                             .foregroundColor(.purple)
                                             .padding(5)
@@ -59,7 +59,7 @@ struct Changelog: View {
                                 }
                                 if !changelog.bugFixes.isEmpty {
                                     VStack(alignment: .leading) {
-                                        Text("Исправленные ошибки:")
+                                        Text("Исправления:")
                                             .bold()
                                             .foregroundColor(.green)
                                             .padding(5)
@@ -81,7 +81,7 @@ struct Changelog: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Список изменений"), displayMode: .inline)
+        .navigationBarTitle(Text("Что нового?"), displayMode: .inline)
     }
 }
 
