@@ -35,6 +35,15 @@ struct SettingView: View {
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
+    private var appVersionView: some View {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return Text("Версия: \(version) (\(build))")
+        } else {
+            return Text("#chad")
+        }
+    }
+    
     let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
 
     func startSettingView() {
@@ -306,6 +315,13 @@ struct SettingView: View {
                                 }, .cancel()
                             ])
                         }
+                        .sheet(isPresented: $isShowingModalViewImage, onDismiss: {
+                            self.sessionStore.uploadProfileImageToStorage()
+                        }, content: {
+                            ImagePicker(imageFromPicker: self.$sessionStore.imageProfile, selectedSourceType: self.$selectedSourceType)
+                                .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                                .edgesIgnoringSafeArea(.bottom)
+                        })
                     }
                 }
                 Section(header: Text("Уведомления").bold(), footer: footerNotification) {
@@ -464,12 +480,6 @@ struct SettingView: View {
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Список изменений")
                     }
-                    NavigationLink(destination: InfoApp()) {
-                        Image(systemName: "info.circle")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                        Text("О приложении")
-                    }
                 }
                 Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
                     HStack {
@@ -497,25 +507,35 @@ struct SettingView: View {
                         }.foregroundColor(.primary)
                     }
                 }
-                Section {
-                    NavigationLink(destination: DeleteUser()) {
-                        Image(systemName: "flame")
-                            .frame(width: 24)
-                            .foregroundColor(.red)
-                        Text("Удалить аккаунт")
-                            .foregroundColor(.red)
+                Group {
+                    Section {
+                        NavigationLink(destination: DeleteUser()) {
+                            Image(systemName: "flame")
+                                .frame(width: 24)
+                                .foregroundColor(.red)
+                            Text("Удалить аккаунт")
+                                .foregroundColor(.red)
+                        }
+                    }
+                    Section {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text("Создано с ❤️ Дмитрием Лисиным")
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.semibold)
+                                    .font(.system(size: 14))
+                                appVersionView
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 12))
+                            }
+                            Spacer()
+                        }.padding(.vertical, 5)
                     }
                 }
             }
             .environment(\.horizontalSizeClass, .regular)
             .onAppear(perform: startSettingView)
-            .sheet(isPresented: $isShowingModalViewImage, onDismiss: {
-                self.sessionStore.uploadProfileImageToStorage()
-            }, content: {
-                ImagePicker(imageFromPicker: self.$sessionStore.imageProfile, selectedSourceType: self.$selectedSourceType)
-                    .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
-                    .edgesIgnoringSafeArea(.bottom)
-            })
             .alert(isPresented: $showAlertCache) {
                 Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
             }
