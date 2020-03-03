@@ -95,6 +95,7 @@ class ChatStore: ObservableObject {
     }
     
     func sendMessage(datas: ChatStore, token: String, title: String, body: String) {
+        self.addMessageDB(message: body, user: title, idUser: Auth.auth().currentUser!.uid)
         var isNotRead: Int = 0
         for messages in datas.messages {
             if !messages.isRead && title == messages.idUser {
@@ -119,7 +120,6 @@ class ChatStore: ObservableObject {
                 if let jsonData = data {
                     if let jsonDataDict  = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
                         NSLog("Received data:\n\(jsonDataDict))")
-                        self.addMessageDB(message: body, user: title, idUser: Auth.auth().currentUser!.uid)
                     }
                 }
             } catch let err as NSError {

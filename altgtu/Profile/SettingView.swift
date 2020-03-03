@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SPAlert
 import Instabug
 import Purchases
 import PartialSheet
@@ -14,7 +15,6 @@ import KingfisherSwiftUI
 
 struct SettingView: View {
     
-    @State private var showAlertCache: Bool = false
     @State private var isShowingModalViewImage: Bool = false
     @State private var isShowingModalViewUnsplash: Bool = false
     @State private var showActionSheetImage: Bool = false
@@ -440,7 +440,7 @@ struct SettingView: View {
                         Button("Очистить кэш изображений") {
                             self.imageCacheStore.clearImageCache()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                self.showAlertCache = true
+                                SPAlert.present(title: "Кэш фотографий успешно очищен.", preset: .done)
                             }
                         }.foregroundColor(.primary)
                     }
@@ -508,9 +508,6 @@ struct SettingView: View {
             }
             .environment(\.horizontalSizeClass, .regular)
             .onAppear(perform: startSettingView)
-            .alert(isPresented: $showAlertCache) {
-                Alert(title: Text("Успешно!"), message: Text("Кэш фотографий успешно очищен."), dismissButton: .default(Text("Закрыть")))
-            }
             .navigationBarTitle(Text("Настройки"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
