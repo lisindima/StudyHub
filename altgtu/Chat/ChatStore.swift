@@ -18,6 +18,7 @@ class ChatStore: ObservableObject {
     
     static let shared = ChatStore()
     let legacyServerKey = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
+    let currentUid = Auth.auth().currentUser!.uid
     
     init() {
         loadMessageList()
@@ -127,6 +128,16 @@ class ChatStore: ObservableObject {
             }
         }
         task.resume()
+    }
+    
+    func checkRead() {
+        print("Проверка на чтение")
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        for data in messages {
+            if self.currentUid != data.idUser && data.isRead == false {
+                self.updateData(id: data.id, isRead: true)
+            }
+        }
     }
 }
 

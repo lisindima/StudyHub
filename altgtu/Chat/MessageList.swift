@@ -12,9 +12,8 @@ import Firebase
 
 struct MessageList: View {
     
-    @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject var message: ChatStore = ChatStore()
+    @ObservedObject var chatStore: ChatStore = ChatStore.shared
     @State private var typeMessage: String = ""
     
     var titleChat: String
@@ -22,20 +21,10 @@ struct MessageList: View {
     let currentUid = Auth.auth().currentUser!.uid
     let receiverFCMToken = "fp-vzEkPzUl_vmFIr7oklo:APA91bEPxtpzxkgLNCqzc_e9jPWv_E9VXiDLedIS4tG6JskSJxR0perifenaN05-uHmlizC3ipsHRzYHjyuYeN7MKogouYl1Scix7SjFgZkJtf_H4tFLVY0F8m3E_m5MwRIbQdojLeOD"
     
-    func checkRead() {
-        print("Проверка на чтение")
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        for data in message.messages {
-            if self.currentUid != data.idUser && data.isRead == false {
-                self.message.updateData(id: data.id, isRead: true)
-            }
-        }
-    }
-    
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(message.messages.reversed()) { item in
+                ForEach(chatStore.messages.reversed()) { item in
                     if self.currentUid == item.idUser {
                         MessageView(message: item.message, timeMessage: item.dateMessage, isRead: item.isRead)
                             .padding(.top, 6)
@@ -52,14 +41,14 @@ struct MessageList: View {
             .scaleEffect(x: -1.0, y: 1.0)
             .rotationEffect(.degrees(180))
             ChatTextField(messageText: $typeMessage, action: {
-                self.chatStore.sendMessage(datas: self.message, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
+                self.chatStore.sendMessage(datas: self.chatStore, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
                 self.typeMessage = ""
             })
                 .padding(.horizontal)
                 .padding(.bottom, 10)
         }
         .keyboardObserving()
-        .onAppear(perform: checkRead)
+        .onAppear(perform: chatStore.checkRead)
         .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
     }
 }
