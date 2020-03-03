@@ -35,47 +35,39 @@ struct ChatList: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 SearchBar(text: $searchText, editing: $hideNavigationBar)
                     .padding(.horizontal, 6)
-                ZStack {
-                    List {
-                        ForEach(self.chatStore.chatList.filter {
-                            self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
-                        }, id: \.self) { item in
-                            NavigationLink(destination: MessageList(titleChat: item)) {
-                                ListItem(
-                                    numberUnreadMessages: self.$numberUnreadMessages,
-                                    userOnline: true,
-                                    nameChat: item,
-                                    lastMessageidUser: self.chatStore.messages.last!.idUser,
-                                    lastMessage: self.chatStore.messages.last!.message,
-                                    lastMessageDate: self.chatStore.messages.last!.dateMessage
-                                )
-                            }
+                List {
+                    ForEach(self.chatStore.chatList.filter {
+                        self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
+                    }, id: \.self) { item in
+                        NavigationLink(destination: MessageList(titleChat: item)) {
+                            ListItem(
+                                numberUnreadMessages: self.$numberUnreadMessages,
+                                userOnline: true,
+                                nameChat: item,
+                                lastMessageidUser: self.chatStore.messages.last!.idUser,
+                                lastMessage: self.chatStore.messages.last!.message,
+                                lastMessageDate: self.chatStore.messages.last!.dateMessage
+                            )
                         }
-                        .onDelete(perform: delete)
-                        .onMove(perform: move)
                     }
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Button(action: {
-                                print("Новое сообщение")
-                            }) {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .frame(width: 24, height: 24)
-                                    Text("Новое сообщение")
-                                        .font(.system(.body, design: .rounded))
-                                        .fontWeight(.semibold)
-                                }
-                            }
-                            Spacer()
-                        }.padding()
-                    }
+                    .onDelete(perform: delete)
+                    .onMove(perform: move)
                 }
+                Button(action: {
+                    print("Новое сообщение")
+                }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                        Text("Новое сообщение")
+                            .font(.system(.body, design: .rounded))
+                            .fontWeight(.semibold)
+                    }
+                }.padding()
             }
             .onAppear(perform: checkNumberUnreadMessages)
             .animation(.interactiveSpring())

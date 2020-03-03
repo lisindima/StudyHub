@@ -24,42 +24,34 @@ struct NoteList: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 SearchBar(text: $searchText, editing: $hideNavigationBar)
                     .padding(.horizontal, 6)
-                ZStack {
-                    List {
-                        ForEach(noteStore.dataNote.filter {
-                            self.searchText.isEmpty ? true : $0.note.localizedStandardContains(self.searchText)
-                        }, id: \.id) { item in
-                            NavigationLink(destination: NoteDetails(dataNote: item)) {
-                                Text(item.note)
-                            }
-                        }
-                        .onMove(perform: move)
-                        .onDelete { (index) in
-                            self.noteStore.deleteNote(datas: self.noteStore, index: index)
+                List {
+                    ForEach(noteStore.dataNote.filter {
+                        self.searchText.isEmpty ? true : $0.note.localizedStandardContains(self.searchText)
+                    }, id: \.id) { item in
+                        NavigationLink(destination: NoteDetails(dataNote: item)) {
+                            Text(item.note)
                         }
                     }
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Button(action: {
-                                self.showAddNewNote = true
-                            }) {
-                                HStack {
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .frame(width: 24, height: 24)
-                                    Text("Новая заметка")
-                                        .font(.system(.body, design: .rounded))
-                                        .fontWeight(.semibold)
-                                }
-                            }
-                            Spacer()
-                        }.padding()
+                    .onMove(perform: move)
+                    .onDelete { (index) in
+                        self.noteStore.deleteNote(datas: self.noteStore, index: index)
                     }
                 }
+                Button(action: {
+                    self.showAddNewNote = true
+                }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                        Text("Новая заметка")
+                            .font(.system(.body, design: .rounded))
+                            .fontWeight(.semibold)
+                    }
+                }.padding()
             }
             .animation(.interactiveSpring())
             .sheet(isPresented: $showAddNewNote, onDismiss: {
