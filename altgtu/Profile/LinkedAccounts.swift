@@ -39,9 +39,38 @@ struct LinkedAccounts: View {
                     }
                 }
             }
+            Section {
+                if sessionStore.userTypeAuth == .email {
+                    NavigationLink(destination: ChangeEmail()
+                        .environmentObject(sessionStore)
+                    ) {
+                        Image(systemName: "envelope")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        Text("Изменить эл.почту")
+                    }
+                    NavigationLink(destination: ChangePassword()
+                        .environmentObject(sessionStore)
+                    ) {
+                        Image(systemName: "lock")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        Text("Изменить пароль")
+                    }
+                }
+            }
+            Section {
+                NavigationLink(destination: DeleteUser()) {
+                    Image(systemName: "flame")
+                        .frame(width: 24)
+                        .foregroundColor(.red)
+                    Text("Удалить аккаунт")
+                        .foregroundColor(.red)
+                }
+            }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Связанные аккаунты"), displayMode: .inline)
+        .navigationBarTitle(Text("Управление аккаунтами"), displayMode: .inline)
     }
 }
 

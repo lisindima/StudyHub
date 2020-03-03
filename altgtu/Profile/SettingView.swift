@@ -402,28 +402,7 @@ struct SettingView: View {
                             Image(systemName: "list.dash")
                                 .frame(width: 24)
                                 .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Text("Связанные аккаунты")
-                            Spacer()
-                            Text("1 из 2")
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    if sessionStore.userTypeAuth == .email {
-                        NavigationLink(destination: ChangeEmail()
-                            .environmentObject(sessionStore)
-                        ) {
-                            Image(systemName: "envelope")
-                                .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Text("Изменить эл.почту")
-                        }
-                        NavigationLink(destination: ChangePassword()
-                            .environmentObject(sessionStore)
-                        ) {
-                            Image(systemName: "lock")
-                                .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                            Text("Изменить пароль")
+                            Text("Управление аккаунтами")
                         }
                     }
                 }
@@ -508,22 +487,13 @@ struct SettingView: View {
                     }
                 }
                 Section {
-                    NavigationLink(destination: DeleteUser()) {
-                        Image(systemName: "flame")
-                            .frame(width: 24)
-                            .foregroundColor(.red)
-                        Text("Удалить аккаунт")
-                            .foregroundColor(.red)
-                    }
-                }
-                Section {
                     Button(action: {
                         print("Подробнее")
                     }) {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("Создано с ❤️ Лисиным Дмитрием!")
+                                Text("Create with ❤️ by Lisin Dmitriy")
                                     .foregroundColor(.secondary)
                                     .fontWeight(.semibold)
                                     .font(.system(size: 14))

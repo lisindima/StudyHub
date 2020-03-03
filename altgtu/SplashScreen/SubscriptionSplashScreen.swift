@@ -24,7 +24,6 @@ struct SubscriptionSplashScreen: View {
     
     enum SetAlertMessage {
         case error
-        case restoreUnsuccessful
     }
     
     func buyMonthSubscription() {
@@ -38,7 +37,7 @@ struct SubscriptionSplashScreen: View {
                         print("Отменено пользователем!")
                     } else {
                         self.loadingMonthlySubscription = false
-                        SPAlert.present(title: "Произошла ошибка!", message: "Произошла ошибка, повторите попытку через несколько минут.", preset: .error)
+                        SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                         print(error.localizedDescription)
                     }
                 } else {
@@ -52,7 +51,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
-                            SPAlert.present(title: "Подписка оформлена!", message: "Вы успешно оформили подписку, вы очень помогаете развитию приложения!", preset: .heart)
+                            SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
                 }
@@ -71,7 +70,7 @@ struct SubscriptionSplashScreen: View {
                         print("Отменено пользователем!")
                     } else {
                         self.loadingAnnualSubscription = false
-                        SPAlert.present(title: "Произошла ошибка!", message: "Произошла ошибка, повторите попытку через несколько минут.", preset: .error)
+                        SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                         print(error.localizedDescription)
                     }
                 } else {
@@ -85,7 +84,7 @@ struct SubscriptionSplashScreen: View {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
                             self.purchasesStore.getSubscriptionsExpirationDate()
-                            SPAlert.present(title: "Подписка оформлена!", message: "Вы успешно оформили подписку, вы очень помогаете развитию приложения!", preset: .heart)
+                            SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
                 }
@@ -101,8 +100,7 @@ struct SubscriptionSplashScreen: View {
                 if let purchaserInfo = purchaserInfo {
                     if purchaserInfo.entitlements.active.isEmpty {
                         print("Restore Unsuccessful")
-                        self.setAlertMessage = .restoreUnsuccessful
-                        self.showAlertSubscription = true
+                        SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
                     } else {
                         Purchases.shared.purchaserInfo { (purchaserInfo, error) in
                             if let error = error {
@@ -111,7 +109,7 @@ struct SubscriptionSplashScreen: View {
                                 print(error.localizedDescription)
                             } else {
                                 self.purchasesStore.purchasesInfo = purchaserInfo
-                                SPAlert.present(title: "Подписка восстановлена!", message: "Подписка была восстановлена, премиум функции активированы.", preset: .heart)
+                                SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
                                 self.purchasesStore.getSubscriptionsExpirationDate()
                                 print("Обновляем подписки!")
                             }
@@ -136,16 +134,12 @@ struct SubscriptionSplashScreen: View {
         switch setAlertMessage {
         case .error:
             return Text("Ошибка!")
-        case .restoreUnsuccessful:
-            return Text("Подписка не найдена!")
         }
     }
     
     var messageAlert: Text {
         switch setAlertMessage {
         case .error:
-            return Text("Произошла ошибка, повторите попытку через несколько минут.")
-        case .restoreUnsuccessful:
             return Text("Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.")
         }
     }
