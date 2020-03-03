@@ -45,7 +45,6 @@ struct ChatList: View {
                         NavigationLink(destination: MessageList(titleChat: item)) {
                             ListItem(
                                 numberUnreadMessages: self.$numberUnreadMessages,
-                                userOnline: true,
                                 nameChat: item,
                                 lastMessageidUser: self.chatStore.messages.last!.idUser,
                                 lastMessage: self.chatStore.messages.last!.message,
@@ -95,7 +94,6 @@ struct ListItem: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var numberUnreadMessages: Int
-    var userOnline: Bool
     
     let currentUid = Auth.auth().currentUser?.uid
     
