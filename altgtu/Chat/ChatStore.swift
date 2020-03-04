@@ -13,13 +13,12 @@ import Firebase
 class ChatStore: ObservableObject {
     
     @Published var chatList: Array = [String]()
-    @Published var messages: Array = [DataMessages]()
+    @Published var dataMessages: Array = [DataMessages]()
     @Published var statusChat: StatusChat = .loading
     
     static let shared = ChatStore()
     
     var fcmToken: String = Messaging.messaging().fcmToken!
-    let currentUid = Auth.auth().currentUser!.uid
     let legacyServerKey = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
     
     init() {
@@ -35,6 +34,7 @@ class ChatStore: ObservableObject {
             }
             for item in querySnapshot!.documentChanges {
                 if item.type == .added {
+                    let id = item.document.documentID
                     let user = item.document.get("user") as! String
                     let message = item.document.get("message") as! String
                     let idUser = item.document.get("idUser") as! String
@@ -44,8 +44,7 @@ class ChatStore: ObservableObject {
                     formatter.dateFormat = "HH:mm"
                     let dateMessage = formatter.string(from: aDate)
                     let isRead = item.document.get("isRead") as! Bool
-                    let id = item.document.documentID
-                    self.messages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
+                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
                 }
             }
         }
@@ -100,7 +99,7 @@ class ChatStore: ObservableObject {
     func sendMessage(datas: ChatStore, token: String, title: String, body: String) {
         self.addMessageDB(message: body, user: title, idUser: Auth.auth().currentUser!.uid)
         var isNotRead: Int = 0
-        for messages in datas.messages {
+        for messages in datas.dataMessages {
             if !messages.isRead && title == messages.idUser {
                 isNotRead += 1
             }
@@ -133,10 +132,10 @@ class ChatStore: ObservableObject {
     }
     
     func checkRead() {
-        print("Проверка на чтение")
+        let currentUid = Auth.auth().currentUser!.uid
         UIApplication.shared.applicationIconBadgeNumber = 0
-        for data in messages {
-            if self.currentUid != data.idUser && data.isRead == false {
+        for data in dataMessages {
+            if currentUid != data.idUser && data.isRead == false {
                 self.updateData(id: data.id, isRead: true)
             }
         }
@@ -164,8 +163,7 @@ enum StatusChat {
     case showChat
 }
 
-struct DataMessages: Codable, Hashable, Identifiable {
-    
+struct DataMessages: Identifiable, Hashable {
     var id: String
     var user: String
     var message: String

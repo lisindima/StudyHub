@@ -10,13 +10,13 @@ import SwiftUI
 
 struct NoteList: View {
     
+    @EnvironmentObject var noteStore: NoteStore
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
     @State private var searchText: String = ""
     @State private var hideNavigationBar: Bool = false
-    
-    @EnvironmentObject var noteStore: NoteStore
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     private func move(from source: IndexSet, to destination: Int) {
         noteStore.dataNote.move(fromOffsets: source, toOffset: destination)
@@ -36,7 +36,7 @@ struct NoteList: View {
                         }
                     }
                     .onMove(perform: move)
-                    .onDelete { (index) in
+                    .onDelete { index in
                         self.noteStore.deleteNote(datas: self.noteStore, index: index)
                     }
                 }

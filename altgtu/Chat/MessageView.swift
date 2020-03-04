@@ -57,6 +57,9 @@ struct MessageViewOther: View {
         VStack(alignment: .leading) {
             HStack {
                 KFImage(URL(string: sessionStore.urlImageProfile))
+                    .placeholder {
+                        ActivityIndicator(styleSpinner: .medium)
+                    }
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipShape(Circle())

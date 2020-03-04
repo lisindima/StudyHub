@@ -13,17 +13,11 @@ struct ChatList: View {
     
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @State private var searchText: String = ""
     @State private var showActionSheetSort: Bool = false
     @State private var hideNavigationBar: Bool = false
     @State private var numberUnreadMessages: Int = 0
-    
-    func checkNumberUnreadMessages() {
-        numberUnreadMessages = chatStore.messages.filter {
-            Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
-        }.count
-        print(numberUnreadMessages, "непрочитанных сообщений")
-    }
     
     private func delete(at offsets: IndexSet) {
         chatStore.chatList.remove(atOffsets: offsets)
@@ -31,6 +25,13 @@ struct ChatList: View {
     
     private func move(from source: IndexSet, to destination: Int) {
         chatStore.chatList.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    func checkNumberUnreadMessages() {
+        numberUnreadMessages = chatStore.dataMessages.filter {
+            Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
+        }.count
+        print(numberUnreadMessages, "непрочитанных сообщений")
     }
     
     var body: some View {
@@ -46,9 +47,9 @@ struct ChatList: View {
                             ListItem(
                                 numberUnreadMessages: self.$numberUnreadMessages,
                                 nameChat: item,
-                                lastMessageidUser: self.chatStore.messages.last!.idUser,
-                                lastMessage: self.chatStore.messages.last!.message,
-                                lastMessageDate: self.chatStore.messages.last!.dateMessage
+                                lastMessageidUser: self.chatStore.dataMessages.last!.idUser,
+                                lastMessage: self.chatStore.dataMessages.last!.message,
+                                lastMessageDate: self.chatStore.dataMessages.last!.dateMessage
                             )
                         }
                     }

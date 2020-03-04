@@ -13,7 +13,8 @@ import Firebase
 struct MessageList: View {
     
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject var chatStore: ChatStore = ChatStore.shared
+    @EnvironmentObject var chatStore: ChatStore
+    //@ObservedObject var chatStore: ChatStore = ChatStore.shared
     @State private var typeMessage: String = ""
     
     var titleChat: String
@@ -24,7 +25,7 @@ struct MessageList: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(chatStore.messages.reversed()) { item in
+                ForEach(chatStore.dataMessages.reversed()) { item in
                     if self.currentUid == item.idUser {
                         MessageView(message: item.message, timeMessage: item.dateMessage, isRead: item.isRead)
                             .padding(.top, 6)
