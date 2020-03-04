@@ -12,6 +12,7 @@ import Firebase
 struct Tabbed: View {
     
     @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var chatStore: ChatStore = ChatStore.shared
     @State private var selection: Int = 0
     
     var body: some View {
@@ -48,7 +49,10 @@ struct Tabbed: View {
                 }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
-        .onAppear(perform: sessionStore.settingUserInstabug)
+        .onAppear {
+            self.sessionStore.settingUserInstabug()
+            self.chatStore.updateFcmToken()
+        }
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
     }
 }

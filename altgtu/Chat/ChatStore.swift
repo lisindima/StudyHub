@@ -17,8 +17,10 @@ class ChatStore: ObservableObject {
     @Published var statusChat: StatusChat = .loading
     
     static let shared = ChatStore()
-    let legacyServerKey = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
+    
+    var fcmToken: String = Messaging.messaging().fcmToken!
     let currentUid = Auth.auth().currentUser!.uid
+    let legacyServerKey = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
     
     init() {
         loadMessageList()
@@ -136,6 +138,21 @@ class ChatStore: ObservableObject {
         for data in messages {
             if self.currentUid != data.idUser && data.isRead == false {
                 self.updateData(id: data.id, isRead: true)
+            }
+        }
+    }
+    
+    func updateFcmToken() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
+        docRef.updateData([
+            "fcmToken": fcmToken
+        ]) { err in
+            if let err = err {
+                print("fcmToken не обновлен: \(err)")
+            } else {
+                print("fcmToken обновлен!")
             }
         }
     }
