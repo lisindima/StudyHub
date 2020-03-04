@@ -72,7 +72,6 @@
 		CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = CB6AC62F2408F4FE00D0E482 /* SPAlert */; };
 		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
-		CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7A235B07CA00E65661 /* ModelNews.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
@@ -244,7 +243,6 @@
 		CB6704EB23712F4000F875C3 /* NotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		CB677796236046610019D6B6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CB6D3F72235ADC6300E65661 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		CB6D3F7A235B07CA00E65661 /* ModelNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelNews.swift; sourceTree = "<group>"; };
 		CB6D3F7C235B0E6200E65661 /* NewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStore.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -549,7 +547,6 @@
 		CB28B8D92361459900A93F28 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				CB6EBF4A23975B8F00D9E771 /* Models */,
 				CB6D3F72235ADC6300E65661 /* CardView.swift */,
 				CB6D3F7E235B118200E65661 /* CardList.swift */,
 				CB6D3F7C235B0E6200E65661 /* NewsStore.swift */,
@@ -624,14 +621,6 @@
 				CB6704EB23712F4000F875C3 /* NotificationStore.swift */,
 			);
 			path = Notifications;
-			sourceTree = "<group>";
-		};
-		CB6EBF4A23975B8F00D9E771 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CB6D3F7A235B07CA00E65661 /* ModelNews.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CB6EBF5023977BE200D9E771 /* Files */ = {
@@ -994,7 +983,6 @@
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */,
 				CB0AED5F232E5A210047A8A0 /* RootView.swift in Sources */,
-				CB6D3F7B235B07CA00E65661 /* ModelNews.swift in Sources */,
 				CBA7271023DE79960094372B /* NoteLoading.swift in Sources */,
 				CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */,
 				CB0AED85232E5AF90047A8A0 /* SplashScreen.swift in Sources */,

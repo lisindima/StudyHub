@@ -7,14 +7,14 @@
 //
 
 import SwiftUI
-import KeyboardObserving
 import Firebase
+import KeyboardObserving
 
 struct MessageList: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var chatStore: ChatStore
-    //@ObservedObject var chatStore: ChatStore = ChatStore.shared
+    
     @State private var typeMessage: String = ""
     
     var titleChat: String
