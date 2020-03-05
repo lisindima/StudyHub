@@ -12,78 +12,77 @@ import Firebase
 
 struct MessageView: View {
     
+    @EnvironmentObject var sessionStore: SessionStore
+    
+    let currentUid = Auth.auth().currentUser!.uid
+    
     var message: String
     var timeMessage: String
+    var idUser: String
     var isRead: Bool
     
     var body: some View {
-        VStack(alignment: .trailing) {
-            Spacer()
-            HStack {
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 10, height: 10)
-                    .foregroundColor(.accentColor)
-                    .opacity(isRead == true ? 0.0 : 0.5)
-                    .padding(.top, 23)
+        Group {
+            if currentUid == idUser {
                 VStack(alignment: .trailing) {
-                    Text(message)
-                        .padding(10)
-                        .background(Color(UIColor.secondarySystemBackground))
-                        .cornerRadius(5)
-                }
-            }.padding(.bottom, -3)
-            HStack {
-                Spacer()
-                Text(timeMessage)
-                    .font(.system(size: 10))
-                    .foregroundColor(.secondary)
-            }.padding(.trailing, 3)
-        }
-        .fixedSize(horizontal: false, vertical: true)
-        .padding(.trailing)
-        .padding(.leading, 30)
-    }
-}
-
-struct MessageViewOther: View {
-    
-    @EnvironmentObject var sessionStore: SessionStore
-    
-    var message: String
-    var timeMessage: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                KFImage(URL(string: sessionStore.urlImageProfile))
-                    .placeholder {
-                        ActivityIndicator(styleSpinner: .medium)
-                    }
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                    .clipped()
-                    .frame(width: 37, height: 37)
-                VStack {
+                    Spacer()
                     HStack {
-                        Text(message)
-                            .padding(10)
-                            .background(Color(UIColor.secondarySystemBackground))
-                            .cornerRadius(5)
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 10, height: 10)
+                            .foregroundColor(.accentColor)
+                            .opacity(isRead == true ? 0.0 : 0.5)
+                            .padding(.top, 23)
+                        VStack(alignment: .trailing) {
+                            Text(message)
+                                .padding(10)
+                                .background(Color(UIColor.secondarySystemBackground))
+                                .cornerRadius(5)
+                        }
+                    }.padding(.bottom, -3)
+                    HStack {
                         Spacer()
-                    }.padding(.bottom, 3)
-                    HStack {
                         Text(timeMessage)
                             .font(.system(size: 10))
                             .foregroundColor(.secondary)
-                        Spacer()
-                    }.padding(.leading, 3)
+                    }.padding(.trailing, 3)
                 }
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.trailing)
+                .padding(.leading, 30)
+            } else {
+                VStack(alignment: .leading) {
+                    HStack {
+                        KFImage(URL(string: sessionStore.urlImageProfile))
+                            .placeholder {
+                                ActivityIndicator(styleSpinner: .medium)
+                        }
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .clipped()
+                        .frame(width: 37, height: 37)
+                        VStack {
+                            HStack {
+                                Text(message)
+                                    .padding(10)
+                                    .background(Color(UIColor.secondarySystemBackground))
+                                    .cornerRadius(5)
+                                Spacer()
+                            }.padding(.bottom, 3)
+                            HStack {
+                                Text(timeMessage)
+                                    .font(.system(size: 10))
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                            }.padding(.leading, 3)
+                        }
+                    }
+                }
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.leading)
+                .padding(.trailing, 30)
             }
         }
-        .fixedSize(horizontal: false, vertical: true)
-        .padding(.leading)
-        .padding(.trailing, 30)
     }
 }

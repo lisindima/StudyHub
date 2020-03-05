@@ -25,18 +25,11 @@ struct MessageList: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(chatStore.dataMessages.reversed()) { item in
-                    if self.currentUid == item.idUser {
-                        MessageView(message: item.message, timeMessage: item.dateMessage, isRead: item.isRead)
-                            .padding(.top, 6)
-                            .scaleEffect(x: -1.0, y: 1.0)
-                            .rotationEffect(.degrees(180))
-                    } else {
-                        MessageViewOther(message: item.message, timeMessage: item.dateMessage)
-                            .padding(.top, 6)
-                            .scaleEffect(x: -1.0, y: 1.0)
-                            .rotationEffect(.degrees(180))
-                    }
+                ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
+                    MessageView(message: item.message, timeMessage: item.dateMessage, idUser: item.idUser, isRead: item.isRead)
+                        .padding(.top, 6)
+                        .scaleEffect(x: -1.0, y: 1.0)
+                        .rotationEffect(.degrees(180))
                 }
             }
             .scaleEffect(x: -1.0, y: 1.0)
