@@ -56,6 +56,15 @@
         }
       },
       {
+        "package": "Purchases",
+        "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
+        "state": {
+          "branch": null,
+          "revision": "e6807ed1b711d822517e0c4cd2e6ea4469d08a37",
+          "version": "3.0.4"
+        }
+      },
+      {
         "package": "SPAlert",
         "repositoryURL": "https://github.com/ivanvorobei/SPAlert",
         "state": {

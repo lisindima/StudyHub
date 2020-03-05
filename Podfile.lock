@@ -301,7 +301,6 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - Purchases (3.0.4)
   - UnsplashPhotoPicker (1.1.0)
 
 DEPENDENCIES:
@@ -311,7 +310,6 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - Instabug
-  - Purchases
   - UnsplashPhotoPicker (from `https://github.com/lisindima/unsplash-photopicker-ios.git`)
 
 SPEC REPOS:
@@ -343,7 +341,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
-    - Purchases
 
 EXTERNAL SOURCES:
   UnsplashPhotoPicker:
@@ -382,9 +379,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  Purchases: 83f240aa8038abe1d4c7a821a5641e71280a550b
   UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
 
-PODFILE CHECKSUM: a5a6af7d5a5026c8b698ce09ae3aefb65f58c41d
+PODFILE CHECKSUM: e65431adf30c43a242707b128c6f8e9b9cdf2f0b
 
 COCOAPODS: 1.9.0
