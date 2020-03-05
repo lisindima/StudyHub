@@ -47,9 +47,9 @@ struct ChatList: View {
                             ListItem(
                                 numberUnreadMessages: self.$numberUnreadMessages,
                                 nameChat: item,
-                                lastMessageidUser: self.chatStore.dataMessages.last!.idUser,
-                                lastMessage: self.chatStore.dataMessages.last!.message,
-                                lastMessageDate: self.chatStore.dataMessages.last!.dateMessage
+                                lastMessageidUser: self.chatStore.dataMessages.last?.idUser ?? "",
+                                lastMessage: self.chatStore.dataMessages.last?.message ?? "Нет сообщений",
+                                lastMessageDate: self.chatStore.dataMessages.last?.dateMessage ?? ""
                             )
                         }
                     }

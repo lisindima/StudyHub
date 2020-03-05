@@ -172,13 +172,6 @@ enum StatusChat {
     case showChat
 }
 
-struct DataChat: Identifiable, Hashable {
-    var id: String
-    var user1: String
-    var user2: String
-    var dataMessages: [DataMessages]
-}
-
 struct DataMessages: Identifiable, Hashable {
     var id: String
     var user: String

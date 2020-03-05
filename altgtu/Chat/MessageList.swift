@@ -53,9 +53,3 @@ struct MessageList: View {
         .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
     }
 }
-
-struct MessageList_Previews: PreviewProvider {
-    static var previews: some View {
-        MessageList(titleChat: "test")
-    }
-}
