@@ -66,7 +66,7 @@ class LicenseStore: ObservableObject {
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
         .validate()
-        .responseDecodable(of: LicenseModel.self) { (response) in
+        .responseDecodable(of: LicenseModel.self) { response in
             guard let license = response.value else { return }
             self.licenseModel = license
             print("Лицензии загружены")

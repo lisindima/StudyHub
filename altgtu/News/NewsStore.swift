@@ -22,7 +22,7 @@ class NewsStore: ObservableObject {
     func loadNews() {
         AF.request(apiUrl + apiKey)
         .validate()
-        .responseDecodable(of: News.self) { (response) in
+        .responseDecodable(of: News.self) { response in
             guard let news = response.value else { return }
             self.articles = news.articles
         }
@@ -31,7 +31,7 @@ class NewsStore: ObservableObject {
     func fetchCategoryNews(category: String) {
         AF.request(apiUrl + apiKey + category)
         .validate()
-        .responseDecodable(of: News.self) { (response) in
+        .responseDecodable(of: News.self) { response in
             guard let news = response.value else { return }
             self.articles = news.articles
         }
