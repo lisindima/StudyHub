@@ -93,6 +93,7 @@ struct ChatList: View {
 
 struct ListItem: View {
     
+    @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Binding var numberUnreadMessages: Int
     
@@ -111,16 +112,18 @@ struct ListItem: View {
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .clipped()
-                Circle()
-                    .foregroundColor(colorScheme == .dark ? .black : .white)
-                    .frame(width: 15, height: 15)
-                    .offset(x: 17, y: 17)
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 9, height: 9)
-                    .foregroundColor(.green)
-                    .opacity(0.8)
-                    .offset(x: 17, y: 17)
+                if sessionStore.onlineUser {
+                    Circle()
+                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .frame(width: 15, height: 15)
+                        .offset(x: 17, y: 17)
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: 9, height: 9)
+                        .foregroundColor(.green)
+                        .opacity(0.8)
+                        .offset(x: 17, y: 17)
+                }
             }
             VStack(alignment: .leading) {
                 Text("Лисин Дмитрий")

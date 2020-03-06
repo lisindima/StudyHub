@@ -42,11 +42,14 @@ class SessionStore: NSObject, ObservableObject {
     @Published var choiseTypeBackroundProfile: Bool!
     @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
     @Published var setImageForBackroundProfile: String!
+    @Published var onlineUser: Bool = false
     @Published var darkThemeOverride: Bool = false {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
         }
     }
+    
+    static let shared = SessionStore()
     
     var handle: AuthStateDidChangeListenerHandle?
     
@@ -76,6 +79,7 @@ class SessionStore: NSObject, ObservableObject {
                     } else {
                         print("Пользователь \(user.uid) успешно вошёл!")
                         self.purchasesStore.listenPurchases()
+                        self.updateOnlineUser(onlineUser: true)
                     }
                 })
                 if let providerData = Auth.auth().currentUser?.providerData {
@@ -95,10 +99,34 @@ class SessionStore: NSObject, ObservableObject {
                 }
                 self.user = user
             } else {
+                self.updateOnlineUser(onlineUser: false)
                 Purchases.shared.reset { (info, error) in
                     print("Пользователь вышел!")
                 }
                 self.user = nil
+            }
+        }
+    }
+    
+    func updateOnlineUser(onlineUser: Bool) {
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        if currentUser != nil {
+            let docRef = db.collection("profile").document(currentUser!.uid)
+            docRef.updateData([
+                "onlineUser": onlineUser
+            ]) { err in
+                if let err = err {
+                    print("onlineUser не обновлен: \(err)")
+                } else {
+                    if onlineUser == true {
+                        print("Пользователь онлайн!")
+                        self.onlineUser = true
+                    } else {
+                        print("Пользователь оффлайн!")
+                        self.onlineUser = false
+                    }
+                }
             }
         }
     }
