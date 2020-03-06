@@ -20,7 +20,7 @@ struct MessageList: View {
     var titleChat: String
     
     let currentUid = Auth.auth().currentUser!.uid
-    let receiverFCMToken = "emv06dWAxkP_k8oQP-upAa:APA91bHpwQXeC6KxVtg1ysNVAE08nDVO0qY0MF8Zmzigdb3QEuVWzBWrwHC3mv4nd8AaObNS-Fm4arM8TGhre3134RabdQyUkniHnBJPx3kzyj1eh-AGOG5sI_A47zvBrdWd-hsoUGCc"
+    let receiverFCMToken = "fcpmytj8KEyKjYg5pYuVQt:APA91bG_Gds1llYdxSAZ2o5revrerR8_QNroPjA-8mfRelx08_PeCQ2xKykmonl_DGVYN3QIN97lvOGCJzSRCSbrL_ORiJ7rf8D-i2ujYw8hMP2TvMJl2xfYSTu_E47pzK20mCqzNH9B"
     
     var body: some View {
         VStack {

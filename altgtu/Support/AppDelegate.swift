@@ -13,14 +13,13 @@ import Instabug
 import Purchases
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, PurchasesDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf")
         Purchases.shared.delegate = self
         Purchases.debugLogsEnabled = true
         FirebaseApp.configure()
-        Messaging.messaging().delegate = self
         Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.shake])
         Instabug.trackUserSteps = false
         Instabug.reproStepsMode = .disable

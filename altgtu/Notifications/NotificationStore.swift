@@ -8,12 +8,14 @@
 
 import SwiftUI
 import Combine
+import Firebase
 import UserNotifications
 
 class NotificationStore: ObservableObject {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Published var enabled: UNAuthorizationStatus = .notDetermined
+    @Published var fcmToken: String = Messaging.messaging().fcmToken!
     
     static let shared = NotificationStore()
     var notifications = [Notification]()
@@ -43,6 +45,7 @@ class NotificationStore: ObservableObject {
                 }
             }
         }
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     func setNotification() -> Void {
@@ -78,6 +81,21 @@ class NotificationStore: ObservableObject {
                 self.scheduleNotifications()
             default:
                 break
+            }
+        }
+    }
+    
+    func updateFcmToken() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
+        docRef.updateData([
+            "fcmToken": fcmToken
+        ]) { err in
+            if let err = err {
+                print("fcmToken не обновлен: \(err)")
+            } else {
+                print("fcmToken обновлен!")
             }
         }
     }
