@@ -6,6 +6,7 @@ target 'altgtu' do
   use_frameworks!
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
   pod 'Firebase/Analytics'
