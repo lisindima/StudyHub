@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import SPAlert
 import Instabug
 import Purchases
 import PartialSheet
@@ -439,9 +438,6 @@ struct SettingView: View {
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Очистить кэш изображений") {
                             self.imageCacheStore.clearImageCache()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                SPAlert.present(title: "Кэш фотографий успешно очищен.", preset: .done)
-                            }
                         }.foregroundColor(.primary)
                     }
                 }

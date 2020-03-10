@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import SPAlert
 import Kingfisher
 
 class ImageCacheStore: ObservableObject {
@@ -39,7 +40,7 @@ class ImageCacheStore: ObservableObject {
         ImageCache.default.clearMemoryCache()
         ImageCache.default.clearDiskCache {
             self.calculateImageCache()
-            print("Кэш очищен")
+            SPAlert.present(title: "Кэш фотографий успешно очищен.", preset: .done)
         }
     }
 }
