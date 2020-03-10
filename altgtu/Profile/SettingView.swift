@@ -446,17 +446,17 @@ struct SettingView: View {
                     }
                 }
                 Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
-                    NavigationLink(destination: License()) {
-                        Image(systemName: "doc.plaintext")
-                            .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                        Text("Лицензии")
-                    }
                     NavigationLink(destination: Changelog()) {
                         Image(systemName: "wand.and.stars.inverse")
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Text("Что нового?")
+                    }
+                    NavigationLink(destination: License()) {
+                        Image(systemName: "doc.plaintext")
+                            .frame(width: 24)
+                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        Text("Лицензии")
                     }
                     HStack {
                         Image(systemName: "star")
