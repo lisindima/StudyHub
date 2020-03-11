@@ -14,12 +14,8 @@ struct LoadingLogic: View {
     
     @State private var access: Bool = false
     
-    func getData() {
-        sessionStore.getDataFromDatabaseListen()
-    }
-    
     var body: some View {
-        ZStack {
+        Group {
             if sessionStore.lastname != nil && sessionStore.boolCodeAccess == false {
                 Tabbed()
             } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess == true && access == true {
@@ -29,6 +25,6 @@ struct LoadingLogic: View {
             } else {
                 ActivityIndicator(styleSpinner: .large)
             }
-        }.onAppear(perform: getData)
+        }.onAppear(perform: sessionStore.getDataFromDatabaseListen)
     }
 }

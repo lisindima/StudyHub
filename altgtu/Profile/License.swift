@@ -60,16 +60,23 @@ struct LicenseDetail: View {
 class LicenseStore: ObservableObject {
     
     @Published var licenseModel: LicenseModel = [LicenseModelElement]()
+    @Published var licenseLoadingFailure: Bool = false
     
     static let shared = LicenseStore()
     
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
-        .validate()
-        .responseDecodable(of: LicenseModel.self) { response in
-            guard let license = response.value else { return }
-            self.licenseModel = license
-            print("Лицензии загружены")
+            .validate()
+            .responseDecodable(of: LicenseModel.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let license = response.value else { return }
+                    self.licenseModel = license
+                    print("Лицензии загружены")
+                case .failure(let error):
+                    self.licenseLoadingFailure = true
+                    print("Список лицензий не загружен: \(error.errorDescription!)")
+                }
         }
     }
 }

@@ -13,6 +13,7 @@ import Alamofire
 class NewsStore: ObservableObject {
     
     @Published var articles: [Articles] = []
+    @Published var newsLoadingFailure: Bool = false
     
     static let shared = NewsStore()
     
@@ -21,19 +22,31 @@ class NewsStore: ObservableObject {
     
     func loadNews() {
         AF.request(apiUrl + apiKey)
-        .validate()
-        .responseDecodable(of: News.self) { response in
-            guard let news = response.value else { return }
-            self.articles = news.articles
+            .validate()
+            .responseDecodable(of: News.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let news = response.value else { return }
+                    self.articles = news.articles
+                case .failure(let error):
+                    self.newsLoadingFailure = true
+                    print("Список новостей не загружен: \(error.errorDescription!)")
+                }
         }
     }
     
     func fetchCategoryNews(category: String) {
         AF.request(apiUrl + apiKey + category)
-        .validate()
-        .responseDecodable(of: News.self) { response in
-            guard let news = response.value else { return }
-            self.articles = news.articles
+            .validate()
+            .responseDecodable(of: News.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let news = response.value else { return }
+                    self.articles = news.articles
+                case .failure(let error):
+                    self.newsLoadingFailure = true
+                    print("Список новостей не загружен: \(error.errorDescription!)")
+                }
         }
     }
 }

@@ -13,16 +13,23 @@ import Alamofire
 class ScheduleStore: ObservableObject {
     
     @Published var scheduleModel: ScheduleModel = [ScheduleModelElement]()
+     @Published var scheduleLoadingFailure: Bool = false
     
     static let shared = ScheduleStore()
     
     func loadLesson() {
         AF.request("https://api.lisindmitriy.me/schedule")
-        .validate()
-        .responseDecodable(of: ScheduleModel.self) { response in
-            guard let schedule = response.value else { return }
-            self.scheduleModel = schedule
-            print("Расписание группы загружено")
+            .validate()
+            .responseDecodable(of: ScheduleModel.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let schedule = response.value else { return }
+                    self.scheduleModel = schedule
+                    print("Расписание группы загружено")
+                case .failure(let error):
+                    self.scheduleLoadingFailure = true
+                    print("Расписание группы не загружен: \(error.errorDescription!)")
+                }
         }
     }
 }
