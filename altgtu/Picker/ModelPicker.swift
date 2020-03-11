@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GroupModelElement: Codable, Hashable, Identifiable {
+struct GroupModelElement: Identifiable, Codable {
     let startYear: Int?
     let name: String
     let facultyID: String?
@@ -19,7 +19,7 @@ struct GroupModelElement: Codable, Hashable, Identifiable {
 
 typealias GroupModel = [GroupModelElement]
 
-struct FacultyModelElement: Codable, Hashable, Identifiable {
+struct FacultyModelElement: Identifiable, Codable {
     let id: String
     let name: String
 }

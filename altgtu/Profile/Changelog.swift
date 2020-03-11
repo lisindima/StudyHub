@@ -23,6 +23,9 @@ struct Changelog: View {
             if changelogStore.сhangelogModel.isEmpty {
                 ActivityIndicator(styleSpinner: .large)
                     .onAppear(perform: changelogStore.loadChangelog)
+            } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure == true {
+                Text("Нет подключения к интернету!")
+                    .bold()
             } else {
                 Form {
                     ForEach(changelogStore.сhangelogModel.sorted { $0.version > $1.version }, id: \.id) { changelog in
@@ -88,21 +91,28 @@ struct Changelog: View {
 class ChangelogStore: ObservableObject {
     
     @Published var сhangelogModel: ChangelogModel = [ChangelogModelElement]()
+    @Published var changelogLoadingFailure: Bool = false
     
     static let shared = ChangelogStore()
     
     func loadChangelog() {
         AF.request("https://api.lisindmitriy.me/changelog")
-        .validate()
-        .responseDecodable(of: ChangelogModel.self) { response in
-            guard let сhangelog = response.value else { return }
-            self.сhangelogModel = сhangelog
-            print("Список изменений загружен")
+            .validate()
+            .responseDecodable(of: ChangelogModel.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let сhangelog = response.value else { return }
+                    self.сhangelogModel = сhangelog
+                    print("Список изменений загружен")
+                case .failure(let error):
+                    self.changelogLoadingFailure = true
+                    print("Список изменений не загружен: \(error.errorDescription!)")
+                }
         }
     }
 }
 
-struct ChangelogModelElement: Codable, Hashable, Identifiable {
+struct ChangelogModelElement: Identifiable, Codable {
     let id: Int
     let version: String
     let dateBuild: String

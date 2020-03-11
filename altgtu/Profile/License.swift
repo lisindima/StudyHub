@@ -74,7 +74,7 @@ class LicenseStore: ObservableObject {
     }
 }
 
-struct LicenseModelElement: Codable, Hashable, Identifiable {
+struct LicenseModelElement: Identifiable, Codable {
     let id: Int
     let nameFramework: String
     let urlFramework: String

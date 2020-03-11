@@ -27,7 +27,7 @@ class ScheduleStore: ObservableObject {
     }
 }
 
-struct ScheduleModelElement: Codable, Hashable, Identifiable {
+struct ScheduleModelElement: Identifiable, Codable {
     let id: UUID = UUID()
     let week: Int
     let dayOfWeek: String
