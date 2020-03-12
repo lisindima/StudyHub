@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Firebase
+import KingfisherSwiftUI
 
 struct ChatList: View {
     
@@ -43,7 +44,7 @@ struct ChatList: View {
                     ForEach(self.chatStore.chatList.filter {
                         self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
                     }, id: \.self) { item in
-                        NavigationLink(destination: MessageList(titleChat: item)) {
+                        NavigationLink(destination: MessageList()) {
                             ListItem(
                                 numberUnreadMessages: self.$numberUnreadMessages,
                                 nameChat: item,
@@ -107,7 +108,10 @@ struct ListItem: View {
     var body: some View {
         HStack {
             ZStack {
-                Image("altIconApp")
+                KFImage(URL(string: sessionStore.urlImageProfile))
+                    .placeholder {
+                        ActivityIndicator(styleSpinner: .medium)
+                    }
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
