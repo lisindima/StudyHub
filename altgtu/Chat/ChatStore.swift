@@ -22,55 +22,47 @@ class ChatStore: ObservableObject {
     
     func loadMessageList() {
         let db = Firestore.firestore()
-        db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    db.collection("chatRoom").document(document.documentID).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { (querySnapshot, err) in
-                        if err != nil {
-                            print((err?.localizedDescription)!)
-                            return
-                        }
-                        for item in querySnapshot!.documentChanges {
-                            if item.type == .added {
-                                let id = item.document.documentID
-                                let user = item.document.get("user") as! String
-                                let message = item.document.get("message") as! String
-                                let idUser = item.document.get("idUser") as! String
-                                let timeStamp = item.document.get("dateMsg") as! Timestamp
-                                let aDate = timeStamp.dateValue()
-                                let formatter = DateFormatter()
-                                formatter.dateFormat = "HH:mm"
-                                let dateMessage = formatter.string(from: aDate)
-                                let isRead = item.document.get("isRead") as! Bool
-                                self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
-                            }
-                            if item.type == .modified {
-                                self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
-                                    var data = eachData
-                                    if data.id == item.document.documentID {
-                                        data.user = item.document.get("user") as! String
-                                        data.message = item.document.get("message") as! String
-                                        data.idUser = item.document.get("idUser") as! String
-                                        data.isRead = item.document.get("isRead") as! Bool
-                                        return data
-                                    } else {
-                                        return eachData
-                                    }
-                                }
-                            }
-                            if item.type == .removed {
-                                var removeRowIndex = 0
-                                for index in self.dataMessages.indices {
-                                    if self.dataMessages[index].id == item.document.documentID {
-                                        removeRowIndex = index
-                                    }
-                                }
-                                self.dataMessages.remove(at: removeRowIndex)
-                            }
+        db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { (querySnapshot, err) in
+            if err != nil {
+                print((err?.localizedDescription)!)
+                return
+            }
+            for item in querySnapshot!.documentChanges {
+                if item.type == .added {
+                    let id = item.document.documentID
+                    let user = item.document.get("user") as! String
+                    let message = item.document.get("message") as! String
+                    let idUser = item.document.get("idUser") as! String
+                    let timeStamp = item.document.get("dateMsg") as! Timestamp
+                    let aDate = timeStamp.dateValue()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH:mm"
+                    let dateMessage = formatter.string(from: aDate)
+                    let isRead = item.document.get("isRead") as! Bool
+                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
+                }
+                if item.type == .modified {
+                    self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
+                        var data = eachData
+                        if data.id == item.document.documentID {
+                            data.user = item.document.get("user") as! String
+                            data.message = item.document.get("message") as! String
+                            data.idUser = item.document.get("idUser") as! String
+                            data.isRead = item.document.get("isRead") as! Bool
+                            return data
+                        } else {
+                            return eachData
                         }
                     }
+                }
+                if item.type == .removed {
+                    var removeRowIndex = 0
+                    for index in self.dataMessages.indices {
+                        if self.dataMessages[index].id == item.document.documentID {
+                            removeRowIndex = index
+                        }
+                    }
+                    self.dataMessages.remove(at: removeRowIndex)
                 }
             }
         }
