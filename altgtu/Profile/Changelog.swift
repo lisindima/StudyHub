@@ -20,12 +20,13 @@ struct Changelog: View {
     
     var body: some View {
         VStack {
-            if changelogStore.сhangelogModel.isEmpty {
+            if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure == false {
                 ActivityIndicator(styleSpinner: .large)
                     .onAppear(perform: changelogStore.loadChangelog)
             } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure == true {
                 Text("Нет подключения к интернету!")
-                    .bold()
+                    .fontWeight(.bold)
+                    .onAppear(perform: changelogStore.loadChangelog)
             } else {
                 Form {
                     ForEach(changelogStore.сhangelogModel.sorted { $0.version > $1.version }, id: \.id) { changelog in

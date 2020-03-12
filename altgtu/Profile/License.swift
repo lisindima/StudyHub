@@ -16,8 +16,12 @@ struct License: View {
     
     var body: some View {
         VStack {
-            if licenseStore.licenseModel.isEmpty {
+            if licenseStore.licenseModel.isEmpty && licenseStore.licenseLoadingFailure == false {
                 ActivityIndicator(styleSpinner: .large)
+                    .onAppear(perform: licenseStore.loadLicense)
+            } else if licenseStore.licenseModel.isEmpty && licenseStore.licenseLoadingFailure == true {
+                Text("Нет подключения к интернету!")
+                    .fontWeight(.bold)
                     .onAppear(perform: licenseStore.loadLicense)
             } else {
                 Form {
