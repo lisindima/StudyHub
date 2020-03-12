@@ -47,7 +47,7 @@ class ChatStore: ObservableObject {
                                 self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
                             }
                             if item.type == .modified {
-                                self.dataMessages = self.dataMessages.map { (eachData) -> DataMessages in
+                                self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
                                     var data = eachData
                                     if data.id == item.document.documentID {
                                         data.user = item.document.get("user") as! String
@@ -59,6 +59,15 @@ class ChatStore: ObservableObject {
                                         return eachData
                                     }
                                 }
+                            }
+                            if item.type == .removed {
+                                var removeRowIndex = 0
+                                for index in self.dataMessages.indices {
+                                    if self.dataMessages[index].id == item.document.documentID {
+                                        removeRowIndex = index
+                                    }
+                                }
+                                self.dataMessages.remove(at: removeRowIndex)
                             }
                         }
                     }
