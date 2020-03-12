@@ -96,6 +96,7 @@ struct ListItem: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @Binding var numberUnreadMessages: Int
     
     let currentUid = Auth.auth().currentUser?.uid

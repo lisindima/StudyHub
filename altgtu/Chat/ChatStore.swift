@@ -46,6 +46,20 @@ class ChatStore: ObservableObject {
                                 let isRead = item.document.get("isRead") as! Bool
                                 self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
                             }
+                            if item.type == .modified {
+                                self.dataMessages = self.dataMessages.map { (eachData) -> DataMessages in
+                                    var data = eachData
+                                    if data.id == item.document.documentID {
+                                        data.user = item.document.get("user") as! String
+                                        data.message = item.document.get("message") as! String
+                                        data.idUser = item.document.get("idUser") as! String
+                                        data.isRead = item.document.get("isRead") as! Bool
+                                        return data
+                                    } else {
+                                        return eachData
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -86,15 +100,18 @@ class ChatStore: ObservableObject {
         statusChat = .loading
         let db = Firestore.firestore()
         db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
-            if err != nil {
-                self.statusChat = .emptyChat
-                print((err?.localizedDescription)!)
-                return
-            } else if querySnapshot!.isEmpty {
-                self.statusChat = .emptyChat
-            } else if let querySnapshot = querySnapshot {
-                self.chatList = querySnapshot.documents.map { $0.documentID }
-                self.statusChat = .showChat
+            for document in querySnapshot!.documents {
+                print("\(document.documentID) => \(document.data())")
+                if err != nil {
+                    self.statusChat = .emptyChat
+                    print((err?.localizedDescription)!)
+                    return
+                } else if querySnapshot!.isEmpty {
+                    self.statusChat = .emptyChat
+                } else if let querySnapshot = querySnapshot {
+                    self.chatList = querySnapshot.documents.map { $0.documentID }
+                    self.statusChat = .showChat
+                }
             }
         }
     }
