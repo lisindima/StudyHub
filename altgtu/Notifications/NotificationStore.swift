@@ -15,7 +15,7 @@ class NotificationStore: ObservableObject {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Published var enabled: UNAuthorizationStatus = .notDetermined
-    @Published var fcmToken: String = Messaging.messaging().fcmToken!
+    @Published var fcmToken: String = Messaging.messaging().fcmToken ?? "Ошибка"
     
     static let shared = NotificationStore()
     var notifications = [Notification]()

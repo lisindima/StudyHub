@@ -35,11 +35,14 @@ class ChatStore: ObservableObject {
                     let idUser = item.document.get("idUser") as! String
                     let timeStamp = item.document.get("dateMsg") as! Timestamp
                     let aDate = timeStamp.dateValue()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "HH:mm"
-                    let dateMessage = formatter.string(from: aDate)
+                    let dateFormatterHour = DateFormatter()
+                    dateFormatterHour.dateFormat = "HH:mm"
+                    let dateMessage = dateFormatterHour.string(from: aDate)
+                    let dateFormatterFull = DateFormatter()
+                    dateFormatterFull.dateFormat = "dd.MM.yyyy"
+                    let dateMessageFull = dateFormatterFull.string(from: aDate)
                     let isRead = item.document.get("isRead") as! Bool
-                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
+                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, dateMessageFull: dateMessageFull, isRead: isRead))
                 }
                 if item.type == .modified {
                     self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
@@ -91,7 +94,7 @@ class ChatStore: ObservableObject {
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
-            }else {
+            } else {
                 print("Сообщения прочитаны!")
             }
         }
@@ -101,18 +104,15 @@ class ChatStore: ObservableObject {
         statusChat = .loading
         let db = Firestore.firestore()
         db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
-            for document in querySnapshot!.documents {
-                print("\(document.documentID) => \(document.data())")
-                if err != nil {
-                    self.statusChat = .emptyChat
-                    print((err?.localizedDescription)!)
-                    return
-                } else if querySnapshot!.isEmpty {
-                    self.statusChat = .emptyChat
-                } else if let querySnapshot = querySnapshot {
-                    self.chatList = querySnapshot.documents.map { $0.documentID }
-                    self.statusChat = .showChat
-                }
+            if err != nil {
+                self.statusChat = .emptyChat
+                print((err?.localizedDescription)!)
+                return
+            } else if querySnapshot!.isEmpty {
+                self.statusChat = .emptyChat
+            } else if let querySnapshot = querySnapshot {
+                self.chatList = querySnapshot.documents.map { $0.documentID }
+                self.statusChat = .showChat
             }
         }
     }
@@ -180,5 +180,6 @@ struct DataMessages: Identifiable {
     var message: String
     var idUser: String
     var dateMessage: String
+    var dateMessageFull: String
     var isRead: Bool = false
 }

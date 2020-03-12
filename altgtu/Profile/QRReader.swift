@@ -7,10 +7,10 @@
 //
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
 import Firebase
 import CodeScanner
 import KingfisherSwiftUI
+import CoreImage.CIFilterBuiltins
 
 struct QRReader: View {
     
@@ -20,6 +20,19 @@ struct QRReader: View {
     let currentUid = Auth.auth().currentUser?.uid
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
+    
+    func getUserInfoBeforeScanQRCode(code: String) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(code)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
     
     func generatedQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
@@ -40,6 +53,7 @@ struct QRReader: View {
                         switch result {
                         case .success(let code):
                             print("Found code: \(code)")
+                            self.getUserInfoBeforeScanQRCode(code: code)
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
@@ -76,15 +90,15 @@ struct QRReader: View {
                         KFImage(URL(string: sessionStore.urlImageProfile))
                             .placeholder {
                                 ActivityIndicator(styleSpinner: .medium)
-                            }
-                            .resizable()
-                            .clipShape(Circle())
-                            .clipped()
-                            .frame(width: 50, height: 50)
+                        }
+                        .resizable()
+                        .clipShape(Circle())
+                        .clipped()
+                        .frame(width: 50, height: 50)
                     }
                     Text("Сканируйте этот QR-код")
                     Text("приложением АлтГТУ")
-                }.font(.system(.body, design: .rounded))
+                }
             }
             VStack {
                 Picker("", selection: $choiseView) {

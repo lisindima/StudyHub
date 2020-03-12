@@ -7,8 +7,8 @@
 //
 
 import SwiftUI
-import KingfisherSwiftUI
 import Firebase
+import KingfisherSwiftUI
 
 struct MessageView: View {
     
@@ -17,7 +17,7 @@ struct MessageView: View {
     let currentUid = Auth.auth().currentUser!.uid
     
     var message: String
-    var timeMessage: String
+    var dateMessage: String
     var idUser: String
     var isRead: Bool
     
@@ -42,7 +42,7 @@ struct MessageView: View {
                     }.padding(.bottom, -3)
                     HStack {
                         Spacer()
-                        Text(timeMessage)
+                        Text(dateMessage)
                             .font(.system(size: 10))
                             .foregroundColor(.secondary)
                     }.padding(.trailing, 3)
@@ -71,7 +71,7 @@ struct MessageView: View {
                                 Spacer()
                             }.padding(.bottom, 3)
                             HStack {
-                                Text(timeMessage)
+                                Text(dateMessage)
                                     .font(.system(size: 10))
                                     .foregroundColor(.secondary)
                                 Spacer()
