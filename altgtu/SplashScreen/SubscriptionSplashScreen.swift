@@ -50,7 +50,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingMonthlySubscription = false
-                            self.purchasesStore.getSubscriptionsExpirationDate()
+                            self.purchasesStore.purchasesIsDateInToday()
                             SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
@@ -83,7 +83,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             self.purchasesStore.purchasesInfo = purchaserInfo
                             self.loadingAnnualSubscription = false
-                            self.purchasesStore.getSubscriptionsExpirationDate()
+                            self.purchasesStore.purchasesIsDateInToday()
                             SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
                         }
                     }
@@ -110,7 +110,7 @@ struct SubscriptionSplashScreen: View {
                             } else {
                                 self.purchasesStore.purchasesInfo = purchaserInfo
                                 SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
-                                self.purchasesStore.getSubscriptionsExpirationDate()
+                                self.purchasesStore.purchasesIsDateInToday()
                                 print("Обновляем подписки!")
                             }
                         }

@@ -12,18 +12,9 @@ import Purchases
 class PurchasesStore: ObservableObject {
     
     @Published var purchasesInfo: Purchases.PurchaserInfo?
-    @Published var subscribeExpirationDate: String = ""
-    @Published var subscribeExpirationDateHour: String = ""
+    @Published var purchasesSameDay: Bool = false
     
     static let shared = PurchasesStore()
-    
-    let stringPurchasesDate: String = {
-        var currentDate: Date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
-        let createStringDate = dateFormatter.string(from: currentDate)
-        return createStringDate
-    }()
     
     func listenPurchases() {
         Purchases.shared.purchaserInfo { (purchaserInfo, error) in
@@ -31,28 +22,17 @@ class PurchasesStore: ObservableObject {
                 print(error.localizedDescription)
             } else {
                 self.purchasesInfo = purchaserInfo
-                self.getSubscriptionsExpirationDate()
+                self.purchasesIsDateInToday()
                 print("Смотрим подписки!")
             }
         }
     }
     
-    func getSubscriptionsExpirationDate() {
+    func purchasesIsDateInToday() {
         if !purchasesInfo!.activeSubscriptions.isEmpty {
-            subscribeExpirationDate = {
-                let dateFormatter = DateFormatter()
-                dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yyyy")
-                let createStringDate = dateFormatter.string(from: purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
-                return createStringDate
-            }()
-            if stringPurchasesDate == subscribeExpirationDate {
-                subscribeExpirationDateHour = {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.setLocalizedDateFormatFromTemplate("HH-mm")
-                    let createStringDate = dateFormatter.string(from: purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
-                    return createStringDate
-                }()
-            }
+            let isToday = Calendar.current.isDateInToday(purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
+            purchasesSameDay = isToday
+            print("Подписка продлиться сегодня: \(purchasesSameDay)")
         }
     }
 }
