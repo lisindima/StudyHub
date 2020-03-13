@@ -92,7 +92,6 @@
 		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
 		CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB01FE523B4553E001D4CBB /* NoteView.swift */; };
 		CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */; };
-		CBB273F123CD868F00030050 /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB273F023CD868F00030050 /* PencilView.swift */; };
 		CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */; };
 		CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA4C4F23F684A60018168D /* StoreKit.framework */; };
 		CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA4C5223F7FE7E0018168D /* Alamofire */; };
@@ -263,7 +262,6 @@
 		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		CBB01FE523B4553E001D4CBB /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvas.swift; sourceTree = "<group>"; };
-		CBB273F023CD868F00030050 /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSplashScreen.swift; sourceTree = "<group>"; };
 		CBCA4C4F23F684A60018168D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CBCE55242407A88C00B8B368 /* PermissionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionSplashScreen.swift; sourceTree = "<group>"; };
@@ -648,7 +646,6 @@
 			isa = PBXGroup;
 			children = (
 				CB5D257A240E080E00F5643F /* Bert */,
-				CBB273F023CD868F00030050 /* PencilView.swift */,
 				CBB01FE523B4553E001D4CBB /* NoteView.swift */,
 				CB9C08BB23B9DA24006743F9 /* NoteStore.swift */,
 				CBA7270B23DE78E50094372B /* NoteList.swift */,
@@ -960,7 +957,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBDE62952352129E00E588EC /* PickerStore.swift in Sources */,
-				CBB273F123CD868F00030050 /* PencilView.swift in Sources */,
 				CB6D3F7F235B118200E65661 /* CardList.swift in Sources */,
 				CB97AFB523E91FF400921F0F /* PrivacySplashScreen.swift in Sources */,
 				CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */,

@@ -45,7 +45,8 @@ struct NewNote: View {
                 }
             }
             .sheet(isPresented: $showPencilView) {
-                PencilView()
+                PencilKitCanvas()
+                    .edgesIgnoringSafeArea(.all)
             }
             .navigationBarTitle("Новая заметка", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {

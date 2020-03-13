@@ -98,6 +98,7 @@ struct ListItem: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @ObservedObject var dateStore: DateStore = DateStore.shared
     @Binding var numberUnreadMessages: Int
+    @State private var lastMessageIsToday: Bool = false
     
     let currentUid = Auth.auth().currentUser?.uid
     
@@ -106,17 +107,22 @@ struct ListItem: View {
     var lastMessage: String
     var lastMessageDate: Date
     
+    private func chatIsDateInToday() {
+        let isToday = Calendar.current.isDateInToday(lastMessageDate)
+        lastMessageIsToday = isToday
+    }
+    
     var body: some View {
         HStack {
             ZStack {
                 KFImage(URL(string: sessionStore.urlImageProfile))
                     .placeholder {
                         ActivityIndicator(styleSpinner: .medium)
-                    }
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                    .clipped()
+                }
+                .resizable()
+                .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .clipped()
                 if sessionStore.onlineUser {
                     Circle()
                         .foregroundColor(colorScheme == .dark ? .black : .white)
@@ -139,7 +145,7 @@ struct ListItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(lastMessageDate, formatter: dateStore.dateHour)")
+                Text("\(lastMessageDate, formatter: lastMessageIsToday ? dateStore.dateHour : dateStore.dateDay)")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")
@@ -147,6 +153,6 @@ struct ListItem: View {
                     .foregroundColor(.accentColor)
                     .opacity(numberUnreadMessages >= 1 ? 1.0 : 0.0)
             }
-        }
+        }.onAppear(perform: chatIsDateInToday)
     }
 }
