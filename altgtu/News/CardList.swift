@@ -12,19 +12,12 @@ import KingfisherSwiftUI
 struct CardList: View {
     
     @ObservedObject var newsStore: NewsStore = NewsStore.shared
+    @ObservedObject var dateStore: DateStore = DateStore.shared
     @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
     @State private var selectedTab: String = "Популярное"
     @State private var news: Array = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
-    
-    private let stringDate: String = {
-        var currentDate: Date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
-        let createStringDate = dateFormatter.string(from: currentDate)
-        return createStringDate
-    }()
     
     var body: some View {
         Group {
@@ -46,7 +39,7 @@ struct CardList: View {
                     ScrollView(showsIndicators: false) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("\(stringDate)".uppercased())
+                                Text("\(dateStore.stringDate)".uppercased())
                                     .font(.system(size: 13))
                                     .bold()
                                     .foregroundColor(.secondary)

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import Firebase
 
@@ -34,15 +33,9 @@ class ChatStore: ObservableObject {
                     let message = item.document.get("message") as! String
                     let idUser = item.document.get("idUser") as! String
                     let timeStamp = item.document.get("dateMsg") as! Timestamp
-                    let aDate = timeStamp.dateValue()
-                    let dateFormatterHour = DateFormatter()
-                    dateFormatterHour.dateFormat = "HH:mm"
-                    let dateMessage = dateFormatterHour.string(from: aDate)
-                    let dateFormatterFull = DateFormatter()
-                    dateFormatterFull.dateFormat = "dd.MM.yyyy"
-                    let dateMessageFull = dateFormatterFull.string(from: aDate)
+                    let dateMessage = timeStamp.dateValue()
                     let isRead = item.document.get("isRead") as! Bool
-                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, dateMessageFull: dateMessageFull, isRead: isRead))
+                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
                 }
                 if item.type == .modified {
                     self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
@@ -179,7 +172,6 @@ struct DataMessages: Identifiable {
     var user: String
     var message: String
     var idUser: String
-    var dateMessage: String
-    var dateMessageFull: String
+    var dateMessage: Date
     var isRead: Bool = false
 }

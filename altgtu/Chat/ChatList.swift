@@ -50,7 +50,7 @@ struct ChatList: View {
                                 nameChat: item,
                                 lastMessageidUser: self.chatStore.dataMessages.last?.idUser ?? "",
                                 lastMessage: self.chatStore.dataMessages.last?.message ?? "Нет сообщений",
-                                lastMessageDate: self.chatStore.dataMessages.last?.dateMessage ?? ""
+                                lastMessageDate: self.chatStore.dataMessages.last!.dateMessage
                             )
                         }
                     }
@@ -96,7 +96,7 @@ struct ListItem: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+    @ObservedObject var dateStore: DateStore = DateStore.shared
     @Binding var numberUnreadMessages: Int
     
     let currentUid = Auth.auth().currentUser?.uid
@@ -104,7 +104,7 @@ struct ListItem: View {
     var nameChat: String
     var lastMessageidUser: String
     var lastMessage: String
-    var lastMessageDate: String
+    var lastMessageDate: Date
     
     var body: some View {
         HStack {
@@ -139,7 +139,7 @@ struct ListItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(lastMessageDate)")
+                Text("\(lastMessageDate, formatter: dateStore.dateHour)")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")

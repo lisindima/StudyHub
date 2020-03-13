@@ -54,6 +54,7 @@
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* ProfileImage.swift */; };
+		CB56F589241B3A3900868B09 /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CB5D257C240E084F00F5643F /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257B240E084F00F5643F /* BERT.swift */; };
 		CB5D257E240E08B000F5643F /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257D240E08B000F5643F /* BERTInput.swift */; };
 		CB5D2580240E08E800F5643F /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257F240E08E800F5643F /* BERTOutput.swift */; };
@@ -232,6 +233,7 @@
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		CB56F588241B3A3900868B09 /* DateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStore.swift; sourceTree = "<group>"; };
 		CB5D257B240E084F00F5643F /* BERT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
 		CB5D257D240E08B000F5643F /* BERTInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
 		CB5D257F240E08E800F5643F /* BERTOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
+				CB56F587241B39F900868B09 /* Date */,
 				CB179AC423CC079C00424FD2 /* NFC */,
 				CB31F0BE23FEC194003EF59D /* Purchases */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
@@ -601,6 +604,14 @@
 				CBDE629223520D2600E588EC /* ModelPicker.swift */,
 			);
 			path = Picker;
+			sourceTree = "<group>";
+		};
+		CB56F587241B39F900868B09 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				CB56F588241B3A3900868B09 /* DateStore.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 		CB5D257A240E080E00F5643F /* Bert */ = {
@@ -961,6 +972,7 @@
 				CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* MessageList.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* ScheduleList.swift in Sources */,
+				CB56F589241B3A3900868B09 /* DateStore.swift in Sources */,
 				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */,

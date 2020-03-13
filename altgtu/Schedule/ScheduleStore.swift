@@ -13,7 +13,7 @@ import Alamofire
 class ScheduleStore: ObservableObject {
     
     @Published var scheduleModel: ScheduleModel = [ScheduleModelElement]()
-     @Published var scheduleLoadingFailure: Bool = false
+    @Published var scheduleLoadingFailure: Bool = false
     
     static let shared = ScheduleStore()
     

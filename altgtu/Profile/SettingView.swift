@@ -32,6 +32,7 @@ struct SettingView: View {
     @ObservedObject var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
+    @ObservedObject var dateStore: DateStore = DateStore.shared
     
     private var appVersionView: some View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
@@ -41,18 +42,6 @@ struct SettingView: View {
             return Text("#chad")
         }
     }
-    
-    private let purchasesDataHour: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter
-    }()
-    
-    private let purchasesDataDay: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        return dateFormatter
-    }()
     
     private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
 
@@ -114,11 +103,11 @@ struct SettingView: View {
                                     Text("Отменить подписку")
                                         .foregroundColor(.primary)
                                     if purchasesStore.purchasesSameDay {
-                                        Text("Подписка продлится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: purchasesDataHour)")
+                                        Text("Подписка продлится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateHour)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     } else {
-                                        Text("Подписка продлится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: purchasesDataDay)")
+                                        Text("Подписка продлится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateDay)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     }

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import Firebase
 import Alamofire

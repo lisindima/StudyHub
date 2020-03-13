@@ -13,11 +13,12 @@ import KingfisherSwiftUI
 struct MessageView: View {
     
     @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var dateStore: DateStore = DateStore.shared
     
     let currentUid = Auth.auth().currentUser!.uid
     
     var message: String
-    var dateMessage: String
+    var dateMessage: Date
     var idUser: String
     var isRead: Bool
     
@@ -42,7 +43,7 @@ struct MessageView: View {
                     }.padding(.bottom, -3)
                     HStack {
                         Spacer()
-                        Text(dateMessage)
+                        Text("\(dateMessage, formatter: dateStore.dateHour)")
                             .font(.system(size: 10))
                             .foregroundColor(.secondary)
                     }.padding(.trailing, 3)
@@ -71,7 +72,7 @@ struct MessageView: View {
                                 Spacer()
                             }.padding(.bottom, 3)
                             HStack {
-                                Text(dateMessage)
+                                Text("\(dateMessage, formatter: dateStore.dateHour)")
                                     .font(.system(size: 10))
                                     .foregroundColor(.secondary)
                                 Spacer()

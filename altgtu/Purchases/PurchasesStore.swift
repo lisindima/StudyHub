@@ -6,7 +6,7 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
+import Combine
 import Purchases
 
 class PurchasesStore: ObservableObject {
