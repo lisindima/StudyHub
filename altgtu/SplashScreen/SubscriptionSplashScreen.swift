@@ -7,142 +7,14 @@
 //
 
 import SwiftUI
-import SPAlert
-import Purchases
 
 struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     
-    @State private var offering: Purchases.Offering?
-    @State private var offeringId: String?
-    @State private var showAlertSubscription: Bool = false
     @State private var loadingMonthlySubscription: Bool = false
     @State private var loadingAnnualSubscription: Bool = false
-    @State private var setAlertMessage: SetAlertMessage = .error
-    
-    enum SetAlertMessage {
-        case error
-    }
-    
-    func buyMonthSubscription() {
-        loadingMonthlySubscription = true
-        let packageMonth = offering?.monthly
-        Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            if purchaserInfo?.entitlements.active.first != nil {
-                if let error = error {
-                    if userCancelled == true {
-                        self.loadingMonthlySubscription = false
-                        print("Отменено пользователем!")
-                    } else {
-                        self.loadingMonthlySubscription = false
-                        SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                        print(error.localizedDescription)
-                    }
-                } else {
-                    Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                        if let error = error {
-                            self.loadingMonthlySubscription = false
-                            self.setAlertMessage = .error
-                            self.showAlertSubscription = true
-                            print(error.localizedDescription)
-                        } else {
-                            self.purchasesStore.purchasesInfo = purchaserInfo
-                            self.loadingMonthlySubscription = false
-                            self.purchasesStore.purchasesIsDateInToday()
-                            SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func buyAnnualSubscription() {
-        loadingAnnualSubscription = true
-        let packageMonth = offering?.annual
-        Purchases.shared.purchasePackage(packageMonth!) { (transaction, purchaserInfo, error, userCancelled) in
-            if purchaserInfo?.entitlements.active.first != nil {
-                if let error = error {
-                    if userCancelled == true {
-                        self.loadingAnnualSubscription = false
-                        print("Отменено пользователем!")
-                    } else {
-                        self.loadingAnnualSubscription = false
-                        SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                        print(error.localizedDescription)
-                    }
-                } else {
-                    Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                        if let error = error {
-                            self.loadingAnnualSubscription = false
-                            self.setAlertMessage = .error
-                            self.showAlertSubscription = true
-                            print(error.localizedDescription)
-                        } else {
-                            self.purchasesStore.purchasesInfo = purchaserInfo
-                            self.loadingAnnualSubscription = false
-                            self.purchasesStore.purchasesIsDateInToday()
-                            SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func restoreSubscription() {
-        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if let purchaserInfo = purchaserInfo {
-                    if purchaserInfo.entitlements.active.isEmpty {
-                        print("Restore Unsuccessful")
-                        SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
-                    } else {
-                        Purchases.shared.purchaserInfo { (purchaserInfo, error) in
-                            if let error = error {
-                                self.setAlertMessage = .error
-                                self.showAlertSubscription = true
-                                print(error.localizedDescription)
-                            } else {
-                                self.purchasesStore.purchasesInfo = purchaserInfo
-                                SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
-                                self.purchasesStore.purchasesIsDateInToday()
-                                print("Обновляем подписки!")
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func fetchProduct() {
-        Purchases.shared.offerings { (offerings, error) in
-            if let offeringId = self.offeringId {
-                self.offering = offerings?.offering(identifier: offeringId)
-            } else {
-                self.offering = offerings?.current
-            }
-        }
-    }
-    
-    var titleAlert: Text {
-        switch setAlertMessage {
-        case .error:
-            return Text("Ошибка!")
-        }
-    }
-    
-    var messageAlert: Text {
-        switch setAlertMessage {
-        case .error:
-            return Text("Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.")
-        }
-    }
     
     var body: some View {
         VStack {
@@ -157,7 +29,9 @@ struct SubscriptionSplashScreen: View {
             }
             Spacer()
             HStack {
-                Button(action: buyMonthSubscription) {
+                Button(action: {
+                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
+                }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
@@ -169,13 +43,15 @@ struct SubscriptionSplashScreen: View {
                                 Text("Ежемесячно")
                                     .bold()
                                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-                                Text("75,00 ₽")
+                                Text(purchasesStore.monthlyPrice)
                                     .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             }
                         }
                     }
                 }.padding(.trailing, 4)
-                Button(action: buyAnnualSubscription) {
+                Button(action: {
+                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
+                }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -187,7 +63,7 @@ struct SubscriptionSplashScreen: View {
                                 Text("Ежегодно")
                                     .bold()
                                     .foregroundColor(.white)
-                                Text("699,00 ₽")
+                                Text(purchasesStore.annualPrice)
                                     .foregroundColor(.white)
                             }
                         }
@@ -197,7 +73,7 @@ struct SubscriptionSplashScreen: View {
             .padding(.top, 8)
             .padding(.horizontal)
             HStack {
-                Button(action: restoreSubscription) {
+                Button(action: purchasesStore.restoreSubscription) {
                     Text("Восстановить платеж")
                         .font(.footnote)
                         .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
@@ -224,10 +100,7 @@ struct SubscriptionSplashScreen: View {
                 }
             }.padding(.vertical)
         }
-        .onAppear(perform: fetchProduct)
-        .alert(isPresented: $showAlertSubscription) {
-            Alert(title: titleAlert, message: messageAlert, dismissButton: .default(Text("Закрыть")))
-        }
+        .onAppear(perform: purchasesStore.fetchProduct)
     }
 }
 
