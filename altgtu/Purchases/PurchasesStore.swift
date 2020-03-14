@@ -26,11 +26,15 @@ class PurchasesStore: ObservableObject {
             if let error = error {
                 print(error.localizedDescription)
             }
-            self.offering = offerings?.current
-            for package in self.offering!.availablePackages {
-                let packageAnnualPrice = self.offering?.annual
+            guard let offering = offerings?.current else {
+                print("No current offering configured")
+                return
+            }
+            self.offering = offering
+            for package in offering.availablePackages {
+                let packageAnnualPrice = offering.annual
                 self.annualPrice = packageAnnualPrice!.localizedPriceString
-                let packageMonthlyPrice = self.offering?.monthly
+                let packageMonthlyPrice = offering.monthly
                 self.monthlyPrice = packageMonthlyPrice!.localizedPriceString
                 print("Продукт: \(package.product.localizedDescription), цена: \(package.localizedPriceString)")
             }

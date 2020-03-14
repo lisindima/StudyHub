@@ -50,7 +50,7 @@ struct ChatList: View {
                                 nameChat: item,
                                 lastMessageidUser: self.chatStore.dataMessages.last?.idUser ?? "",
                                 lastMessage: self.chatStore.dataMessages.last?.message ?? "Нет сообщений",
-                                lastMessageDate: self.chatStore.dataMessages.last!.dateMessage
+                                lastMessageDate: self.chatStore.dataMessages.last?.dateMessage ?? Date()
                             )
                         }
                     }
