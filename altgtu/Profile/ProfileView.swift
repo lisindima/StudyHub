@@ -109,7 +109,6 @@ struct ProfileView: View {
                     print("Сессии нет, данные не сохраняются")
                 } else {
                     self.sessionStore.updateDataFromDatabase()
-                    self.sessionStore.settingUserInstabug()
                     self.pickerStore.updateDataFromDatabasePicker()
                 }
             }, content: {

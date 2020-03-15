@@ -50,10 +50,7 @@ struct Tabbed: View {
         }
         .banner(isPresented: $sessionStore.showBanner)
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
-        .onAppear {
-            self.sessionStore.settingUserInstabug()
-            self.notificationStore.updateFcmToken()
-        }
+        .onAppear(perform: notificationStore.updateFcmToken)
     }
 }
 

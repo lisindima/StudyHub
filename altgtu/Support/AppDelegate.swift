@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import Firebase
-import Instabug
 import Purchases
 
 @UIApplicationMain
@@ -20,13 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
         Purchases.shared.delegate = self
         Purchases.debugLogsEnabled = true
         FirebaseApp.configure()
-        Instabug.start(withToken: "ca8e774a198603b2bdd7a94fc7963b16", invocationEvents: [.shake])
-        Instabug.trackUserSteps = false
-        Instabug.reproStepsMode = .disable
-        Instabug.tintColor = .systemIndigo
-        BugReporting.shouldCaptureViewHierarchy = false
-        BugReporting.promptOptionsEnabledReportTypes = [.bug, .feedback]
-        Replies.enabled = false
         
         return true
     }

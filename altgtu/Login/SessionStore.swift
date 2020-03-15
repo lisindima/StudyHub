@@ -14,7 +14,6 @@ import AuthenticationServices
 import CryptoKit
 import UnsplashPhotoPicker
 import Kingfisher
-import Instabug
 import Purchases
 
 class SessionStore: NSObject, ObservableObject {
@@ -61,13 +60,6 @@ class SessionStore: NSObject, ObservableObject {
         case appleid
         case email
         case unknown
-    }
-    
-    func settingUserInstabug() {
-        if Auth.auth().currentUser != nil {
-            Instabug.identifyUser(withEmail: (Auth.auth().currentUser?.email)!, name: lastname + " " + firstname)
-            Instabug.tintColor = UIColor(red: CGFloat(rValue/255), green: CGFloat(gValue/255), blue: CGFloat(bValue/255), alpha: 1)
-        }
     }
     
     func listen() {

@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Instabug
 import Purchases
 import PartialSheet
 import KingfisherSwiftUI
@@ -479,7 +478,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Сообщить об ошибке") {
-                            Instabug.show()
+                            print("Сообщить об ошибке")
                         }.foregroundColor(.primary)
                     }
                 }
