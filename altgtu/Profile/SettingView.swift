@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import SPAlert
+import MessageUI
 import Purchases
 import PartialSheet
 import KingfisherSwiftUI
@@ -15,8 +17,10 @@ struct SettingView: View {
     
     @State private var isShowingModalViewImage: Bool = false
     @State private var isShowingModalViewUnsplash: Bool = false
+    @State private var isShowingModalViewMailFeedback: Bool = false
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
+    @State private var showActionSheetMailFeedback: Bool = false
     @State private var showPartialSheet: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var subscribeApplication: Bool = false
@@ -478,8 +482,27 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         Button("Сообщить об ошибке") {
-                            print("Сообщить об ошибке")
-                        }.foregroundColor(.primary)
+                            if MFMailComposeViewController.canSendMail() {
+                                self.showActionSheetMailFeedback = true
+                            } else {
+                                SPAlert.present(title: "Не установлено приложение \"Почта\".", message: "Установите его из App Store." , preset: .error)
+                            }
+                        }
+                        .foregroundColor(.primary)
+                        .actionSheet(isPresented: $showActionSheetMailFeedback) {
+                            ActionSheet(title: Text("Выберите вариант"), message: Text(""), buttons: [
+                                .default(Text("Запрос функций")) {
+                                    self.isShowingModalViewMailFeedback = true
+                                }, .default(Text("Сообщить об ошибке")) {
+                                    self.isShowingModalViewMailFeedback = true
+                                }, .cancel()
+                            ])
+                        }
+                        .sheet(isPresented: $isShowingModalViewMailFeedback) {
+                            MailFeedback()
+                                .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                                .edgesIgnoringSafeArea(.bottom)
+                        }
                     }
                 }
                 Section {

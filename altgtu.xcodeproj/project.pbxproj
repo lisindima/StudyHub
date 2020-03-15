@@ -47,6 +47,7 @@
 		CB37695C23E5CD9F0015B61E /* altIconApp.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* altIconApp.png */; };
 		CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
+		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
 		CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */; };
 		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
@@ -226,6 +227,7 @@
 		CB37695B23E5CD9F0015B61E /* altIconApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altIconApp.png; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccounts.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
 		CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagePicker.swift; sourceTree = "<group>"; };
 		CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB4874C023D813C300DEB38F /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
 				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
 				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
+				CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB5D2586240E0B4B00F5643F /* BERTSQUADFP16.mlmodel in Sources */,
+				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */,
