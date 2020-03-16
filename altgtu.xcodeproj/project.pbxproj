@@ -32,7 +32,6 @@
 		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
-		CB27619523556A470054C753 /* SessionWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27619423556A470054C753 /* SessionWatch.swift */; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
@@ -96,6 +95,7 @@
 		CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */; };
 		CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA4C4F23F684A60018168D /* StoreKit.framework */; };
 		CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA4C5223F7FE7E0018168D /* Alamofire */; };
+		CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE3277241F9F5200844197 /* MenuWatch.swift */; };
 		CBCE55252407A88C00B8B368 /* PermissionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE55242407A88C00B8B368 /* PermissionSplashScreen.swift */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
@@ -213,7 +213,6 @@
 		CB179ACA23CC182F00424FD2 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
-		CB27619423556A470054C753 /* SessionWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWatch.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +265,7 @@
 		CBB273EE23CD861F00030050 /* PencilKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvas.swift; sourceTree = "<group>"; };
 		CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSplashScreen.swift; sourceTree = "<group>"; };
 		CBCA4C4F23F684A60018168D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CBCE3277241F9F5200844197 /* MenuWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWatch.swift; sourceTree = "<group>"; };
 		CBCE55242407A88C00B8B368 /* PermissionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionSplashScreen.swift; sourceTree = "<group>"; };
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
@@ -536,7 +536,6 @@
 			isa = PBXGroup;
 			children = (
 				CBE665EC23543A1400C43811 /* LoginScreenWatch.swift */,
-				CB27619423556A470054C753 /* SessionWatch.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -688,6 +687,7 @@
 		CBE665EB23543A1400C43811 /* altgtuWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CBCE3277241F9F5200844197 /* MenuWatch.swift */,
 				CB2761982355A9730054C753 /* Lesson */,
 				CB27619323556A1F0054C753 /* Login */,
 				CBE665EE23543A1400C43811 /* HostingController.swift */,
@@ -1047,13 +1047,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB27619523556A470054C753 /* SessionWatch.swift in Sources */,
 				CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */,
 				CBE665EF23543A1400C43811 /* HostingController.swift in Sources */,
 				CBE665ED23543A1400C43811 /* LoginScreenWatch.swift in Sources */,
 				CBE665F323543A1400C43811 /* NotificationController.swift in Sources */,
 				CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */,
 				CB609F842406628B009A6389 /* Schedule.swift in Sources */,
+				CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */,
 				CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */,
 				CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */,
 				CBE665F523543A1400C43811 /* NotificationView.swift in Sources */,

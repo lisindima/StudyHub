@@ -21,7 +21,7 @@ struct LoginScreenWatch: View {
             TextField("Логин", text: $email)
             TextField("Пароль", text: $password)
             Button("Войти") {
-                self.signInSuccess.toggle()
+                self.signInSuccess = true
             }
             Text("Для регистрации воспользуйтесь приложением для iPhone")
                 .font(.footnote)
@@ -36,7 +36,7 @@ struct Login: View {
     var body: some View {
         Group {
             if signInSuccess {
-                ScheduleListWatch(signInSuccess: $signInSuccess)
+                MenuWatch(signInSuccess: $signInSuccess)
             } else {
                 LoginScreenWatch(signInSuccess: $signInSuccess)
             }
