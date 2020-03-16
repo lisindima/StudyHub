@@ -40,8 +40,17 @@ struct MailFeedback: UIViewControllerRepresentable {
         
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             controller.dismiss(animated: true, completion: nil)
-            if result == .sent {
+            switch result {
+            case .sent:
                 SPAlert.present(title: "Сообщение отправлено!", message: "Я отвечу на него в ближайшее время.", preset: .heart)
+            case .saved:
+                SPAlert.present(title: "Сообщение сохранено!", message: "Сообщение ждет вас в черновиках.", preset: .done)
+            case .failed:
+                SPAlert.present(title: "Ошибка!", message: "Повторите попытку позже", preset: .error)
+            case .cancelled:
+                print("Отменено пользователем")
+            @unknown default:
+                print("Отправка почты: ошибка")
             }
         }
     }
