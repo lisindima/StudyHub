@@ -11,35 +11,28 @@ import Combine
 
 class IconStore: ObservableObject {
     
-    @Published var nameIcon: ActiveIconName = .primary
+    @Published var currentIconName: String = "infoApp"
+    @Published var iconModel: Array = [
+        IconModel(nameIcon: "infoApp", nameAuthorIcon: "Герб \"АлтГТУ\""),
+        IconModel(nameIcon: "altIconApp", nameAuthorIcon: "Лисин Дмитрий")
+    ]
+    
     static let shared = IconStore()
     
-    func getNameIcon() {
+    func getIcon() {
         if UIApplication.shared.alternateIconName == nil {
-            nameIcon = .primary
-        } else if UIApplication.shared.alternateIconName == "IconCodeName" {
-            nameIcon = .alternate
+            currentIconName = "infoApp"
+        } else if UIApplication.shared.alternateIconName == "altIconApp" {
+            currentIconName = "altIconApp"
         }
     }
     
-    func setAlternateIcon() {
-        UIApplication.shared.setAlternateIconName("IconCodeName") { error in
+    func setIcon(nameIcon: String) {
+        UIApplication.shared.setAlternateIconName(nameIcon == "infoApp" ? nil : nameIcon) { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                print("Кастомная иконка установлена!")
-                self.nameIcon = .alternate
-            }
-        }
-    }
-    
-    func setPrimaryIcon() {
-        UIApplication.shared.setAlternateIconName(nil) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("Стандартная иконка установлена!")
-                self.nameIcon = .primary
+                self.currentIconName = nameIcon
             }
         }
     }
@@ -47,58 +40,51 @@ class IconStore: ObservableObject {
 
 struct ChangeIcons: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var iconStore: IconStore = IconStore.shared
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                VStack(alignment: .center) {
-                    Button(action: iconStore.setPrimaryIcon) {
-                        Image("infoApp")
-                            .resizable()
-                            .renderingMode(.original)
-                            .cornerRadius(15)
-                            .frame(width: 80, height: 80)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: iconStore.nameIcon == .primary ? 1.0 : 0.0), lineWidth: 3)
-                                    .frame(width: 90, height: 90)
-                        )
-                    }.frame(width: 95, height: 95)
-                    Text("Стандартная")
-                        .font(.system(size: 11, design: .rounded))
-                        .bold()
-                }
-                VStack(alignment: .center) {
-                    Button(action: iconStore.setAlternateIcon) {
-                        Image("altIconApp")
-                            .resizable()
-                            .renderingMode(.original)
-                            .cornerRadius(15)
-                            .frame(width: 80, height: 80)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: iconStore.nameIcon == .primary ? 0.0 : 1.0), lineWidth: 3)
-                                    .frame(width: 90, height: 90)
-                        )
-                    }.frame(width: 95, height: 95)
-                    Text("Автор иконки")
-                        .font(.system(size: 11, design: .rounded))
-                        .bold()
+                ForEach(iconStore.iconModel, id: \.id) { icon in
+                    IconItem(iconModel: icon)
                 }
             }.padding(.horizontal)
-        }.onAppear(perform: iconStore.getNameIcon)
+        }.onAppear(perform: iconStore.getIcon)
     }
 }
 
-enum ActiveIconName {
-    case primary
-    case alternate
+struct IconItem: View {
+    
+    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var iconStore: IconStore = IconStore.shared
+    
+    var iconModel: IconModel
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Button(action: {
+                self.iconStore.setIcon(nameIcon: self.iconModel.nameIcon)
+            }) {
+                Image(iconModel.nameIcon)
+                    .resizable()
+                    .renderingMode(.original)
+                    .cornerRadius(15)
+                    .frame(width: 80, height: 80)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: iconStore.currentIconName == iconModel.nameIcon ? 1.0 : 0.0), lineWidth: 3)
+                            .frame(width: 90, height: 90)
+                )
+            }.frame(width: 95, height: 95)
+            Text(iconModel.nameAuthorIcon)
+                .font(.system(size: 11, design: .rounded))
+                .bold()
+        }
+    }
 }
 
-struct ChangeIcons_Previews: PreviewProvider {
-    static var previews: some View {
-        ChangeIcons()
-    }
+struct IconModel: Identifiable {
+    let id: UUID = UUID()
+    let nameIcon: String
+    let nameAuthorIcon: String
 }
