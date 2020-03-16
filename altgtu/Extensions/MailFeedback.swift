@@ -7,14 +7,17 @@
 //
 
 import SwiftUI
+import SPAlert
 import MessageUI
 
 struct MailFeedback: UIViewControllerRepresentable {
     
+    @Binding var mailSubject: String
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailFeedback>) -> MFMailComposeViewController {
         let mailFeedback = MFMailComposeViewController()
         mailFeedback.setToRecipients(["me@lisindmitriy.me"])
-        mailFeedback.setSubject("Запрос функций")
+        mailFeedback.setSubject(mailSubject)
         mailFeedback.setMessageBody("<p>Привет!</p>", isHTML: true)
         mailFeedback.mailComposeDelegate = context.coordinator
         return mailFeedback
@@ -37,6 +40,9 @@ struct MailFeedback: UIViewControllerRepresentable {
         
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             controller.dismiss(animated: true, completion: nil)
+            if result == .sent {
+                SPAlert.present(title: "Сообщение отправлено!", message: "Я отвечу на него в ближайшее время.", preset: .heart)
+            }
         }
     }
 }

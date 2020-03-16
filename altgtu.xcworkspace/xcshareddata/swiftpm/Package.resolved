@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "69a3338fa7eb429bd2845f74e76a78e24b425c6c",
-          "version": "5.0.3"
+          "revision": "11928850d7273a8cd41bb766f2fc93b4d724b79b",
+          "version": "5.0.4"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/ivanvorobei/SPAlert",
         "state": {
           "branch": null,
-          "revision": "e925caa7a7f2645c80aaff6afd1138b50079dc1f",
-          "version": "2.1.2"
+          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
+          "version": "2.1.4"
         }
       }
     ]

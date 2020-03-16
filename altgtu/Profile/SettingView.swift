@@ -26,6 +26,7 @@ struct SettingView: View {
     @State private var subscribeApplication: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
+    @State private var mailSubject: String = ""
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
@@ -47,6 +48,13 @@ struct SettingView: View {
     }
     
     private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+    
+    enum FirebaseServiceStatus {
+        case normal
+        case problem
+        case failure
+        case loading
+    }
 
     private func startSettingView() {
         imageCacheStore.calculateImageCache()
@@ -490,16 +498,18 @@ struct SettingView: View {
                         }
                         .foregroundColor(.primary)
                         .actionSheet(isPresented: $showActionSheetMailFeedback) {
-                            ActionSheet(title: Text("Выберите вариант"), message: Text(""), buttons: [
-                                .default(Text("Запрос функций")) {
+                            ActionSheet(title: Text("Выберите вариант"), message: Text("Пожалуйста, выберите правильный вариант, на основе того, что вы хотите сообщить."), buttons: [
+                                .default(Text("Запросить функцию")) {
+                                    self.mailSubject = "Запрос функций"
                                     self.isShowingModalViewMailFeedback = true
                                 }, .default(Text("Сообщить об ошибке")) {
+                                    self.mailSubject = "Сообщение об ошибке"
                                     self.isShowingModalViewMailFeedback = true
                                 }, .cancel()
                             ])
                         }
                         .sheet(isPresented: $isShowingModalViewMailFeedback) {
-                            MailFeedback()
+                            MailFeedback(mailSubject: self.$mailSubject)
                                 .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
                                 .edgesIgnoringSafeArea(.bottom)
                         }
@@ -542,11 +552,4 @@ struct SettingView: View {
             ChangeIcons()
         }
     }
-}
-
-enum FirebaseServiceStatus {
-    case normal
-    case problem
-    case failure
-    case loading
 }

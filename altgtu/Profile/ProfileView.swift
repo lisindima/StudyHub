@@ -106,7 +106,6 @@ struct ProfileView: View {
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
                 if self.sessionStore.user == nil {
-                    print("Сессии нет, данные не сохраняются")
                 } else {
                     self.sessionStore.updateDataFromDatabase()
                     self.pickerStore.updateDataFromDatabasePicker()
