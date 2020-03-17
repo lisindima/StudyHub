@@ -31,22 +31,30 @@ class PickerStore: ObservableObject {
     
     func loadPickerFaculty() {
         AF.request(apiFaculty)
-        .validate()
-        .responseDecodable(of: FacultyModel.self) { response in
-            guard let faculty = response.value else { return }
-            self.facultyModel = faculty
-            self.loadPickerGroup()
-            print("Данные факультетов загружены")
+            .validate()
+            .responseDecodable(of: FacultyModel.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let faculty = response.value else { return }
+                    self.facultyModel = faculty
+                    self.loadPickerGroup()
+                case .failure(let error):
+                    print("Список факультет не загружен: \(error.errorDescription!)")
+                }
         }
     }
     
     func loadPickerGroup() {
         AF.request(apiGroup + facultyModel[choiseFaculty].id)
-        .validate()
-        .responseDecodable(of: GroupModel.self) { response in
-            guard let group = response.value else { return }
-            self.groupModel = group
-            print("Данные групп загружены")
+            .validate()
+            .responseDecodable(of: GroupModel.self) { response in
+                switch response.result {
+                case .success( _):
+                    guard let group = response.value else { return }
+                    self.groupModel = group
+                case .failure(let error):
+                    print("Список групп не загружен: \(error.errorDescription!)")
+                }
         }
     }
     

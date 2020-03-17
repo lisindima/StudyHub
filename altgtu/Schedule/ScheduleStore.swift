@@ -25,7 +25,6 @@ class ScheduleStore: ObservableObject {
                 case .success( _):
                     guard let schedule = response.value else { return }
                     self.scheduleModel = schedule
-                    print("Расписание группы загружено")
                 case .failure(let error):
                     self.scheduleLoadingFailure = true
                     print("Расписание группы не загружен: \(error.errorDescription!)")

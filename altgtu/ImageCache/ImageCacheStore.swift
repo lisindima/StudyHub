@@ -22,7 +22,6 @@ class ImageCacheStore: ObservableObject {
             switch result {
             case .success(let size):
                 self.sizeImageCache = Int(size) / 1024 / 1024
-                print("Размер кэша: \(self.sizeImageCache) МБ")
             case .failure(let error):
                 print(error)
             }
@@ -32,7 +31,6 @@ class ImageCacheStore: ObservableObject {
     func setCacheSizeLimit() {
         ImageCache.default.diskStorage.config.sizeLimit = 350 * 1024 * 1024
         self.sizeLimitImageCache = Int(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024)
-        print("Лимит кэша изображений установлен на: \(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024) МБ")
     }
 
     func clearImageCache() {

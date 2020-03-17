@@ -48,7 +48,6 @@ class PurchasesStore: ObservableObject {
             } else {
                 self.purchasesInfo = purchaserInfo
                 self.purchasesIsDateInToday()
-                print("Смотрим подписки!")
             }
         }
     }
@@ -86,7 +85,6 @@ class PurchasesStore: ObservableObject {
             } else {
                 if let purchaserInfo = purchaserInfo {
                     if purchaserInfo.entitlements.active.isEmpty {
-                        print("Restore Unsuccessful")
                         SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
                     } else {
                         Purchases.shared.purchaserInfo { purchaserInfo, error in
@@ -97,7 +95,6 @@ class PurchasesStore: ObservableObject {
                                 self.purchasesInfo = purchaserInfo
                                 SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
                                 self.purchasesIsDateInToday()
-                                print("Обновляем подписки!")
                             }
                         }
                     }
@@ -110,7 +107,6 @@ class PurchasesStore: ObservableObject {
         if !purchasesInfo!.activeSubscriptions.isEmpty {
             let isToday = Calendar.current.isDateInToday(purchasesInfo!.expirationDate(forEntitlement: "altgtu")!)
             purchasesSameDay = isToday
-            print("Подписка продлиться сегодня: \(purchasesSameDay)")
         }
     }
 }

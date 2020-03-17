@@ -76,7 +76,6 @@ class LicenseStore: ObservableObject {
                 case .success( _):
                     guard let license = response.value else { return }
                     self.licenseModel = license
-                    print("Лицензии загружены")
                 case .failure(let error):
                     self.licenseLoadingFailure = true
                     print("Список лицензий не загружен: \(error.errorDescription!)")

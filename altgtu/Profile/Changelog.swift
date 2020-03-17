@@ -104,7 +104,6 @@ class ChangelogStore: ObservableObject {
                 case .success( _):
                     guard let сhangelog = response.value else { return }
                     self.сhangelogModel = сhangelog
-                    print("Список изменений загружен")
                 case .failure(let error):
                     self.changelogLoadingFailure = true
                     print("Список изменений не загружен: \(error.errorDescription!)")

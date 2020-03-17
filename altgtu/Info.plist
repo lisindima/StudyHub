@@ -65,8 +65,6 @@
 	<string>Камера будет использоваться только для создания фотографии профиля.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use Face ID instead of a password to access your profile.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Для записи аудио во время скринкаста</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>add photo profile</string>
 	<key>NSPhotoLibraryUsageDescription</key>
