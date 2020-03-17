@@ -62,18 +62,16 @@ class PurchasesStore: ObservableObject {
                 print("Ошибка: \(error.localizedDescription)")
                 SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
             } else if purchaserInfo?.entitlements.active != nil {
-                self.listenPurchases()
                 SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
             }
         }
     }
     
     func restoreSubscription() {
-        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
+        Purchases.shared.restoreTransactions { purchaserInfo, error in
             if error != nil {
                 SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
             } else {
-                self.listenPurchases()
                 SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
             }
         }

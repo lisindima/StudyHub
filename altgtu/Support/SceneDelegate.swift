@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var purchasesStore: PurchasesStore = PurchasesStore()
     var scheduleStore: ScheduleStore = ScheduleStore()
     
-    private(set) static var shared: SceneDelegate? //Принудительное переключение в темную тему!
+    private(set) static var shared: SceneDelegate?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        Self.shared = self //Принудительное переключение в темную тему!
+        Self.shared = self
         
         let rootView = RootView()
             .environmentObject(sessionStore)
@@ -62,7 +62,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         NotificationStore.shared.refreshNotificationStatus()
-        PurchasesStore.shared.listenPurchases()
         SessionStore.shared.updateOnlineUser(onlineUser: true)
     }
     

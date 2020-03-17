@@ -70,7 +70,6 @@ class SessionStore: NSObject, ObservableObject {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
                         print("Пользователь \(user.uid) успешно вошёл!")
-                        self.purchasesStore.listenPurchases()
                         self.updateOnlineUser(onlineUser: true)
                     }
                 })
