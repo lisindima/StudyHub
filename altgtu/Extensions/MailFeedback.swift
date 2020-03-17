@@ -14,9 +14,12 @@ struct MailFeedback: UIViewControllerRepresentable {
     
     @Binding var mailSubject: String
     
+    let dataEmail = Data("Привет".utf8)
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailFeedback>) -> MFMailComposeViewController {
         let mailFeedback = MFMailComposeViewController()
         mailFeedback.setToRecipients(["me@lisindmitriy.me"])
+        mailFeedback.addAttachmentData(dataEmail, mimeType: "text/plain", fileName: "log.txt")
         mailFeedback.setSubject(mailSubject)
         mailFeedback.setMessageBody("<p>Привет!</p>", isHTML: true)
         mailFeedback.mailComposeDelegate = context.coordinator

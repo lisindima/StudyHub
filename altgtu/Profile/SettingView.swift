@@ -9,7 +9,6 @@
 import SwiftUI
 import SPAlert
 import MessageUI
-import Purchases
 import PartialSheet
 import KingfisherSwiftUI
 
@@ -71,7 +70,7 @@ struct SettingView: View {
     
     private func showShareView() {
         DispatchQueue.main.async {
-            UIApplication.shared.windows.first {$0.isKeyWindow}?.rootViewController?.presentedViewController?.present(
+            UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
                 UIActivityViewController(activityItems: ["Удобное расписание в приложение АлтГТУ!", URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!], applicationActivities: nil), animated: true, completion: nil
             )
         }
