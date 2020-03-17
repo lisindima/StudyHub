@@ -14,7 +14,8 @@ class IconStore: ObservableObject {
     @Published var currentIconName: String = "infoApp"
     @Published var iconModel: Array = [
         IconModel(nameIcon: "infoApp", nameAuthorIcon: "Герб \"АлтГТУ\""),
-        IconModel(nameIcon: "altIconApp", nameAuthorIcon: "Лисин Дмитрий")
+        IconModel(nameIcon: "lisin", nameAuthorIcon: "Лисин Дмитрий"),
+        IconModel(nameIcon: "pornlogo", nameAuthorIcon: "Хи-Хи😈")
     ]
     
     static let shared = IconStore()
@@ -23,7 +24,9 @@ class IconStore: ObservableObject {
         if UIApplication.shared.alternateIconName == nil {
             currentIconName = "infoApp"
         } else if UIApplication.shared.alternateIconName == "altIconApp" {
-            currentIconName = "altIconApp"
+            currentIconName = "lisin"
+        } else if UIApplication.shared.alternateIconName == "pornlogo" {
+            currentIconName = "pornlogo"
         }
     }
     

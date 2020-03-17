@@ -226,12 +226,12 @@ struct SettingView: View {
                             .frame(height: 60)
                             .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                         HStack {
-                            Spacer(minLength: 10)
                             Text("R:\(Int(sessionStore.rValue))")
+                                .frame(width: 90)
                             Text("G:\(Int(sessionStore.gValue))")
-                                .padding(.horizontal, 20)
+                                .frame(width: 90)
                             Text("B:\(Int(sessionStore.bValue))")
-                            Spacer(minLength: 10)
+                                .frame(width: 90)
                         }
                         .font(.custom("Futura", size: 24))
                         .foregroundColor(.white)

@@ -105,8 +105,7 @@ struct ProfileView: View {
                     .foregroundColor(.white)
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
-                if self.sessionStore.user == nil {
-                } else {
+                if self.sessionStore.user != nil {
                     self.sessionStore.updateDataFromDatabase()
                     self.pickerStore.updateDataFromDatabasePicker()
                 }
