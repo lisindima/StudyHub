@@ -16,7 +16,6 @@ struct SettingView: View {
     
     @State private var isShowingModalViewImage: Bool = false
     @State private var isShowingModalViewUnsplash: Bool = false
-    @State private var isShowingModalViewMailFeedback: Bool = false
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showActionSheetMailFeedback: Bool = false
@@ -72,6 +71,19 @@ struct SettingView: View {
         DispatchQueue.main.async {
             UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
                 UIActivityViewController(activityItems: ["Удобное расписание в приложение АлтГТУ!", URL(string: "https://apps.apple.com/ru/app/altgtu/id1481944453")!], applicationActivities: nil), animated: true, completion: nil
+            )
+        }
+    }
+    
+    private func showMailView() {
+        DispatchQueue.main.async {
+            let mailFeedback = UIHostingController(rootView:
+                MailFeedback(mailSubject: self.$mailSubject)
+                    .edgesIgnoringSafeArea(.bottom)
+                    .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+            )
+            UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
+                mailFeedback, animated: true, completion: nil
             )
         }
     }
@@ -500,17 +512,12 @@ struct SettingView: View {
                             ActionSheet(title: Text("Выберите вариант"), message: Text("Пожалуйста, выберите правильный вариант, на основе того, что вы хотите сообщить."), buttons: [
                                 .default(Text("Запросить функцию")) {
                                     self.mailSubject = "Запрос функций"
-                                    self.isShowingModalViewMailFeedback = true
+                                    self.showMailView()
                                 }, .default(Text("Сообщить об ошибке")) {
                                     self.mailSubject = "Сообщение об ошибке"
-                                    self.isShowingModalViewMailFeedback = true
+                                    self.showMailView()
                                 }, .cancel()
                             ])
-                        }
-                        .sheet(isPresented: $isShowingModalViewMailFeedback) {
-                            MailFeedback(mailSubject: self.$mailSubject)
-                                .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
-                                .edgesIgnoringSafeArea(.bottom)
                         }
                     }
                 }
