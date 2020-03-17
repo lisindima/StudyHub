@@ -54,51 +54,27 @@ class PurchasesStore: ObservableObject {
     
     func buySubscription(package: Purchases.Package) {
         Purchases.shared.purchasePackage(package) { transaction, purchaserInfo, error, userCancelled in
-            if purchaserInfo?.entitlements.active.first != nil {
-                if let error = error {
-                    if userCancelled == true {
-                        print("Отменено пользователем!")
-                    } else {
-                        SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                        print(error.localizedDescription)
-                    }
-                } else {
-                    Purchases.shared.purchaserInfo { purchaserInfo, error in
-                        if let error = error {
-                            SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                            print(error.localizedDescription)
-                        } else {
-                            self.purchasesInfo = purchaserInfo
-                            self.purchasesIsDateInToday()
-                            SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
-                        }
-                    }
-                }
+            if userCancelled {
+                print("Отменено пользователем!")
+                return
+            }
+            if let error = error {
+                print("Ошибка: \(error.localizedDescription)")
+                SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
+            } else if purchaserInfo?.entitlements.active != nil {
+                self.listenPurchases()
+                SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
             }
         }
     }
     
     func restoreSubscription() {
-        Purchases.shared.restoreTransactions { purchaserInfo, error in
-            if let error = error {
-                print(error.localizedDescription)
+        Purchases.shared.restoreTransactions { (purchaserInfo, error) in
+            if error != nil {
+                SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
             } else {
-                if let purchaserInfo = purchaserInfo {
-                    if purchaserInfo.entitlements.active.isEmpty {
-                        SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
-                    } else {
-                        Purchases.shared.purchaserInfo { purchaserInfo, error in
-                            if let error = error {
-                                SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
-                                print(error.localizedDescription)
-                            } else {
-                                self.purchasesInfo = purchaserInfo
-                                SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
-                                self.purchasesIsDateInToday()
-                            }
-                        }
-                    }
-                }
+                self.listenPurchases()
+                SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
             }
         }
     }
