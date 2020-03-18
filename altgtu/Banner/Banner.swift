@@ -24,7 +24,7 @@ struct BannerModifier: ViewModifier {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Загрузка")
                                 .bold()
-                            Text("Нажмите для скрытия уведомления")
+                            Text("Нажмите, чтобы закрыть.")
                                 .font(.system(size: 12, weight: .light, design: .default))
                         }
                         Spacer()

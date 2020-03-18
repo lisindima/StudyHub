@@ -40,9 +40,9 @@ struct SubscriptionSplashScreen: View {
                             VStack {
                                 Text("Ежемесячно")
                                     .bold()
-                                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                                 Text(purchasesStore.monthlyPrice)
-                                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             }
                         }
                     }
@@ -75,27 +75,27 @@ struct SubscriptionSplashScreen: View {
                 Button(action: purchasesStore.restoreSubscription) {
                     Text("Восстановить платеж")
                         .font(.footnote)
-                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 }
                 Text("|")
                     .font(.footnote)
-                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 Button(action: {
                     UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
                 }) {
                     Text("Политика")
                         .font(.footnote)
-                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 }
                 Text("|")
                     .font(.footnote)
-                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 Button(action: {
                     UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
                 }) {
                     Text("Правила")
                         .font(.footnote)
-                        .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 }
             }.padding(.vertical)
         }

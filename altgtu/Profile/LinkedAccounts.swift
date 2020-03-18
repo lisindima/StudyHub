@@ -20,7 +20,7 @@ struct LinkedAccounts: View {
                         Text("")
                             .font(.title)
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Вход через Apple")
                         Spacer()
                         Text("Выкл")
@@ -31,7 +31,7 @@ struct LinkedAccounts: View {
                     HStack {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Вход через почту и пароль")
                         Spacer()
                         Text("Вкл")
@@ -46,7 +46,7 @@ struct LinkedAccounts: View {
                     ) {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Изменить эл.почту")
                     }
                     NavigationLink(destination: ChangePassword()
@@ -54,7 +54,7 @@ struct LinkedAccounts: View {
                     ) {
                         Image(systemName: "lock")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Изменить пароль")
                     }
                 }

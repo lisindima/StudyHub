@@ -131,12 +131,12 @@ struct SecureView: View {
                             self.biometricAccess()
                         }) {
                             Image("touchid30")
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                        .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
                             )
                         }
                     } else if currentBiometricType == .faceID && sessionStore.biometricAccess == true {
@@ -144,12 +144,12 @@ struct SecureView: View {
                             self.biometricAccess()
                         }) {
                             Image(systemName: "faceid")
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                        .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
                             )
                         }
                     }
@@ -160,12 +160,12 @@ struct SecureView: View {
                         self.userInputCode.removeLast()
                     }) {
                         Image(systemName: "delete.left")
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             .font(.system(size: 25))
                             .frame(width: 70, height: 70)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                                    .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
                         )
                     }.disabled(userInputCode.count == 0)
                 }

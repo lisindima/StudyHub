@@ -28,7 +28,7 @@ struct ProfileView: View {
                 VStack {
                     if sessionStore.choiseTypeBackroundProfile == false {
                         Rectangle()
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             .edgesIgnoringSafeArea(.top)
                             .frame(height: 130)
                     } else {

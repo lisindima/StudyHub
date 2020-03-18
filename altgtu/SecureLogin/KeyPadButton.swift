@@ -17,12 +17,12 @@ struct KeyPadButton: View {
         Button(action: { self.action(self.key) }) {
             Text(key)
                 .fontWeight(.semibold)
-                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 .font(.system(size: 25))
                 .frame(width: 70, height: 70)
                 .overlay(
                     RoundedRectangle(cornerRadius: 100)
-                        .stroke(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0), lineWidth: 2)
+                        .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
             )
         }
     }

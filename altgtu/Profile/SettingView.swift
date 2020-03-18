@@ -119,7 +119,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "plus.app.fill")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Button(action: openSubscription) {
                                 VStack(alignment: .leading) {
                                     Text("Отменить подписку")
@@ -140,7 +140,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "plus.app.fill")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Button("Оформить подписку") {
                                 self.showSubcriptionSheet = true
                             }
@@ -236,7 +236,7 @@ struct SettingView: View {
                             .cornerRadius(8)
                             .shadow(radius: 5)
                             .frame(height: 60)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         HStack {
                             Text("R:\(Int(sessionStore.rValue))")
                                 .frame(width: 90)
@@ -252,14 +252,14 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "moon.circle")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Text("Темная тема")
                         }
                     }
                     HStack {
                         Image(systemName: "app")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Изменить иконку") {
                             self.showPartialSheet = true
                         }.foregroundColor(.primary)
@@ -267,7 +267,7 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "map")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Изменить обложку") {
                             if self.sessionStore.choiseTypeBackroundProfile {
                                 self.showActionSheetUnsplash = true
@@ -298,27 +298,27 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "person.crop.circle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         TextField("Фамилия", text: $sessionStore.lastname)
                     }
                     HStack {
                         Image(systemName: "person.crop.circle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         TextField("Имя", text: $sessionStore.firstname)
                     }
                     DatePicker(selection: $sessionStore.dateBirthDay, displayedComponents: [.date], label: {
                         HStack {
                             Image(systemName: "calendar")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Text("Дата рождения")
                         }
                     })
                     HStack {
                         Image(systemName: "photo")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Изменить фотографию") {
                             self.showActionSheetImage = true
                         }
@@ -350,7 +350,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Button("Выключить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
@@ -359,7 +359,7 @@ struct SettingView: View {
                             HStack {
                                 Image(systemName: "timer")
                                     .frame(width: 24)
-                                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                                 Text("\(sessionStore.notifyMinute) мин")
                             }
                         }
@@ -368,7 +368,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Button("Включить уведомления") {
                                 self.notificationStore.requestPermission()
                             }.foregroundColor(.primary)
@@ -378,7 +378,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "bell")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Button("Включить уведомления") {
                                 self.openSettings()
                             }.foregroundColor(.primary)
@@ -389,7 +389,7 @@ struct SettingView: View {
                     Picker(selection: $pickerStore.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Факультет")
                     }) {
                         ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
@@ -399,7 +399,7 @@ struct SettingView: View {
                     Picker(selection: $pickerStore.choiseGroup, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Группа")
                     }) {
                         ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
@@ -412,7 +412,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "faceid")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Text("Код-пароль и Face ID")
                             Spacer()
                             Text(sessionStore.boolCodeAccess == true ? "Вкл" : "Выкл")
@@ -423,7 +423,7 @@ struct SettingView: View {
                         HStack {
                             Image(systemName: "list.dash")
                                 .frame(width: 24)
-                                .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Text("Управление аккаунтами")
                         }
                     }
@@ -458,7 +458,7 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "trash")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Очистить кэш изображений") {
                             self.imageCacheStore.clearImageCache()
                         }.foregroundColor(.primary)
@@ -468,19 +468,19 @@ struct SettingView: View {
                     NavigationLink(destination: Changelog()) {
                         Image(systemName: "wand.and.stars.inverse")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Что нового?")
                     }
                     NavigationLink(destination: License()) {
                         Image(systemName: "doc.plaintext")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Лицензии")
                     }
                     HStack {
                         Image(systemName: "star")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Оценить") {
                             UIApplication.shared.open(URL(string: "https://itunes.apple.com/app/id1481944453?action=write-review")!)
                         }.foregroundColor(.primary)
@@ -491,7 +491,7 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "square.and.arrow.up")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Поделиться") {
                             self.showShareView()
                         }.foregroundColor(.primary)
@@ -499,7 +499,7 @@ struct SettingView: View {
                     HStack {
                         Image(systemName: "ant")
                             .frame(width: 24)
-                            .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Сообщить об ошибке") {
                             if MFMailComposeViewController.canSendMail() {
                                 self.showActionSheetMailFeedback = true
@@ -549,7 +549,7 @@ struct SettingView: View {
             }) {
                 Text("Закрыть")
                     .bold()
-                    .foregroundColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             })
         }
         .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))

@@ -77,6 +77,7 @@
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
+		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
 		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
 		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
@@ -256,6 +257,7 @@
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		CB8B99222422072C00172395 /* ProfileFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFriends.swift; sourceTree = "<group>"; };
 		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
 		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
 		CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySplashScreen.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				CB76FDBA23C345BE00FDDE5E /* Credential.swift */,
 				CB8EF87723C85D6D00992764 /* QRReader.swift */,
 				CB37694523E3F54F0015B61E /* ChangeIcons.swift */,
+				CB8B99222422072C00172395 /* ProfileFriends.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB5D2580240E08E800F5643F /* BERTOutput.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Schedule.swift in Sources */,
+				CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */,
 				CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
