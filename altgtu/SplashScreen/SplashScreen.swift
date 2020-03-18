@@ -80,7 +80,7 @@ struct InformationDetailView: View {
 struct TitleView: View {
     var body: some View {
         VStack {
-            Image("infoApp")
+            Image("altstulogo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150)

@@ -11,10 +11,11 @@ import Combine
 
 class IconStore: ObservableObject {
     
-    @Published var currentIconName: String = "infoApp"
+    @Published var currentIconName: String = "defaultlogo"
     @Published var iconModel: Array = [
-        IconModel(nameIcon: "infoApp", nameAuthorIcon: "Герб \"АлтГТУ\""),
-        IconModel(nameIcon: "lisin", nameAuthorIcon: "Лисин Дмитрий"),
+        IconModel(nameIcon: "defaultlogo", nameAuthorIcon: "По умолчанию"),
+        IconModel(nameIcon: "altstulogo", nameAuthorIcon: "Герб \"АлтГТУ\""),
+        IconModel(nameIcon: "lisinlogo", nameAuthorIcon: "Лисин Дмитрий"),
         IconModel(nameIcon: "pornlogo", nameAuthorIcon: "Хи-Хи😈")
     ]
     
@@ -22,7 +23,7 @@ class IconStore: ObservableObject {
     
     func getIcon() {
         if UIApplication.shared.alternateIconName == nil {
-            currentIconName = "infoApp"
+            currentIconName = "defaultlogo"
         } else if UIApplication.shared.alternateIconName == "altIconApp" {
             currentIconName = "lisin"
         } else if UIApplication.shared.alternateIconName == "pornlogo" {
@@ -31,7 +32,7 @@ class IconStore: ObservableObject {
     }
     
     func setIcon(nameIcon: String) {
-        UIApplication.shared.setAlternateIconName(nameIcon == "infoApp" ? nil : nameIcon) { error in
+        UIApplication.shared.setAlternateIconName(nameIcon == "defaultlogo" ? nil : nameIcon) { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {

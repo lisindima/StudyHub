@@ -41,9 +41,9 @@
 		CB37694123E2CA3D0015B61E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Extensions.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
 		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
-		CB37695823E5CD7E0015B61E /* lisin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisin@2x.png */; };
-		CB37695A23E5CD850015B61E /* lisin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisin@3x.png */; };
-		CB37695C23E5CD9F0015B61E /* lisin.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisin.png */; };
+		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
+		CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisinlogo@3x.png */; };
+		CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisinlogo.png */; };
 		CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
@@ -99,6 +99,9 @@
 		CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328224210A8A00844197 /* pornlogo@3x.png */; };
 		CBCE328624210A8A00844197 /* pornlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328324210A8A00844197 /* pornlogo.png */; };
 		CBCE328724210A8A00844197 /* pornlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328424210A8A00844197 /* pornlogo@2x.png */; };
+		CBCE328F2421C87A00844197 /* altstulogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328E2421C87A00844197 /* altstulogo.png */; };
+		CBCE32912421C89700844197 /* altstulogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32902421C89700844197 /* altstulogo@2x.png */; };
+		CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32922421C8AC00844197 /* altstulogo@3x.png */; };
 		CBCE55252407A88C00B8B368 /* PermissionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE55242407A88C00B8B368 /* PermissionSplashScreen.swift */; };
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE629323520D2600E588EC /* ModelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE629223520D2600E588EC /* ModelPicker.swift */; };
@@ -224,9 +227,9 @@
 		CB32DB0023A0B64800B25626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB37694023E2CA3D0015B61E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CB37694523E3F54F0015B61E /* ChangeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIcons.swift; sourceTree = "<group>"; };
-		CB37695723E5CD7E0015B61E /* lisin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisin@2x.png"; sourceTree = "<group>"; };
-		CB37695923E5CD850015B61E /* lisin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisin@3x.png"; sourceTree = "<group>"; };
-		CB37695B23E5CD9F0015B61E /* lisin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lisin.png; sourceTree = "<group>"; };
+		CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@2x.png"; sourceTree = "<group>"; };
+		CB37695923E5CD850015B61E /* lisinlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@3x.png"; sourceTree = "<group>"; };
+		CB37695B23E5CD9F0015B61E /* lisinlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lisinlogo.png; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccounts.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
@@ -272,6 +275,9 @@
 		CBCE328224210A8A00844197 /* pornlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pornlogo@3x.png"; sourceTree = "<group>"; };
 		CBCE328324210A8A00844197 /* pornlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pornlogo.png; sourceTree = "<group>"; };
 		CBCE328424210A8A00844197 /* pornlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pornlogo@2x.png"; sourceTree = "<group>"; };
+		CBCE328E2421C87A00844197 /* altstulogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altstulogo.png; sourceTree = "<group>"; };
+		CBCE32902421C89700844197 /* altstulogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@2x.png"; sourceTree = "<group>"; };
+		CBCE32922421C8AC00844197 /* altstulogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@3x.png"; sourceTree = "<group>"; };
 		CBCE55242407A88C00B8B368 /* PermissionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionSplashScreen.swift; sourceTree = "<group>"; };
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE629223520D2600E588EC /* ModelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPicker.swift; sourceTree = "<group>"; };
@@ -587,12 +593,15 @@
 		CB37694C23E5BDC40015B61E /* AlternateIcon */ = {
 			isa = PBXGroup;
 			children = (
+				CBCE328E2421C87A00844197 /* altstulogo.png */,
+				CBCE32902421C89700844197 /* altstulogo@2x.png */,
+				CBCE32922421C8AC00844197 /* altstulogo@3x.png */,
 				CBCE328324210A8A00844197 /* pornlogo.png */,
 				CBCE328424210A8A00844197 /* pornlogo@2x.png */,
 				CBCE328224210A8A00844197 /* pornlogo@3x.png */,
-				CB37695B23E5CD9F0015B61E /* lisin.png */,
-				CB37695723E5CD7E0015B61E /* lisin@2x.png */,
-				CB37695923E5CD850015B61E /* lisin@3x.png */,
+				CB37695B23E5CD9F0015B61E /* lisinlogo.png */,
+				CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */,
+				CB37695923E5CD850015B61E /* lisinlogo@3x.png */,
 			);
 			path = AlternateIcon;
 			sourceTree = "<group>";
@@ -886,10 +895,13 @@
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB5D2588240E0C3E00F5643F /* bert-base-uncased-vocab.txt in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
-				CB37695A23E5CD850015B61E /* lisin@3x.png in Resources */,
-				CB37695823E5CD7E0015B61E /* lisin@2x.png in Resources */,
+				CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */,
+				CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */,
+				CBCE328F2421C87A00844197 /* altstulogo.png in Resources */,
+				CBCE32912421C89700844197 /* altstulogo@2x.png in Resources */,
 				CBCE328624210A8A00844197 /* pornlogo.png in Resources */,
-				CB37695C23E5CD9F0015B61E /* lisin.png in Resources */,
+				CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */,
+				CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */,
 				CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
 				CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */,
