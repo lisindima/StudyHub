@@ -13,9 +13,6 @@ struct SubscriptionSplashScreen: View {
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     
-    @State private var loadingMonthlySubscription: Bool = false
-    @State private var loadingAnnualSubscription: Bool = false
-    
     var body: some View {
         VStack {
             ScrollView {
@@ -31,12 +28,13 @@ struct SubscriptionSplashScreen: View {
             HStack {
                 Button(action: {
                     self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
+                    self.purchasesStore.loadingMonthlyButton = true
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
                             .frame(maxWidth: .infinity, maxHeight: 72)
-                        if loadingMonthlySubscription {
+                        if purchasesStore.loadingMonthlyButton {
                             ActivityIndicator(styleSpinner: .medium)
                         } else {
                             VStack {
@@ -51,12 +49,13 @@ struct SubscriptionSplashScreen: View {
                 }.padding(.trailing, 4)
                 Button(action: {
                     self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
+                    self.purchasesStore.loadingAnnualButton = true
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
                             .frame(maxWidth: .infinity, maxHeight: 72)
-                        if loadingAnnualSubscription {
+                        if purchasesStore.loadingAnnualButton {
                             ActivityIndicator(styleSpinner: .medium)
                         } else {
                             VStack {

@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CB0AED38232E59A10047A8A0"
-               BuildableName = "&#x410;&#x43b;&#x442;&#x413;&#x422;&#x423;.app"
+               BuildableName = "StudyHub.app"
                BlueprintName = "altgtu"
                ReferencedContainer = "container:altgtu.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB0AED38232E59A10047A8A0"
-            BuildableName = "&#x410;&#x43b;&#x442;&#x413;&#x422;&#x423;.app"
+            BuildableName = "StudyHub.app"
             BlueprintName = "altgtu"
             ReferencedContainer = "container:altgtu.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CB0AED38232E59A10047A8A0"
-            BuildableName = "&#x410;&#x43b;&#x442;&#x413;&#x422;&#x423;.app"
+            BuildableName = "StudyHub.app"
             BlueprintName = "altgtu"
             ReferencedContainer = "container:altgtu.xcodeproj">
          </BuildableReference>

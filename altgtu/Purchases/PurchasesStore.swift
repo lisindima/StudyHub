@@ -14,6 +14,8 @@ class PurchasesStore: ObservableObject {
     
     @Published var purchasesInfo: Purchases.PurchaserInfo?
     @Published var purchasesSameDay: Bool = false
+    @Published var loadingMonthlyButton: Bool = false
+    @Published var loadingAnnualButton: Bool = false
     @Published var annualPrice: String = ""
     @Published var monthlyPrice: String = ""
     
@@ -55,13 +57,19 @@ class PurchasesStore: ObservableObject {
     func buySubscription(package: Purchases.Package) {
         Purchases.shared.purchasePackage(package) { transaction, purchaserInfo, error, userCancelled in
             if userCancelled {
+                self.loadingMonthlyButton = false
+                self.loadingAnnualButton = false
                 print("Отменено пользователем!")
                 return
             }
             if let error = error {
                 print("Ошибка: \(error.localizedDescription)")
+                self.loadingMonthlyButton = false
+                self.loadingAnnualButton = false
                 SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
             } else if purchaserInfo?.entitlements.active != nil {
+                self.loadingMonthlyButton = false
+                self.loadingAnnualButton = false
                 SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
             }
         }
