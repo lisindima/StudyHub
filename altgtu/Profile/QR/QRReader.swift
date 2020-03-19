@@ -54,6 +54,7 @@ struct QRReader: View {
                 }
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
+                    Spacer()
                     ZStack {
                         Image(uiImage: qrStore.generatedQRCode(from: currentUser.uid))
                             .interpolation(.none)
@@ -72,12 +73,11 @@ struct QRReader: View {
                             .clipped()
                             .frame(width: 50, height: 50)
                     }
-                    Text("Сканируйте этот QR-код")
+                    Spacer()
+                    Text("Сканируйте этот QR-код приложением StudyHub")
                         .fontWeight(.bold)
                         .font(.system(size: 20))
-                    Text("приложением АлтГТУ")
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
+                        .padding(.bottom, 30)
                 }
             }
             VStack {
