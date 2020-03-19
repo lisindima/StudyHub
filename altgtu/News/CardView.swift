@@ -20,9 +20,7 @@ struct CardView: View {
         VStack {
             KFImage(URL(string: article.urlToImage ?? noImageUrl)!)
                 .renderingMode(.original)
-                .placeholder {
-                    ActivityIndicator(styleSpinner: .medium)
-                }
+                .placeholder { ActivityIndicator(styleSpinner: .medium) }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             HStack {

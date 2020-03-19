@@ -116,13 +116,11 @@ struct ListItem: View {
         HStack {
             ZStack {
                 KFImage(URL(string: sessionStore.urlImageProfile))
-                    .placeholder {
-                        ActivityIndicator(styleSpinner: .medium)
-                }
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .clipped()
+                    .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .clipped()
                 if sessionStore.onlineUser {
                     Circle()
                         .foregroundColor(colorScheme == .dark ? .black : .white)

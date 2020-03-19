@@ -50,9 +50,7 @@ struct CardList: View {
                             }.padding(.leading, 15)
                             Spacer()
                             KFImage(URL(string: sessionStore.urlImageProfile)!)
-                                .placeholder {
-                                    ActivityIndicator(styleSpinner: .medium)
-                                }
+                                .placeholder { ActivityIndicator(styleSpinner: .medium) }
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
