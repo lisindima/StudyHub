@@ -16,48 +16,22 @@ import CoreImage.CIFilterBuiltins
 struct QRReader: View {
     
     @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var qrStore: QRStore = QRStore.shared
     
     @State private var choiseView: Int = 1
     @State private var showPartialSheetProfile: Bool = false
     
-    let currentUid = Auth.auth().currentUser?.uid
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
-    
-    func getUserInfoBeforeScanQRCode(code: String) {
-        let db = Firestore.firestore()
-        let docRef = db.collection("profile").document(code)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-        }
-    }
-    
-    func generatedQRCode(from string: String) -> UIImage {
-        let data = Data(string.utf8)
-        filter.setValue(data, forKey: "inputMessage")
-        if let outputImage = filter.outputImage {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgimg)
-            }
-        }
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
-    }
+    let currentUser = Auth.auth().currentUser!
     
     var body: some View {
         ZStack {
             if choiseView == 0 {
                 ZStack {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "ZvUdV2YKhIfNuzds6UhhV8rqbCu1") { result in
+                    CodeScannerView(codeTypes: [.qr], simulatedData: "dLlZ2MYmIZSICzP4lPp1a96rDmy1") { result in
                         switch result {
                         case .success(let code):
-                            print("Found code: \(code)")
+                            self.qrStore.getUserInfoBeforeScanQRCode(code: code)
                             self.showPartialSheetProfile = true
-                            self.getUserInfoBeforeScanQRCode(code: code)
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
@@ -72,7 +46,7 @@ struct QRReader: View {
                             .frame(width: 300, height: 300)
                         Spacer()
                         Text("Наведите камеру на QR-код")
-                            .bold()
+                            .fontWeight(.bold)
                             .font(.system(size: 20))
                             .foregroundColor(.white)
                             .padding(.bottom, 30)
@@ -81,7 +55,7 @@ struct QRReader: View {
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
                     ZStack {
-                        Image(uiImage: generatedQRCode(from: currentUid!))
+                        Image(uiImage: qrStore.generatedQRCode(from: currentUser.uid))
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()
@@ -101,7 +75,11 @@ struct QRReader: View {
                         .frame(width: 50, height: 50)
                     }
                     Text("Сканируйте этот QR-код")
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
                     Text("приложением АлтГТУ")
+                        .fontWeight(.bold)
+                        .font(.system(size: 20))
                 }
             }
             VStack {
@@ -122,11 +100,5 @@ struct QRReader: View {
                 .padding(.bottom, 30)
                 .padding(.horizontal)
         }
-    }
-}
-
-struct QRReader_Previews: PreviewProvider {
-    static var previews: some View {
-        QRReader()
     }
 }

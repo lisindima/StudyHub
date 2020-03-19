@@ -78,6 +78,7 @@
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
+		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
 		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
 		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
@@ -258,6 +259,7 @@
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CB8B99222422072C00172395 /* ProfileFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFriends.swift; sourceTree = "<group>"; };
+		CB8B992524224F1900172395 /* QRStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRStore.swift; sourceTree = "<group>"; };
 		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
 		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
 		CB97AFB423E91FF400921F0F /* PrivacySplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySplashScreen.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 		CB0AED6B232E5A840047A8A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CB8B992424224EA700172395 /* QR */,
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
 				CB4FA012234396110049D271 /* ProfileImage.swift */,
 				CB4377B723DFDC200002C47C /* SettingView.swift */,
@@ -459,9 +462,7 @@
 				CBE010E923ACC0D6009DB0E8 /* Changelog.swift */,
 				CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */,
 				CB76FDBA23C345BE00FDDE5E /* Credential.swift */,
-				CB8EF87723C85D6D00992764 /* QRReader.swift */,
 				CB37694523E3F54F0015B61E /* ChangeIcons.swift */,
-				CB8B99222422072C00172395 /* ProfileFriends.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -662,6 +663,16 @@
 				CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		CB8B992424224EA700172395 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				CB8B99222422072C00172395 /* ProfileFriends.swift */,
+				CB8EF87723C85D6D00992764 /* QRReader.swift */,
+				CB8B992524224F1900172395 /* QRStore.swift */,
+			);
+			path = QR;
 			sourceTree = "<group>";
 		};
 		CBB01FE423B45522001D4CBB /* Note */ = {
@@ -1002,6 +1013,7 @@
 				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */,
+				CB8B992624224F1900172395 /* QRStore.swift in Sources */,
 				CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
 				CB179AC623CC07B500424FD2 /* NFCStore.swift in Sources */,

@@ -18,6 +18,7 @@ class NotificationStore: ObservableObject {
     @Published var fcmToken: String = Messaging.messaging().fcmToken ?? "Ошибка"
     
     static let shared = NotificationStore()
+    
     var notifications = [Notification]()
     var center: UNUserNotificationCenter = .current()
     
