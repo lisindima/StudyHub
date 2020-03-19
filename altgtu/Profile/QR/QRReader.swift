@@ -66,13 +66,11 @@ struct QRReader: View {
                             .foregroundColor(.white)
                             .frame(width: 60, height: 60)
                         KFImage(URL(string: sessionStore.urlImageProfile))
-                            .placeholder {
-                                ActivityIndicator(styleSpinner: .medium)
-                        }
-                        .resizable()
-                        .clipShape(Circle())
-                        .clipped()
-                        .frame(width: 50, height: 50)
+                            .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                            .resizable()
+                            .clipShape(Circle())
+                            .clipped()
+                            .frame(width: 50, height: 50)
                     }
                     Text("Сканируйте этот QR-код")
                         .fontWeight(.bold)

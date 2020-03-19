@@ -55,14 +55,12 @@ struct MessageView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         KFImage(URL(string: sessionStore.urlImageProfile))
-                            .placeholder {
-                                ActivityIndicator(styleSpinner: .medium)
-                        }
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipShape(Circle())
-                        .clipped()
-                        .frame(width: 37, height: 37)
+                            .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .clipped()
+                            .frame(width: 37, height: 37)
                         VStack {
                             HStack {
                                 Text(message)

@@ -113,9 +113,7 @@ struct DetailsNews: View {
             GeometryReader { geometry in
                 ZStack(alignment: .bottom) {
                     KFImage(URL(string: self.article.urlToImage ?? self.noImageUrl)!)
-                        .placeholder {
-                            ActivityIndicator(styleSpinner: .medium)
-                        }
+                        .placeholder { ActivityIndicator(styleSpinner: .medium) }
                         .resizable()
                         .scaledToFill()
                         .frame(width: geometry.size.width, height: self.getHeightForHeaderImage(geometry))

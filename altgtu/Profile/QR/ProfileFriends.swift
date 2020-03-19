@@ -21,9 +21,7 @@ struct ProfileFriends: View {
             } else {
                 HStack {
                     KFImage(URL(string: qrStore.profileFriendsModel.first!.urlImageProfile))
-                        .placeholder {
-                            ActivityIndicator(styleSpinner: .large)
-                        }
+                        .placeholder { ActivityIndicator(styleSpinner: .large) }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())

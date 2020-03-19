@@ -21,11 +21,11 @@ struct ChatList: View {
     @State private var numberUnreadMessages: Int = 0
     
     private func delete(at offsets: IndexSet) {
-        chatStore.chatList.remove(atOffsets: offsets)
+        chatStore.dataChat.remove(atOffsets: offsets)
     }
     
     private func move(from source: IndexSet, to destination: Int) {
-        chatStore.chatList.move(fromOffsets: source, toOffset: destination)
+        chatStore.dataChat.move(fromOffsets: source, toOffset: destination)
     }
     
     func checkNumberUnreadMessages() {
@@ -41,17 +41,11 @@ struct ChatList: View {
                 SearchBar(text: $searchText, editing: $hideNavigationBar)
                     .padding(.horizontal, 6)
                 List {
-                    ForEach(self.chatStore.chatList.filter {
-                        self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
-                    }, id: \.self) { item in
+                    ForEach(self.chatStore.dataChat.filter {
+                        self.searchText.isEmpty ? true : $0.id.localizedStandardContains(self.searchText)
+                    }, id: \.id) { item in
                         NavigationLink(destination: MessageList()) {
-                            ListItem(
-                                numberUnreadMessages: self.$numberUnreadMessages,
-                                nameChat: item,
-                                lastMessageidUser: self.chatStore.dataMessages.last?.idUser ?? "",
-                                lastMessage: self.chatStore.dataMessages.last?.message ?? "Нет сообщений",
-                                lastMessageDate: self.chatStore.dataMessages.last?.dateMessage ?? Date()
-                            )
+                            ListItem(numberUnreadMessages: self.$numberUnreadMessages, dataChat: item)
                         }
                     }
                     .onDelete(perform: delete)
@@ -102,13 +96,11 @@ struct ListItem: View {
     
     let currentUid = Auth.auth().currentUser?.uid
     
-    var nameChat: String
-    var lastMessageidUser: String
-    var lastMessage: String
-    var lastMessageDate: Date
+    var dataChat: DataChat
+    var lastMessageidUser = ""
     
     private func chatIsDateInToday() {
-        let isToday = Calendar.current.isDateInToday(lastMessageDate)
+        let isToday = Calendar.current.isDateInToday(dataChat.lastMessageDate)
         lastMessageIsToday = isToday
     }
     
@@ -116,13 +108,11 @@ struct ListItem: View {
         HStack {
             ZStack {
                 KFImage(URL(string: sessionStore.urlImageProfile))
-                    .placeholder {
-                        ActivityIndicator(styleSpinner: .medium)
-                }
-                .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
-                .clipped()
+                    .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                    .clipped()
                 if sessionStore.onlineUser {
                     Circle()
                         .foregroundColor(colorScheme == .dark ? .black : .white)
@@ -137,15 +127,15 @@ struct ListItem: View {
                 }
             }
             VStack(alignment: .leading) {
-                Text("Лисин Дмитрий")
+                Text(dataChat.id)
                     .bold()
-                Text(lastMessageidUser == currentUid ? "Вы: \(lastMessage)" : "\(lastMessage)")
+                Text(lastMessageidUser == currentUid ? "Вы: \(dataChat.lastMessage)" : "\(dataChat.lastMessage)")
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(lastMessageDate, formatter: lastMessageIsToday ? dateStore.dateHour : dateStore.dateDay)")
+                Text("\(dataChat.lastMessageDate, formatter: lastMessageIsToday ? dateStore.dateHour : dateStore.dateDay)")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")

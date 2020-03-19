@@ -74,9 +74,7 @@ struct SecureView: View {
     var body: some View {
         VStack(alignment: .center) {
             KFImage(URL(string: sessionStore.urlImageProfile)!)
-                .placeholder {
-                    ActivityIndicator(styleSpinner: .medium)
-                }
+                .placeholder { ActivityIndicator(styleSpinner: .medium) }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())

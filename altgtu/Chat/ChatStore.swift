@@ -11,7 +11,7 @@ import Firebase
 
 class ChatStore: ObservableObject {
     
-    @Published var chatList: Array = [String]()
+    @Published var dataChat: Array = [DataChat]()
     @Published var dataMessages: Array = [DataMessages]()
     @Published var statusChat: StatusChat = .loading
     
@@ -96,16 +96,34 @@ class ChatStore: ObservableObject {
     func getDataFromDatabaseListenChat() {
         statusChat = .loading
         let db = Firestore.firestore()
-        db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
-            if err != nil {
+        db.collection("chatRoom").addSnapshotListener { (querySnapshot, error) in
+            if let error = error {
                 self.statusChat = .emptyChat
-                print((err?.localizedDescription)!)
-                return
+                print(error.localizedDescription)
             } else if querySnapshot!.isEmpty {
                 self.statusChat = .emptyChat
-            } else if let querySnapshot = querySnapshot {
-                self.chatList = querySnapshot.documents.map { $0.documentID }
-                self.statusChat = .showChat
+            } else {
+                for item in querySnapshot!.documentChanges {
+                    if item.type == .added {
+                        let id = item.document.documentID
+                        let lastMessage = item.document.get("lastMessage") as! String
+                        let timeStamp = item.document.get("lastMessageDate") as! Timestamp
+                        let lastMessageDate = timeStamp.dateValue()
+                        self.dataChat.append(DataChat(id: id, lastMessage: lastMessage, lastMessageDate: lastMessageDate))
+                        self.statusChat = .showChat
+                    }
+                    if item.type == .modified {
+                        self.dataChat = self.dataChat.map { eachData -> DataChat in
+                            var data = eachData
+                            if data.id == item.document.documentID {
+                                data.lastMessage = item.document.get("lastMessage") as! String
+                                return data
+                            } else {
+                                return eachData
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -164,7 +182,8 @@ enum StatusChat {
 
 struct DataChat: Identifiable {
     var id: String
-    var nameChat: String
+    var lastMessage: String
+    var lastMessageDate: Date
 }
 
 struct DataMessages: Identifiable {
