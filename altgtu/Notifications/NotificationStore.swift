@@ -15,7 +15,6 @@ class NotificationStore: ObservableObject {
     
     @EnvironmentObject var sessionStore: SessionStore
     @Published var enabled: UNAuthorizationStatus = .notDetermined
-    @Published var fcmToken: String = Messaging.messaging().fcmToken ?? "Ошибка"
     
     static let shared = NotificationStore()
     
@@ -87,6 +86,7 @@ class NotificationStore: ObservableObject {
     }
     
     func updateFcmToken() {
+        let fcmToken = Messaging.messaging().fcmToken ?? "Ошибка"
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         let docRef = db.collection("profile").document(currentUser.uid)

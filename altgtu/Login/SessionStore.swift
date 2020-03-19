@@ -63,13 +63,12 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func listen() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                Purchases.shared.identify(user.uid, { (info, error) in
+                Purchases.shared.identify(user.uid, { info, error in
                     if let error = error {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
-                        print("Пользователь \(user.uid) успешно вошёл!")
                         self.updateOnlineUser(onlineUser: true)
                     }
                 })
@@ -77,10 +76,8 @@ class SessionStore: NSObject, ObservableObject {
                     for userInfo in providerData {
                         switch userInfo.providerID {
                         case "password":
-                            print("Вход через почту и пароль")
                             self.userTypeAuth = .email
                         case "apple.com":
-                            print("Вход через Apple ID")
                             self.userTypeAuth = .appleid
                         default:
                             print("Вход через \(userInfo.providerID)")
@@ -91,7 +88,7 @@ class SessionStore: NSObject, ObservableObject {
                 self.user = user
             } else {
                 self.updateOnlineUser(onlineUser: false)
-                Purchases.shared.reset { (info, error) in
+                Purchases.shared.reset { info, error in
                     print("Пользователь вышел!")
                 }
                 self.user = nil

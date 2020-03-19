@@ -139,6 +139,7 @@ struct ListItem: View {
                     .bold()
                 Text(lastMessageidUser == currentUid ? "Вы: \(lastMessage)" : "\(lastMessage)")
                     .font(.footnote)
+                    .lineLimit(1)
                     .foregroundColor(.secondary)
             }
             Spacer()

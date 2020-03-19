@@ -98,8 +98,7 @@ struct SubscriptionSplashScreen: View {
                         .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 }
             }.padding(.vertical)
-        }
-        .onAppear(perform: purchasesStore.fetchProduct)
+        }.onAppear(perform: purchasesStore.fetchProduct)
     }
 }
 

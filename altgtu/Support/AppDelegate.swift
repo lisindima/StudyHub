@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
     
     func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: Purchases.PurchaserInfo) {
         PurchasesStore.shared.listenPurchases()
-        print("СЛУШАЕМ!!!")
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
