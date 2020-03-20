@@ -15,16 +15,19 @@ struct MessageView: View {
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var dateStore: DateStore = DateStore.shared
     
-    let currentUid = Auth.auth().currentUser!.uid
+    let currentUser = Auth.auth().currentUser!
     
     var message: String
     var dateMessage: Date
     var idUser: String
     var isRead: Bool
+    var isMe: Bool {
+        currentUser.uid == idUser
+    }
     
     var body: some View {
         Group {
-            if currentUid == idUser {
+            if isMe {
                 VStack(alignment: .trailing) {
                     Spacer()
                     HStack {
@@ -32,7 +35,7 @@ struct MessageView: View {
                             .resizable()
                             .frame(width: 10, height: 10)
                             .foregroundColor(.accentColor)
-                            .opacity(isRead == true ? 0.0 : 0.5)
+                            .opacity(isRead ? 0.0 : 0.5)
                             .padding(.top, 23)
                         VStack(alignment: .trailing) {
                             if isEmoji {
