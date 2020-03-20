@@ -27,7 +27,7 @@ struct SignUpView: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        sessionStore.signUp(email: email, password: password) { (result, error) in
+        sessionStore.signUp(email: email, password: password) { result, error in
             if error != nil {
                 self.textError = (error?.localizedDescription)!
                 self.loading = false
@@ -101,7 +101,7 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 8)
-            CustomButton(label: loading == true ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading, colorButton: Color.defaultColorApp)
+            CustomButton(label: loading ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -162,7 +162,7 @@ struct ResetPassword: View {
                 .padding([.top, .horizontal])
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            CustomButton(label: loading == true ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading, colorButton: Color.defaultColorApp)
+            CustomButton(label: loading ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -245,7 +245,7 @@ struct EmailLoginScreen: View {
                         .padding(.bottom, 8)
                 }
             }
-            CustomButton(label: loading == true ? "Загрузка" : "Войти", action: signIn, loading: loading, colorButton: Color.defaultColorApp)
+            CustomButton(label: loading ? "Загрузка" : "Войти", action: signIn, loading: loading, colorButton: Color.defaultColorApp)
                 .disabled(loading)
                 .padding()
             Divider()

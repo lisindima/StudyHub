@@ -18,8 +18,6 @@ import Purchases
 
 class SessionStore: NSObject, ObservableObject {
     
-    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
-    
     @Published var user: User?
     @Published var lastname: String!
     @Published var firstname: String!
@@ -62,7 +60,7 @@ class SessionStore: NSObject, ObservableObject {
         case unknown
     }
     
-    func listen() {
+    func listenSession() {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
                 Purchases.shared.identify(user.uid, { info, error in
@@ -337,7 +335,7 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func sendEmailVerification() {
-        Auth.auth().currentUser?.sendEmailVerification { (error) in
+        Auth.auth().currentUser?.sendEmailVerification { error in
             
         }
     }

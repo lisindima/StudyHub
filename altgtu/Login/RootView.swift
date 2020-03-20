@@ -19,6 +19,6 @@ struct RootView: View {
             } else {
                 AuthenticationScreen()
             }
-        }.onAppear(perform: sessionStore.listen)
+        }.onAppear(perform: sessionStore.listenSession)
     }
 }

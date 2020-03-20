@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
         Purchases.debugLogsEnabled = true
         FirebaseApp.configure()
         
+        SessionStore.shared.listenSession()
+        
         return true
     }
     
