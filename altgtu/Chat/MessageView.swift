@@ -36,7 +36,7 @@ struct MessageView: View {
                             .padding(.top, 23)
                         VStack(alignment: .trailing) {
                             if isEmoji {
-                               Text(message)
+                                Text(message)
                                     .font(.system(size: 50))
                             } else {
                                 Text(message)
@@ -57,35 +57,33 @@ struct MessageView: View {
                 .padding(.trailing)
                 .padding(.leading, 30)
             } else {
-                VStack(alignment: .leading) {
-                    HStack {
-                        KFImage(URL(string: sessionStore.urlImageProfile))
-                            .placeholder { ActivityIndicator(styleSpinner: .medium) }
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(Circle())
-                            .clipped()
-                            .frame(width: 37, height: 37)
-                        VStack {
-                            HStack {
-                                if isEmoji {
-                                   Text(message)
-                                        .font(.system(size: 50))
-                                } else {
-                                    Text(message)
-                                        .padding(10)
-                                        .background(Color(UIColor.secondarySystemBackground))
-                                        .cornerRadius(5)
-                                }
-                                Spacer()
-                            }.padding(.bottom, 3)
-                            HStack {
-                                Text("\(dateMessage, formatter: dateStore.dateHour)")
-                                    .font(.system(size: 10))
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                            }.padding(.leading, 3)
-                        }
+                HStack {
+                    KFImage(URL(string: sessionStore.urlImageProfile))
+                        .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .clipped()
+                        .frame(width: 37, height: 37)
+                    VStack {
+                        HStack {
+                            if isEmoji {
+                                Text(message)
+                                    .font(.system(size: 50))
+                            } else {
+                                Text(message)
+                                    .padding(10)
+                                    .background(Color(UIColor.secondarySystemBackground))
+                                    .cornerRadius(5)
+                            }
+                            Spacer()
+                        }.padding(.bottom, 3)
+                        HStack {
+                            Text("\(dateMessage, formatter: dateStore.dateHour)")
+                                .font(.system(size: 10))
+                                .foregroundColor(.secondary)
+                            Spacer()
+                        }.padding(.leading, 3)
                     }
                 }
                 .fixedSize(horizontal: false, vertical: true)
