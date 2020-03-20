@@ -33,12 +33,13 @@
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
+		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
 		CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32DAFB23A0B64800B25626 /* TodayViewController.swift */; };
 		CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */; };
 		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CB37694123E2CA3D0015B61E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Extensions.swift */; };
+		CB37694123E2CA3D0015B61E /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* RGB.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
 		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
 		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
@@ -222,12 +223,13 @@
 		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
+		CB30FB632424809100F5793E /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB32DAFB23A0B64800B25626 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		CB32DAFE23A0B64800B25626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		CB32DB0023A0B64800B25626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB37694023E2CA3D0015B61E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CB37694023E2CA3D0015B61E /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		CB37694523E3F54F0015B61E /* ChangeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIcons.swift; sourceTree = "<group>"; };
 		CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@2x.png"; sourceTree = "<group>"; };
 		CB37695923E5CD850015B61E /* lisinlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@3x.png"; sourceTree = "<group>"; };
@@ -533,19 +535,10 @@
 		CB179AC923CC181D00424FD2 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
-				CB179ACE23CC305E00424FD2 /* CircleProgress */,
+				CB179AD123CC331B00424FD2 /* CircleProgress.swift */,
 				CB179ACA23CC182F00424FD2 /* Banner.swift */,
-				CB37694023E2CA3D0015B61E /* Extensions.swift */,
 			);
 			path = Banner;
-			sourceTree = "<group>";
-		};
-		CB179ACE23CC305E00424FD2 /* CircleProgress */ = {
-			isa = PBXGroup;
-			children = (
-				CB179AD123CC331B00424FD2 /* CircleProgress.swift */,
-			);
-			path = CircleProgress;
 			sourceTree = "<group>";
 		};
 		CB27619323556A1F0054C753 /* Login */ = {
@@ -691,6 +684,8 @@
 		CBD896B22378FDAE008CF480 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CB30FB632424809100F5793E /* String+Emoji.swift */,
+				CB37694023E2CA3D0015B61E /* RGB.swift */,
 				CB0AED74232E5AC50047A8A0 /* CustomButton.swift */,
 				CB0AED73232E5AC50047A8A0 /* CustomInput.swift */,
 				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
@@ -1036,6 +1031,7 @@
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
+				CB30FB642424809100F5793E /* String+Emoji.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */,
 				CB0AED5F232E5A210047A8A0 /* RootView.swift in Sources */,
 				CBA7271023DE79960094372B /* NoteLoading.swift in Sources */,
@@ -1067,7 +1063,7 @@
 				CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */,
 				CBF0EE1E23A341DD006CC917 /* SecureView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
-				CB37694123E2CA3D0015B61E /* Extensions.swift in Sources */,
+				CB37694123E2CA3D0015B61E /* RGB.swift in Sources */,
 				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 				CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */,
@@ -1270,7 +1266,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
+				CODE_SIGN_ENTITLEMENTS = altgtu/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 425;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";
@@ -1297,7 +1293,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "altgtu/АлтГТУ.entitlements";
+				CODE_SIGN_ENTITLEMENTS = altgtu/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 425;
 				DEVELOPMENT_ASSET_PATHS = "\"altgtu/Preview Content\"";

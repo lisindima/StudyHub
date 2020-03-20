@@ -35,10 +35,15 @@ struct MessageView: View {
                             .opacity(isRead == true ? 0.0 : 0.5)
                             .padding(.top, 23)
                         VStack(alignment: .trailing) {
-                            Text(message)
-                                .padding(10)
-                                .background(Color(UIColor.secondarySystemBackground))
-                                .cornerRadius(5)
+                            if isEmoji {
+                               Text(message)
+                                    .font(.system(size: 50))
+                            } else {
+                                Text(message)
+                                    .padding(10)
+                                    .background(Color(UIColor.secondarySystemBackground))
+                                    .cornerRadius(5)
+                            }
                         }
                     }.padding(.bottom, -3)
                     HStack {
@@ -63,10 +68,15 @@ struct MessageView: View {
                             .frame(width: 37, height: 37)
                         VStack {
                             HStack {
-                                Text(message)
-                                    .padding(10)
-                                    .background(Color(UIColor.secondarySystemBackground))
-                                    .cornerRadius(5)
+                                if isEmoji {
+                                   Text(message)
+                                        .font(.system(size: 50))
+                                } else {
+                                    Text(message)
+                                        .padding(10)
+                                        .background(Color(UIColor.secondarySystemBackground))
+                                        .cornerRadius(5)
+                                }
                                 Spacer()
                             }.padding(.bottom, 3)
                             HStack {
@@ -83,5 +93,11 @@ struct MessageView: View {
                 .padding(.trailing, 30)
             }
         }
+    }
+}
+
+extension MessageView {
+    var isEmoji: Bool {
+        (message.count <= 3) && message.containsOnlyEmoji
     }
 }
