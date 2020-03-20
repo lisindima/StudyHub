@@ -86,10 +86,11 @@ struct TitleView: View {
                 .frame(width: 150)
                 .cornerRadius(30)
                 .shadow(radius: 10)
-            Text("Личный кабинет")
+            Text("Добро пожаловать в")
                 .customTitleText()
-            Text("АлтГТУ")
+            Text("StudyHub")
                 .customTitleText()
+                .foregroundColor(.defaultColorApp)
         }
     }
 }

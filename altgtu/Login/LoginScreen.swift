@@ -12,6 +12,8 @@ import Firebase
 // MARK: - Регистрация
 
 struct SignUpView: View {
+    
+    @EnvironmentObject var sessionStore: SessionStore
 
     @State private var email: String = ""
     @State private var password: String = ""
@@ -20,8 +22,6 @@ struct SignUpView: View {
     @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-
-    @EnvironmentObject var sessionStore: SessionStore
 
     private func signUp() {
         let generator = UINotificationFeedbackGenerator()
@@ -126,13 +126,13 @@ struct SignUpView: View {
 
 struct ResetPassword: View {
 
+    @EnvironmentObject var sessionStore: SessionStore
+    
     @State private var email: String = ""
     @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
-
-    @EnvironmentObject var sessionStore: SessionStore
 
     private func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
@@ -191,14 +191,14 @@ struct ResetPassword: View {
 // MARK: - Вход с помощью почты и пароля
 
 struct EmailLoginScreen: View {
+    
+    @EnvironmentObject var sessionStore: SessionStore
 
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var textError: String = ""
     @State private var loading: Bool = false
     @State private var showAlert: Bool = false
-
-    @EnvironmentObject var sessionStore: SessionStore
 
     private func signIn() {
         let generator = UINotificationFeedbackGenerator()
@@ -285,19 +285,17 @@ struct EmailLoginScreen: View {
 
 struct AuthenticationScreen: View {
 
-    @State private var showSpashScreen: Bool = false
-
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
+    @State private var showSpashScreen: Bool = false
 
     private func funcSplashScreen() {
         let defaults = UserDefaults.standard
         if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            print("НЕ первый запуск")
             self.showSpashScreen = false
         } else {
             defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            print("Первый запуск")
             self.showSpashScreen = true
         }
     }
@@ -307,16 +305,12 @@ struct AuthenticationScreen: View {
             VStack(alignment: .center) {
                 Spacer()
                 VStack {
-                    Image("altgtu")
+                    Image("defaultlogo")
                         .resizable()
                         .frame(width: 150, height: 150)
-                    Text("Личный кабинет")
-                        .font(.system(size: 32, weight: .black))
-                        .multilineTextAlignment(.center)
-                    Text("АлтГТУ")
+                    Text("StudyHub")
                         .font(.system(size: 32, weight: .black))
                         .padding(.bottom, 10)
-                        .multilineTextAlignment(.center)
                     Text("Самый простой способ узнать расписание и")
                         .font(.subheadline)
                         .foregroundColor(.secondary)

@@ -212,7 +212,7 @@
 		CB0AED83232E5AF90047A8A0 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "АлтГТУ.entitlements"; sourceTree = "<group>"; };
+		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
 		CB11A8C923E1DEEB006E568C /* ChatLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoading.swift; sourceTree = "<group>"; };
 		CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmpty.swift; sourceTree = "<group>"; };
 		CB11A8CD23E1E1D4006E568C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -424,7 +424,7 @@
 				CB0AED45232E59A30047A8A0 /* Assets.xcassets */,
 				CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */,
 				CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */,
-				CB0AED8F232E5F1F0047A8A0 /* АлтГТУ.entitlements */,
+				CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */,
 				CB0AED4D232E59A30047A8A0 /* Info.plist */,
 				CB0AED47232E59A30047A8A0 /* Preview Content */,
 			);
