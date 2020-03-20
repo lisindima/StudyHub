@@ -90,7 +90,7 @@ struct SecureView: View {
                 Image(systemName: userInputCode.count >= 2 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputCode.count >= 3 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputCode.count == 4 ? "largecircle.fill.circle" : "circle")
-            }.foregroundColor(changeColor == false ? Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0) : .red)
+            }.foregroundColor(changeColor ? .red : Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             Spacer()
             VStack {
                 HStack {
@@ -120,11 +120,11 @@ struct SecureView: View {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if sessionStore.biometricAccess == false {
+                    } else if !sessionStore.biometricAccess {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if currentBiometricType == .touchID && sessionStore.biometricAccess == true {
+                    } else if currentBiometricType == .touchID && sessionStore.biometricAccess {
                         Button(action: {
                             self.biometricAccess()
                         }) {
@@ -137,7 +137,7 @@ struct SecureView: View {
                                         .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
                             )
                         }
-                    } else if currentBiometricType == .faceID && sessionStore.biometricAccess == true {
+                    } else if currentBiometricType == .faceID && sessionStore.biometricAccess {
                         Button(action: {
                             self.biometricAccess()
                         }) {
@@ -177,7 +177,7 @@ struct SecureView: View {
             }.padding(.top)
         }
         .padding()
-        .onAppear(perform: sessionStore.biometricAccess == true ? biometricAccess : noSetBiometricAccess)
+        .onAppear(perform: sessionStore.biometricAccess ? biometricAccess : noSetBiometricAccess)
         .onReceive(self.userInputCode.publisher.first()) { _ in
             self.checkAccess()
         }

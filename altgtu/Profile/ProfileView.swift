@@ -114,7 +114,7 @@ struct ProfileView: View {
                     .environmentObject(self.sessionStore)
             })
         }
-        .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

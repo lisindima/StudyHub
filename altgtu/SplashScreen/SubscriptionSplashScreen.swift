@@ -19,10 +19,10 @@ struct SubscriptionSplashScreen: View {
                 TitleSubscriptionView()
                     .padding(.bottom)
                     .padding(.top, 50)
-                    .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                    .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 SubscriptionContainerView()
                     .padding(.bottom, 50)
-                    .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                    .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             }
             Spacer()
             HStack {
@@ -32,7 +32,8 @@ struct SubscriptionSplashScreen: View {
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 0.2))
+                            .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .opacity(0.2)
                             .frame(maxWidth: .infinity, maxHeight: 72)
                         if purchasesStore.loadingMonthlyButton {
                             ActivityIndicator(styleSpinner: .medium)
@@ -53,7 +54,7 @@ struct SubscriptionSplashScreen: View {
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+                            .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             .frame(maxWidth: .infinity, maxHeight: 72)
                         if purchasesStore.loadingAnnualButton {
                             ActivityIndicator(styleSpinner: .medium)

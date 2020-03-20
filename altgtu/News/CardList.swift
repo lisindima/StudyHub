@@ -81,7 +81,7 @@ struct CardList: View {
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.secondary)
                                             Capsule()
-                                                .fill(self.selectedTab == item ? Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0) : Color.clear)
+                                                .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue) : Color.clear)
                                                 .frame(height: 6)
                                         }.frame(width: 110)
                                     }

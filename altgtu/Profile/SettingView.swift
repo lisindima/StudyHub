@@ -80,7 +80,7 @@ struct SettingView: View {
             let mailFeedback = UIHostingController(rootView:
                 MailFeedback(mailSubject: self.$mailSubject)
                     .edgesIgnoringSafeArea(.bottom)
-                    .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                    .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
             )
             UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
                 mailFeedback, animated: true, completion: nil
@@ -289,7 +289,7 @@ struct SettingView: View {
                             self.sessionStore.setUnsplashImageForProfileBackground()
                         }, content: {
                             UnsplashImagePicker(unsplashImage: self.$sessionStore.imageFromUnsplashPicker)
-                                .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                                .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
                                 .edgesIgnoringSafeArea(.bottom)
                         })
                     }
@@ -340,7 +340,7 @@ struct SettingView: View {
                             self.sessionStore.uploadProfileImageToStorage()
                         }, content: {
                             ImagePicker(imageFromPicker: self.$sessionStore.imageProfile, selectedSourceType: self.$selectedSourceType)
-                                .accentColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                                .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
                                 .edgesIgnoringSafeArea(.bottom)
                         })
                     }
@@ -436,12 +436,13 @@ struct SettingView: View {
                                     .frame(height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .foregroundColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 0.3))
+                                    .foregroundColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
+                                    .opacity(0.2)
                                 Rectangle()
                                     .frame(width: (CGFloat(self.imageCacheStore.sizeImageCache) / CGFloat(self.imageCacheStore.sizeLimitImageCache)) * geometry.size.width, height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .foregroundColor(Color(red: self.sessionStore.rValue/255.0, green: self.sessionStore.gValue/255.0, blue: self.sessionStore.bValue/255.0, opacity: 1.0))
+                                    .foregroundColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
                                     .animation(.linear)
                                 HStack {
                                     Spacer()
@@ -552,7 +553,7 @@ struct SettingView: View {
                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             })
         }
-        .accentColor(Color(red: sessionStore.rValue/255.0, green: sessionStore.gValue/255.0, blue: sessionStore.bValue/255.0, opacity: 1.0))
+        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
         .partialSheet(presented: $showPartialSheet, backgroundColor: Color(UIColor.secondarySystemBackground)) {
             ChangeIcons()
