@@ -7,14 +7,13 @@
 //
 
 import SwiftUI
-import Foundation
-import Firebase
 import Combine
-import AuthenticationServices
+import Firebase
 import CryptoKit
-import UnsplashPhotoPicker
-import Kingfisher
 import Purchases
+import Kingfisher
+import UnsplashPhotoPicker
+import AuthenticationServices
 
 class SessionStore: NSObject, ObservableObject {
     
@@ -52,6 +51,10 @@ class SessionStore: NSObject, ObservableObject {
     
     init(user: User? = nil) {
         self.user = user
+    }
+    
+    deinit {
+        unbind()
     }
     
     enum ActiveAuthType {
@@ -106,10 +109,8 @@ class SessionStore: NSObject, ObservableObject {
                     print("onlineUser не обновлен: \(err)")
                 } else {
                     if onlineUser == true {
-                        print("Пользователь онлайн!")
                         self.onlineUser = true
                     } else {
-                        print("Пользователь оффлайн!")
                         self.onlineUser = false
                     }
                 }
@@ -296,22 +297,18 @@ class SessionStore: NSObject, ObservableObject {
         return hashString
     }
     
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
-    
     func unbind() {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
     }
     
-    deinit {
-        unbind()
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
     
     func signUp(email: String, password: String, handler: @escaping AuthDataResultCallback) {
