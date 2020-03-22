@@ -12,7 +12,7 @@ import Combine
 class IconStore: ObservableObject {
     
     @Published var currentIconName: String = "defaultlogo"
-    @Published var iconModel: Array = [
+    @Published var iconModel: [IconModel] = [
         IconModel(nameIcon: "defaultlogo", nameAuthorIcon: "По умолчанию"),
         IconModel(nameIcon: "altstulogo", nameAuthorIcon: "Герб \"АлтГТУ\""),
         IconModel(nameIcon: "lisinlogo", nameAuthorIcon: "Лисин Дмитрий"),

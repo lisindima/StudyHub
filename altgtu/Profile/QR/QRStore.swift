@@ -12,7 +12,7 @@ import CoreImage.CIFilterBuiltins
 
 class QRStore: ObservableObject {
     
-    @Published var profileFriendsModel: Array = [ProfileFriendsModel]()
+    @Published var profileFriendsModel: [ProfileFriendsModel] = [ProfileFriendsModel]()
     
     static let shared = QRStore()
     

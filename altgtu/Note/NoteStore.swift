@@ -11,7 +11,7 @@ import Firebase
 
 class NoteStore: ObservableObject {
     
-    @Published var dataNote: Array = [DataNote]()
+    @Published var dataNote: [DataNote] = [DataNote]()
     @Published var statusNote: StatusNote = .loading
     
     static let shared = NoteStore()

@@ -17,7 +17,7 @@ struct CardList: View {
     
     @State private var showDetailsNews: Bool = false
     @State private var selectedTab: String = "Популярное"
-    @State private var news: Array = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
+    @State private var newsTopic: [String] = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
     
     var body: some View {
         NavigationView {
@@ -48,7 +48,7 @@ struct CardList: View {
                     }.padding(.top, 30)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
-                            ForEach(news, id: \.self) { item in
+                            ForEach(newsTopic, id: \.self) { item in
                                 Button(action: {
                                     self.selectedTab = item
                                     if item == "Популярное" {
