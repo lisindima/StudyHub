@@ -19,7 +19,7 @@ class ScheduleStore: ObservableObject {
     
     func loadLesson() {
         AF.request("https://api.lisindmitriy.me/schedule")
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: ScheduleModel.self) { response in
                 switch response.result {
                 case .success( _):

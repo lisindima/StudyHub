@@ -70,7 +70,7 @@ class LicenseStore: ObservableObject {
     
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: LicenseModel.self) { response in
                 switch response.result {
                 case .success( _):

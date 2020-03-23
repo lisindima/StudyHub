@@ -98,7 +98,7 @@ class ChangelogStore: ObservableObject {
     
     func loadChangelog() {
         AF.request("https://api.lisindmitriy.me/changelog")
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: ChangelogModel.self) { response in
                 switch response.result {
                 case .success( _):

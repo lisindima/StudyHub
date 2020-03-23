@@ -32,7 +32,7 @@ class PickerStore: ObservableObject {
     
     func loadPickerFaculty() {
         AF.request(apiFaculty)
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: FacultyModel.self) { response in
                 switch response.result {
                 case .success( _):
@@ -47,7 +47,7 @@ class PickerStore: ObservableObject {
     
     func loadPickerGroup() {
         AF.request(apiGroup + facultyModel[choiseFaculty].id)
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: GroupModel.self) { response in
                 switch response.result {
                 case .success( _):

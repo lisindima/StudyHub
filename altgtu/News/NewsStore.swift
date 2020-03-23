@@ -22,7 +22,7 @@ class NewsStore: ObservableObject {
     
     func loadNews() {
         AF.request(apiUrl + apiKey)
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: News.self) { response in
                 switch response.result {
                 case .success( _):
@@ -37,7 +37,7 @@ class NewsStore: ObservableObject {
     
     func fetchCategoryNews(category: String) {
         AF.request(apiUrl + apiKey + category)
-            .validate(statusCode: 200..<300)
+            .validate()
             .responseDecodable(of: News.self) { response in
                 switch response.result {
                 case .success( _):
