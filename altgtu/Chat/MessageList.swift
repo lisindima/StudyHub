@@ -18,7 +18,7 @@ struct MessageList: View {
     @State private var typeMessage: String = ""
     
     let currentUid = Auth.auth().currentUser!.uid
-    let receiverFCMToken = "fcpmytj8KEyKjYg5pYuVQt:APA91bG_Gds1llYdxSAZ2o5revrerR8_QNroPjA-8mfRelx08_PeCQ2xKykmonl_DGVYN3QIN97lvOGCJzSRCSbrL_ORiJ7rf8D-i2ujYw8hMP2TvMJl2xfYSTu_E47pzK20mCqzNH9B"
+    let receiverFCMToken = "cReH043tXk9boQTZuNxOGF:APA91bG_SitwV7niS5IY5tPxDeD1Juczw3pwy36MumzuGfhV9onKFIo744Bf0_pHQPKWvRaNoG9za3drXr6KLxU0oYJX-8CkG6OelTSi3KDdyEbkYQwQ1NfyBmwWWTIkXGEzJwu9anH4"
     
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct MessageList: View {
                 .scaleEffect(x: -1.0, y: 1.0)
                 .rotationEffect(.degrees(180))
                 ChatTextField(messageText: $typeMessage, action: {
-                    self.chatStore.sendMessage(datas: self.chatStore, token: self.receiverFCMToken, title: "Лисин", body: self.typeMessage)
+                    self.chatStore.sendMessage(chatStore: self.chatStore, token: self.receiverFCMToken, title: "Лисин Дмитрий", body: self.typeMessage)
                     self.typeMessage = ""
                 })
                     .padding(.horizontal)

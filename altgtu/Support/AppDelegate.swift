@@ -12,15 +12,16 @@ import Firebase
 import Purchases
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate, MessagingDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf")
-        Purchases.shared.delegate = self
         Purchases.debugLogsEnabled = true
+        Purchases.shared.delegate = self
         FirebaseApp.configure()
-        
+        Messaging.messaging().delegate = self
         SessionStore.shared.listenSession()
+        NotificationStore.shared.requestPermission()
         
         return true
     }
@@ -35,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
     
     func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: Purchases.PurchaserInfo) {
         PurchasesStore.shared.listenPurchases()
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        NotificationStore.shared.updateFcmToken(fcmToken: fcmToken)
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
