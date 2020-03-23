@@ -180,19 +180,18 @@ class SessionStore: NSObject, ObservableObject {
         photoRef = storage.reference(forURL: storagePath)
         let data = imageProfile.jpegData(compressionQuality: 1)
         if data == nil {
-            print("Фото не выбрано")
+            return
         } else {
             showBanner = true
             let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
-                photoRef.downloadURL { (url, error) in
+                photoRef.downloadURL { url, error in
                     guard let downloadURL = url else {
                         return
                     }
                     self.urlImageProfile = downloadURL.absoluteString
-                    print("url image: \(String(describing: self.urlImageProfile))")
                     let docRef = self.db.collection("profile").document(self.currentUser!.uid)
                     docRef.updateData([
-                        "urlImageProfile": self.urlImageProfile as Any
+                        "urlImageProfile": self.urlImageProfile as String
                     ]) { error in
                         if let error = error {
                             print("Error updating document: \(error)")
@@ -215,7 +214,6 @@ class SessionStore: NSObject, ObservableObject {
             }
             uploadImageTask.observe(.progress) { snapshot in
                 self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-                print(self.percentComplete)
             }
         }
     }
@@ -344,7 +342,7 @@ extension SessionStore: ASAuthorizationControllerDelegate {
                 return
             }
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            Auth.auth().signIn(with: credential) { (authResult, error) in
+            Auth.auth().signIn(with: credential) { authResult, error in
                 if error != nil {
                     print((error?.localizedDescription)!)
                     return

@@ -41,7 +41,7 @@ struct UnsplashImagePicker: UIViewControllerRepresentable {
         }
         
         func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {
-            print("Unsplash photo picker did cancel")
+            
         }
     }
     

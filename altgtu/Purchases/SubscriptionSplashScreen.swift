@@ -16,7 +16,7 @@ struct SubscriptionSplashScreen: View {
     var body: some View {
         VStack {
             ScrollView {
-                TitleSubscriptionView()
+                SubscriptionTitleView()
                     .padding(.bottom)
                     .padding(.top, 50)
                     .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
@@ -103,7 +103,7 @@ struct SubscriptionSplashScreen: View {
     }
 }
 
-struct TitleSubscriptionView: View {
+struct SubscriptionTitleView: View {
     var body: some View {
         VStack {
             Image(systemName: "plus.app.fill")
