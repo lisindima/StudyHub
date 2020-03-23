@@ -45,9 +45,11 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
-    static let shared = SessionStore()
-    
     var handle: AuthStateDidChangeListenerHandle?
+    
+    static let shared = SessionStore()
+    let currentUser = Auth.auth().currentUser
+    let db = Firestore.firestore()
     
     init(user: User? = nil) {
         self.user = user
@@ -98,8 +100,6 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func updateOnlineUser(onlineUser: Bool) {
-        let currentUser = Auth.auth().currentUser
-        let db = Firestore.firestore()
         if currentUser != nil {
             let docRef = db.collection("profile").document(currentUser!.uid)
             docRef.updateData([
@@ -119,9 +119,7 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func getDataFromDatabaseListen() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
+        db.collection("profile").document(currentUser!.uid).addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {
                 self.lastname = document.get("lastname") as? String
                 self.firstname = document.get("firstname") as? String
@@ -148,9 +146,7 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func updateDataFromDatabase() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        let docRef = db.collection("profile").document(currentUser.uid)
+        let docRef = db.collection("profile").document(currentUser!.uid)
         docRef.updateData([
             "lastname": lastname!,
             "firstname": firstname!,
@@ -177,46 +173,41 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func uploadProfileImageToStorage() {
-        let currentUser = Auth.auth().currentUser!
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        var photoRef = storageRef.child("photoProfile/\(currentUser.uid).jpeg")
-        let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
+        var photoRef = storageRef.child("photoProfile/\(currentUser!.uid).jpeg")
+        let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser!.uid).jpeg"
         photoRef = storage.reference(forURL: storagePath)
         let data = imageProfile.jpegData(compressionQuality: 1)
         if data == nil {
             print("Фото не выбрано")
         } else {
-            print("Фото выбрано")
             showBanner = true
-            let uploadImageTask = photoRef.putData(data!, metadata: nil) { (metadata, error) in
+            let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
                 photoRef.downloadURL { (url, error) in
                     guard let downloadURL = url else {
                         return
                     }
                     self.urlImageProfile = downloadURL.absoluteString
                     print("url image: \(String(describing: self.urlImageProfile))")
-                    let db = Firestore.firestore()
-                    let docRef = db.collection("profile").document(currentUser.uid)
+                    let docRef = self.db.collection("profile").document(self.currentUser!.uid)
                     docRef.updateData([
                         "urlImageProfile": self.urlImageProfile as Any
-                    ]) { err in
-                        if let err = err {
-                            print("Error updating document: \(err)")
+                    ]) { error in
+                        if let error = error {
+                            print("Error updating document: \(error)")
                             self.showBanner = false
                         } else {
-                            db.collection("profile").document(currentUser.uid)
+                            self.db.collection("profile").document(self.currentUser!.uid)
                                 .addSnapshotListener { documentSnapshot, error in
                                     if let document = documentSnapshot {
                                         self.urlImageProfile = document.get("urlImageProfile") as? String
-                                        print(self.urlImageProfile ?? "Ошибка, нет Фото!")
                                         self.showBanner = false
                                     } else if error != nil {
                                         print((error?.localizedDescription)!)
                                         self.showBanner = false
                                     }
                             }
-                            print("Image successfully updated")
                             self.showBanner = false
                         }
                     }

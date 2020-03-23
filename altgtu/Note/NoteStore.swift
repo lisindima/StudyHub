@@ -15,12 +15,12 @@ class NoteStore: ObservableObject {
     @Published var statusNote: StatusNote = .loading
     
     static let shared = NoteStore()
+    let db = Firestore.firestore()
+    let currentUser = Auth.auth().currentUser
     
     func getDataFromDatabaseListenNote() {
         statusNote = .loading
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser!
-        db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { (querySnapshot, err) in
+        db.collection("note").document(currentUser!.uid).collection("noteCollection").addSnapshotListener { (querySnapshot, err) in
             if err != nil {
                 self.statusNote = .emptyNote
                 print((err?.localizedDescription)!)
@@ -41,9 +41,7 @@ class NoteStore: ObservableObject {
     }
     
     func addNote(note: String) {
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser!
-        db.collection("note").document(currentUser.uid).collection("noteCollection").addDocument(data: ["note": note]) { (err) in
+        db.collection("note").document(currentUser!.uid).collection("noteCollection").addDocument(data: ["note": note]) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -53,10 +51,8 @@ class NoteStore: ObservableObject {
     }
     
     func deleteNote(datas: NoteStore, index: IndexSet) {
-        let db = Firestore.firestore()
-        let currentUser = Auth.auth().currentUser!
         let id = datas.dataNote[index.first!].id
-        db.collection("note").document(currentUser.uid).collection("noteCollection").document(id).delete { (err) in
+        db.collection("note").document(currentUser!.uid).collection("noteCollection").document(id).delete { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
