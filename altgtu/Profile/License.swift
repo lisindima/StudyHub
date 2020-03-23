@@ -63,7 +63,7 @@ struct LicenseDetail: View {
 
 class LicenseStore: ObservableObject {
     
-    @Published var licenseModel: LicenseModel = [LicenseModelElement]()
+    @Published var licenseModel: [LicenseModel] = [LicenseModel]()
     @Published var licenseLoadingFailure: Bool = false
     
     static let shared = LicenseStore()
@@ -71,7 +71,7 @@ class LicenseStore: ObservableObject {
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
             .validate()
-            .responseDecodable(of: LicenseModel.self) { response in
+            .responseDecodable(of: [LicenseModel].self) { response in
                 switch response.result {
                 case .success( _):
                     guard let license = response.value else { return }
@@ -84,11 +84,9 @@ class LicenseStore: ObservableObject {
     }
 }
 
-struct LicenseModelElement: Identifiable, Codable {
+struct LicenseModel: Identifiable, Codable {
     let id: Int
     let nameFramework: String
     let urlFramework: String
     let textLicenseFramework: String
 }
-
-typealias LicenseModel = [LicenseModelElement]

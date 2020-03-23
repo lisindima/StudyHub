@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ScheduleDetail: View {
-    var scheduleModel: ScheduleModelElement
+    var scheduleModel: ScheduleModel
     var body: some View {
         VStack {
             Text(scheduleModel.name)

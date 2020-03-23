@@ -12,8 +12,8 @@ import Alamofire
 
 class PickerStore: ObservableObject {
     
-    @Published var facultyModel: FacultyModel = [FacultyModelElement]()
-    @Published var groupModel: GroupModel = [GroupModelElement]()
+    @Published var facultyModel: [FacultyModelElement] = [FacultyModelElement]()
+    @Published var groupModel: [GroupModelElement] = [GroupModelElement]()
     @Published var choiseGroup: Int = 0
     
     var choiseFaculty: Int = 0 {
@@ -33,7 +33,7 @@ class PickerStore: ObservableObject {
     func loadPickerFaculty() {
         AF.request(apiFaculty)
             .validate()
-            .responseDecodable(of: FacultyModel.self) { response in
+            .responseDecodable(of: [FacultyModelElement].self) { response in
                 switch response.result {
                 case .success( _):
                     guard let faculty = response.value else { return }
@@ -48,7 +48,7 @@ class PickerStore: ObservableObject {
     func loadPickerGroup() {
         AF.request(apiGroup + facultyModel[choiseFaculty].id)
             .validate()
-            .responseDecodable(of: GroupModel.self) { response in
+            .responseDecodable(of: [GroupModelElement].self) { response in
                 switch response.result {
                 case .success( _):
                     guard let group = response.value else { return }
@@ -83,4 +83,18 @@ class PickerStore: ObservableObject {
             }
         }
     }
+}
+
+struct GroupModelElement: Identifiable, Codable {
+    let startYear: Int?
+    let name: String
+    let facultyID: String?
+    let specialityID: String?
+    let groupBr: Int?
+    let id: String
+}
+
+struct FacultyModelElement: Identifiable, Codable {
+    let id: String
+    let name: String
 }

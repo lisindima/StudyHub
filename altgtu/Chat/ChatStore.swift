@@ -8,20 +8,24 @@
 
 import Combine
 import Firebase
+import Alamofire
 
 class ChatStore: ObservableObject {
     
-    @Published var chatList: Array = [String]()
-    @Published var dataMessages: Array = [DataMessages]()
+    @Published var chatList: [String] = [String]()
+    @Published var dataMessages: [DataMessages] = [DataMessages]()
     @Published var statusChat: StatusChat = .loading
     
     static let shared = ChatStore()
     
-    let legacyServerKey = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
+    var isNotRead: Int = 0
+    
+    let legacyServerKey: String = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
+    let currentUser = Auth.auth().currentUser
+    let db = Firestore.firestore()
     
     func loadMessageList() {
-        let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { (querySnapshot, err) in
+        db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -65,7 +69,6 @@ class ChatStore: ObservableObject {
     }
     
     func addMessageDB(message: String, user: String, idUser: String) {
-        let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("messages").addDocument(data: [
             "message": message,
             "user": user,
@@ -77,12 +80,10 @@ class ChatStore: ObservableObject {
                 print((err?.localizedDescription)!)
                 return
             }
-            print("Сообщение отправлено!")
         }
     }
     
     func updateData(id: String, isRead: Bool) {
-        let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("messages").document(id).updateData(["isRead": isRead]) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
@@ -95,8 +96,7 @@ class ChatStore: ObservableObject {
     
     func getDataFromDatabaseListenChat() {
         statusChat = .loading
-        let db = Firestore.firestore()
-        db.collection("chatRoom").addSnapshotListener { (querySnapshot, err) in
+        db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
             if err != nil {
                 self.statusChat = .emptyChat
                 print((err?.localizedDescription)!)
@@ -110,46 +110,43 @@ class ChatStore: ObservableObject {
         }
     }
     
-    func sendMessage(datas: ChatStore, token: String, title: String, body: String) {
-        self.addMessageDB(message: body, user: title, idUser: Auth.auth().currentUser!.uid)
-        var isNotRead: Int = 0
-        for messages in datas.dataMessages {
-            if !messages.isRead && title == messages.idUser {
-                isNotRead += 1
-            }
-        }
+    func sendMessage(chatStore: ChatStore, token: String, title: String, body: String) {
+        addMessageDB(message: body, user: title, idUser: currentUser!.uid)
+        
         isNotRead += 1
-        let urlString = "https://fcm.googleapis.com/fcm/send"
-        let url = NSURL(string: urlString)!
-        let paramString: [String : Any] = ["to": token,
-                                           "priority": "high",
-                                           "notification": ["title": title, "body": body, "sound": "default", "badge": isNotRead],
-                                           "data": ["user": "test_id"]
+        
+        let parameters: Parameters = [
+            "to": token,
+            "priority": "high",
+            "notification": [
+                "title": title,
+                "body": body,
+                "sound": "default",
+                "badge": isNotRead
+            ],
+            "data": [
+                "user": "test_id"
+            ]
         ]
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject:paramString, options: [.prettyPrinted])
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("key=\(legacyServerKey)", forHTTPHeaderField: "Authorization")
-        let task =  URLSession.shared.dataTask(with: request as URLRequest)  { (data, response, error) in
-            do {
-                if let jsonData = data {
-                    if let jsonDataDict  = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
-                        NSLog("Received data:\n\(jsonDataDict))")
-                    }
-                }
-            } catch let err as NSError {
-                print(err.debugDescription)
-            }
+        
+        let headers: HTTPHeaders = [
+            .contentType("application/json"),
+            .authorization("key=\(legacyServerKey)")
+        ]
+        
+        let encoding = JSONEncoding.prettyPrinted
+        
+        AF.request("https://fcm.googleapis.com/fcm/send", method: .post, parameters: parameters, encoding: encoding, headers: headers)
+            .validate()
+            .responseJSON { response in
+                print(response)
         }
-        task.resume()
     }
     
     func checkRead() {
-        let currentUid = Auth.auth().currentUser!.uid
         UIApplication.shared.applicationIconBadgeNumber = 0
         for data in dataMessages {
-            if currentUid != data.idUser && data.isRead == false {
+            if currentUser!.uid != data.idUser && !data.isRead {
                 self.updateData(id: data.id, isRead: true)
             }
         }
@@ -160,11 +157,6 @@ enum StatusChat {
     case loading
     case emptyChat
     case showChat
-}
-
-struct DataChat: Identifiable {
-    var id: String
-    var nameChat: String
 }
 
 struct DataMessages: Identifiable {

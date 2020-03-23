@@ -12,7 +12,7 @@ import Alamofire
 
 class ScheduleStore: ObservableObject {
     
-    @Published var scheduleModel: ScheduleModel = [ScheduleModelElement]()
+    @Published var scheduleModel: [ScheduleModel] = [ScheduleModel]()
     @Published var scheduleLoadingFailure: Bool = false
     
     static let shared = ScheduleStore()
@@ -20,7 +20,7 @@ class ScheduleStore: ObservableObject {
     func loadLesson() {
         AF.request("https://api.lisindmitriy.me/schedule")
             .validate()
-            .responseDecodable(of: ScheduleModel.self) { response in
+            .responseDecodable(of: [ScheduleModel].self) { response in
                 switch response.result {
                 case .success( _):
                     guard let schedule = response.value else { return }
@@ -33,7 +33,7 @@ class ScheduleStore: ObservableObject {
     }
 }
 
-struct ScheduleModelElement: Identifiable, Codable {
+struct ScheduleModel: Identifiable, Codable {
     let id: UUID = UUID()
     let week: Int
     let dayOfWeek: String
@@ -41,5 +41,3 @@ struct ScheduleModelElement: Identifiable, Codable {
     let audit: String
     let time: String
 }
-
-typealias ScheduleModel = [ScheduleModelElement]

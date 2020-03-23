@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Schedule: View {
     
-    var scheduleModel: ScheduleModelElement
+    var scheduleModel: ScheduleModel
     
     var body: some View {
         HStack {

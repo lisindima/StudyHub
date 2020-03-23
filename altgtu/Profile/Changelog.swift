@@ -91,7 +91,7 @@ struct Changelog: View {
 
 class ChangelogStore: ObservableObject {
     
-    @Published var сhangelogModel: ChangelogModel = [ChangelogModelElement]()
+    @Published var сhangelogModel: [ChangelogModel] = [ChangelogModel]()
     @Published var changelogLoadingFailure: Bool = false
     
     static let shared = ChangelogStore()
@@ -99,7 +99,7 @@ class ChangelogStore: ObservableObject {
     func loadChangelog() {
         AF.request("https://api.lisindmitriy.me/changelog")
             .validate()
-            .responseDecodable(of: ChangelogModel.self) { response in
+            .responseDecodable(of: [ChangelogModel].self) { response in
                 switch response.result {
                 case .success( _):
                     guard let сhangelog = response.value else { return }
@@ -112,18 +112,10 @@ class ChangelogStore: ObservableObject {
     }
 }
 
-struct ChangelogModelElement: Identifiable, Codable {
+struct ChangelogModel: Identifiable, Codable {
     let id: Int
     let version: String
     let dateBuild: String
     let whatsNew: String
     let bugFixes: String
-}
-
-typealias ChangelogModel = [ChangelogModelElement]
-
-struct Changelog_Previews: PreviewProvider {
-    static var previews: some View {
-        Changelog()
-    }
 }
