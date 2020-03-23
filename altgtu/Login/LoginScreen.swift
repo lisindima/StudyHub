@@ -287,18 +287,6 @@ struct AuthenticationScreen: View {
 
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    @State private var showSpashScreen: Bool = false
-
-    private func funcSplashScreen() {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "isAppAlreadyLaunchedOnce") {
-            self.showSpashScreen = false
-        } else {
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-            self.showSpashScreen = true
-        }
-    }
 
     var body: some View {
         NavigationView {
@@ -344,12 +332,8 @@ struct AuthenticationScreen: View {
             }
             .frame(minWidth: nil, idealWidth: 400, maxWidth: 400, minHeight: nil, idealHeight: nil, maxHeight: nil)
             .edgesIgnoringSafeArea(.top)
-            .sheet(isPresented: self.$showSpashScreen) {
-                SplashScreen(dismissSheet: self.$showSpashScreen)
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.defaultColorApp)
-        .onAppear(perform: funcSplashScreen)
     }
 }
