@@ -26,6 +26,7 @@ struct NoteList: View {
         NavigationView {
             VStack(alignment: .leading) {
                 SearchBar(text: $searchText, editing: $hideNavigationBar)
+                    .animation(.interactiveSpring())
                     .padding(.horizontal, 6)
                 List {
                     ForEach(noteStore.dataNote.filter {
@@ -53,7 +54,6 @@ struct NoteList: View {
                     }
                 }.padding()
             }
-            .animation(.interactiveSpring())
             .sheet(isPresented: $showAddNewNote, onDismiss: {
                 
             }, content: {

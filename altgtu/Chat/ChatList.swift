@@ -32,13 +32,13 @@ struct ChatList: View {
         numberUnreadMessages = chatStore.dataMessages.filter {
             Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
         }.count
-        print(numberUnreadMessages, "непрочитанных сообщений")
     }
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 SearchBar(text: $searchText, editing: $hideNavigationBar)
+                    .animation(.interactiveSpring())
                     .padding(.horizontal, 6)
                 List {
                     ForEach(self.chatStore.chatList.filter {
@@ -71,7 +71,6 @@ struct ChatList: View {
                 }.padding()
             }
             .onAppear(perform: checkNumberUnreadMessages)
-            .animation(.interactiveSpring())
             .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle(Text("Сообщения"))
             .actionSheet(isPresented: $showActionSheetSort) {
