@@ -12,7 +12,7 @@ import KingfisherSwiftUI
 struct CardView: View {
     
     let article: Articles
-    let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
+    let noImageUrl: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     

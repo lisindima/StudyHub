@@ -87,7 +87,8 @@ class NotificationStore: ObservableObject {
         }
     }
     
-    func updateFcmToken(fcmToken: String) {
+    func updateFcmToken() {
+        let fcmToken = Messaging.messaging().fcmToken ?? "Ошибка"
         let docRef = db.collection("profile").document(currentUser!.uid)
         docRef.updateData([
             "fcmToken": fcmToken
