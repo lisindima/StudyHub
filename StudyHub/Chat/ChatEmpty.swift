@@ -30,7 +30,7 @@ struct ChatEmpty: View {
                     }.padding(12)
                 }
             }.navigationBarTitle(Text("Сообщения"))
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

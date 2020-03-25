@@ -12,10 +12,6 @@ struct BannerModifier: ViewModifier {
     
     @Binding var showBanner: Bool
     
-    init(showBanner: Binding<Bool>) {
-        _showBanner = showBanner
-    }
-    
     func body(content: Content) -> some View {
         ZStack {
             if showBanner {

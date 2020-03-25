@@ -34,14 +34,14 @@ struct NoteEmpty: View {
                     }.padding(12)
                 }
             }
+            .navigationBarTitle(Text("Заметки"))
             .sheet(isPresented: $showAddNewNote, onDismiss: {
                 
             }, content: {
                 NewNote()
                     .environmentObject(self.noteStore)
             })
-            .navigationBarTitle(Text("Заметки"))
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

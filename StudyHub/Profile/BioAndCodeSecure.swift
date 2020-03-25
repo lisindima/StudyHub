@@ -115,8 +115,6 @@ public class BiometricTypeStore: NSObject {
         case faceID
     }
     
-    private override init() {}
-    
     var biometricType: BiometricType {
         guard self.context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             return .none
