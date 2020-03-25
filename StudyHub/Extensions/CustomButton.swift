@@ -32,6 +32,7 @@ struct CustomButton: View {
         .padding()
         .background(colorButton)
         .cornerRadius(8)
+        .hoverEffect(.highlight)
     }
 }
 

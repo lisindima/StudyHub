@@ -73,7 +73,7 @@ struct CardList: View {
                                             .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue) : Color.clear)
                                             .frame(height: 6)
                                     }.frame(width: 110)
-                                }
+                                }.hoverEffect()
                             }
                         }.padding(.horizontal)
                     }

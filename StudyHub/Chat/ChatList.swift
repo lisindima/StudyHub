@@ -57,18 +57,10 @@ struct ChatList: View {
                     .onDelete(perform: delete)
                     .onMove(perform: move)
                 }
-                Button(action: {
+                PlusButton(action: {
                     print("Новое сообщение")
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                        Text("Новое сообщение")
-                            .font(.system(.body, design: .rounded))
-                            .fontWeight(.semibold)
-                    }
-                }.padding()
+                }, label: "Новое сообщение")
+                    .padding(12)
             }
             .onAppear(perform: checkNumberUnreadMessages)
             .navigationBarHidden(hideNavigationBar)

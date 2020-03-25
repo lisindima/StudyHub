@@ -41,18 +41,10 @@ struct NoteList: View {
                         self.noteStore.deleteNote(datas: self.noteStore, index: index)
                     }
                 }
-                Button(action: {
+                PlusButton(action: {
                     self.showAddNewNote = true
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                        Text("Новая заметка")
-                            .font(.system(.body, design: .rounded))
-                            .fontWeight(.semibold)
-                    }
-                }.padding()
+                }, label: "Новая заметка")
+                    .padding(12)
             }
             .sheet(isPresented: $showAddNewNote, onDismiss: {
                 

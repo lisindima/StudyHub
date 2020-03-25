@@ -243,6 +243,7 @@ struct EmailLoginScreen: View {
                 NavigationLink(destination: ResetPassword()) {
                     Text("Забыли пароль?")
                         .font(.footnote)
+                        .hoverEffect(.lift)
                         .padding(.horizontal)
                         .padding(.bottom, 8)
                 }
@@ -268,6 +269,7 @@ struct EmailLoginScreen: View {
                     NavigationLink(destination: SignUpView()) {
                         Text("Регистрация")
                             .font(.footnote)
+                            .hoverEffect(.lift)
                     }
                 }
                 .padding(.top, 5)
@@ -321,6 +323,7 @@ struct AuthenticationScreen: View {
                         .cornerRadius(8)
                         .padding()
                         .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
+                        .hoverEffect(.highlight)
                     Text("-или-")
                         .foregroundColor(.secondary)
                         .font(.subheadline)
@@ -329,6 +332,7 @@ struct AuthenticationScreen: View {
                             .font(.headline)
                             .foregroundColor(self.colorScheme == .light ? .black : .white)
                             .padding()
+                            .hoverEffect(.highlight)
                     }
                 }.padding(.bottom, 40)
             }
