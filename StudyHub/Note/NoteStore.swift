@@ -15,15 +15,15 @@ class NoteStore: ObservableObject {
     @Published var statusNote: StatusNote = .loading
     
     static let shared = NoteStore()
-    let db = Firestore.firestore()
-    let currentUser = Auth.auth().currentUser
     
     func getDataFromDatabaseListenNote() {
         statusNote = .loading
-        db.collection("note").document(currentUser!.uid).collection("noteCollection").addSnapshotListener { (querySnapshot, err) in
-            if err != nil {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { querySnapshot, error in
+            if error != nil {
                 self.statusNote = .emptyNote
-                print((err?.localizedDescription)!)
+                print((error?.localizedDescription)!)
                 return
             } else if querySnapshot!.isEmpty {
                 self.statusNote = .emptyNote
@@ -41,9 +41,11 @@ class NoteStore: ObservableObject {
     }
     
     func addNote(note: String) {
-        db.collection("note").document(currentUser!.uid).collection("noteCollection").addDocument(data: ["note": note]) { (err) in
-            if err != nil {
-                print((err?.localizedDescription)!)
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("note").document(currentUser.uid).collection("noteCollection").addDocument(data: ["note": note]) { error in
+            if error != nil {
+                print((error?.localizedDescription)!)
                 return
             }
             print("Заметка сохранена")
@@ -51,10 +53,12 @@ class NoteStore: ObservableObject {
     }
     
     func deleteNote(datas: NoteStore, index: IndexSet) {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
         let id = datas.dataNote[index.first!].id
-        db.collection("note").document(currentUser!.uid).collection("noteCollection").document(id).delete { (err) in
-            if err != nil {
-                print((err?.localizedDescription)!)
+        db.collection("note").document(currentUser.uid).collection("noteCollection").document(id).delete { error in
+            if error != nil {
+                print((error?.localizedDescription)!)
                 return
             } else {
                 print("Заметка удалена")

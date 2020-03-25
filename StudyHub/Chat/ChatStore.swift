@@ -21,10 +21,9 @@ class ChatStore: ObservableObject {
     var isNotRead: Int = 0
     
     let legacyServerKey: String = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
-    let currentUser = Auth.auth().currentUser
-    let db = Firestore.firestore()
     
     func loadMessageList() {
+        let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
             if err != nil {
                 print((err?.localizedDescription)!)
@@ -69,6 +68,7 @@ class ChatStore: ObservableObject {
     }
     
     func addMessageDB(message: String, user: String, idUser: String) {
+        let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("messages").addDocument(data: [
             "message": message,
             "user": user,
@@ -84,6 +84,7 @@ class ChatStore: ObservableObject {
     }
     
     func updateData(id: String, isRead: Bool) {
+        let db = Firestore.firestore()
         db.collection("chatRoom").document("Test2").collection("messages").document(id).updateData(["isRead": isRead]) { (err) in
             if err != nil {
                 print((err?.localizedDescription)!)
@@ -96,6 +97,7 @@ class ChatStore: ObservableObject {
     
     func getDataFromDatabaseListenChat() {
         statusChat = .loading
+        let db = Firestore.firestore()
         db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
             if err != nil {
                 self.statusChat = .emptyChat
@@ -111,8 +113,8 @@ class ChatStore: ObservableObject {
     }
     
     func sendMessage(chatStore: ChatStore, token: String, title: String, body: String) {
+        let currentUser = Auth.auth().currentUser
         addMessageDB(message: body, user: title, idUser: currentUser!.uid)
-        
         isNotRead += 1
         
         let parameters: Parameters = [
@@ -144,6 +146,7 @@ class ChatStore: ObservableObject {
     }
     
     func checkRead() {
+        let currentUser = Auth.auth().currentUser
         UIApplication.shared.applicationIconBadgeNumber = 0
         for data in dataMessages {
             if currentUser!.uid != data.idUser && !data.isRead {

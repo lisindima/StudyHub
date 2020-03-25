@@ -46,13 +46,13 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     var handle: AuthStateDidChangeListenerHandle?
-    
     static let shared = SessionStore()
-    let currentUser = Auth.auth().currentUser
-    let db = Firestore.firestore()
+    private let currentUser = Auth.auth().currentUser
     
-    init(user: User? = nil) {
-        self.user = user
+    override init() {
+        user = currentUser
+        super.init()
+        listenSession()
     }
     
     deinit {
@@ -100,6 +100,8 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func updateOnlineUser(onlineUser: Bool) {
+        let currentUser = Auth.auth().currentUser
+        let db = Firestore.firestore()
         if currentUser != nil {
             let docRef = db.collection("profile").document(currentUser!.uid)
             docRef.updateData([
@@ -119,7 +121,9 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func getDataFromDatabaseListen() {
-        db.collection("profile").document(currentUser!.uid).addSnapshotListener { documentSnapshot, error in
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {
                 self.lastname = document.get("lastname") as? String
                 self.firstname = document.get("firstname") as? String
@@ -146,7 +150,9 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func updateDataFromDatabase() {
-        let docRef = db.collection("profile").document(currentUser!.uid)
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
         docRef.updateData([
             "lastname": lastname!,
             "firstname": firstname!,
@@ -173,10 +179,12 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func uploadProfileImageToStorage() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
         let storage = Storage.storage()
         let storageRef = storage.reference()
-        var photoRef = storageRef.child("photoProfile/\(currentUser!.uid).jpeg")
-        let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser!.uid).jpeg"
+        var photoRef = storageRef.child("photoProfile/\(currentUser.uid).jpeg")
+        let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
         photoRef = storage.reference(forURL: storagePath)
         let data = imageProfile.jpegData(compressionQuality: 1)
         if data == nil {
@@ -189,7 +197,7 @@ class SessionStore: NSObject, ObservableObject {
                         return
                     }
                     self.urlImageProfile = downloadURL.absoluteString
-                    let docRef = self.db.collection("profile").document(self.currentUser!.uid)
+                    let docRef = db.collection("profile").document(currentUser.uid)
                     docRef.updateData([
                         "urlImageProfile": self.urlImageProfile as String
                     ]) { error in
@@ -197,7 +205,7 @@ class SessionStore: NSObject, ObservableObject {
                             print("Error updating document: \(error)")
                             self.showBanner = false
                         } else {
-                            self.db.collection("profile").document(self.currentUser!.uid)
+                            db.collection("profile").document(currentUser.uid)
                                 .addSnapshotListener { documentSnapshot, error in
                                     if let document = documentSnapshot {
                                         self.urlImageProfile = document.get("urlImageProfile") as? String

@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
         Purchases.debugLogsEnabled = true
         Purchases.shared.delegate = self
         FirebaseApp.configure()
-        SessionStore.shared.listenSession()
         NotificationStore.shared.requestPermission()
         
         return true

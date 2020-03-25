@@ -12,14 +12,9 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    var sessionStore: SessionStore = SessionStore()
-    var chatStore: ChatStore = ChatStore()
-    var notificationStore: NotificationStore = NotificationStore()
-    var nfcStore: NFCStore = NFCStore()
-    var noteStore: NoteStore = NoteStore()
-    var iconStore: IconStore = IconStore()
-    var purchasesStore: PurchasesStore = PurchasesStore()
-    var scheduleStore: ScheduleStore = ScheduleStore()
+    let sessionStore = SessionStore.shared
+    let chatStore = ChatStore.shared
+    let noteStore = NoteStore.shared
     
     private(set) static var shared: SceneDelegate?
     
@@ -30,12 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootView = RootView()
             .environmentObject(sessionStore)
             .environmentObject(chatStore)
-            .environmentObject(notificationStore)
-            .environmentObject(nfcStore)
             .environmentObject(noteStore)
-            .environmentObject(iconStore)
-            .environmentObject(purchasesStore)
-            .environmentObject(scheduleStore)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

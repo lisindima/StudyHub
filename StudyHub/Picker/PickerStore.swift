@@ -25,8 +25,6 @@ class PickerStore: ObservableObject {
     }
 
     static let shared = PickerStore()
-    let currentUser = Auth.auth().currentUser
-    let db = Firestore.firestore()
     let apiFaculty = "https://api.lisindmitriy.me/faculty"
     let apiGroup = "https://api.lisindmitriy.me/"
     
@@ -60,7 +58,9 @@ class PickerStore: ObservableObject {
     }
     
     func getDataFromDatabaseListenPicker() {
-        db.collection("profile").document(currentUser!.uid).addSnapshotListener { documentSnapshot, error in
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
             if let document = documentSnapshot {
                 self.choiseGroup = document.get("choiseGroup") as! Int
                 self.choiseFaculty = document.get("choiseFaculty") as! Int
@@ -71,7 +71,9 @@ class PickerStore: ObservableObject {
     }
     
     func updateDataFromDatabasePicker() {
-        let docRef = db.collection("profile").document(currentUser!.uid)
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
         docRef.updateData([
             "choiseGroup": choiseGroup,
             "choiseFaculty": choiseFaculty

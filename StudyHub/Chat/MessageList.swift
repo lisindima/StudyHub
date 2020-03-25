@@ -17,8 +17,7 @@ struct MessageList: View {
     
     @State private var typeMessage: String = ""
     
-    let currentUid = Auth.auth().currentUser!.uid
-    let receiverFCMToken = "cReH043tXk9boQTZuNxOGF:APA91bG_SitwV7niS5IY5tPxDeD1Juczw3pwy36MumzuGfhV9onKFIo744Bf0_pHQPKWvRaNoG9za3drXr6KLxU0oYJX-8CkG6OelTSi3KDdyEbkYQwQ1NfyBmwWWTIkXGEzJwu9anH4"
+    let receiverFCMToken: String = "eegqgMIFxEWTq6WcUmkDq1:APA91bHLprcGMNQX2m2TQy1TffExKmmzfPSGDjCn-UfvYJ2Mn3qIU1z3toOjTR0TGBcpUF4ULuya6gIp78AM6eV_k2epd3J48-yMe7V1vLGnCHT061WnzgfLaO5zGOf1KdszEInuUB0Q"
     
     var body: some View {
         VStack {
