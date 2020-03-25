@@ -23,20 +23,11 @@ struct ChatEmpty: View {
                 VStack {
                     Spacer()
                     HStack {
-                        Button(action: {
+                        PlusButton(action: {
                             print("Новое сообщение")
-                        }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                Text("Новое сообщение")
-                                    .font(.system(.body, design: .rounded))
-                                    .fontWeight(.semibold)
-                            }
-                        }
+                        }, label: "Новое сообщение")
                         Spacer()
-                    }.padding()
+                    }.padding(12)
                 }
             }.navigationBarTitle(Text("Сообщения"))
         }

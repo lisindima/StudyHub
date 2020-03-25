@@ -27,20 +27,11 @@ struct NoteEmpty: View {
                 VStack {
                     Spacer()
                     HStack {
-                        Button(action: {
+                        PlusButton(action: {
                             self.showAddNewNote = true
-                        }) {
-                            HStack {
-                                Image(systemName: "plus.circle.fill")
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                Text("Новая заметка")
-                                    .font(.system(.body, design: .rounded))
-                                    .fontWeight(.semibold)
-                            }
-                        }
+                        }, label: "Новая заметка")
                         Spacer()
-                    }.padding()
+                    }.padding(12)
                 }
             }
             .sheet(isPresented: $showAddNewNote, onDismiss: {
