@@ -1,5 +1,5 @@
 //
-//  LoadingScreen.swift
+//  LoadingLogic.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 10.12.2019.
@@ -16,11 +16,11 @@ struct LoadingLogic: View {
     
     var body: some View {
         Group {
-            if sessionStore.lastname != nil && sessionStore.boolCodeAccess == false {
+            if sessionStore.lastname != nil && !sessionStore.boolCodeAccess {
                 Tabbed()
-            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess == true && access == true {
+            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess && access {
                 Tabbed()
-            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess == true && access == false {
+            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess && !access {
                 SecureView(access: $access)
             } else {
                 ActivityIndicator(styleSpinner: .large)

@@ -10,6 +10,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+			<key>altstulogo</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>altstulogo</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>lisinlogo</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -24,15 +33,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>pornlogo</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>altstulogo</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>altstulogo</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
