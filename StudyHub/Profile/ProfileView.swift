@@ -8,6 +8,9 @@
 
 import SwiftUI
 import Firebase
+#if !targetEnvironment(macCatalyst)
+import PartialSheet
+#endif
 import KingfisherSwiftUI
 
 struct ProfileView: View {
@@ -15,6 +18,7 @@ struct ProfileView: View {
     @State private var showSettingModal: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
+    @State private var showPartialSheet: Bool = false
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var sessionStore: SessionStore
@@ -110,8 +114,17 @@ struct ProfileView: View {
                     self.pickerStore.updateDataFromDatabasePicker()
                 }
             }, content: {
-                SettingView()
+                #if targetEnvironment(macCatalyst)
+                SettingView(showPartialSheet: self.$showPartialSheet)
                     .environmentObject(self.sessionStore)
+                #else
+                SettingView(showPartialSheet: self.$showPartialSheet)
+                    .environmentObject(self.sessionStore)
+                    .partialSheet(presented: self.$showPartialSheet, backgroundColor: Color(UIColor.secondarySystemBackground)) {
+                        ChangeIcons()
+                            .environmentObject(self.sessionStore)
+                }
+                #endif
             })
         }
         .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))

@@ -11,7 +11,7 @@ import UnsplashPhotoPicker
 
 struct UnsplashImagePicker: UIViewControllerRepresentable {
     
-    @Binding var unsplashImage: [UnsplashPhoto]
+    @Binding var unsplashImage: UnsplashPhoto?
     
     let configuration = UnsplashPhotoPickerConfiguration(
         accessKey: "f99d21d6eb682196455dd29b621688aff2d525c7c3a7f95bfcb05d497f38f5dc",
@@ -37,7 +37,7 @@ struct UnsplashImagePicker: UIViewControllerRepresentable {
         }
         
         func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
-            parent.unsplashImage = photos
+            parent.unsplashImage = photos.first
         }
         
         func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {

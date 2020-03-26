@@ -36,7 +36,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var showBanner: Bool = false
     @Published var userTypeAuth: ActiveAuthType = .email
     @Published var choiseTypeBackroundProfile: Bool!
-    @Published var imageFromUnsplashPicker: [UnsplashPhoto] = [UnsplashPhoto]()
+    @Published var imageFromUnsplashPicker: UnsplashPhoto?
     @Published var setImageForBackroundProfile: String!
     @Published var onlineUser: Bool = false
     @Published var darkThemeOverride: Bool = false {
@@ -47,10 +47,8 @@ class SessionStore: NSObject, ObservableObject {
     
     var handle: AuthStateDidChangeListenerHandle?
     static let shared = SessionStore()
-    private let currentUser = Auth.auth().currentUser
     
     override init() {
-        user = currentUser
         super.init()
         listenSession()
     }
@@ -227,17 +225,9 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     func setUnsplashImageForProfileBackground() {
-        if imageFromUnsplashPicker.isEmpty {
-            print("Обложка не выбрана")
-        } else {
-            print("Обложка выбрана")
-            let selectImage = imageFromUnsplashPicker.first
-            let urlsToImage = selectImage?.urls[.regular]
-            print(String(describing: urlsToImage))
-            setImageForBackroundProfile = urlsToImage?.absoluteString
-            choiseTypeBackroundProfile = true
-            imageFromUnsplashPicker.removeAll()
-        }
+        let urlsToImage = imageFromUnsplashPicker!.urls[.regular]
+        setImageForBackroundProfile = urlsToImage?.absoluteString
+        choiseTypeBackroundProfile = true
     }
     
     private func randomNonceString(length: Int = 32) -> String {

@@ -12,6 +12,7 @@ import PencilKit
 struct PencilKitCanvas: UIViewRepresentable {
     func makeUIView(context: Context) -> PKCanvasView {
         let canvas = PKCanvasView()
+        #if !targetEnvironment(macCatalyst)
         canvas.tool = PKInkingTool(.pen, color: .black, width: 30)
         if let window = UIApplication.shared.windows.first {
             if let toolPicker = PKToolPicker.shared(for: window) {
@@ -20,6 +21,7 @@ struct PencilKitCanvas: UIViewRepresentable {
                 canvas.becomeFirstResponder()
             }
         }
+        #endif
         return canvas
     }
     

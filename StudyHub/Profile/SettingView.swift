@@ -9,7 +9,6 @@
 import SwiftUI
 import SPAlert
 import MessageUI
-import PartialSheet
 import KingfisherSwiftUI
 
 struct SettingView: View {
@@ -19,12 +18,13 @@ struct SettingView: View {
     @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showActionSheetMailFeedback: Bool = false
-    @State private var showPartialSheet: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var subscribeApplication: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     @State private var mailSubject: String = ""
+    
+    @Binding var showPartialSheet: Bool
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
@@ -256,14 +256,17 @@ struct SettingView: View {
                             Text("Темная тема")
                         }
                     }
+                    #if !targetEnvironment(macCatalyst)
                     HStack {
                         Image(systemName: "app")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Изменить иконку") {
                             self.showPartialSheet = true
-                        }.foregroundColor(.primary)
+                        }
+                        .foregroundColor(.primary)
                     }
+                    #endif
                     HStack {
                         Image(systemName: "map")
                             .frame(width: 24)
@@ -555,8 +558,5 @@ struct SettingView: View {
         }
         .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
-        .partialSheet(presented: $showPartialSheet, backgroundColor: Color(UIColor.secondarySystemBackground)) {
-            ChangeIcons()
-        }
     }
 }

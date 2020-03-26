@@ -51,7 +51,7 @@ struct SubscriptionSplashScreen: View {
                         }
                     }
                 }
-                .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                //.disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
                 .padding(.trailing, 4)
                 Button(action: {
                     self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
@@ -76,7 +76,7 @@ struct SubscriptionSplashScreen: View {
                         }
                     }
                 }
-                .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                //.disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
                 .padding(.leading, 4)
             }
             .padding(.top, 8)
