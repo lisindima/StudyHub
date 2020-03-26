@@ -21,7 +21,7 @@ struct QRReader: View {
     @State private var choiseView: Int = 1
     @State private var showPartialSheetProfile: Bool = false
     
-    let currentUser = Auth.auth().currentUser!
+    let currentUser = Auth.auth().currentUser
     
     var body: some View {
         ZStack {
@@ -56,7 +56,7 @@ struct QRReader: View {
                 VStack(alignment: .center) {
                     Spacer()
                     ZStack {
-                        Image(uiImage: qrStore.generatedQRCode(from: currentUser.uid))
+                        Image(uiImage: qrStore.generatedQRCode(from: currentUser!.uid))
                             .interpolation(.none)
                             .resizable()
                             .scaledToFit()

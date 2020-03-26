@@ -15,14 +15,14 @@ struct MessageView: View {
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var dateStore: DateStore = DateStore.shared
     
-    let currentUser = Auth.auth().currentUser!
+    let currentUser = Auth.auth().currentUser
     
     var message: String
     var dateMessage: Date
     var idUser: String
     var isRead: Bool
     var isMe: Bool {
-        currentUser.uid == idUser
+        currentUser?.uid == idUser
     }
     
     var body: some View {

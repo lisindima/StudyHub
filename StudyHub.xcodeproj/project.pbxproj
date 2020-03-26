@@ -87,6 +87,8 @@
 		CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
 		CBA255F8242B361C00B20C6A /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA255F7242B361C00B20C6A /* PlusButton.swift */; };
+		CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */; };
+		CBA25600242C4FE300B20C6A /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CBA255FF242C4FE300B20C6A /* Purchases */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
@@ -265,6 +267,7 @@
 		CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		CBA255F7242B361C00B20C6A /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionWatchView.swift; sourceTree = "<group>"; };
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
 		CBA7270F23DE79960094372B /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB609F89240662FE009A6389 /* Alamofire in Frameworks */,
+				CBA25600242C4FE300B20C6A /* Purchases in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +705,7 @@
 		CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */,
 				CBCE3277241F9F5200844197 /* MenuWatch.swift */,
 				CB2761982355A9730054C753 /* Lesson */,
 				CB27619323556A1F0054C753 /* Login */,
@@ -819,6 +824,7 @@
 			name = "StudyHubWatchApp Extension";
 			packageProductDependencies = (
 				CB609F88240662FE009A6389 /* Alamofire */,
+				CBA255FF242C4FE300B20C6A /* Purchases */,
 			);
 			productName = "altgtuWatchApp Extension";
 			productReference = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */;
@@ -1074,6 +1080,7 @@
 				CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */,
 				CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */,
 				CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */,
+				CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */,
 				CBE665F523543A1400C43811 /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1590,6 +1597,11 @@
 			productName = CodeScanner;
 		};
 		CB9B90EC241090AF006CF9BF /* Purchases */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = Purchases;
+		};
+		CBA255FF242C4FE300B20C6A /* Purchases */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = Purchases;

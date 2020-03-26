@@ -20,7 +20,7 @@ struct ProfileView: View {
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
-    let currentUser = Auth.auth().currentUser!
+    let currentUser = Auth.auth().currentUser
     
     var body: some View {
         NavigationView {
@@ -64,7 +64,7 @@ struct ProfileView: View {
                         Text((sessionStore.lastname!) + " " + (sessionStore.firstname!))
                             .bold()
                             .font(.title)
-                        Text(currentUser.email!)
+                        Text(currentUser!.email!)
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }.padding()
