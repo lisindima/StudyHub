@@ -41,7 +41,9 @@ struct SubscriptionSplashScreen: View {
                             VStack {
                                 Text("Ежемесячно")
                                     .fontWeight(.bold)
+                                    .font(.system(size: 16))
                                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                    .fixedSize(horizontal: false, vertical: true)
                                 Text(purchasesStore.monthlyPrice)
                                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             }
@@ -62,7 +64,9 @@ struct SubscriptionSplashScreen: View {
                             VStack {
                                 Text("Ежегодно")
                                     .fontWeight(.bold)
+                                    .font(.system(size: 16))
                                     .foregroundColor(.white)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 Text(purchasesStore.annualPrice)
                                     .foregroundColor(.white)
                             }
@@ -82,7 +86,7 @@ struct SubscriptionSplashScreen: View {
                     .font(.footnote)
                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 Button(action: {
-                    UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+                    UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
                 }) {
                     Text("Политика")
                         .font(.footnote)
@@ -92,7 +96,7 @@ struct SubscriptionSplashScreen: View {
                     .font(.footnote)
                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                 Button(action: {
-                    UIApplication.shared.open(URL(string: "https://lisindmitriy.me/privacyaltgtu/")!)
+                    UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
                 }) {
                     Text("Правила")
                         .font(.footnote)

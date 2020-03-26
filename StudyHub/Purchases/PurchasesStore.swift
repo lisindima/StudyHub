@@ -7,8 +7,10 @@
 //
 
 import Combine
-import SPAlert
 import Purchases
+#if os(iOS)
+import SPAlert
+#endif
 
 class PurchasesStore: ObservableObject {
     
@@ -66,11 +68,15 @@ class PurchasesStore: ObservableObject {
                 print("Ошибка: \(error.localizedDescription)")
                 self.loadingMonthlyButton = false
                 self.loadingAnnualButton = false
+                #if os(iOS)
                 SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
+                #endif
             } else if purchaserInfo?.entitlements.active != nil {
                 self.loadingMonthlyButton = false
                 self.loadingAnnualButton = false
+                #if os(iOS)
                 SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
+                #endif
             }
         }
     }
@@ -78,9 +84,13 @@ class PurchasesStore: ObservableObject {
     func restoreSubscription() {
         Purchases.shared.restoreTransactions { purchaserInfo, error in
             if error != nil {
+                #if os(iOS)
                 SPAlert.present(title: "Подписка не найдена!", message: "Если вы уверены, что у вас есть действующая подписка, напишите на почту me@lisindmitriy.me.", preset: .error)
+                #endif
             } else {
+                #if os(iOS)
                 SPAlert.present(title: "Подписка восстановлена!", message: "Премиум функции активированы.", preset: .heart)
+                #endif
             }
         }
     }

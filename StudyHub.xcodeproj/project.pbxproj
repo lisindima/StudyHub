@@ -90,6 +90,7 @@
 		CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */; };
 		CBA25600242C4FE300B20C6A /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CBA255FF242C4FE300B20C6A /* Purchases */; };
 		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
+		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
@@ -1082,6 +1083,7 @@
 				CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */,
 				CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */,
 				CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */,
+				CBA25602242C62B200B20C6A /* DateStore.swift in Sources */,
 				CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */,
 				CBE665F523543A1400C43811 /* NotificationView.swift in Sources */,
 			);

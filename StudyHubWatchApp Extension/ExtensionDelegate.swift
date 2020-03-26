@@ -7,11 +7,18 @@
 //
 
 import WatchKit
+import Purchases
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, PurchasesDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
+        Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf")
+        Purchases.debugLogsEnabled = true
+        Purchases.shared.delegate = self
+    }
+    
+    func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: Purchases.PurchaserInfo) {
+        PurchasesStore.shared.listenPurchases()
     }
 
     func applicationDidBecomeActive() {
