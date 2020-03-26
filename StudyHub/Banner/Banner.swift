@@ -19,7 +19,7 @@ struct BannerModifier: ViewModifier {
                     HStack {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Загрузка")
-                                .bold()
+                                .fontWeight(.bold)
                             Text("Нажмите, чтобы закрыть.")
                                 .font(.system(size: 12, weight: .light, design: .default))
                         }

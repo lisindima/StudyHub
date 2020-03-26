@@ -200,7 +200,7 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Оформление").bold(), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
+                Section(header: Text("Оформление").fontWeight(.bold), footer: Text("Здесь настраивается цвет акцентов в приложение.")) {
                     HStack {
                         Image(systemName: "r.circle")
                             .foregroundColor(Color.red.opacity(0.5))
@@ -294,7 +294,7 @@ struct SettingView: View {
                         })
                     }
                 }
-                Section(header: Text("Личные данные").bold(), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
+                Section(header: Text("Личные данные").fontWeight(.bold), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
                     HStack {
                         Image(systemName: "person.crop.circle")
                             .frame(width: 24)
@@ -345,7 +345,7 @@ struct SettingView: View {
                         })
                     }
                 }
-                Section(header: Text("Уведомления").bold(), footer: footerNotification) {
+                Section(header: Text("Уведомления").fontWeight(.bold), footer: footerNotification) {
                     if notificationStore.enabled == .authorized {
                         HStack {
                             Image(systemName: "bell")
@@ -385,7 +385,7 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Факультет и группа").bold(), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
+                Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
                     Picker(selection: $pickerStore.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
                             .frame(width: 24)
@@ -407,7 +407,7 @@ struct SettingView: View {
                         }
                     }.lineLimit(1)
                 }
-                Section(header: Text("Безопасность").bold(), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
+                Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
                     NavigationLink(destination: BioAndCodeSecure().environmentObject(sessionStore)) {
                         HStack {
                             Image(systemName: "faceid")
@@ -428,7 +428,7 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Кэш изображений").bold(), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
+                Section(header: Text("Кэш изображений").fontWeight(.bold), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {
                     ZStack {
                         GeometryReader { geometry in
                             ZStack(alignment: .leading) {
@@ -465,7 +465,7 @@ struct SettingView: View {
                         }.foregroundColor(.primary)
                     }
                 }
-                Section(header: Text("Другое").bold(), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
+                Section(header: Text("Другое").fontWeight(.bold), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
                     NavigationLink(destination: Changelog()) {
                         Image(systemName: "wand.and.stars.inverse")
                             .frame(width: 24)

@@ -34,7 +34,7 @@ struct Changelog: View {
                             HStack(alignment: .bottom) {
                                 Text(changelog.version)
                                     .font(.title)
-                                    .bold()
+                                    .fontWeight(.bold)
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Text(self.appVersion == changelog.version ? "Текущая версия" : changelog.dateBuild)
@@ -44,7 +44,7 @@ struct Changelog: View {
                                 if !changelog.whatsNew.isEmpty {
                                     VStack(alignment: .leading) {
                                         Text("Новое:")
-                                            .bold()
+                                            .fontWeight(.bold)
                                             .foregroundColor(.purple)
                                             .padding(5)
                                             .overlay(
@@ -64,7 +64,7 @@ struct Changelog: View {
                                 if !changelog.bugFixes.isEmpty {
                                     VStack(alignment: .leading) {
                                         Text("Исправления:")
-                                            .bold()
+                                            .fontWeight(.bold)
                                             .foregroundColor(.green)
                                             .padding(5)
                                             .overlay(

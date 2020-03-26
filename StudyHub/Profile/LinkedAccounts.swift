@@ -14,7 +14,7 @@ struct LinkedAccounts: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Аккаунты для входа").bold(), footer: Text("Активируя эти аккаунты, вы сможете входить в ваш профиль используя любой из них.")) {
+            Section(header: Text("Аккаунты для входа").fontWeight(.bold), footer: Text("Активируя эти аккаунты, вы сможете входить в ваш профиль используя любой из них.")) {
                 NavigationLink(destination: Changelog()) {
                     HStack {
                         Text("")

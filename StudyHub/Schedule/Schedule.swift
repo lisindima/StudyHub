@@ -21,13 +21,13 @@ struct Schedule: View {
                 HStack {
                     Text(scheduleModel.time)
                         .font(.footnote)
-                        .bold()
+                        .fontWeight(.bold)
                         .foregroundColor(.accentColor)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
                     Text(scheduleModel.name)
-                        .bold()
+                        .fontWeight(.bold)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {

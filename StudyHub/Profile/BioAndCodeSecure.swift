@@ -41,13 +41,13 @@ struct BioAndCodeSecure: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Активация").bold(), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
+            Section(header: Text("Активация").fontWeight(.bold), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
                 Toggle(isOn: $activateSecure.animation()) {
                     Text("Активировать")
                 }
             }
             if activateSecure {
-                Section(header: Text("Стандартная аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью кода.")) {
+                Section(header: Text("Стандартная аутентификация").fontWeight(.bold), footer: Text("Здесь активируется возможность использования аутентификации с помощью кода.")) {
                     Toggle(isOn: $setBoolCodeAccess.animation()) {
                         Text("Вход с помощью кода")
                     }
@@ -63,8 +63,8 @@ struct BioAndCodeSecure: View {
                     }
                 }
             }
-            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
-                Section(header: Text("Биометрическая аутентификация").bold(), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
+            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess && setSecureCodeAccess != "" {
+                Section(header: Text("Биометрическая аутентификация").fontWeight(.bold), footer: Text("Здесь активируется возможность использования аутентификации с помощью FaceID или TouchID.")) {
                     if currentBiometricType == .none {
                         Text("Функция не доступна")
                     } else if currentBiometricType == .faceID {
@@ -78,7 +78,7 @@ struct BioAndCodeSecure: View {
                     }
                 }
             }
-            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess == true && setSecureCodeAccess != "" {
+            if setSecureCodeAccess == repeatSetSecureCode && setBoolCodeAccess && setSecureCodeAccess != "" {
                 Section {
                     HStack {
                         Spacer()

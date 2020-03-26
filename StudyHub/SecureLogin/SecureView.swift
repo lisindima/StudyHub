@@ -168,7 +168,7 @@ struct SecureView: View {
                 self.sessionStore.signOut()
             }) {
                 Text("Выйти")
-                    .bold()
+                    .fontWeight(.bold)
                     .foregroundColor(.red)
             }.padding(.top)
         }

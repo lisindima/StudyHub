@@ -40,7 +40,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             VStack {
                                 Text("Ежемесячно")
-                                    .bold()
+                                    .fontWeight(.bold)
                                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                                 Text(purchasesStore.monthlyPrice)
                                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
@@ -61,7 +61,7 @@ struct SubscriptionSplashScreen: View {
                         } else {
                             VStack {
                                 Text("Ежегодно")
-                                    .bold()
+                                    .fontWeight(.bold)
                                     .foregroundColor(.white)
                                 Text(purchasesStore.annualPrice)
                                     .foregroundColor(.white)

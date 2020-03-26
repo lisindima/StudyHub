@@ -62,7 +62,7 @@ struct ProfileView: View {
                     }
                     VStack {
                         Text((sessionStore.lastname!) + " " + (sessionStore.firstname!))
-                            .bold()
+                            .fontWeight(.bold)
                             .font(.title)
                         Text(currentUser!.email!)
                             .font(.subheadline)
@@ -74,7 +74,7 @@ struct ProfileView: View {
                     self.showActionSheetExit = true
                 }, label: {
                     Text("Выйти")
-                        .bold()
+                        .fontWeight(.bold)
                         .font(.system(size: 15))
                         .foregroundColor(.red)
                 }).padding()

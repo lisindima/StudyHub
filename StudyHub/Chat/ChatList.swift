@@ -127,7 +127,7 @@ struct ListItem: View {
             }
             VStack(alignment: .leading) {
                 Text("Лисин Дмитрий")
-                    .bold()
+                    .fontWeight(.bold)
                 Text(lastMessageidUser == currentUid ? "Вы: \(lastMessage)" : "\(lastMessage)")
                     .font(.footnote)
                     .lineLimit(1)

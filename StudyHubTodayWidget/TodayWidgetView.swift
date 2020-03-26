@@ -18,13 +18,13 @@ struct TodayWidgetView: View {
                 HStack {
                     Text("11:35-13:05")
                         .font(.footnote)
-                        .bold()
+                        .fontWeight(.bold)
                         .foregroundColor(.red)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {
                     Text("Программирование")
-                        .bold()
+                        .fontWeight(.bold)
                     Spacer()
                 }.padding(.bottom, 5)
                 HStack {

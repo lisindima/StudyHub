@@ -30,7 +30,7 @@ struct CardList: View {
                         VStack(alignment: .leading) {
                             Text("\(dateStore.stringDate)".uppercased())
                                 .font(.system(size: 13))
-                                .bold()
+                                .fontWeight(.bold)
                                 .foregroundColor(.secondary)
                                 .padding(.bottom, 3)
                             Text("Сегодня")

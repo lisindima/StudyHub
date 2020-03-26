@@ -83,7 +83,7 @@ struct IconItem: View {
             }.frame(width: 95, height: 95)
             Text(iconModel.nameAuthorIcon)
                 .font(.system(size: 11, design: .rounded))
-                .bold()
+                .fontWeight(.bold)
         }
     }
 }
