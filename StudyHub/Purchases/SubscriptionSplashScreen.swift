@@ -12,6 +12,7 @@ struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -49,7 +50,9 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                }.padding(.trailing, 4)
+                }
+                .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                .padding(.trailing, 4)
                 Button(action: {
                     self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
                     self.purchasesStore.loadingAnnualButton = true
@@ -72,7 +75,9 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                }.padding(.leading, 4)
+                }
+                .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                .padding(.leading, 4)
             }
             .padding(.top, 8)
             .padding(.horizontal)

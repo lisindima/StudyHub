@@ -30,7 +30,7 @@ struct CardList: View {
                         VStack(alignment: .leading) {
                             Text("\(dateStore.stringDate)".uppercased())
                                 .font(.system(size: 13))
-                                .fontWeight(.bold)
+                                .bold()
                                 .foregroundColor(.secondary)
                                 .padding(.bottom, 3)
                             Text("Сегодня")
@@ -69,11 +69,12 @@ struct CardList: View {
                                         Text(item)
                                             .fontWeight(.semibold)
                                             .foregroundColor(.secondary)
+                                            .hoverEffect()
                                         Capsule()
                                             .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue) : Color.clear)
                                             .frame(height: 6)
                                     }.frame(width: 110)
-                                }.hoverEffect()
+                                }
                             }
                         }.padding(.horizontal)
                     }

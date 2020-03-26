@@ -28,9 +28,15 @@ class PurchasesStore: ObservableObject {
     func fetchProduct() {
         Purchases.shared.offerings { offerings, error in
             if let error = error {
+                #if os(iOS)
+                SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
+                #endif
                 print(error.localizedDescription)
             }
             guard let offering = offerings?.current else {
+                #if os(iOS)
+                SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
+                #endif
                 print("No current offering configured")
                 return
             }

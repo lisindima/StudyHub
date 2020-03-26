@@ -20,10 +20,10 @@ struct Changelog: View {
     
     var body: some View {
         VStack {
-            if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure == false {
+            if changelogStore.сhangelogModel.isEmpty && !changelogStore.changelogLoadingFailure {
                 ActivityIndicator(styleSpinner: .large)
                     .onAppear(perform: changelogStore.loadChangelog)
-            } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure == true {
+            } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure {
                 Text("Нет подключения к интернету!")
                     .fontWeight(.bold)
                     .onAppear(perform: changelogStore.loadChangelog)
@@ -44,7 +44,7 @@ struct Changelog: View {
                                 if !changelog.whatsNew.isEmpty {
                                     VStack(alignment: .leading) {
                                         Text("Новое:")
-                                            .fontWeight(.bold)
+                                            .bold()
                                             .foregroundColor(.purple)
                                             .padding(5)
                                             .overlay(
@@ -64,7 +64,7 @@ struct Changelog: View {
                                 if !changelog.bugFixes.isEmpty {
                                     VStack(alignment: .leading) {
                                         Text("Исправления:")
-                                            .fontWeight(.bold)
+                                            .bold()
                                             .foregroundColor(.green)
                                             .padding(5)
                                             .overlay(
@@ -86,6 +86,12 @@ struct Changelog: View {
         }
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("Что нового?"), displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/changelog/")!)
+        }) {
+            Image(systemName: "safari")
+                .imageScale(.large)
+        })
     }
 }
 
