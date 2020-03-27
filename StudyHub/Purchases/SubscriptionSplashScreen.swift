@@ -12,7 +12,6 @@ struct SubscriptionSplashScreen: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -26,61 +25,79 @@ struct SubscriptionSplashScreen: View {
                     .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             }
             Spacer()
-            HStack {
-                Button(action: {
-                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
-                    self.purchasesStore.loadingMonthlyButton = true
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            .opacity(0.2)
-                            .frame(maxWidth: .infinity, maxHeight: 72)
-                        if purchasesStore.loadingMonthlyButton {
-                            ActivityIndicator(styleSpinner: .medium)
-                        } else {
-                            VStack {
-                                Text("Ежемесячно")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 16))
-                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                                    .fixedSize(horizontal: false, vertical: true)
-                                Text(purchasesStore.monthlyPrice)
-                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+            if !purchasesStore.purchasesInfo!.activeSubscriptions.isEmpty {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .frame(maxWidth: .infinity, maxHeight: 72)
+                    HStack {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                            .imageScale(.large)
+                        Text("Подписка оформлена!")
+                            .fontWeight(.bold)
+                            .font(.system(size: 16))
+                    }
+                }
+                .padding(.top, 8)
+                .padding(.horizontal)
+            } else {
+                HStack {
+                    Button(action: {
+                        self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
+                        self.purchasesStore.loadingMonthlyButton = true
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .opacity(0.2)
+                                .frame(maxWidth: .infinity, maxHeight: 72)
+                            if purchasesStore.loadingMonthlyButton {
+                                ActivityIndicator(styleSpinner: .medium)
+                            } else {
+                                VStack {
+                                    Text("Ежемесячно")
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 16))
+                                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Text(purchasesStore.monthlyPrice)
+                                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                }
                             }
                         }
                     }
-                }
-                //.disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
-                .padding(.trailing, 4)
-                Button(action: {
-                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
-                    self.purchasesStore.loadingAnnualButton = true
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            .frame(maxWidth: .infinity, maxHeight: 72)
-                        if purchasesStore.loadingAnnualButton {
-                            ActivityIndicator(styleSpinner: .medium)
-                        } else {
-                            VStack {
-                                Text("Ежегодно")
-                                    .fontWeight(.bold)
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.white)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                Text(purchasesStore.annualPrice)
-                                    .foregroundColor(.white)
+                    .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                    .padding(.trailing, 4)
+                    Button(action: {
+                        self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
+                        self.purchasesStore.loadingAnnualButton = true
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .frame(maxWidth: .infinity, maxHeight: 72)
+                            if purchasesStore.loadingAnnualButton {
+                                ActivityIndicator(styleSpinner: .medium)
+                            } else {
+                                VStack {
+                                    Text("Ежегодно")
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.white)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                    Text(purchasesStore.annualPrice)
+                                        .foregroundColor(.white)
+                                }
                             }
                         }
                     }
+                    .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                    .padding(.leading, 4)
                 }
-                //.disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
-                .padding(.leading, 4)
+                .padding(.top, 8)
+                .padding(.horizontal)
             }
-            .padding(.top, 8)
-            .padding(.horizontal)
             HStack {
                 Button(action: purchasesStore.restoreSubscription) {
                     Text("Восстановить платеж")

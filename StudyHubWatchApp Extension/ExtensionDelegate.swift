@@ -12,7 +12,7 @@ import Purchases
 class ExtensionDelegate: NSObject, WKExtensionDelegate, PurchasesDelegate {
 
     func applicationDidFinishLaunching() {
-        Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf")
+        Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf", appUserID: "dLlZ2MYmIZSICzP4lPp1a96rDmy1")
         Purchases.debugLogsEnabled = true
         Purchases.shared.delegate = self
     }

@@ -8,8 +8,10 @@
 
 import SwiftUI
 import Firebase
+#if !targetEnvironment(macCatalyst)
 import CodeScanner
 import PartialSheet
+#endif
 import KingfisherSwiftUI
 import CoreImage.CIFilterBuiltins
 
@@ -26,6 +28,7 @@ struct QRReader: View {
     var body: some View {
         ZStack {
             if choiseView == 0 {
+                #if !targetEnvironment(macCatalyst)
                 ZStack {
                     CodeScannerView(codeTypes: [.qr], simulatedData: "dLlZ2MYmIZSICzP4lPp1a96rDmy1") { result in
                         switch result {
@@ -52,6 +55,13 @@ struct QRReader: View {
                             .padding(.bottom, 30)
                     }
                 }
+                .partialSheet(presented: $showPartialSheetProfile, backgroundColor: Color(UIColor.secondarySystemBackground)) {
+                    ProfileFriends()
+                        .padding(.top)
+                        .padding(.bottom, 30)
+                        .padding(.horizontal)
+                }
+                #endif
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
                     Spacer()
@@ -80,6 +90,7 @@ struct QRReader: View {
                         .padding(.bottom, 30)
                 }
             }
+            #if !targetEnvironment(macCatalyst)
             VStack {
                 Picker("", selection: $choiseView) {
                     Text("QR-сканер")
@@ -92,11 +103,7 @@ struct QRReader: View {
                 .padding()
                 Spacer()
             }
-        }.partialSheet(presented: $showPartialSheetProfile, backgroundColor: Color(UIColor.secondarySystemBackground)) {
-            ProfileFriends()
-                .padding(.top)
-                .padding(.bottom, 30)
-                .padding(.horizontal)
+            #endif
         }
     }
 }

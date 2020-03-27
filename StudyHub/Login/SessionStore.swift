@@ -46,6 +46,7 @@ class SessionStore: NSObject, ObservableObject {
     }
     
     var handle: AuthStateDidChangeListenerHandle?
+    
     static let shared = SessionStore()
     
     override init() {

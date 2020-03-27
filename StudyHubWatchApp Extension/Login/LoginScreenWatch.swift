@@ -16,7 +16,7 @@ struct LoginScreenWatch: View {
     
     var body: some View {
         ScrollView {
-            Text("Личный кабинет АлтГТУ")
+            Text("StudyHub")
                 .multilineTextAlignment(.center)
             TextField("Логин", text: $email)
             TextField("Пароль", text: $password)

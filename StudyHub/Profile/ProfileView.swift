@@ -20,7 +20,6 @@ struct ProfileView: View {
     @State private var showQRReader: Bool = false
     @State private var showPartialSheet: Bool = false
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
@@ -39,31 +38,18 @@ struct ProfileView: View {
                         KFImage(URL(string: sessionStore.setImageForBackroundProfile))
                             .placeholder {
                                 Rectangle()
-                                    .foregroundColor(colorScheme == .light ? .white : .black)
+                                    .foregroundColor(Color(UIColor.systemBackground))
                                     .edgesIgnoringSafeArea(.top)
                                     .frame(height: 130)
-                            }
-                            .resizable()
-                            .edgesIgnoringSafeArea(.top)
-                            .frame(height: 130)
-                            .aspectRatio(contentMode: .fit)
-                    }
-                    ZStack {
-                        ProfileImage()
-                            .offset(y: -120)
-                            .padding(.bottom, -130)
-                        if sessionStore.adminSetting {
-                            ZStack {
-                                Circle()
-                                    .frame(width: 50, height: 50)
-                                    .foregroundColor(colorScheme == .light ? .white : .black)
-                                Image(systemName: "checkmark.seal.fill")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.blue)
-                                
-                            }.offset(x: 80, y: 25)
                         }
+                        .resizable()
+                        .edgesIgnoringSafeArea(.top)
+                        .frame(height: 130)
+                        .aspectRatio(contentMode: .fit)
                     }
+                    ProfileImage()
+                        .offset(y: -120)
+                        .padding(.bottom, -130)
                     VStack {
                         Text((sessionStore.lastname!) + " " + (sessionStore.firstname!))
                             .fontWeight(.bold)

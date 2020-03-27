@@ -40,7 +40,7 @@
 		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB37694123E2CA3D0015B61E /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* RGB.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
-		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
+		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
 		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
 		CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisinlogo@3x.png */; };
 		CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisinlogo.png */; };
@@ -48,7 +48,7 @@
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
-		CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */; };
+		CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */; };
 		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
 		CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874C023D813C300DEB38F /* ImageCacheStore.swift */; };
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
@@ -64,7 +64,7 @@
 		CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* NotificationStore.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = CB6AC62F2408F4FE00D0E482 /* SPAlert */; };
-		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
+		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
@@ -1229,7 +1229,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1239,7 +1239,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
 				SUPPORTS_MACCATALYST = YES;
@@ -1256,7 +1256,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1266,7 +1266,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
 				SUPPORTS_MACCATALYST = YES;
@@ -1279,7 +1279,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1288,7 +1288,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1302,7 +1302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1311,7 +1311,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1326,7 +1326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1336,7 +1336,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1352,7 +1352,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1362,7 +1362,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1379,11 +1379,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = StudyHub;
 				SDKROOT = watchos;
@@ -1400,11 +1400,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 430;
+				CURRENT_PROJECT_VERSION = 450;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = StudyHub;
 				SDKROOT = watchos;

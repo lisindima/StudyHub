@@ -14,21 +14,24 @@ struct ProfileImage: View {
     @EnvironmentObject var sessionStore: SessionStore
     
     var body: some View {
-        VStack {
+        ZStack {
             KFImage(URL(string: sessionStore.urlImageProfile))
-                .placeholder {
-                    ZStack {
-                        Circle()
-                            .foregroundColor(.white)
-                            .frame(width: 210, height: 210)
-                        ActivityIndicator(styleSpinner: .large)
-                    }
-                }
+                .placeholder { ActivityIndicator(styleSpinner: .large) }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
                 .clipped()
                 .frame(width: 210, height: 210)
-        }
+            if sessionStore.adminSetting {
+                ZStack {
+                    Circle()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(Color(UIColor.systemBackground))
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+                }.offset(x: 80, y: 80)
+            }
+        }.shadow(radius: 10)
     }
 }
