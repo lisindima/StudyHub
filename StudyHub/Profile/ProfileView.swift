@@ -30,7 +30,7 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 VStack {
-                    if sessionStore.choiseTypeBackroundProfile == false {
+                    if !sessionStore.choiseTypeBackroundProfile {
                         Rectangle()
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             .edgesIgnoringSafeArea(.top)

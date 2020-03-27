@@ -17,7 +17,7 @@ struct MessageList: View {
     
     @State private var typeMessage: String = ""
     
-    let receiverFCMToken: String = "eegqgMIFxEWTq6WcUmkDq1:APA91bHLprcGMNQX2m2TQy1TffExKmmzfPSGDjCn-UfvYJ2Mn3qIU1z3toOjTR0TGBcpUF4ULuya6gIp78AM6eV_k2epd3J48-yMe7V1vLGnCHT061WnzgfLaO5zGOf1KdszEInuUB0Q"
+    let receiverFCMToken: String = "dCePidi5pUeHksSGvfmcB_:APA91bEjfpCxz5udU_IcI--aHpWoo6nY3KL6m7-gzcqyDn0Ll4838nOOHumZY4bwdXzu8SwTqm7-MGhB7eS9SrNoKcGboyUA5vw9hZpw8vM7Bz3DUGcfBd2rzxbrwkR4W7GET7906sMJ"
     
     var body: some View {
         VStack {
