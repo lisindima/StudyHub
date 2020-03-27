@@ -322,7 +322,6 @@ struct AuthenticationScreen: View {
                         .frame(height: 55)
                         .cornerRadius(8)
                         .padding()
-                        .onTapGesture(perform: self.sessionStore.startSignInWithAppleFlow)
                         .hoverEffect(.highlight)
                     Text("-или-")
                         .foregroundColor(.secondary)
