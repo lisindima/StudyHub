@@ -12,6 +12,7 @@ struct MenuWatch: View {
     
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var dateStore: DateStore = DateStore.shared
+    
     @Binding var signInSuccess: Bool
     
     var body: some View {

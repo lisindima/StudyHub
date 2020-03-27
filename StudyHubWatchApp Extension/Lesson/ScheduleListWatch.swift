@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Espera
 
 struct ScheduleListWatch: View {
     
@@ -15,7 +16,7 @@ struct ScheduleListWatch: View {
     var body: some View {
         VStack {
             if scheduleStore.scheduleModel.isEmpty {
-                Text("Загрузка...")
+                LoadingFlowerView()
                     .onAppear(perform: scheduleStore.loadLesson)
             } else {
                 List {

@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "Espera",
+        "repositoryURL": "https://github.com/JagCesar/Espera",
+        "state": {
+          "branch": "master",
+          "revision": "12024a5b389f6872d7a504b848405bb36aa4aded",
+          "version": null
+        }
+      },
+      {
         "package": "KeyboardObserving",
         "repositoryURL": "https://github.com/nickffox/KeyboardObserving",
         "state": {

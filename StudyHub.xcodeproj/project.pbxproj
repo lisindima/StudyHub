@@ -55,13 +55,6 @@
 		CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA0102343960A0049D271 /* ProfileView.swift */; };
 		CB4FA013234396110049D271 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FA012234396110049D271 /* ProfileImage.swift */; };
 		CB56F589241B3A3900868B09 /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
-		CB5D257C240E084F00F5643F /* BERT.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257B240E084F00F5643F /* BERT.swift */; };
-		CB5D257E240E08B000F5643F /* BERTInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257D240E08B000F5643F /* BERTInput.swift */; };
-		CB5D2580240E08E800F5643F /* BERTOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D257F240E08E800F5643F /* BERTOutput.swift */; };
-		CB5D2582240E090800F5643F /* BERTVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D2581240E090800F5643F /* BERTVocabulary.swift */; };
-		CB5D2584240E094E00F5643F /* TokenizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D2583240E094E00F5643F /* TokenizedString.swift */; };
-		CB5D2586240E0B4B00F5643F /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB5D2585240E0B4B00F5643F /* BERTSQUADFP16.mlmodel */; };
-		CB5D2588240E0C3E00F5643F /* bert-base-uncased-vocab.txt in Resources */ = {isa = PBXBuildFile; fileRef = CB5D2587240E0C3D00F5643F /* bert-base-uncased-vocab.txt */; };
 		CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ChatList.swift */; };
 		CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5ED66E23F4F5EE00A28A6D /* ChatTextField.swift */; };
 		CB609F842406628B009A6389 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* Schedule.swift */; };
@@ -91,6 +84,7 @@
 		CBA25600242C4FE300B20C6A /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CBA255FF242C4FE300B20C6A /* Purchases */; };
 		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
+		CBA25609242D8DE600B20C6A /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = CBA25608242D8DE600B20C6A /* Espera */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
@@ -245,13 +239,6 @@
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB4FA012234396110049D271 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		CB56F588241B3A3900868B09 /* DateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStore.swift; sourceTree = "<group>"; };
-		CB5D257B240E084F00F5643F /* BERT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERT.swift; sourceTree = "<group>"; };
-		CB5D257D240E08B000F5643F /* BERTInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTInput.swift; sourceTree = "<group>"; };
-		CB5D257F240E08E800F5643F /* BERTOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTOutput.swift; sourceTree = "<group>"; };
-		CB5D2581240E090800F5643F /* BERTVocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BERTVocabulary.swift; sourceTree = "<group>"; };
-		CB5D2583240E094E00F5643F /* TokenizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizedString.swift; sourceTree = "<group>"; };
-		CB5D2585240E0B4B00F5643F /* BERTSQUADFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BERTSQUADFP16.mlmodel; sourceTree = "<group>"; };
-		CB5D2587240E0C3D00F5643F /* bert-base-uncased-vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bert-base-uncased-vocab.txt"; sourceTree = "<group>"; };
 		CB5DE17F236AB98D001AC3E3 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		CB5ED66E23F4F5EE00A28A6D /* ChatTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextField.swift; sourceTree = "<group>"; };
 		CB6704EB23712F4000F875C3 /* NotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
@@ -351,6 +338,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA25609242D8DE600B20C6A /* Espera in Frameworks */,
 				CB609F89240662FE009A6389 /* Alamofire in Frameworks */,
 				CBA25600242C4FE300B20C6A /* Purchases in Frameworks */,
 			);
@@ -620,20 +608,6 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
-		CB5D257A240E080E00F5643F /* Bert */ = {
-			isa = PBXGroup;
-			children = (
-				CB5D2587240E0C3D00F5643F /* bert-base-uncased-vocab.txt */,
-				CB5D2585240E0B4B00F5643F /* BERTSQUADFP16.mlmodel */,
-				CB5D257B240E084F00F5643F /* BERT.swift */,
-				CB5D257D240E08B000F5643F /* BERTInput.swift */,
-				CB5D257F240E08E800F5643F /* BERTOutput.swift */,
-				CB5D2581240E090800F5643F /* BERTVocabulary.swift */,
-				CB5D2583240E094E00F5643F /* TokenizedString.swift */,
-			);
-			path = Bert;
-			sourceTree = "<group>";
-		};
 		CB6704EA23712BB200F875C3 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -663,7 +637,6 @@
 		CBB01FE423B45522001D4CBB /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				CB5D257A240E080E00F5643F /* Bert */,
 				CBB01FE523B4553E001D4CBB /* NoteView.swift */,
 				CB9C08BB23B9DA24006743F9 /* NoteStore.swift */,
 				CBA7270B23DE78E50094372B /* NoteList.swift */,
@@ -827,6 +800,7 @@
 			packageProductDependencies = (
 				CB609F88240662FE009A6389 /* Alamofire */,
 				CBA255FF242C4FE300B20C6A /* Purchases */,
+				CBA25608242D8DE600B20C6A /* Espera */,
 			);
 			productName = "altgtuWatchApp Extension";
 			productReference = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */;
@@ -874,6 +848,7 @@
 				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -895,7 +870,6 @@
 				CBCE328724210A8A00844197 /* pornlogo@2x.png in Resources */,
 				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
-				CB5D2588240E0C3E00F5643F /* bert-base-uncased-vocab.txt in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
 				CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */,
 				CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */,
@@ -1010,13 +984,11 @@
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
-				CB5D2580240E08E800F5643F /* BERTOutput.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* Schedule.swift in Sources */,
 				CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */,
 				CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
 				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
-				CB5D2584240E094E00F5643F /* TokenizedString.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
 				CBA7270C23DE78E50094372B /* NoteList.swift in Sources */,
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
@@ -1030,15 +1002,12 @@
 				CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */,
 				CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */,
 				CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */,
-				CB5D257E240E08B000F5643F /* BERTInput.swift in Sources */,
 				CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */,
-				CB5D2582240E090800F5643F /* BERTVocabulary.swift in Sources */,
 				CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */,
 				CB4377B823DFDC200002C47C /* SettingView.swift in Sources */,
 				CBB273EF23CD862000030050 /* PencilKitCanvas.swift in Sources */,
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
-				CB5D2586240E0B4B00F5643F /* BERTSQUADFP16.mlmodel in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
 				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
@@ -1046,7 +1015,6 @@
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
 				CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */,
 				CBF0EE1A23A340B8006CC917 /* KeyPadButton.swift in Sources */,
-				CB5D257C240E084F00F5643F /* BERT.swift in Sources */,
 				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CBFF1700239F861C0030FBA3 /* LoadingLogic.swift in Sources */,
@@ -1554,6 +1522,14 @@
 				minimumVersion = 3.0.4;
 			};
 		};
+		CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JagCesar/Espera";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1609,6 +1585,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = Purchases;
+		};
+		CBA25608242D8DE600B20C6A /* Espera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */;
+			productName = Espera;
 		};
 		CBCA4C5223F7FE7E0018168D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

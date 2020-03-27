@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Espera
 import Purchases
 
 struct SubscriptionWatchView: View {
@@ -14,26 +15,23 @@ struct SubscriptionWatchView: View {
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     
     var body: some View {
-        ScrollView {
-            Text(purchasesStore.monthlyPrice)
-                .fontWeight(.bold)
-            Button(action: {
-                self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
-                self.purchasesStore.loadingMonthlyButton = true
-            }) {
-                Text("Ежемесячно")
+        VStack {
+            if purchasesStore.monthlyPrice == "" {
+                LoadingFlowerView()
+                    .onAppear(perform: purchasesStore.fetchProduct)
+            } else {
+                Button(action: {
+                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
+                }) {
+                    Text("\(purchasesStore.monthlyPrice) / в месяц.")
+                }
+                Button(action: {
+                    self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
+                }) {
+                    Text("\(purchasesStore.annualPrice) / в год.")
+                }
             }
-            Text(purchasesStore.annualPrice)
-                .fontWeight(.bold)
-            Button(action: {
-                self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
-                self.purchasesStore.loadingAnnualButton = true
-            }) {
-                Text("Ежегодно")
-            }
-        }
-        .navigationBarTitle(Text("Подписки"))
-        .onAppear(perform: purchasesStore.fetchProduct)
+        }.navigationBarTitle(Text("Подписки"))
     }
 }
 
