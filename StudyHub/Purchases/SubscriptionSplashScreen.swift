@@ -35,6 +35,7 @@ struct SubscriptionSplashScreen: View {
                             .foregroundColor(.green)
                             .imageScale(.large)
                         Text("Подписка оформлена!")
+                            .foregroundColor(.white)
                             .fontWeight(.bold)
                             .font(.system(size: 16))
                     }
@@ -67,7 +68,7 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                    .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                    .disabled(self.purchasesStore.loadingAnnualButton)
                     .padding(.trailing, 4)
                     Button(action: {
                         self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
@@ -92,7 +93,7 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                    .disabled(self.purchasesStore.offering!.availablePackages.isEmpty)
+                    .disabled(self.purchasesStore.loadingMonthlyButton)
                     .padding(.leading, 4)
                 }
                 .padding(.top, 8)

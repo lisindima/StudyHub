@@ -1230,6 +1230,7 @@
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 450;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
