@@ -12,8 +12,11 @@ import Firebase
 import Purchases
 import Kingfisher
 import UnsplashPhotoPicker
+import FirebaseFirestoreSwift
 
 class SessionStore: NSObject, ObservableObject {
+    
+    @Published var profileModel: ProfileModel?
     
     @Published var user: User?
     @Published var lastname: String!
@@ -44,7 +47,7 @@ class SessionStore: NSObject, ObservableObject {
     
     var handle: AuthStateDidChangeListenerHandle?
     
-    static let shared = SessionStore()
+    static let shared = SessionStore().profileModel
     
     override init() {
         super.init()
@@ -112,6 +115,29 @@ class SessionStore: NSObject, ObservableObject {
                         self.onlineUser = false
                     }
                 }
+            }
+        }
+    }
+    
+    func test() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        let docRef = db.collection("profile").document(currentUser.uid)
+        docRef.addSnapshotListener { documentSnapshot, error in
+            let result = Result {
+                try documentSnapshot.flatMap {
+                    try $0.data(as: ProfileModel.self)
+                }
+            }
+            switch result {
+            case .success(let profile):
+                if let profile = profile {
+                    self.profileModel = profile
+                } else {
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                print("Error decoding profile: \(error)")
             }
         }
     }
@@ -267,19 +293,19 @@ class SessionStore: NSObject, ObservableObject {
     }
 }
 
-struct ProfileModel {
-    var lastname: String!
-    var firstname: String!
-    var dateBirthDay: Date!
-    var urlImageProfile: String!
-    var notifyMinute: Int!
-    var rValue: Double!
-    var gValue: Double!
-    var bValue: Double!
-    var adminSetting: Bool!
-    var secureCodeAccess: String!
-    var boolCodeAccess: Bool!
-    var biometricAccess: Bool!
-    var choiseTypeBackroundProfile: Bool!
-    var setImageForBackroundProfile: String!
+struct ProfileModel: Codable {
+    var lastname: String
+    var firstname: String
+    var dateBirthDay: Date
+    var urlImageProfile: String
+    var notifyMinute: Int
+    var rValue: Double
+    var gValue: Double
+    var bValue: Double
+    var adminSetting: Bool
+    var pinCodeAccess: String
+    var boolCodeAccess: Bool
+    var biometricAccess: Bool
+    var choiseTypeBackroundProfile: Bool
+    var setImageForBackroundProfile: String
 }
