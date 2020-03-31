@@ -267,7 +267,7 @@ class SessionStore: NSObject, ObservableObject {
     }
 }
 
-struct ProfileData {
+struct ProfileModel {
     var lastname: String!
     var firstname: String!
     var dateBirthDay: Date!

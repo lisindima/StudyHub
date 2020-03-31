@@ -545,16 +545,17 @@ struct SettingView: View {
                     }
                 }
             }
-            .environment(\.horizontalSizeClass, .regular)
             .onAppear(perform: startSettingView)
+            .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text("Настройки"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Закрыть")
                     .bold()
-                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
             })
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
+        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

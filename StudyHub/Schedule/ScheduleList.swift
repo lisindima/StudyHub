@@ -44,7 +44,7 @@ struct ScheduleList: View {
                     }
                 }.navigationBarTitle(Text("Расписание"))
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
