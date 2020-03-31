@@ -19,7 +19,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var lastname: String!
     @Published var firstname: String!
     @Published var dateBirthDay: Date!
-    @Published var email: String!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
     @Published var imageProfile: UIImage = UIImage()
@@ -127,7 +126,6 @@ class SessionStore: NSObject, ObservableObject {
                 if let dateTimestamp = document.get("dateBirthDay") as? Timestamp {
                     self.dateBirthDay = dateTimestamp.dateValue()
                 }
-                self.email = document.get("email") as? String
                 self.urlImageProfile = document.get("urlImageProfile") as? String
                 self.notifyMinute = document.get("notifyMinute") as? Int
                 self.rValue = document.get("rValue") as? Double
@@ -154,7 +152,6 @@ class SessionStore: NSObject, ObservableObject {
             "lastname": lastname!,
             "firstname": firstname!,
             "dateBirthDay": dateBirthDay!,
-            "email": email!,
             "notifyMinute": notifyMinute!,
             "rValue": rValue!,
             "gValue": gValue!,
@@ -268,4 +265,21 @@ class SessionStore: NSObject, ObservableObject {
             
         }
     }
+}
+
+struct ProfileData {
+    var lastname: String!
+    var firstname: String!
+    var dateBirthDay: Date!
+    var urlImageProfile: String!
+    var notifyMinute: Int!
+    var rValue: Double!
+    var gValue: Double!
+    var bValue: Double!
+    var adminSetting: Bool!
+    var secureCodeAccess: String!
+    var boolCodeAccess: Bool!
+    var biometricAccess: Bool!
+    var choiseTypeBackroundProfile: Bool!
+    var setImageForBackroundProfile: String!
 }

@@ -42,7 +42,6 @@ struct SignUpView: View {
                 db.collection("profile").document(currentUser.uid).setData([
                     "firstname": self.firstname,
                     "lastname": self.lastname,
-                    "email": self.email,
                     "rValue": 88.0,
                     "gValue": 86.0,
                     "bValue": 214.0,
