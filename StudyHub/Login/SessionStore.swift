@@ -12,7 +12,6 @@ import Firebase
 import Purchases
 import Kingfisher
 import UnsplashPhotoPicker
-import FirebaseFirestoreSwift
 
 class SessionStore: NSObject, ObservableObject {
     
@@ -29,7 +28,7 @@ class SessionStore: NSObject, ObservableObject {
     @Published var gValue: Double!
     @Published var bValue: Double!
     @Published var adminSetting: Bool!
-    @Published var secureCodeAccess: String!
+    @Published var pinCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
     @Published var percentComplete: Double = 0.0
@@ -47,7 +46,7 @@ class SessionStore: NSObject, ObservableObject {
     
     var handle: AuthStateDidChangeListenerHandle?
     
-    static let shared = SessionStore().profileModel
+    static let shared = SessionStore()
     
     override init() {
         super.init()
@@ -119,29 +118,6 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
-    func test() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        let docRef = db.collection("profile").document(currentUser.uid)
-        docRef.addSnapshotListener { documentSnapshot, error in
-            let result = Result {
-                try documentSnapshot.flatMap {
-                    try $0.data(as: ProfileModel.self)
-                }
-            }
-            switch result {
-            case .success(let profile):
-                if let profile = profile {
-                    self.profileModel = profile
-                } else {
-                    print("Document does not exist")
-                }
-            case .failure(let error):
-                print("Error decoding profile: \(error)")
-            }
-        }
-    }
-    
     func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
@@ -159,7 +135,7 @@ class SessionStore: NSObject, ObservableObject {
                 self.bValue = document.get("bValue") as? Double
                 self.adminSetting = document.get("adminSetting") as? Bool
                 self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
-                self.secureCodeAccess = document.get("pinCodeAccess") as? String
+                self.pinCodeAccess = document.get("pinCodeAccess") as? String
                 self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
                 self.biometricAccess = document.get("biometricAccess") as? Bool
                 self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
@@ -184,7 +160,7 @@ class SessionStore: NSObject, ObservableObject {
             "bValue": bValue!,
             "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
-            "pinCodeAccess": secureCodeAccess!,
+            "pinCodeAccess": pinCodeAccess!,
             "boolCodeAccess": boolCodeAccess!,
             "biometricAccess": biometricAccess!,
             "setImageForBackroundProfile": setImageForBackroundProfile!,

@@ -11,7 +11,6 @@ target 'StudyHub' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
-  pod 'FirebaseFirestoreSwift'
   
   # Other pods
   pod 'UnsplashPhotoPicker', :git => 'https://github.com/lisindima/unsplash-photopicker-ios.git'

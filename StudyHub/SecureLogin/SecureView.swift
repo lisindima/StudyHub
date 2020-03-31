@@ -21,14 +21,14 @@ struct SecureView: View {
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
-        if userInputCode == sessionStore.secureCodeAccess && userInputCode.count == 4 {
+        if userInputCode == sessionStore.pinCodeAccess && userInputCode.count == 4 {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.userInputCode = ""
                 self.access = true
             }
-        } else if userInputCode != sessionStore.secureCodeAccess && userInputCode.count == 4 {
+        } else if userInputCode != sessionStore.pinCodeAccess && userInputCode.count == 4 {
             self.changeColor = true
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)

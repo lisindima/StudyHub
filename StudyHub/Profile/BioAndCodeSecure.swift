@@ -24,7 +24,7 @@ struct BioAndCodeSecure: View {
     
     private func saveSetPinSetting() {
         sessionStore.boolCodeAccess = setBoolCodeAccess
-        sessionStore.secureCodeAccess = setSecureCodeAccess
+        sessionStore.pinCodeAccess = setSecureCodeAccess
         self.showAlert = true
     }
     
