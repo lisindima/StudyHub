@@ -17,7 +17,6 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = selectedSourceType
-        imagePicker.allowsEditing = true
         imagePicker.delegate = context.coordinator
         return imagePicker
     }
@@ -44,42 +43,28 @@ struct ImagePicker: UIViewControllerRepresentable {
             let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
             photoRef = storage.reference(forURL: storagePath)
             let data = imageProfile.jpegData(compressionQuality: 1)
-            if data == nil {
-                return
-            } else {
-                parent.sessionStore.showBanner = true
-                let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
-                    photoRef.downloadURL { url, error in
-                        guard let downloadURL = url else {
-                            return
-                        }
-                        self.parent.sessionStore.urlImageProfile = downloadURL.absoluteString
-                        let docRef = db.collection("profile").document(currentUser.uid)
-                        docRef.updateData([
-                            "urlImageProfile": self.parent.sessionStore.urlImageProfile as String
-                        ]) { error in
-                            if let error = error {
-                                print("Error updating document: \(error)")
-                                self.parent.sessionStore.showBanner = false
-                            } else {
-                                db.collection("profile").document(currentUser.uid)
-                                    .addSnapshotListener { documentSnapshot, error in
-                                        if let document = documentSnapshot {
-                                            self.parent.sessionStore.urlImageProfile = document.get("urlImageProfile") as? String
-                                            self.parent.sessionStore.showBanner = false
-                                        } else if error != nil {
-                                            print((error?.localizedDescription)!)
-                                            self.parent.sessionStore.showBanner = false
-                                        }
-                                }
-                                self.parent.sessionStore.showBanner = false
-                            }
+            parent.sessionStore.showBanner = true
+            let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
+                photoRef.downloadURL { url, error in
+                    guard let downloadURL = url else {
+                        return
+                    }
+                    self.parent.sessionStore.urlImageProfile = downloadURL.absoluteString
+                    let docRef = db.collection("profile").document(currentUser.uid)
+                    docRef.updateData([
+                        "urlImageProfile": self.parent.sessionStore.urlImageProfile as String
+                    ]) { error in
+                        if let error = error {
+                            print("Error updating document: \(error)")
+                            self.parent.sessionStore.showBanner = false
+                        } else {
+                            self.parent.sessionStore.showBanner = false
                         }
                     }
                 }
-                uploadImageTask.observe(.progress) { snapshot in
-                    self.parent.sessionStore.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-                }
+            }
+            uploadImageTask.observe(.progress) { snapshot in
+                self.parent.sessionStore.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             }
         }
     }
