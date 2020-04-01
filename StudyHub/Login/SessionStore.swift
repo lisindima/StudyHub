@@ -10,7 +10,6 @@ import SwiftUI
 import Combine
 import Firebase
 import Purchases
-import UnsplashPhotoPicker
 
 class SessionStore: ObservableObject {
     
@@ -31,8 +30,6 @@ class SessionStore: ObservableObject {
     @Published var setImageForBackroundProfile: String!
     @Published var percentComplete: Double = 0.0
     @Published var userTypeAuth: ActiveAuthType = .email
-    @Published var imageProfile: UIImage = UIImage()
-    @Published var imageFromUnsplashPicker: UnsplashPhoto?
     @Published var showBanner: Bool = false
     @Published var onlineUser: Bool = false
     @Published var darkThemeOverride: Bool = false {
@@ -155,7 +152,6 @@ class SessionStore: ObservableObject {
             "rValue": rValue!,
             "gValue": gValue!,
             "bValue": bValue!,
-            "urlImageProfile": urlImageProfile!,
             "darkThemeOverride": darkThemeOverride,
             "pinCodeAccess": pinCodeAccess!,
             "boolCodeAccess": boolCodeAccess!,
@@ -169,60 +165,6 @@ class SessionStore: ObservableObject {
                 print("Профиль обновлен")
             }
         }
-    }
-    
-    func uploadProfileImageToStorage() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        var photoRef = storageRef.child("photoProfile/\(currentUser.uid).jpeg")
-        let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
-        photoRef = storage.reference(forURL: storagePath)
-        let data = imageProfile.jpegData(compressionQuality: 1)
-        if data == nil {
-            return
-        } else {
-            showBanner = true
-            let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
-                photoRef.downloadURL { url, error in
-                    guard let downloadURL = url else {
-                        return
-                    }
-                    self.urlImageProfile = downloadURL.absoluteString
-                    let docRef = db.collection("profile").document(currentUser.uid)
-                    docRef.updateData([
-                        "urlImageProfile": self.urlImageProfile as String
-                    ]) { error in
-                        if let error = error {
-                            print("Error updating document: \(error)")
-                            self.showBanner = false
-                        } else {
-                            db.collection("profile").document(currentUser.uid)
-                                .addSnapshotListener { documentSnapshot, error in
-                                    if let document = documentSnapshot {
-                                        self.urlImageProfile = document.get("urlImageProfile") as? String
-                                        self.showBanner = false
-                                    } else if error != nil {
-                                        print((error?.localizedDescription)!)
-                                        self.showBanner = false
-                                    }
-                            }
-                            self.showBanner = false
-                        }
-                    }
-                }
-            }
-            uploadImageTask.observe(.progress) { snapshot in
-                self.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
-            }
-        }
-    }
-    
-    func setUnsplashImageForProfileBackground() {
-        let urlsToImage = imageFromUnsplashPicker!.urls[.regular]
-        setImageForBackroundProfile = urlsToImage?.absoluteString
-        choiseTypeBackroundProfile = true
     }
     
     func unbind() {

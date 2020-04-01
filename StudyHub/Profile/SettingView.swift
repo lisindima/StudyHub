@@ -288,13 +288,11 @@ struct SettingView: View {
                                 }, .cancel()
                             ])
                         }
-                        .sheet(isPresented: $isShowingModalViewUnsplash, onDismiss: {
-                            self.sessionStore.setUnsplashImageForProfileBackground()
-                        }, content: {
-                            UnsplashImagePicker(unsplashImage: self.$sessionStore.imageFromUnsplashPicker)
+                        .sheet(isPresented: $isShowingModalViewUnsplash) {
+                            UnsplashImagePicker()
                                 .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
                                 .edgesIgnoringSafeArea(.bottom)
-                        })
+                        }
                     }
                 }
                 Section(header: Text("Личные данные").fontWeight(.bold), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
@@ -339,13 +337,11 @@ struct SettingView: View {
                                 }, .cancel()
                             ])
                         }
-                        .sheet(isPresented: $isShowingModalViewImage, onDismiss: {
-                            self.sessionStore.uploadProfileImageToStorage()
-                        }, content: {
-                            ImagePicker(imageFromPicker: self.$sessionStore.imageProfile, selectedSourceType: self.$selectedSourceType)
+                        .sheet(isPresented: $isShowingModalViewImage) {
+                            ImagePicker(selectedSourceType: self.$selectedSourceType)
                                 .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
                                 .edgesIgnoringSafeArea(.bottom)
-                        })
+                        }
                     }
                 }
                 Section(header: Text("Уведомления").fontWeight(.bold), footer: footerNotification) {
