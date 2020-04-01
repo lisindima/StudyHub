@@ -10,7 +10,8 @@ import SwiftUI
 
 struct KeyPadButton: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    
     var key: String
     
     var body: some View {

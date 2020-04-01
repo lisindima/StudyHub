@@ -20,7 +20,7 @@ struct ProfileView: View {
     @State private var showQRReader: Bool = false
     @State private var showPartialSheet: Bool = false
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser

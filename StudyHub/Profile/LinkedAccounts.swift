@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LinkedAccounts: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     var body: some View {
         Form {
@@ -42,7 +42,6 @@ struct LinkedAccounts: View {
             Section {
                 if sessionStore.userTypeAuth == .email {
                     NavigationLink(destination: ChangeEmail()
-                        .environmentObject(sessionStore)
                     ) {
                         Image(systemName: "envelope")
                             .frame(width: 24)
@@ -50,7 +49,6 @@ struct LinkedAccounts: View {
                         Text("Изменить эл.почту")
                     }
                     NavigationLink(destination: ChangePassword()
-                        .environmentObject(sessionStore)
                     ) {
                         Image(systemName: "lock")
                             .frame(width: 24)

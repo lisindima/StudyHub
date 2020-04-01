@@ -13,7 +13,7 @@ import UserNotifications
 
 class NotificationStore: ObservableObject {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @Published var enabled: UNAuthorizationStatus = .notDetermined
     
     static let shared = NotificationStore()

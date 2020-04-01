@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoadingLogic: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     @State private var access: Bool = false
     

@@ -85,8 +85,8 @@ struct ChatList: View {
 
 struct ListItem: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var dateStore: DateStore = DateStore.shared
     @Binding var numberUnreadMessages: Int
     @State private var lastMessageIsToday: Bool = false

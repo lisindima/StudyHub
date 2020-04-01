@@ -59,7 +59,7 @@ struct ChangeIcons: View {
 
 struct IconItem: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var iconStore: IconStore = IconStore.shared
     
     var iconModel: IconModel

@@ -12,7 +12,6 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    let sessionStore = SessionStore.shared
     let chatStore = ChatStore.shared
     let noteStore = NoteStore.shared
     
@@ -23,7 +22,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Self.shared = self
         
         let rootView = RootView()
-            .environmentObject(sessionStore)
             .environmentObject(chatStore)
             .environmentObject(noteStore)
         

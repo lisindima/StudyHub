@@ -18,7 +18,7 @@ struct DeleteUser: View {
     @State private var showAlert: Bool = false
     @State private var activeAlert: ActiveAlert = .first
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -113,7 +113,7 @@ struct ChangeEmail: View {
     @State private var activeAlert: ActiveAlert = .first
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -235,7 +235,7 @@ struct ChangePassword: View {
     @State private var activeAlert: ActiveAlert = .first
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()

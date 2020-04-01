@@ -17,7 +17,7 @@ import CoreImage.CIFilterBuiltins
 
 struct QRReader: View {
     
-    @EnvironmentObject var sessionStore: SessionStore
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var qrStore: QRStore = QRStore.shared
     
     @State private var choiseView: Int = 1

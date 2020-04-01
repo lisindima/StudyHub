@@ -10,12 +10,9 @@ import SwiftUI
 import Combine
 import Firebase
 import Purchases
-import Kingfisher
 import UnsplashPhotoPicker
 
-class SessionStore: NSObject, ObservableObject {
-    
-    @Published var profileModel: ProfileModel?
+class SessionStore: ObservableObject {
     
     @Published var user: User?
     @Published var lastname: String!
@@ -23,7 +20,6 @@ class SessionStore: NSObject, ObservableObject {
     @Published var dateBirthDay: Date!
     @Published var urlImageProfile: String!
     @Published var notifyMinute: Int!
-    @Published var imageProfile: UIImage = UIImage()
     @Published var rValue: Double!
     @Published var gValue: Double!
     @Published var bValue: Double!
@@ -31,12 +27,13 @@ class SessionStore: NSObject, ObservableObject {
     @Published var pinCodeAccess: String!
     @Published var boolCodeAccess: Bool!
     @Published var biometricAccess: Bool!
-    @Published var percentComplete: Double = 0.0
-    @Published var showBanner: Bool = false
-    @Published var userTypeAuth: ActiveAuthType = .email
     @Published var choiseTypeBackroundProfile: Bool!
-    @Published var imageFromUnsplashPicker: UnsplashPhoto?
     @Published var setImageForBackroundProfile: String!
+    @Published var percentComplete: Double = 0.0
+    @Published var userTypeAuth: ActiveAuthType = .email
+    @Published var imageProfile: UIImage = UIImage()
+    @Published var imageFromUnsplashPicker: UnsplashPhoto?
+    @Published var showBanner: Bool = false
     @Published var onlineUser: Bool = false
     @Published var darkThemeOverride: Bool = false {
         didSet {
@@ -44,12 +41,12 @@ class SessionStore: NSObject, ObservableObject {
         }
     }
     
-    var handle: AuthStateDidChangeListenerHandle?
-    
     static let shared = SessionStore()
+    var handle: AuthStateDidChangeListenerHandle?
+    let currentUser = Auth.auth().currentUser
     
-    override init() {
-        super.init()
+    init() {
+        user = currentUser
         listenSession()
     }
     
@@ -267,21 +264,4 @@ class SessionStore: NSObject, ObservableObject {
             
         }
     }
-}
-
-struct ProfileModel: Codable {
-    var lastname: String
-    var firstname: String
-    var dateBirthDay: Date
-    var urlImageProfile: String
-    var notifyMinute: Int
-    var rValue: Double
-    var gValue: Double
-    var bValue: Double
-    var adminSetting: Bool
-    var pinCodeAccess: String
-    var boolCodeAccess: Bool
-    var biometricAccess: Bool
-    var choiseTypeBackroundProfile: Bool
-    var setImageForBackroundProfile: String
 }

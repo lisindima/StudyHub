@@ -88,12 +88,12 @@ class PickerStore: ObservableObject {
 }
 
 struct GroupModelElement: Identifiable, Codable {
+    let id: String
     let startYear: Int?
     let name: String
     let facultyID: String?
     let specialityID: String?
     let groupBr: Int?
-    let id: String
 }
 
 struct FacultyModelElement: Identifiable, Codable {

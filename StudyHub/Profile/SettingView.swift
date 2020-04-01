@@ -28,9 +28,9 @@ struct SettingView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var sessionStore: SessionStore
     
     @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
@@ -411,7 +411,7 @@ struct SettingView: View {
                     }.lineLimit(1)
                 }
                 Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
-                    NavigationLink(destination: BioAndCodeSecure().environmentObject(sessionStore)) {
+                    NavigationLink(destination: BioAndCodeSecure()) {
                         HStack {
                             Image(systemName: "faceid")
                                 .frame(width: 24)
@@ -422,7 +422,7 @@ struct SettingView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    NavigationLink(destination: LinkedAccounts().environmentObject(sessionStore)) {
+                    NavigationLink(destination: LinkedAccounts()) {
                         HStack {
                             Image(systemName: "list.dash")
                                 .frame(width: 24)
