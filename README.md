@@ -2,7 +2,7 @@
 ![Supported platform: iOS, watchOS, macOS](https://img.shields.io/badge/platform-iOS%2C%20watchOS%2C%20macOS-lightgrey)
 
 ## StudyHub - приложение для студента АлтГТУ.
-Мобильное приложение для АлтГТУ под iOS, построенное c помощью SwiftUI.
+[WIP] Мобильное приложение для АлтГТУ под iOS, watchOS и macOS. Построенное c помощью SwiftUI и Combine.
 
 ## Поддерживаемые платформы:
 * iOS 13.4+
