@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "56075f629bc3915e1bfa876d175df67e1a7cbe3c",
-          "version": "5.13.2"
+          "revision": "7ccfb6cefdb6180cde839310e3dbd5b2d6fefee5",
+          "version": "5.13.3"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
         "state": {
           "branch": null,
-          "revision": "a9ef3a0f98509b172548cb308194e4af66578822",
-          "version": "3.2.1"
+          "revision": "a86c5744bc23ff1a61f9d387c5458743614cc800",
+          "version": "3.2.2"
         }
       },
       {
