@@ -20,7 +20,6 @@
 		CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED74232E5AC50047A8A0 /* CustomButton.swift */; };
 		CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* SessionStore.swift */; };
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
-		CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED7C232E5AE20047A8A0 /* LottieView.swift */; };
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8C923E1DEEB006E568C /* ChatLoading.swift */; };
@@ -64,7 +63,6 @@
 		CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* NotificationStore.swift */; };
 		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = CB6AC62F2408F4FE00D0E482 /* SPAlert */; };
-		CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CB6D3F70235AC6F200E65661 /* Lottie */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
@@ -74,7 +72,6 @@
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
 		CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB8EF87A23C86B6E00992764 /* CodeScanner */; };
-		CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */; };
 		CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB97AFBB23EAA12B00921F0F /* TextView.swift */; };
 		CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CB9B90EC241090AF006CF9BF /* Purchases */; };
 		CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */; };
@@ -205,7 +202,6 @@
 		CB0AED74232E5AC50047A8A0 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CB0AED75232E5AC50047A8A0 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		CB0AED7C232E5AE20047A8A0 /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
@@ -251,7 +247,6 @@
 		CB8B99222422072C00172395 /* ProfileFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFriends.swift; sourceTree = "<group>"; };
 		CB8B992524224F1900172395 /* QRStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRStore.swift; sourceTree = "<group>"; };
 		CB8EF87723C85D6D00992764 /* QRReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReader.swift; sourceTree = "<group>"; };
-		CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "14571-search-loading-animation.json"; sourceTree = "<group>"; };
 		CB97AFBB23EAA12B00921F0F /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
@@ -319,7 +314,6 @@
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
-				CB6D3F71235AC6F200E65661 /* Lottie in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
 				35D2DC5387B831A8CA45D865 /* Pods_StudyHub.framework in Frameworks */,
@@ -407,7 +401,6 @@
 				CB28B8D92361459900A93F28 /* News */,
 				CBB01FE423B45522001D4CBB /* Note */,
 				CB12E7EB23596F7900115B2E /* Chat */,
-				CB0AED7B232E5ACE0047A8A0 /* Lottie */,
 				CBF0EE1823A33D2F006CC917 /* SecureLogin */,
 				CB0AED72232E5AA80047A8A0 /* Login */,
 				CB53B43623D987E300982219 /* Picker */,
@@ -469,15 +462,6 @@
 				CBFF16FF239F861C0030FBA3 /* LoadingLogic.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		CB0AED7B232E5ACE0047A8A0 /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				CB6EBF5023977BE200D9E771 /* Files */,
-				CB0AED7C232E5AE20047A8A0 /* LottieView.swift */,
-			);
-			path = Lottie;
 			sourceTree = "<group>";
 		};
 		CB12E7EA23596F5400115B2E /* Support */ = {
@@ -616,14 +600,6 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
-		CB6EBF5023977BE200D9E771 /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				CB93672523DEC9FA0098E4DC /* 14571-search-loading-animation.json */,
-			);
-			path = Files;
-			sourceTree = "<group>";
-		};
 		CB8B992424224EA700172395 /* QR */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,7 +712,6 @@
 			);
 			name = StudyHub;
 			packageProductDependencies = (
-				CB6D3F70235AC6F200E65661 /* Lottie */,
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
 				CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */,
@@ -840,7 +815,6 @@
 			);
 			mainGroup = CB0AED30232E59A10047A8A0;
 			packageReferences = (
-				CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				CB4874AD23D3732200DEB38F /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -878,7 +852,6 @@
 				CBCE328624210A8A00844197 /* pornlogo.png in Resources */,
 				CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */,
 				CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */,
-				CB93672623DEC9FA0098E4DC /* 14571-search-loading-animation.json in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
 				CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */,
 			);
@@ -1009,7 +982,6 @@
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
-				CB0AED7F232E5AE20047A8A0 /* LottieView.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
@@ -1229,7 +1201,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1240,7 +1212,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
 				SUPPORTS_MACCATALYST = YES;
@@ -1257,7 +1229,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1267,7 +1239,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
 				SUPPORTS_MACCATALYST = YES;
@@ -1280,7 +1252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1289,7 +1261,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1303,7 +1275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1312,7 +1284,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
 				PRODUCT_NAME = "Расписание";
 				SKIP_INSTALL = YES;
@@ -1327,7 +1299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1337,7 +1309,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1353,7 +1325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1363,7 +1335,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1380,11 +1352,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = StudyHub;
 				SDKROOT = watchos;
@@ -1401,11 +1373,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
 				PRODUCT_NAME = StudyHub;
 				SDKROOT = watchos;
@@ -1499,14 +1471,6 @@
 				minimumVersion = 2.1.2;
 			};
 		};
-		CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.5;
-			};
-		};
 		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -1566,11 +1530,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
-		};
-		CB6D3F70235AC6F200E65661 /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB6D3F6F235AC6F200E65661 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
 		};
 		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -13,8 +13,6 @@ struct ChatEmpty: View {
         NavigationView {
             ZStack {
                 VStack {
-                    LottieView(filename: "14571-search-loading-animation")
-                        .frame(width: 200, height: 200)
                     Text("Нет сообщений")
                         .font(.headline)
                     Text("Отправьте свое первое сообщение")

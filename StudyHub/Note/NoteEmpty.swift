@@ -17,8 +17,6 @@ struct NoteEmpty: View {
         NavigationView {
             ZStack {
                 VStack {
-                    LottieView(filename: "14571-search-loading-animation")
-                        .frame(width: 200, height: 200)
                     Text("Нет заметок")
                         .font(.headline)
                     Text("Создайте свою первую заметку")
