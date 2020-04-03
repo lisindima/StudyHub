@@ -34,6 +34,7 @@
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
 		CB286DC4243767B200977D60 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC3243767B200977D60 /* Kingfisher */; };
 		CB286DC6243767B200977D60 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC5243767B200977D60 /* KingfisherSwiftUI */; };
+		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
@@ -227,6 +228,7 @@
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
 		CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTimeSinceNow.swift; sourceTree = "<group>"; };
+		CB286DC7243782B700977D60 /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
 		CB30FB632424809100F5793E /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -609,6 +611,7 @@
 		CB6704EA23712BB200F875C3 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				CB286DC7243782B700977D60 /* NotificationSetting.swift */,
 				CB6704EB23712F4000F875C3 /* NotificationStore.swift */,
 			);
 			path = Notifications;
@@ -964,6 +967,7 @@
 				CBE010E623AC73A2009DB0E8 /* DetailsNews.swift in Sources */,
 				CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */,
 				CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */,
+				CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */,
 				CB8B992624224F1900172395 /* QRStore.swift in Sources */,
 				CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,

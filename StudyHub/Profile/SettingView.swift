@@ -354,13 +354,11 @@ struct SettingView: View {
                                 self.openSettings()
                             }.foregroundColor(.primary)
                         }
-                        Stepper(value: $sessionStore.notifyMinute, in: 5...30) {
-                            HStack {
-                                Image(systemName: "timer")
-                                    .frame(width: 24)
-                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                                Text("\(sessionStore.notifyMinute) мин")
-                            }
+                        NavigationLink(destination: NotificationSetting()) {
+                            Image(systemName: "gear")
+                                .frame(width: 24)
+                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            Text("Настройки уведомлений")
                         }
                     }
                     if notificationStore.enabled == .notDetermined {
