@@ -32,6 +32,8 @@
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
+		CB286DC4243767B200977D60 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC3243767B200977D60 /* Kingfisher */; };
+		CB286DC6243767B200977D60 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC5243767B200977D60 /* KingfisherSwiftUI */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
@@ -48,7 +50,6 @@
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
-		CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */; };
 		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
 		CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874C023D813C300DEB38F /* ImageCacheStore.swift */; };
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
@@ -158,6 +159,16 @@
 				CBE665FF23543A1500C43811 /* StudyHub.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB286DB72437639700977D60 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CB6777A5236046610019D6B6 /* Embed App Extensions */ = {
@@ -313,8 +324,9 @@
 				CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */,
 				CB37694923E40D860015B61E /* PartialSheet in Frameworks */,
 				CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */,
+				CB286DC4243767B200977D60 /* Kingfisher in Frameworks */,
+				CB286DC6243767B200977D60 /* KingfisherSwiftUI in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
-				CB4874AF23D3732200DEB38F /* KingfisherSwiftUI in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
@@ -706,6 +718,7 @@
 				7674E8C86BF4E9E78518AB40 /* [CP] Embed Pods Frameworks */,
 				CB25040C23505E1600D2E41A /* Embed Watch Content */,
 				CB6777A5236046610019D6B6 /* Embed App Extensions */,
+				CB286DB72437639700977D60 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -717,11 +730,12 @@
 			packageProductDependencies = (
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
-				CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */,
 				CB37694823E40D860015B61E /* PartialSheet */,
 				CBCA4C5223F7FE7E0018168D /* Alamofire */,
 				CB6AC62F2408F4FE00D0E482 /* SPAlert */,
 				CB9B90EC241090AF006CF9BF /* Purchases */,
+				CB286DC3243767B200977D60 /* Kingfisher */,
+				CB286DC5243767B200977D60 /* KingfisherSwiftUI */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -820,12 +834,12 @@
 			packageReferences = (
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				CB4874AD23D3732200DEB38F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
+				CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -1443,20 +1457,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = exactVersion;
+				version = 5.13.2;
+			};
+		};
 		CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.0;
-			};
-		};
-		CB4874AD23D3732200DEB38F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = exactVersion;
-				version = 5.13.2;
 			};
 		};
 		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
@@ -1510,15 +1524,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB286DC3243767B200977D60 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		CB286DC5243767B200977D60 /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
+		};
 		CB37694823E40D860015B61E /* PartialSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */;
 			productName = PartialSheet;
-		};
-		CB4874AE23D3732200DEB38F /* KingfisherSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB4874AD23D3732200DEB38F /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = KingfisherSwiftUI;
 		};
 		CB609F88240662FE009A6389 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

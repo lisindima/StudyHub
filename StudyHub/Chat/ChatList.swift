@@ -89,7 +89,7 @@ struct ListItem: View {
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var dateStore: DateStore = DateStore.shared
     @Binding var numberUnreadMessages: Int
-    @State private var lastMessageIsToday: Bool = false
+    @State private var showIndicator: Bool = false
     
     let currentUid = Auth.auth().currentUser?.uid
     
@@ -102,12 +102,15 @@ struct ListItem: View {
         HStack {
             ZStack {
                 KFImage(URL(string: sessionStore.urlImageProfile))
+                    .onSuccess { _ in
+                        self.showIndicator = true
+                    }
                     .placeholder { ActivityIndicator(styleSpinner: .medium) }
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .clipped()
-                if sessionStore.onlineUser {
+                if sessionStore.onlineUser && showIndicator {
                     Circle()
                         .foregroundColor(colorScheme == .dark ? .black : .white)
                         .frame(width: 15, height: 15)

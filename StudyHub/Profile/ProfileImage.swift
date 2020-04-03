@@ -12,17 +12,22 @@ import KingfisherSwiftUI
 struct ProfileImage: View {
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @State private var showAdminCheck: Bool = false
     
     var body: some View {
         ZStack {
             KFImage(URL(string: sessionStore.urlImageProfile))
+                .onSuccess { _ in
+                    self.showAdminCheck = true
+                }
                 .placeholder { ActivityIndicator(styleSpinner: .large) }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
                 .clipped()
                 .frame(width: 210, height: 210)
-            if sessionStore.adminSetting {
+                
+            if sessionStore.adminSetting && showAdminCheck {
                 ZStack {
                     Circle()
                         .frame(width: 50, height: 50)
