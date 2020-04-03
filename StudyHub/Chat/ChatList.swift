@@ -98,11 +98,6 @@ struct ListItem: View {
     var lastMessage: String
     var lastMessageDate: Date
     
-    private func chatIsDateInToday() {
-        let isToday = Calendar.current.isDateInToday(lastMessageDate)
-        lastMessageIsToday = isToday
-    }
-    
     var body: some View {
         HStack {
             ZStack {
@@ -135,7 +130,7 @@ struct ListItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(lastMessageDate, formatter: lastMessageIsToday ? dateStore.dateHour : dateStore.dateDay)")
+                Text("\(lastMessageDate.calenderTimeSinceNow())")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")
@@ -143,6 +138,6 @@ struct ListItem: View {
                     .foregroundColor(.accentColor)
                     .opacity(numberUnreadMessages >= 1 ? 1.0 : 0.0)
             }
-        }.onAppear(perform: chatIsDateInToday)
+        }
     }
 }

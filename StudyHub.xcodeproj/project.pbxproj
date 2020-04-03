@@ -31,6 +31,7 @@
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
+		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
@@ -214,6 +215,7 @@
 		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
+		CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTimeSinceNow.swift; sourceTree = "<group>"; };
 		CB30FB632424809100F5793E /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -639,6 +641,7 @@
 				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
 				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
 				CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */,
+				CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
+				CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF0EE2023A37A34006CC917 /* BioAndCodeSecure.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
@@ -1451,8 +1455,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.13.0;
+				kind = exactVersion;
+				version = 5.13.2;
 			};
 		};
 		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
