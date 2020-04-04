@@ -18,6 +18,7 @@ struct SubscriptionWatchView: View {
         VStack {
             if purchasesStore.monthlyPrice == "" {
                 LoadingFlowerView()
+                    .frame(width: 25, height: 25)
                     .onAppear(perform: purchasesStore.fetchProduct)
             } else {
                 Button(action: {

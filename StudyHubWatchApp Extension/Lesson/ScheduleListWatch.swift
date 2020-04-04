@@ -17,6 +17,7 @@ struct ScheduleListWatch: View {
         VStack {
             if scheduleStore.scheduleModel.isEmpty {
                 LoadingFlowerView()
+                    .frame(width: 25, height: 25)
                     .onAppear(perform: scheduleStore.loadLesson)
             } else {
                 List {
