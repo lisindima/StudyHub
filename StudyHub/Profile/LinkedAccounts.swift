@@ -41,15 +41,13 @@ struct LinkedAccounts: View {
             }
             Section {
                 if sessionStore.userTypeAuth == .email {
-                    NavigationLink(destination: ChangeEmail()
-                    ) {
+                    NavigationLink(destination: ChangeEmail()) {
                         Image(systemName: "envelope")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Text("Изменить эл.почту")
                     }
-                    NavigationLink(destination: ChangePassword()
-                    ) {
+                    NavigationLink(destination: ChangePassword()) {
                         Image(systemName: "lock")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))

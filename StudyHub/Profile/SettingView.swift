@@ -249,12 +249,10 @@ struct SettingView: View {
                         .foregroundColor(.white)
                     }.padding(.vertical)
                     Toggle(isOn: $sessionStore.darkThemeOverride) {
-                        HStack {
-                            Image(systemName: "moon.circle")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Text("Темная тема")
-                        }
+                        Image(systemName: "moon.circle")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Темная тема")
                     }
                     #if !targetEnvironment(macCatalyst)
                     HStack {
@@ -263,8 +261,7 @@ struct SettingView: View {
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         Button("Изменить иконку") {
                             self.showPartialSheet = true
-                        }
-                        .foregroundColor(.primary)
+                        }.foregroundColor(.primary)
                     }
                     #endif
                     HStack {
@@ -309,12 +306,10 @@ struct SettingView: View {
                         TextField("Имя", text: $sessionStore.firstname)
                     }
                     DatePicker(selection: $sessionStore.dateBirthDay, displayedComponents: [.date], label: {
-                        HStack {
-                            Image(systemName: "calendar")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Text("Дата рождения")
-                        }
+                        Image(systemName: "calendar")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Дата рождения")
                     })
                     HStack {
                         Image(systemName: "photo")
@@ -417,12 +412,10 @@ struct SettingView: View {
                         }
                     }
                     NavigationLink(destination: LinkedAccounts()) {
-                        HStack {
-                            Image(systemName: "list.dash")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Text("Управление аккаунтами")
-                        }
+                        Image(systemName: "list.dash")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Управление аккаунтами")
                     }
                 }
                 Section(header: Text("Кэш изображений").fontWeight(.bold), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {

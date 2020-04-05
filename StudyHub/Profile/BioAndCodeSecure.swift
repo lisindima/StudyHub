@@ -28,17 +28,6 @@ struct BioAndCodeSecure: View {
         self.showAlert = true
     }
     
-    func checkCurrentBiometricType() {
-        switch currentBiometricType {
-        case .none:
-            print("Устойство не поддерживает TouchID/FaceID")
-        case .touchID:
-            print("Устойство поддерживает TouchID")
-        case .faceID:
-            print("Устойство поддерживает FaceID")
-        }
-    }
-    
     var body: some View {
         Form {
             Section(header: Text("Активация").fontWeight(.bold), footer: Text("После активации этого параметра, в приложение получится войти только после успешного ввода кода или успешной биометрической проверки.")) {
@@ -90,7 +79,6 @@ struct BioAndCodeSecure: View {
                 }
             }
         }
-        .onAppear(perform: checkCurrentBiometricType)
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("Код-пароль и Face ID"), displayMode: .inline)
         .alert(isPresented: $showAlert) {
