@@ -60,6 +60,8 @@ class SessionStore: ObservableObject {
     func listenSession() {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
+                self.user = user
+                self.getDataFromDatabaseListen()
                 Purchases.shared.identify(user.uid, { info, error in
                     if let error = error {
                         print("Ошибка Purchases: \(error.localizedDescription)")
@@ -80,7 +82,6 @@ class SessionStore: ObservableObject {
                         }
                     }
                 }
-                self.user = user
             } else {
                 self.updateOnlineUser(onlineUser: false)
                 Purchases.shared.reset { info, error in

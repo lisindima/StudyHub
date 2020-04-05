@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "59037bfd28aa963a7916f1eb22a74107a3522f16",
-          "version": "5.0.5"
+          "revision": "fca036f7aeca07124067cb6e0c12b0ad6359e3d4",
+          "version": "5.1.0"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/nickffox/KeyboardObserving",
         "state": {
           "branch": null,
-          "revision": "6d043ee2402ea4b827601f9b8edcc52a88aabff2",
-          "version": "0.2.1"
+          "revision": "26c0c913c11f0ee77006740ca1d8b478d222184f",
+          "version": "0.3.0"
         }
       },
       {

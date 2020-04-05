@@ -25,6 +25,6 @@ struct LoadingLogic: View {
             } else {
                 ActivityIndicator(styleSpinner: .large)
             }
-        }.onAppear(perform: sessionStore.getDataFromDatabaseListen)
+        }
     }
 }
