@@ -21,6 +21,9 @@ struct CardView: View {
             KFImage(URL(string: article.urlToImage ?? noImageUrl))
                 .renderingMode(.original)
                 .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                .onFailure { error in
+                    print("CardView Image: \(error)")
+                }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             HStack {
