@@ -21,7 +21,9 @@ struct License: View {
                     .onAppear(perform: licenseStore.loadLicense)
             } else if licenseStore.licenseModel.isEmpty && licenseStore.licenseLoadingFailure {
                 Text("Нет подключения к интернету!")
+                    .font(.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.secondary)
                     .onAppear(perform: licenseStore.loadLicense)
             } else {
                 Form {

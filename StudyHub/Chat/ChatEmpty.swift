@@ -14,9 +14,12 @@ struct ChatEmpty: View {
             ZStack {
                 VStack {
                     Text("Нет сообщений")
-                        .font(.headline)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.secondary)
                     Text("Отправьте свое первое сообщение")
                         .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
                 VStack {
                     Spacer()

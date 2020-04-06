@@ -25,7 +25,9 @@ struct Changelog: View {
                     .onAppear(perform: changelogStore.loadChangelog)
             } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure {
                 Text("Нет подключения к интернету!")
+                    .font(.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.secondary)
                     .onAppear(perform: changelogStore.loadChangelog)
             } else {
                 Form {

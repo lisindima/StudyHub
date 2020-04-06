@@ -96,8 +96,6 @@ class NotificationStore: ObservableObject {
             ]) { err in
                 if let err = err {
                     print("fcmToken не обновлен: \(err)")
-                } else {
-                    print("fcmToken обновлен!")
                 }
             }
         }

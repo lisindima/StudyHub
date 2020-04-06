@@ -18,9 +18,12 @@ struct NoteEmpty: View {
             ZStack {
                 VStack {
                     Text("Нет заметок")
-                        .font(.headline)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.secondary)
                     Text("Создайте свою первую заметку")
                         .font(.subheadline)
+                        .foregroundColor(.secondary)
                 }
                 VStack {
                     Spacer()
