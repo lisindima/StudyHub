@@ -85,7 +85,6 @@ struct ChatList: View {
 
 struct ListItem: View {
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var dateStore: DateStore = DateStore.shared
     @Binding var numberUnreadMessages: Int
@@ -112,7 +111,7 @@ struct ListItem: View {
                     .clipped()
                 if sessionStore.onlineUser && showIndicator {
                     Circle()
-                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .foregroundColor(Color(UIColor.systemBackground))
                         .frame(width: 15, height: 15)
                         .offset(x: 17, y: 17)
                     Image(systemName: "circle.fill")

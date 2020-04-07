@@ -48,7 +48,9 @@ struct NewNote: View {
                     Text("Закрыть")
                         .bold()
                 })
-        }.accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
     }
 }
 
