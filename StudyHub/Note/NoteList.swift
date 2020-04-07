@@ -46,12 +46,10 @@ struct NoteList: View {
                 }, label: "Новая заметка")
                     .padding(12)
             }
-            .sheet(isPresented: $showAddNewNote, onDismiss: {
-                
-            }, content: {
-                NewNote()
+            .sheet(isPresented: $showAddNewNote) {
+                NewNote(showAddNewNote: self.$showAddNewNote)
                     .environmentObject(self.noteStore)
-            })
+            }
             .actionSheet(isPresented: $showActionSheetSort) {
                 ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
                 .default(Text("По названию")) {

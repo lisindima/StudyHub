@@ -81,13 +81,11 @@ struct ProfileView: View {
                 Image(systemName: "qrcode")
                     .imageScale(.large)
                     .foregroundColor(.white)
-            }.sheet(isPresented: $showQRReader, onDismiss: {
-                
-            }, content: {
+            }.sheet(isPresented: $showQRReader) {
                 QRReader()
                     .edgesIgnoringSafeArea(.bottom)
                     .environmentObject(self.sessionStore)
-            }), trailing: Button(action: {
+            }, trailing: Button(action: {
                 self.showSettingModal = true
             }) {
                 Image(systemName: "gear")

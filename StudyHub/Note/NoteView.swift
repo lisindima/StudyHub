@@ -28,34 +28,27 @@ struct NoteView: View {
 
 struct NewNote: View {
     
+    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @EnvironmentObject var noteStore: NoteStore
     @State private var textNote: String = ""
-    @State private var showPencilView: Bool = false
+    @Binding var showAddNewNote: Bool
     
-    func addNote() {
-        noteStore.addNote(note: textNote)
+    func closeNewNote() {
+        if !textNote.isEmpty {
+            self.noteStore.addNote(note: self.textNote)
+        }
+        self.showAddNewNote = false
     }
     
     var body: some View {
         NavigationView {
-            VStack {
-                TextView(text: $textNote)
-                Button(action: addNote) {
-                    Text("Сохранить")
-                }
-            }
-            .sheet(isPresented: $showPencilView) {
-                PencilKitCanvas()
-                    .edgesIgnoringSafeArea(.all)
-            }
-            .navigationBarTitle("Новая заметка", displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                self.showPencilView = true
-            }) {
-                Image(systemName: "pencil.tip.crop.circle.badge.plus")
-                    .imageScale(.large)
-            })
-        }
+            TextView(text: $textNote)
+                .navigationBarTitle("Новая заметка", displayMode: .inline)
+                .navigationBarItems(trailing: Button (action: closeNewNote) {
+                    Text("Закрыть")
+                        .bold()
+                })
+        }.accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
     }
 }
 

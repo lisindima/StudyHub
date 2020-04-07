@@ -36,12 +36,10 @@ struct NoteEmpty: View {
                 }
             }
             .navigationBarTitle(Text("Заметки"))
-            .sheet(isPresented: $showAddNewNote, onDismiss: {
-                
-            }, content: {
-                NewNote()
+            .sheet(isPresented: $showAddNewNote) {
+                NewNote(showAddNewNote: self.$showAddNewNote)
                     .environmentObject(self.noteStore)
-            })
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
