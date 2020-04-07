@@ -339,6 +339,28 @@ struct SettingView: View {
                         }
                     }
                 }
+                Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
+                    Picker(selection: $pickerStore.choiseFaculty, label: HStack {
+                        Image(systemName: "list.bullet.below.rectangle")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Факультет")
+                    }) {
+                        ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
+                            Text(self.pickerStore.facultyModel[$0].name)
+                        }
+                    }.lineLimit(1)
+                    Picker(selection: $pickerStore.choiseGroup, label: HStack {
+                        Image(systemName: "list.bullet.below.rectangle")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Группа")
+                    }) {
+                        ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
+                            Text(self.pickerStore.groupModel[$0].name)
+                        }
+                    }.lineLimit(1)
+                }
                 Section(header: Text("Уведомления").fontWeight(.bold), footer: footerNotification) {
                     if notificationStore.enabled == .authorized {
                         HStack {
@@ -376,28 +398,6 @@ struct SettingView: View {
                             }.foregroundColor(.primary)
                         }
                     }
-                }
-                Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                    Picker(selection: $pickerStore.choiseFaculty, label: HStack {
-                        Image(systemName: "list.bullet.below.rectangle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Факультет")
-                    }) {
-                        ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
-                            Text(self.pickerStore.facultyModel[$0].name)
-                        }
-                    }.lineLimit(1)
-                    Picker(selection: $pickerStore.choiseGroup, label: HStack {
-                        Image(systemName: "list.bullet.below.rectangle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Группа")
-                    }) {
-                        ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
-                            Text(self.pickerStore.groupModel[$0].name)
-                        }
-                    }.lineLimit(1)
                 }
                 Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
                     NavigationLink(destination: BioAndCodeSecure()) {
@@ -519,7 +519,7 @@ struct SettingView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Text("Create with ❤️ by Lisin Dmitriy")
+                                Text("Создано с ❤️ Лисиным Дмитрием")
                                     .foregroundColor(.secondary)
                                     .fontWeight(.semibold)
                                     .font(.system(size: 14))
