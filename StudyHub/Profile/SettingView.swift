@@ -92,25 +92,6 @@ struct SettingView: View {
         UIApplication.shared.open(URL(string: "https://apps.apple.com/account/subscriptions")!)
     }
     
-    private func openSettings() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL)
-            else {
-                return
-        }
-        UIApplication.shared.open(settingsURL)
-    }
-    
-    var footerNotification: Text {
-        switch notificationStore.enabled {
-        case .denied:
-            return Text("Чтобы активировать уведомления нажмите на кнопку \"Включить уведомления\", после чего активируйте уведомления в настройках.")
-        case .notDetermined:
-            return Text("Чтобы активировать уведомления нажмите на кнопку \"Включить уведомления\".")
-        default:
-            return Text("Здесь настраивается время отсрочки уведомлений от начала пары.")
-        }
-    }
-    
     var body: some View {
         NavigationView {
             Form {
@@ -361,45 +342,18 @@ struct SettingView: View {
                         }
                     }.lineLimit(1)
                 }
-                Section(header: Text("Уведомления").fontWeight(.bold), footer: footerNotification) {
-                    if notificationStore.enabled == .authorized {
-                        HStack {
-                            Image(systemName: "bell")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Button("Выключить уведомления") {
-                                self.openSettings()
-                            }.foregroundColor(.primary)
-                        }
-                        NavigationLink(destination: NotificationSetting()) {
-                            Image(systemName: "gear")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Text("Настройки уведомлений")
-                        }
-                    }
-                    if notificationStore.enabled == .notDetermined {
-                        HStack {
-                            Image(systemName: "bell")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Button("Включить уведомления") {
-                                self.notificationStore.requestPermission()
-                            }.foregroundColor(.primary)
-                        }
-                    }
-                    if notificationStore.enabled == .denied {
-                        HStack {
-                            Image(systemName: "bell")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Button("Включить уведомления") {
-                                self.openSettings()
-                            }.foregroundColor(.primary)
-                        }
+                Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {
+                    NavigationLink(destination: NotificationSetting()) {
+                        Image(systemName: "bell")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        Text("Уведомления")
+                        Spacer()
+                        Text(notificationStore.enabled == .authorized ? "Вкл" : "Выкл")
+                            .foregroundColor(.secondary)
                     }
                 }
-                Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также установить параметры доступа к приложению.")) {
+                Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также удалить аккаунт.")) {
                     NavigationLink(destination: BioAndCodeSecure()) {
                         HStack {
                             Image(systemName: "faceid")
@@ -407,7 +361,7 @@ struct SettingView: View {
                                 .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                             Text("Код-пароль и Face ID")
                             Spacer()
-                            Text(sessionStore.boolCodeAccess == true ? "Вкл" : "Выкл")
+                            Text(sessionStore.boolCodeAccess ? "Вкл" : "Выкл")
                                 .foregroundColor(.secondary)
                         }
                     }
