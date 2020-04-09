@@ -79,9 +79,11 @@ struct CardList: View {
                                 }
                             }.padding(.horizontal)
                         }
-                        ForEach(self.newsStore.articles, id: \.id) { item in
-                            NavigationLink(destination: DetailsNews(article: item)) {
-                                CardView(article: item)
+                        ForEach(self.newsStore.articles, id: \.id) { article in
+                            Button(action: {
+                                UIApplication.shared.open(URL(string: article.url!)!)
+                            }) {
+                                CardView(article: article)
                             }
                         }
                     }.frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil, alignment: .leading)

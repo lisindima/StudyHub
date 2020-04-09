@@ -29,11 +29,7 @@ struct NotificationSetting: View {
             return Text("Чтобы активировать уведомления нажмите на кнопку \"Включить уведомления\", после чего активируйте уведомления в настройках.")
         case .notDetermined:
             return Text("Чтобы активировать уведомления нажмите на кнопку \"Включить уведомления\".")
-        case .authorized:
-            return Text("")
-        case .provisional:
-            return Text("")
-        @unknown default:
+        default:
             return Text("")
         }
     }
