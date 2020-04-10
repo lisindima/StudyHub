@@ -61,17 +61,10 @@ class UnsplashPhotoPickerViewController: UIViewController {
     }()
 
     private let spinner: UIActivityIndicatorView = {
-        if #available(iOS 13.0, *) {
-            let spinner = UIActivityIndicatorView(style: .large)
-            spinner.translatesAutoresizingMaskIntoConstraints = false
-            spinner.hidesWhenStopped = true
-            return spinner
-        } else {
-            let spinner = UIActivityIndicatorView(style: .gray)
-            spinner.translatesAutoresizingMaskIntoConstraints = false
-            spinner.hidesWhenStopped = true
-            return spinner
-        }
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        return spinner
     }()
 
     private lazy var emptyView: EmptyView = {

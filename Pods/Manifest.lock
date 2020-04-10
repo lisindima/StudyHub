@@ -289,7 +289,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - Protobuf (3.11.4)
-  - UnsplashPhotoPicker (1.1.0)
+  - UnsplashPhotoPicker (2.0.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -333,7 +333,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   UnsplashPhotoPicker:
-    :commit: 9617c1135e7a8f68065fc4b39c28c98c68062609
+    :commit: 2d803138cddddab7592e830e45fb838b83d2a8d3
     :git: https://github.com/lisindima/unsplash-photopicker-ios.git
 
 SPEC CHECKSUMS:
@@ -362,7 +362,7 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
-  UnsplashPhotoPicker: 9bbce3281825f0f61b98a53df84875e33723cd1d
+  UnsplashPhotoPicker: 3175c4d4e1e310eb051cfb079f46bc267be41178
 
 PODFILE CHECKSUM: 8809110b50a0f40528319593af3e2484e6afbbf2
 
