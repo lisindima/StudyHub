@@ -35,7 +35,7 @@ struct NoteEmpty: View {
                     }.padding(12)
                 }
             }
-            .navigationBarTitle(Text("Заметки"))
+            .navigationBarTitle("Заметки")
             .sheet(isPresented: $showAddNewNote) {
                 NewNote(showAddNewNote: self.$showAddNewNote)
                     .environmentObject(self.noteStore)

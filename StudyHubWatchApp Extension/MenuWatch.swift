@@ -35,6 +35,6 @@ struct MenuWatch: View {
             Button("Выйти") {
                 self.signInSuccess = false
             }
-        }.navigationBarTitle(Text("Главная"))
+        }.navigationBarTitle("Главная")
     }
 }

@@ -36,7 +36,7 @@ struct License: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Лицензии"), displayMode: .inline)
+        .navigationBarTitle("Лицензии", displayMode: .inline)
     }
 }
 

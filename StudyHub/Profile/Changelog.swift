@@ -87,7 +87,7 @@ struct Changelog: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Что нового?"), displayMode: .inline)
+        .navigationBarTitle("Что нового?", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/changelog/")!)
         }) {

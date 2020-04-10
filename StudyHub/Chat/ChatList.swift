@@ -64,7 +64,7 @@ struct ChatList: View {
             }
             .onAppear(perform: checkNumberUnreadMessages)
             .navigationBarHidden(hideNavigationBar)
-            .navigationBarTitle(Text("Сообщения"))
+            .navigationBarTitle("Сообщения")
             .actionSheet(isPresented: $showActionSheetSort) {
                 ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
                     .default(Text("По названию")) {

@@ -59,7 +59,7 @@ struct NoteList: View {
                 }, .cancel()])
             }
             .navigationBarHidden(hideNavigationBar)
-            .navigationBarTitle(Text("Заметки"))
+            .navigationBarTitle("Заметки")
             .navigationBarItems(leading: EditButton(), trailing: Button (action: {
                 self.showActionSheetSort = true
             }) {

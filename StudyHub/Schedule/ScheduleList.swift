@@ -18,7 +18,7 @@ struct ScheduleList: View {
             if scheduleStore.scheduleModel.isEmpty {
                 ActivityIndicator(styleSpinner: .large)
                     .onAppear(perform: scheduleStore.loadLesson)
-                    .navigationBarTitle(Text("Расписание"))
+                    .navigationBarTitle("Расписание")
             } else {
                 VStack {
                     Picker("", selection: $week) {
@@ -42,7 +42,7 @@ struct ScheduleList: View {
                             }
                         }
                     }
-                }.navigationBarTitle(Text("Расписание"))
+                }.navigationBarTitle("Расписание")
             }
         }
     }

@@ -17,7 +17,7 @@ struct ChatLoading: View {
                     ActivityIndicator(styleSpinner: .large)
                     Spacer()
                 }
-            }.navigationBarTitle(Text("Сообщения"))
+            }.navigationBarTitle("Сообщения")
         }
     }
 }

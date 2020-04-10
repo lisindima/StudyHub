@@ -488,7 +488,7 @@ struct SettingView: View {
             }
             .onAppear(perform: startSettingView)
             .environment(\.horizontalSizeClass, .regular)
-            .navigationBarTitle(Text("Настройки"), displayMode: .inline)
+            .navigationBarTitle("Настройки", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {

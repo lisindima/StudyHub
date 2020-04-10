@@ -7,16 +7,14 @@
 //
 
 import SwiftUI
+import SPAlert
 import Firebase
 
 struct DeleteUser: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var textError: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var activeAlert: ActiveAlert = .first
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
@@ -25,22 +23,24 @@ struct DeleteUser: View {
         generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
             if error != nil {
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.textError = (error?.localizedDescription)!
-                self.showAlert = true
-                print(self.textError)
+                self.email = ""
+                self.password = ""
             } else {
-                print("User re-authenticated.")
                 Auth.auth().currentUser?.delete { error in
                     if error != nil {
-                        self.textError = (error?.localizedDescription)!
-                        self.showAlert = true
-                    } else {
+                        SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                         self.loading = false
-                        self.activeAlert = .second
-                        self.showAlert = true
+                        self.email = ""
+                        self.password = ""
+                    } else {
+                        SPAlert.present(title: "Аккаунт удален!", message: "Мне очень жаль...", preset: .done)
+                        self.loading = false
+                        self.email = ""
+                        self.password = ""
                     }
                 }
             }
@@ -58,7 +58,6 @@ struct DeleteUser: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
                     if password.isEmpty {
-                        
                     }
                     if 0 < password.count && password.count < 8 {
                         Image(systemName: "xmark.circle")
@@ -72,7 +71,7 @@ struct DeleteUser: View {
                 .modifier(InputModifier())
                 .padding([.horizontal, .top])
             }
-            CustomButton(label: loading == true ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
+            CustomButton(label: loading ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
                 .disabled(loading)
                 .padding()
             Divider()
@@ -84,20 +83,8 @@ struct DeleteUser: View {
                 .padding()
             Spacer()
         }
-        .navigationBarTitle(Text("Удаление аккаунта"), displayMode: .inline)
+        .navigationBarTitle("Удаление аккаунта", displayMode: .inline)
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            switch activeAlert {
-            case .first:
-                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-            case .second:
-                return Alert(title: Text("Аккаунт удален!"), message: Text("Мне очень жаль, что вы решили удалить аккаунт в моем приложение, надеюсь вы скоро вернетесь!"), dismissButton: .default(Text("Закрыть")) {
-                    print("Удалено")
-                    }
-                )
-            }
-        }
-        
     }
 }
 
@@ -106,13 +93,9 @@ struct ChangeEmail: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var newEmail: String = ""
-    @State private var textError: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
     @State private var changeView: Bool = false
-    @State private var activeAlert: ActiveAlert = .first
     
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     private func reauthenticateUser() {
@@ -120,17 +103,15 @@ struct ChangeEmail: View {
         generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
             if error != nil {
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.textError = (error?.localizedDescription)!
-                self.showAlert = true
-                print(self.textError)
+                self.email = ""
+                self.password = ""
             } else {
-                print("User re-authenticated.")
                 self.loading = false
                 self.changeView = true
-                
             }
         })
     }
@@ -139,22 +120,22 @@ struct ChangeEmail: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         self.loading = true
-        self.sessionStore.updateEmail(email: self.newEmail) { (error) in
+        self.sessionStore.updateEmail(email: self.newEmail) { error in
             if error != nil {
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.textError = (error?.localizedDescription)!
-                self.showAlert = true
+                self.newEmail = ""
             } else {
+                SPAlert.present(title: "Эл.почта изменена!", message: "Вы успешно изменили свою электронную почту.", preset: .done)
                 self.loading = false
-                self.activeAlert = .second
-                self.showAlert = true
+                
             }
         }
     }
     
     var body: some View {
         VStack(alignment: .center) {
-            if changeView == false {
+            if !changeView {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)
@@ -164,7 +145,6 @@ struct ChangeEmail: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {
-                            
                         }
                         if 0 < password.count && password.count < 8 {
                             Image(systemName: "xmark.circle")
@@ -178,7 +158,7 @@ struct ChangeEmail: View {
                     .modifier(InputModifier())
                     .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
+                CustomButton(label: loading ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
                     .disabled(loading)
                     .padding()
                 Divider()
@@ -194,7 +174,7 @@ struct ChangeEmail: View {
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
-                CustomButton(label: loading == true ? "Загрузка" : "Изменить эл.почту", action: changeEmail, loading: loading, colorButton: Color.green)
+                CustomButton(label: loading ? "Загрузка" : "Изменить эл.почту", action: changeEmail, loading: loading, colorButton: Color.green)
                     .disabled(loading)
                     .padding()
                 Divider()
@@ -207,19 +187,8 @@ struct ChangeEmail: View {
                 Spacer()
             }
         }
-        .navigationBarTitle(Text("Изменение эл.почты"), displayMode: .inline)
+        .navigationBarTitle("Изменение эл.почты", displayMode: .inline)
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            switch activeAlert {
-            case .first:
-                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-            case .second:
-                return Alert(title: Text("Эл.почта изменена!"), message: Text("Вы успешно изменили свою электронную почту."), dismissButton: .default(Text("Закрыть")) {
-                    self.presentationMode.wrappedValue.dismiss()
-                    }
-                )
-            }
-        }
     }
 }
 
@@ -227,14 +196,10 @@ struct ChangePassword: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var textError: String = ""
     @State private var newPassword: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
     @State private var changeView: Bool = false
-    @State private var activeAlert: ActiveAlert = .first
     
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     private func reauthenticateUser() {
@@ -242,14 +207,13 @@ struct ChangePassword: View {
         generator.notificationOccurred(.success)
         self.loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { (authResult, error) in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
             if error != nil {
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.textError = (error?.localizedDescription)!
-                self.showAlert = true
-                print(self.textError)
+                self.password = ""
+                self.email = ""
             } else {
-                print("User re-authenticated.")
                 self.loading = false
                 self.changeView = true
             }
@@ -262,20 +226,19 @@ struct ChangePassword: View {
         self.loading = true
         self.sessionStore.updatePassword(password: self.newPassword) { (error) in
             if error != nil {
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.textError = (error?.localizedDescription)!
-                self.showAlert = true
+                self.newPassword = ""
             } else {
+                SPAlert.present(title: "Пароль изменен!", message: "Вы успешно изменили свой пароль.", preset: .done)
                 self.loading = false
-                self.activeAlert = .second
-                self.showAlert = true
             }
         }
     }
     
     var body: some View {
         VStack(alignment: .center) {
-            if changeView == false {
+            if !changeView {
                 CustomInput(text: $email, name: "Эл.почта")
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)
@@ -285,7 +248,6 @@ struct ChangePassword: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {
-                            
                         }
                         if 0 < password.count && password.count < 8 {
                             Image(systemName: "xmark.circle")
@@ -330,7 +292,7 @@ struct ChangePassword: View {
                     .modifier(InputModifier())
                     .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Изменить пароль", action: changePassword, loading: loading, colorButton: Color.green)
+                CustomButton(label: loading ? "Загрузка" : "Изменить пароль", action: changePassword, loading: loading, colorButton: Color.green)
                     .disabled(loading)
                     .padding()
                 Divider()
@@ -343,29 +305,7 @@ struct ChangePassword: View {
                 Spacer()
             }
         }
-        .navigationBarTitle(Text("Изменение пароля"), displayMode: .inline)
+        .navigationBarTitle("Изменение пароля", displayMode: .inline)
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            switch activeAlert {
-            case .first:
-                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-            case .second:
-                return Alert(title: Text("Пароль изменен!"), message: Text("Вы успешно изменили свой пароль."), dismissButton: .default(Text("Закрыть")) {
-                    self.presentationMode.wrappedValue.dismiss()
-                    }
-                )
-            }
-        }
-    }
-}
-
-enum ActiveAlert {
-    case first
-    case second
-}
-
-struct Credential_Previews: PreviewProvider {
-    static var previews: some View {
-        DeleteUser()
     }
 }

@@ -32,7 +32,7 @@ struct SubscriptionWatchView: View {
                     Text("\(purchasesStore.annualPrice) / в год.")
                 }
             }
-        }.navigationBarTitle(Text("Подписки"))
+        }.navigationBarTitle("Подписки")
     }
 }
 

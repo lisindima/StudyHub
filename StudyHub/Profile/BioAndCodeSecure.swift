@@ -80,7 +80,7 @@ struct BioAndCodeSecure: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Код-пароль и Face ID"), displayMode: .inline)
+        .navigationBarTitle("Код-пароль и Face ID", displayMode: .inline)
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Успешно!"), message: Text("Настройки входа сохранены."), dismissButton: .default(Text("Закрыть")) {
                 self.presentationMode.wrappedValue.dismiss()

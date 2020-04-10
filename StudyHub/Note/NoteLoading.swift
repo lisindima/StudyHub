@@ -17,7 +17,7 @@ struct NoteLoading: View {
                     ActivityIndicator(styleSpinner: .large)
                     Spacer()
                 }
-            }.navigationBarTitle(Text("Заметки"))
+            }.navigationBarTitle("Заметки")
         }
     }
 }

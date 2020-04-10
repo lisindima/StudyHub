@@ -26,7 +26,7 @@ struct ScheduleListWatch: View {
                     }
                 }
                 .listStyle(CarouselListStyle())
-                .navigationBarTitle(Text("Расписание"))
+                .navigationBarTitle("Расписание")
             }
         }
     }

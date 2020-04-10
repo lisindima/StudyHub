@@ -66,7 +66,7 @@ struct LinkedAccounts: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle(Text("Управление аккаунтами"), displayMode: .inline)
+        .navigationBarTitle("Управление аккаунтами", displayMode: .inline)
     }
 }
 

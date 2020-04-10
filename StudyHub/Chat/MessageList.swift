@@ -45,6 +45,6 @@ struct MessageList: View {
         }
         .keyboardObserving()
         .onAppear(perform: chatStore.checkRead)
-        .navigationBarTitle(Text("Лисин Дмитрий"), displayMode: .inline)
+        .navigationBarTitle("Лисин Дмитрий", displayMode: .inline)
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SPAlert
 import Firebase
 
 // MARK: - Регистрация
@@ -19,9 +20,7 @@ struct SignUpView: View {
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
-    @State private var textError: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
 
     private func signUp() {
         let generator = UINotificationFeedbackGenerator()
@@ -29,9 +28,8 @@ struct SignUpView: View {
         loading = true
         sessionStore.signUp(email: email, password: password) { result, error in
             if error != nil {
-                self.textError = (error?.localizedDescription)!
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.showAlert = true
                 self.email = ""
                 self.password = ""
                 self.firstname = ""
@@ -60,7 +58,6 @@ struct SignUpView: View {
                 ]) {
                     err in
                     if let err = err {
-                        self.textError = err.localizedDescription
                         print("Error writing document: \(err)")
                     } else {
                         self.sessionStore.sendEmailVerification()
@@ -117,9 +114,6 @@ struct SignUpView: View {
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Регистрация")
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-        }
     }
 }
 
@@ -130,29 +124,21 @@ struct ResetPassword: View {
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     
     @State private var email: String = ""
-    @State private var textError: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var activeAlert: ActiveAlert = .first
 
     private func sendPasswordReset() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        sessionStore.sendPasswordReset(email: email) { (error) in
+        sessionStore.sendPasswordReset(email: email) { error in
             if error != nil {
-                self.textError = (error?.localizedDescription)!
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
                 self.email = ""
-                self.activeAlert = .first
-                self.showAlert = true
-                print("Ошибка, пользователь не существует!")
             } else {
+                SPAlert.present(title: "Проверьте почту!", message: "Проверьте вашу почту и перейдите по ссылке в письме!", preset: .done)
                 self.loading = false
                 self.email = ""
-                self.activeAlert = .second
-                self.showAlert = true
-                print("Письмо отправлено!")
             }
         }
     }
@@ -178,14 +164,6 @@ struct ResetPassword: View {
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Восстановление")
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            switch activeAlert {
-            case .first:
-                return Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-            case .second:
-                return Alert(title: Text("Проверьте почту!"), message: Text("Проверьте вашу почту и перейдите по ссылке в письме!"), dismissButton: .default(Text("Закрыть")))
-            }
-        }
     }
 }
 
@@ -197,19 +175,16 @@ struct EmailLoginScreen: View {
 
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var textError: String = ""
     @State private var loading: Bool = false
-    @State private var showAlert: Bool = false
 
     private func signIn() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        sessionStore.signIn(email: email, password: password) { (result, error) in
+        sessionStore.signIn(email: email, password: password) { result, error in
             if error != nil {
-                self.textError = (error?.localizedDescription)!
+                SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
-                self.showAlert = true
                 self.email = ""
                 self.password = ""
             }
@@ -278,9 +253,6 @@ struct EmailLoginScreen: View {
         .frame(minWidth: nil, idealWidth: 600, maxWidth: 700, minHeight: nil, idealHeight: nil, maxHeight: nil)
         .navigationBarTitle("Вход")
         .edgesIgnoringSafeArea(.bottom)
-        .alert(isPresented: $showAlert) {
-            Alert(title: Text("Ошибка!"), message: Text("\(textError)"), dismissButton: .default(Text("Закрыть")))
-        }
     }
 }
 

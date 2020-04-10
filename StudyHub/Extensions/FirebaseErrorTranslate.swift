@@ -35,7 +35,7 @@ extension AuthErrorCode {
         case .invalidCustomToken:
             return "Неверный пользовательский токен."
         case .tooManyRequests:
-            return "Слишком много запросов отправлены на сервер, повторите попытку позже."
+            return "Слишком много запросов отправлено на сервер, повторите попытку позже."
         default:
             return nil
         }
