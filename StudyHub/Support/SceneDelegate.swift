@@ -8,18 +8,23 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
     
     var window: UIWindow?
+    
     let chatStore = ChatStore.shared
     let noteStore = NoteStore.shared
+    let notificationStore = NotificationStore.shared
     
     private(set) static var shared: SceneDelegate?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         Self.shared = self
+        
+        Messaging.messaging().delegate = self
         
         let rootView = RootView()
             .environmentObject(chatStore)
@@ -35,6 +40,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         print(URLContexts)
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        notificationStore.fcmToken = fcmToken
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

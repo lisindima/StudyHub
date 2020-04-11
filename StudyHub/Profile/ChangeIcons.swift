@@ -89,7 +89,7 @@ struct IconItem: View {
 }
 
 struct IconModel: Identifiable {
-    let id: UUID = UUID()
+    let id: String = UUID().uuidString
     let nameIcon: String
     let nameAuthorIcon: String
 }

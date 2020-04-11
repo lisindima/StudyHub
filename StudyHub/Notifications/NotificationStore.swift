@@ -14,7 +14,9 @@ import UserNotifications
 class NotificationStore: ObservableObject {
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    
     @Published var enabled: UNAuthorizationStatus = .notDetermined
+    @Published var fcmToken: String? = nil
     
     static let shared = NotificationStore()
     
@@ -88,7 +90,6 @@ class NotificationStore: ObservableObject {
     func updateFcmToken() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-        let fcmToken = Messaging.messaging().fcmToken
         if fcmToken != nil {
             let docRef = db.collection("profile").document(currentUser.uid)
             docRef.updateData([

@@ -52,7 +52,7 @@ class NewsStore: ObservableObject {
 }
 
 struct Articles: Codable, Hashable, Identifiable {
-    let id: UUID = UUID()
+    let id: String = UUID().uuidString
     let source: Source?
     let author: String?
     let title: String
