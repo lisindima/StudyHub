@@ -50,6 +50,7 @@ struct LicenseDetail: View {
         VStack {
             ScrollView {
                 Text(textLicenseFramework)
+                    .font(.system(size: 14, design: .monospaced))
                     .padding()
             }
         }

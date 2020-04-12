@@ -30,15 +30,10 @@ struct SubscriptionSplashScreen: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
                         .frame(maxWidth: .infinity, maxHeight: 72)
-                    HStack {
-                        Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                            .imageScale(.large)
-                        Text("Подписка оформлена!")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                            .font(.system(size: 16))
-                    }
+                    Text("Подписка оформлена!")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .font(.system(size: 16))
                 }
                 .padding(.top, 8)
                 .padding(.horizontal)
@@ -147,7 +142,7 @@ struct SubscriptionTitleView: View {
                     .foregroundColor(.accentColor)
             }
             Text("После приобретения подписки вы получите больше функций для еще лучшего опыта использования приложения.")
-                .font(.system(size: 15))
+                .font(.system(size: 14))
                 .multilineTextAlignment(.center)
                 .padding(.top)
                 .padding(.horizontal)
