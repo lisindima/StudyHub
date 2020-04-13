@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/JagCesar/Espera",
         "state": {
           "branch": "master",
-          "revision": "3601e3756c351af0f573103834bbdbfe9ef90d64",
+          "revision": "fd6b41c2d1f4defbafc3b91e0de0d389e945789c",
           "version": null
         }
       },
@@ -39,11 +39,11 @@
       },
       {
         "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher/",
         "state": {
           "branch": null,
-          "revision": "56075f629bc3915e1bfa876d175df67e1a7cbe3c",
-          "version": "5.13.2"
+          "revision": "349ed06467a6f8a4939bcb83db301542bc84eac9",
+          "version": "5.13.4"
         }
       },
       {

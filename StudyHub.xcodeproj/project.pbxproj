@@ -22,6 +22,8 @@
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
+		CB11861B244495CF00FA4354 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB11861A244495CF00FA4354 /* Kingfisher */; };
+		CB11861D244495CF00FA4354 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB11861C244495CF00FA4354 /* KingfisherSwiftUI */; };
 		CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8C923E1DEEB006E568C /* ChatLoading.swift */; };
 		CB11A8CC23E1DF4C006E568C /* ChatEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */; };
 		CB11A8CE23E1E1D4006E568C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CD23E1E1D4006E568C /* ChatView.swift */; };
@@ -32,8 +34,6 @@
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
-		CB286DC4243767B200977D60 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC3243767B200977D60 /* Kingfisher */; };
-		CB286DC6243767B200977D60 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB286DC5243767B200977D60 /* KingfisherSwiftUI */; };
 		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
@@ -322,8 +322,8 @@
 				CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */,
 				CB37694923E40D860015B61E /* PartialSheet in Frameworks */,
 				CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */,
-				CB286DC4243767B200977D60 /* Kingfisher in Frameworks */,
-				CB286DC6243767B200977D60 /* KingfisherSwiftUI in Frameworks */,
+				CB11861B244495CF00FA4354 /* Kingfisher in Frameworks */,
+				CB11861D244495CF00FA4354 /* KingfisherSwiftUI in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
@@ -731,8 +731,8 @@
 				CBCA4C5223F7FE7E0018168D /* Alamofire */,
 				CB6AC62F2408F4FE00D0E482 /* SPAlert */,
 				CB9B90EC241090AF006CF9BF /* Purchases */,
-				CB286DC3243767B200977D60 /* Kingfisher */,
-				CB286DC5243767B200977D60 /* KingfisherSwiftUI */,
+				CB11861A244495CF00FA4354 /* Kingfisher */,
+				CB11861C244495CF00FA4354 /* KingfisherSwiftUI */,
 			);
 			productName = altgtu;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -836,7 +836,7 @@
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
-				CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CB118619244495CF00FA4354 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -1215,7 +1215,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1243,7 +1243,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1266,7 +1266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1289,7 +1289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1313,7 +1313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1339,7 +1339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1366,7 +1366,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1387,7 +1387,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 490;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1453,12 +1453,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		CB118619244495CF00FA4354 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			repositoryURL = "https://github.com/onevcat/Kingfisher/";
 			requirement = {
-				kind = exactVersion;
-				version = 5.13.2;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.13.4;
 			};
 		};
 		CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
@@ -1520,14 +1520,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CB286DC3243767B200977D60 /* Kingfisher */ = {
+		CB11861A244495CF00FA4354 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = CB118619244495CF00FA4354 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		CB286DC5243767B200977D60 /* KingfisherSwiftUI */ = {
+		CB11861C244495CF00FA4354 /* KingfisherSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CB286DC2243767B200977D60 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = CB118619244495CF00FA4354 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUI;
 		};
 		CB37694823E40D860015B61E /* PartialSheet */ = {
