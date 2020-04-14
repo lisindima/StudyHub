@@ -45,7 +45,7 @@ struct MessageView: View {
                                 Text(message)
                                     .foregroundColor(.white)
                                     .padding(10)
-                                    .background(Color.accentColor.opacity(0.5))
+                                    .background(Color.accentColor)
                                     .cornerRadius(5)
                             }
                         }
