@@ -43,8 +43,9 @@ struct MessageView: View {
                                     .font(.system(size: 50))
                             } else {
                                 Text(message)
+                                    .foregroundColor(.white)
                                     .padding(10)
-                                    .background(Color(UIColor.secondarySystemBackground))
+                                    .background(Color.accentColor.opacity(0.5))
                                     .cornerRadius(5)
                             }
                         }
