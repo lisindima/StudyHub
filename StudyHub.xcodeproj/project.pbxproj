@@ -70,6 +70,7 @@
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
+		CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
@@ -109,7 +110,7 @@
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
 		CBE665E823543A1400C43811 /* StudyHubWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CBE665ED23543A1400C43811 /* LoginScreenWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EC23543A1400C43811 /* LoginScreenWatch.swift */; };
+		CBE665ED23543A1400C43811 /* LoginScreeWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */; };
 		CBE665EF23543A1400C43811 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EE23543A1400C43811 /* HostingController.swift */; };
 		CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F023543A1400C43811 /* ExtensionDelegate.swift */; };
 		CBE665F323543A1400C43811 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F223543A1400C43811 /* NotificationController.swift */; };
@@ -256,6 +257,7 @@
 		CB6D3F7C235B0E6200E65661 /* NewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStore.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CB8B99222422072C00172395 /* ProfileFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFriends.swift; sourceTree = "<group>"; };
 		CB8B992524224F1900172395 /* QRStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRStore.swift; sourceTree = "<group>"; };
@@ -290,7 +292,7 @@
 		CBE665E023543A1400C43811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBE665E223543A1400C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "StudyHubWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBE665EC23543A1400C43811 /* LoginScreenWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenWatch.swift; sourceTree = "<group>"; };
+		CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreeWatch.swift; sourceTree = "<group>"; };
 		CBE665EE23543A1400C43811 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		CBE665F023543A1400C43811 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		CBE665F223543A1400C43811 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -520,7 +522,7 @@
 		CB27619323556A1F0054C753 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CBE665EC23543A1400C43811 /* LoginScreenWatch.swift */,
+				CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -668,6 +670,7 @@
 		CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */,
 				CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */,
 				CBCE3277241F9F5200844197 /* MenuWatch.swift */,
 				CB2761982355A9730054C753 /* Lesson */,
@@ -1030,9 +1033,10 @@
 				CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */,
 				CBE665EF23543A1400C43811 /* HostingController.swift in Sources */,
 				CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */,
-				CBE665ED23543A1400C43811 /* LoginScreenWatch.swift in Sources */,
+				CBE665ED23543A1400C43811 /* LoginScreeWatch.swift in Sources */,
 				CBE665F323543A1400C43811 /* NotificationController.swift in Sources */,
 				CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */,
+				CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */,
 				CB609F842406628B009A6389 /* Schedule.swift in Sources */,
 				CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */,
 				CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */,

@@ -8,6 +8,20 @@
 
 import SwiftUI
 
+struct AppleLogin: View {
+    
+    @State private var signInSuccess = false
+    
+    var body: some View {
+        ScrollView {
+            SignInWithAppleButton()
+            NavigationLink(destination: EmailLogin(signInSuccess: $signInSuccess)) {
+                Text("Вход через эл.почту")
+            }
+        }.navigationBarTitle("StudyHub")
+    }
+}
+
 struct EmailLogin: View {
     
     @State private var email: String = ""
@@ -16,20 +30,20 @@ struct EmailLogin: View {
     
     var body: some View {
         ScrollView {
-            Text("StudyHub")
-                .multilineTextAlignment(.center)
             TextField("Логин", text: $email)
-            TextField("Пароль", text: $password)
+                .textContentType(.emailAddress)
+            SecureField("Пароль", text: $password)
+                .textContentType(.password)
             Button("Войти") {
                 self.signInSuccess = true
-            }
+            }.disabled(email.isEmpty || password.isEmpty)
             Text("Для регистрации воспользуйтесь приложением для iPhone, iPad или Mac.")
                 .font(.footnote)
-        }
+        }.navigationBarTitle("Вход")
     }
 }
 
-struct Login: View {
+struct RootView: View {
     
     @State private var signInSuccess = false
     
@@ -38,7 +52,7 @@ struct Login: View {
             if signInSuccess {
                 MenuWatch(signInSuccess: $signInSuccess)
             } else {
-                EmailLogin(signInSuccess: $signInSuccess)
+                AppleLogin()
             }
         }
     }
@@ -46,6 +60,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        RootView()
     }
 }
