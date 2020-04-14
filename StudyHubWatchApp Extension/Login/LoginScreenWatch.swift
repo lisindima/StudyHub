@@ -23,7 +23,7 @@ struct LoginScreenWatch: View {
             Button("Войти") {
                 self.signInSuccess = true
             }
-            Text("Для регистрации воспользуйтесь приложением для iPhone")
+            Text("Для регистрации воспользуйтесь приложением для iPhone, iPad или Mac.")
                 .font(.footnote)
         }
     }
