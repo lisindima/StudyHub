@@ -51,12 +51,6 @@ class SessionStore: ObservableObject {
         unbind()
     }
     
-    enum ActiveAuthType {
-        case appleid
-        case email
-        case unknown
-    }
-    
     func listenSession() {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
@@ -207,4 +201,8 @@ class SessionStore: ObservableObject {
             
         }
     }
+}
+
+enum ActiveAuthType {
+    case appleid, email, unknown
 }

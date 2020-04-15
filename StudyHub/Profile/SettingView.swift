@@ -46,13 +46,6 @@ struct SettingView: View {
     }
     
     private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
-    
-    enum FirebaseServiceStatus {
-        case normal
-        case problem
-        case failure
-        case loading
-    }
 
     private func startSettingView() {
         imageCacheStore.calculateImageCache()
@@ -499,4 +492,8 @@ struct SettingView: View {
         .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
     }
+}
+
+enum FirebaseServiceStatus {
+    case normal, problem, failure, loading
 }

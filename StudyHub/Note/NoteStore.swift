@@ -68,13 +68,11 @@ class NoteStore: ObservableObject {
     }
 }
 
-enum StatusNote {
-    case loading
-    case emptyNote
-    case showNote
-}
-
 struct DataNote: Identifiable, Hashable {
     var id: String
     var note: String
+}
+
+enum StatusNote {
+    case loading, emptyNote, showNote
 }

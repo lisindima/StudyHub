@@ -156,12 +156,6 @@ class ChatStore: ObservableObject {
     }
 }
 
-enum StatusChat {
-    case loading
-    case emptyChat
-    case showChat
-}
-
 struct DataMessages: Identifiable {
     var id: String
     var user: String
@@ -169,4 +163,8 @@ struct DataMessages: Identifiable {
     var idUser: String
     var dateMessage: Date
     var isRead: Bool = false
+}
+
+enum StatusChat {
+    case loading, emptyChat, showChat
 }

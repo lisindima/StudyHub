@@ -97,12 +97,6 @@ public class BiometricTypeStore: NSObject {
     private let reason = "Для проверки, какой тип аутентификации настроен на устройстве!"
     private var error: NSError?
     
-    enum BiometricType: String {
-        case none
-        case touchID
-        case faceID
-    }
-    
     var biometricType: BiometricType {
         guard self.context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             return .none
@@ -118,4 +112,8 @@ public class BiometricTypeStore: NSObject {
             return .none
         }
     }
+}
+
+enum BiometricType: String {
+    case none, touchID, faceID
 }
