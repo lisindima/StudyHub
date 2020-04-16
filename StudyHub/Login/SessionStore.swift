@@ -155,9 +155,7 @@ class SessionStore: ObservableObject {
             "choiseTypeBackroundProfile": choiseTypeBackroundProfile!
         ]) { err in
             if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Профиль обновлен")
+                print("Ошибка обновления профиля: \(err)")
             }
         }
     }

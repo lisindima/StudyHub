@@ -79,9 +79,7 @@ class PickerStore: ObservableObject {
             "choiseFaculty": choiseFaculty
         ]) { err in
             if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Пикеры обновлены")
+                print("Ошибка обновления пикеров: \(err)")
             }
         }
     }
