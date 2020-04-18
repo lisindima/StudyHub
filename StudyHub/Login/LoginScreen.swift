@@ -15,12 +15,15 @@ import Firebase
 struct SignUpView: View {
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject var dateStore: DateStore = DateStore.shared
 
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
+    @State private var dateBirthday: Date = Date()
     @State private var loading: Bool = false
+    @State private var isShowDate: Bool = false
 
     private func signUp() {
         let generator = UINotificationFeedbackGenerator()
@@ -44,7 +47,7 @@ struct SignUpView: View {
                     "gValue": 86.0,
                     "bValue": 214.0,
                     "darkThemeOverride": false,
-                    "dateBirthDay": Timestamp(),
+                    "dateBirthDay": self.dateBirthday,
                     "adminSetting": false,
                     "notifyMinute": 10,
                     "pinCodeAccess": "",
@@ -69,11 +72,37 @@ struct SignUpView: View {
     }
 
     var body: some View {
-        VStack(alignment: .center) {
+        ScrollView {
             CustomInput(text: $lastname, name: "Фамилия")
                 .padding([.top, .horizontal])
             CustomInput(text: $firstname, name: "Имя")
                 .padding([.top, .horizontal])
+            if !isShowDate {
+                Button(action: {
+                    self.isShowDate = true
+                }) {
+                    Text("\(dateBirthday, formatter: dateStore.dateDay)")
+                }
+            }
+            if isShowDate {
+                VStack {
+                    Button(action: {
+                        self.isShowDate = false
+                    }) {
+                        Text("\(dateBirthday, formatter: dateStore.dateDay)")
+                    }
+                    DatePicker(selection: $dateBirthday, displayedComponents: .date) {
+                        Text("День рождения")
+                    }
+                    .labelsHidden()
+                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(lineWidth: 1)
+                        .foregroundColor(Color.secondary.opacity(0.4))
+                )
+                .padding([.top, .horizontal])
+            }
             CustomInput(text: $email, name: "Эл.почта")
                 .padding()
                 .textContentType(.emailAddress)

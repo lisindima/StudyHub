@@ -283,7 +283,7 @@ struct SettingView: View {
                         Image(systemName: "calendar")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Дата рождения")
+                        Text("День рождения")
                     })
                     HStack {
                         Image(systemName: "photo")

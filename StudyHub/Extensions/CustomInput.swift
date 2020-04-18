@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct InputModifier: ViewModifier {
-    
     func body(content: Content) -> some View {
         content
             .padding()
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(lineWidth: 1)
-                .foregroundColor(Color.secondary.opacity(0.4)))
+            .background(RoundedRectangle(cornerRadius: 8))
+            .foregroundColor(Color.secondary.opacity(0.1))
     }
 }
 

@@ -31,7 +31,7 @@ struct ProfileImage: View {
                 ZStack {
                     Circle()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(Color(UIColor.systemBackground))
+                        .foregroundColor(Color(.systemBackground))
                     Image(systemName: "checkmark.seal.fill")
                         .font(.largeTitle)
                         .foregroundColor(.blue)
