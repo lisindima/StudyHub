@@ -119,7 +119,7 @@ struct SettingAccount: View {
             }
         }
         .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle("Управление аккаунтами", displayMode: .inline)
+        .navigationBarTitle("Настройки аккаунта", displayMode: .inline)
     }
 }
 

@@ -19,11 +19,16 @@ struct ProfileView: View {
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
     @State private var showPartialSheet: Bool = false
+    @State private var showActionSheetImage: Bool = false
+    @State private var isShowingModalViewImage: Bool = false
+    @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var pickerStore: PickerStore = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser
+    
+    private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
     
     var body: some View {
         NavigationView {

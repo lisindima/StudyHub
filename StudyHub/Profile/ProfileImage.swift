@@ -26,7 +26,6 @@ struct ProfileImage: View {
                 .clipShape(Circle())
                 .clipped()
                 .frame(width: 210, height: 210)
-                
             if sessionStore.adminSetting && showAdminCheck {
                 ZStack {
                     Circle()

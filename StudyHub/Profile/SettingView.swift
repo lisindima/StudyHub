@@ -13,15 +13,12 @@ import KingfisherSwiftUI
 
 struct SettingView: View {
     
-    @State private var isShowingModalViewImage: Bool = false
     @State private var isShowingModalViewUnsplash: Bool = false
-    @State private var showActionSheetImage: Bool = false
     @State private var showActionSheetUnsplash: Bool = false
     @State private var showActionSheetMailFeedback: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var subscribeApplication: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
-    @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     @State private var mailSubject: String = ""
     
     @Binding var showPartialSheet: Bool
@@ -44,8 +41,6 @@ struct SettingView: View {
             return Text("#chad")
         }
     }
-    
-    private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
 
     private func startSettingView() {
         imageCacheStore.calculateImageCache()
@@ -266,53 +261,6 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Личные данные").fontWeight(.bold), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
-                    HStack {
-                        Image(systemName: "person.crop.circle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        TextField("Фамилия", text: $sessionStore.lastname)
-                    }
-                    HStack {
-                        Image(systemName: "person.crop.circle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        TextField("Имя", text: $sessionStore.firstname)
-                    }
-                    DatePicker(selection: $sessionStore.dateBirthDay, displayedComponents: [.date], label: {
-                        Image(systemName: "calendar")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("День рождения")
-                    })
-                    HStack {
-                        Image(systemName: "photo")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Button("Изменить фотографию") {
-                            self.showActionSheetImage = true
-                        }
-                        .foregroundColor(.primary)
-                        .actionSheet(isPresented: $showActionSheetImage) {
-                            ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
-                                .default(Text("Сделать фотографию")) {
-                                    self.selectedSourceType = .camera
-                                    self.isShowingModalViewImage = true
-                                }, .default(Text("Выбрать фотографию")) {
-                                    self.selectedSourceType = .photoLibrary
-                                    self.isShowingModalViewImage = true
-                                }, .destructive(Text("Удалить фотографию")) {
-                                    self.sessionStore.urlImageProfile = self.deletedUrlImageProfile
-                                }, .cancel()
-                            ])
-                        }
-                        .sheet(isPresented: $isShowingModalViewImage) {
-                            ImagePicker(selectedSourceType: self.$selectedSourceType)
-                                .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
-                                .edgesIgnoringSafeArea(.bottom)
-                        }
-                    }
-                }
                 Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
                     Picker(selection: $pickerStore.choiseFaculty, label: HStack {
                         Image(systemName: "list.bullet.below.rectangle")
@@ -358,11 +306,11 @@ struct SettingView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    NavigationLink(destination: LinkedAccounts()) {
+                    NavigationLink(destination: SettingAccount()) {
                         Image(systemName: "list.dash")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Управление аккаунтами")
+                        Text("Настройки аккаунта")
                     }
                 }
                 Section(header: Text("Кэш изображений").fontWeight(.bold), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {

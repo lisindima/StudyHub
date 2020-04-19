@@ -47,7 +47,7 @@
 		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
 		CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisinlogo@3x.png */; };
 		CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisinlogo.png */; };
-		CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */; };
+		CB3BFAD2239E37DA00894DFA /* SettingAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
 		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
@@ -239,7 +239,7 @@
 		CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@2x.png"; sourceTree = "<group>"; };
 		CB37695923E5CD850015B61E /* lisinlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@3x.png"; sourceTree = "<group>"; };
 		CB37695B23E5CD9F0015B61E /* lisinlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lisinlogo.png; sourceTree = "<group>"; };
-		CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedAccounts.swift; sourceTree = "<group>"; };
+		CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAccount.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
 		CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagePicker.swift; sourceTree = "<group>"; };
@@ -457,7 +457,7 @@
 				CB4FA0102343960A0049D271 /* ProfileView.swift */,
 				CB4FA012234396110049D271 /* ProfileImage.swift */,
 				CB4377B723DFDC200002C47C /* SettingView.swift */,
-				CB3BFAD1239E37DA00894DFA /* LinkedAccounts.swift */,
+				CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */,
 				CB6EBF462390276B00D9E771 /* License.swift */,
 				CBE010E923ACC0D6009DB0E8 /* Changelog.swift */,
 				CBF0EE1F23A37A34006CC917 /* BioAndCodeSecure.swift */,
@@ -957,7 +957,7 @@
 				CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */,
 				CB11A8CC23E1DF4C006E568C /* ChatEmpty.swift in Sources */,
 				CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */,
-				CB3BFAD2239E37DA00894DFA /* LinkedAccounts.swift in Sources */,
+				CB3BFAD2239E37DA00894DFA /* SettingAccount.swift in Sources */,
 				CB12E7EE23596F9E00115B2E /* MessageList.swift in Sources */,
 				CB0AED69232E5A7B0047A8A0 /* ScheduleList.swift in Sources */,
 				CB56F589241B3A3900868B09 /* DateStore.swift in Sources */,
