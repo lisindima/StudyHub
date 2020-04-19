@@ -7,12 +7,20 @@
 //
 
 import SwiftUI
+import SPAlert
 import KingfisherSwiftUI
 
 struct ProfileFriends: View {
     
     @ObservedObject var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject var qrStore: QRStore = QRStore.shared
+    
+    @Binding var showPartialSheetProfile: Bool
+    
+    func sendRequestFriend() {
+        self.showPartialSheetProfile = false
+        SPAlert.present(title: "Запрос отправлен!", message: "Запрос на добавления в друзья отправлен.", preset: .done)
+    }
     
     var body: some View {
         VStack {
@@ -35,7 +43,7 @@ struct ProfileFriends: View {
                         Text(qrStore.profileFriendsModel.first!.firstname)
                             .fontWeight(.bold)
                             .font(.title)
-                        Button(action: {}) {
+                        Button(action: sendRequestFriend) {
                             HStack {
                                 Text("В друзья")
                                     .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))

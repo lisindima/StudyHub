@@ -56,7 +56,7 @@ struct QRReader: View {
                     }
                 }
                 .partialSheet(presented: $showPartialSheetProfile, backgroundColor: Color.secondarySystemBackground) {
-                    ProfileFriends()
+                    ProfileFriends(showPartialSheetProfile: self.$showPartialSheetProfile)
                         .padding(.top)
                         .padding(.bottom, 30)
                         .padding(.horizontal)
