@@ -23,7 +23,7 @@ struct ChatTextField: View {
             ZStack {
                 Capsule(style: .continuous)
                     .frame(height: 40)
-                    .foregroundColor(Color(.secondarySystemBackground))
+                    .foregroundColor(Color.secondarySystemBackground)
                 TextField("Новое сообщение...", text: $messageText)
                     .padding(.horizontal)
             }

@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  Color.swift
 //  altgtu
 //
 //  Created by Дмитрий Лисин on 30.01.2020.
@@ -17,6 +17,8 @@ extension Color {
     static let trackColor = Color.rgb(red: 45.0, green: 56.0, blue: 95.0)
     static let pulsatingColor = Color.rgb(red: 73.0, green: 113.0, blue: 148.0)
     static let defaultColorApp = Color(.systemIndigo)
+    static let secondarySystemBackground = Color(UIColor.secondarySystemBackground)
+    static let systemBackground = Color(UIColor.systemBackground)
 }
 
 extension View {

@@ -111,7 +111,7 @@ struct ListItem: View {
                     .clipped()
                 if sessionStore.onlineUser && showIndicator {
                     Circle()
-                        .foregroundColor(Color(UIColor.systemBackground))
+                        .foregroundColor(Color.systemBackground)
                         .frame(width: 15, height: 15)
                         .offset(x: 17, y: 17)
                     Image(systemName: "circle.fill")

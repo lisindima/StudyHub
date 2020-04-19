@@ -77,7 +77,7 @@ struct MessageView: View {
                             } else {
                                 Text(message)
                                     .padding(10)
-                                    .background(Color(.secondarySystemBackground))
+                                    .background(Color.secondarySystemBackground)
                                     .cornerRadius(5)
                             }
                             Spacer()

@@ -43,7 +43,7 @@ struct ProfileView: View {
                         KFImage(URL(string: sessionStore.setImageForBackroundProfile))
                             .placeholder {
                                 Rectangle()
-                                    .foregroundColor(Color(.systemBackground))
+                                    .foregroundColor(Color.systemBackground)
                                     .edgesIgnoringSafeArea(.top)
                                     .frame(height: 130)
                         }
@@ -109,7 +109,7 @@ struct ProfileView: View {
                 #else
                 SettingView(showPartialSheet: self.$showPartialSheet)
                     .environmentObject(self.sessionStore)
-                    .partialSheet(presented: self.$showPartialSheet, backgroundColor: Color(.secondarySystemBackground)) {
+                    .partialSheet(presented: self.$showPartialSheet, backgroundColor: Color.secondarySystemBackground) {
                         ChangeIcons()
                             .environmentObject(self.sessionStore)
                 }
