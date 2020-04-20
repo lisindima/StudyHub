@@ -12,7 +12,7 @@ import KeyboardObserving
 
 struct MessageList: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @EnvironmentObject var chatStore: ChatStore
     
     @State private var typeMessage: String = ""

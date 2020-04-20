@@ -23,8 +23,8 @@ struct ProfileView: View {
     @State private var isShowingModalViewImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var pickerStore: PickerStore = PickerStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser
     

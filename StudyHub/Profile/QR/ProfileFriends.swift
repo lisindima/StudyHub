@@ -12,8 +12,8 @@ import KingfisherSwiftUI
 
 struct ProfileFriends: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var qrStore: QRStore = QRStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var qrStore: QRStore = QRStore.shared
     
     @Binding var showPartialSheetProfile: Bool
     

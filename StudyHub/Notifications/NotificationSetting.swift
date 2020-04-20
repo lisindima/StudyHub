@@ -10,8 +10,8 @@ import SwiftUI
 
 struct NotificationSetting: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     
     @State private var notificationLesson: Bool = true
     

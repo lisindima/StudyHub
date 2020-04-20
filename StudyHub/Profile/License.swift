@@ -12,7 +12,7 @@ import Alamofire
 
 struct License: View {
     
-    @ObservedObject var licenseStore: LicenseStore = LicenseStore.shared
+    @ObservedObject private var licenseStore: LicenseStore = LicenseStore.shared
     
     var body: some View {
         VStack {

@@ -12,7 +12,7 @@ import Alamofire
 
 struct Changelog: View {
     
-    @ObservedObject var changelogStore: ChangelogStore = ChangelogStore.shared
+    @ObservedObject private var changelogStore: ChangelogStore = ChangelogStore.shared
     
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String

@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct ProfileImage: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @State private var showAdminCheck: Bool = false
     
     var body: some View {

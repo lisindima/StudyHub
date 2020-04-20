@@ -11,7 +11,7 @@ import UnsplashPhotoPicker
 
 struct UnsplashImagePicker: UIViewControllerRepresentable {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     
     let configuration = UnsplashPhotoPickerConfiguration(
         accessKey: "f99d21d6eb682196455dd29b621688aff2d525c7c3a7f95bfcb05d497f38f5dc",

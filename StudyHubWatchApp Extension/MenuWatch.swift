@@ -10,9 +10,9 @@ import SwiftUI
 
 struct MenuWatch: View {
     
-    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
-    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
-    @ObservedObject var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
+    @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @ObservedObject private var dateStore: DateStore = DateStore.shared
     
     var body: some View {
         VStack {

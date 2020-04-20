@@ -12,7 +12,7 @@ import LocalAuthentication
 
 struct SecureView: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var userInputCode: String = ""
     @State private var changeColor: Bool = false

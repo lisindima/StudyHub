@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SubscriptionSplashScreen: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     
     var body: some View {
         VStack {

@@ -12,7 +12,7 @@ import Purchases
 
 struct SubscriptionWatchView: View {
     
-    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     
     var body: some View {
         VStack {

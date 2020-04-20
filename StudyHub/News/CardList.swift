@@ -11,9 +11,9 @@ import KingfisherSwiftUI
 
 struct CardList: View {
     
-    @ObservedObject var newsStore: NewsStore = NewsStore.shared
-    @ObservedObject var dateStore: DateStore = DateStore.shared
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var newsStore: NewsStore = NewsStore.shared
+    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     
     @State private var showDetailsNews: Bool = false
     @State private var selectedTab: String = "Популярное"

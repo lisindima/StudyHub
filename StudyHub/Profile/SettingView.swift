@@ -26,12 +26,12 @@ struct SettingView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     
-    @ObservedObject var notificationStore: NotificationStore = NotificationStore.shared
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
-    @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
-    @ObservedObject var pickerStore: PickerStore = PickerStore.shared
-    @ObservedObject var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
+    @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
+    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
+    @ObservedObject private var dateStore: DateStore = DateStore.shared
     
     private var appVersionView: some View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,

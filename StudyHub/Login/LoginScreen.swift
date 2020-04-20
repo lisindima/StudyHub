@@ -14,8 +14,8 @@ import Firebase
 
 struct SignUpView: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var dateStore: DateStore = DateStore.shared
 
     @State private var email: String = ""
     @State private var password: String = ""
@@ -150,7 +150,7 @@ struct SignUpView: View {
 
 struct ResetPassword: View {
 
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     
     @State private var email: String = ""
     @State private var loading: Bool = false
@@ -200,7 +200,7 @@ struct ResetPassword: View {
 
 struct EmailLoginScreen: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
 
     @State private var email: String = ""
     @State private var password: String = ""
@@ -289,7 +289,7 @@ struct EmailLoginScreen: View {
 
 struct AuthenticationScreen: View {
 
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     var body: some View {

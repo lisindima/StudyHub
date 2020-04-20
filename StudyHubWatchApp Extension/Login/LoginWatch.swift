@@ -22,7 +22,7 @@ struct AppleLogin: View {
 
 struct EmailLogin: View {
     
-    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
+    @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
     
     @State private var email: String = ""
     @State private var password: String = ""
@@ -44,7 +44,7 @@ struct EmailLogin: View {
 
 struct RootView: View {
     
-    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
+    @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
     
     var body: some View {
         Group {

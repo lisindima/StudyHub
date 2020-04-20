@@ -12,8 +12,8 @@ import KingfisherSwiftUI
 
 struct MessageView: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var dateStore: DateStore = DateStore.shared
     
     let currentUser = Auth.auth().currentUser
     

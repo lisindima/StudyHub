@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CircleProgress: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     
     var body: some View {
         VStack {

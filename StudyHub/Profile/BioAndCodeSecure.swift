@@ -11,7 +11,7 @@ import LocalAuthentication
 
 struct BioAndCodeSecure: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @Environment(\.presentationMode) var presentationMode
     
     @State private var activateSecure: Bool = false

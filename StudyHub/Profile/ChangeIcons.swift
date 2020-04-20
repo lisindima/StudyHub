@@ -44,7 +44,7 @@ class IconStore: ObservableObject {
 
 struct ChangeIcons: View {
     
-    @ObservedObject var iconStore: IconStore = IconStore.shared
+    @ObservedObject private var iconStore: IconStore = IconStore.shared
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -59,8 +59,8 @@ struct ChangeIcons: View {
 
 struct IconItem: View {
     
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject var iconStore: IconStore = IconStore.shared
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var iconStore: IconStore = IconStore.shared
     
     var iconModel: IconModel
     

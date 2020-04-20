@@ -11,7 +11,7 @@ import Espera
 
 struct ScheduleListWatch: View {
     
-    @ObservedObject var scheduleStore: ScheduleStore = ScheduleStore.shared
+    @ObservedObject private var scheduleStore: ScheduleStore = ScheduleStore.shared
     
     var body: some View {
         VStack {
