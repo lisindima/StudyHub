@@ -261,28 +261,6 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                    Picker(selection: $pickerStore.choiseFaculty, label: HStack {
-                        Image(systemName: "list.bullet.below.rectangle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Факультет")
-                    }) {
-                        ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
-                            Text(self.pickerStore.facultyModel[$0].name)
-                        }
-                    }.lineLimit(1)
-                    Picker(selection: $pickerStore.choiseGroup, label: HStack {
-                        Image(systemName: "list.bullet.below.rectangle")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                        Text("Группа")
-                    }) {
-                        ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
-                            Text(self.pickerStore.groupModel[$0].name)
-                        }
-                    }.lineLimit(1)
-                }
                 Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {
                     NavigationLink(destination: NotificationSetting()) {
                         Image(systemName: "bell")

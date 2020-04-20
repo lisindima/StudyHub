@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingAccount: View {
     
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
     
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false
@@ -66,6 +67,28 @@ struct SettingAccount: View {
                             .edgesIgnoringSafeArea(.bottom)
                     }
                 }
+            }
+            Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
+                Picker(selection: $pickerStore.choiseFaculty, label: HStack {
+                    Image(systemName: "list.bullet.below.rectangle")
+                        .frame(width: 24)
+                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    Text("Факультет")
+                }) {
+                    ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
+                        Text(self.pickerStore.facultyModel[$0].name)
+                    }
+                }.lineLimit(1)
+                Picker(selection: $pickerStore.choiseGroup, label: HStack {
+                    Image(systemName: "list.bullet.below.rectangle")
+                        .frame(width: 24)
+                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    Text("Группа")
+                }) {
+                    ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
+                        Text(self.pickerStore.groupModel[$0].name)
+                    }
+                }.lineLimit(1)
             }
             Section(header: Text("Аккаунты для входа").fontWeight(.bold), footer: Text("Активируя эти аккаунты, вы сможете входить в ваш профиль используя любой из них.")) {
                 NavigationLink(destination: Changelog()) {
