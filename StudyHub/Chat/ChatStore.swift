@@ -12,8 +12,8 @@ import Alamofire
 
 class ChatStore: ObservableObject {
     
-    @Published var chatList: [String] = [String]()
     @Published var dataMessages: [DataMessages] = [DataMessages]()
+    @Published var dataChat: [DataChat] = [DataChat]()
     @Published var statusChat: StatusChat = .loading
     
     static let shared = ChatStore()
@@ -22,9 +22,9 @@ class ChatStore: ObservableObject {
     
     let legacyServerKey: String = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
     
-    func loadMessageList() {
+    func loadMessageList(id: String) {
         let db = Firestore.firestore()
-        db.collection("chatRoom").document("Test2").collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
+        db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -105,8 +105,17 @@ class ChatStore: ObservableObject {
                 return
             } else if querySnapshot!.isEmpty {
                 self.statusChat = .emptyChat
-            } else if let querySnapshot = querySnapshot {
-                self.chatList = querySnapshot.documents.map { $0.documentID }
+            }
+            for item in querySnapshot!.documentChanges {
+                if item.type == .added {
+                    let id = item.document.documentID
+                    let nameChat = item.document.get("nameChat") as! String
+                    let lastMessage = item.document.get("lastMessage") as! String
+                    let timeStamp = item.document.get("lastMessageDate") as! Timestamp
+                    let lastMessageDate = timeStamp.dateValue()
+                    let lastMessageIdUser = item.document.get("lastMessageIdUser") as! String
+                    self.dataChat.append(DataChat(id: id, nameChat: nameChat, lastMessage: lastMessage, lastMessageDate: lastMessageDate, lastMessageIdUser: lastMessageIdUser))
+                }
                 self.statusChat = .showChat
             }
         }
@@ -163,6 +172,14 @@ struct DataMessages: Identifiable {
     var idUser: String
     var dateMessage: Date
     var isRead: Bool = false
+}
+
+struct DataChat: Identifiable {
+    var id: String
+    var nameChat: String
+    var lastMessage: String
+    var lastMessageDate: Date
+    var lastMessageIdUser: String
 }
 
 enum StatusChat {

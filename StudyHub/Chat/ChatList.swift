@@ -21,11 +21,7 @@ struct ChatList: View {
     @State private var numberUnreadMessages: Int = 0
     
     private func delete(at offsets: IndexSet) {
-        chatStore.chatList.remove(atOffsets: offsets)
-    }
-    
-    private func move(from source: IndexSet, to destination: Int) {
-        chatStore.chatList.move(fromOffsets: source, toOffset: destination)
+        chatStore.dataChat.remove(atOffsets: offsets)
     }
     
     func checkNumberUnreadMessages() {
@@ -41,21 +37,13 @@ struct ChatList: View {
                     .animation(.interactiveSpring())
                     .padding(.horizontal, 6)
                 List {
-                    ForEach(self.chatStore.chatList.filter {
-                        self.searchText.isEmpty ? true : $0.localizedStandardContains(self.searchText)
-                    }, id: \.self) { item in
-                        NavigationLink(destination: MessageList()) {
-                            ListItem(
-                                numberUnreadMessages: self.$numberUnreadMessages,
-                                nameChat: item,
-                                lastMessageidUser: self.chatStore.dataMessages.last?.idUser ?? "",
-                                lastMessage: self.chatStore.dataMessages.last?.message ?? "Нет сообщений",
-                                lastMessageDate: self.chatStore.dataMessages.last?.dateMessage ?? Date()
-                            )
+                    ForEach(self.chatStore.dataChat.filter {
+                        self.searchText.isEmpty ? true : $0.nameChat.localizedStandardContains(self.searchText)
+                    }, id: \.id) { item in
+                        NavigationLink(destination: MessageList(dataChat: item)) {
+                            ListItem(numberUnreadMessages: self.$numberUnreadMessages, dataChat: item)
                         }
-                    }
-                    .onDelete(perform: delete)
-                    .onMove(perform: move)
+                    }.onDelete(perform: delete)
                 }
                 PlusButton(action: {
                     print("Новое сообщение")
@@ -87,15 +75,12 @@ struct ListItem: View {
     
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    @Binding var numberUnreadMessages: Int
     @State private var showIndicator: Bool = false
+    @Binding var numberUnreadMessages: Int
     
     let currentUid = Auth.auth().currentUser?.uid
     
-    var nameChat: String
-    var lastMessageidUser: String
-    var lastMessage: String
-    var lastMessageDate: Date
+    var dataChat: DataChat
     
     var body: some View {
         HStack {
@@ -123,16 +108,16 @@ struct ListItem: View {
                 }
             }
             VStack(alignment: .leading) {
-                Text("Лисин Дмитрий")
+                Text(dataChat.nameChat)
                     .fontWeight(.bold)
-                Text(lastMessageidUser == currentUid ? "Вы: \(lastMessage)" : "\(lastMessage)")
+                Text(dataChat.lastMessageIdUser == currentUid ? "Вы: \(dataChat.lastMessage)" : "\(dataChat.lastMessage)")
                     .font(.footnote)
                     .lineLimit(1)
                     .foregroundColor(.secondary)
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(lastMessageDate.calenderTimeSinceNow())")
+                Text("\(dataChat.lastMessageDate.calenderTimeSinceNow())")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")

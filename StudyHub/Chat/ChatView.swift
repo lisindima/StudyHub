@@ -12,16 +12,11 @@ struct ChatView: View {
     
     @EnvironmentObject var chatStore: ChatStore
     
-    func loadChatData() {
-        chatStore.getDataFromDatabaseListenChat()
-        chatStore.loadMessageList()
-    }
-    
     var body: some View {
         Group {
             if chatStore.statusChat == .loading {
                 ChatLoading()
-                    .onAppear(perform: loadChatData)
+                    .onAppear(perform: chatStore.getDataFromDatabaseListenChat)
             } else if chatStore.statusChat == .emptyChat {
                 ChatEmpty()
             } else if chatStore.statusChat == .showChat {

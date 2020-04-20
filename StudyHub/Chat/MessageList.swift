@@ -14,8 +14,9 @@ struct MessageList: View {
     
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @EnvironmentObject var chatStore: ChatStore
-    
     @State private var typeMessage: String = ""
+    
+    var dataChat: DataChat
     
     let receiverFCMToken: String = "dCePidi5pUeHksSGvfmcB_:APA91bEjfpCxz5udU_IcI--aHpWoo6nY3KL6m7-gzcqyDn0Ll4838nOOHumZY4bwdXzu8SwTqm7-MGhB7eS9SrNoKcGboyUA5vw9hZpw8vM7Bz3DUGcfBd2rzxbrwkR4W7GET7906sMJ"
     
@@ -23,7 +24,9 @@ struct MessageList: View {
         VStack {
             if chatStore.dataMessages.isEmpty {
                 ActivityIndicator(styleSpinner: .large)
-                    .onAppear(perform: chatStore.loadMessageList)
+                    .onAppear {
+                        self.chatStore.loadMessageList(id: self.dataChat.id)
+                }
             } else {
                 ScrollView {
                     ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
@@ -45,6 +48,6 @@ struct MessageList: View {
         }
         .keyboardObserving()
         .onAppear(perform: chatStore.checkRead)
-        .navigationBarTitle("Лисин Дмитрий", displayMode: .inline)
+        .navigationBarTitle(Text(dataChat.nameChat), displayMode: .inline)
     }
 }
