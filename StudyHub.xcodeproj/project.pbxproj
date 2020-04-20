@@ -217,6 +217,7 @@
 		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
+		CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "StudyHubWatchApp Extension.entitlements"; sourceTree = "<group>"; };
 		CB11A8C923E1DEEB006E568C /* ChatLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoading.swift; sourceTree = "<group>"; };
 		CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmpty.swift; sourceTree = "<group>"; };
 		CB11A8CD23E1E1D4006E568C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -670,6 +671,7 @@
 		CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */,
 				CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */,
 				CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */,
 				CBCE3277241F9F5200844197 /* MenuWatch.swift */,
@@ -1316,6 +1318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
@@ -1342,6 +1345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
