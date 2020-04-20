@@ -1,5 +1,5 @@
 //
-//  LoginScreeWatch.swift
+//  LoginWatch.swift
 //  altgtuWatchApp Extension
 //
 //  Created by Дмитрий Лисин on 14.10.2019.
@@ -10,12 +10,10 @@ import SwiftUI
 
 struct AppleLogin: View {
     
-    @State private var signInSuccess = false
-    
     var body: some View {
         ScrollView {
             SignInWithAppleButton()
-            NavigationLink(destination: EmailLogin(signInSuccess: $signInSuccess)) {
+            NavigationLink(destination: EmailLogin()) {
                 Text("Вход через эл.почту")
             }
         }.navigationBarTitle("StudyHub")
@@ -24,9 +22,10 @@ struct AppleLogin: View {
 
 struct EmailLogin: View {
     
+    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
+    
     @State private var email: String = ""
     @State private var password: String = ""
-    @Binding var signInSuccess: Bool
     
     var body: some View {
         ScrollView {
@@ -35,7 +34,7 @@ struct EmailLogin: View {
             SecureField("Пароль", text: $password)
                 .textContentType(.password)
             Button("Войти") {
-                self.signInSuccess = true
+                self.sessionStoreWatch.signInSuccess = true
             }.disabled(email.isEmpty || password.isEmpty)
             Text("Для регистрации воспользуйтесь приложением для iPhone, iPad или Mac.")
                 .font(.footnote)
@@ -45,21 +44,15 @@ struct EmailLogin: View {
 
 struct RootView: View {
     
-    @State private var signInSuccess = false
+    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
     
     var body: some View {
         Group {
-            if signInSuccess {
-                MenuWatch(signInSuccess: $signInSuccess)
+            if sessionStoreWatch.signInSuccess {
+                MenuWatch()
             } else {
                 AppleLogin()
             }
         }
-    }
-}
-
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
     }
 }

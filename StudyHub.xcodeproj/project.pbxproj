@@ -22,6 +22,7 @@
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
 		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
+		CB117B03244D4BB700667F3A /* SessionStoreWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */; };
 		CB11861B244495CF00FA4354 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB11861A244495CF00FA4354 /* Kingfisher */; };
 		CB11861D244495CF00FA4354 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB11861C244495CF00FA4354 /* KingfisherSwiftUI */; };
 		CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8C923E1DEEB006E568C /* ChatLoading.swift */; };
@@ -110,7 +111,7 @@
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
 		CBE665E823543A1400C43811 /* StudyHubWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CBE665ED23543A1400C43811 /* LoginScreeWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */; };
+		CBE665ED23543A1400C43811 /* LoginWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EC23543A1400C43811 /* LoginWatch.swift */; };
 		CBE665EF23543A1400C43811 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EE23543A1400C43811 /* HostingController.swift */; };
 		CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F023543A1400C43811 /* ExtensionDelegate.swift */; };
 		CBE665F323543A1400C43811 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F223543A1400C43811 /* NotificationController.swift */; };
@@ -218,6 +219,7 @@
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
 		CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "StudyHubWatchApp Extension.entitlements"; sourceTree = "<group>"; };
+		CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreWatch.swift; sourceTree = "<group>"; };
 		CB11A8C923E1DEEB006E568C /* ChatLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoading.swift; sourceTree = "<group>"; };
 		CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmpty.swift; sourceTree = "<group>"; };
 		CB11A8CD23E1E1D4006E568C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -293,7 +295,7 @@
 		CBE665E023543A1400C43811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBE665E223543A1400C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "StudyHubWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreeWatch.swift; sourceTree = "<group>"; };
+		CBE665EC23543A1400C43811 /* LoginWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWatch.swift; sourceTree = "<group>"; };
 		CBE665EE23543A1400C43811 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		CBE665F023543A1400C43811 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		CBE665F223543A1400C43811 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -523,7 +525,8 @@
 		CB27619323556A1F0054C753 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CBE665EC23543A1400C43811 /* LoginScreeWatch.swift */,
+				CBE665EC23543A1400C43811 /* LoginWatch.swift */,
+				CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1035,7 +1038,8 @@
 				CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */,
 				CBE665EF23543A1400C43811 /* HostingController.swift in Sources */,
 				CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */,
-				CBE665ED23543A1400C43811 /* LoginScreeWatch.swift in Sources */,
+				CBE665ED23543A1400C43811 /* LoginWatch.swift in Sources */,
+				CB117B03244D4BB700667F3A /* SessionStoreWatch.swift in Sources */,
 				CBE665F323543A1400C43811 /* NotificationController.swift in Sources */,
 				CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */,
 				CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */,

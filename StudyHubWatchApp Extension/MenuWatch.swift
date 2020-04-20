@@ -10,10 +10,9 @@ import SwiftUI
 
 struct MenuWatch: View {
     
+    @ObservedObject var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
     @ObservedObject var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject var dateStore: DateStore = DateStore.shared
-    
-    @Binding var signInSuccess: Bool
     
     var body: some View {
         VStack {
@@ -33,7 +32,7 @@ struct MenuWatch: View {
             }
             Divider()
             Button("Выйти") {
-                self.signInSuccess = false
+                self.sessionStoreWatch.signInSuccess = false
             }
         }.navigationBarTitle("Главная")
     }
