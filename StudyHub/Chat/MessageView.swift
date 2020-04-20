@@ -41,6 +41,10 @@ struct MessageView: View {
                             if isEmoji {
                                 Text(message)
                                     .font(.system(size: 50))
+                            } else if isLink {
+                                RichLink(url: URL(string: message)!)
+                                    .frame(width: 80, height: 200)
+                                    .padding(.trailing, 50)
                             } else {
                                 Text(message)
                                     .foregroundColor(.white)
@@ -74,6 +78,10 @@ struct MessageView: View {
                             if isEmoji {
                                 Text(message)
                                     .font(.system(size: 50))
+                            } else if isLink {
+                                RichLink(url: URL(string: message)!)
+                                    .frame(width: 80, height: 200)
+                                    .padding(.leading, 50)
                             } else {
                                 Text(message)
                                     .padding(10)
@@ -101,5 +109,14 @@ struct MessageView: View {
 extension MessageView {
     var isEmoji: Bool {
         (message.count <= 3) && message.containsOnlyEmoji
+    }
+    
+    var isLink: Bool {
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        if let match = detector.firstMatch(in: message, options: [], range: NSRange(location: 0, length: message.utf16.count)) {
+            return match.range.length == message.utf16.count
+        } else {
+            return false
+        }
     }
 }
