@@ -11,13 +11,8 @@ import SwiftUI
 struct ChatLoading: View {
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
-                HStack {
-                    Spacer()
-                    ActivityIndicator(styleSpinner: .large)
-                    Spacer()
-                }
-            }.navigationBarTitle("Сообщения")
+            ActivityIndicator(styleSpinner: .large)
+                .navigationBarTitle("Сообщения")
         }
     }
 }

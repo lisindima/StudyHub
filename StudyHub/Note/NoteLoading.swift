@@ -11,13 +11,8 @@ import SwiftUI
 struct NoteLoading: View {
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
-                HStack {
-                    Spacer()
-                    ActivityIndicator(styleSpinner: .large)
-                    Spacer()
-                }
-            }.navigationBarTitle("Заметки")
+            ActivityIndicator(styleSpinner: .large)
+                .navigationBarTitle("Заметки")
         }
     }
 }
