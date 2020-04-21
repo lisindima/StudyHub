@@ -33,7 +33,11 @@ struct NoteList: View {
                         self.searchText.isEmpty ? true : $0.note.localizedStandardContains(self.searchText)
                     }, id: \.id) { item in
                         NavigationLink(destination: NoteDetails(dataNote: item)) {
-                            Text(item.note)
+                            VStack {
+                                Text(item.note)
+                                Text("\(item.createdTime!.dateValue())")
+                                    .font(.footnote)
+                            }
                         }
                     }
                     .onMove(perform: move)

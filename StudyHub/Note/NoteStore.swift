@@ -8,6 +8,7 @@
 
 import Combine
 import Firebase
+import FirebaseFirestoreSwift
 
 class NoteStore: ObservableObject {
     
@@ -27,15 +28,11 @@ class NoteStore: ObservableObject {
                 return
             } else if querySnapshot!.isEmpty {
                 self.statusNote = .emptyNote
-            } else {
-                for item in querySnapshot!.documentChanges {
-                    if item.type == .added {
-                        let id = item.document.documentID
-                        let note = item.document.get("note") as! String
-                        self.dataNote.append(DataNote(id: id, note: note))
-                        self.statusNote = .showNote
-                    }
+            } else if let querySnapshot = querySnapshot {
+                self.dataNote = querySnapshot.documents.compactMap { document -> DataNote? in
+                    try? document.data(as: DataNote.self)
                 }
+                self.statusNote = .showNote
             }
         }
     }
@@ -48,7 +45,6 @@ class NoteStore: ObservableObject {
                 print((error?.localizedDescription)!)
                 return
             }
-            print("Заметка сохранена")
         }
     }
     
@@ -56,21 +52,20 @@ class NoteStore: ObservableObject {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         let id = datas.dataNote[index.first!].id
-        db.collection("note").document(currentUser.uid).collection("noteCollection").document(id).delete { error in
+        db.collection("note").document(currentUser.uid).collection("noteCollection").document(id!).delete { error in
             if error != nil {
                 print((error?.localizedDescription)!)
                 return
-            } else {
-                print("Заметка удалена")
             }
             datas.dataNote.remove(atOffsets: index)
         }
     }
 }
 
-struct DataNote: Identifiable, Hashable {
-    var id: String
+struct DataNote: Identifiable, Codable {
+    @DocumentID var id: String?
     var note: String
+    @ServerTimestamp var createdTime: Timestamp?
 }
 
 enum StatusNote {
