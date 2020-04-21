@@ -8,11 +8,12 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestoreSwift
 import CoreImage.CIFilterBuiltins
 
 class QRStore: ObservableObject {
     
-    @Published var profileFriendsModel: [ProfileFriendsModel] = [ProfileFriendsModel]()
+    @Published var profileFriendsModel: ProfileFriendsModel!
     
     static let shared = QRStore()
     
@@ -22,15 +23,21 @@ class QRStore: ObservableObject {
     func getUserInfoBeforeScanQRCode(code: String) {
         let db = Firestore.firestore()
         let docRef = db.collection("profile").document(code)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let id = document.documentID
-                let lastname = document.get("lastname") as! String
-                let firstname = document.get("firstname") as! String
-                let urlImageProfile = document.get("urlImageProfile") as! String
-                self.profileFriendsModel.append(ProfileFriendsModel(id: id, firstname: firstname, lastname: lastname, urlImageProfile: urlImageProfile))
-            } else {
-                print("Document does not exist")
+        docRef.getDocument { document, error in
+            let result = Result {
+                try document.flatMap {
+                    try $0.data(as: ProfileFriendsModel.self)
+                }
+            }
+            switch result {
+            case .success(let profileFriendsModel):
+                if let profileFriendsModel = profileFriendsModel {
+                    self.profileFriendsModel = profileFriendsModel
+                } else {
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                print("Error decoding profileFriendsModel: \(error)")
             }
         }
     }
@@ -47,9 +54,14 @@ class QRStore: ObservableObject {
     }
 }
 
-struct ProfileFriendsModel: Identifiable {
-    let id: String
+struct ProfileFriendsModel: Codable {
     let firstname: String
     let lastname: String
     let urlImageProfile: String
+    
+    enum CodingKeys: String, CodingKey {
+        case firstname
+        case lastname
+        case urlImageProfile
+    }
 }

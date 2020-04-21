@@ -24,11 +24,11 @@ struct ProfileFriends: View {
     
     var body: some View {
         VStack {
-            if qrStore.profileFriendsModel.isEmpty {
+            if qrStore.profileFriendsModel == nil {
                 ActivityIndicator(styleSpinner: .large)
             } else {
                 HStack {
-                    KFImage(URL(string: qrStore.profileFriendsModel.first!.urlImageProfile))
+                    KFImage(URL(string: qrStore.profileFriendsModel.urlImageProfile))
                         .placeholder { ActivityIndicator(styleSpinner: .large) }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -37,10 +37,10 @@ struct ProfileFriends: View {
                         .frame(width: 120, height: 120)
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text(qrStore.profileFriendsModel.first!.lastname)
+                        Text(qrStore.profileFriendsModel.lastname)
                             .fontWeight(.bold)
                             .font(.title)
-                        Text(qrStore.profileFriendsModel.first!.firstname)
+                        Text(qrStore.profileFriendsModel.firstname)
                             .fontWeight(.bold)
                             .font(.title)
                         Button(action: sendRequestFriend) {
