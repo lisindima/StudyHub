@@ -54,14 +54,9 @@ class QRStore: ObservableObject {
     }
 }
 
-struct ProfileFriendsModel: Codable {
-    let firstname: String
-    let lastname: String
-    let urlImageProfile: String
-    
-    enum CodingKeys: String, CodingKey {
-        case firstname
-        case lastname
-        case urlImageProfile
-    }
+struct ProfileFriendsModel: Identifiable, Codable {
+    @DocumentID var id: String?
+    var firstname: String
+    var lastname: String
+    var urlImageProfile: String
 }
