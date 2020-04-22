@@ -9,6 +9,7 @@
 import Combine
 import Firebase
 import Alamofire
+import FirebaseFirestoreSwift
 
 class ChatStore: ObservableObject {
     
@@ -25,44 +26,48 @@ class ChatStore: ObservableObject {
     func loadMessageList(id: String) {
         let db = Firestore.firestore()
         db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
-            if err != nil {
-                print((err?.localizedDescription)!)
-                return
+            let result = Result {
+                try querySnapshot?.documents.compactMap {
+                    try $0.data(as: DataMessages.self)
+                }
             }
-            for item in querySnapshot!.documentChanges {
-                if item.type == .added {
-                    let id = item.document.documentID
-                    let user = item.document.get("user") as! String
-                    let message = item.document.get("message") as! String
-                    let idUser = item.document.get("idUser") as! String
-                    let timeStamp = item.document.get("dateMsg") as! Timestamp
-                    let dateMessage = timeStamp.dateValue()
-                    let isRead = item.document.get("isRead") as! Bool
-                    self.dataMessages.append(DataMessages(id: id, user: user, message: message, idUser: idUser, dateMessage: dateMessage, isRead: isRead))
+            switch result {
+            case .success(let dataMessages):
+                if let dataMessages = dataMessages {
+                    self.dataMessages = dataMessages
+                } else {
+                    print("Document does not exist")
                 }
-                if item.type == .modified {
-                    self.dataMessages = self.dataMessages.map { eachData -> DataMessages in
-                        var data = eachData
-                        if data.id == item.document.documentID {
-                            data.user = item.document.get("user") as! String
-                            data.message = item.document.get("message") as! String
-                            data.idUser = item.document.get("idUser") as! String
-                            data.isRead = item.document.get("isRead") as! Bool
-                            return data
-                        } else {
-                            return eachData
-                        }
+            case .failure(let error):
+                print("Error decoding DataMessages: \(error)")
+            }
+        }
+    }
+    
+    func getDataFromDatabaseListenChat() {
+        statusChat = .loading
+        let db = Firestore.firestore()
+        db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
+            if !querySnapshot!.isEmpty {
+                let result = Result {
+                    try querySnapshot?.documents.compactMap {
+                        try $0.data(as: DataChat.self)
                     }
                 }
-                if item.type == .removed {
-                    var removeRowIndex = 0
-                    for index in self.dataMessages.indices {
-                        if self.dataMessages[index].id == item.document.documentID {
-                            removeRowIndex = index
-                        }
+                switch result {
+                case .success(let dataChat):
+                    if let dataChat = dataChat {
+                        self.dataChat = dataChat
+                        self.statusChat = .showChat
+                    } else {
+                        self.statusChat = .emptyChat
                     }
-                    self.dataMessages.remove(at: removeRowIndex)
+                case .failure(let error):
+                    self.statusChat = .emptyChat
+                    print("Error decoding DataChat: \(error)")
                 }
+            } else {
+                self.statusChat = .emptyChat
             }
         }
     }
@@ -91,32 +96,6 @@ class ChatStore: ObservableObject {
                 return
             } else {
                 print("Сообщения прочитаны!")
-            }
-        }
-    }
-    
-    func getDataFromDatabaseListenChat() {
-        statusChat = .loading
-        let db = Firestore.firestore()
-        db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
-            if err != nil {
-                self.statusChat = .emptyChat
-                print((err?.localizedDescription)!)
-                return
-            } else if querySnapshot!.isEmpty {
-                self.statusChat = .emptyChat
-            }
-            for item in querySnapshot!.documentChanges {
-                if item.type == .added {
-                    let id = item.document.documentID
-                    let nameChat = item.document.get("nameChat") as! String
-                    let lastMessage = item.document.get("lastMessage") as! String
-                    let timeStamp = item.document.get("lastMessageDate") as! Timestamp
-                    let lastMessageDate = timeStamp.dateValue()
-                    let lastMessageIdUser = item.document.get("lastMessageIdUser") as! String
-                    self.dataChat.append(DataChat(id: id, nameChat: nameChat, lastMessage: lastMessage, lastMessageDate: lastMessageDate, lastMessageIdUser: lastMessageIdUser))
-                }
-                self.statusChat = .showChat
             }
         }
     }
@@ -159,26 +138,27 @@ class ChatStore: ObservableObject {
         UIApplication.shared.applicationIconBadgeNumber = 0
         for data in dataMessages {
             if currentUser!.uid != data.idUser && !data.isRead {
-                self.updateData(id: data.id, isRead: true)
+                self.updateData(id: data.id!, isRead: true)
             }
         }
     }
 }
 
-struct DataMessages: Identifiable {
-    var id: String
+struct DataMessages: Identifiable, Codable {
+    @DocumentID var id: String?
     var user: String
     var message: String
     var idUser: String
-    var dateMessage: Date
+// MARK: ПЕРЕДЕЛАЙ НА dateMessage!!
+    @ServerTimestamp var dateMsg: Timestamp?
     var isRead: Bool = false
 }
 
-struct DataChat: Identifiable {
-    var id: String
+struct DataChat: Identifiable, Codable {
+    @DocumentID var id: String?
     var nameChat: String
     var lastMessage: String
-    var lastMessageDate: Date
+    @ServerTimestamp var lastMessageDate: Timestamp?
     var lastMessageIdUser: String
 }
 

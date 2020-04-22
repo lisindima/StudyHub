@@ -117,7 +117,7 @@ struct ListItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(dataChat.lastMessageDate.calenderTimeSinceNow())")
+                Text("\(dataChat.lastMessageDate!.dateValue().calenderTimeSinceNow())")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")

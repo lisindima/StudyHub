@@ -25,12 +25,12 @@ struct MessageList: View {
             if chatStore.dataMessages.isEmpty {
                 ActivityIndicator(styleSpinner: .large)
                     .onAppear {
-                        self.chatStore.loadMessageList(id: self.dataChat.id)
+                        self.chatStore.loadMessageList(id: self.dataChat.id!)
                 }
             } else {
                 ScrollView {
                     ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
-                        MessageView(message: item.message, dateMessage: item.dateMessage, idUser: item.idUser, isRead: item.isRead)
+                        MessageView(message: item.message, dateMessage: item.dateMsg!.dateValue(), idUser: item.idUser, isRead: item.isRead)
                             .padding(.top, 6)
                             .scaleEffect(x: -1.0, y: 1.0)
                             .rotationEffect(.degrees(180))

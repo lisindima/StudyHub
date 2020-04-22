@@ -22,17 +22,26 @@ class NoteStore: ObservableObject {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { querySnapshot, error in
-            if error != nil {
-                self.statusNote = .emptyNote
-                print((error?.localizedDescription)!)
-                return
-            } else if querySnapshot!.isEmpty {
-                self.statusNote = .emptyNote
-            } else if let querySnapshot = querySnapshot {
-                self.dataNote = querySnapshot.documents.compactMap { document -> DataNote? in
-                    try? document.data(as: DataNote.self)
+            if !querySnapshot!.isEmpty {
+                let result = Result {
+                    try querySnapshot?.documents.compactMap {
+                        try $0.data(as: DataNote.self)
+                    }
                 }
-                self.statusNote = .showNote
+                switch result {
+                case .success(let dataNote):
+                    if let dataNote = dataNote {
+                        self.dataNote = dataNote
+                        self.statusNote = .showNote
+                    } else {
+                       self.statusNote = .emptyNote
+                    }
+                case .failure(let error):
+                    self.statusNote = .emptyNote
+                    print("Error decoding DataNote: \(error)")
+                }
+            } else {
+                self.statusNote = .emptyNote
             }
         }
     }
