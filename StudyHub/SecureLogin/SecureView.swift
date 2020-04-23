@@ -21,14 +21,14 @@ struct SecureView: View {
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func checkAccess() {
-        if userInputCode == sessionStore.pinCodeAccess && userInputCode.count == 4 {
+        if userInputCode == sessionStore.userData.pinCodeAccess && userInputCode.count == 4 {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 self.userInputCode = ""
                 self.access = true
             }
-        } else if userInputCode != sessionStore.pinCodeAccess && userInputCode.count == 4 {
+        } else if userInputCode != sessionStore.userData.pinCodeAccess && userInputCode.count == 4 {
             self.changeColor = true
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
@@ -69,14 +69,14 @@ struct SecureView: View {
     
     var body: some View {
         VStack(alignment: .center) {
-            KFImage(URL(string: sessionStore.urlImageProfile)!)
+            KFImage(URL(string: sessionStore.userData.urlImageProfile))
                 .placeholder { ActivityIndicator(styleSpinner: .medium) }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
                 .clipped()
                 .frame(width: 100, height: 100)
-            Text("Привет, \(sessionStore.firstname ?? "студент")!")
+            Text("Привет, \(sessionStore.userData.firstname)!")
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .padding(.top)
@@ -86,7 +86,7 @@ struct SecureView: View {
                 Image(systemName: userInputCode.count >= 2 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputCode.count >= 3 ? "largecircle.fill.circle" : "circle")
                 Image(systemName: userInputCode.count == 4 ? "largecircle.fill.circle" : "circle")
-            }.foregroundColor(changeColor ? .red : Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+            }.foregroundColor(changeColor ? .red : Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
             Spacer()
             VStack {
                 HStack {
@@ -116,34 +116,34 @@ struct SecureView: View {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if !sessionStore.biometricAccess {
+                    } else if !sessionStore.userData.biometricAccess {
                         Circle()
                             .foregroundColor(.clear)
                             .frame(width: 70, height: 70)
-                    } else if currentBiometricType == .touchID && sessionStore.biometricAccess {
+                    } else if currentBiometricType == .touchID && sessionStore.userData.biometricAccess {
                         Button(action: {
                             self.biometricAccess()
                         }) {
                             Image("touchid30")
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
+                                        .stroke(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue), lineWidth: 2)
                             )
                         }
-                    } else if currentBiometricType == .faceID && sessionStore.biometricAccess {
+                    } else if currentBiometricType == .faceID && sessionStore.userData.biometricAccess {
                         Button(action: {
                             self.biometricAccess()
                         }) {
                             Image(systemName: "faceid")
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 .font(.system(size: 25))
                                 .frame(width: 70, height: 70)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 100)
-                                        .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
+                                        .stroke(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue), lineWidth: 2)
                             )
                         }
                     }
@@ -154,12 +154,12 @@ struct SecureView: View {
                         self.userInputCode.removeLast()
                     }) {
                         Image(systemName: "delete.left")
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             .font(.system(size: 25))
                             .frame(width: 70, height: 70)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 2)
+                                    .stroke(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue), lineWidth: 2)
                         )
                     }.disabled(userInputCode.count == 0)
                 }
@@ -173,7 +173,7 @@ struct SecureView: View {
             }.padding(.top)
         }
         .padding()
-        .onAppear(perform: sessionStore.biometricAccess ? biometricAccess : noSetBiometricAccess)
+        .onAppear(perform: sessionStore.userData.biometricAccess ? biometricAccess : noSetBiometricAccess)
         .onReceive(self.userInputCode.publisher.first()) { _ in
             self.checkAccess()
         }

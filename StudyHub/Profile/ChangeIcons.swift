@@ -76,7 +76,7 @@ struct IconItem: View {
                     .frame(width: 80, height: 80)
                     .overlay(
                         RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue), lineWidth: 3)
+                            .stroke(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue), lineWidth: 3)
                             .opacity(iconStore.currentIconName == iconModel.nameIcon ? 1.0 : 0.0)
                             .frame(width: 90, height: 90)
                 )

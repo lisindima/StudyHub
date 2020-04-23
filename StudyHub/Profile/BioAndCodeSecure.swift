@@ -23,8 +23,8 @@ struct BioAndCodeSecure: View {
     private let currentBiometricType = BiometricTypeStore.shared.biometricType
     
     private func saveSetPinSetting() {
-        sessionStore.boolCodeAccess = setBoolCodeAccess
-        sessionStore.pinCodeAccess = setSecureCodeAccess
+        sessionStore.userData.boolCodeAccess = setBoolCodeAccess
+        sessionStore.userData.pinCodeAccess = setSecureCodeAccess
         self.showAlert = true
     }
     
@@ -57,11 +57,11 @@ struct BioAndCodeSecure: View {
                     if currentBiometricType == .none {
                         Text("Функция не доступна")
                     } else if currentBiometricType == .faceID {
-                        Toggle(isOn: $sessionStore.biometricAccess) {
+                        Toggle(isOn: $sessionStore.userData.biometricAccess) {
                             Text("Вход с помощью FaceID")
                         }
                     } else if currentBiometricType == .touchID {
-                        Toggle(isOn: $sessionStore.biometricAccess) {
+                        Toggle(isOn: $sessionStore.userData.biometricAccess) {
                             Text("Вход с помощью FaceID")
                         }
                     }

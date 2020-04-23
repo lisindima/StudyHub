@@ -74,7 +74,7 @@ class NoteStore: ObservableObject {
 struct DataNote: Identifiable, Codable {
     @DocumentID var id: String?
     var note: String
-    @ServerTimestamp var createdTime: Timestamp?
+    var createdTime: Date
 }
 
 enum StatusNote {

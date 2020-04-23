@@ -46,14 +46,14 @@ struct ProfileFriends: View {
                         Button(action: sendRequestFriend) {
                             HStack {
                                 Text("В друзья")
-                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 Image(systemName: "person.crop.circle.badge.plus")
                                     .imageScale(.large)
-                                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             }
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             .opacity(0.2))
                         }
                     }

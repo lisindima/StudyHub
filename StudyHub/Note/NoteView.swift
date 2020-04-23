@@ -50,7 +50,7 @@ struct NewNote: View {
                 })
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+        .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
     }
 }
 

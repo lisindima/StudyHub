@@ -25,25 +25,25 @@ struct SettingAccount: View {
                 HStack {
                     Image(systemName: "person.crop.circle")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                    TextField("Фамилия", text: $sessionStore.lastname)
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                    TextField("Фамилия", text: $sessionStore.userData.lastname)
                 }
                 HStack {
                     Image(systemName: "person.crop.circle")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                    TextField("Имя", text: $sessionStore.firstname)
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                    TextField("Имя", text: $sessionStore.userData.firstname)
                 }
-                DatePicker(selection: $sessionStore.dateBirthDay, displayedComponents: [.date], label: {
+                DatePicker(selection: $sessionStore.userData.dateBirthDay, displayedComponents: [.date], label: {
                     Image(systemName: "calendar")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                     Text("День рождения")
                 })
                 HStack {
                     Image(systemName: "photo")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                     Button("Изменить фотографию") {
                         self.showActionSheetImage = true
                     }
@@ -57,13 +57,13 @@ struct SettingAccount: View {
                                 self.selectedSourceType = .photoLibrary
                                 self.isShowingModalViewImage = true
                             }, .destructive(Text("Удалить фотографию")) {
-                                self.sessionStore.urlImageProfile = self.deletedUrlImageProfile
+                                self.sessionStore.userData.urlImageProfile = self.deletedUrlImageProfile
                             }, .cancel()
                         ])
                     }
                     .sheet(isPresented: $isShowingModalViewImage) {
                         ImagePicker(selectedSourceType: self.$selectedSourceType)
-                            .accentColor(Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue))
+                            .accentColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
                             .edgesIgnoringSafeArea(.bottom)
                     }
                 }
@@ -72,7 +72,7 @@ struct SettingAccount: View {
                 Picker(selection: $pickerStore.choiseFaculty, label: HStack {
                     Image(systemName: "list.bullet.below.rectangle")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                     Text("Факультет")
                 }) {
                     ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
@@ -82,7 +82,7 @@ struct SettingAccount: View {
                 Picker(selection: $pickerStore.choiseGroup, label: HStack {
                     Image(systemName: "list.bullet.below.rectangle")
                         .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                     Text("Группа")
                 }) {
                     ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
@@ -96,7 +96,7 @@ struct SettingAccount: View {
                         Text("")
                             .font(.title)
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Вход через Apple")
                         Spacer()
                         Text("Выкл")
@@ -107,7 +107,7 @@ struct SettingAccount: View {
                     HStack {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Вход через почту и пароль")
                         Spacer()
                         Text("Вкл")
@@ -120,13 +120,13 @@ struct SettingAccount: View {
                     NavigationLink(destination: ChangeEmail()) {
                         Image(systemName: "envelope")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Изменить эл.почту")
                     }
                     NavigationLink(destination: ChangePassword()) {
                         Image(systemName: "lock")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Изменить пароль")
                     }
                 }

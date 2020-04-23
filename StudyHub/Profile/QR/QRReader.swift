@@ -75,7 +75,7 @@ struct QRReader: View {
                         Circle()
                             .foregroundColor(.white)
                             .frame(width: 60, height: 60)
-                        KFImage(URL(string: sessionStore.urlImageProfile))
+                        KFImage(URL(string: sessionStore.userData.urlImageProfile))
                             .placeholder { ActivityIndicator(styleSpinner: .medium) }
                             .resizable()
                             .clipShape(Circle())

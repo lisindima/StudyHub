@@ -38,7 +38,7 @@ struct CardList: View {
                                 .fontWeight(.heavy)
                         }.padding(.leading, 15)
                         Spacer()
-                        KFImage(URL(string: sessionStore.urlImageProfile)!)
+                        KFImage(URL(string: sessionStore.userData.urlImageProfile))
                             .placeholder { ActivityIndicator(styleSpinner: .medium) }
                             .resizable()
                             .scaledToFill()
@@ -72,7 +72,7 @@ struct CardList: View {
                                                 .foregroundColor(.secondary)
                                                 .hoverEffect()
                                             Capsule()
-                                                .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.rValue, green: self.sessionStore.gValue, blue: self.sessionStore.bValue) : Color.clear)
+                                                .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue) : Color.clear)
                                                 .frame(height: 6)
                                         }.frame(width: 110)
                                     }

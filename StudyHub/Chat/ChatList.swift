@@ -85,7 +85,7 @@ struct ListItem: View {
     var body: some View {
         HStack {
             ZStack {
-                KFImage(URL(string: sessionStore.urlImageProfile))
+                KFImage(URL(string: sessionStore.userData.urlImageProfile))
                     .onSuccess { _ in
                         self.showIndicator = true
                     }
@@ -117,7 +117,7 @@ struct ListItem: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Text("\(dataChat.lastMessageDate!.dateValue().calenderTimeSinceNow())")
+                Text("\(dataChat.lastMessageDate.calenderTimeSinceNow())")
                     .font(.system(size: 12))
                     .foregroundColor(.secondary)
                 Image(systemName: "\(numberUnreadMessages).circle.fill")

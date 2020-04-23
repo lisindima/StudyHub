@@ -49,7 +49,7 @@ struct Tabbed: View {
                 }.tag(4)
         }
         .banner(isPresented: $sessionStore.showBanner)
-        .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+        .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .onAppear(perform: notificationStore.updateFcmToken)
     }
 }

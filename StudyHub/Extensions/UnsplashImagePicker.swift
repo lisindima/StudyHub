@@ -39,8 +39,8 @@ struct UnsplashImagePicker: UIViewControllerRepresentable {
         func unsplashPhotoPicker(_ photoPicker: UnsplashPhotoPicker, didSelectPhotos photos: [UnsplashPhoto]) {
             let unsplashImage = photos.first
             let urlsToImage = unsplashImage!.urls[.regular]
-            parent.sessionStore.setImageForBackroundProfile = urlsToImage!.absoluteString
-            parent.sessionStore.choiseTypeBackroundProfile = true
+            parent.sessionStore.userData.setImageForBackroundProfile = urlsToImage!.absoluteString
+            parent.sessionStore.userData.choiseTypeBackroundProfile = true
         }
         
         func unsplashPhotoPickerDidCancel(_ photoPicker: UnsplashPhotoPicker) {

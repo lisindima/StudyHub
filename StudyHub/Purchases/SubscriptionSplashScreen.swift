@@ -19,16 +19,16 @@ struct SubscriptionSplashScreen: View {
                 SubscriptionTitleView()
                     .padding(.bottom)
                     .padding(.top, 50)
-                    .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 SubscriptionContainerView()
                     .padding(.bottom, 50)
-                    .accentColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
             }
             Spacer()
             if !purchasesStore.purchasesInfo!.activeSubscriptions.isEmpty {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         .frame(maxWidth: .infinity, maxHeight: 72)
                     Text("Подписка оформлена!")
                         .foregroundColor(.white)
@@ -45,7 +45,7 @@ struct SubscriptionSplashScreen: View {
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 .opacity(0.2)
                                 .frame(maxWidth: .infinity, maxHeight: 72)
                             if purchasesStore.loadingMonthlyButton {
@@ -55,10 +55,10 @@ struct SubscriptionSplashScreen: View {
                                     Text("Ежемесячно")
                                         .fontWeight(.bold)
                                         .font(.system(size: 16))
-                                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                         .fixedSize(horizontal: false, vertical: true)
                                     Text(purchasesStore.monthlyPrice)
-                                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 }
                             }
                         }
@@ -71,7 +71,7 @@ struct SubscriptionSplashScreen: View {
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                                .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 .frame(maxWidth: .infinity, maxHeight: 72)
                             if purchasesStore.loadingAnnualButton {
                                 ActivityIndicator(styleSpinner: .medium)
@@ -98,27 +98,27 @@ struct SubscriptionSplashScreen: View {
                 Button(action: purchasesStore.restoreSubscription) {
                     Text("Восстановить платеж")
                         .font(.footnote)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 }
                 Text("|")
                     .font(.footnote)
-                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 Button(action: {
                     UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
                 }) {
                     Text("Политика")
                         .font(.footnote)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 }
                 Text("|")
                     .font(.footnote)
-                    .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 Button(action: {
                     UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
                 }) {
                     Text("Правила")
                         .font(.footnote)
-                        .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 }
             }.padding(.vertical)
         }.onAppear(perform: purchasesStore.fetchProduct)

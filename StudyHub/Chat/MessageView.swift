@@ -66,7 +66,7 @@ struct MessageView: View {
                 .padding(.leading, 30)
             } else {
                 HStack {
-                    KFImage(URL(string: sessionStore.urlImageProfile))
+                    KFImage(URL(string: sessionStore.userData.urlImageProfile))
                         .placeholder { ActivityIndicator(styleSpinner: .medium) }
                         .resizable()
                         .aspectRatio(contentMode: .fill)

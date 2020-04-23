@@ -16,11 +16,11 @@ struct LoadingLogic: View {
     
     var body: some View {
         Group {
-            if sessionStore.lastname != nil && !sessionStore.boolCodeAccess {
+            if sessionStore.userData != nil && !sessionStore.userData.boolCodeAccess {
                 Tabbed()
-            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess && access {
+            } else if sessionStore.userData != nil && sessionStore.userData.boolCodeAccess && access {
                 Tabbed()
-            } else if sessionStore.lastname != nil && sessionStore.boolCodeAccess && !access {
+            } else if sessionStore.userData != nil && sessionStore.userData.boolCodeAccess && !access {
                 SecureView(access: $access)
             } else {
                 ActivityIndicator(styleSpinner: .large)

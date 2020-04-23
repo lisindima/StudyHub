@@ -16,7 +16,7 @@ struct ProfileImage: View {
     
     var body: some View {
         ZStack {
-            KFImage(URL(string: sessionStore.urlImageProfile))
+            KFImage(URL(string: sessionStore.userData.urlImageProfile))
                 .onSuccess { _ in
                     self.showAdminCheck = true
                 }
@@ -26,7 +26,7 @@ struct ProfileImage: View {
                 .clipShape(Circle())
                 .clipped()
                 .frame(width: 210, height: 210)
-            if sessionStore.adminSetting && showAdminCheck {
+            if sessionStore.userData.adminSetting && showAdminCheck {
                 ZStack {
                     Circle()
                         .frame(width: 50, height: 50)

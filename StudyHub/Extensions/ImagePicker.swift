@@ -49,10 +49,10 @@ struct ImagePicker: UIViewControllerRepresentable {
                     guard let downloadURL = url else {
                         return
                     }
-                    self.parent.sessionStore.urlImageProfile = downloadURL.absoluteString
+                    self.parent.sessionStore.userData.urlImageProfile = downloadURL.absoluteString
                     let docRef = db.collection("profile").document(currentUser.uid)
                     docRef.updateData([
-                        "urlImageProfile": self.parent.sessionStore.urlImageProfile as String
+                        "urlImageProfile": self.parent.sessionStore.userData.urlImageProfile as String
                     ]) { error in
                         if let error = error {
                             print("Error updating document: \(error)")

@@ -50,15 +50,15 @@ struct NotificationSetting: View {
                     Toggle(isOn: $notificationLesson.animation()) {
                         Image(systemName: "person.2")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Перед парой")
                     }
                     if notificationLesson {
-                        Stepper(value: $sessionStore.notifyMinute, in: 5...30) {
+                        Stepper(value: $sessionStore.userData.notifyMinute, in: 5...30) {
                             Image(systemName: "timer")
                                 .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
-                            Text("\(sessionStore.notifyMinute) мин")
+                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                            Text("\(sessionStore.userData.notifyMinute) мин")
                         }
                     }
                 }
@@ -68,7 +68,7 @@ struct NotificationSetting: View {
                     HStack {
                         Image(systemName: "bell")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Выключить уведомления") {
                             self.openSettings()
                         }.foregroundColor(.primary)
@@ -78,7 +78,7 @@ struct NotificationSetting: View {
                     HStack {
                         Image(systemName: "bell")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Включить уведомления") {
                             self.notificationStore.requestPermission()
                         }.foregroundColor(.primary)
@@ -88,7 +88,7 @@ struct NotificationSetting: View {
                     HStack {
                         Image(systemName: "bell")
                             .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.rValue, green: sessionStore.gValue, blue: sessionStore.bValue))
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Включить уведомления") {
                             self.openSettings()
                         }.foregroundColor(.primary)

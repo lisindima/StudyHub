@@ -14,32 +14,12 @@ import FirebaseFirestoreSwift
 
 class SessionStore: ObservableObject {
     
-    @Published var userData: UserData!
-    
     @Published var user: User?
-    @Published var lastname: String!
-    @Published var firstname: String!
-    @Published var dateBirthDay: Date!
-    @Published var urlImageProfile: String!
-    @Published var notifyMinute: Int!
-    @Published var rValue: Double!
-    @Published var gValue: Double!
-    @Published var bValue: Double!
-    @Published var adminSetting: Bool!
-    @Published var pinCodeAccess: String!
-    @Published var boolCodeAccess: Bool!
-    @Published var biometricAccess: Bool!
-    @Published var choiseTypeBackroundProfile: Bool!
-    @Published var setImageForBackroundProfile: String!
-    @Published var percentComplete: Double = 0.0
-    @Published var userTypeAuth: ActiveAuthType = .email
+    @Published var userData: UserData!
     @Published var showBanner: Bool = false
     @Published var onlineUser: Bool = false
-    @Published var darkThemeOverride: Bool = false {
-        didSet {
-            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
-        }
-    }
+    @Published var percentComplete: Double = 0.0
+    @Published var userTypeAuth: ActiveAuthType = .email
     
     static let shared = SessionStore()
     var handle: AuthStateDidChangeListenerHandle?
@@ -109,8 +89,8 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    
-    func testFirestore() {
+    // MARK: Пересмотреть flatMap
+    func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
@@ -132,57 +112,8 @@ class SessionStore: ObservableObject {
         }
     }
     
-    func getDataFromDatabaseListen() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
-            if let document = documentSnapshot {
-                self.lastname = document.get("lastname") as? String
-                self.firstname = document.get("firstname") as? String
-                if let dateTimestamp = document.get("dateBirthDay") as? Timestamp {
-                    self.dateBirthDay = dateTimestamp.dateValue()
-                }
-                self.urlImageProfile = document.get("urlImageProfile") as? String
-                self.notifyMinute = document.get("notifyMinute") as? Int
-                self.rValue = document.get("rValue") as? Double
-                self.gValue = document.get("gValue") as? Double
-                self.bValue = document.get("bValue") as? Double
-                self.adminSetting = document.get("adminSetting") as? Bool
-                self.darkThemeOverride = document.get("darkThemeOverride") as! Bool
-                self.pinCodeAccess = document.get("pinCodeAccess") as? String
-                self.boolCodeAccess = document.get("boolCodeAccess") as? Bool
-                self.biometricAccess = document.get("biometricAccess") as? Bool
-                self.choiseTypeBackroundProfile = document.get("choiseTypeBackroundProfile") as? Bool
-                self.setImageForBackroundProfile = document.get("setImageForBackroundProfile") as? String
-            } else if error != nil {
-                print((error?.localizedDescription)!)
-            }
-        }
-    }
-    
     func updateDataFromDatabase() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        let docRef = db.collection("profile").document(currentUser.uid)
-        docRef.updateData([
-            "lastname": lastname!,
-            "firstname": firstname!,
-            "dateBirthDay": dateBirthDay!,
-            "notifyMinute": notifyMinute!,
-            "rValue": rValue!,
-            "gValue": gValue!,
-            "bValue": bValue!,
-            "darkThemeOverride": darkThemeOverride,
-            "pinCodeAccess": pinCodeAccess!,
-            "boolCodeAccess": boolCodeAccess!,
-            "biometricAccess": biometricAccess!,
-            "setImageForBackroundProfile": setImageForBackroundProfile!,
-            "choiseTypeBackroundProfile": choiseTypeBackroundProfile!
-        ]) { err in
-            if let err = err {
-                print("Ошибка обновления профиля: \(err)")
-            }
-        }
+        // MARK: Доделать функцию
     }
     
     func unbind() {
@@ -220,9 +151,7 @@ class SessionStore: ObservableObject {
     }
     
     func sendEmailVerification() {
-        Auth.auth().currentUser?.sendEmailVerification { error in
-            
-        }
+        Auth.auth().currentUser?.sendEmailVerification { error in }
     }
 }
 
@@ -230,7 +159,7 @@ struct UserData: Identifiable, Codable {
     @DocumentID var id: String?
     var lastname: String
     var firstname: String
-    @ServerTimestamp var dateBirthDay: Timestamp?
+    var dateBirthDay: Date
     var urlImageProfile: String
     var notifyMinute: Int
     var rValue: Double
@@ -242,7 +171,11 @@ struct UserData: Identifiable, Codable {
     var biometricAccess: Bool
     var choiseTypeBackroundProfile: Bool
     var setImageForBackroundProfile: String
-    var darkThemeOverride: Bool
+    var darkThemeOverride: Bool = false {
+        didSet {
+            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
+        }
+    }
 }
 
 enum ActiveAuthType {

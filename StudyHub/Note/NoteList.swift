@@ -35,7 +35,7 @@ struct NoteList: View {
                         NavigationLink(destination: NoteDetails(dataNote: item)) {
                             VStack {
                                 Text(item.note)
-                                Text("\(item.createdTime!.dateValue())")
+                                Text("\(item.createdTime)")
                                     .font(.footnote)
                             }
                         }

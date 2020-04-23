@@ -30,7 +30,7 @@ struct MessageList: View {
             } else {
                 ScrollView {
                     ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
-                        MessageView(message: item.message, dateMessage: item.dateMsg!.dateValue(), idUser: item.idUser, isRead: item.isRead)
+                        MessageView(message: item.message, dateMessage: item.dateMsg, idUser: item.idUser, isRead: item.isRead)
                             .padding(.top, 6)
                             .scaleEffect(x: -1.0, y: 1.0)
                             .rotationEffect(.degrees(180))

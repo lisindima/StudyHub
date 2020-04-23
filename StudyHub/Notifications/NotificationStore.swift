@@ -65,7 +65,7 @@ class NotificationStore: ObservableObject {
             let content = UNMutableNotificationContent()
             content.title = notification.title
             content.body = notification.body
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60 * sessionStore.notifyMinute), repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(60 * sessionStore.userData.notifyMinute), repeats: false)
             let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) { error in
                 guard error == nil else { return }

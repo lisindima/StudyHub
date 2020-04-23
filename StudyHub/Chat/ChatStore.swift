@@ -80,7 +80,7 @@ class ChatStore: ObservableObject {
             "idUser": idUser,
             "dateMsg": Timestamp(),
             "isRead": false
-        ]) { (err) in
+        ]) { err in
             if err != nil {
                 print((err?.localizedDescription)!)
                 return
@@ -150,7 +150,7 @@ struct DataMessages: Identifiable, Codable {
     var message: String
     var idUser: String
 // MARK: ПЕРЕДЕЛАЙ НА dateMessage!!
-    @ServerTimestamp var dateMsg: Timestamp?
+    var dateMsg: Date
     var isRead: Bool = false
 }
 
@@ -158,7 +158,7 @@ struct DataChat: Identifiable, Codable {
     @DocumentID var id: String?
     var nameChat: String
     var lastMessage: String
-    @ServerTimestamp var lastMessageDate: Timestamp?
+    var lastMessageDate: Date
     var lastMessageIdUser: String
 }
 
