@@ -10,8 +10,11 @@ import SwiftUI
 import Combine
 import Firebase
 import Purchases
+import FirebaseFirestoreSwift
 
 class SessionStore: ObservableObject {
+    
+    @Published var userData: UserData!
     
     @Published var user: User?
     @Published var lastname: String!
@@ -85,7 +88,7 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    
+    // MARK: Пересмотреть
     func updateOnlineUser(onlineUser: Bool) {
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
@@ -97,12 +100,34 @@ class SessionStore: ObservableObject {
                 if let err = err {
                     print("onlineUser не обновлен: \(err)")
                 } else {
-                    if onlineUser == true {
+                    if onlineUser {
                         self.onlineUser = true
                     } else {
                         self.onlineUser = false
                     }
                 }
+            }
+        }
+    }
+    
+    func testFirestore() {
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
+            let result = Result {
+                try documentSnapshot.flatMap {
+                    try $0.data(as: UserData.self)
+                }
+            }
+            switch result {
+            case .success(let userData):
+                if let userData = userData {
+                    self.userData = userData
+                } else {
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                print("Error decoding UserData: \(error)")
             }
         }
     }
@@ -199,6 +224,25 @@ class SessionStore: ObservableObject {
             
         }
     }
+}
+
+struct UserData: Identifiable, Codable {
+    @DocumentID var id: String?
+    var lastname: String
+    var firstname: String
+    @ServerTimestamp var dateBirthDay: Timestamp?
+    var urlImageProfile: String
+    var notifyMinute: Int
+    var rValue: Double
+    var gValue: Double
+    var bValue: Double
+    var adminSetting: Bool
+    var pinCodeAccess: String
+    var boolCodeAccess: Bool
+    var biometricAccess: Bool
+    var choiseTypeBackroundProfile: Bool
+    var setImageForBackroundProfile: String
+    var darkThemeOverride: Bool
 }
 
 enum ActiveAuthType {
