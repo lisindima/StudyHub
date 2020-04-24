@@ -69,7 +69,7 @@ struct SettingAccount: View {
                 }
             }
             Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                Picker(selection: $pickerStore.choiseFaculty, label: HStack {
+                Picker(selection: $sessionStore.userData.choiseFaculty, label: HStack {
                     Image(systemName: "list.bullet.below.rectangle")
                         .frame(width: 24)
                         .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
@@ -79,7 +79,7 @@ struct SettingAccount: View {
                         Text(self.pickerStore.facultyModel[$0].name)
                     }
                 }.lineLimit(1)
-                Picker(selection: $pickerStore.choiseGroup, label: HStack {
+                Picker(selection: $sessionStore.userData.choiseGroup, label: HStack {
                     Image(systemName: "list.bullet.below.rectangle")
                         .frame(width: 24)
                         .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))

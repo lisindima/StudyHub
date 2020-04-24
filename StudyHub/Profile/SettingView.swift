@@ -51,7 +51,6 @@ struct SettingView: View {
         }
         if pickerStore.facultyModel.isEmpty {
             pickerStore.loadPickerFaculty()
-            pickerStore.getDataFromDatabaseListenPicker()
         }
     }
     

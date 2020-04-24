@@ -6,23 +6,17 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
+import SwiftUI
 import Combine
 import Firebase
 import Alamofire
 
 class PickerStore: ObservableObject {
     
+    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    
     @Published var facultyModel: [FacultyModelElement] = [FacultyModelElement]()
     @Published var groupModel: [GroupModelElement] = [GroupModelElement]()
-    @Published var choiseGroup: Int = 0
-    
-    var choiseFaculty: Int = 0 {
-        didSet {
-            if !facultyModel.isEmpty {
-                loadPickerGroup()
-            }
-        }
-    }
 
     static let shared = PickerStore()
     let apiFaculty = "https://api.lisindmitriy.me/faculty"
@@ -44,7 +38,7 @@ class PickerStore: ObservableObject {
     }
     
     func loadPickerGroup() {
-        AF.request(apiGroup + facultyModel[choiseFaculty].id)
+        AF.request(apiGroup + facultyModel[sessionStore.userData.choiseFaculty].id)
             .validate()
             .responseDecodable(of: [GroupModelElement].self) { response in
                 switch response.result {
@@ -54,33 +48,6 @@ class PickerStore: ObservableObject {
                 case .failure(let error):
                     print("Список групп не загружен: \(error.errorDescription!)")
                 }
-        }
-    }
-    
-    func getDataFromDatabaseListenPicker() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
-            if let document = documentSnapshot {
-                self.choiseGroup = document.get("choiseGroup") as! Int
-                self.choiseFaculty = document.get("choiseFaculty") as! Int
-            } else if error != nil {
-                print((error?.localizedDescription)!)
-            }
-        }
-    }
-    
-    func updateDataFromDatabasePicker() {
-        let currentUser = Auth.auth().currentUser!
-        let db = Firestore.firestore()
-        let docRef = db.collection("profile").document(currentUser.uid)
-        docRef.updateData([
-            "choiseGroup": choiseGroup,
-            "choiseFaculty": choiseFaculty
-        ]) { err in
-            if let err = err {
-                print("Ошибка обновления пикеров: \(err)")
-            }
         }
     }
 }

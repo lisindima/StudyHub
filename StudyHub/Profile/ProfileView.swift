@@ -100,7 +100,6 @@ struct ProfileView: View {
             .sheet(isPresented: $showSettingModal, onDismiss: {
                 if self.sessionStore.user != nil {
                     self.sessionStore.updateDataFromDatabase()
-                    self.pickerStore.updateDataFromDatabasePicker()
                 }
             }, content: {
                 #if targetEnvironment(macCatalyst)

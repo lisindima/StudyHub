@@ -177,7 +177,15 @@ struct UserData: Identifiable, Codable {
     var biometricAccess: Bool
     var choiseTypeBackroundProfile: Bool
     var setImageForBackroundProfile: String
-    var darkThemeOverride: Bool = false {
+    var choiseGroup: Int
+    var choiseFaculty: Int {
+        didSet {
+            if !PickerStore.shared.facultyModel.isEmpty {
+                PickerStore.shared.loadPickerGroup()
+            }
+        }
+    }
+    var darkThemeOverride: Bool {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
         }
