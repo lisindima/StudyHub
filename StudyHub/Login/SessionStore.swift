@@ -68,7 +68,7 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    // MARK: Пересмотреть
+    
     func updateOnlineUser(onlineUser: Bool) {
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
@@ -113,7 +113,13 @@ class SessionStore: ObservableObject {
     }
     
     func updateDataFromDatabase() {
-        // MARK: Доделать функцию
+        let currentUser = Auth.auth().currentUser!
+        let db = Firestore.firestore()
+        do {
+            try db.collection("profile").document(currentUser.uid).setData(from: userData)
+        } catch let error as NSError {
+            print(error)
+        }
     }
     
     func unbind() {
