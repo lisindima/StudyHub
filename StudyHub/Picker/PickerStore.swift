@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Combine
-import Firebase
 import Alamofire
 
 class PickerStore: ObservableObject {
