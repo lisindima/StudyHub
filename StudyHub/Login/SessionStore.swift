@@ -117,8 +117,8 @@ class SessionStore: ObservableObject {
         let db = Firestore.firestore()
         do {
             try db.collection("profile").document(currentUser.uid).setData(from: userData)
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
@@ -131,8 +131,8 @@ class SessionStore: ObservableObject {
     func signOut() {
         do {
             try Auth.auth().signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
+        } catch {
+            print("Error when trying to sign out: \(error.localizedDescription)")
         }
     }
     
