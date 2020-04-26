@@ -1,6 +1,6 @@
 //
 //  ScheduleListWatch.swift
-//  altgtuWatchApp Extension
+//  StudyHubWatchApp Extension
 //
 //  Created by Дмитрий Лисин on 15.10.2019.
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.

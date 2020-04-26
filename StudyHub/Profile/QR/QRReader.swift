@@ -1,6 +1,6 @@
 //
 //  QRReader.swift
-//  altgtu
+//  StudyHub
 //
 //  Created by Дмитрий Лисин on 10.01.2020.
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.

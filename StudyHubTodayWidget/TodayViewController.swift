@@ -1,6 +1,6 @@
 //
 //  TodayViewController.swift
-//  altgtuTodayWidget
+//  StudyHubTodayWidget
 //
 //  Created by Дмитрий Лисин on 11.12.2019.
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.

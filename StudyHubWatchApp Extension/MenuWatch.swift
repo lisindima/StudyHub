@@ -1,6 +1,6 @@
 //
 //  MenuWatch.swift
-//  altgtuWatchApp Extension
+//  StudyHubWatchApp Extension
 //
 //  Created by Дмитрий Лисин on 16.03.2020.
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.

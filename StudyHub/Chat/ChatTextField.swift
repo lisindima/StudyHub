@@ -1,6 +1,6 @@
 //
 //  ChatTextField.swift
-//  altgtu
+//  StudyHub
 //
 //  Created by Дмитрий Лисин on 13.02.2020.
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
