@@ -25,9 +25,7 @@ class QRStore: ObservableObject {
         let docRef = db.collection("profile").document(code)
         docRef.getDocument { document, error in
             let result = Result {
-                try document.flatMap {
-                    try $0.data(as: ProfileFriendsModel.self)
-                }
+                try document?.data(as: ProfileFriendsModel.self)
             }
             switch result {
             case .success(let profileFriendsModel):

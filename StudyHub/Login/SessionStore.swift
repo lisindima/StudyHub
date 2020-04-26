@@ -89,15 +89,13 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    // MARK: Пересмотреть flatMap
+    
     func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         db.collection("profile").document(currentUser.uid).addSnapshotListener { documentSnapshot, error in
             let result = Result {
-                try documentSnapshot.flatMap {
-                    try $0.data(as: UserData.self)
-                }
+                try documentSnapshot?.data(as: UserData.self)
             }
             switch result {
             case .success(let userData):

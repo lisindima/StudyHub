@@ -24,8 +24,8 @@ class NoteStore: ObservableObject {
         db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { querySnapshot, error in
             if querySnapshot?.count != 0 {
                 let result = Result {
-                    try querySnapshot?.documents.compactMap {
-                        try $0.data(as: DataNote.self)
+                    try querySnapshot?.documents.compactMap { document -> DataNote? in
+                        try document.data(as: DataNote.self)
                     }
                 }
                 switch result {
