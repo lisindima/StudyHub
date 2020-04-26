@@ -48,7 +48,7 @@ class ChatStore: ObservableObject {
         statusChat = .loading
         let db = Firestore.firestore()
         db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
-            if !querySnapshot!.isEmpty {
+            if querySnapshot?.count != 0 {
                 let result = Result {
                     try querySnapshot?.documents.compactMap {
                         try $0.data(as: DataChat.self)
