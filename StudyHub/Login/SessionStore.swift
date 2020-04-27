@@ -26,7 +26,6 @@ class SessionStore: ObservableObject {
     let currentUser = Auth.auth().currentUser
     
     init() {
-        user = currentUser
         listenSession()
     }
     
