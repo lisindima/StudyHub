@@ -27,8 +27,8 @@ class ChatStore: ObservableObject {
         let db = Firestore.firestore()
         db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
             let result = Result {
-                try querySnapshot?.documents.compactMap {
-                    try $0.data(as: DataMessages.self)
+                try querySnapshot?.documents.compactMap { document -> DataMessages? in
+                    try document.data(as: DataMessages.self)
                 }
             }
             switch result {
@@ -50,8 +50,8 @@ class ChatStore: ObservableObject {
         db.collection("chatRoom").addSnapshotListener { querySnapshot, err in
             if querySnapshot?.count != 0 {
                 let result = Result {
-                    try querySnapshot?.documents.compactMap {
-                        try $0.data(as: DataChat.self)
+                    try querySnapshot?.documents.compactMap { document -> DataChat? in
+                        try document.data(as: DataChat.self)
                     }
                 }
                 switch result {
