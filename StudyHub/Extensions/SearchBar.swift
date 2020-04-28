@@ -47,7 +47,7 @@ struct SearchBar: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.placeholder = "Поиск"
-        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        searchBar.searchBarStyle = .minimal
         searchBar.delegate = context.coordinator
         return searchBar
     }

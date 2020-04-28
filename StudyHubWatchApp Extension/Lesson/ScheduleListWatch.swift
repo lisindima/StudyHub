@@ -22,7 +22,7 @@ struct ScheduleListWatch: View {
             } else {
                 List {
                     ForEach(self.scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
-                        Schedule(scheduleModel: schedule)
+                        ScheduleItem(scheduleModel: schedule)
                     }
                 }
                 .listStyle(CarouselListStyle())

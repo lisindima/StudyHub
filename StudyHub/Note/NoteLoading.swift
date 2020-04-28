@@ -13,7 +13,7 @@ struct NoteLoading: View {
         NavigationView {
             ActivityIndicator(styleSpinner: .large)
                 .navigationBarTitle("Заметки")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

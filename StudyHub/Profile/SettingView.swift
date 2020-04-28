@@ -90,14 +90,14 @@ struct SettingView: View {
                                 .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             Button(action: openSubscription) {
                                 VStack(alignment: .leading) {
-                                    Text("Отменить подписку")
+                                    Text("Управление подпиской")
                                         .foregroundColor(.primary)
                                     if purchasesStore.purchasesSameDay {
-                                        Text("Подписка продлится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateHour)")
+                                        Text("Подписка возобновится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateHour)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     } else {
-                                        Text("Подписка продлится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateDay)")
+                                        Text("Подписка возобновится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateDay)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     }

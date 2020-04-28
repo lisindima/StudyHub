@@ -23,7 +23,7 @@ struct Tabbed: View {
                         .imageScale(.large)
                     Text("Сегодня")
                 }.tag(0)
-            ScheduleList()
+            ScheduleView()
                 .tabItem {
                     Image(systemName: "calendar")
                         .imageScale(.large)

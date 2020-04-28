@@ -1,5 +1,5 @@
 //
-//  Schedule.swift
+//  ScheduleItem.swift
 //  StudyHub
 //
 //  Created by Дмитрий Лисин on 14.09.2019.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Schedule: View {
+struct ScheduleItem: View {
     
     var scheduleModel: ScheduleModel
     

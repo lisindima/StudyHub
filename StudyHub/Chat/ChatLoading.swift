@@ -13,7 +13,7 @@ struct ChatLoading: View {
         NavigationView {
             ActivityIndicator(styleSpinner: .large)
                 .navigationBarTitle("Сообщения")
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
