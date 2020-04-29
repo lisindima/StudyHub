@@ -32,9 +32,7 @@ struct QRReader: View {
                         switch result {
                         case .success(let code):
                             self.qrStore.getUserInfoBeforeScanQRCode(code: code)
-                            self.partialSheetManager.showPartialSheet({
-                                print("Partial sheet dismissed")
-                            }) {
+                            self.partialSheetManager.showPartialSheet {
                                  ProfileFriends()
                                     .padding(.top)
                                     .padding(.bottom, 30)

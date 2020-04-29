@@ -229,9 +229,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Изменить иконку") {
-                            self.partialSheetManager.showPartialSheet({
-                                print("Partial sheet dismissed")
-                            }) {
+                            self.partialSheetManager.showPartialSheet {
                                  ChangeIcons()
                             }
                         }.foregroundColor(.primary)
