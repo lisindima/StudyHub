@@ -9,6 +9,7 @@
 import SwiftUI
 import SPAlert
 import MessageUI
+import PartialSheet
 import KingfisherSwiftUI
 
 struct SettingView: View {
@@ -21,10 +22,10 @@ struct SettingView: View {
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var mailSubject: String = ""
     
-    @Binding var showPartialSheet: Bool
-    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
@@ -228,7 +229,11 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Изменить иконку") {
-                            self.showPartialSheet = true
+                            self.partialSheetManager.showPartialSheet({
+                                print("Partial sheet dismissed")
+                            }) {
+                                 ChangeIcons()
+                            }
                         }.foregroundColor(.primary)
                     }
                     #endif
@@ -414,6 +419,7 @@ struct SettingView: View {
                     .bold()
             })
         }
+        .addPartialSheet()
         .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import Firebase
+import PartialSheet
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
     
@@ -17,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
     let chatStore = ChatStore.shared
     let noteStore = NoteStore.shared
     let notificationStore = NotificationStore.shared
+    let sheetManager: PartialSheetManager = PartialSheetManager()
     
     private(set) static var shared: SceneDelegate?
     
@@ -29,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
         let rootView = RootView()
             .environmentObject(chatStore)
             .environmentObject(noteStore)
+            .environmentObject(sheetManager)
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

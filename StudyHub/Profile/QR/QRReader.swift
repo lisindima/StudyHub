@@ -8,10 +8,8 @@
 
 import SwiftUI
 import Firebase
-#if !targetEnvironment(macCatalyst)
 import CodeScanner
 import PartialSheet
-#endif
 import KingfisherSwiftUI
 import CoreImage.CIFilterBuiltins
 
@@ -20,21 +18,28 @@ struct QRReader: View {
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject private var qrStore: QRStore = QRStore.shared
     
+    @EnvironmentObject var partialSheetManager: PartialSheetManager
+    
     @State private var choiseView: Int = 1
-    @State private var showPartialSheetProfile: Bool = false
     
     let currentUser = Auth.auth().currentUser
     
     var body: some View {
         ZStack {
             if choiseView == 0 {
-                #if !targetEnvironment(macCatalyst)
                 ZStack {
                     CodeScannerView(codeTypes: [.qr], simulatedData: "dLlZ2MYmIZSICzP4lPp1a96rDmy1") { result in
                         switch result {
                         case .success(let code):
                             self.qrStore.getUserInfoBeforeScanQRCode(code: code)
-                            self.showPartialSheetProfile = true
+                            self.partialSheetManager.showPartialSheet({
+                                print("Partial sheet dismissed")
+                            }) {
+                                 ProfileFriends()
+                                    .padding(.top)
+                                    .padding(.bottom, 30)
+                                    .padding(.horizontal)
+                            }
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
@@ -54,13 +59,7 @@ struct QRReader: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 30)
                     }
-                }.partialSheet(presented: $showPartialSheetProfile, backgroundColor: Color.secondarySystemBackground) {
-                    ProfileFriends(showPartialSheetProfile: self.$showPartialSheetProfile)
-                        .padding(.top)
-                        .padding(.bottom, 30)
-                        .padding(.horizontal)
                 }
-                #endif
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
                     Spacer()
@@ -89,7 +88,6 @@ struct QRReader: View {
                         .padding(.bottom, 30)
                 }
             }
-            #if !targetEnvironment(macCatalyst)
             VStack {
                 Picker("", selection: $choiseView) {
                     Text("QR-сканер")
@@ -102,7 +100,6 @@ struct QRReader: View {
                 .padding()
                 Spacer()
             }
-            #endif
-        }
+        }.addPartialSheet()
     }
 }

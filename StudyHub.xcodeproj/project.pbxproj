@@ -1233,7 +1233,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
@@ -1261,7 +1261,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1284,7 +1284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1307,7 +1307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1332,7 +1332,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1359,7 +1359,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1386,7 +1386,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1407,7 +1407,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 520;
+				CURRENT_PROJECT_VERSION = 530;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1486,7 +1486,7 @@
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {

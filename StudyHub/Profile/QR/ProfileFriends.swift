@@ -15,10 +15,7 @@ struct ProfileFriends: View {
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject private var qrStore: QRStore = QRStore.shared
     
-    @Binding var showPartialSheetProfile: Bool
-    
     func sendRequestFriend() {
-        self.showPartialSheetProfile = false
         SPAlert.present(title: "Запрос отправлен!", message: "Запрос на добавления в друзья отправлен.", preset: .done)
     }
     

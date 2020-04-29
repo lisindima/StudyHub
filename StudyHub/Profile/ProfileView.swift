@@ -8,9 +8,7 @@
 
 import SwiftUI
 import Firebase
-#if !targetEnvironment(macCatalyst)
 import PartialSheet
-#endif
 import KingfisherSwiftUI
 
 struct ProfileView: View {
@@ -18,13 +16,14 @@ struct ProfileView: View {
     @State private var showSettingModal: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
-    @State private var showPartialSheet: Bool = false
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
+    
+    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     let currentUser = Auth.auth().currentUser
     
@@ -56,7 +55,7 @@ struct ProfileView: View {
                         .offset(y: -120)
                         .padding(.bottom, -130)
                     VStack {
-                        Text((sessionStore.userData.lastname) + " " + (sessionStore.userData.firstname))
+                        Text(sessionStore.userData.lastname + " " + sessionStore.userData.firstname)
                             .fontWeight(.bold)
                             .font(.title)
                         Text(currentUser!.email!)
@@ -89,6 +88,7 @@ struct ProfileView: View {
             }.sheet(isPresented: $showQRReader) {
                 QRReader()
                     .edgesIgnoringSafeArea(.bottom)
+                    .environmentObject(self.partialSheetManager)
                     .environmentObject(self.sessionStore)
             }, trailing: Button(action: {
                 self.showSettingModal = true
@@ -102,17 +102,9 @@ struct ProfileView: View {
                     self.sessionStore.updateDataFromDatabase()
                 }
             }, content: {
-                #if targetEnvironment(macCatalyst)
-                SettingView(showPartialSheet: self.$showPartialSheet)
+                SettingView()
+                    .environmentObject(self.partialSheetManager)
                     .environmentObject(self.sessionStore)
-                #else
-                SettingView(showPartialSheet: self.$showPartialSheet)
-                    .environmentObject(self.sessionStore)
-                    .partialSheet(presented: self.$showPartialSheet, backgroundColor: Color.secondarySystemBackground) {
-                        ChangeIcons()
-                            .environmentObject(self.sessionStore)
-                }
-                #endif
             })
         }.navigationViewStyle(StackNavigationViewStyle())
     }
