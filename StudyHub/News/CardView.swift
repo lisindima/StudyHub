@@ -12,20 +12,23 @@ import KingfisherSwiftUI
 struct CardView: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @State private var showImage: Bool = true
     
     let article: Articles
     let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
     
     var body: some View {
         VStack {
-            KFImage(URL(string: article.urlToImage ?? noImageUrl))
-                .renderingMode(.original)
-                .placeholder { ActivityIndicator(styleSpinner: .medium) }
-                .onFailure { error in
-                    print("CardView Image: \(error)")
+            if showImage {
+                KFImage(URL(string: article.urlToImage ?? noImageUrl))
+                    .renderingMode(.original)
+                    .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                    .onFailure { _ in
+                        self.showImage = false
                 }
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            }
             HStack {
                 VStack(alignment: .leading) {
                     Text(article.source?.name?.uppercased() ?? "Источник отсутствует".uppercased())
