@@ -33,24 +33,10 @@ struct ProfileView: View {
         NavigationView {
             VStack {
                 VStack {
-                    if !sessionStore.userData.choiseTypeBackroundProfile {
-                        Rectangle()
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                            .edgesIgnoringSafeArea(.top)
-                            .frame(height: 130)
-                    } else {
-                        KFImage(URL(string: sessionStore.userData.setImageForBackroundProfile))
-                            .placeholder {
-                                Rectangle()
-                                    .foregroundColor(Color.systemBackground)
-                                    .edgesIgnoringSafeArea(.top)
-                                    .frame(height: 130)
-                        }
-                        .resizable()
+                    Rectangle()
+                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 130)
-                        .aspectRatio(contentMode: .fit)
-                    }
                     ProfileImage()
                         .offset(y: -120)
                         .padding(.bottom, -130)

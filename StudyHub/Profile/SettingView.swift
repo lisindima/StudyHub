@@ -14,8 +14,6 @@ import KingfisherSwiftUI
 
 struct SettingView: View {
     
-    @State private var isShowingModalViewUnsplash: Bool = false
-    @State private var showActionSheetUnsplash: Bool = false
     @State private var showActionSheetMailFeedback: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var subscribeApplication: Bool = false
@@ -235,33 +233,6 @@ struct SettingView: View {
                         }.foregroundColor(.primary)
                     }
                     #endif
-                    HStack {
-                        Image(systemName: "map")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Изменить обложку") {
-                            if self.sessionStore.userData.choiseTypeBackroundProfile {
-                                self.showActionSheetUnsplash = true
-                            } else {
-                                self.isShowingModalViewUnsplash = true
-                            }
-                        }
-                        .foregroundColor(.primary)
-                        .actionSheet(isPresented: $showActionSheetUnsplash) {
-                            ActionSheet(title: Text("Изменение обложки"), message: Text("Здесь вы можете поменять внешний вид обложки в своем профиле."), buttons: [
-                                .default(Text("Выбрать из Unsplash")) {
-                                    self.isShowingModalViewUnsplash = true
-                                }, .destructive(Text("Удалить обложку")) {
-                                    self.sessionStore.userData.choiseTypeBackroundProfile = false
-                                }, .cancel()
-                            ])
-                        }
-                        .sheet(isPresented: $isShowingModalViewUnsplash) {
-                            UnsplashImagePicker()
-                                .accentColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
-                                .edgesIgnoringSafeArea(.bottom)
-                        }
-                    }
                 }
                 Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {
                     NavigationLink(destination: NotificationSetting()) {

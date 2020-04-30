@@ -53,7 +53,6 @@
 		CB3BFAD2239E37DA00894DFA /* SettingAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
-		CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */; };
 		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
 		CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874C023D813C300DEB38F /* ImageCacheStore.swift */; };
 		CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */; };
@@ -249,7 +248,6 @@
 		CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAccount.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
-		CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImagePicker.swift; sourceTree = "<group>"; };
 		CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB4874C023D813C300DEB38F /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
@@ -656,7 +654,6 @@
 				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
 				CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */,
 				CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */,
-				CB4874A323D08DCD00DEB38F /* UnsplashImagePicker.swift */,
 				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
 				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
 				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
@@ -995,7 +992,6 @@
 				CBA7270C23DE78E50094372B /* NoteList.swift in Sources */,
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,
 				CBA255F8242B361C00B20C6A /* PlusButton.swift in Sources */,
-				CB4874A423D08DCD00DEB38F /* UnsplashImagePicker.swift in Sources */,
 				CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */,
 				CB30FB642424809100F5793E /* String+Emoji.swift in Sources */,
 				CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */,

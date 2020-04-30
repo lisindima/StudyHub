@@ -172,8 +172,6 @@ struct UserData: Identifiable, Codable {
     var pinCodeAccess: String
     var boolCodeAccess: Bool
     var biometricAccess: Bool
-    var choiseTypeBackroundProfile: Bool
-    var setImageForBackroundProfile: String
     var choiseGroup: Int
     var choiseFaculty: Int {
         didSet {
