@@ -77,8 +77,6 @@
 	<string>public.app-category.education</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NFCReaderUsageDescription</key>
-	<string>altgtu uses NFC for read your pass.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Камера будет использоваться только для создания фотографии профиля.</string>
 	<key>NSFaceIDUsageDescription</key>
@@ -104,35 +102,6 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeBookmark</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Расписание</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>shortcutItem.lesson</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>Добавить новую</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Заметки</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>shortcutItem.note</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeMessage</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Чат</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>shortcutItem.chat</string>
-		</dict>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -155,10 +124,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
-	<array>
-		<string>A0000006582010</string>
 	</array>
 </dict>
 </plist>
