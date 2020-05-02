@@ -10,5 +10,6 @@ target 'StudyHub' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
+  pod 'FirebaseStorageSwift'
   pod 'FirebaseFirestoreSwift'
 end

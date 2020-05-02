@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseStorageSwift
 
 struct ImagePicker: UIViewControllerRepresentable {
     
@@ -16,8 +17,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = selectedSourceType
         imagePicker.delegate = context.coordinator
+        imagePicker.sourceType = selectedSourceType
         return imagePicker
     }
     
@@ -34,36 +35,36 @@ struct ImagePicker: UIViewControllerRepresentable {
         
         func imagePickerController(_ photoPicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             photoPicker.dismiss(animated: true)
-            let imageProfile = info[.originalImage] as! UIImage
             let currentUser = Auth.auth().currentUser!
             let db = Firestore.firestore()
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            var photoRef = storageRef.child("photoProfile/\(currentUser.uid).jpeg")
-            let storagePath = "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg"
-            photoRef = storage.reference(forURL: storagePath)
-            let data = imageProfile.jpegData(compressionQuality: 1)
+            let imageProfile = info[.originalImage] as! UIImage
+            let imageData = imageProfile.jpegData(compressionQuality: 1)
             parent.sessionStore.showBanner = true
-            let uploadImageTask = photoRef.putData(data!, metadata: nil) { metadata, error in
-                photoRef.downloadURL { url, error in
-                    guard let downloadURL = url else {
-                        return
-                    }
-                    self.parent.sessionStore.userData.urlImageProfile = downloadURL.absoluteString
-                    let docRef = db.collection("profile").document(currentUser.uid)
-                    docRef.updateData([
-                        "urlImageProfile": self.parent.sessionStore.userData.urlImageProfile as String
-                    ]) { error in
-                        if let error = error {
-                            print("Error updating document: \(error)")
-                            self.parent.sessionStore.showBanner = false
-                        } else {
-                            self.parent.sessionStore.showBanner = false
+            let photoRef = Storage.storage().reference(forURL: "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg")
+            let uploadImage = photoRef.putData(imageData!, metadata: nil) { result in
+                switch result {
+                case .success(_):
+                    photoRef.downloadURL { url, error in
+                        guard let downloadURL = url else {
+                            return
+                        }
+                        self.parent.sessionStore.userData.urlImageProfile = downloadURL.absoluteString
+                        let docRef = db.collection("profile").document(currentUser.uid)
+                        docRef.updateData(["urlImageProfile": self.parent.sessionStore.userData.urlImageProfile]) { error in
+                            if let error = error {
+                                print("Error updating document: \(error)")
+                                self.parent.sessionStore.showBanner = false
+                            } else {
+                                self.parent.sessionStore.showBanner = false
+                            }
                         }
                     }
+                case .failure(let error):
+                    print("Error: Image could not upload! \(error)")
+                    self.parent.sessionStore.showBanner = false
                 }
             }
-            uploadImageTask.observe(.progress) { snapshot in
+            uploadImage.observe(.progress) { snapshot in
                 self.parent.sessionStore.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             }
         }
