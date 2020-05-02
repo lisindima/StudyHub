@@ -169,9 +169,6 @@ struct UserData: Identifiable, Codable {
     var gValue: Double
     var bValue: Double
     var adminSetting: Bool
-    var pinCodeAccess: String
-    var boolCodeAccess: Bool
-    var biometricAccess: Bool
     var choiseGroup: Int
     var choiseFaculty: Int {
         didSet {

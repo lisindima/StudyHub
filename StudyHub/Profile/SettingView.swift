@@ -245,23 +245,12 @@ struct SettingView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                Section(header: Text("Безопасность").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также удалить аккаунт.")) {
-                    NavigationLink(destination: BioAndCodeSecure()) {
-                        HStack {
-                            Image(systemName: "faceid")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                            Text("Код-пароль и Face ID")
-                            Spacer()
-                            Text(sessionStore.userData.boolCodeAccess ? "Вкл" : "Выкл")
-                                .foregroundColor(.secondary)
-                        }
-                    }
+                Section(header: Text("Настройки аккаунта").fontWeight(.bold), footer: Text("Здесь вы можете изменить способы авторизации, а также удалить аккаунт.")) {
                     NavigationLink(destination: SettingAccount()) {
                         Image(systemName: "list.dash")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Настройки аккаунта")
+                        Text("Аккаунт")
                     }
                 }
                 Section(header: Text("Кэш изображений").fontWeight(.bold), footer: Text("Если приложение занимает слишком много места, очистка кэша изображений поможет решить эту проблему.")) {

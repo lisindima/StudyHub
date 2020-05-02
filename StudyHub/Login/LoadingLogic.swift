@@ -12,16 +12,10 @@ struct LoadingLogic: View {
     
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     
-    @State private var access: Bool = false
-    
     var body: some View {
         Group {
-            if sessionStore.userData != nil && !sessionStore.userData.boolCodeAccess {
+            if sessionStore.userData != nil {
                 Tabbed()
-            } else if sessionStore.userData != nil && sessionStore.userData.boolCodeAccess && access {
-                Tabbed()
-            } else if sessionStore.userData != nil && sessionStore.userData.boolCodeAccess && !access {
-                SecureView(access: $access)
             } else {
                 ActivityIndicator(styleSpinner: .large)
             }
