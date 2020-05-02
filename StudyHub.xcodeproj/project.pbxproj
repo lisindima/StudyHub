@@ -120,7 +120,6 @@
 		CBE665FA23543A1500C43811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665F923543A1500C43811 /* Preview Assets.xcassets */; };
 		CBE665FF23543A1500C43811 /* StudyHub.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CBE665DB23543A1000C43811 /* StudyHub.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
-		CBFF1700239F861C0030FBA3 /* LoadingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF16FF239F861C0030FBA3 /* LoadingLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,7 +301,6 @@
 		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		CBFF16FF239F861C0030FBA3 /* LoadingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingLogic.swift; sourceTree = "<group>"; };
 		EF27957BE636223C05CF08E0 /* Pods-StudyHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyHub.release.xcconfig"; path = "Target Support Files/Pods-StudyHub/Pods-StudyHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -468,7 +466,6 @@
 				CB0AED56232E5A210047A8A0 /* RootView.swift */,
 				CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */,
 				CB0AED75232E5AC50047A8A0 /* SessionStore.swift */,
-				CBFF16FF239F861C0030FBA3 /* LoadingLogic.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -984,7 +981,6 @@
 				CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */,
 				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
 				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
-				CBFF1700239F861C0030FBA3 /* LoadingLogic.swift in Sources */,
 				CB97AFBC23EAA12B00921F0F /* TextView.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB37694123E2CA3D0015B61E /* Color.swift in Sources */,
