@@ -12,7 +12,7 @@ import KingfisherSwiftUI
 
 struct MessageView: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
     
     let currentUser = Auth.auth().currentUser

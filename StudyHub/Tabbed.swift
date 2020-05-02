@@ -11,7 +11,7 @@ import Firebase
 
 struct Tabbed: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     @State private var selection: Int = 0
     

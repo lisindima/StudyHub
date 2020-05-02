@@ -12,7 +12,7 @@ import FirebaseStorageSwift
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @Binding var selectedSourceType: UIImagePickerController.SourceType
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {

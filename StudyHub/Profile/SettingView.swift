@@ -23,10 +23,10 @@ struct SettingView: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     
+    @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @ObservedObject private var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject private var pickerStore: PickerStore = PickerStore.shared

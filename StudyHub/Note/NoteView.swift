@@ -28,7 +28,7 @@ struct NoteView: View {
 
 struct NewNote: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var noteStore: NoteStore
     @State private var textNote: String = ""
     @Binding var showAddNewNote: Bool

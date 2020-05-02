@@ -13,7 +13,8 @@ struct CardList: View {
     
     @ObservedObject private var newsStore: NewsStore = NewsStore.shared
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    
+    @EnvironmentObject var sessionStore: SessionStore
     
     @State private var showDetailsNews: Bool = false
     @State private var selectedTab: String = "Популярное"

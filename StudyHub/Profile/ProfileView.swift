@@ -16,14 +16,11 @@ struct ProfileView: View {
     @State private var showSettingModal: Bool = false
     @State private var showActionSheetExit: Bool = false
     @State private var showQRReader: Bool = false
-    @State private var showActionSheetImage: Bool = false
-    @State private var isShowingModalViewImage: Bool = false
-    @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
-    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
-    
+    @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var partialSheetManager: PartialSheetManager
+    
+    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
     
     let currentUser = Auth.auth().currentUser
     

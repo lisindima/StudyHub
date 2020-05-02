@@ -12,7 +12,7 @@ import KingfisherSwiftUI
 
 struct ProfileFriends: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var qrStore: QRStore = QRStore.shared
     
     func sendRequestFriend() {

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingAccount: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
     
     @State private var showActionSheetImage: Bool = false
@@ -63,6 +63,7 @@ struct SettingAccount: View {
                     }
                     .sheet(isPresented: $isShowingModalViewImage) {
                         ImagePicker(selectedSourceType: self.$selectedSourceType)
+                            .environmentObject(self.sessionStore)
                             .accentColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
                             .edgesIgnoringSafeArea(.bottom)
                     }

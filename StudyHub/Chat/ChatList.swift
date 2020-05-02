@@ -73,7 +73,7 @@ struct ChatList: View {
 
 struct ListItem: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
     @State private var showIndicator: Bool = false
     @Binding var numberUnreadMessages: Int

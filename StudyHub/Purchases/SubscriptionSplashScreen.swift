@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SubscriptionSplashScreen: View {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     
     var body: some View {

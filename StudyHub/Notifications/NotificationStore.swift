@@ -13,7 +13,7 @@ import UserNotifications
 
 class NotificationStore: ObservableObject {
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     
     @Published var enabled: UNAuthorizationStatus = .notDetermined
     @Published var fcmToken: String? = nil

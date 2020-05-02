@@ -16,8 +16,6 @@ struct DeleteUser: View {
     @State private var password: String = ""
     @State private var loading: Bool = false
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
-    
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -96,7 +94,7 @@ struct ChangeEmail: View {
     @State private var loading: Bool = false
     @State private var changeView: Bool = false
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
@@ -200,7 +198,7 @@ struct ChangePassword: View {
     @State private var loading: Bool = false
     @State private var changeView: Bool = false
     
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @EnvironmentObject var sessionStore: SessionStore
     
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()

@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
     
     var window: UIWindow?
     
+    let sessionStore = SessionStore.shared
     let chatStore = ChatStore.shared
     let noteStore = NoteStore.shared
     let notificationStore = NotificationStore.shared
@@ -29,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
         Messaging.messaging().delegate = self
         
         let rootView = RootView()
+            .environmentObject(sessionStore)
             .environmentObject(chatStore)
             .environmentObject(noteStore)
             .environmentObject(sheetManager)
