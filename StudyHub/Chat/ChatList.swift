@@ -24,7 +24,7 @@ struct ChatList: View {
         chatStore.dataChat.remove(atOffsets: offsets)
     }
     
-    func checkNumberUnreadMessages() {
+    private func checkNumberUnreadMessages() {
         numberUnreadMessages = chatStore.dataMessages.filter {
             Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
         }.count

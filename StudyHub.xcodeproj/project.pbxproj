@@ -91,7 +91,7 @@
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
 		CBA7271223DE8AEF0094372B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7271123DE8AEF0094372B /* SearchBar.swift */; };
-		CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageView.swift */; };
+		CBABB12A2366F5420087AD18 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageItem.swift */; };
 		CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB01FE523B4553E001D4CBB /* NoteView.swift */; };
 		CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */; };
 		CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA4C4F23F684A60018168D /* StoreKit.framework */; };
@@ -270,7 +270,7 @@
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
 		CBA7270F23DE79960094372B /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
 		CBA7271123DE8AEF0094372B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		CBABB1292366F5420087AD18 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CBABB1292366F5420087AD18 /* MessageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		CBB01FE523B4553E001D4CBB /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSplashScreen.swift; sourceTree = "<group>"; };
 		CBCA4C4F23F684A60018168D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -484,7 +484,7 @@
 			children = (
 				CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */,
 				CB12E7ED23596F9E00115B2E /* MessageList.swift */,
-				CBABB1292366F5420087AD18 /* MessageView.swift */,
+				CBABB1292366F5420087AD18 /* MessageItem.swift */,
 				CB11A8CD23E1E1D4006E568C /* ChatView.swift */,
 				CB5DE17F236AB98D001AC3E3 /* ChatList.swift */,
 				CB11A8C923E1DEEB006E568C /* ChatLoading.swift */,
@@ -955,7 +955,7 @@
 				CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */,
 				CB4C4FDE23C5B3D400397105 /* FirebaseErrorTranslate.swift in Sources */,
 				CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */,
-				CBABB12A2366F5420087AD18 /* MessageView.swift in Sources */,
+				CBABB12A2366F5420087AD18 /* MessageItem.swift in Sources */,
 				CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */,
 				CBA7270C23DE78E50094372B /* NoteList.swift in Sources */,
 				CB4FA013234396110049D271 /* ProfileImage.swift in Sources */,

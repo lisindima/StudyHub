@@ -1,5 +1,5 @@
 //
-//  MessageView.swift
+//  MessageItem.swift
 //  StudyHub
 //
 //  Created by Дмитрий Лисин on 28.10.2019.
@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import KingfisherSwiftUI
 
-struct MessageView: View {
+struct MessageItem: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
@@ -106,7 +106,7 @@ struct MessageView: View {
     }
 }
 
-extension MessageView {
+extension MessageItem {
     var isEmoji: Bool {
         (message.count <= 3) && message.containsOnlyEmoji
     }

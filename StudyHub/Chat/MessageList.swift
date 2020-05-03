@@ -14,6 +14,7 @@ struct MessageList: View {
     
     @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var chatStore: ChatStore
+    
     @State private var typeMessage: String = ""
     
     var dataChat: DataChat
@@ -30,7 +31,7 @@ struct MessageList: View {
             } else {
                 ScrollView {
                     ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
-                        MessageView(message: item.message, dateMessage: item.dateMsg, idUser: item.idUser, isRead: item.isRead)
+                        MessageItem(message: item.message, dateMessage: item.dateMsg, idUser: item.idUser, isRead: item.isRead)
                             .padding(.top, 6)
                             .scaleEffect(x: -1.0, y: 1.0)
                             .rotationEffect(.degrees(180))

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SPAlert
 import Firebase
 import FirebaseStorageSwift
 
@@ -53,6 +54,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                         docRef.updateData(["urlImageProfile": self.parent.sessionStore.userData.urlImageProfile]) { error in
                             if let error = error {
                                 print("Error updating document: \(error)")
+                                SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                                 self.parent.sessionStore.showBanner = false
                             } else {
                                 self.parent.sessionStore.showBanner = false
@@ -61,6 +63,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                     }
                 case .failure(let error):
                     print("Error: Image could not upload! \(error)")
+                    SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                     self.parent.sessionStore.showBanner = false
                 }
             }
