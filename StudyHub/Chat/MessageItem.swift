@@ -17,12 +17,9 @@ struct MessageItem: View {
     
     let currentUser = Auth.auth().currentUser
     
-    var message: String
-    var dateMessage: Date
-    var idUser: String
-    var isRead: Bool
+    var dataMessages: DataMessages
     var isMe: Bool {
-        currentUser?.uid == idUser
+        currentUser?.uid == dataMessages.idUser
     }
     
     var body: some View {
@@ -35,18 +32,18 @@ struct MessageItem: View {
                             .resizable()
                             .frame(width: 10, height: 10)
                             .foregroundColor(.accentColor)
-                            .opacity(isRead ? 0.0 : 0.5)
+                            .opacity(dataMessages.isRead ? 0.0 : 0.5)
                             .padding(.top, 23)
                         VStack(alignment: .trailing) {
                             if isEmoji {
-                                Text(message)
+                                Text(dataMessages.message)
                                     .font(.system(size: 50))
                             } else if isLink {
-                                RichLink(url: URL(string: message)!)
+                                RichLink(url: URL(string: dataMessages.message)!)
                                     .frame(width: 80, height: 200)
                                     .padding(.trailing, 50)
                             } else {
-                                Text(message)
+                                Text(dataMessages.message)
                                     .foregroundColor(.white)
                                     .padding(10)
                                     .background(Color.accentColor)
@@ -56,7 +53,7 @@ struct MessageItem: View {
                     }.padding(.bottom, -3)
                     HStack {
                         Spacer()
-                        Text("\(dateMessage, formatter: dateStore.dateHour)")
+                        Text("\(dataMessages.dateMsg, formatter: dateStore.dateHour)")
                             .font(.system(size: 10))
                             .foregroundColor(.secondary)
                     }.padding(.trailing, 3)
@@ -76,14 +73,14 @@ struct MessageItem: View {
                     VStack {
                         HStack {
                             if isEmoji {
-                                Text(message)
+                                Text(dataMessages.message)
                                     .font(.system(size: 50))
                             } else if isLink {
-                                RichLink(url: URL(string: message)!)
+                                RichLink(url: URL(string: dataMessages.message)!)
                                     .frame(width: 80, height: 200)
                                     .padding(.leading, 50)
                             } else {
-                                Text(message)
+                                Text(dataMessages.message)
                                     .padding(10)
                                     .background(Color.secondarySystemBackground)
                                     .cornerRadius(5)
@@ -91,7 +88,7 @@ struct MessageItem: View {
                             Spacer()
                         }.padding(.bottom, 3)
                         HStack {
-                            Text("\(dateMessage, formatter: dateStore.dateHour)")
+                            Text("\(dataMessages.dateMsg, formatter: dateStore.dateHour)")
                                 .font(.system(size: 10))
                                 .foregroundColor(.secondary)
                             Spacer()
@@ -108,13 +105,13 @@ struct MessageItem: View {
 
 extension MessageItem {
     var isEmoji: Bool {
-        (message.count <= 3) && message.containsOnlyEmoji
+        (dataMessages.message.count <= 3) && dataMessages.message.containsOnlyEmoji
     }
     
     var isLink: Bool {
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        if let match = detector.firstMatch(in: message, options: [], range: NSRange(location: 0, length: message.utf16.count)) {
-            return match.range.length == message.utf16.count
+        if let match = detector.firstMatch(in: dataMessages.message, options: [], range: NSRange(location: 0, length: dataMessages.message.utf16.count)) {
+            return match.range.length == dataMessages.message.utf16.count
         } else {
             return false
         }
