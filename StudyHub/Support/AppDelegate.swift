@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import Firebase
 import Purchases
 
@@ -16,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PurchasesDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf")
-        Purchases.debugLogsEnabled = true
         Purchases.shared.delegate = self
         FirebaseApp.configure()
         NotificationStore.shared.requestPermission()
