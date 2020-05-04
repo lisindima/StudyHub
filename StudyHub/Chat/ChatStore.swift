@@ -149,7 +149,6 @@ struct DataMessages: Identifiable, Codable {
     var user: String
     var message: String
     var idUser: String
-// MARK: ПЕРЕДЕЛАЙ НА dateMessage!!
     var dateMsg: Date
     var isRead: Bool = false
 }

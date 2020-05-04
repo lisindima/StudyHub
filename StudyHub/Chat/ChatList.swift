@@ -18,16 +18,9 @@ struct ChatList: View {
     @State private var searchText: String = ""
     @State private var showActionSheetSort: Bool = false
     @State private var hideNavigationBar: Bool = false
-    @State private var numberUnreadMessages: Int = 0
     
     private func delete(at offsets: IndexSet) {
         chatStore.dataChat.remove(atOffsets: offsets)
-    }
-    
-    private func checkNumberUnreadMessages() {
-        numberUnreadMessages = chatStore.dataMessages.filter {
-            Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
-        }.count
     }
     
     var body: some View {
@@ -41,7 +34,7 @@ struct ChatList: View {
                         self.searchText.isEmpty ? true : $0.nameChat.localizedStandardContains(self.searchText)
                     }, id: \.id) { item in
                         NavigationLink(destination: MessageList(dataChat: item)) {
-                            ListItem(numberUnreadMessages: self.$numberUnreadMessages, dataChat: item)
+                            ListItem(dataChat: item)
                         }
                     }.onDelete(perform: delete)
                 }
@@ -50,7 +43,6 @@ struct ChatList: View {
                 }, label: "Новое сообщение")
                     .padding(12)
             }
-            .onAppear(perform: checkNumberUnreadMessages)
             .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle("Сообщения")
             .actionSheet(isPresented: $showActionSheetSort) {
@@ -73,14 +65,21 @@ struct ChatList: View {
 
 struct ListItem: View {
     
+    @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
+    
     @State private var showIndicator: Bool = false
-    @Binding var numberUnreadMessages: Int
+    @State private var numberUnreadMessages: Int = 0
     
     let currentUid = Auth.auth().currentUser?.uid
-    
     var dataChat: DataChat
+    
+    private func checkNumberUnreadMessages() {
+        numberUnreadMessages = chatStore.dataMessages.filter {
+            Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
+        }.count
+    }
     
     var body: some View {
         HStack {
@@ -125,6 +124,6 @@ struct ListItem: View {
                     .foregroundColor(.accentColor)
                     .opacity(numberUnreadMessages >= 1 ? 1.0 : 0.0)
             }
-        }
+        }.onAppear(perform: checkNumberUnreadMessages)
     }
 }
