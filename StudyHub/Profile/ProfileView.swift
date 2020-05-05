@@ -20,8 +20,6 @@ struct ProfileView: View {
     @EnvironmentObject var sessionStore: SessionStore
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
-    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
-    
     let currentUser = Auth.auth().currentUser
     
     private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
