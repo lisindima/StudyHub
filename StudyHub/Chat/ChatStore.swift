@@ -23,27 +23,6 @@ class ChatStore: ObservableObject {
     
     let legacyServerKey: String = "AIzaSyCsYkJqBBzCEVPIRuN4mi0eRr5-x5x-HLs"
     
-    func loadMessageList(id: String) {
-        let db = Firestore.firestore()
-        db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
-            let result = Result {
-                try querySnapshot?.documents.compactMap { document -> DataMessages? in
-                    try document.data(as: DataMessages.self)
-                }
-            }
-            switch result {
-            case .success(let dataMessages):
-                if let dataMessages = dataMessages {
-                    self.dataMessages = dataMessages
-                } else {
-                    print("Document does not exist")
-                }
-            case .failure(let error):
-                print("Error decoding DataMessages: \(error)")
-            }
-        }
-    }
-    
     func getDataFromDatabaseListenChat() {
         statusChat = .loading
         let db = Firestore.firestore()
@@ -68,6 +47,27 @@ class ChatStore: ObservableObject {
                 }
             } else {
                 self.statusChat = .emptyChat
+            }
+        }
+    }
+    
+    func loadMessageList(id: String) {
+        let db = Firestore.firestore()
+        db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, err in
+            let result = Result {
+                try querySnapshot?.documents.compactMap { document -> DataMessages? in
+                    try document.data(as: DataMessages.self)
+                }
+            }
+            switch result {
+            case .success(let dataMessages):
+                if let dataMessages = dataMessages {
+                    self.dataMessages = dataMessages
+                } else {
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                print("Error decoding DataMessages: \(error)")
             }
         }
     }

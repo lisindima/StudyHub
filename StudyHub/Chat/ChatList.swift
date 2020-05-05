@@ -16,7 +16,6 @@ struct ChatList: View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @State private var searchText: String = ""
-    @State private var showActionSheetSort: Bool = false
     @State private var hideNavigationBar: Bool = false
     
     private func delete(at offsets: IndexSet) {
@@ -43,22 +42,9 @@ struct ChatList: View {
                 }, label: "Новое сообщение")
                     .padding(12)
             }
+            .navigationBarItems(leading: EditButton())
             .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle("Сообщения")
-            .actionSheet(isPresented: $showActionSheetSort) {
-                ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
-                    .default(Text("По названию")) {
-                        
-                    }, .default(Text("По дате создания")) {
-                        
-                    }, .cancel()])
-            }
-            .navigationBarItems(leading: EditButton(), trailing: Button (action: {
-                self.showActionSheetSort = true
-            }) {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                    .imageScale(.large)
-            })
         }
     }
 }

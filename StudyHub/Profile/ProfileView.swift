@@ -35,7 +35,7 @@ struct ProfileView: View {
                         .edgesIgnoringSafeArea(.top)
                         .frame(height: 130)
                     ProfileImage()
-                        .offset(y: -120)
+                        .offset(y: -115)
                         .padding(.bottom, -130)
                     VStack {
                         Text(sessionStore.userData.lastname + " " + sessionStore.userData.firstname)

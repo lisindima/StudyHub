@@ -36,6 +36,6 @@ struct ProfileImage: View {
                         .foregroundColor(.blue)
                 }.offset(x: 80, y: 80)
             }
-        }.shadow(radius: 10)
+        }
     }
 }
