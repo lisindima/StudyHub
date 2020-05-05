@@ -16,4 +16,4 @@ jobs:
       run: /usr/bin/xcodebuild -version
       
     - name: Xcode build
-      run: xcodebuild clean build -scheme StudyHub -destination 'platform:macOS, arch:x86_64, variant:Mac Catalyst'
+      run: xcodebuild clean build -scheme StudyHub -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.4'
