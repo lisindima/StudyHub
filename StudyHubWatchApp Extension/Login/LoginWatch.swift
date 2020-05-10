@@ -12,6 +12,9 @@ struct AppleLogin: View {
     
     var body: some View {
         ScrollView {
+            Image("defaultlogo")
+                .resizable()
+                .frame(width: 80, height: 80)
             SignInWithAppleButton()
             NavigationLink(destination: EmailLogin()) {
                 Text("Вход через эл.почту")
