@@ -11,9 +11,9 @@ import SwiftUI
 struct CustomButton: View {
     
     var label: String
-    var action: () -> Void
     var loading: Bool
     var colorButton: Color
+    var action: () -> Void
     
     var body: some View {
         Button(action: action) {

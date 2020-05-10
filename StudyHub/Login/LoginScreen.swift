@@ -128,9 +128,11 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 8)
-            CustomButton(label: loading ? "Загрузка" : "Зарегистрироваться", action: signUp, loading: loading, colorButton: Color.defaultColorApp)
-                .disabled(loading)
-                .padding()
+            CustomButton(label: loading ? "Загрузка" : "Зарегистрироваться", loading: loading, colorButton: .defaultColorApp) {
+                self.signUp()
+            }
+            .disabled(loading)
+            .padding()
             Divider()
             Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
                 .font(.footnote)
@@ -178,9 +180,11 @@ struct ResetPassword: View {
                 .padding([.top, .horizontal])
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            CustomButton(label: loading ? "Загрузка" : "Восстановить аккаунт", action: sendPasswordReset, loading: loading, colorButton: Color.defaultColorApp)
-                .disabled(loading)
-                .padding()
+            CustomButton(label: loading ? "Загрузка" : "Восстановить аккаунт", loading: loading, colorButton: .defaultColorApp) {
+                self.sendPasswordReset()
+            }
+            .disabled(loading)
+            .padding()
             Divider()
             Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
                 .font(.footnote)
@@ -251,9 +255,11 @@ struct EmailLoginScreen: View {
                         .padding(.bottom, 8)
                 }
             }
-            CustomButton(label: loading ? "Загрузка" : "Войти", action: signIn, loading: loading, colorButton: Color.defaultColorApp)
-                .disabled(loading)
-                .padding()
+            CustomButton(label: loading ? "Загрузка" : "Войти", loading: loading, colorButton: .defaultColorApp) {
+                self.signIn()
+            }
+            .disabled(loading)
+            .padding()
             Divider()
             Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
                 .font(.footnote)

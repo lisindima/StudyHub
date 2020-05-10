@@ -69,9 +69,11 @@ struct DeleteUser: View {
                 .modifier(InputModifier())
                 .padding([.horizontal, .top])
             }
-            CustomButton(label: loading ? "Загрузка" : "Удалить аккаунт", action: reauthenticateUser, loading: loading, colorButton: Color.red)
-                .disabled(loading)
-                .padding()
+            CustomButton(label: loading ? "Загрузка" : "Удалить аккаунт", loading: loading, colorButton: .red) {
+                self.reauthenticateUser()
+            }
+            .disabled(loading)
+            .padding()
             Divider()
             Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                 .font(.footnote)
@@ -156,9 +158,11 @@ struct ChangeEmail: View {
                     .modifier(InputModifier())
                     .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
-                    .disabled(loading)
-                    .padding()
+                CustomButton(label: loading ? "Загрузка" : "Продолжить", loading: loading, colorButton: .green) {
+                    self.reauthenticateUser()
+                }
+                .disabled(loading)
+                .padding()
                 Divider()
                 Text("Чтобы изменить эл.почту вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
@@ -172,9 +176,11 @@ struct ChangeEmail: View {
                     .padding([.top, .horizontal])
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
-                CustomButton(label: loading ? "Загрузка" : "Изменить эл.почту", action: changeEmail, loading: loading, colorButton: Color.green)
-                    .disabled(loading)
-                    .padding()
+                CustomButton(label: loading ? "Загрузка" : "Изменить эл.почту", loading: loading, colorButton: .green) {
+                    self.changeEmail()
+                }
+                .disabled(loading)
+                .padding()
                 Divider()
                 Text("Чтобы удалить аккаунт вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
@@ -259,9 +265,11 @@ struct ChangePassword: View {
                     .modifier(InputModifier())
                     .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading == true ? "Загрузка" : "Продолжить", action: reauthenticateUser, loading: loading, colorButton: Color.green)
-                    .disabled(loading)
-                    .padding()
+                CustomButton(label: loading ? "Загрузка" : "Продолжить", loading: loading, colorButton: .green) {
+                    self.reauthenticateUser()
+                }
+                .disabled(loading)
+                .padding()
                 Divider()
                 Text("Чтобы изменить пароль вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
@@ -290,9 +298,11 @@ struct ChangePassword: View {
                     .modifier(InputModifier())
                     .padding([.horizontal, .top])
                 }
-                CustomButton(label: loading ? "Загрузка" : "Изменить пароль", action: changePassword, loading: loading, colorButton: Color.green)
-                    .disabled(loading)
-                    .padding()
+                CustomButton(label: loading ? "Загрузка" : "Изменить пароль", loading: loading, colorButton: .green) {
+                    self.changePassword()
+                }
+                .disabled(loading)
+                .padding()
                 Divider()
                 Text("Чтобы изменить пароль вам необходимо ввести данные вашего аккаунта, это необходимо для подтверждения вашей личности.")
                     .font(.footnote)
