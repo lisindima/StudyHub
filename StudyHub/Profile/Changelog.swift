@@ -52,7 +52,7 @@ struct Changelog: View {
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 5)
                                                     .foregroundColor(Color.purple.opacity(0.2))
-                                            )
+                                        )
                                             .padding(.bottom, 3)
                                         Text(changelog.whatsNew)
                                             .font(.system(size: 16))
@@ -72,7 +72,7 @@ struct Changelog: View {
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 5)
                                                     .foregroundColor(Color.green.opacity(0.2))
-                                            )
+                                        )
                                             .padding(.bottom, 3)
                                         Text(changelog.bugFixes)
                                             .font(.system(size: 16))
