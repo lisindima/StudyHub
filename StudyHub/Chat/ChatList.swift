@@ -70,10 +70,7 @@ struct ListItem: View {
     var body: some View {
         HStack {
             ZStack {
-                KFImage(URL(string: sessionStore.userData.urlImageProfile))
-                    .onSuccess { _ in
-                        self.showIndicator = true
-                    }
+                KFImage(URL(string: sessionStore.userData.urlImageProfile), isLoaded: $showIndicator)
                     .placeholder { ActivityIndicator(styleSpinner: .medium) }
                     .resizable()
                     .frame(width: 50, height: 50)

@@ -16,10 +16,7 @@ struct ProfileImage: View {
     
     var body: some View {
         ZStack {
-            KFImage(URL(string: sessionStore.userData.urlImageProfile))
-                .onSuccess { _ in
-                    self.showAdminCheck = true
-                }
+            KFImage(URL(string: sessionStore.userData.urlImageProfile), isLoaded: $showAdminCheck)
                 .placeholder { ActivityIndicator(styleSpinner: .large) }
                 .resizable()
                 .aspectRatio(contentMode: .fill)
