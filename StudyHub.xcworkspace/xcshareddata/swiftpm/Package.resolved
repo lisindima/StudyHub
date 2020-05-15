@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/AndreaMiotto/PartialSheet",
         "state": {
           "branch": null,
-          "revision": "209895fcfa99f99e2de22946f19faa7a77bc9627",
-          "version": "2.1.2"
+          "revision": "1aa3c80116487ebb4cceff8b52f55b3d6ebef999",
+          "version": "2.1.3"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
         "state": {
           "branch": null,
-          "revision": "e5705f88fa5a691872bb97ccbcd04c8eb3026ff4",
-          "version": "3.3.0"
+          "revision": "ab78699b4bacd2b051c989fb84009b3e63cb2f37",
+          "version": "3.3.1"
         }
       },
       {
