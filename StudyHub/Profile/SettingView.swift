@@ -20,7 +20,6 @@ struct SettingView: View {
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var mailSubject: String = ""
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var sessionStore: SessionStore
