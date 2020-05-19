@@ -73,6 +73,7 @@
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
 		CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
+		CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = CB7955D5247390FB00670552 /* NativeSearchBar */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
@@ -90,7 +91,6 @@
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
-		CBA7271223DE8AEF0094372B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7271123DE8AEF0094372B /* SearchBar.swift */; };
 		CBABB12A2366F5420087AD18 /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABB1292366F5420087AD18 /* MessageItem.swift */; };
 		CBB01FE623B4553E001D4CBB /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB01FE523B4553E001D4CBB /* NoteView.swift */; };
 		CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */; };
@@ -269,7 +269,6 @@
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
 		CBA7270F23DE79960094372B /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
-		CBA7271123DE8AEF0094372B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CBABB1292366F5420087AD18 /* MessageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
 		CBB01FE523B4553E001D4CBB /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSplashScreen.swift; sourceTree = "<group>"; };
@@ -323,6 +322,7 @@
 				CB4B9310246CE850006B7008 /* KingfisherSwiftUI in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
+				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
 				35D2DC5387B831A8CA45D865 /* Pods_StudyHub.framework in Frameworks */,
@@ -633,7 +633,6 @@
 				CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */,
 				CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */,
 				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
-				CBA7271123DE8AEF0094372B /* SearchBar.swift */,
 				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
 				CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */,
 				CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */,
@@ -713,6 +712,7 @@
 				CB9B90EC241090AF006CF9BF /* Purchases */,
 				CB4B930D246CE850006B7008 /* Kingfisher */,
 				CB4B930F246CE850006B7008 /* KingfisherSwiftUI */,
+				CB7955D5247390FB00670552 /* NativeSearchBar */,
 			);
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -817,6 +817,7 @@
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
 				CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -946,7 +947,6 @@
 				CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
 				CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */,
-				CBA7271223DE8AEF0094372B /* SearchBar.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
@@ -1465,6 +1465,14 @@
 				minimumVersion = 2.1.2;
 			};
 		};
+		CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lisindima/NativeSearchBar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -1529,6 +1537,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
+		};
+		CB7955D5247390FB00670552 /* NativeSearchBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */;
+			productName = NativeSearchBar;
 		};
 		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;

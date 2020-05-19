@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Firebase
+import NativeSearchBar
 import KingfisherSwiftUI
 
 struct ChatList: View {
@@ -15,8 +16,7 @@ struct ChatList: View {
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
-    @State private var searchText: String = ""
-    @State private var hideNavigationBar: Bool = false
+    @ObservedObject var searchBar: SearchBar = SearchBar.shared
     
     private func delete(at offsets: IndexSet) {
         chatStore.dataChat.remove(atOffsets: offsets)
@@ -25,25 +25,21 @@ struct ChatList: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                SearchBar(text: $searchText, editing: $hideNavigationBar)
-                    .animation(.interactiveSpring())
-                    .padding(.horizontal, 6)
                 List {
                     ForEach(self.chatStore.dataChat.filter {
-                        self.searchText.isEmpty ? true : $0.nameChat.localizedStandardContains(self.searchText)
+                        searchBar.text.isEmpty || $0.nameChat.localizedStandardContains(searchBar.text)
                     }, id: \.id) { item in
                         NavigationLink(destination: MessageList(dataChat: item)) {
                             ListItem(dataChat: item)
                         }
                     }.onDelete(perform: delete)
-                }
+                }.addSearchBar(searchBar)
                 PlusButton(action: {
                     print("Новое сообщение")
                 }, label: "Новое сообщение")
                     .padding(12)
             }
             .navigationBarItems(leading: EditButton())
-            .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle("Сообщения")
         }
     }

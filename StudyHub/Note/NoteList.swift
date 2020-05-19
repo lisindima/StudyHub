@@ -7,16 +7,17 @@
 //
 
 import SwiftUI
+import NativeSearchBar
 
 struct NoteList: View {
     
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     
+    @ObservedObject var searchBar: SearchBar = SearchBar.shared
+    
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
-    @State private var searchText: String = ""
-    @State private var hideNavigationBar: Bool = false
     
     private func move(from source: IndexSet, to destination: Int) {
         noteStore.dataNote.move(fromOffsets: source, toOffset: destination)
@@ -25,12 +26,9 @@ struct NoteList: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                SearchBar(text: $searchText, editing: $hideNavigationBar)
-                    .animation(.interactiveSpring())
-                    .padding(.horizontal, 6)
                 List {
                     ForEach(noteStore.dataNote.filter {
-                        self.searchText.isEmpty ? true : $0.note.localizedStandardContains(self.searchText)
+                        searchBar.text.isEmpty || $0.note.localizedStandardContains(searchBar.text)
                     }, id: \.id) { item in
                         NavigationLink(destination: NoteDetails(dataNote: item)) {
                             VStack {
@@ -44,7 +42,7 @@ struct NoteList: View {
                     .onDelete { index in
                         self.noteStore.deleteNote(datas: self.noteStore, index: index)
                     }
-                }
+                }.addSearchBar(searchBar)
                 PlusButton(action: {
                     self.showAddNewNote = true
                 }, label: "Новая заметка")
@@ -62,7 +60,6 @@ struct NoteList: View {
                             
                 }, .cancel()])
             }
-            .navigationBarHidden(hideNavigationBar)
             .navigationBarTitle("Заметки")
             .navigationBarItems(leading: EditButton(), trailing: Button (action: {
                 self.showActionSheetSort = true
