@@ -38,10 +38,6 @@ struct MessageItem: View {
                             if isEmoji {
                                 Text(dataMessages.message)
                                     .font(.system(size: 50))
-                            } else if isLink {
-                                RichLink(url: URL(string: dataMessages.message)!)
-                                    .frame(width: 80, height: 200)
-                                    .padding(.trailing, 50)
                             } else {
                                 Text(dataMessages.message)
                                     .foregroundColor(.white)
@@ -75,10 +71,6 @@ struct MessageItem: View {
                             if isEmoji {
                                 Text(dataMessages.message)
                                     .font(.system(size: 50))
-                            } else if isLink {
-                                RichLink(url: URL(string: dataMessages.message)!)
-                                    .frame(width: 80, height: 200)
-                                    .padding(.leading, 50)
                             } else {
                                 Text(dataMessages.message)
                                     .padding(10)
@@ -106,14 +98,5 @@ struct MessageItem: View {
 extension MessageItem {
     var isEmoji: Bool {
         (dataMessages.message.count <= 3) && dataMessages.message.containsOnlyEmoji
-    }
-    
-    var isLink: Bool {
-        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-        if let match = detector.firstMatch(in: dataMessages.message, options: [], range: NSRange(location: 0, length: dataMessages.message.utf16.count)) {
-            return match.range.length == dataMessages.message.utf16.count
-        } else {
-            return false
-        }
     }
 }
