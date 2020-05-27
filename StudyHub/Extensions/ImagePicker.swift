@@ -44,7 +44,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             let photoRef = Storage.storage().reference(forURL: "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg")
             let uploadImage = photoRef.putData(imageData!, metadata: nil) { result in
                 switch result {
-                case .success( _):
+                case .success:
                     photoRef.downloadURL { url, error in
                         guard let downloadURL = url else {
                             return
