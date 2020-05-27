@@ -21,7 +21,6 @@
 		CB0AED78232E5AC50047A8A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED74232E5AC50047A8A0 /* CustomButton.swift */; };
 		CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* SessionStore.swift */; };
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
-		CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED87232E5B080047A8A0 /* Tabbed.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
 		CB117B03244D4BB700667F3A /* SessionStoreWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */; };
 		CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8C923E1DEEB006E568C /* ChatLoading.swift */; };
@@ -213,7 +212,6 @@
 		CB0AED74232E5AC50047A8A0 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CB0AED75232E5AC50047A8A0 /* SessionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		CB0AED87232E5B080047A8A0 /* Tabbed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
 		CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "StudyHubWatchApp Extension.entitlements"; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */,
-				CB0AED87232E5B080047A8A0 /* Tabbed.swift */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
@@ -951,7 +948,6 @@
 				CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
-				CB0AED8A232E5B080047A8A0 /* Tabbed.swift in Sources */,
 				CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* ScheduleItem.swift in Sources */,
 				CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */,
