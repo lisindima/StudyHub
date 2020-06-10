@@ -1438,7 +1438,7 @@
 			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.3;
+				minimumVersion = 2.1.5;
 			};
 		};
 		CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1454,7 +1454,7 @@
 			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.1;
+				minimumVersion = 0.3.0;
 			};
 		};
 		CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
@@ -1462,7 +1462,7 @@
 			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.2;
+				minimumVersion = 2.1.4;
 			};
 		};
 		CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */ = {
@@ -1470,7 +1470,7 @@
 			repositoryURL = "https://github.com/lisindima/NativeSearchBar";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
+				minimumVersion = 1.0.3;
 			};
 		};
 		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1478,7 +1478,7 @@
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
+				minimumVersion = 1.0.6;
 			};
 		};
 		CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
@@ -1486,7 +1486,7 @@
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.3.1;
+				minimumVersion = 3.4.0;
 			};
 		};
 		CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */ = {
@@ -1502,7 +1502,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -40,7 +40,7 @@ struct SubscriptionSplashScreen: View {
             } else {
                 HStack {
                     Button(action: {
-                        self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.monthly)!)
+                        self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.monthly!)
                         self.purchasesStore.loadingMonthlyButton = true
                     }) {
                         ZStack {
@@ -66,7 +66,7 @@ struct SubscriptionSplashScreen: View {
                     .disabled(self.purchasesStore.loadingAnnualButton)
                     .padding(.trailing, 4)
                     Button(action: {
-                        self.purchasesStore.buySubscription(package: (self.purchasesStore.offering?.annual)!)
+                        self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.annual!)
                         self.purchasesStore.loadingAnnualButton = true
                     }) {
                         ZStack {

@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "fca036f7aeca07124067cb6e0c12b0ad6359e3d4",
-          "version": "5.1.0"
+          "revision": "2777659076fda38bd4e487739ee331c7a65b5924",
+          "version": "5.2.1"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/lisindima/NativeSearchBar",
         "state": {
           "branch": null,
-          "revision": "aa7a4d3189d8ffa9ff70bdf33295346c090310e6",
-          "version": "1.0.1"
+          "revision": "da8c17dc1a246ce366968ff4f8aa447157390a94",
+          "version": "1.0.3"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/AndreaMiotto/PartialSheet",
         "state": {
           "branch": null,
-          "revision": "1aa3c80116487ebb4cceff8b52f55b3d6ebef999",
-          "version": "2.1.3"
+          "revision": "3ccfb420c440845fc87c6d5d43cb96772370455f",
+          "version": "2.1.5"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
         "state": {
           "branch": null,
-          "revision": "ab78699b4bacd2b051c989fb84009b3e63cb2f37",
-          "version": "3.3.1"
+          "revision": "f2b25180ce5b65ec272a5144ed9f61dd135d5cee",
+          "version": "3.4.0"
         }
       },
       {
