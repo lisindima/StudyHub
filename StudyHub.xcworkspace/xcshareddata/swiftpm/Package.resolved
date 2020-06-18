@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "BottomSheet",
+        "repositoryURL": "https://github.com/weitieda/bottom-sheet",
+        "state": {
+          "branch": null,
+          "revision": "e92bb6a4a6bad6b30828e91717f48519f3058942",
+          "version": "1.0.4"
+        }
+      },
+      {
         "package": "CodeScanner",
         "repositoryURL": "https://github.com/twostraws/CodeScanner",
         "state": {
@@ -53,15 +62,6 @@
           "branch": null,
           "revision": "da8c17dc1a246ce366968ff4f8aa447157390a94",
           "version": "1.0.3"
-        }
-      },
-      {
-        "package": "PartialSheet",
-        "repositoryURL": "https://github.com/AndreaMiotto/PartialSheet",
-        "state": {
-          "branch": null,
-          "revision": "3ccfb420c440845fc87c6d5d43cb96772370455f",
-          "version": "2.1.5"
         }
       },
       {

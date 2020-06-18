@@ -41,7 +41,6 @@
 		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB37694123E2CA3D0015B61E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Color.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
-		CB37694923E40D860015B61E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB37694823E40D860015B61E /* PartialSheet */; };
 		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
 		CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisinlogo@3x.png */; };
 		CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisinlogo.png */; };
@@ -72,6 +71,7 @@
 		CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
 		CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = CB7955D5247390FB00670552 /* NativeSearchBar */; };
+		CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB85CDBB249B7EEF00AAEF04 /* BottomSheet */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
@@ -316,7 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */,
-				CB37694923E40D860015B61E /* PartialSheet in Frameworks */,
 				CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */,
 				CB4B930E246CE850006B7008 /* Kingfisher in Frameworks */,
 				CB4B9310246CE850006B7008 /* KingfisherSwiftUI in Frameworks */,
@@ -325,6 +324,7 @@
 				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
+				CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */,
 				35D2DC5387B831A8CA45D865 /* Pods_StudyHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,13 +706,13 @@
 			packageProductDependencies = (
 				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
-				CB37694823E40D860015B61E /* PartialSheet */,
 				CBCA4C5223F7FE7E0018168D /* Alamofire */,
 				CB6AC62F2408F4FE00D0E482 /* SPAlert */,
 				CB9B90EC241090AF006CF9BF /* Purchases */,
 				CB4B930D246CE850006B7008 /* Kingfisher */,
 				CB4B930F246CE850006B7008 /* KingfisherSwiftUI */,
 				CB7955D5247390FB00670552 /* NativeSearchBar */,
+				CB85CDBB249B7EEF00AAEF04 /* BottomSheet */,
 			);
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -811,13 +811,13 @@
 			packageReferences = (
 				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */,
 				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
 				CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */,
+				CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -1433,14 +1433,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.5;
-			};
-		};
 		CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher/";
@@ -1471,6 +1463,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.3;
+			};
+		};
+		CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weitieda/bottom-sheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
 			};
 		};
 		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
@@ -1508,11 +1508,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CB37694823E40D860015B61E /* PartialSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB37694723E40D860015B61E /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
-		};
 		CB4B930D246CE850006B7008 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -1542,6 +1537,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */;
 			productName = NativeSearchBar;
+		};
+		CB85CDBB249B7EEF00AAEF04 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */;
+			productName = BottomSheet;
 		};
 		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;

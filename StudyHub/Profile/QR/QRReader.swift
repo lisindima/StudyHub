@@ -9,18 +9,17 @@
 import SwiftUI
 import Firebase
 import CodeScanner
-import PartialSheet
 import KingfisherSwiftUI
 import CoreImage.CIFilterBuiltins
 
 struct QRReader: View {
     
     @EnvironmentObject var sessionStore: SessionStore
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject private var qrStore: QRStore = QRStore.shared
     
     @State private var choiseView: Int = 1
+    @State private var showProfileFriends: Bool = false
     
     let currentUser = Auth.auth().currentUser
     
@@ -32,12 +31,7 @@ struct QRReader: View {
                         switch result {
                         case .success(let code):
                             self.qrStore.getUserInfoBeforeScanQRCode(code: code)
-                            self.partialSheetManager.showPartialSheet {
-                                 ProfileFriends()
-                                    .padding(.top)
-                                    .padding(.bottom, 30)
-                                    .padding(.horizontal)
-                            }
+                            self.showProfileFriends = true
                         case .failure(let error):
                             print(error.localizedDescription)
                         }
@@ -57,6 +51,10 @@ struct QRReader: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 30)
                     }
+                }.bottomSheet(isPresented: $showProfileFriends, height: 250) {
+                    ProfileFriends()
+                        .padding(.horizontal)
+                        .padding(.bottom, 30)
                 }
             } else if choiseView == 1 {
                 VStack(alignment: .center) {
@@ -98,6 +96,6 @@ struct QRReader: View {
                 .padding()
                 Spacer()
             }
-        }.addPartialSheet()
+        }
     }
 }

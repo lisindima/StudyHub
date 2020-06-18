@@ -8,7 +8,6 @@
 
 import SwiftUI
 import Firebase
-import PartialSheet
 import KingfisherSwiftUI
 
 struct ProfileView: View {
@@ -18,7 +17,6 @@ struct ProfileView: View {
     @State private var showQRReader: Bool = false
     
     @EnvironmentObject var sessionStore: SessionStore
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     let currentUser = Auth.auth().currentUser
     
@@ -69,7 +67,6 @@ struct ProfileView: View {
             }.sheet(isPresented: $showQRReader) {
                 QRReader()
                     .edgesIgnoringSafeArea(.bottom)
-                    .environmentObject(self.partialSheetManager)
                     .environmentObject(self.sessionStore)
             }, trailing: Button(action: {
                 self.showSettingModal = true
@@ -84,7 +81,6 @@ struct ProfileView: View {
                 }
             }, content: {
                 SettingView()
-                    .environmentObject(self.partialSheetManager)
                     .environmentObject(self.sessionStore)
             })
         }.navigationViewStyle(StackNavigationViewStyle())

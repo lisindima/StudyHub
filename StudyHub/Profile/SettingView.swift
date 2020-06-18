@@ -9,13 +9,14 @@
 import SwiftUI
 import SPAlert
 import MessageUI
-import PartialSheet
+import BottomSheet
 import KingfisherSwiftUI
 
 struct SettingView: View {
     
     @State private var showActionSheetMailFeedback: Bool = false
     @State private var showSubcriptionSheet: Bool = false
+    @State private var showChangeIcons: Bool = false
     @State private var subscribeApplication: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var mailSubject: String = ""
@@ -23,7 +24,6 @@ struct SettingView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @EnvironmentObject var sessionStore: SessionStore
-    @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     @ObservedObject private var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
@@ -36,7 +36,7 @@ struct SettingView: View {
             let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
             return Text("Версия: \(version) (\(build))")
         } else {
-            return Text("#chad")
+            return Text("")
         }
     }
 
@@ -226,9 +226,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Изменить иконку") {
-                            self.partialSheetManager.showPartialSheet {
-                                 ChangeIcons()
-                            }
+                            self.showChangeIcons = true
                         }.foregroundColor(.primary)
                     }
                     #endif
@@ -375,8 +373,10 @@ struct SettingView: View {
                 Text("Закрыть")
                     .bold()
             })
+            .bottomSheet(isPresented: $showChangeIcons, height: 200) {
+                ChangeIcons()
+            }
         }
-        .addPartialSheet()
         .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
     }
