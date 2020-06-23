@@ -42,7 +42,7 @@ struct NewNote: View {
     
     var body: some View {
         NavigationView {
-            TextView(text: $textNote)
+            TextEditor(text: $textNote)
                 .navigationBarTitle("Новая заметка", displayMode: .inline)
                 .navigationBarItems(trailing: Button (action: closeNewNote) {
                     Text("Закрыть")
