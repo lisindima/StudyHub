@@ -9,11 +9,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>StudyHubTodayWidget.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 		<key>StudyHubWatch (Notification).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -37,7 +32,7 @@
 		<key>StudyHubWatchApp (Notification).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>StudyHubWatchApp.xcscheme_^#shared#^_</key>
 		<dict>
@@ -47,7 +42,7 @@
 		<key>StudyHubWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>30</integer>
+			<integer>29</integer>
 		</dict>
 		<key>TodayWidget.xcscheme_^#shared#^_</key>
 		<dict>

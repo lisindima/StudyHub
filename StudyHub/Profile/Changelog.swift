@@ -21,7 +21,7 @@ struct Changelog: View {
     var body: some View {
         VStack {
             if changelogStore.сhangelogModel.isEmpty && !changelogStore.changelogLoadingFailure {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
                     .onAppear(perform: changelogStore.loadChangelog)
             } else if changelogStore.сhangelogModel.isEmpty && changelogStore.changelogLoadingFailure {
                 Text("Нет подключения к интернету!")

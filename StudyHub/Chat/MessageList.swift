@@ -24,7 +24,7 @@ struct MessageList: View {
     var body: some View {
         VStack {
             if chatStore.dataMessages.isEmpty {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
                     .onAppear {
                         self.chatStore.loadMessageList(id: self.dataChat.id!)
                 }

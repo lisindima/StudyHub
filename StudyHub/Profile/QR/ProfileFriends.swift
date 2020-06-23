@@ -22,11 +22,11 @@ struct ProfileFriends: View {
     var body: some View {
         VStack {
             if qrStore.profileFriendsModel == nil {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
             } else {
                 HStack {
                     KFImage(URL(string: qrStore.profileFriendsModel.urlImageProfile))
-                        .placeholder { ActivityIndicator(styleSpinner: .large) }
+                        .placeholder { ProgressView() }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())

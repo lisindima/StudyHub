@@ -17,7 +17,7 @@ struct License: View {
     var body: some View {
         VStack {
             if licenseStore.licenseModel.isEmpty && !licenseStore.licenseLoadingFailure {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
                     .onAppear(perform: licenseStore.loadLicense)
             } else if licenseStore.licenseModel.isEmpty && licenseStore.licenseLoadingFailure {
                 Text("Нет подключения к интернету!")

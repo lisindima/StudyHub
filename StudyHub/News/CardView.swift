@@ -22,7 +22,7 @@ struct CardView: View {
             if showImage {
                 KFImage(URL(string: article.urlToImage ?? noImageUrl))
                     .renderingMode(.original)
-                    .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                    .placeholder { ProgressView() }
                     .onFailure { _ in
                         self.showImage = false
                 }

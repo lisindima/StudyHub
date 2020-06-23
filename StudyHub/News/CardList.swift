@@ -23,7 +23,7 @@ struct CardList: View {
     var body: some View {
         NavigationView {
             if newsStore.articles.isEmpty {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
                     .onAppear(perform: newsStore.loadNews)
             } else {
                 ScrollView(showsIndicators: false) {
@@ -40,7 +40,7 @@ struct CardList: View {
                         }.padding(.leading, 15)
                         Spacer()
                         KFImage(URL(string: sessionStore.userData.urlImageProfile))
-                            .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                            .placeholder { ProgressView() }
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())

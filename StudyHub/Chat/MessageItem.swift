@@ -60,7 +60,7 @@ struct MessageItem: View {
             } else {
                 HStack {
                     KFImage(URL(string: sessionStore.userData.urlImageProfile))
-                        .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                        .placeholder { ProgressView() }
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())

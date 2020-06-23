@@ -11,7 +11,7 @@ import SwiftUI
 struct ChatLoading: View {
     var body: some View {
         NavigationView {
-            ActivityIndicator(styleSpinner: .large)
+            ProgressView()
                 .navigationBarTitle("Сообщения")
         }.navigationViewStyle(StackNavigationViewStyle())
     }

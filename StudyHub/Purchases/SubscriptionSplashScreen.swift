@@ -49,7 +49,7 @@ struct SubscriptionSplashScreen: View {
                                 .opacity(0.2)
                                 .frame(maxWidth: .infinity, maxHeight: 72)
                             if purchasesStore.loadingMonthlyButton {
-                                ActivityIndicator(styleSpinner: .medium)
+                                ProgressView()
                             } else {
                                 VStack {
                                     Text("Ежемесячно")
@@ -74,7 +74,7 @@ struct SubscriptionSplashScreen: View {
                                 .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                 .frame(maxWidth: .infinity, maxHeight: 72)
                             if purchasesStore.loadingAnnualButton {
-                                ActivityIndicator(styleSpinner: .medium)
+                                ProgressView()
                             } else {
                                 VStack {
                                     Text("Ежегодно")

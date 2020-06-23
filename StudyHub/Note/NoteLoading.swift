@@ -11,7 +11,7 @@ import SwiftUI
 struct NoteLoading: View {
     var body: some View {
         NavigationView {
-            ActivityIndicator(styleSpinner: .large)
+            ProgressView()
                 .navigationBarTitle("Заметки")
         }.navigationViewStyle(StackNavigationViewStyle())
     }

@@ -17,7 +17,7 @@ struct RootView: View {
             if sessionStore.user != nil && sessionStore.userData != nil {
                 Tabbed()
             } else if sessionStore.user != nil && sessionStore.userData == nil {
-                ActivityIndicator(styleSpinner: .large)
+                ProgressView()
             } else {
                 AuthenticationScreen()
             }

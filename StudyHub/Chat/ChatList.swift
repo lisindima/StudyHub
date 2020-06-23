@@ -67,7 +67,7 @@ struct ListItem: View {
         HStack {
             ZStack {
                 KFImage(URL(string: sessionStore.userData.urlImageProfile), isLoaded: $showIndicator)
-                    .placeholder { ActivityIndicator(styleSpinner: .medium) }
+                    .placeholder { ProgressView() }
                     .resizable()
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())

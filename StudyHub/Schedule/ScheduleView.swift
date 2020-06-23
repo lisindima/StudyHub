@@ -16,7 +16,7 @@ struct ScheduleView: View {
         Group {
             if scheduleStore.scheduleModel.isEmpty {
                 NavigationView {
-                    ActivityIndicator(styleSpinner: .large)
+                    ProgressView()
                         .onAppear(perform: scheduleStore.loadLesson)
                         .navigationBarTitle("Расписание")
                 }.navigationViewStyle(StackNavigationViewStyle())
