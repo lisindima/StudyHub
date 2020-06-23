@@ -35,10 +35,6 @@
 		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
-		CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB677796236046610019D6B6 /* NotificationCenter.framework */; };
-		CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB32DAFB23A0B64800B25626 /* TodayViewController.swift */; };
-		CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */; };
-		CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB32DAF823A0B64800B25626 /* Расписание.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB37694123E2CA3D0015B61E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Color.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
 		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
@@ -86,7 +82,7 @@
 		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CBA25609242D8DE600B20C6A /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = CBA25608242D8DE600B20C6A /* Espera */; };
-		CBA6C94F247EBA5A0025A4EC /* TabViewUIkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */; };
+		CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
 		CBA7271023DE79960094372B /* NoteLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270F23DE79960094372B /* NoteLoading.swift */; };
@@ -105,7 +101,6 @@
 		CBD896B42378FDEC008CF480 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */; };
 		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
-		CBE3554723CEEC3E00F608F4 /* TodayWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */; };
 		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
 		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
@@ -122,13 +117,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CB32DB0123A0B64800B25626 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB32DAF723A0B64800B25626;
-			remoteInfo = StudyHubTodayWidget;
-		};
 		CBE665E923543A1400C43811 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
@@ -173,7 +161,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CB32DB0323A0B64800B25626 /* Расписание.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,10 +214,6 @@
 		CB286DC7243782B700977D60 /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
 		CB30FB632424809100F5793E /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
-		CB32DAF823A0B64800B25626 /* Расписание.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Расписание.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB32DAFB23A0B64800B25626 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		CB32DAFE23A0B64800B25626 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		CB32DB0023A0B64800B25626 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB37694023E2CA3D0015B61E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CB37694523E3F54F0015B61E /* ChangeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIcons.swift; sourceTree = "<group>"; };
 		CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@2x.png"; sourceTree = "<group>"; };
@@ -263,7 +246,7 @@
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		CBA255F7242B361C00B20C6A /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionWatchView.swift; sourceTree = "<group>"; };
-		CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewUIkit.swift; sourceTree = "<group>"; };
+		CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
 		CBA7270F23DE79960094372B /* NoteLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteLoading.swift; sourceTree = "<group>"; };
@@ -281,7 +264,6 @@
 		CBD896B32378FDEC008CF480 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CBDE62942352129E00E588EC /* PickerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerStore.swift; sourceTree = "<group>"; };
 		CBE010E923ACC0D6009DB0E8 /* Changelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changelog.swift; sourceTree = "<group>"; };
-		CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidgetView.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
 		CBE665DB23543A1000C43811 /* StudyHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE665DE23543A1000C43811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -327,14 +309,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB32DAF523A0B64800B25626 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB32DAF923A0B64800B25626 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CBE665E423543A1400C43811 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -375,7 +349,6 @@
 				CB0AED3B232E59A10047A8A0 /* StudyHub */,
 				CBE665DC23543A1000C43811 /* StudyHubWatchApp */,
 				CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */,
-				CB32DAFA23A0B64800B25626 /* StudyHubTodayWidget */,
 				CB0AED3A232E59A10047A8A0 /* Products */,
 				A95172305AFACAFD73D00422 /* Pods */,
 				A5C050C90CA7ACA36D5E738D /* Frameworks */,
@@ -388,7 +361,6 @@
 				CB0AED39232E59A10047A8A0 /* StudyHub.app */,
 				CBE665DB23543A1000C43811 /* StudyHub.app */,
 				CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */,
-				CB32DAF823A0B64800B25626 /* Расписание.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -396,7 +368,7 @@
 		CB0AED3B232E59A10047A8A0 /* StudyHub */ = {
 			isa = PBXGroup;
 			children = (
-				CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */,
+				CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */,
 				CB12E7EA23596F5400115B2E /* Support */,
 				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
@@ -535,17 +507,6 @@
 				CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */,
 			);
 			path = Purchases;
-			sourceTree = "<group>";
-		};
-		CB32DAFA23A0B64800B25626 /* StudyHubTodayWidget */ = {
-			isa = PBXGroup;
-			children = (
-				CB32DAFB23A0B64800B25626 /* TodayViewController.swift */,
-				CBE3554623CEEC3E00F608F4 /* TodayWidgetView.swift */,
-				CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */,
-				CB32DB0023A0B64800B25626 /* Info.plist */,
-			);
-			path = StudyHubTodayWidget;
 			sourceTree = "<group>";
 		};
 		CB37694C23E5BDC40015B61E /* AlternateIcon */ = {
@@ -697,7 +658,6 @@
 			);
 			dependencies = (
 				CBE665FE23543A1500C43811 /* PBXTargetDependency */,
-				CB32DB0223A0B64800B25626 /* PBXTargetDependency */,
 			);
 			name = StudyHub;
 			packageProductDependencies = (
@@ -714,23 +674,6 @@
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CB32DAF723A0B64800B25626 /* StudyHubTodayWidget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB32DB0423A0B64900B25626 /* Build configuration list for PBXNativeTarget "StudyHubTodayWidget" */;
-			buildPhases = (
-				CB32DAF423A0B64800B25626 /* Sources */,
-				CB32DAF523A0B64800B25626 /* Frameworks */,
-				CB32DAF623A0B64800B25626 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = StudyHubTodayWidget;
-			productName = StudyHubTodayWidget;
-			productReference = CB32DAF823A0B64800B25626 /* Расписание.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		CBE665DA23543A1000C43811 /* StudyHubWatchApp */ = {
 			isa = PBXNativeTarget;
@@ -785,9 +728,6 @@
 					CB0AED38232E59A10047A8A0 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					CB32DAF723A0B64800B25626 = {
-						CreatedOnToolsVersion = 11.3;
-					};
 					CBE665DA23543A1000C43811 = {
 						CreatedOnToolsVersion = 11.2;
 					};
@@ -823,7 +763,6 @@
 				CB0AED38232E59A10047A8A0 /* StudyHub */,
 				CBE665DA23543A1000C43811 /* StudyHubWatchApp */,
 				CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */,
-				CB32DAF723A0B64800B25626 /* StudyHubTodayWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -846,14 +785,6 @@
 				CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
 				CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB32DAF623A0B64800B25626 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB32DAFF23A0B64800B25626 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,7 +901,7 @@
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
-				CBA6C94F247EBA5A0025A4EC /* TabViewUIkit.swift in Sources */,
+				CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */,
 				CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
@@ -983,15 +914,6 @@
 				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 				CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB32DAF423A0B64800B25626 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CBE3554723CEEC3E00F608F4 /* TodayWidgetView.swift in Sources */,
-				CB32DAFC23A0B64800B25626 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,12 +942,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CB32DB0223A0B64800B25626 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = CB32DAF723A0B64800B25626 /* StudyHubTodayWidget */;
-			targetProxy = CB32DB0123A0B64800B25626 /* PBXContainerItemProxy */;
-		};
 		CBE665EA23543A1400C43811 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */;
@@ -1046,14 +962,6 @@
 				CB0AED4B232E59A30047A8A0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		CB32DAFD23A0B64800B25626 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB32DAFE23A0B64800B25626 /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		CBE665DD23543A1000C43811 /* Interface.storyboard */ = {
@@ -1236,52 +1144,6 @@
 			};
 			name = Release;
 		};
-		CB32DB0523A0B64900B25626 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 550;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.5.7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
-				PRODUCT_NAME = "Расписание";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CB32DB0623A0B64900B25626 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 550;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.5.7;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.altgtuTodayWidget;
-				PRODUCT_NAME = "Расписание";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		CBE6660123543A1500C43811 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1395,15 +1257,6 @@
 			buildConfigurations = (
 				CB0AED51232E59A30047A8A0 /* Debug */,
 				CB0AED52232E59A30047A8A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB32DB0423A0B64900B25626 /* Build configuration list for PBXNativeTarget "StudyHubTodayWidget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB32DB0523A0B64900B25626 /* Debug */,
-				CB32DB0623A0B64900B25626 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

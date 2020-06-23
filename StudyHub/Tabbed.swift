@@ -1,5 +1,5 @@
 //
-//  TabViewUIkit.swift
+//  Tabbed.swift
 //  StudyHub
 //
 //  Created by Дмитрий Лисин on 27.05.2020.
