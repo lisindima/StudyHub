@@ -15,7 +15,7 @@ struct RootView: View {
     var body: some View {
         Group {
             if sessionStore.user != nil && sessionStore.userData != nil {
-                TabViewUIkit()
+                Tabbed()
             } else if sessionStore.user != nil && sessionStore.userData == nil {
                 ActivityIndicator(styleSpinner: .large)
             } else {

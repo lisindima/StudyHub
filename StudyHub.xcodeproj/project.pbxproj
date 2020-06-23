@@ -86,7 +86,6 @@
 		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CBA25609242D8DE600B20C6A /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = CBA25608242D8DE600B20C6A /* Espera */; };
-		CBA6C94D247EB97F0025A4EC /* UIKitTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94C247EB97F0025A4EC /* UIKitTabView.swift */; };
 		CBA6C94F247EBA5A0025A4EC /* TabViewUIkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
@@ -264,7 +263,6 @@
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		CBA255F7242B361C00B20C6A /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
 		CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionWatchView.swift; sourceTree = "<group>"; };
-		CBA6C94C247EB97F0025A4EC /* UIKitTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitTabView.swift; sourceTree = "<group>"; };
 		CBA6C94E247EBA5A0025A4EC /* TabViewUIkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewUIkit.swift; sourceTree = "<group>"; };
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
@@ -636,7 +634,6 @@
 				CB97AFBB23EAA12B00921F0F /* TextView.swift */,
 				CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */,
 				CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */,
-				CBA6C94C247EB97F0025A4EC /* UIKitTabView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -972,7 +969,6 @@
 				CB4377B823DFDC200002C47C /* SettingView.swift in Sources */,
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
-				CBA6C94D247EB97F0025A4EC /* UIKitTabView.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
 				CBA6C94F247EBA5A0025A4EC /* TabViewUIkit.swift in Sources */,
 				CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */,
@@ -1199,7 +1195,7 @@
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1226,7 +1222,7 @@
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1247,7 +1243,7 @@
 				CURRENT_PROJECT_VERSION = 550;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1270,7 +1266,7 @@
 				CURRENT_PROJECT_VERSION = 550;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				INFOPLIST_FILE = StudyHubTodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1309,7 +1305,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1336,7 +1332,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1357,7 +1353,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1378,7 +1374,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
