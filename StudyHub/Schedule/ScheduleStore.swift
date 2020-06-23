@@ -34,10 +34,10 @@ class ScheduleStore: ObservableObject {
 }
 
 struct ScheduleModel: Identifiable, Codable {
-    let id: String = UUID().uuidString
-    let week: Int
-    let dayOfWeek: String
-    let name: String
-    let audit: String
-    let time: String
+    var id: String = UUID().uuidString
+    var week: Int
+    var dayOfWeek: String
+    var name: String
+    var audit: String
+    var time: String
 }

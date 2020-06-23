@@ -25,12 +25,12 @@ class NewsStore: ObservableObject {
             .validate()
             .responseDecodable(of: News.self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let news = response.value else { return }
                     self.articles = news.articles
                 case .failure(let error):
                     self.newsLoadingFailure = true
-                    print("Список новостей не загружен: \(error.errorDescription!)")
+                    print("Список новостей не загружен: \(error)")
                 }
         }
     }
@@ -40,37 +40,34 @@ class NewsStore: ObservableObject {
             .validate()
             .responseDecodable(of: News.self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let news = response.value else { return }
                     self.articles = news.articles
                 case .failure(let error):
                     self.newsLoadingFailure = true
-                    print("Список новостей не загружен: \(error.errorDescription!)")
+                    print("Список новостей не загружен: \(error)")
                 }
         }
     }
 }
 
-struct Articles: Codable, Hashable, Identifiable {
-    let id: String = UUID().uuidString
-    let source: Source?
-    let author: String?
-    let title: String
-    let description: String?
-    let url: String?
-    let urlToImage: String?
-    let publishedAt: String?
-    let content: String?
+struct Articles: Codable, Hashable {
+    var source: Source?
+    var author: String?
+    var title: String
+    var description: String?
+    var url: String?
+    var urlToImage: String?
+    var publishedAt: String?
+    var content: String?
 }
 
-struct Source: Codable, Hashable, Identifiable {
-    let id: String?
-    let name: String?
+struct Source: Codable, Hashable {
+    var name: String?
 }
 
-struct News: Codable, Hashable, Identifiable {
-    var id: String?
-    let status: String
-    let totalResults: Int
-    let articles: [Articles]
+struct News: Codable, Hashable {
+    var status: String
+    var totalResults: Int
+    var articles: [Articles]
 }

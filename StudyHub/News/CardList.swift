@@ -80,7 +80,7 @@ struct CardList: View {
                                 }
                             }.padding(.horizontal)
                         }
-                        ForEach(self.newsStore.articles, id: \.id) { article in
+                        ForEach(self.newsStore.articles, id: \.self) { article in
                             Button(action: {
                                 UIApplication.shared.open(URL(string: article.url!)!)
                             }) {
