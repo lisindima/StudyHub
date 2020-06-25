@@ -94,8 +94,7 @@ struct SettingAccount: View {
             Section(header: Text("Аккаунты для входа").fontWeight(.bold), footer: Text("Активируя эти аккаунты, вы сможете входить в ваш профиль используя любой из них.")) {
                 NavigationLink(destination: Changelog()) {
                     HStack {
-                        Text("")
-                            .font(.title)
+                        Image(systemName: "applelogo")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Вход через Apple")
