@@ -103,23 +103,15 @@ struct SubscriptionSplashScreen: View {
                 Text("|")
                     .font(.footnote)
                     .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                Button(action: {
-                    UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
-                }) {
-                    Text("Политика")
-                        .font(.footnote)
-                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                }
+                Link("Политика", destination: URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
+                    .font(.footnote)
+                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                 Text("|")
                     .font(.footnote)
                     .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                Button(action: {
-                    UIApplication.shared.open(URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
-                }) {
-                    Text("Правила")
-                        .font(.footnote)
-                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                }
+                Link("Правила", destination: URL(string: "https://studyhub.lisindmitriy.me/privacypolicy/")!)
+                    .font(.footnote)
+                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
             }.padding(.vertical)
         }.onAppear(perform: purchasesStore.fetchProduct)
     }
