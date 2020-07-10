@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Espera
 import Purchases
 
 struct SubscriptionWatchView: View {
@@ -17,8 +16,7 @@ struct SubscriptionWatchView: View {
     var body: some View {
         VStack {
             if purchasesStore.monthlyPrice == "" {
-                LoadingFlowerView()
-                    .frame(width: 25, height: 25)
+                ProgressView()
                     .onAppear(perform: purchasesStore.fetchProduct)
             } else {
                 Button(action: {

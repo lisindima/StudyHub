@@ -87,7 +87,6 @@
 		CBA25600242C4FE300B20C6A /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CBA255FF242C4FE300B20C6A /* Purchases */; };
 		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
-		CBA25609242D8DE600B20C6A /* Espera in Frameworks */ = {isa = PBXBuildFile; productRef = CBA25608242D8DE600B20C6A /* Espera */; };
 		CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
@@ -341,7 +340,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBA25609242D8DE600B20C6A /* Espera in Frameworks */,
 				CB609F89240662FE009A6389 /* Alamofire in Frameworks */,
 				CBA25600242C4FE300B20C6A /* Purchases in Frameworks */,
 			);
@@ -769,7 +767,6 @@
 			packageProductDependencies = (
 				CB609F88240662FE009A6389 /* Alamofire */,
 				CBA255FF242C4FE300B20C6A /* Purchases */,
-				CBA25608242D8DE600B20C6A /* Espera */,
 			);
 			productName = "StudyHubWatchApp Extension";
 			productReference = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */;
@@ -814,7 +811,6 @@
 				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
 				CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */,
-				CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */,
 				CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */,
 				CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */,
@@ -1110,7 +1106,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1164,7 +1160,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1486,14 +1482,6 @@
 				minimumVersion = 3.4.0;
 			};
 		};
-		CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JagCesar/Espera";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1554,11 +1542,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = Purchases;
-		};
-		CBA25608242D8DE600B20C6A /* Espera */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBA25607242D8DE600B20C6A /* XCRemoteSwiftPackageReference "Espera" */;
-			productName = Espera;
 		};
 		CBCA4C5223F7FE7E0018168D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
