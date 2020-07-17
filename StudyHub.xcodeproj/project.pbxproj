@@ -50,7 +50,6 @@
 		CB3BFAD2239E37DA00894DFA /* SettingAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
-		CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */; };
 		CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4874C023D813C300DEB38F /* ImageCacheStore.swift */; };
 		CB4B930E246CE850006B7008 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CB4B930D246CE850006B7008 /* Kingfisher */; };
 		CB4B9310246CE850006B7008 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CB4B930F246CE850006B7008 /* KingfisherSwiftUI */; };
@@ -242,7 +241,6 @@
 		CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAccount.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
-		CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB4874C023D813C300DEB38F /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
 		CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorTranslate.swift; sourceTree = "<group>"; };
 		CB4FA0102343960A0049D271 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -632,7 +630,6 @@
 				CB0AED73232E5AC50047A8A0 /* CustomInput.swift */,
 				CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */,
 				CB4C4FDD23C5B3D400397105 /* FirebaseErrorTranslate.swift */,
-				CB4874B423D6BE3200DEB38F /* SignInWithAppleButton.swift */,
 				CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */,
 				CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */,
 			);
@@ -941,7 +938,6 @@
 				CB8B992624224F1900172395 /* QRStore.swift in Sources */,
 				CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
-				CB4874B523D6BE3200DEB38F /* SignInWithAppleButton.swift in Sources */,
 				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* ScheduleItem.swift in Sources */,

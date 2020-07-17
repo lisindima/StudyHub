@@ -37,7 +37,7 @@ struct ProfileView: View {
                         Text(sessionStore.userData.lastname + " " + sessionStore.userData.firstname)
                             .fontWeight(.bold)
                             .font(.title)
-                        Text(currentUser!.email!)
+                        Text(currentUser?.email ?? "")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }.padding()
