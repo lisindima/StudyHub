@@ -776,7 +776,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Dmitriy Lisin";
 				TargetAttributes = {
 					CB0AED38232E59A10047A8A0 = {
@@ -1427,7 +1427,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher/";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.14.0;
+				minimumVersion = 5.14.1;
 			};
 		};
 		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
@@ -1475,7 +1475,7 @@
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.4.0;
+				minimumVersion = 3.5.0;
 			};
 		};
 		CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1483,7 +1483,7 @@
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.1;
+				minimumVersion = 5.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

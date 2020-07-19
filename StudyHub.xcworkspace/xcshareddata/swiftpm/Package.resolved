@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "2777659076fda38bd4e487739ee331c7a65b5924",
-          "version": "5.2.1"
+          "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
+          "version": "5.2.2"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher/",
         "state": {
           "branch": null,
-          "revision": "910d808ade2a576e1a292ceb458a6fa43f67f594",
-          "version": "5.14.0"
+          "revision": "1339ebea9498ef6c3fc75cc195d7163d7c7167f9",
+          "version": "5.14.1"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
         "state": {
           "branch": null,
-          "revision": "f2b25180ce5b65ec272a5144ed9f61dd135d5cee",
-          "version": "3.4.0"
+          "revision": "73745542e20a348abe4092c8b4c96c223f753d1e",
+          "version": "3.5.0"
         }
       },
       {
