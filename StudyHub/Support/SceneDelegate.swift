@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 import Firebase
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
         
         Self.shared = self
         
-        Messaging.messaging().delegate = self
+        //Messaging.messaging().delegate = self
         
         let rootView = RootView()
             .environmentObject(sessionStore)
@@ -44,9 +44,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, MessagingDelegate {
         print(URLContexts)
     }
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        notificationStore.fcmToken = fcmToken
-    }
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+//        notificationStore.fcmToken = fcmToken
+//    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

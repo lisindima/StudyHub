@@ -1,0 +1,151 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "abseil",
+        "repositoryURL": "https://github.com/firebase/abseil-cpp.git",
+        "state": {
+          "branch": null,
+          "revision": "7790dc1a581cd704ec173e0a30286aabacaaa99d",
+          "version": null
+        }
+      },
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": null,
+          "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
+          "version": "5.2.2"
+        }
+      },
+      {
+        "package": "BoringSSL-GRPC",
+        "repositoryURL": "https://github.com/firebase/boringssl.git",
+        "state": {
+          "branch": null,
+          "revision": "897ffb6fbb5a5ea149216d664ce8b04d77e3df22",
+          "version": null
+        }
+      },
+      {
+        "package": "BottomSheet",
+        "repositoryURL": "https://github.com/weitieda/bottom-sheet",
+        "state": {
+          "branch": null,
+          "revision": "1a63cc3d68573e2b8c7d5e65ec2e15c49c2c2aef",
+          "version": "1.0.5"
+        }
+      },
+      {
+        "package": "CodeScanner",
+        "repositoryURL": "https://github.com/twostraws/CodeScanner",
+        "state": {
+          "branch": null,
+          "revision": "9d902dec616bd70b1a2a1b1e6d821c10c392ba9f",
+          "version": "1.0.6"
+        }
+      },
+      {
+        "package": "Firebase",
+        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
+        "state": {
+          "branch": "master",
+          "revision": "6c5e04df032e8e9f794a058671dbb0963cb90d95",
+          "version": null
+        }
+      },
+      {
+        "package": "gRPC",
+        "repositoryURL": "https://github.com/firebase/grpc.git",
+        "state": {
+          "branch": null,
+          "revision": "c603c5a2ea17a1229996693a6fb13bbf7508105b",
+          "version": null
+        }
+      },
+      {
+        "package": "GTMSessionFetcher",
+        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
+          "version": "1.4.0"
+        }
+      },
+      {
+        "package": "KeyboardObserving",
+        "repositoryURL": "https://github.com/nickffox/KeyboardObserving",
+        "state": {
+          "branch": null,
+          "revision": "26c0c913c11f0ee77006740ca1d8b478d222184f",
+          "version": "0.3.0"
+        }
+      },
+      {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher/",
+        "state": {
+          "branch": null,
+          "revision": "1339ebea9498ef6c3fc75cc195d7163d7c7167f9",
+          "version": "5.14.1"
+        }
+      },
+      {
+        "package": "leveldb",
+        "repositoryURL": "https://github.com/firebase/leveldb.git",
+        "state": {
+          "branch": null,
+          "revision": "3f046978ecffd57ea6eb9a0897cc8a3b45b44df8",
+          "version": null
+        }
+      },
+      {
+        "package": "nanopb",
+        "repositoryURL": "https://github.com/nanopb/nanopb.git",
+        "state": {
+          "branch": null,
+          "revision": "3cfa21200eea012d8765239ad4c50d8a36c283f1",
+          "version": null
+        }
+      },
+      {
+        "package": "NativeSearchBar",
+        "repositoryURL": "https://github.com/lisindima/NativeSearchBar",
+        "state": {
+          "branch": null,
+          "revision": "da8c17dc1a246ce366968ff4f8aa447157390a94",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "Promises",
+        "repositoryURL": "https://github.com/google/promises.git",
+        "state": {
+          "branch": null,
+          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
+          "version": "1.2.10"
+        }
+      },
+      {
+        "package": "Purchases",
+        "repositoryURL": "https://github.com/RevenueCat/purchases-ios",
+        "state": {
+          "branch": null,
+          "revision": "bc0e76d02984bafc7cabc1d2204145cbad575173",
+          "version": "3.5.2"
+        }
+      },
+      {
+        "package": "SPAlert",
+        "repositoryURL": "https://github.com/ivanvorobei/SPAlert",
+        "state": {
+          "branch": null,
+          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
+          "version": "2.1.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

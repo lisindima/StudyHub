@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35D2DC5387B831A8CA45D865 /* Pods_StudyHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8835FBD80DD30BC4DEC0CCBA /* Pods_StudyHub.framework */; };
 		CB0982B524588B1F00C8FCB4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0982B424588B1F00C8FCB4 /* ScheduleView.swift */; };
 		CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */; };
 		CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */; };
@@ -74,6 +73,13 @@
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
 		CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = CB7955D5247390FB00670552 /* NativeSearchBar */; };
 		CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB85CDBB249B7EEF00AAEF04 /* BottomSheet */; };
+		CB89413A24E649DA008EA334 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413924E649DA008EA334 /* FirebaseFirestore */; };
+		CB89413C24E649DA008EA334 /* FirebaseStorageSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413B24E649DA008EA334 /* FirebaseStorageSwift */; };
+		CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413D24E649DA008EA334 /* FirebaseStorage */; };
+		CB89414024E649DA008EA334 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413F24E649DA008EA334 /* FirebaseCrashlytics */; };
+		CB89414224E649DA008EA334 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */; };
+		CB89414424E649DA008EA334 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414324E649DA008EA334 /* FirebaseAuth */; };
+		CB89414624E649DA008EA334 /* Firebase in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414524E649DA008EA334 /* Firebase */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
@@ -190,10 +196,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		35F13788DA4CEA2908B90C7E /* Pods-StudyHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyHub.debug.xcconfig"; path = "Target Support Files/Pods-StudyHub/Pods-StudyHub.debug.xcconfig"; sourceTree = "<group>"; };
-		53E293C0E98C4AFC15B743F8 /* Pods-StudyHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyHub.debug.xcconfig"; path = "Target Support Files/Pods-StudyHub/Pods-StudyHub.debug.xcconfig"; sourceTree = "<group>"; };
-		8835FBD80DD30BC4DEC0CCBA /* Pods_StudyHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF22E3F9E3E8C9DC5EFA38C2 /* Pods-altgtu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-altgtu.release.xcconfig"; path = "Target Support Files/Pods-altgtu/Pods-altgtu.release.xcconfig"; sourceTree = "<group>"; };
 		CB0982B424588B1F00C8FCB4 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		CB0AED39232E59A10047A8A0 /* StudyHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -296,7 +298,6 @@
 		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		EF27957BE636223C05CF08E0 /* Pods-StudyHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyHub.release.xcconfig"; path = "Target Support Files/Pods-StudyHub/Pods-StudyHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,14 +315,20 @@
 				CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */,
 				CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */,
 				CB4B930E246CE850006B7008 /* Kingfisher in Frameworks */,
+				CB89414024E649DA008EA334 /* FirebaseCrashlytics in Frameworks */,
 				CB4B9310246CE850006B7008 /* KingfisherSwiftUI in Frameworks */,
+				CB89414224E649DA008EA334 /* FirebaseFirestoreSwift in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
+				CB89414624E649DA008EA334 /* Firebase in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
+				CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
+				CB89413A24E649DA008EA334 /* FirebaseFirestore in Frameworks */,
 				CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */,
-				35D2DC5387B831A8CA45D865 /* Pods_StudyHub.framework in Frameworks */,
+				CB89413C24E649DA008EA334 /* FirebaseStorageSwift in Frameworks */,
+				CB89414424E649DA008EA334 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,22 +358,10 @@
 			children = (
 				CBCA4C4F23F684A60018168D /* StoreKit.framework */,
 				CB677796236046610019D6B6 /* NotificationCenter.framework */,
-				8835FBD80DD30BC4DEC0CCBA /* Pods_StudyHub.framework */,
 				CB27480524A1CFE500DA7664 /* WidgetKit.framework */,
 				CB27480724A1CFE500DA7664 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A95172305AFACAFD73D00422 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				35F13788DA4CEA2908B90C7E /* Pods-StudyHub.debug.xcconfig */,
-				AF22E3F9E3E8C9DC5EFA38C2 /* Pods-altgtu.release.xcconfig */,
-				53E293C0E98C4AFC15B743F8 /* Pods-StudyHub.debug.xcconfig */,
-				EF27957BE636223C05CF08E0 /* Pods-StudyHub.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		CB0AED30232E59A10047A8A0 = {
@@ -378,7 +373,6 @@
 				CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */,
 				CB27480924A1CFE500DA7664 /* StudyHubWidget */,
 				CB0AED3A232E59A10047A8A0 /* Products */,
-				A95172305AFACAFD73D00422 /* Pods */,
 				A5C050C90CA7ACA36D5E738D /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -682,11 +676,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB0AED50232E59A30047A8A0 /* Build configuration list for PBXNativeTarget "StudyHub" */;
 			buildPhases = (
-				EC4ADE232421431A244A74BE /* [CP] Check Pods Manifest.lock */,
 				CB0AED35232E59A10047A8A0 /* Sources */,
 				CB0AED36232E59A10047A8A0 /* Frameworks */,
 				CB0AED37232E59A10047A8A0 /* Resources */,
-				7674E8C86BF4E9E78518AB40 /* [CP] Embed Pods Frameworks */,
 				CB25040C23505E1600D2E41A /* Embed Watch Content */,
 				CB6777A5236046610019D6B6 /* Embed App Extensions */,
 				CB286DB72437639700977D60 /* Embed Frameworks */,
@@ -708,6 +700,13 @@
 				CB4B930F246CE850006B7008 /* KingfisherSwiftUI */,
 				CB7955D5247390FB00670552 /* NativeSearchBar */,
 				CB85CDBB249B7EEF00AAEF04 /* BottomSheet */,
+				CB89413924E649DA008EA334 /* FirebaseFirestore */,
+				CB89413B24E649DA008EA334 /* FirebaseStorageSwift */,
+				CB89413D24E649DA008EA334 /* FirebaseStorage */,
+				CB89413F24E649DA008EA334 /* FirebaseCrashlytics */,
+				CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */,
+				CB89414324E649DA008EA334 /* FirebaseAuth */,
+				CB89414524E649DA008EA334 /* Firebase */,
 			);
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -794,7 +793,7 @@
 				};
 			};
 			buildConfigurationList = CB0AED34232E59A10047A8A0 /* Build configuration list for PBXProject "StudyHub" */;
-			compatibilityVersion = "Xcode 11.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -811,6 +810,7 @@
 				CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CB7955D4247390FB00670552 /* XCRemoteSwiftPackageReference "NativeSearchBar" */,
 				CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */,
+				CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CB0AED3A232E59A10047A8A0 /* Products */;
 			projectDirPath = "";
@@ -872,48 +872,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7674E8C86BF4E9E78518AB40 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudyHub/Pods-StudyHub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudyHub/Pods-StudyHub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudyHub/Pods-StudyHub-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC4ADE232421431A244A74BE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StudyHub-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB0AED35232E59A10047A8A0 /* Sources */ = {
@@ -1168,7 +1126,6 @@
 		};
 		CB0AED51232E59A30047A8A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53E293C0E98C4AFC15B743F8 /* Pods-StudyHub.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1196,7 +1153,6 @@
 		};
 		CB0AED52232E59A30047A8A0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF27957BE636223C05CF08E0 /* Pods-StudyHub.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1462,6 +1418,14 @@
 				minimumVersion = 1.0.4;
 			};
 		};
+		CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -1523,6 +1487,41 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */;
 			productName = BottomSheet;
+		};
+		CB89413924E649DA008EA334 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CB89413B24E649DA008EA334 /* FirebaseStorageSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorageSwift;
+		};
+		CB89413D24E649DA008EA334 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		CB89413F24E649DA008EA334 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		CB89414324E649DA008EA334 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CB89414524E649DA008EA334 /* Firebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = Firebase;
 		};
 		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;

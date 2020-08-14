@@ -37,12 +37,6 @@ struct SimpleEntry: TimelineEntry {
     public let configuration: ConfigurationIntent
 }
 
-struct PlaceholderView : View {
-    var body: some View {
-        Text("Placeholder View")
-    }
-}
-
 struct StudyHubWidgetEntryView : View {
     var entry: Provider.Entry
 
@@ -56,7 +50,7 @@ struct StudyHubWidget: Widget {
     private let kind: String = "StudyHubWidget"
 
     public var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider(), placeholder: PlaceholderView()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             StudyHubWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("My Widget")

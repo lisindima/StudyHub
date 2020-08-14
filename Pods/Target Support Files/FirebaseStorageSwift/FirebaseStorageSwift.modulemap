@@ -1,6 +1,0 @@
-framework module FirebaseStorageSwift {
-  umbrella header "FirebaseStorageSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}
