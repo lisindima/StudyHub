@@ -6,19 +6,18 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
 import KingfisherSwiftUI
+import SPAlert
+import SwiftUI
 
 struct ProfileFriends: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var qrStore: QRStore = QRStore.shared
-    
+
     func sendRequestFriend() {
         SPAlert.present(title: "Запрос отправлен!", message: "Запрос на добавления в друзья отправлен.", preset: .done)
     }
-    
+
     var body: some View {
         VStack {
             if qrStore.profileFriendsModel == nil {
@@ -50,8 +49,8 @@ struct ProfileFriends: View {
                             }
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                            .opacity(0.2))
+                                .fill(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                                .opacity(0.2))
                         }
                     }
                 }

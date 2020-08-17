@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct MenuWatch: View {
-    
     @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    
+
     var body: some View {
         VStack {
             NavigationLink(destination: ScheduleListWatch()) {

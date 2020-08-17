@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct PlusButton: View {
-    
     var action: () -> Void
     var label: String
-    
+
     var body: some View {
         Button(action: action) {
             HStack {

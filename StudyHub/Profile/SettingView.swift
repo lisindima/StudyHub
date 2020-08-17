@@ -6,34 +6,34 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
-import MessageUI
 import BottomSheet
 import KingfisherSwiftUI
+import MessageUI
+import SPAlert
+import SwiftUI
 
 struct SettingView: View {
-    
     @State private var showActionSheetMailFeedback: Bool = false
     @State private var showSubcriptionSheet: Bool = false
     @State private var showChangeIcons: Bool = false
     @State private var subscribeApplication: Bool = false
     @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var mailSubject: String = ""
-    
+
     @Environment(\.presentationMode) var presentationMode
-    
+
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     @ObservedObject private var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
     @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    
+
     private var appVersionView: some View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        {
             return Text("Версия: \(version) (\(build))")
         } else {
             return Text("")
@@ -51,7 +51,7 @@ struct SettingView: View {
             pickerStore.loadPickerFaculty()
         }
     }
-    
+
     private func showShareView() {
         DispatchQueue.main.async {
             UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
@@ -59,7 +59,7 @@ struct SettingView: View {
             )
         }
     }
-    
+
     private func showMailView() {
         DispatchQueue.main.async {
             let mailFeedback = UIHostingController(rootView:
@@ -72,11 +72,11 @@ struct SettingView: View {
             )
         }
     }
-    
+
     private func openSubscription() {
         UIApplication.shared.open(URL(string: "https://apps.apple.com/account/subscriptions")!)
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -154,7 +154,7 @@ struct SettingView: View {
                             }
                         }
                     } else if firebaseServiceStatus == .loading {
-                       HStack {
+                        HStack {
                             ProgressView()
                                 .frame(width: 24)
                             VStack(alignment: .leading) {
@@ -171,7 +171,7 @@ struct SettingView: View {
                         Image(systemName: "r.circle")
                             .foregroundColor(Color.red.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $sessionStore.userData.rValue, in: 0.0...255.0)
+                        Slider(value: $sessionStore.userData.rValue, in: 0.0 ... 255.0)
                             .accentColor(Color.red.opacity(sessionStore.userData.rValue / 255.0))
                         Image(systemName: "r.circle.fill")
                             .foregroundColor(.red)
@@ -181,7 +181,7 @@ struct SettingView: View {
                         Image(systemName: "g.circle")
                             .foregroundColor(Color.green.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $sessionStore.userData.gValue, in: 0.0...255.0)
+                        Slider(value: $sessionStore.userData.gValue, in: 0.0 ... 255.0)
                             .accentColor(Color.green.opacity(sessionStore.userData.gValue / 255.0))
                         Image(systemName: "g.circle.fill")
                             .foregroundColor(.green)
@@ -191,7 +191,7 @@ struct SettingView: View {
                         Image(systemName: "b.circle")
                             .foregroundColor(Color.blue.opacity(0.5))
                             .font(.system(size: 20))
-                        Slider(value: $sessionStore.userData.bValue, in: 0.0...255.0)
+                        Slider(value: $sessionStore.userData.bValue, in: 0.0 ... 255.0)
                             .accentColor(Color.blue.opacity(sessionStore.userData.bValue / 255.0))
                         Image(systemName: "b.circle.fill")
                             .foregroundColor(.blue)
@@ -221,14 +221,14 @@ struct SettingView: View {
                         Text("Темная тема")
                     }
                     #if !targetEnvironment(macCatalyst)
-                    HStack {
-                        Image(systemName: "app")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Изменить иконку") {
-                            self.showChangeIcons = true
-                        }.foregroundColor(.primary)
-                    }
+                        HStack {
+                            Image(systemName: "app")
+                                .frame(width: 24)
+                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                            Button("Изменить иконку") {
+                                self.showChangeIcons = true
+                            }.foregroundColor(.primary)
+                        }
                     #endif
                 }
                 Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {
@@ -327,7 +327,7 @@ struct SettingView: View {
                             if MFMailComposeViewController.canSendMail() {
                                 self.showActionSheetMailFeedback = true
                             } else {
-                                SPAlert.present(title: "Не установлено приложение \"Почта\".", message: "Установите его из App Store." , preset: .error)
+                                SPAlert.present(title: "Не установлено приложение \"Почта\".", message: "Установите его из App Store.", preset: .error)
                             }
                         }
                         .foregroundColor(.primary)
@@ -339,7 +339,7 @@ struct SettingView: View {
                                 }, .default(Text("Сообщить об ошибке")) {
                                     self.mailSubject = "Сообщение об ошибке"
                                     self.showMailView()
-                                }, .cancel()
+                                }, .cancel(),
                             ])
                         }
                     }

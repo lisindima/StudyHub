@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct NoteEmpty: View {
-    
     @EnvironmentObject var noteStore: NoteStore
     @State private var showAddNewNote: Bool = false
-    
+
     var body: some View {
         NavigationView {
             ZStack {

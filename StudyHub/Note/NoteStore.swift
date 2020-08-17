@@ -11,12 +11,11 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class NoteStore: ObservableObject {
-    
     @Published var dataNote: [DataNote] = [DataNote]()
     @Published var statusNote: StatusNote = .loading
-    
+
     static let shared = NoteStore()
-    
+
     func getDataFromDatabaseListenNote() {
         statusNote = .loading
         let currentUser = Auth.auth().currentUser!
@@ -29,14 +28,14 @@ class NoteStore: ObservableObject {
                     }
                 }
                 switch result {
-                case .success(let dataNote):
+                case let .success(dataNote):
                     if let dataNote = dataNote {
                         self.dataNote = dataNote
                         self.statusNote = .showNote
                     } else {
-                       self.statusNote = .emptyNote
+                        self.statusNote = .emptyNote
                     }
-                case .failure(let error):
+                case let .failure(error):
                     self.statusNote = .emptyNote
                     print("Error decoding DataNote: \(error)")
                 }
@@ -45,7 +44,7 @@ class NoteStore: ObservableObject {
             }
         }
     }
-    
+
     func addNote(note: String) {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
@@ -56,7 +55,7 @@ class NoteStore: ObservableObject {
             }
         }
     }
-    
+
     func deleteNote(datas: NoteStore, index: IndexSet) {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()

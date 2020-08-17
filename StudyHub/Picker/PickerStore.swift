@@ -6,48 +6,47 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import Combine
 import Alamofire
+import Combine
+import SwiftUI
 
 class PickerStore: ObservableObject {
-    
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
-    
+
     @Published var facultyModel: [FacultyModelElement] = [FacultyModelElement]()
     @Published var groupModel: [GroupModelElement] = [GroupModelElement]()
 
     static let shared = PickerStore()
     let apiFaculty = "https://api.lisindmitriy.me/faculty"
     let apiGroup = "https://api.lisindmitriy.me/"
-    
+
     func loadPickerFaculty() {
         AF.request(apiFaculty)
             .validate()
             .responseDecodable(of: [FacultyModelElement].self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let faculty = response.value else { return }
                     self.facultyModel = faculty
                     self.loadPickerGroup()
-                case .failure(let error):
+                case let .failure(error):
                     print("Список факультет не загружен: \(error.errorDescription!)")
                 }
-        }
+            }
     }
-    
+
     func loadPickerGroup() {
         AF.request(apiGroup + facultyModel[sessionStore.userData.choiseFaculty].id)
             .validate()
             .responseDecodable(of: [GroupModelElement].self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let group = response.value else { return }
                     self.groupModel = group
-                case .failure(let error):
+                case let .failure(error):
                     print("Список групп не загружен: \(error.errorDescription!)")
                 }
-        }
+            }
     }
 }
 

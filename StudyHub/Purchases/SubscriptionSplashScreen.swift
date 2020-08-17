@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct SubscriptionSplashScreen: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -155,11 +154,10 @@ struct SubscriptionContainerView: View {
 }
 
 struct InformationDetailView: View {
-    
     var title: String = "title"
     var subTitle: String = "subTitle"
     var imageName: String = "car"
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Image(systemName: imageName)

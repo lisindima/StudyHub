@@ -6,8 +6,8 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 extension AuthErrorCode {
     var description: String? {

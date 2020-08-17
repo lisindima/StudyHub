@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct Tabbed: View {
-
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
     @State private var selection: Int = 0

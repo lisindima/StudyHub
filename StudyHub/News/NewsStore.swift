@@ -6,20 +6,19 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import Combine
 import Alamofire
+import Combine
+import SwiftUI
 
 class NewsStore: ObservableObject {
-    
     @Published var articles: [Articles] = [Articles]()
     @Published var newsLoadingFailure: Bool = false
-    
+
     static let shared = NewsStore()
-    
+
     let apiUrl = "https://newsapi.org/v2/top-headlines?country=ru&apiKey="
     let apiKey = "762c4a68394f46f5b493923c11dc7e8b"
-    
+
     func loadNews() {
         AF.request(apiUrl + apiKey)
             .validate()
@@ -28,13 +27,13 @@ class NewsStore: ObservableObject {
                 case .success:
                     guard let news = response.value else { return }
                     self.articles = news.articles
-                case .failure(let error):
+                case let .failure(error):
                     self.newsLoadingFailure = true
                     print("Список новостей не загружен: \(error)")
                 }
-        }
+            }
     }
-    
+
     func fetchCategoryNews(category: String) {
         AF.request(apiUrl + apiKey + category)
             .validate()
@@ -43,11 +42,11 @@ class NewsStore: ObservableObject {
                 case .success:
                     guard let news = response.value else { return }
                     self.articles = news.articles
-                case .failure(let error):
+                case let .failure(error):
                     self.newsLoadingFailure = true
                     print("Список новостей не загружен: \(error)")
                 }
-        }
+            }
     }
 }
 

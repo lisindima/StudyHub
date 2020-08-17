@@ -9,20 +9,19 @@
 import SwiftUI
 
 struct NotificationSetting: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
-    
+
     @State private var notificationLesson: Bool = true
-    
+
     private func openSettings() {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL)
-            else {
-                return
+        else {
+            return
         }
         UIApplication.shared.open(settingsURL)
     }
-    
+
     var footerNotification: Text {
         switch notificationStore.enabled {
         case .denied:
@@ -33,7 +32,7 @@ struct NotificationSetting: View {
             return Text("")
         }
     }
-    
+
     var footerNotificationLesson: Text {
         switch notificationLesson {
         case true:
@@ -42,7 +41,7 @@ struct NotificationSetting: View {
             return Text("Если вы хотите получать уведомления перед началом пары, активируйте этот параметр.")
         }
     }
-    
+
     var body: some View {
         Form {
             if notificationStore.enabled == .authorized {
@@ -54,7 +53,7 @@ struct NotificationSetting: View {
                         Text("Перед парой")
                     }
                     if notificationLesson {
-                        Stepper(value: $sessionStore.userData.notifyMinute, in: 5...30) {
+                        Stepper(value: $sessionStore.userData.notifyMinute, in: 5 ... 30) {
                             Image(systemName: "timer")
                                 .frame(width: 24)
                                 .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))

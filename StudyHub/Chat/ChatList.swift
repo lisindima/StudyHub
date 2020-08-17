@@ -6,22 +6,21 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Firebase
-import NativeSearchBar
 import KingfisherSwiftUI
+import NativeSearchBar
+import SwiftUI
 
 struct ChatList: View {
-    
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     @ObservedObject var searchBar: SearchBar = SearchBar.shared
-    
+
     private func delete(at offsets: IndexSet) {
         chatStore.dataChat.remove(atOffsets: offsets)
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -46,23 +45,22 @@ struct ChatList: View {
 }
 
 struct ListItem: View {
-    
     @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    
+
     @State private var showIndicator: Bool = false
     @State private var numberUnreadMessages: Int = 0
-    
+
     let currentUid = Auth.auth().currentUser?.uid
     var dataChat: DataChat
-    
+
     private func checkNumberUnreadMessages() {
         numberUnreadMessages = chatStore.dataMessages.filter {
             Auth.auth().currentUser?.uid != $0.idUser && !$0.isRead
         }.count
     }
-    
+
     var body: some View {
         HStack {
             ZStack {

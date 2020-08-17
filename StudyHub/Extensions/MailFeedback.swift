@@ -6,16 +6,15 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
 import MessageUI
+import SPAlert
+import SwiftUI
 
 struct MailFeedback: UIViewControllerRepresentable {
-    
     @Binding var mailSubject: String
-    
+
     let dataEmail = Data("Привет".utf8)
-    
+
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailFeedback>) -> MFMailComposeViewController {
         let mailFeedback = MFMailComposeViewController()
         mailFeedback.setToRecipients(["me@lisindmitriy.me"])
@@ -25,23 +24,21 @@ struct MailFeedback: UIViewControllerRepresentable {
         mailFeedback.mailComposeDelegate = context.coordinator
         return mailFeedback
     }
-    
-    func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: UIViewControllerRepresentableContext<MailFeedback>) {
-        
-    }
-    
+
+    func updateUIViewController(_: MFMailComposeViewController, context _: UIViewControllerRepresentableContext<MailFeedback>) {}
+
     func makeCoordinator() -> MailFeedback.Coordinator {
-        return Coordinator(self)
+        Coordinator(self)
     }
-    
+
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         var parent: MailFeedback
-        
+
         init(_ parent: MailFeedback) {
             self.parent = parent
         }
-        
-        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error _: Error?) {
             controller.dismiss(animated: true, completion: nil)
             switch result {
             case .sent:

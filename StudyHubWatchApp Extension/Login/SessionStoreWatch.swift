@@ -6,8 +6,8 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class SessionStoreWatch: ObservableObject {
     @Published var signInSuccess: Bool = false

@@ -6,33 +6,32 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import Firebase
 import CodeScanner
-import KingfisherSwiftUI
 import CoreImage.CIFilterBuiltins
+import Firebase
+import KingfisherSwiftUI
+import SwiftUI
 
 struct QRReader: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     @ObservedObject private var qrStore: QRStore = QRStore.shared
-    
+
     @State private var choiseView: Int = 1
     @State private var showProfileFriends: Bool = false
-    
+
     let currentUser = Auth.auth().currentUser
-    
+
     var body: some View {
         ZStack {
             if choiseView == 0 {
                 ZStack {
                     CodeScannerView(codeTypes: [.qr], simulatedData: "dLlZ2MYmIZSICzP4lPp1a96rDmy1") { result in
                         switch result {
-                        case .success(let code):
+                        case let .success(code):
                             self.qrStore.getUserInfoBeforeScanQRCode(code: code)
                             self.showProfileFriends = true
-                        case .failure(let error):
+                        case let .failure(error):
                             print(error.localizedDescription)
                         }
                     }

@@ -9,7 +9,6 @@
 import Foundation
 
 extension Date {
-    
     func calenderTimeSinceNow() -> String {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
@@ -19,7 +18,7 @@ extension Date {
         let hours = components.hour!
         let minutes = components.minute!
         let seconds = components.second!
-        
+
         if years > 0 {
             if years > 4 {
                 return "\(years) лет назад"

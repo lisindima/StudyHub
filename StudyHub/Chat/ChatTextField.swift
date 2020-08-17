@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct ChatTextField: View {
-    
     @Binding var messageText: String
-    
+
     var action: () -> Void
-    
+
     var body: some View {
         HStack {
             Button(action: { print("Прикрепить") }) {

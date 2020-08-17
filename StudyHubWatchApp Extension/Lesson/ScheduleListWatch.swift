@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct ScheduleListWatch: View {
-    
     @ObservedObject private var scheduleStore: ScheduleStore = ScheduleStore.shared
-    
+
     var body: some View {
         VStack {
             if scheduleStore.scheduleModel.isEmpty {

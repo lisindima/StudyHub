@@ -6,14 +6,13 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import Combine
 import Alamofire
+import Combine
+import SwiftUI
 
 struct License: View {
-    
     @ObservedObject private var licenseStore: LicenseStore = LicenseStore.shared
-    
+
     var body: some View {
         VStack {
             if licenseStore.licenseModel.isEmpty && !licenseStore.licenseLoadingFailure {
@@ -41,11 +40,10 @@ struct License: View {
 }
 
 struct LicenseDetail: View {
-    
     var nameFramework: String
     var urlFramework: String
     var textLicenseFramework: String
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -65,25 +63,24 @@ struct LicenseDetail: View {
 }
 
 class LicenseStore: ObservableObject {
-    
     @Published var licenseModel: [LicenseModel] = [LicenseModel]()
     @Published var licenseLoadingFailure: Bool = false
-    
+
     static let shared = LicenseStore()
-    
+
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
             .validate()
             .responseDecodable(of: [LicenseModel].self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let license = response.value else { return }
                     self.licenseModel = license
-                case .failure(let error):
+                case let .failure(error):
                     self.licenseLoadingFailure = true
                     print("Список лицензий не загружен: \(error.errorDescription!)")
                 }
-        }
+            }
     }
 }
 

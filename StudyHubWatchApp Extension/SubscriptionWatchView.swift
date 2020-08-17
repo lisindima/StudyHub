@@ -6,13 +6,12 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Purchases
+import SwiftUI
 
 struct SubscriptionWatchView: View {
-    
     @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
-    
+
     var body: some View {
         VStack {
             if purchasesStore.monthlyPrice == "" {

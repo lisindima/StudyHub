@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct BannerModifier: ViewModifier {
-    
     @Binding var showBanner: Bool
-    
+
     func body(content: Content) -> some View {
         ZStack {
             if showBanner {

@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct ChatView: View {
-    
     @EnvironmentObject var chatStore: ChatStore
-    
+
     var body: some View {
         Group {
             if chatStore.statusChat == .loading {

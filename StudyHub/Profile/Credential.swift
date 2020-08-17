@@ -6,22 +6,21 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
 import Firebase
+import SPAlert
+import SwiftUI
 
 struct DeleteUser: View {
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var loading: Bool = false
-    
+
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        self.loading = true
+        loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -44,7 +43,7 @@ struct DeleteUser: View {
             }
         })
     }
-    
+
     var body: some View {
         VStack(alignment: .center) {
             CustomInput(text: $email, name: "Эл.почта")
@@ -55,13 +54,12 @@ struct DeleteUser: View {
                 HStack {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
-                    if password.isEmpty {
-                    }
-                    if 0 < password.count && password.count < 8 {
+                    if password.isEmpty {}
+                    if password.count > 0 && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
-                    if 8 <= password.count {
+                    if password.count >= 8 {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
@@ -89,21 +87,20 @@ struct DeleteUser: View {
 }
 
 struct ChangeEmail: View {
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var newEmail: String = ""
     @State private var loading: Bool = false
     @State private var changeView: Bool = false
-    
+
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        self.loading = true
+        loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -115,12 +112,12 @@ struct ChangeEmail: View {
             }
         })
     }
-    
+
     private func changeEmail() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        self.loading = true
-        self.sessionStore.updateEmail(email: self.newEmail) { error in
+        loading = true
+        sessionStore.updateEmail(email: newEmail) { error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -128,11 +125,10 @@ struct ChangeEmail: View {
             } else {
                 SPAlert.present(title: "Эл.почта изменена!", message: "Вы успешно изменили свою электронную почту.", preset: .done)
                 self.loading = false
-                
             }
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .center) {
             if !changeView {
@@ -144,13 +140,12 @@ struct ChangeEmail: View {
                     HStack {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
-                        if password.isEmpty {
-                        }
-                        if 0 < password.count && password.count < 8 {
+                        if password.isEmpty {}
+                        if password.count > 0 && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= password.count {
+                        if password.count >= 8 {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }
@@ -197,21 +192,20 @@ struct ChangeEmail: View {
 }
 
 struct ChangePassword: View {
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var newPassword: String = ""
     @State private var loading: Bool = false
     @State private var changeView: Bool = false
-    
+
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     private func reauthenticateUser() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        self.loading = true
+        loading = true
         let credentialEmail = EmailAuthProvider.credential(withEmail: email, password: password)
-        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { authResult, error in
+        Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -223,12 +217,12 @@ struct ChangePassword: View {
             }
         })
     }
-    
+
     private func changePassword() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
-        self.loading = true
-        self.sessionStore.updatePassword(password: self.newPassword) { (error) in
+        loading = true
+        sessionStore.updatePassword(password: newPassword) { error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -239,7 +233,7 @@ struct ChangePassword: View {
             }
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .center) {
             if !changeView {
@@ -251,13 +245,12 @@ struct ChangePassword: View {
                     HStack {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
-                        if password.isEmpty {
-                        }
-                        if 0 < password.count && password.count < 8 {
+                        if password.isEmpty {}
+                        if password.count > 0 && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= password.count {
+                        if password.count >= 8 {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }
@@ -283,14 +276,12 @@ struct ChangePassword: View {
                     HStack {
                         SecureField("Пароль", text: $newPassword)
                             .textContentType(.newPassword)
-                        if newPassword.isEmpty {
-                            
-                        }
-                        if 0 < newPassword.count && newPassword.count < 8 {
+                        if newPassword.isEmpty {}
+                        if newPassword.count > 0 && newPassword.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
-                        if 8 <= newPassword.count {
+                        if newPassword.count >= 8 {
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         }

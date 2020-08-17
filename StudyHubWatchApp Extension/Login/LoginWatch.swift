@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct AppleLogin: View {
-    
     var body: some View {
         ScrollView {
             Image("defaultlogo")
@@ -24,12 +23,11 @@ struct AppleLogin: View {
 }
 
 struct EmailLogin: View {
-    
     @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
-    
+
     @State private var email: String = ""
     @State private var password: String = ""
-    
+
     var body: some View {
         ScrollView {
             TextField("Логин", text: $email)
@@ -46,9 +44,8 @@ struct EmailLogin: View {
 }
 
 struct RootView: View {
-    
     @ObservedObject private var sessionStoreWatch: SessionStoreWatch = SessionStoreWatch.shared
-    
+
     var body: some View {
         Group {
             if sessionStoreWatch.signInSuccess {

@@ -6,18 +6,17 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import WatchKit
 import Purchases
+import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, PurchasesDelegate {
-
     func applicationDidFinishLaunching() {
         Purchases.configure(withAPIKey: "ueKWzICnIniWEbmIuqmyFNJlHBvsQZnf", appUserID: "dLlZ2MYmIZSICzP4lPp1a96rDmy1")
         Purchases.debugLogsEnabled = true
         Purchases.shared.delegate = self
     }
-    
-    func purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: Purchases.PurchaserInfo) {
+
+    func purchases(_: Purchases, didReceiveUpdated _: Purchases.PurchaserInfo) {
         PurchasesStore.shared.listenPurchases()
     }
 
@@ -59,5 +58,4 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, PurchasesDelegate {
             }
         }
     }
-
 }

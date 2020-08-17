@@ -9,16 +9,15 @@
 import SwiftUI
 
 struct SettingAccount: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
-    
+
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false
     @State private var selectedSourceType: UIImagePickerController.SourceType = .camera
-    
+
     private let deletedUrlImageProfile: String = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
-    
+
     var body: some View {
         Form {
             Section(header: Text("Личные данные").fontWeight(.bold), footer: Text("Здесь вы можете отредактировать ваши личные данные, их могут видеть другие пользователи.")) {
@@ -58,7 +57,7 @@ struct SettingAccount: View {
                                 self.isShowingModalViewImage = true
                             }, .destructive(Text("Удалить фотографию")) {
                                 self.sessionStore.userData.urlImageProfile = self.deletedUrlImageProfile
-                            }, .cancel()
+                            }, .cancel(),
                         ])
                     }
                     .sheet(isPresented: $isShowingModalViewImage) {

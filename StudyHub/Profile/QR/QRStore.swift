@@ -6,20 +6,19 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
+import CoreImage.CIFilterBuiltins
 import Firebase
 import FirebaseFirestoreSwift
-import CoreImage.CIFilterBuiltins
+import SwiftUI
 
 class QRStore: ObservableObject {
-    
     @Published var profileFriendsModel: ProfileFriendsModel!
-    
+
     static let shared = QRStore()
-    
+
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
-    
+
     func getUserInfoBeforeScanQRCode(code: String) {
         let db = Firestore.firestore()
         let docRef = db.collection("profile").document(code)
@@ -28,18 +27,18 @@ class QRStore: ObservableObject {
                 try document?.data(as: ProfileFriendsModel.self)
             }
             switch result {
-            case .success(let profileFriendsModel):
+            case let .success(profileFriendsModel):
                 if let profileFriendsModel = profileFriendsModel {
                     self.profileFriendsModel = profileFriendsModel
                 } else {
                     print("Document does not exist")
                 }
-            case .failure(let error):
+            case let .failure(error):
                 print("Error decoding profileFriendsModel: \(error)")
             }
         }
     }
-    
+
     func generatedQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")

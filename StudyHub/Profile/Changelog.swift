@@ -6,18 +6,17 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import Combine
 import Alamofire
+import Combine
+import SwiftUI
 
 struct Changelog: View {
-    
     @ObservedObject private var changelogStore: ChangelogStore = ChangelogStore.shared
-    
+
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
     }
-    
+
     var body: some View {
         VStack {
             if changelogStore.сhangelogModel.isEmpty && !changelogStore.changelogLoadingFailure {
@@ -52,7 +51,7 @@ struct Changelog: View {
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 5)
                                                     .foregroundColor(Color.purple.opacity(0.2))
-                                        )
+                                            )
                                             .padding(.bottom, 3)
                                         Text(changelog.whatsNew)
                                             .font(.system(size: 16))
@@ -72,7 +71,7 @@ struct Changelog: View {
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 5)
                                                     .foregroundColor(Color.green.opacity(0.2))
-                                        )
+                                            )
                                             .padding(.bottom, 3)
                                         Text(changelog.bugFixes)
                                             .font(.system(size: 16))
@@ -98,25 +97,24 @@ struct Changelog: View {
 }
 
 class ChangelogStore: ObservableObject {
-    
     @Published var сhangelogModel: [ChangelogModel] = [ChangelogModel]()
     @Published var changelogLoadingFailure: Bool = false
-    
+
     static let shared = ChangelogStore()
-    
+
     func loadChangelog() {
         AF.request("https://api.lisindmitriy.me/changelog")
             .validate()
             .responseDecodable(of: [ChangelogModel].self) { response in
                 switch response.result {
-                case .success( _):
+                case .success:
                     guard let сhangelog = response.value else { return }
                     self.сhangelogModel = сhangelog
-                case .failure(let error):
+                case let .failure(error):
                     self.changelogLoadingFailure = true
                     print("Список изменений не загружен: \(error.errorDescription!)")
                 }
-        }
+            }
     }
 }
 

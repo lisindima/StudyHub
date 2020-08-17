@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct EmailLogin: View {
-    
     @State private var email: String = ""
     @State private var password: String = ""
     @Binding var signInSuccess: Bool
-    
+
     var body: some View {
         ScrollView {
             Text("StudyHub")
@@ -30,9 +29,8 @@ struct EmailLogin: View {
 }
 
 struct Login: View {
-    
     @State private var signInSuccess = false
-    
+
     var body: some View {
         Group {
             if signInSuccess {

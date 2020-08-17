@@ -6,22 +6,21 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Firebase
 import KingfisherSwiftUI
+import SwiftUI
 
 struct MessageItem: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    
+
     let currentUser = Auth.auth().currentUser
-    
+
     var dataMessages: DataMessages
     var isMe: Bool {
         currentUser?.uid == dataMessages.idUser
     }
-    
+
     var body: some View {
         Group {
             if isMe {

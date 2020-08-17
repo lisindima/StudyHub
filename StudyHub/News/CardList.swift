@@ -6,20 +6,19 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import KingfisherSwiftUI
+import SwiftUI
 
 struct CardList: View {
-    
     @ObservedObject private var newsStore: NewsStore = NewsStore.shared
     @ObservedObject private var dateStore: DateStore = DateStore.shared
-    
+
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     @State private var showDetailsNews: Bool = false
     @State private var selectedTab: String = "Популярное"
     @State private var newsTopic: [String] = ["Популярное", "Спорт", "Развлечение", "Бизнес", "Здоровье", "Технологии"]
-    
+
     var body: some View {
         NavigationView {
             if newsStore.articles.isEmpty {

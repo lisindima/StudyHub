@@ -6,34 +6,33 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
 import Firebase
 import FirebaseStorageSwift
+import SPAlert
+import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @Binding var selectedSourceType: UIImagePickerController.SourceType
-    
+
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = context.coordinator
         imagePicker.sourceType = selectedSourceType
         return imagePicker
     }
-    
+
     func makeCoordinator() -> ImagePicker.Coordinator {
-        return Coordinator(self)
+        Coordinator(self)
     }
-    
+
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         var parent: ImagePicker
-        
+
         init(_ parent: ImagePicker) {
             self.parent = parent
         }
-        
+
         func imagePickerController(_ photoPicker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             photoPicker.dismiss(animated: true)
             let currentUser = Auth.auth().currentUser!
@@ -61,7 +60,7 @@ struct ImagePicker: UIViewControllerRepresentable {
                             }
                         }
                     }
-                case .failure(let error):
+                case let .failure(error):
                     print("Error: Image could not upload! \(error)")
                     SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                     self.parent.sessionStore.showBanner = false
@@ -72,8 +71,6 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
         }
     }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-        
-    }
+
+    func updateUIViewController(_: UIImagePickerController, context _: UIViewControllerRepresentableContext<ImagePicker>) {}
 }

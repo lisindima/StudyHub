@@ -7,22 +7,21 @@
 //
 
 import Combine
-import SPAlert
 import Kingfisher
+import SPAlert
 
 class ImageCacheStore: ObservableObject {
-
     @Published var sizeImageCache: Int = 0
     @Published var sizeLimitImageCache: Int = 0
-    
+
     static let shared = ImageCacheStore()
-    
+
     func calculateImageCache() {
         ImageCache.default.calculateDiskStorageSize { result in
             switch result {
-            case .success(let size):
+            case let .success(size):
                 self.sizeImageCache = Int(size) / 1024 / 1024
-            case .failure(let error):
+            case let .failure(error):
                 print(error)
             }
         }
@@ -30,7 +29,7 @@ class ImageCacheStore: ObservableObject {
 
     func setCacheSizeLimit() {
         ImageCache.default.diskStorage.config.sizeLimit = 350 * 1024 * 1024
-        self.sizeLimitImageCache = Int(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024)
+        sizeLimitImageCache = Int(ImageCache.default.diskStorage.config.sizeLimit / 1024 / 1024)
     }
 
     func clearImageCache() {

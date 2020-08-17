@@ -6,14 +6,13 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import KingfisherSwiftUI
+import SwiftUI
 
 struct ProfileImage: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @State private var showAdminCheck: Bool = false
-    
+
     var body: some View {
         ZStack {
             KFImage(URL(string: sessionStore.userData.urlImageProfile), isLoaded: $showAdminCheck)

@@ -6,29 +6,28 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import Firebase
+import SwiftUI
 import UserNotifications
 
 class NotificationStore: ObservableObject {
-    
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     @Published var enabled: UNAuthorizationStatus = .notDetermined
     @Published var fcmToken: String? = nil
-    
+
     static let shared = NotificationStore()
-    
+
     var notifications = [Notification]()
     var center: UNUserNotificationCenter = .current()
-    
+
     init() {
         center.getNotificationSettings {
             self.enabled = $0.authorizationStatus
         }
     }
-    
+
     func refreshNotificationStatus() {
         center.getNotificationSettings { setting in
             DispatchQueue.main.async {
@@ -36,7 +35,7 @@ class NotificationStore: ObservableObject {
             }
         }
     }
-    
+
     func requestPermission() {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
             DispatchQueue.main.async {
@@ -49,18 +48,18 @@ class NotificationStore: ObservableObject {
         }
         UIApplication.shared.registerForRemoteNotifications()
     }
-    
-    func setNotification() -> Void {
+
+    func setNotification() {
         let manager = NotificationStore()
         manager.addNotification(title: "Тестовое уведомление", body: "Тест")
         manager.schedule()
     }
-    
-    func addNotification(title: String, body: String) -> Void {
+
+    func addNotification(title: String, body: String) {
         notifications.append(Notification(id: UUID().uuidString, title: title, body: body))
     }
-    
-    func scheduleNotifications() -> Void {
+
+    func scheduleNotifications() {
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
@@ -73,8 +72,8 @@ class NotificationStore: ObservableObject {
             }
         }
     }
-    
-    func schedule() -> Void {
+
+    func schedule() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {
             case .notDetermined:
@@ -86,14 +85,14 @@ class NotificationStore: ObservableObject {
             }
         }
     }
-    
+
     func updateFcmToken() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         if fcmToken != nil {
             let docRef = db.collection("profile").document(currentUser.uid)
             docRef.updateData([
-                "fcmToken": fcmToken!
+                "fcmToken": fcmToken!,
             ]) { err in
                 if let err = err {
                     print("fcmToken не обновлен: \(err)")

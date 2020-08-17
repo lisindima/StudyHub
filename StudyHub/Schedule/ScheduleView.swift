@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct ScheduleView: View {
-    
     @ObservedObject private var scheduleStore: ScheduleStore = ScheduleStore.shared
-    
+
     var body: some View {
         Group {
             if scheduleStore.scheduleModel.isEmpty {

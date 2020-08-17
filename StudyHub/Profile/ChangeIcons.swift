@@ -6,21 +6,20 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class IconStore: ObservableObject {
-    
     @Published var currentIconName: String = "defaultlogo"
     @Published var iconModel: [IconModel] = [
         IconModel(nameIcon: "defaultlogo", nameAuthorIcon: "По умолчанию"),
         IconModel(nameIcon: "altstulogo", nameAuthorIcon: "Герб \"АлтГТУ\""),
         IconModel(nameIcon: "lisinlogo", nameAuthorIcon: "Лисин Дмитрий"),
-        IconModel(nameIcon: "pornlogo", nameAuthorIcon: "Хи-Хи😈")
+        IconModel(nameIcon: "pornlogo", nameAuthorIcon: "Хи-Хи😈"),
     ]
-    
+
     static let shared = IconStore()
-    
+
     func getIcon() {
         if UIApplication.shared.alternateIconName == nil {
             currentIconName = "defaultlogo"
@@ -30,7 +29,7 @@ class IconStore: ObservableObject {
             currentIconName = "pornlogo"
         }
     }
-    
+
     func setIcon(nameIcon: String) {
         UIApplication.shared.setAlternateIconName(nameIcon == "defaultlogo" ? nil : nameIcon) { error in
             if let error = error {
@@ -43,9 +42,8 @@ class IconStore: ObservableObject {
 }
 
 struct ChangeIcons: View {
-    
     @ObservedObject private var iconStore: IconStore = IconStore.shared
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -58,11 +56,10 @@ struct ChangeIcons: View {
 }
 
 struct IconItem: View {
-    
     @ObservedObject private var iconStore: IconStore = IconStore.shared
-    
+
     var iconModel: IconModel
-    
+
     var body: some View {
         VStack(alignment: .center) {
             Button(action: {
@@ -78,7 +75,7 @@ struct IconItem: View {
                             .stroke(Color.accentColor, lineWidth: 3)
                             .opacity(iconStore.currentIconName == iconModel.nameIcon ? 1.0 : 0.0)
                             .frame(width: 90, height: 90)
-                )
+                    )
             }.frame(width: 95, height: 95)
             Text(iconModel.nameAuthorIcon)
                 .font(.system(size: 11, design: .rounded))

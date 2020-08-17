@@ -6,16 +6,15 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
-import SPAlert
-import Firebase
-import CryptoKit
 import AuthenticationServices
+import CryptoKit
+import Firebase
+import SPAlert
+import SwiftUI
 
 // MARK: - Регистрация
 
 struct SignUpView: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @ObservedObject private var dateStore: DateStore = DateStore.shared
 
@@ -31,7 +30,7 @@ struct SignUpView: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        sessionStore.signUp(email: email, password: password) { result, error in
+        sessionStore.signUp(email: email, password: password) { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -59,7 +58,7 @@ struct SignUpView: View {
                     "setImageForBackroundProfile": "",
                     "choiseFaculty": 1,
                     "choiseGroup": 1,
-                    "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d"
+                    "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d",
                 ]) {
                     err in
                     if let err = err {
@@ -113,13 +112,12 @@ struct SignUpView: View {
                 HStack {
                     SecureField("Пароль", text: $password)
                         .textContentType(.newPassword)
-                    if password.isEmpty {
-                    }
-                    if 0 < password.count && password.count < 8 {
+                    if password.isEmpty {}
+                    if password.count > 0 && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
-                    if 8 <= password.count {
+                    if password.count >= 8 {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
@@ -153,9 +151,8 @@ struct SignUpView: View {
 // MARK: - Восстановление пароля
 
 struct ResetPassword: View {
-
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     @State private var email: String = ""
     @State private var loading: Bool = false
 
@@ -205,7 +202,6 @@ struct ResetPassword: View {
 // MARK: - Вход с помощью почты и пароля
 
 struct EmailLoginScreen: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
 
     @State private var email: String = ""
@@ -216,7 +212,7 @@ struct EmailLoginScreen: View {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         loading = true
-        sessionStore.signIn(email: email, password: password) { result, error in
+        sessionStore.signIn(email: email, password: password) { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
                 self.loading = false
@@ -236,13 +232,12 @@ struct EmailLoginScreen: View {
                 HStack {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
-                    if password.isEmpty {
-                    }
-                    if 0 < password.count && password.count < 8 {
+                    if password.isEmpty {}
+                    if password.count > 0 && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
-                    if 8 <= password.count {
+                    if password.count >= 8 {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(.green)
                     }
@@ -296,19 +291,18 @@ struct EmailLoginScreen: View {
 // MARK: - Вход с помощью Apple
 
 struct AuthenticationScreen: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     @State private var currentNonce: String?
-    
+
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
-        let charset: Array<Character> =
+        let charset: [Character] =
             Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
-        
+
         while remainingLength > 0 {
             let randoms: [UInt8] = (0 ..< 16).map { _ in
                 var random: UInt8 = 0
@@ -330,16 +324,16 @@ struct AuthenticationScreen: View {
         }
         return result
     }
-    
+
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
-            return String(format: "%02x", $0)
+            String(format: "%02x", $0)
         }.joined()
         return hashString
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
@@ -376,7 +370,7 @@ struct AuthenticationScreen: View {
                         },
                         onCompletion: { result in
                             switch result {
-                            case .success(let authorization):
+                            case let .success(authorization):
                                 if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
                                     guard let nonce = currentNonce else {
                                         fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -390,20 +384,21 @@ struct AuthenticationScreen: View {
                                         return
                                     }
                                     let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-                                    Auth.auth().signIn(with: credential) { authResult, error in
+                                    Auth.auth().signIn(with: credential) { _, error in
                                         if error != nil {
                                             print((error?.localizedDescription)!)
                                             return
                                         }
                                     }
                                 }
-                            case .failure(let error):
+                            case let .failure(error):
                                 SPAlert.present(title: "Произошла ошибка!", message: error.localizedDescription, preset: .error)
                             }
-                        })
-                        .frame(height: 55)
-                        .cornerRadius(8)
-                        .padding()
+                        }
+                    )
+                    .frame(height: 55)
+                    .cornerRadius(8)
+                    .padding()
                     Text("-или-")
                         .foregroundColor(.secondary)
                         .font(.subheadline)

@@ -6,23 +6,22 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import NativeSearchBar
+import SwiftUI
 
 struct NoteList: View {
-    
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     @ObservedObject var searchBar: SearchBar = SearchBar.shared
-    
+
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
-    
+
     private func move(from source: IndexSet, to destination: Int) {
         noteStore.dataNote.move(fromOffsets: source, toOffset: destination)
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -54,14 +53,11 @@ struct NoteList: View {
             }
             .actionSheet(isPresented: $showActionSheetSort) {
                 ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
-                .default(Text("По названию")) {
-    
-                }, .default(Text("По дате создания")) {
-                            
-                }, .cancel()])
+                    .default(Text("По названию")) {}, .default(Text("По дате создания")) {}, .cancel(),
+                ])
             }
             .navigationBarTitle("Заметки")
-            .navigationBarItems(leading: EditButton(), trailing: Button (action: {
+            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                 self.showActionSheetSort = true
             }) {
                 Image(systemName: "line.horizontal.3.decrease.circle")

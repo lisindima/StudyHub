@@ -6,17 +6,16 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import KingfisherSwiftUI
+import SwiftUI
 
 struct CardView: View {
-    
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State private var showImage: Bool = true
-    
+
     let article: Articles
     let noImageUrl = "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2Fplaceholder.jpeg?alt=media&token=8f554741-2bfb-41ef-82b0-fbc64f0ffdf6"
-    
+
     var body: some View {
         VStack {
             if showImage {
@@ -25,9 +24,9 @@ struct CardView: View {
                     .placeholder { ProgressView() }
                     .onFailure { _ in
                         self.showImage = false
-                }
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+                    }
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }
             HStack {
                 VStack(alignment: .leading) {

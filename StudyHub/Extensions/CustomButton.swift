@@ -9,12 +9,11 @@
 import SwiftUI
 
 struct CustomButton: View {
-    
     var label: String
     var loading: Bool
     var colorButton: Color
     var action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             HStack {

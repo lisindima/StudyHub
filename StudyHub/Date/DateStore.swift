@@ -6,13 +6,12 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class DateStore: ObservableObject {
-    
     static let shared = DateStore()
-    
+
     let stringDate: String = {
         var currentDate: Date = Date()
         let dateFormatter = DateFormatter()
@@ -20,13 +19,13 @@ class DateStore: ObservableObject {
         let createStringDate = dateFormatter.string(from: currentDate)
         return createStringDate
     }()
-    
+
     let dateHour: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter
     }()
-    
+
     let dateDay: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"

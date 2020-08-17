@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct CircleProgress: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -25,9 +24,8 @@ struct CircleProgress: View {
 }
 
 struct Label: View {
-    
     var percentage: Double = 0.0
-    
+
     var body: some View {
         ZStack {
             Text(String(format: "%.0f", CGFloat(percentage)))
@@ -39,10 +37,9 @@ struct Label: View {
 }
 
 struct Outline: View {
-    
     var percentage: Double = 0.0
     var colors: [Color] = [Color.outlineColor]
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -54,15 +51,14 @@ struct Outline: View {
                         .stroke(style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center, startAngle: .zero, endAngle: .init(degrees: 360)))
                         .rotationEffect(.degrees(-90))
-            ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
+                ).animation(.spring(response: 2.0, dampingFraction: 1.0, blendDuration: 1.0))
         }
     }
 }
 
 struct Track: View {
-    
     var colors: [Color] = [Color.trackColor]
-    
+
     var body: some View {
         ZStack {
             Circle()
@@ -72,15 +68,14 @@ struct Track: View {
                     Circle()
                         .stroke(style: StrokeStyle(lineWidth: 8))
                         .fill(AngularGradient(gradient: .init(colors: colors), center: .center))
-            )
+                )
         }
     }
 }
 
 struct Pulsation: View {
-    
     @State private var pulsate: Bool = false
-    
+
     var colors: [Color] = [Color.pulsatingColor]
     var body: some View {
         ZStack {
@@ -91,7 +86,7 @@ struct Pulsation: View {
                 .animation(Animation.easeInOut(duration: 1.1).repeatForever(autoreverses: true))
                 .onAppear {
                     self.pulsate.toggle()
-            }
+                }
         }
     }
 }

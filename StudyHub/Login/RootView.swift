@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct RootView: View {
-    
     @EnvironmentObject var sessionStore: SessionStore
-    
+
     var body: some View {
         Group {
             if sessionStore.user != nil && sessionStore.userData != nil {

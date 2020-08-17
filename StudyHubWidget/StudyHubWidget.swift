@@ -6,17 +6,17 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import WidgetKit
-import SwiftUI
 import Intents
+import SwiftUI
+import WidgetKit
 
 struct Provider: IntentTimelineProvider {
-    public func snapshot(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    public func snapshot(for configuration: ConfigurationIntent, with _: Context, completion: @escaping (SimpleEntry) -> Void) {
         let entry = SimpleEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
 
-    public func timeline(for configuration: ConfigurationIntent, with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    public func timeline(for configuration: ConfigurationIntent, with _: Context, completion: @escaping (Timeline<Entry>) -> Void) {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -37,7 +37,7 @@ struct SimpleEntry: TimelineEntry {
     public let configuration: ConfigurationIntent
 }
 
-struct StudyHubWidgetEntryView : View {
+struct StudyHubWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {

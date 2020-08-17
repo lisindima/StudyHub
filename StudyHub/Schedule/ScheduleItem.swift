@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct ScheduleItem: View {
-    
     var scheduleModel: ScheduleModel
-    
+
     var body: some View {
         HStack {
             RoundedRectangle(cornerRadius: 10)

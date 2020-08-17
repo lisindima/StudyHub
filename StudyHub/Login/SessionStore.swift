@@ -6,45 +6,44 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import SwiftUI
 import Combine
 import Firebase
-import Purchases
 import FirebaseFirestoreSwift
+import Purchases
+import SwiftUI
 
 class SessionStore: ObservableObject {
-    
     @Published var user: User?
     @Published var userData: UserData!
     @Published var showBanner: Bool = false
     @Published var onlineUser: Bool = false
     @Published var percentComplete: Double = 0.0
     @Published var userTypeAuth: ActiveAuthType = .email
-    
+
     static let shared = SessionStore()
     var handle: AuthStateDidChangeListenerHandle?
     let currentUser = Auth.auth().currentUser
-    
+
     init() {
         listenSession()
     }
-    
+
     deinit {
         unbind()
     }
-    
+
     func listenSession() {
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { _, user in
             if let user = user {
                 self.user = user
                 self.getDataFromDatabaseListen()
-                Purchases.shared.identify(user.uid, { info, error in
+                Purchases.shared.identify(user.uid) { _, error in
                     if let error = error {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
                         self.updateOnlineUser(onlineUser: true)
                     }
-                })
+                }
                 if let providerData = Auth.auth().currentUser?.providerData {
                     for userInfo in providerData {
                         switch userInfo.providerID {
@@ -60,21 +59,21 @@ class SessionStore: ObservableObject {
                 }
             } else {
                 self.updateOnlineUser(onlineUser: false)
-                Purchases.shared.reset { info, error in
+                Purchases.shared.reset { _, _ in
                     print("Пользователь вышел!")
                 }
                 self.user = nil
             }
         }
     }
-    
+
     func updateOnlineUser(onlineUser: Bool) {
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
         if currentUser != nil {
             let docRef = db.collection("profile").document(currentUser!.uid)
             docRef.updateData([
-                "onlineUser": onlineUser
+                "onlineUser": onlineUser,
             ]) { err in
                 if let err = err {
                     print("onlineUser не обновлен: \(err)")
@@ -88,7 +87,7 @@ class SessionStore: ObservableObject {
             }
         }
     }
-    
+
     func getDataFromDatabaseListen() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
@@ -97,18 +96,18 @@ class SessionStore: ObservableObject {
                 try documentSnapshot?.data(as: UserData.self)
             }
             switch result {
-            case .success(let userData):
+            case let .success(userData):
                 if let userData = userData {
                     self.userData = userData
                 } else {
                     print("Document does not exist")
                 }
-            case .failure(let error):
+            case let .failure(error):
                 print("Error decoding UserData: \(error)")
             }
         }
     }
-    
+
     func updateDataFromDatabase() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
@@ -118,13 +117,13 @@ class SessionStore: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    
+
     func unbind() {
         if let handle = handle {
             Auth.auth().removeStateDidChangeListener(handle)
         }
     }
-    
+
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -132,29 +131,29 @@ class SessionStore: ObservableObject {
             print("Error when trying to sign out: \(error.localizedDescription)")
         }
     }
-    
+
     func signUp(email: String, password: String, handler: @escaping AuthDataResultCallback) {
         Auth.auth().createUser(withEmail: email, password: password, completion: handler)
     }
-    
+
     func signIn(email: String, password: String, handler: @escaping AuthDataResultCallback) {
         Auth.auth().signIn(withEmail: email, password: password, completion: handler)
     }
-    
+
     func sendPasswordReset(email: String, handler: @escaping SendPasswordResetCallback) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: handler)
     }
-    
+
     func updateEmail(email: String, handler: @escaping UserProfileChangeCallback) {
         Auth.auth().currentUser?.updateEmail(to: email, completion: handler)
     }
-    
+
     func updatePassword(password: String, handler: @escaping UserProfileChangeCallback) {
         Auth.auth().currentUser?.updatePassword(to: password, completion: handler)
     }
-    
+
     func sendEmailVerification() {
-        Auth.auth().currentUser?.sendEmailVerification { error in }
+        Auth.auth().currentUser?.sendEmailVerification { _ in }
     }
 }
 
@@ -177,6 +176,7 @@ struct UserData: Identifiable, Codable {
             }
         }
     }
+
     var darkThemeOverride: Bool {
         didSet {
             SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified

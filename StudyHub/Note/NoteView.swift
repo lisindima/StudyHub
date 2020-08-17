@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct NoteView: View {
-    
     @EnvironmentObject var noteStore: NoteStore
-    
+
     var body: some View {
         Group {
             if noteStore.statusNote == .loading {
@@ -27,24 +26,23 @@ struct NoteView: View {
 }
 
 struct NewNote: View {
-    
     @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
     @EnvironmentObject var noteStore: NoteStore
     @State private var textNote: String = ""
     @Binding var showAddNewNote: Bool
-    
+
     func closeNewNote() {
         if !textNote.isEmpty {
-            self.noteStore.addNote(note: self.textNote)
+            noteStore.addNote(note: textNote)
         }
-        self.showAddNewNote = false
+        showAddNewNote = false
     }
-    
+
     var body: some View {
         NavigationView {
             TextEditor(text: $textNote)
                 .navigationBarTitle("Новая заметка", displayMode: .inline)
-                .navigationBarItems(trailing: Button (action: closeNewNote) {
+                .navigationBarItems(trailing: Button(action: closeNewNote) {
                     Text("Закрыть")
                         .bold()
                 })
@@ -55,9 +53,8 @@ struct NewNote: View {
 }
 
 struct NoteDetails: View {
-    
     var dataNote: DataNote
-    
+
     var body: some View {
         VStack {
             Text(dataNote.note)
