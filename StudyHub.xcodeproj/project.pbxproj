@@ -54,7 +54,6 @@
 		CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
 		CB609F89240662FE009A6389 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB609F88240662FE009A6389 /* Alamofire */; };
 		CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* NotificationStore.swift */; };
-		CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CB67778F23603B7F0019D6B6 /* KeyboardObserving */; };
 		CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = CB6AC62F2408F4FE00D0E482 /* SPAlert */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
@@ -299,7 +298,6 @@
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
 				CBD673612552E58A00437053 /* FirebaseMessaging in Frameworks */,
-				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
 				CB89413A24E649DA008EA334 /* FirebaseFirestore in Frameworks */,
@@ -635,7 +633,6 @@
 			);
 			name = StudyHub;
 			packageProductDependencies = (
-				CB67778F23603B7F0019D6B6 /* KeyboardObserving */,
 				CB8EF87A23C86B6E00992764 /* CodeScanner */,
 				CBCA4C5223F7FE7E0018168D /* Alamofire */,
 				CB6AC62F2408F4FE00D0E482 /* SPAlert */,
@@ -726,7 +723,6 @@
 			);
 			mainGroup = CB0AED30232E59A10047A8A0;
 			packageReferences = (
-				CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */,
 				CB8EF87923C86B6E00992764 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */,
@@ -1222,14 +1218,6 @@
 				minimumVersion = 5.14.1;
 			};
 		};
-		CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/nickffox/KeyboardObserving";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
-			};
-		};
 		CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
@@ -1243,7 +1231,7 @@
 			repositoryURL = "https://github.com/lisindima/NativeSearchBar";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				minimumVersion = 2.2.0;
 			};
 		};
 		CB85CDBA249B7EEF00AAEF04 /* XCRemoteSwiftPackageReference "bottom-sheet" */ = {
@@ -1303,11 +1291,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		CB67778F23603B7F0019D6B6 /* KeyboardObserving */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB67778E23603B7F0019D6B6 /* XCRemoteSwiftPackageReference "KeyboardObserving" */;
-			productName = KeyboardObserving;
 		};
 		CB6AC62F2408F4FE00D0E482 /* SPAlert */ = {
 			isa = XCSwiftPackageProductDependency;

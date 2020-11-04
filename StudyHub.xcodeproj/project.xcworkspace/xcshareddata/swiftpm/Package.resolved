@@ -74,15 +74,6 @@
         }
       },
       {
-        "package": "KeyboardObserving",
-        "repositoryURL": "https://github.com/nickffox/KeyboardObserving",
-        "state": {
-          "branch": null,
-          "revision": "26c0c913c11f0ee77006740ca1d8b478d222184f",
-          "version": "0.3.0"
-        }
-      },
-      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher/",
         "state": {
@@ -114,8 +105,8 @@
         "repositoryURL": "https://github.com/lisindima/NativeSearchBar",
         "state": {
           "branch": null,
-          "revision": "da8c17dc1a246ce366968ff4f8aa447157390a94",
-          "version": "1.0.3"
+          "revision": "a43b661272fde6992dcb73267e024adb474779d8",
+          "version": "2.2.0"
         }
       },
       {

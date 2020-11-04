@@ -7,7 +7,6 @@
 //
 
 import Firebase
-import KeyboardObserving
 import SwiftUI
 
 struct MessageList: View {
@@ -46,7 +45,6 @@ struct MessageList: View {
                     .padding(.bottom, 10)
             }
         }
-        .keyboardObserving()
         .onAppear(perform: chatStore.checkRead)
         .navigationBarTitle(Text(dataChat.nameChat), displayMode: .inline)
     }

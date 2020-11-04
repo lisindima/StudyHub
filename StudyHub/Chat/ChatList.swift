@@ -15,7 +15,7 @@ struct ChatList: View {
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
-    @ObservedObject var searchBar = SearchBar.shared
+    @State private var searchText: String = ""
 
     private func delete(at offsets: IndexSet) {
         chatStore.dataChat.remove(atOffsets: offsets)
@@ -26,13 +26,15 @@ struct ChatList: View {
             VStack(alignment: .leading) {
                 List {
                     ForEach(self.chatStore.dataChat.filter {
-                        searchBar.text.isEmpty || $0.nameChat.localizedStandardContains(searchBar.text)
+                        searchText.isEmpty || $0.nameChat.localizedStandardContains(searchText)
                     }, id: \.id) { item in
                         NavigationLink(destination: MessageList(dataChat: item)) {
                             ListItem(dataChat: item)
                         }
-                    }.onDelete(perform: delete)
-                }.addSearchBar(searchBar)
+                    }
+                    .onDelete(perform: delete)
+                }
+                .navigationSearchBar("Поиск", searchText: $searchText)
                 PlusButton(action: {
                     print("Новое сообщение")
                 }, label: "Новое сообщение")

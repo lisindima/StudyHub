@@ -16,14 +16,35 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Promises (Playground) 11.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>35</integer>
+			<integer>15</integer>
+		</dict>
+		<key>Promises (Playground) 12.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>36</integer>
+		</dict>
+		<key>Promises (Playground) 13.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>37</integer>
+		</dict>
+		<key>Promises (Playground) 14.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>38</integer>
 		</dict>
 		<key>Promises (Playground) 2.xcscheme</key>
 		<dict>
@@ -79,7 +100,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>33</integer>
+			<integer>13</integer>
 		</dict>
 		<key>Promises (Playground).xcscheme</key>
 		<dict>

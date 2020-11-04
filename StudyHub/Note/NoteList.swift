@@ -13,10 +13,9 @@ struct NoteList: View {
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
-    @ObservedObject var searchBar = SearchBar.shared
-
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false
+    @State private var searchText: String = ""
 
     private func move(from source: IndexSet, to destination: Int) {
         noteStore.dataNote.move(fromOffsets: source, toOffset: destination)
@@ -27,7 +26,7 @@ struct NoteList: View {
             VStack(alignment: .leading) {
                 List {
                     ForEach(noteStore.dataNote.filter {
-                        searchBar.text.isEmpty || $0.note.localizedStandardContains(searchBar.text)
+                        searchText.isEmpty || $0.note.localizedStandardContains(searchText)
                     }, id: \.id) { item in
                         NavigationLink(destination: NoteDetails(dataNote: item)) {
                             VStack {
@@ -41,7 +40,8 @@ struct NoteList: View {
                     .onDelete { index in
                         self.noteStore.deleteNote(datas: self.noteStore, index: index)
                     }
-                }.addSearchBar(searchBar)
+                }
+                .navigationSearchBar("Поиск", searchText: $searchText)
                 PlusButton(action: {
                     self.showAddNewNote = true
                 }, label: "Новая заметка")
