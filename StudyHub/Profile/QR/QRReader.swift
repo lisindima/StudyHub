@@ -15,7 +15,7 @@ import SwiftUI
 struct QRReader: View {
     @EnvironmentObject var sessionStore: SessionStore
 
-    @ObservedObject private var qrStore: QRStore = QRStore.shared
+    @ObservedObject private var qrStore = QRStore.shared
 
     @State private var choiseView: Int = 1
     @State private var showProfileFriends: Bool = false

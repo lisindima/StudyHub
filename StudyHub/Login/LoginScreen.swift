@@ -16,13 +16,13 @@ import SwiftUI
 
 struct SignUpView: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var dateStore = DateStore.shared
 
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var firstname: String = ""
     @State private var lastname: String = ""
-    @State private var dateBirthday: Date = Date()
+    @State private var dateBirthday = Date()
     @State private var loading: Bool = false
     @State private var isShowDate: Bool = false
 

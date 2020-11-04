@@ -13,7 +13,7 @@ class DateStore: ObservableObject {
     static let shared = DateStore()
 
     let stringDate: String = {
-        var currentDate: Date = Date()
+        var currentDate = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("EEEE d MMMM")
         let createStringDate = dateFormatter.string(from: currentDate)

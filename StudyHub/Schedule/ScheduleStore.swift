@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 
 class ScheduleStore: ObservableObject {
-    @Published var scheduleModel: [ScheduleModel] = [ScheduleModel]()
+    @Published var scheduleModel = [ScheduleModel]()
     @Published var scheduleLoadingFailure: Bool = false
 
     static let shared = ScheduleStore()

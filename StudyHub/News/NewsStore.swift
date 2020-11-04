@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 
 class NewsStore: ObservableObject {
-    @Published var articles: [Articles] = [Articles]()
+    @Published var articles = [Articles]()
     @Published var newsLoadingFailure: Bool = false
 
     static let shared = NewsStore()

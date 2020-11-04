@@ -13,7 +13,7 @@ struct NoteList: View {
     @EnvironmentObject var noteStore: NoteStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
-    @ObservedObject var searchBar: SearchBar = SearchBar.shared
+    @ObservedObject var searchBar = SearchBar.shared
 
     @State private var showAddNewNote: Bool = false
     @State private var showActionSheetSort: Bool = false

@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 
 struct Changelog: View {
-    @ObservedObject private var changelogStore: ChangelogStore = ChangelogStore.shared
+    @ObservedObject private var changelogStore = ChangelogStore.shared
 
     var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
@@ -97,7 +97,7 @@ struct Changelog: View {
 }
 
 class ChangelogStore: ObservableObject {
-    @Published var сhangelogModel: [ChangelogModel] = [ChangelogModel]()
+    @Published var сhangelogModel = [ChangelogModel]()
     @Published var changelogLoadingFailure: Bool = false
 
     static let shared = ChangelogStore()

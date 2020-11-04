@@ -12,7 +12,7 @@ import SwiftUI
 
 struct MessageItem: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var dateStore = DateStore.shared
 
     let currentUser = Auth.auth().currentUser
 

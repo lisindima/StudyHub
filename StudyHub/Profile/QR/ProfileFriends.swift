@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ProfileFriends: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var qrStore: QRStore = QRStore.shared
+    @ObservedObject private var qrStore = QRStore.shared
 
     func sendRequestFriend() {
         SPAlert.present(title: "Запрос отправлен!", message: "Запрос на добавления в друзья отправлен.", preset: .done)

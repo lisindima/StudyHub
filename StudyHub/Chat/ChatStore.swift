@@ -13,8 +13,8 @@ import FirebaseFirestoreSwift
 import SwiftUI
 
 class ChatStore: ObservableObject {
-    @Published var dataMessages: [DataMessages] = [DataMessages]()
-    @Published var dataChat: [DataChat] = [DataChat]()
+    @Published var dataMessages = [DataMessages]()
+    @Published var dataChat = [DataChat]()
     @Published var statusChat: StatusChat = .loading
 
     static let shared = ChatStore()

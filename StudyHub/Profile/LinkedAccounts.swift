@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SettingAccount: View {
-    @ObservedObject var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject var sessionStore = SessionStore.shared
 
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false

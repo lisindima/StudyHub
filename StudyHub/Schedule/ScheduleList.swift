@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ScheduleList: View {
-    @ObservedObject private var scheduleStore: ScheduleStore = ScheduleStore.shared
+    @ObservedObject private var scheduleStore = ScheduleStore.shared
     @State private var week: Int = 1
 
     var body: some View {

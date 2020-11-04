@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 
 struct License: View {
-    @ObservedObject private var licenseStore: LicenseStore = LicenseStore.shared
+    @ObservedObject private var licenseStore = LicenseStore.shared
 
     var body: some View {
         VStack {
@@ -63,7 +63,7 @@ struct LicenseDetail: View {
 }
 
 class LicenseStore: ObservableObject {
-    @Published var licenseModel: [LicenseModel] = [LicenseModel]()
+    @Published var licenseModel = [LicenseModel]()
     @Published var licenseLoadingFailure: Bool = false
 
     static let shared = LicenseStore()

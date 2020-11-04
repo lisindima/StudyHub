@@ -11,10 +11,10 @@ import Combine
 import SwiftUI
 
 class PickerStore: ObservableObject {
-    @ObservedObject private var sessionStore: SessionStore = SessionStore.shared
+    @ObservedObject private var sessionStore = SessionStore.shared
 
-    @Published var facultyModel: [FacultyModelElement] = [FacultyModelElement]()
-    @Published var groupModel: [GroupModelElement] = [GroupModelElement]()
+    @Published var facultyModel = [FacultyModelElement]()
+    @Published var groupModel = [GroupModelElement]()
 
     static let shared = PickerStore()
     let apiFaculty = "https://api.lisindmitriy.me/faculty"

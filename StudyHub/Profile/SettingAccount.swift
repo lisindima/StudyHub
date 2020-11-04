@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingAccount: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
+    @ObservedObject private var pickerStore = PickerStore.shared
 
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false

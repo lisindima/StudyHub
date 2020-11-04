@@ -10,8 +10,8 @@ import KingfisherSwiftUI
 import SwiftUI
 
 struct CardList: View {
-    @ObservedObject private var newsStore: NewsStore = NewsStore.shared
-    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var newsStore = NewsStore.shared
+    @ObservedObject private var dateStore = DateStore.shared
 
     @EnvironmentObject var sessionStore: SessionStore
 

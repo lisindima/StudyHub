@@ -24,15 +24,15 @@ struct SettingView: View {
 
     @EnvironmentObject var sessionStore: SessionStore
 
-    @ObservedObject private var notificationStore: NotificationStore = NotificationStore.shared
-    @ObservedObject private var imageCacheStore: ImageCacheStore = ImageCacheStore.shared
-    @ObservedObject private var purchasesStore: PurchasesStore = PurchasesStore.shared
-    @ObservedObject private var pickerStore: PickerStore = PickerStore.shared
-    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var notificationStore = NotificationStore.shared
+    @ObservedObject private var imageCacheStore = ImageCacheStore.shared
+    @ObservedObject private var purchasesStore = PurchasesStore.shared
+    @ObservedObject private var pickerStore = PickerStore.shared
+    @ObservedObject private var dateStore = DateStore.shared
 
     private var appVersionView: some View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-            let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+           let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
         {
             return Text("Версия: \(version) (\(build))")
         } else {

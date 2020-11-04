@@ -15,7 +15,7 @@ struct ChatList: View {
     @EnvironmentObject var chatStore: ChatStore
     @Environment(\.colorScheme) var colorScheme: ColorScheme
 
-    @ObservedObject var searchBar: SearchBar = SearchBar.shared
+    @ObservedObject var searchBar = SearchBar.shared
 
     private func delete(at offsets: IndexSet) {
         chatStore.dataChat.remove(atOffsets: offsets)
@@ -47,7 +47,7 @@ struct ChatList: View {
 struct ListItem: View {
     @EnvironmentObject var chatStore: ChatStore
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var dateStore: DateStore = DateStore.shared
+    @ObservedObject private var dateStore = DateStore.shared
 
     @State private var showIndicator: Bool = false
     @State private var numberUnreadMessages: Int = 0
