@@ -89,10 +89,10 @@ class NotificationStore: ObservableObject {
     func updateFcmToken() {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-        if fcmToken != nil {
+        if let token = fcmToken {
             let docRef = db.collection("profile").document(currentUser.uid)
             docRef.updateData([
-                "fcmToken": fcmToken!,
+                "fcmToken": token,
             ]) { err in
                 if let err = err {
                     print("fcmToken не обновлен: \(err)")

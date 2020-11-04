@@ -176,12 +176,7 @@ struct UserData: Identifiable, Codable {
             }
         }
     }
-
-    var darkThemeOverride: Bool {
-        didSet {
-            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = darkThemeOverride ? .dark : .unspecified
-        }
-    }
+    var darkThemeOverride: Bool
 }
 
 enum ActiveAuthType {

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB0982B524588B1F00C8FCB4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0982B424588B1F00C8FCB4 /* ScheduleView.swift */; };
-		CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */; };
-		CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */; };
 		CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED45232E59A30047A8A0 /* Assets.xcassets */; };
 		CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */; };
 		CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */; };
@@ -100,7 +98,8 @@
 		CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32922421C8AC00844197 /* altstulogo@3x.png */; };
 		CBD6733D2552D9DB00437053 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */; };
 		CBD6733F2552D9E300437053 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */; };
-		CBD6734F2552DD5600437053 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6734E2552DD5600437053 /* FirebaseMessaging */; };
+		CBD673552552E11500437053 /* StudyHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD673542552E11500437053 /* StudyHub.swift */; };
+		CBD673612552E58A00437053 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CBD673602552E58A00437053 /* FirebaseMessaging */; };
 		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */; };
@@ -183,8 +182,6 @@
 /* Begin PBXFileReference section */
 		CB0982B424588B1F00C8FCB4 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		CB0AED39232E59A10047A8A0 /* StudyHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CB0AED45232E59A30047A8A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB0AED4B232E59A30047A8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -259,6 +256,7 @@
 		CBCE328E2421C87A00844197 /* altstulogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altstulogo.png; sourceTree = "<group>"; };
 		CBCE32902421C89700844197 /* altstulogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@2x.png"; sourceTree = "<group>"; };
 		CBCE32922421C8AC00844197 /* altstulogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@3x.png"; sourceTree = "<group>"; };
+		CBD673542552E11500437053 /* StudyHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHub.swift; sourceTree = "<group>"; };
 		CBDE62942352129E00E588EC /* PickerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerStore.swift; sourceTree = "<group>"; };
 		CBE010E923ACC0D6009DB0E8 /* Changelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changelog.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
@@ -300,7 +298,7 @@
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
-				CBD6734F2552DD5600437053 /* FirebaseMessaging in Frameworks */,
+				CBD673612552E58A00437053 /* FirebaseMessaging in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
@@ -358,8 +356,8 @@
 		CB0AED3B232E59A10047A8A0 /* StudyHub */ = {
 			isa = PBXGroup;
 			children = (
+				CBD673542552E11500437053 /* StudyHub.swift */,
 				CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */,
-				CB12E7EA23596F5400115B2E /* Support */,
 				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB56F587241B39F900868B09 /* Date */,
@@ -428,15 +426,6 @@
 				CB0AED75232E5AC50047A8A0 /* SessionStore.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		CB12E7EA23596F5400115B2E /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				CB0AED3C232E59A10047A8A0 /* AppDelegate.swift */,
-				CB0AED3E232E59A10047A8A0 /* SceneDelegate.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		CB12E7EB23596F7900115B2E /* Chat */ = {
@@ -661,7 +650,7 @@
 				CB89414324E649DA008EA334 /* FirebaseAuth */,
 				CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */,
 				CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */,
-				CBD6734E2552DD5600437053 /* FirebaseMessaging */,
+				CBD673602552E58A00437053 /* FirebaseMessaging */,
 			);
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
@@ -822,7 +811,6 @@
 				CB8B992624224F1900172395 /* QRStore.swift in Sources */,
 				CB4874C123D813C300DEB38F /* ImageCacheStore.swift in Sources */,
 				CB6EBF472390276B00D9E771 /* License.swift in Sources */,
-				CB0AED3D232E59A10047A8A0 /* AppDelegate.swift in Sources */,
 				CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */,
 				CB0AED6A232E5A7B0047A8A0 /* ScheduleItem.swift in Sources */,
 				CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */,
@@ -850,11 +838,11 @@
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
 				CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */,
 				CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */,
+				CBD673552552E11500437053 /* StudyHub.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
 				CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */,
 				CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */,
 				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
-				CB0AED3F232E59A10047A8A0 /* SceneDelegate.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB37694123E2CA3D0015B61E /* Color.swift in Sources */,
 				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
@@ -1042,13 +1030,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1069,12 +1057,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StudyHub/StudyHub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHub/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1094,7 +1082,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1121,7 +1109,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
@@ -1148,7 +1136,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1169,7 +1157,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
+				CURRENT_PROJECT_VERSION = 580;
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				IBSC_MODULE = StudyHubWatchApp_Extension;
 				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
@@ -1386,7 +1374,7 @@
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
 		};
-		CBD6734E2552DD5600437053 /* FirebaseMessaging */ = {
+		CBD673602552E58A00437053 /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
