@@ -29,13 +29,6 @@
 		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
-		CB27480624A1CFE500DA7664 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB27480524A1CFE500DA7664 /* WidgetKit.framework */; };
-		CB27480824A1CFE500DA7664 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB27480724A1CFE500DA7664 /* SwiftUI.framework */; };
-		CB27480B24A1CFE500DA7664 /* StudyHubWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB27480A24A1CFE500DA7664 /* StudyHubWidget.swift */; };
-		CB27480E24A1CFE700DA7664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB27480D24A1CFE700DA7664 /* Assets.xcassets */; };
-		CB27481024A1CFE700DA7664 /* StudyHubWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CB27480C24A1CFE500DA7664 /* StudyHubWidget.intentdefinition */; };
-		CB27481124A1CFE700DA7664 /* StudyHubWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CB27480C24A1CFE500DA7664 /* StudyHubWidget.intentdefinition */; };
-		CB27481424A1CFE700DA7664 /* StudyHubWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CB27480424A1CFE500DA7664 /* StudyHubWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
 		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
@@ -74,12 +67,9 @@
 		CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = CB7955D5247390FB00670552 /* NativeSearchBar */; };
 		CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB85CDBB249B7EEF00AAEF04 /* BottomSheet */; };
 		CB89413A24E649DA008EA334 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413924E649DA008EA334 /* FirebaseFirestore */; };
-		CB89413C24E649DA008EA334 /* FirebaseStorageSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413B24E649DA008EA334 /* FirebaseStorageSwift */; };
 		CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413D24E649DA008EA334 /* FirebaseStorage */; };
 		CB89414024E649DA008EA334 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = CB89413F24E649DA008EA334 /* FirebaseCrashlytics */; };
-		CB89414224E649DA008EA334 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */; };
 		CB89414424E649DA008EA334 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414324E649DA008EA334 /* FirebaseAuth */; };
-		CB89414624E649DA008EA334 /* Firebase in Frameworks */ = {isa = PBXBuildFile; productRef = CB89414524E649DA008EA334 /* Firebase */; };
 		CB8B99232422072C00172395 /* ProfileFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B99222422072C00172395 /* ProfileFriends.swift */; };
 		CB8B992624224F1900172395 /* QRStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B992524224F1900172395 /* QRStore.swift */; };
 		CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8EF87723C85D6D00992764 /* QRReader.swift */; };
@@ -108,6 +98,9 @@
 		CBCE328F2421C87A00844197 /* altstulogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328E2421C87A00844197 /* altstulogo.png */; };
 		CBCE32912421C89700844197 /* altstulogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32902421C89700844197 /* altstulogo@2x.png */; };
 		CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32922421C8AC00844197 /* altstulogo@3x.png */; };
+		CBD6733D2552D9DB00437053 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */; };
+		CBD6733F2552D9E300437053 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */; };
+		CBD6734F2552DD5600437053 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6734E2552DD5600437053 /* FirebaseMessaging */; };
 		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */; };
@@ -126,13 +119,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CB27481224A1CFE700DA7664 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CB27480324A1CFE500DA7664;
-			remoteInfo = StudyHubWidgetExtension;
-		};
 		CBE665E923543A1400C43811 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
@@ -177,7 +163,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CB27481424A1CFE700DA7664 /* StudyHubWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,14 +207,8 @@
 		CB179ACA23CC182F00424FD2 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
-		CB27480424A1CFE500DA7664 /* StudyHubWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StudyHubWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB27480524A1CFE500DA7664 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CB27480724A1CFE500DA7664 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		CB27480A24A1CFE500DA7664 /* StudyHubWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHubWidget.swift; sourceTree = "<group>"; };
-		CB27480C24A1CFE500DA7664 /* StudyHubWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = StudyHubWidget.intentdefinition; sourceTree = "<group>"; };
-		CB27480D24A1CFE700DA7664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CB27480F24A1CFE700DA7664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB27481524A1CFE700DA7664 /* StudyHubWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHubWidgetExtension.entitlements; sourceTree = "<group>"; };
 		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
 		CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTimeSinceNow.swift; sourceTree = "<group>"; };
 		CB286DC7243782B700977D60 /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
@@ -317,27 +296,18 @@
 				CB4B930E246CE850006B7008 /* Kingfisher in Frameworks */,
 				CB89414024E649DA008EA334 /* FirebaseCrashlytics in Frameworks */,
 				CB4B9310246CE850006B7008 /* KingfisherSwiftUI in Frameworks */,
-				CB89414224E649DA008EA334 /* FirebaseFirestoreSwift in Frameworks */,
+				CBD6733F2552D9E300437053 /* FirebaseStorageSwift-Beta in Frameworks */,
 				CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */,
 				CB8EF87B23C86B6E00992764 /* CodeScanner in Frameworks */,
 				CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */,
-				CB89414624E649DA008EA334 /* Firebase in Frameworks */,
+				CBD6734F2552DD5600437053 /* FirebaseMessaging in Frameworks */,
 				CB67779023603B7F0019D6B6 /* KeyboardObserving in Frameworks */,
 				CB89413E24E649DA008EA334 /* FirebaseStorage in Frameworks */,
 				CB9B90ED241090AF006CF9BF /* Purchases in Frameworks */,
 				CB89413A24E649DA008EA334 /* FirebaseFirestore in Frameworks */,
+				CBD6733D2552D9DB00437053 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */,
-				CB89413C24E649DA008EA334 /* FirebaseStorageSwift in Frameworks */,
 				CB89414424E649DA008EA334 /* FirebaseAuth in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB27480124A1CFE500DA7664 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB27480824A1CFE500DA7664 /* SwiftUI.framework in Frameworks */,
-				CB27480624A1CFE500DA7664 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,11 +337,9 @@
 		CB0AED30232E59A10047A8A0 = {
 			isa = PBXGroup;
 			children = (
-				CB27481524A1CFE700DA7664 /* StudyHubWidgetExtension.entitlements */,
 				CB0AED3B232E59A10047A8A0 /* StudyHub */,
 				CBE665DC23543A1000C43811 /* StudyHubWatchApp */,
 				CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */,
-				CB27480924A1CFE500DA7664 /* StudyHubWidget */,
 				CB0AED3A232E59A10047A8A0 /* Products */,
 				A5C050C90CA7ACA36D5E738D /* Frameworks */,
 			);
@@ -383,7 +351,6 @@
 				CB0AED39232E59A10047A8A0 /* StudyHub.app */,
 				CBE665DB23543A1000C43811 /* StudyHub.app */,
 				CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */,
-				CB27480424A1CFE500DA7664 /* StudyHubWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -494,17 +461,6 @@
 				CB179ACA23CC182F00424FD2 /* Banner.swift */,
 			);
 			path = Banner;
-			sourceTree = "<group>";
-		};
-		CB27480924A1CFE500DA7664 /* StudyHubWidget */ = {
-			isa = PBXGroup;
-			children = (
-				CB27480A24A1CFE500DA7664 /* StudyHubWidget.swift */,
-				CB27480C24A1CFE500DA7664 /* StudyHubWidget.intentdefinition */,
-				CB27480D24A1CFE700DA7664 /* Assets.xcassets */,
-				CB27480F24A1CFE700DA7664 /* Info.plist */,
-			);
-			path = StudyHubWidget;
 			sourceTree = "<group>";
 		};
 		CB27619323556A1F0054C753 /* Login */ = {
@@ -687,7 +643,6 @@
 			);
 			dependencies = (
 				CBE665FE23543A1500C43811 /* PBXTargetDependency */,
-				CB27481324A1CFE700DA7664 /* PBXTargetDependency */,
 			);
 			name = StudyHub;
 			packageProductDependencies = (
@@ -701,33 +656,16 @@
 				CB7955D5247390FB00670552 /* NativeSearchBar */,
 				CB85CDBB249B7EEF00AAEF04 /* BottomSheet */,
 				CB89413924E649DA008EA334 /* FirebaseFirestore */,
-				CB89413B24E649DA008EA334 /* FirebaseStorageSwift */,
 				CB89413D24E649DA008EA334 /* FirebaseStorage */,
 				CB89413F24E649DA008EA334 /* FirebaseCrashlytics */,
-				CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */,
 				CB89414324E649DA008EA334 /* FirebaseAuth */,
-				CB89414524E649DA008EA334 /* Firebase */,
+				CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */,
+				CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */,
+				CBD6734E2552DD5600437053 /* FirebaseMessaging */,
 			);
 			productName = StudyHub;
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CB27480324A1CFE500DA7664 /* StudyHubWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CB27481624A1CFE700DA7664 /* Build configuration list for PBXNativeTarget "StudyHubWidgetExtension" */;
-			buildPhases = (
-				CB27480024A1CFE500DA7664 /* Sources */,
-				CB27480124A1CFE500DA7664 /* Frameworks */,
-				CB27480224A1CFE500DA7664 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = StudyHubWidgetExtension;
-			productName = StudyHubWidgetExtension;
-			productReference = CB27480424A1CFE500DA7664 /* StudyHubWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		CBE665DA23543A1000C43811 /* StudyHubWatchApp */ = {
 			isa = PBXNativeTarget;
@@ -781,9 +719,6 @@
 					CB0AED38232E59A10047A8A0 = {
 						CreatedOnToolsVersion = 11.0;
 					};
-					CB27480324A1CFE500DA7664 = {
-						CreatedOnToolsVersion = 12.0;
-					};
 					CBE665DA23543A1000C43811 = {
 						CreatedOnToolsVersion = 11.2;
 					};
@@ -819,7 +754,6 @@
 				CB0AED38232E59A10047A8A0 /* StudyHub */,
 				CBE665DA23543A1000C43811 /* StudyHubWatchApp */,
 				CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */,
-				CB27480324A1CFE500DA7664 /* StudyHubWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -842,14 +776,6 @@
 				CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
 				CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB27480224A1CFE500DA7664 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB27480E24A1CFE700DA7664 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,7 +848,6 @@
 				CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */,
 				CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
-				CB27481124A1CFE700DA7664 /* StudyHubWidget.intentdefinition in Sources */,
 				CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */,
 				CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */,
 				CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */,
@@ -935,15 +860,6 @@
 				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 				CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CB27480024A1CFE500DA7664 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB27481024A1CFE700DA7664 /* StudyHubWidget.intentdefinition in Sources */,
-				CB27480B24A1CFE500DA7664 /* StudyHubWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -972,11 +888,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CB27481324A1CFE700DA7664 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CB27480324A1CFE500DA7664 /* StudyHubWidgetExtension */;
-			targetProxy = CB27481224A1CFE700DA7664 /* PBXContainerItemProxy */;
-		};
 		CBE665EA23543A1400C43811 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */;
@@ -1177,60 +1088,6 @@
 			};
 			name = Release;
 		};
-		CB27481724A1CFE700DA7664 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = StudyHubWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				INFOPLIST_FILE = StudyHubWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.studyhubwidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CB27481824A1CFE700DA7664 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_ENTITLEMENTS = StudyHubWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 570;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				INFOPLIST_FILE = StudyHubWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.studyhubwidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		CBE6660123543A1500C43811 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1344,15 +1201,6 @@
 			buildConfigurations = (
 				CB0AED51232E59A30047A8A0 /* Debug */,
 				CB0AED52232E59A30047A8A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CB27481624A1CFE700DA7664 /* Build configuration list for PBXNativeTarget "StudyHubWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CB27481724A1CFE700DA7664 /* Debug */,
-				CB27481824A1CFE700DA7664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1493,11 +1341,6 @@
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		CB89413B24E649DA008EA334 /* FirebaseStorageSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorageSwift;
-		};
 		CB89413D24E649DA008EA334 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1508,20 +1351,10 @@
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		CB89414124E649DA008EA334 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
 		CB89414324E649DA008EA334 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		CB89414524E649DA008EA334 /* Firebase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = Firebase;
 		};
 		CB8EF87A23C86B6E00992764 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1542,6 +1375,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageSwift-Beta";
+		};
+		CBD6734E2552DD5600437053 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB89413824E649D9008EA334 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
