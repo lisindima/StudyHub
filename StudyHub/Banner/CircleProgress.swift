@@ -84,9 +84,7 @@ struct Pulsation: View {
                 .frame(width: 60, height: 60)
                 .scaleEffect(pulsate ? 1.3 : 1.1)
                 .animation(Animation.easeInOut(duration: 1.1).repeatForever(autoreverses: true))
-                .onAppear {
-                    self.pulsate.toggle()
-                }
+                .onAppear { pulsate.toggle() }
         }
     }
 }

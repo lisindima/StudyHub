@@ -38,7 +38,7 @@ struct Changelog: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.primary)
                                 Spacer()
-                                Text(self.appVersion == changelog.version ? "Текущая версия" : changelog.dateBuild)
+                                Text(appVersion == changelog.version ? "Текущая версия" : changelog.dateBuild)
                             }
                         ) {
                             VStack(alignment: .leading) {
@@ -109,9 +109,9 @@ class ChangelogStore: ObservableObject {
                 switch response.result {
                 case .success:
                     guard let сhangelog = response.value else { return }
-                    self.сhangelogModel = сhangelog
+                    сhangelogModel = сhangelog
                 case let .failure(error):
-                    self.changelogLoadingFailure = true
+                    changelogLoadingFailure = true
                     print("Список изменений не загружен: \(error.errorDescription!)")
                 }
             }

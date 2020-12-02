@@ -35,7 +35,7 @@ struct EmailLogin: View {
             SecureField("Пароль", text: $password)
                 .textContentType(.password)
             Button("Войти") {
-                self.sessionStoreWatch.signInSuccess = true
+                sessionStoreWatch.signInSuccess = true
             }.disabled(email.isEmpty || password.isEmpty)
             Text("Для регистрации воспользуйтесь приложением для iPhone, iPad или Mac.")
                 .font(.footnote)

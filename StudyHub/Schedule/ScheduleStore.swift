@@ -19,13 +19,13 @@ class ScheduleStore: ObservableObject {
     func loadLesson() {
         AF.request("https://api.lisindmitriy.me/schedule")
             .validate()
-            .responseDecodable(of: [ScheduleModel].self) { response in
+            .responseDecodable(of: [ScheduleModel].self) { [self] response in
                 switch response.result {
                 case .success:
                     guard let schedule = response.value else { return }
-                    self.scheduleModel = schedule
+                    scheduleModel = schedule
                 case let .failure(error):
-                    self.scheduleLoadingFailure = true
+                    scheduleLoadingFailure = true
                     print("Расписание группы не загружен: \(error.errorDescription!)")
                 }
             }

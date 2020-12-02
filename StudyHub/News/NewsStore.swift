@@ -22,13 +22,13 @@ class NewsStore: ObservableObject {
     func loadNews() {
         AF.request(apiUrl + apiKey)
             .validate()
-            .responseDecodable(of: News.self) { response in
+            .responseDecodable(of: News.self) { [self] response in
                 switch response.result {
                 case .success:
                     guard let news = response.value else { return }
-                    self.articles = news.articles
+                    articles = news.articles
                 case let .failure(error):
-                    self.newsLoadingFailure = true
+                    newsLoadingFailure = true
                     print("Список новостей не загружен: \(error)")
                 }
             }
@@ -37,13 +37,13 @@ class NewsStore: ObservableObject {
     func fetchCategoryNews(category: String) {
         AF.request(apiUrl + apiKey + category)
             .validate()
-            .responseDecodable(of: News.self) { response in
+            .responseDecodable(of: News.self) { [self] response in
                 switch response.result {
                 case .success:
                     guard let news = response.value else { return }
-                    self.articles = news.articles
+                    articles = news.articles
                 case let .failure(error):
-                    self.newsLoadingFailure = true
+                    newsLoadingFailure = true
                     print("Список новостей не загружен: \(error)")
                 }
             }

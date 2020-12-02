@@ -1,5 +1,5 @@
 //
-//  Credential.swift
+//  DeleteUser.swift
 //  StudyHub
 //
 //  Created by Дмитрий Лисин on 06.01.2020.
@@ -23,21 +23,21 @@ struct DeleteUser: View {
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.email = ""
-                self.password = ""
+                loading = false
+                email = ""
+                password = ""
             } else {
                 Auth.auth().currentUser?.delete { error in
                     if error != nil {
                         SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                        self.loading = false
-                        self.email = ""
-                        self.password = ""
+                        loading = false
+                        email = ""
+                        password = ""
                     } else {
                         SPAlert.present(title: "Аккаунт удален!", message: "Мне очень жаль...", preset: .done)
-                        self.loading = false
-                        self.email = ""
-                        self.password = ""
+                        loading = false
+                        email = ""
+                        password = ""
                     }
                 }
             }
@@ -68,7 +68,7 @@ struct DeleteUser: View {
                 .padding([.horizontal, .top])
             }
             CustomButton(label: loading ? "Загрузка" : "Удалить аккаунт", loading: loading, colorButton: .red) {
-                self.reauthenticateUser()
+                reauthenticateUser()
             }
             .disabled(loading)
             .padding()
@@ -103,12 +103,12 @@ struct ChangeEmail: View {
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.email = ""
-                self.password = ""
+                loading = false
+                email = ""
+                password = ""
             } else {
-                self.loading = false
-                self.changeView = true
+                loading = false
+                changeView = true
             }
         })
     }
@@ -120,11 +120,11 @@ struct ChangeEmail: View {
         sessionStore.updateEmail(email: newEmail) { error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.newEmail = ""
+                loading = false
+                newEmail = ""
             } else {
                 SPAlert.present(title: "Эл.почта изменена!", message: "Вы успешно изменили свою электронную почту.", preset: .done)
-                self.loading = false
+                loading = false
             }
         }
     }
@@ -154,7 +154,7 @@ struct ChangeEmail: View {
                     .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading ? "Загрузка" : "Продолжить", loading: loading, colorButton: .green) {
-                    self.reauthenticateUser()
+                    reauthenticateUser()
                 }
                 .disabled(loading)
                 .padding()
@@ -172,7 +172,7 @@ struct ChangeEmail: View {
                     .textContentType(.emailAddress)
                     .keyboardType(.emailAddress)
                 CustomButton(label: loading ? "Загрузка" : "Изменить эл.почту", loading: loading, colorButton: .green) {
-                    self.changeEmail()
+                    changeEmail()
                 }
                 .disabled(loading)
                 .padding()
@@ -208,12 +208,12 @@ struct ChangePassword: View {
         Auth.auth().currentUser?.reauthenticate(with: credentialEmail, completion: { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.password = ""
-                self.email = ""
+                loading = false
+                password = ""
+                email = ""
             } else {
-                self.loading = false
-                self.changeView = true
+                loading = false
+                changeView = true
             }
         })
     }
@@ -225,11 +225,11 @@ struct ChangePassword: View {
         sessionStore.updatePassword(password: newPassword) { error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.newPassword = ""
+                loading = false
+                newPassword = ""
             } else {
                 SPAlert.present(title: "Пароль изменен!", message: "Вы успешно изменили свой пароль.", preset: .done)
-                self.loading = false
+                loading = false
             }
         }
     }
@@ -259,7 +259,7 @@ struct ChangePassword: View {
                     .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading ? "Загрузка" : "Продолжить", loading: loading, colorButton: .green) {
-                    self.reauthenticateUser()
+                    reauthenticateUser()
                 }
                 .disabled(loading)
                 .padding()
@@ -290,7 +290,7 @@ struct ChangePassword: View {
                     .padding([.horizontal, .top])
                 }
                 CustomButton(label: loading ? "Загрузка" : "Изменить пароль", loading: loading, colorButton: .green) {
-                    self.changePassword()
+                    changePassword()
                 }
                 .disabled(loading)
                 .padding()

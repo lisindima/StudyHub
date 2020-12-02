@@ -18,7 +18,7 @@ struct ScheduleListWatch: View {
                     .onAppear(perform: scheduleStore.loadLesson)
             } else {
                 List {
-                    ForEach(self.scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
+                    ForEach(scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
                         ScheduleItem(scheduleModel: schedule)
                     }
                 }

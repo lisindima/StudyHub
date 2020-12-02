@@ -35,7 +35,7 @@ class IconStore: ObservableObject {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.currentIconName = nameIcon
+                currentIconName = nameIcon
             }
         }
     }
@@ -63,7 +63,7 @@ struct IconItem: View {
     var body: some View {
         VStack(alignment: .center) {
             Button(action: {
-                self.iconStore.setIcon(nameIcon: self.iconModel.nameIcon)
+                iconStore.setIcon(nameIcon: iconModel.nameIcon)
             }) {
                 Image(iconModel.nameIcon)
                     .resizable()

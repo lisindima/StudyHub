@@ -31,7 +31,7 @@ struct MenuWatch: View {
             }
             Divider()
             Button("Выйти") {
-                self.sessionStoreWatch.signInSuccess = false
+                sessionStoreWatch.signInSuccess = false
             }
         }.navigationBarTitle("Главная")
     }

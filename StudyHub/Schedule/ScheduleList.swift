@@ -24,14 +24,14 @@ struct ScheduleList: View {
                 .padding(.horizontal)
                 if week == 1 {
                     List {
-                        ForEach(self.scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
+                        ForEach(scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
                             ScheduleItem(scheduleModel: schedule)
                         }
                     }
                 }
                 if week == 2 {
                     List {
-                        ForEach(self.scheduleStore.scheduleModel.sorted { $0.week > $1.week }, id: \.id) { schedule in
+                        ForEach(scheduleStore.scheduleModel.sorted { $0.week > $1.week }, id: \.id) { schedule in
                             ScheduleItem(scheduleModel: schedule)
                         }
                     }

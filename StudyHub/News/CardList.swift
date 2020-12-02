@@ -51,19 +51,19 @@ struct CardList: View {
                             HStack {
                                 ForEach(newsTopic, id: \.self) { item in
                                     Button(action: {
-                                        self.selectedTab = item
+                                        selectedTab = item
                                         if item == "Популярное" {
-                                            self.newsStore.fetchCategoryNews(category: "")
+                                            newsStore.fetchCategoryNews(category: "")
                                         } else if item == "Спорт" {
-                                            self.newsStore.fetchCategoryNews(category: "&category=sports")
+                                            newsStore.fetchCategoryNews(category: "&category=sports")
                                         } else if item == "Развлечение" {
-                                            self.newsStore.fetchCategoryNews(category: "&category=entertainment")
+                                            newsStore.fetchCategoryNews(category: "&category=entertainment")
                                         } else if item == "Технологии" {
-                                            self.newsStore.fetchCategoryNews(category: "&category=technology")
+                                            newsStore.fetchCategoryNews(category: "&category=technology")
                                         } else if item == "Здоровье" {
-                                            self.newsStore.fetchCategoryNews(category: "&category=health")
+                                            newsStore.fetchCategoryNews(category: "&category=health")
                                         } else if item == "Бизнес" {
-                                            self.newsStore.fetchCategoryNews(category: "&category=business")
+                                            newsStore.fetchCategoryNews(category: "&category=business")
                                         }
                                     }) {
                                         VStack {
@@ -72,14 +72,14 @@ struct CardList: View {
                                                 .foregroundColor(.secondary)
                                                 .hoverEffect()
                                             Capsule()
-                                                .fill(self.selectedTab == item ? Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue) : Color.clear)
+                                                .fill(selectedTab == item ? Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue) : Color.clear)
                                                 .frame(height: 6)
                                         }.frame(width: 110)
                                     }
                                 }
                             }.padding(.horizontal)
                         }
-                        ForEach(self.newsStore.articles, id: \.self) { article in
+                        ForEach(newsStore.articles, id: \.self) { article in
                             Button(action: {
                                 UIApplication.shared.open(URL(string: article.url!)!)
                             }) {

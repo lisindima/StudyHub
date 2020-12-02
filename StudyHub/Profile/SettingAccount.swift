@@ -44,26 +44,26 @@ struct SettingAccount: View {
                         .frame(width: 24)
                         .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                     Button("Изменить фотографию") {
-                        self.showActionSheetImage = true
+                        showActionSheetImage = true
                     }
                     .foregroundColor(.primary)
                     .actionSheet(isPresented: $showActionSheetImage) {
                         ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
                             .default(Text("Сделать фотографию")) {
-                                self.selectedSourceType = .camera
-                                self.isShowingModalViewImage = true
+                                selectedSourceType = .camera
+                                isShowingModalViewImage = true
                             }, .default(Text("Выбрать фотографию")) {
-                                self.selectedSourceType = .photoLibrary
-                                self.isShowingModalViewImage = true
+                                selectedSourceType = .photoLibrary
+                                isShowingModalViewImage = true
                             }, .destructive(Text("Удалить фотографию")) {
-                                self.sessionStore.userData.urlImageProfile = self.deletedUrlImageProfile
+                                sessionStore.userData.urlImageProfile = deletedUrlImageProfile
                             }, .cancel(),
                         ])
                     }
                     .sheet(isPresented: $isShowingModalViewImage) {
-                        ImagePicker(selectedSourceType: self.$selectedSourceType)
-                            .environmentObject(self.sessionStore)
-                            .accentColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
+                        ImagePicker(selectedSourceType: $selectedSourceType)
+                            .environmentObject(sessionStore)
+                            .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             .edgesIgnoringSafeArea(.bottom)
                     }
                 }
@@ -76,7 +76,7 @@ struct SettingAccount: View {
                     Text("Факультет")
                 }) {
                     ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
-                        Text(self.pickerStore.facultyModel[$0].name)
+                        Text(pickerStore.facultyModel[$0].name)
                     }
                 }.lineLimit(1)
                 Picker(selection: $sessionStore.userData.choiseGroup, label: HStack {
@@ -86,7 +86,7 @@ struct SettingAccount: View {
                     Text("Группа")
                 }) {
                     ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
-                        Text(self.pickerStore.groupModel[$0].name)
+                        Text(pickerStore.groupModel[$0].name)
                     }
                 }.lineLimit(1)
             }

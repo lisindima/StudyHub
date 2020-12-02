@@ -19,12 +19,12 @@ struct SubscriptionWatchView: View {
                     .onAppear(perform: purchasesStore.fetchProduct)
             } else {
                 Button(action: {
-                    self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.monthly!)
+                    purchasesStore.buySubscription(package: purchasesStore.offering!.monthly!)
                 }) {
                     Text("\(purchasesStore.monthlyPrice) / в месяц.")
                 }
                 Button(action: {
-                    self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.annual!)
+                    purchasesStore.buySubscription(package: purchasesStore.offering!.annual!)
                 }) {
                     Text("\(purchasesStore.annualPrice) / в год.")
                 }

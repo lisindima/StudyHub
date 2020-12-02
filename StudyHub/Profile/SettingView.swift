@@ -63,9 +63,9 @@ struct SettingView: View {
     private func showMailView() {
         DispatchQueue.main.async {
             let mailFeedback = UIHostingController(rootView:
-                MailFeedback(mailSubject: self.$mailSubject)
+                MailFeedback(mailSubject: $mailSubject)
                     .edgesIgnoringSafeArea(.bottom)
-                    .accentColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
+                    .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
             )
             UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.presentedViewController?.present(
                 mailFeedback, animated: true, completion: nil
@@ -108,12 +108,12 @@ struct SettingView: View {
                                 .frame(width: 24)
                                 .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             Button("Оформить подписку") {
-                                self.showSubcriptionSheet = true
+                                showSubcriptionSheet = true
                             }
                             .foregroundColor(.primary)
                             .sheet(isPresented: $showSubcriptionSheet) {
                                 SubscriptionSplashScreen()
-                                    .environmentObject(self.sessionStore)
+                                    .environmentObject(sessionStore)
                             }
                         }
                     }
@@ -226,7 +226,7 @@ struct SettingView: View {
                                 .frame(width: 24)
                                 .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                             Button("Изменить иконку") {
-                                self.showChangeIcons = true
+                                showChangeIcons = true
                             }.foregroundColor(.primary)
                         }
                     #endif
@@ -258,17 +258,17 @@ struct SettingView: View {
                                     .frame(height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .foregroundColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
+                                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                     .opacity(0.2)
                                 Rectangle()
-                                    .frame(width: (CGFloat(self.imageCacheStore.sizeImageCache) / CGFloat(self.imageCacheStore.sizeLimitImageCache)) * geometry.size.width, height: 60)
+                                    .frame(width: (CGFloat(imageCacheStore.sizeImageCache) / CGFloat(imageCacheStore.sizeLimitImageCache)) * geometry.size.width, height: 60)
                                     .cornerRadius(8)
                                     .shadow(radius: 5)
-                                    .foregroundColor(Color.rgb(red: self.sessionStore.userData.rValue, green: self.sessionStore.userData.gValue, blue: self.sessionStore.userData.bValue))
+                                    .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                                     .animation(.linear)
                                 HStack {
                                     Spacer()
-                                    Text("\(self.imageCacheStore.sizeImageCache) MB / \(self.imageCacheStore.sizeLimitImageCache) MB")
+                                    Text("\(imageCacheStore.sizeImageCache) MB / \(imageCacheStore.sizeLimitImageCache) MB")
                                         .foregroundColor(.white)
                                         .font(.custom("Futura", size: 24))
                                     Spacer()
@@ -283,7 +283,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Очистить кэш изображений") {
-                            self.imageCacheStore.clearImageCache()
+                            imageCacheStore.clearImageCache()
                         }.foregroundColor(.primary)
                     }
                 }
@@ -316,7 +316,7 @@ struct SettingView: View {
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Поделиться") {
-                            self.showShareView()
+                            showShareView()
                         }.foregroundColor(.primary)
                     }
                     HStack {
@@ -325,7 +325,7 @@ struct SettingView: View {
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Button("Сообщить об ошибке") {
                             if MFMailComposeViewController.canSendMail() {
-                                self.showActionSheetMailFeedback = true
+                                showActionSheetMailFeedback = true
                             } else {
                                 SPAlert.present(title: "Не установлено приложение \"Почта\".", message: "Установите его из App Store.", preset: .error)
                             }
@@ -334,41 +334,37 @@ struct SettingView: View {
                         .actionSheet(isPresented: $showActionSheetMailFeedback) {
                             ActionSheet(title: Text("Выберите вариант"), message: Text("Пожалуйста, выберите правильный вариант, на основе того, что вы хотите сообщить."), buttons: [
                                 .default(Text("Запросить функцию")) {
-                                    self.mailSubject = "Запрос функций"
-                                    self.showMailView()
+                                    mailSubject = "Запрос функций"
+                                    showMailView()
                                 }, .default(Text("Сообщить об ошибке")) {
-                                    self.mailSubject = "Сообщение об ошибке"
-                                    self.showMailView()
+                                    mailSubject = "Сообщение об ошибке"
+                                    showMailView()
                                 }, .cancel(),
                             ])
                         }
                     }
                 }
                 Section {
-                    Button(action: {
-                        print("Подробнее")
-                    }) {
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Text("Создано с ❤️ Лисиным Дмитрием")
-                                    .foregroundColor(.secondary)
-                                    .fontWeight(.semibold)
-                                    .font(.system(size: 14))
-                                appVersionView
-                                    .foregroundColor(.secondary)
-                                    .font(.system(size: 12))
-                            }
-                            Spacer()
-                        }.padding(.vertical, 5)
-                    }
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Text("Создано с ❤️ Лисиным Дмитрием")
+                                .foregroundColor(.secondary)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 14))
+                            appVersionView
+                                .foregroundColor(.secondary)
+                                .font(.system(size: 12))
+                        }
+                        Spacer()
+                    }.padding(.vertical, 5)
                 }
             }
             .onAppear(perform: startSettingView)
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle("Настройки", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Закрыть")
                     .bold()

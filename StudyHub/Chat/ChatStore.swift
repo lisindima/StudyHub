@@ -26,7 +26,7 @@ class ChatStore: ObservableObject {
     func getDataFromDatabaseListenChat() {
         statusChat = .loading
         let db = Firestore.firestore()
-        db.collection("chatRoom").addSnapshotListener { querySnapshot, _ in
+        db.collection("chatRoom").addSnapshotListener { [self] querySnapshot, _ in
             if querySnapshot?.count != 0 {
                 let result = Result {
                     try querySnapshot?.documents.compactMap { document -> DataChat? in
@@ -34,35 +34,35 @@ class ChatStore: ObservableObject {
                     }
                 }
                 switch result {
-                case let .success(dataChat):
-                    if let dataChat = dataChat {
-                        self.dataChat = dataChat
-                        self.statusChat = .showChat
+                case let .success(response):
+                    if let responseChat = response {
+                        dataChat = responseChat
+                        statusChat = .showChat
                     } else {
-                        self.statusChat = .emptyChat
+                        statusChat = .emptyChat
                     }
                 case let .failure(error):
-                    self.statusChat = .emptyChat
+                    statusChat = .emptyChat
                     print("Error decoding DataChat: \(error)")
                 }
             } else {
-                self.statusChat = .emptyChat
+                statusChat = .emptyChat
             }
         }
     }
 
     func loadMessageList(id: String) {
         let db = Firestore.firestore()
-        db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { querySnapshot, _ in
+        db.collection("chatRoom").document(id).collection("messages").order(by: "dateMsg", descending: false).addSnapshotListener { [self] querySnapshot, _ in
             let result = Result {
                 try querySnapshot?.documents.compactMap { document -> DataMessages? in
                     try document.data(as: DataMessages.self)
                 }
             }
             switch result {
-            case let .success(dataMessages):
-                if let dataMessages = dataMessages {
-                    self.dataMessages = dataMessages
+            case let .success(response):
+                if let responseChat = response {
+                    dataMessages = responseChat
                 } else {
                     print("Document does not exist")
                 }

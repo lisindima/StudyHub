@@ -71,13 +71,13 @@ class LicenseStore: ObservableObject {
     func loadLicense() {
         AF.request("https://api.lisindmitriy.me/license")
             .validate()
-            .responseDecodable(of: [LicenseModel].self) { response in
+            .responseDecodable(of: [LicenseModel].self) { [self] response in
                 switch response.result {
                 case .success:
                     guard let license = response.value else { return }
-                    self.licenseModel = license
+                    licenseModel = license
                 case let .failure(error):
-                    self.licenseLoadingFailure = true
+                    licenseLoadingFailure = true
                     print("Список лицензий не загружен: \(error.errorDescription!)")
                 }
             }

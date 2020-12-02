@@ -68,9 +68,10 @@ struct NotificationSetting: View {
                         Image(systemName: "bell")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Выключить уведомления") {
-                            self.openSettings()
-                        }.foregroundColor(.primary)
+                        Button(action: openSettings) {
+                            Text("Выключить уведомления")
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
                 if notificationStore.enabled == .notDetermined {
@@ -78,9 +79,10 @@ struct NotificationSetting: View {
                         Image(systemName: "bell")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Включить уведомления") {
-                            self.notificationStore.requestPermission()
-                        }.foregroundColor(.primary)
+                        Button(action: notificationStore.requestPermission) {
+                            Text("Включить уведомления")
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
                 if notificationStore.enabled == .denied {
@@ -88,9 +90,10 @@ struct NotificationSetting: View {
                         Image(systemName: "bell")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Включить уведомления") {
-                            self.openSettings()
-                        }.foregroundColor(.primary)
+                        Button(action: openSettings) {
+                            Text("Включить уведомления")
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
             }

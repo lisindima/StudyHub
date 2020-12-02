@@ -43,7 +43,7 @@ struct ProfileView: View {
                 }
                 Spacer()
                 Button(action: {
-                    self.showActionSheetExit = true
+                    showActionSheetExit = true
                 }, label: {
                     Text("Выйти")
                         .fontWeight(.bold)
@@ -53,11 +53,11 @@ struct ProfileView: View {
             }
             .actionSheet(isPresented: $showActionSheetExit) {
                 ActionSheet(title: Text("Вы уверены, что хотите выйти из этого аккаунта?"), message: Text("Для продолжения использования приложения вам потребуется повторно войти в аккаунт!"), buttons: [.destructive(Text("Выйти")) {
-                    self.sessionStore.signOut()
+                    sessionStore.signOut()
                 }, .cancel()])
             }
             .navigationBarItems(leading: Button(action: {
-                self.showQRReader = true
+                showQRReader = true
             }) {
                 Image(systemName: "qrcode")
                     .imageScale(.large)
@@ -65,21 +65,21 @@ struct ProfileView: View {
             }.sheet(isPresented: $showQRReader) {
                 QRReader()
                     .edgesIgnoringSafeArea(.bottom)
-                    .environmentObject(self.sessionStore)
+                    .environmentObject(sessionStore)
             }, trailing: Button(action: {
-                self.showSettingModal = true
+                showSettingModal = true
             }) {
                 Image(systemName: "gear")
                     .imageScale(.large)
                     .foregroundColor(.white)
             })
             .sheet(isPresented: $showSettingModal, onDismiss: {
-                if self.sessionStore.user != nil {
-                    self.sessionStore.updateDataFromDatabase()
+                if sessionStore.user != nil {
+                    sessionStore.updateDataFromDatabase()
                 }
             }, content: {
                 SettingView()
-                    .environmentObject(self.sessionStore)
+                    .environmentObject(sessionStore)
             })
         }.navigationViewStyle(StackNavigationViewStyle())
     }

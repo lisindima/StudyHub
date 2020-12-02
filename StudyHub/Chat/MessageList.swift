@@ -23,9 +23,7 @@ struct MessageList: View {
         VStack {
             if chatStore.dataMessages.isEmpty {
                 ProgressView()
-                    .onAppear {
-                        self.chatStore.loadMessageList(id: self.dataChat.id!)
-                    }
+                    .onAppear { chatStore.loadMessageList(id: dataChat.id!) }
             } else {
                 ScrollView {
                     ForEach(chatStore.dataMessages.reversed(), id: \.id) { item in
@@ -38,8 +36,8 @@ struct MessageList: View {
                 .scaleEffect(x: -1.0, y: 1.0)
                 .rotationEffect(.degrees(180))
                 ChatTextField(messageText: $typeMessage, action: {
-                    self.chatStore.sendMessage(chatStore: self.chatStore, token: self.receiverFCMToken, title: "Лисин Дмитрий", body: self.typeMessage)
-                    self.typeMessage = ""
+                    chatStore.sendMessage(chatStore: chatStore, token: receiverFCMToken, title: "Лисин Дмитрий", body: typeMessage)
+                    typeMessage = ""
                 })
                     .padding(.horizontal)
                     .padding(.bottom, 10)

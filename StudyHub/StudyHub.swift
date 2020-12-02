@@ -30,11 +30,11 @@ struct StudyHub: App {
         .onChange(of: scenePhase) { phase in
             if phase == .active {
                 NotificationStore.shared.refreshNotificationStatus()
-                SessionStore.shared.updateOnlineUser(onlineUser: true)
+                SessionStore.shared.updateOnlineUser(true)
             } else if phase == .background {
-                SessionStore.shared.updateOnlineUser(onlineUser: false)
+                SessionStore.shared.updateOnlineUser(false)
             } else if phase == .inactive {
-                SessionStore.shared.updateOnlineUser(onlineUser: false)
+                SessionStore.shared.updateOnlineUser(false)
             }
         }
     }

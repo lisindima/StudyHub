@@ -39,8 +39,8 @@ struct SubscriptionSplashScreen: View {
             } else {
                 HStack {
                     Button(action: {
-                        self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.monthly!)
-                        self.purchasesStore.loadingMonthlyButton = true
+                        purchasesStore.buySubscription(package: purchasesStore.offering!.monthly!)
+                        purchasesStore.loadingMonthlyButton = true
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
@@ -62,11 +62,11 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                    .disabled(self.purchasesStore.loadingAnnualButton)
+                    .disabled(purchasesStore.loadingAnnualButton)
                     .padding(.trailing, 4)
                     Button(action: {
-                        self.purchasesStore.buySubscription(package: self.purchasesStore.offering!.annual!)
-                        self.purchasesStore.loadingAnnualButton = true
+                        purchasesStore.buySubscription(package: purchasesStore.offering!.annual!)
+                        purchasesStore.loadingAnnualButton = true
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
@@ -87,7 +87,7 @@ struct SubscriptionSplashScreen: View {
                             }
                         }
                     }
-                    .disabled(self.purchasesStore.loadingMonthlyButton)
+                    .disabled(purchasesStore.loadingMonthlyButton)
                     .padding(.leading, 4)
                 }
                 .padding(.top, 8)

@@ -38,18 +38,18 @@ struct NoteList: View {
                     }
                     .onMove(perform: move)
                     .onDelete { index in
-                        self.noteStore.deleteNote(datas: self.noteStore, index: index)
+                        noteStore.deleteNote(datas: noteStore, index: index)
                     }
                 }
                 .navigationSearchBar("Поиск", searchText: $searchText)
                 PlusButton(action: {
-                    self.showAddNewNote = true
+                    showAddNewNote = true
                 }, label: "Новая заметка")
                     .padding(12)
             }
             .sheet(isPresented: $showAddNewNote) {
-                NewNote(showAddNewNote: self.$showAddNewNote)
-                    .environmentObject(self.noteStore)
+                NewNote(showAddNewNote: $showAddNewNote)
+                    .environmentObject(noteStore)
             }
             .actionSheet(isPresented: $showActionSheetSort) {
                 ActionSheet(title: Text("Сортировка"), message: Text("По какому параметру вы хотите отсортировать этот список?"), buttons: [
@@ -58,7 +58,7 @@ struct NoteList: View {
             }
             .navigationBarTitle("Заметки")
             .navigationBarItems(leading: EditButton(), trailing: Button(action: {
-                self.showActionSheetSort = true
+                showActionSheetSort = true
             }) {
                 Image(systemName: "line.horizontal.3.decrease.circle")
                     .imageScale(.large)

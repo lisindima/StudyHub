@@ -25,7 +25,7 @@ struct ChatList: View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                    ForEach(self.chatStore.dataChat.filter {
+                    ForEach(chatStore.dataChat.filter {
                         searchText.isEmpty || $0.nameChat.localizedStandardContains(searchText)
                     }, id: \.id) { item in
                         NavigationLink(destination: MessageList(dataChat: item)) {

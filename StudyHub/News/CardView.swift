@@ -23,7 +23,7 @@ struct CardView: View {
                     .renderingMode(.original)
                     .placeholder { ProgressView() }
                     .onFailure { _ in
-                        self.showImage = false
+                        showImage = false
                     }
                     .resizable()
                     .aspectRatio(contentMode: .fit)

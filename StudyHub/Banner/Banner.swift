@@ -37,7 +37,7 @@ struct BannerModifier: ViewModifier {
                 .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
                 .onTapGesture {
                     withAnimation {
-                        self.showBanner = false
+                        showBanner = false
                     }
                 }
             }

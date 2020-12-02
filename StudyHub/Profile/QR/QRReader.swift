@@ -29,8 +29,8 @@ struct QRReader: View {
                     CodeScannerView(codeTypes: [.qr], simulatedData: "dLlZ2MYmIZSICzP4lPp1a96rDmy1") { result in
                         switch result {
                         case let .success(code):
-                            self.qrStore.getUserInfoBeforeScanQRCode(code: code)
-                            self.showProfileFriends = true
+                            qrStore.getUserInfoBeforeScanQRCode(code: code)
+                            showProfileFriends = true
                         case let .failure(error):
                             print(error.localizedDescription)
                         }

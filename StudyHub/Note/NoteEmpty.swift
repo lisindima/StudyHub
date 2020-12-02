@@ -28,7 +28,7 @@ struct NoteEmpty: View {
                     Spacer()
                     HStack {
                         PlusButton(action: {
-                            self.showAddNewNote = true
+                            showAddNewNote = true
                         }, label: "Новая заметка")
                         Spacer()
                     }.padding(12)
@@ -36,8 +36,8 @@ struct NoteEmpty: View {
             }
             .navigationBarTitle("Заметки")
             .sheet(isPresented: $showAddNewNote) {
-                NewNote(showAddNewNote: self.$showAddNewNote)
-                    .environmentObject(self.noteStore)
+                NewNote(showAddNewNote: $showAddNewNote)
+                    .environmentObject(noteStore)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

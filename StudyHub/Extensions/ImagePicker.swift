@@ -41,33 +41,33 @@ struct ImagePicker: UIViewControllerRepresentable {
             let imageData = imageProfile.jpegData(compressionQuality: 1)
             parent.sessionStore.showBanner = true
             let photoRef = Storage.storage().reference(forURL: "gs://altgtu-46659.appspot.com/photoProfile/\(currentUser.uid).jpeg")
-            let uploadImage = photoRef.putData(imageData!, metadata: nil) { result in
+            let uploadImage = photoRef.putData(imageData!, metadata: nil) { [self] result in
                 switch result {
                 case .success:
-                    photoRef.downloadURL { url, error in
+                    photoRef.downloadURL { [self] url, error in
                         guard let downloadURL = url else {
                             return
                         }
-                        self.parent.sessionStore.userData.urlImageProfile = downloadURL.absoluteString
+                        parent.sessionStore.userData.urlImageProfile = downloadURL.absoluteString
                         let docRef = db.collection("profile").document(currentUser.uid)
-                        docRef.updateData(["urlImageProfile": self.parent.sessionStore.userData.urlImageProfile]) { error in
+                        docRef.updateData(["urlImageProfile": parent.sessionStore.userData.urlImageProfile]) { [self] error in
                             if let error = error {
                                 print("Error updating document: \(error)")
                                 SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                                self.parent.sessionStore.showBanner = false
+                                parent.sessionStore.showBanner = false
                             } else {
-                                self.parent.sessionStore.showBanner = false
+                                parent.sessionStore.showBanner = false
                             }
                         }
                     }
                 case let .failure(error):
                     print("Error: Image could not upload! \(error)")
                     SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
-                    self.parent.sessionStore.showBanner = false
+                    parent.sessionStore.showBanner = false
                 }
             }
-            uploadImage.observe(.progress) { snapshot in
-                self.parent.sessionStore.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
+            uploadImage.observe(.progress) { [self] snapshot in
+                parent.sessionStore.percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount) / Double(snapshot.progress!.totalUnitCount)
             }
         }
     }

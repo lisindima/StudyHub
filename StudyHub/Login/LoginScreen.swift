@@ -33,22 +33,22 @@ struct SignUpView: View {
         sessionStore.signUp(email: email, password: password) { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.email = ""
-                self.password = ""
-                self.firstname = ""
-                self.lastname = ""
+                loading = false
+                email = ""
+                password = ""
+                firstname = ""
+                lastname = ""
             } else {
                 let currentUser = Auth.auth().currentUser!
                 let db = Firestore.firestore()
                 db.collection("profile").document(currentUser.uid).setData([
-                    "firstname": self.firstname,
-                    "lastname": self.lastname,
+                    "firstname": firstname,
+                    "lastname": lastname,
                     "rValue": 88.0,
                     "gValue": 86.0,
                     "bValue": 214.0,
                     "darkThemeOverride": false,
-                    "dateBirthDay": self.dateBirthday,
+                    "dateBirthDay": dateBirthday,
                     "adminSetting": false,
                     "notifyMinute": 10,
                     "pinCodeAccess": "",
@@ -64,7 +64,7 @@ struct SignUpView: View {
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
-                        self.sessionStore.sendEmailVerification()
+                        sessionStore.sendEmailVerification()
                         print("Document successfully written!")
                     }
                 }
@@ -80,7 +80,7 @@ struct SignUpView: View {
                 .padding([.top, .horizontal])
             if !isShowDate {
                 Button(action: {
-                    self.isShowDate = true
+                    isShowDate = true
                 }) {
                     Text("\(dateBirthday, formatter: dateStore.dateDay)")
                 }
@@ -88,7 +88,7 @@ struct SignUpView: View {
             if isShowDate {
                 VStack {
                     Button(action: {
-                        self.isShowDate = false
+                        isShowDate = false
                     }) {
                         Text("\(dateBirthday, formatter: dateStore.dateDay)")
                     }
@@ -128,11 +128,9 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 8)
-            CustomButton(label: loading ? "Загрузка" : "Зарегистрироваться", loading: loading, colorButton: .defaultColorApp) {
-                self.signUp()
-            }
-            .disabled(loading)
-            .padding()
+            CustomButton(label: loading ? "Загрузка" : "Зарегистрироваться", loading: loading, colorButton: .defaultColorApp, action: signUp)
+                .disabled(loading)
+                .padding()
             Divider()
             Text("Учетная запись позволит вам сохранять и получать доступ к информации на разных устройствах. Вы можете удалить свою учетную запись в любое время.")
                 .font(.footnote)
@@ -163,12 +161,12 @@ struct ResetPassword: View {
         sessionStore.sendPasswordReset(email: email) { error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.email = ""
+                loading = false
+                email = ""
             } else {
                 SPAlert.present(title: "Проверьте почту!", message: "Проверьте вашу почту и перейдите по ссылке в письме!", preset: .done)
-                self.loading = false
-                self.email = ""
+                loading = false
+                email = ""
             }
         }
     }
@@ -179,11 +177,9 @@ struct ResetPassword: View {
                 .padding([.top, .horizontal])
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            CustomButton(label: loading ? "Загрузка" : "Восстановить аккаунт", loading: loading, colorButton: .defaultColorApp) {
-                self.sendPasswordReset()
-            }
-            .disabled(loading)
-            .padding()
+            CustomButton(label: loading ? "Загрузка" : "Восстановить аккаунт", loading: loading, colorButton: .defaultColorApp, action: sendPasswordReset)
+                .disabled(loading)
+                .padding()
             Divider()
             Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
                 .font(.footnote)
@@ -215,9 +211,9 @@ struct EmailLoginScreen: View {
         sessionStore.signIn(email: email, password: password) { _, error in
             if error != nil {
                 SPAlert.present(title: "Произошла ошибка!", message: error?.localizedDescription, preset: .error)
-                self.loading = false
-                self.email = ""
-                self.password = ""
+                loading = false
+                email = ""
+                password = ""
             }
         }
     }
@@ -252,11 +248,9 @@ struct EmailLoginScreen: View {
                         .padding(.bottom, 8)
                 }
             }
-            CustomButton(label: loading ? "Загрузка" : "Войти", loading: loading, colorButton: .defaultColorApp) {
-                self.signIn()
-            }
-            .disabled(loading)
-            .padding()
+            CustomButton(label: loading ? "Загрузка" : "Войти", loading: loading, colorButton: .defaultColorApp, action: signIn)
+                .disabled(loading)
+                .padding()
             Divider()
             Text("После нажатия на кнопку зайдите на почту и следуйте инструкции по восстановлению доступа к аккаунту.")
                 .font(.footnote)
@@ -358,7 +352,7 @@ struct AuthenticationScreen: View {
                         .signIn,
                         onRequest: { request in
                             let nonce = randomNonceString()
-                            self.currentNonce = nonce
+                            currentNonce = nonce
                             request.requestedScopes = [.fullName, .email]
                             request.nonce = sha256(nonce)
                         },

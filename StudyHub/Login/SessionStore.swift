@@ -33,41 +33,41 @@ class SessionStore: ObservableObject {
     }
 
     func listenSession() {
-        handle = Auth.auth().addStateDidChangeListener { _, user in
-            if let user = user {
-                self.user = user
-                self.getDataFromDatabaseListen()
-                Purchases.shared.identify(user.uid) { _, error in
+        handle = Auth.auth().addStateDidChangeListener { [self] _, responseUser in
+            if let currentUser = responseUser {
+                user = currentUser
+                getDataFromDatabaseListen()
+                Purchases.shared.identify(currentUser.uid) { _, error in
                     if let error = error {
                         print("Ошибка Purchases: \(error.localizedDescription)")
                     } else {
-                        self.updateOnlineUser(onlineUser: true)
+                        updateOnlineUser(true)
                     }
                 }
                 if let providerData = Auth.auth().currentUser?.providerData {
                     for userInfo in providerData {
                         switch userInfo.providerID {
                         case "password":
-                            self.userTypeAuth = .email
+                            userTypeAuth = .email
                         case "apple.com":
-                            self.userTypeAuth = .appleid
+                            userTypeAuth = .appleid
                         default:
                             print("Вход через \(userInfo.providerID)")
-                            self.userTypeAuth = .unknown
+                            userTypeAuth = .unknown
                         }
                     }
                 }
             } else {
-                self.updateOnlineUser(onlineUser: false)
                 Purchases.shared.reset { _, _ in
                     print("Пользователь вышел!")
                 }
-                self.user = nil
+                updateOnlineUser(false)
+                user = nil
             }
         }
     }
 
-    func updateOnlineUser(onlineUser: Bool) {
+    func updateOnlineUser(_ onlineUser: Bool) {
         let currentUser = Auth.auth().currentUser
         let db = Firestore.firestore()
         if currentUser != nil {

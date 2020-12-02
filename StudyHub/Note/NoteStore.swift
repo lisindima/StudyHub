@@ -20,7 +20,7 @@ class NoteStore: ObservableObject {
         statusNote = .loading
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
-        db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { querySnapshot, error in
+        db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { [self] querySnapshot, error in
             if querySnapshot?.count != 0 {
                 let result = Result {
                     try querySnapshot?.documents.compactMap { document -> DataNote? in
@@ -28,19 +28,19 @@ class NoteStore: ObservableObject {
                     }
                 }
                 switch result {
-                case let .success(dataNote):
-                    if let dataNote = dataNote {
-                        self.dataNote = dataNote
-                        self.statusNote = .showNote
+                case let .success(response):
+                    if let responseNote = response {
+                        dataNote = responseNote
+                        statusNote = .showNote
                     } else {
-                        self.statusNote = .emptyNote
+                        statusNote = .emptyNote
                     }
                 case let .failure(error):
-                    self.statusNote = .emptyNote
+                    statusNote = .emptyNote
                     print("Error decoding DataNote: \(error)")
                 }
             } else {
-                self.statusNote = .emptyNote
+                statusNote = .emptyNote
             }
         }
     }

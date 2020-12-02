@@ -17,10 +17,10 @@ class ImageCacheStore: ObservableObject {
     static let shared = ImageCacheStore()
 
     func calculateImageCache() {
-        ImageCache.default.calculateDiskStorageSize { result in
+        ImageCache.default.calculateDiskStorageSize { [self] result in
             switch result {
             case let .success(size):
-                self.sizeImageCache = Int(size) / 1024 / 1024
+                sizeImageCache = Int(size) / 1024 / 1024
             case let .failure(error):
                 print(error)
             }
@@ -34,8 +34,8 @@ class ImageCacheStore: ObservableObject {
 
     func clearImageCache() {
         ImageCache.default.clearMemoryCache()
-        ImageCache.default.clearDiskCache {
-            self.calculateImageCache()
+        ImageCache.default.clearDiskCache { [self] in
+            calculateImageCache()
             SPAlert.present(title: "Кэш фотографий успешно очищен.", preset: .done)
         }
     }

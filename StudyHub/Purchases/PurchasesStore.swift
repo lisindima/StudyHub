@@ -25,60 +25,60 @@ class PurchasesStore: ObservableObject {
     var offering: Purchases.Offering?
 
     func fetchProduct() {
-        Purchases.shared.offerings { offerings, error in
+        Purchases.shared.offerings { [self] offerings, error in
             if let error = error {
                 #if os(iOS)
                     SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                 #endif
                 print(error.localizedDescription)
             }
-            guard let offering = offerings?.current else {
+            guard let currentOffering = offerings?.current else {
                 #if os(iOS)
                     SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                 #endif
                 print("No current offering configured")
                 return
             }
-            self.offering = offering
-            for package in offering.availablePackages {
-                let packageAnnualPrice = offering.annual
-                self.annualPrice = packageAnnualPrice!.localizedPriceString
-                let packageMonthlyPrice = offering.monthly
-                self.monthlyPrice = packageMonthlyPrice!.localizedPriceString
+            offering = currentOffering
+            for package in currentOffering.availablePackages {
+                let packageAnnualPrice = currentOffering.annual
+                annualPrice = packageAnnualPrice!.localizedPriceString
+                let packageMonthlyPrice = currentOffering.monthly
+                monthlyPrice = packageMonthlyPrice!.localizedPriceString
                 print("Продукт: \(package.product.localizedDescription), цена: \(package.localizedPriceString)")
             }
         }
     }
 
     func listenPurchases() {
-        Purchases.shared.purchaserInfo { purchaserInfo, error in
+        Purchases.shared.purchaserInfo { [self] info, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.purchasesInfo = purchaserInfo
-                self.purchasesIsDateInToday()
+                purchasesInfo = info
+                purchasesIsDateInToday()
             }
         }
     }
 
     func buySubscription(package: Purchases.Package) {
-        Purchases.shared.purchasePackage(package) { _, purchaserInfo, error, userCancelled in
+        Purchases.shared.purchasePackage(package) { [self] _, purchaserInfo, error, userCancelled in
             if userCancelled {
-                self.loadingMonthlyButton = false
-                self.loadingAnnualButton = false
+                loadingMonthlyButton = false
+                loadingAnnualButton = false
                 print("Отменено пользователем!")
                 return
             }
             if let error = error {
                 print("Ошибка: \(error.localizedDescription)")
-                self.loadingMonthlyButton = false
-                self.loadingAnnualButton = false
+                loadingMonthlyButton = false
+                loadingAnnualButton = false
                 #if os(iOS)
                     SPAlert.present(title: "Произошла ошибка!", message: "Повторите попытку через несколько минут.", preset: .error)
                 #endif
             } else if purchaserInfo?.entitlements.active != nil {
-                self.loadingMonthlyButton = false
-                self.loadingAnnualButton = false
+                loadingMonthlyButton = false
+                loadingAnnualButton = false
                 #if os(iOS)
                     SPAlert.present(title: "Подписка оформлена!", message: "Вы очень помогаете развитию приложения!", preset: .heart)
                 #endif
