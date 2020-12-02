@@ -221,14 +221,14 @@ struct SettingView: View {
                         Text("Темная тема")
                     }
                     #if !targetEnvironment(macCatalyst)
-                        HStack {
-                            Image(systemName: "app")
-                                .frame(width: 24)
-                                .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                            Button("Изменить иконку") {
-                                showChangeIcons = true
-                            }.foregroundColor(.primary)
-                        }
+                    HStack {
+                        Image(systemName: "app")
+                            .frame(width: 24)
+                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                        Button("Изменить иконку") {
+                            showChangeIcons = true
+                        }.foregroundColor(.primary)
+                    }
                     #endif
                 }
                 Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {

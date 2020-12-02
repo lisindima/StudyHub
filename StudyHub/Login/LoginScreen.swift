@@ -113,7 +113,7 @@ struct SignUpView: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.newPassword)
                     if password.isEmpty {}
-                    if password.count > 0 && password.count < 8 {
+                    if !password.isEmpty && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
@@ -229,7 +229,7 @@ struct EmailLoginScreen: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
                     if password.isEmpty {}
-                    if password.count > 0 && password.count < 8 {
+                    if !password.isEmpty && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }

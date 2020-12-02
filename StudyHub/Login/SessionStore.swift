@@ -176,6 +176,7 @@ struct UserData: Identifiable, Codable {
             }
         }
     }
+
     var darkThemeOverride: Bool
 }
 

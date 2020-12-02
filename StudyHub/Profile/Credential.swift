@@ -55,7 +55,7 @@ struct DeleteUser: View {
                     SecureField("Пароль", text: $password)
                         .textContentType(.password)
                     if password.isEmpty {}
-                    if password.count > 0 && password.count < 8 {
+                    if !password.isEmpty && password.count < 8 {
                         Image(systemName: "xmark.circle")
                             .foregroundColor(.red)
                     }
@@ -141,7 +141,7 @@ struct ChangeEmail: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {}
-                        if password.count > 0 && password.count < 8 {
+                        if !password.isEmpty && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
@@ -246,7 +246,7 @@ struct ChangePassword: View {
                         SecureField("Пароль", text: $password)
                             .textContentType(.password)
                         if password.isEmpty {}
-                        if password.count > 0 && password.count < 8 {
+                        if !password.isEmpty && password.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }
@@ -277,7 +277,7 @@ struct ChangePassword: View {
                         SecureField("Пароль", text: $newPassword)
                             .textContentType(.newPassword)
                         if newPassword.isEmpty {}
-                        if newPassword.count > 0 && newPassword.count < 8 {
+                        if !newPassword.isEmpty && newPassword.count < 8 {
                             Image(systemName: "xmark.circle")
                                 .foregroundColor(.red)
                         }

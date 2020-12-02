@@ -21,7 +21,7 @@ class NoteStore: ObservableObject {
         let currentUser = Auth.auth().currentUser!
         let db = Firestore.firestore()
         db.collection("note").document(currentUser.uid).collection("noteCollection").addSnapshotListener { [self] querySnapshot, error in
-            if querySnapshot?.count != 0 {
+            if querySnapshot?.isEmpty != true {
                 let result = Result {
                     try querySnapshot?.documents.compactMap { document -> DataNote? in
                         try document.data(as: DataNote.self)
