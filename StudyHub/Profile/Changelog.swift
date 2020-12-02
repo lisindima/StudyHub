@@ -105,7 +105,7 @@ class ChangelogStore: ObservableObject {
     func loadChangelog() {
         AF.request("https://api.lisindmitriy.me/changelog")
             .validate()
-            .responseDecodable(of: [ChangelogModel].self) { response in
+            .responseDecodable(of: [ChangelogModel].self) { [self] response in
                 switch response.result {
                 case .success:
                     guard let сhangelog = response.value else { return }

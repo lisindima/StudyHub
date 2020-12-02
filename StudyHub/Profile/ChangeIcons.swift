@@ -31,7 +31,7 @@ class IconStore: ObservableObject {
     }
 
     func setIcon(nameIcon: String) {
-        UIApplication.shared.setAlternateIconName(nameIcon == "defaultlogo" ? nil : nameIcon) { error in
+        UIApplication.shared.setAlternateIconName(nameIcon == "defaultlogo" ? nil : nameIcon) { [self] error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
