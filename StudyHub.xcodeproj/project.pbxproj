@@ -10,7 +10,6 @@
 		CB0982B524588B1F00C8FCB4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0982B424588B1F00C8FCB4 /* ScheduleView.swift */; };
 		CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED45232E59A30047A8A0 /* Assets.xcassets */; };
 		CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */; };
-		CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */; };
 		CB0AED5F232E5A210047A8A0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED56232E5A210047A8A0 /* RootView.swift */; };
 		CB0AED69232E5A7B0047A8A0 /* ScheduleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED67232E5A7B0047A8A0 /* ScheduleList.swift */; };
 		CB0AED6A232E5A7B0047A8A0 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* ScheduleItem.swift */; };
@@ -183,7 +182,6 @@
 		CB0AED39232E59A10047A8A0 /* StudyHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB0AED45232E59A30047A8A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB0AED48232E59A30047A8A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CB0AED4B232E59A30047A8A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB0AED4D232E59A30047A8A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB0AED56232E5A210047A8A0 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CB0AED67232E5A7B0047A8A0 /* ScheduleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleList.swift; sourceTree = "<group>"; };
@@ -372,7 +370,6 @@
 				CBD896B22378FDAE008CF480 /* Extensions */,
 				CB0AED45232E59A30047A8A0 /* Assets.xcassets */,
 				CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */,
-				CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */,
 				CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */,
 				CB0AED4D232E59A30047A8A0 /* Info.plist */,
 				CB0AED47232E59A30047A8A0 /* Preview Content */,
@@ -749,7 +746,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCE328724210A8A00844197 /* pornlogo@2x.png in Resources */,
-				CB0AED4C232E59A30047A8A0 /* LaunchScreen.storyboard in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
 				CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */,
@@ -886,14 +882,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CB0AED4A232E59A30047A8A0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CB0AED4B232E59A30047A8A0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		CBE665DD23543A1000C43811 /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

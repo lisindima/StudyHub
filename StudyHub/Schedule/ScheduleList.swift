@@ -11,7 +11,7 @@ import SwiftUI
 struct ScheduleList: View {
     @ObservedObject private var scheduleStore = ScheduleStore.shared
     @State private var week: Int = 1
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -22,22 +22,13 @@ struct ScheduleList: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .labelsHidden()
                 .padding(.horizontal)
-                if week == 1 {
-                    List {
-                        ForEach(scheduleStore.scheduleModel.sorted { $0.week < $1.week }, id: \.id) { schedule in
-                            ScheduleItem(scheduleModel: schedule)
-                        }
+                List {
+                    ForEach(scheduleStore.scheduleModel.sorted { week == 1 ? $0.week < $1.week :  $0.week > $1.week }, id: \.id) { schedule in
+                        ScheduleItem(scheduleModel: schedule)
                     }
                 }
-                if week == 2 {
-                    List {
-                        ForEach(scheduleStore.scheduleModel.sorted { $0.week > $1.week }, id: \.id) { schedule in
-                            ScheduleItem(scheduleModel: schedule)
-                        }
-                    }
-                }
-            }.navigationBarTitle("Расписание")
-        }
+            }
+        }.navigationBarTitle("Расписание")
     }
 }
 
