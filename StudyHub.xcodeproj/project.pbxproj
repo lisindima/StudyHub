@@ -18,7 +18,6 @@
 		CB0AED79232E5AC50047A8A0 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED75232E5AC50047A8A0 /* SessionStore.swift */; };
 		CB0AED7A232E5AC50047A8A0 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */; };
 		CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */; };
-		CB117B03244D4BB700667F3A /* SessionStoreWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */; };
 		CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8C923E1DEEB006E568C /* ChatLoading.swift */; };
 		CB11A8CC23E1DF4C006E568C /* ChatEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */; };
 		CB11A8CE23E1E1D4006E568C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CD23E1E1D4006E568C /* ChatView.swift */; };
@@ -26,16 +25,12 @@
 		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
 		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB1F6DA92338DDB000604C50 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
-		CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2761992355A9A00054C753 /* ScheduleListWatch.swift */; };
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
 		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
 		CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
 		CB37694123E2CA3D0015B61E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694023E2CA3D0015B61E /* Color.swift */; };
 		CB37694623E3F54F0015B61E /* ChangeIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB37694523E3F54F0015B61E /* ChangeIcons.swift */; };
-		CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */; };
-		CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695923E5CD850015B61E /* lisinlogo@3x.png */; };
-		CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB37695B23E5CD9F0015B61E /* lisinlogo.png */; };
 		CB3BFAD2239E37DA00894DFA /* SettingAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */; };
 		CB4377B823DFDC200002C47C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4377B723DFDC200002C47C /* SettingView.swift */; };
 		CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */; };
@@ -48,17 +43,12 @@
 		CB56F589241B3A3900868B09 /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5DE17F236AB98D001AC3E3 /* ChatList.swift */; };
 		CB5ED66F23F4F5EE00A28A6D /* ChatTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5ED66E23F4F5EE00A28A6D /* ChatTextField.swift */; };
-		CB609F842406628B009A6389 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0AED68232E5A7B0047A8A0 /* ScheduleItem.swift */; };
-		CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */; };
-		CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */; };
-		CB609F89240662FE009A6389 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CB609F88240662FE009A6389 /* Alamofire */; };
 		CB6704EC23712F4000F875C3 /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6704EB23712F4000F875C3 /* NotificationStore.swift */; };
 		CB6AC6302408F4FE00D0E482 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = CB6AC62F2408F4FE00D0E482 /* SPAlert */; };
 		CB6D3F73235ADC6300E65661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F72235ADC6300E65661 /* CardView.swift */; };
 		CB6D3F7D235B0E6200E65661 /* NewsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7C235B0E6200E65661 /* NewsStore.swift */; };
 		CB6D3F7F235B118200E65661 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D3F7E235B118200E65661 /* CardList.swift */; };
 		CB6EBF472390276B00D9E771 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6EBF462390276B00D9E771 /* License.swift */; };
-		CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */; };
 		CB76FDBB23C345BE00FDDE5E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB76FDBA23C345BE00FDDE5E /* Credential.swift */; };
 		CB7955D6247390FB00670552 /* NativeSearchBar in Frameworks */ = {isa = PBXBuildFile; productRef = CB7955D5247390FB00670552 /* NativeSearchBar */; };
 		CB85CDBC249B7EEF00AAEF04 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = CB85CDBB249B7EEF00AAEF04 /* BottomSheet */; };
@@ -74,10 +64,6 @@
 		CB9BBDCC234C6DDC00F89529 /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */; };
 		CB9C08BC23B9DA24006743F9 /* NoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C08BB23B9DA24006743F9 /* NoteStore.swift */; };
 		CBA255F8242B361C00B20C6A /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA255F7242B361C00B20C6A /* PlusButton.swift */; };
-		CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */; };
-		CBA25600242C4FE300B20C6A /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = CBA255FF242C4FE300B20C6A /* Purchases */; };
-		CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */; };
-		CBA25602242C62B200B20C6A /* DateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F588241B3A3900868B09 /* DateStore.swift */; };
 		CBA6C94F247EBA5A0025A4EC /* Tabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */; };
 		CBA7270C23DE78E50094372B /* NoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270B23DE78E50094372B /* NoteList.swift */; };
 		CBA7270E23DE796E0094372B /* NoteEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA7270D23DE796E0094372B /* NoteEmpty.swift */; };
@@ -87,13 +73,6 @@
 		CBC161B623F999F000ED3B50 /* SubscriptionSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */; };
 		CBCA4C5023F684A60018168D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCA4C4F23F684A60018168D /* StoreKit.framework */; };
 		CBCA4C5323F7FE7E0018168D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CBCA4C5223F7FE7E0018168D /* Alamofire */; };
-		CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE3277241F9F5200844197 /* MenuWatch.swift */; };
-		CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328224210A8A00844197 /* pornlogo@3x.png */; };
-		CBCE328624210A8A00844197 /* pornlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328324210A8A00844197 /* pornlogo.png */; };
-		CBCE328724210A8A00844197 /* pornlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328424210A8A00844197 /* pornlogo@2x.png */; };
-		CBCE328F2421C87A00844197 /* altstulogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE328E2421C87A00844197 /* altstulogo.png */; };
-		CBCE32912421C89700844197 /* altstulogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32902421C89700844197 /* altstulogo@2x.png */; };
-		CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBCE32922421C8AC00844197 /* altstulogo@3x.png */; };
 		CBD6733D2552D9DB00437053 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733C2552D9DB00437053 /* FirebaseFirestoreSwift-Beta */; };
 		CBD6733F2552D9E300437053 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CBD6733E2552D9E300437053 /* FirebaseStorageSwift-Beta */; };
 		CBD673552552E11500437053 /* StudyHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD673542552E11500437053 /* StudyHub.swift */; };
@@ -101,36 +80,8 @@
 		CBDE62952352129E00E588EC /* PickerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE62942352129E00E588EC /* PickerStore.swift */; };
 		CBE010EA23ACC0D6009DB0E8 /* Changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE010E923ACC0D6009DB0E8 /* Changelog.swift */; };
 		CBE4F5522367DC8A00E4D0C6 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */; };
-		CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBE665DD23543A1000C43811 /* Interface.storyboard */; };
-		CBE665E123543A1400C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665E023543A1400C43811 /* Assets.xcassets */; };
-		CBE665E823543A1400C43811 /* StudyHubWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CBE665ED23543A1400C43811 /* LoginWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EC23543A1400C43811 /* LoginWatch.swift */; };
-		CBE665EF23543A1400C43811 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665EE23543A1400C43811 /* HostingController.swift */; };
-		CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F023543A1400C43811 /* ExtensionDelegate.swift */; };
-		CBE665F323543A1400C43811 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F223543A1400C43811 /* NotificationController.swift */; };
-		CBE665F523543A1400C43811 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE665F423543A1400C43811 /* NotificationView.swift */; };
-		CBE665F723543A1500C43811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665F623543A1500C43811 /* Assets.xcassets */; };
-		CBE665FA23543A1500C43811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE665F923543A1500C43811 /* Preview Assets.xcassets */; };
-		CBE665FF23543A1500C43811 /* StudyHub.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CBE665DB23543A1000C43811 /* StudyHub.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CBF1E0D7233C6E250009E3BE /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CBE665E923543A1400C43811 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBE665E623543A1400C43811;
-			remoteInfo = "StudyHubWatchApp Extension";
-		};
-		CBE665FD23543A1500C43811 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB0AED31232E59A10047A8A0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBE665DA23543A1000C43811;
-			remoteInfo = StudyHubWatchApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CB25040C23505E1600D2E41A /* Embed Watch Content */ = {
@@ -139,7 +90,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				CBE665FF23543A1500C43811 /* StudyHub.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,17 +114,6 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBE6660323543A1500C43811 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				CBE665E823543A1400C43811 /* StudyHubWatchApp Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -192,8 +131,6 @@
 		CB0AED76232E5AC50047A8A0 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		CB0AED8D232E5BA80047A8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB0AED8F232E5F1F0047A8A0 /* StudyHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyHub.entitlements; sourceTree = "<group>"; };
-		CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "StudyHubWatchApp Extension.entitlements"; sourceTree = "<group>"; };
-		CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStoreWatch.swift; sourceTree = "<group>"; };
 		CB11A8C923E1DEEB006E568C /* ChatLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoading.swift; sourceTree = "<group>"; };
 		CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmpty.swift; sourceTree = "<group>"; };
 		CB11A8CD23E1E1D4006E568C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -203,16 +140,12 @@
 		CB1F6DA82338DDB000604C50 /* ScheduleDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetail.swift; sourceTree = "<group>"; };
 		CB27480524A1CFE500DA7664 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CB27480724A1CFE500DA7664 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		CB2761992355A9A00054C753 /* ScheduleListWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListWatch.swift; sourceTree = "<group>"; };
 		CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTimeSinceNow.swift; sourceTree = "<group>"; };
 		CB286DC7243782B700977D60 /* NotificationSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSetting.swift; sourceTree = "<group>"; };
 		CB30FB632424809100F5793E /* String+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
 		CB31F0BF23FEC1C7003EF59D /* PurchasesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesStore.swift; sourceTree = "<group>"; };
 		CB37694023E2CA3D0015B61E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CB37694523E3F54F0015B61E /* ChangeIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeIcons.swift; sourceTree = "<group>"; };
-		CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@2x.png"; sourceTree = "<group>"; };
-		CB37695923E5CD850015B61E /* lisinlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisinlogo@3x.png"; sourceTree = "<group>"; };
-		CB37695B23E5CD9F0015B61E /* lisinlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lisinlogo.png; sourceTree = "<group>"; };
 		CB3BFAD1239E37DA00894DFA /* SettingAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAccount.swift; sourceTree = "<group>"; };
 		CB4377B723DFDC200002C47C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		CB457CCD241E3D6900DBBCC9 /* MailFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailFeedback.swift; sourceTree = "<group>"; };
@@ -229,7 +162,6 @@
 		CB6D3F7C235B0E6200E65661 /* NewsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStore.swift; sourceTree = "<group>"; };
 		CB6D3F7E235B118200E65661 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		CB6EBF462390276B00D9E771 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
-		CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		CB76FDBA23C345BE00FDDE5E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		CB8B99222422072C00172395 /* ProfileFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFriends.swift; sourceTree = "<group>"; };
 		CB8B992524224F1900172395 /* QRStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRStore.swift; sourceTree = "<group>"; };
@@ -237,7 +169,6 @@
 		CB9BBDCB234C6DDC00F89529 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		CB9C08BB23B9DA24006743F9 /* NoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStore.swift; sourceTree = "<group>"; };
 		CBA255F7242B361C00B20C6A /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
-		CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionWatchView.swift; sourceTree = "<group>"; };
 		CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbed.swift; sourceTree = "<group>"; };
 		CBA7270B23DE78E50094372B /* NoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteList.swift; sourceTree = "<group>"; };
 		CBA7270D23DE796E0094372B /* NoteEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEmpty.swift; sourceTree = "<group>"; };
@@ -246,42 +177,14 @@
 		CBB01FE523B4553E001D4CBB /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSplashScreen.swift; sourceTree = "<group>"; };
 		CBCA4C4F23F684A60018168D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		CBCE3277241F9F5200844197 /* MenuWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWatch.swift; sourceTree = "<group>"; };
-		CBCE328224210A8A00844197 /* pornlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pornlogo@3x.png"; sourceTree = "<group>"; };
-		CBCE328324210A8A00844197 /* pornlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pornlogo.png; sourceTree = "<group>"; };
-		CBCE328424210A8A00844197 /* pornlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pornlogo@2x.png"; sourceTree = "<group>"; };
-		CBCE328E2421C87A00844197 /* altstulogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = altstulogo.png; sourceTree = "<group>"; };
-		CBCE32902421C89700844197 /* altstulogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@2x.png"; sourceTree = "<group>"; };
-		CBCE32922421C8AC00844197 /* altstulogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "altstulogo@3x.png"; sourceTree = "<group>"; };
 		CBD673542552E11500437053 /* StudyHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHub.swift; sourceTree = "<group>"; };
 		CBDE62942352129E00E588EC /* PickerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerStore.swift; sourceTree = "<group>"; };
 		CBE010E923ACC0D6009DB0E8 /* Changelog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changelog.swift; sourceTree = "<group>"; };
 		CBE4F5512367DC8A00E4D0C6 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
-		CBE665DB23543A1000C43811 /* StudyHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBE665DE23543A1000C43811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		CBE665E023543A1400C43811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CBE665E223543A1400C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "StudyHubWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBE665EC23543A1400C43811 /* LoginWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWatch.swift; sourceTree = "<group>"; };
-		CBE665EE23543A1400C43811 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
-		CBE665F023543A1400C43811 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		CBE665F223543A1400C43811 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		CBE665F423543A1400C43811 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		CBE665F623543A1500C43811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CBE665F923543A1500C43811 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CBE665FB23543A1500C43811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CBF1E0D6233C6E250009E3BE /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C6328400BFC3FC0D3EC3D205 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CB0AED36232E59A10047A8A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,15 +208,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBE665E423543A1400C43811 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB609F89240662FE009A6389 /* Alamofire in Frameworks */,
-				CBA25600242C4FE300B20C6A /* Purchases in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -332,8 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				CB0AED3B232E59A10047A8A0 /* StudyHub */,
-				CBE665DC23543A1000C43811 /* StudyHubWatchApp */,
-				CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */,
 				CB0AED3A232E59A10047A8A0 /* Products */,
 				A5C050C90CA7ACA36D5E738D /* Frameworks */,
 			);
@@ -343,8 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				CB0AED39232E59A10047A8A0 /* StudyHub.app */,
-				CBE665DB23543A1000C43811 /* StudyHub.app */,
-				CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -354,7 +244,6 @@
 			children = (
 				CBD673542552E11500437053 /* StudyHub.swift */,
 				CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */,
-				CB37694C23E5BDC40015B61E /* AlternateIcon */,
 				CB179AC923CC181D00424FD2 /* Banner */,
 				CB56F587241B39F900868B09 /* Date */,
 				CB31F0BE23FEC194003EF59D /* Purchases */,
@@ -447,23 +336,6 @@
 			path = Banner;
 			sourceTree = "<group>";
 		};
-		CB27619323556A1F0054C753 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				CBE665EC23543A1400C43811 /* LoginWatch.swift */,
-				CB117B02244D4BB700667F3A /* SessionStoreWatch.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		CB2761982355A9730054C753 /* Lesson */ = {
-			isa = PBXGroup;
-			children = (
-				CB2761992355A9A00054C753 /* ScheduleListWatch.swift */,
-			);
-			path = Lesson;
-			sourceTree = "<group>";
-		};
 		CB28B8D92361459900A93F28 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,22 +353,6 @@
 				CBC161B523F999F000ED3B50 /* SubscriptionSplashScreen.swift */,
 			);
 			path = Purchases;
-			sourceTree = "<group>";
-		};
-		CB37694C23E5BDC40015B61E /* AlternateIcon */ = {
-			isa = PBXGroup;
-			children = (
-				CBCE328E2421C87A00844197 /* altstulogo.png */,
-				CBCE32902421C89700844197 /* altstulogo@2x.png */,
-				CBCE32922421C8AC00844197 /* altstulogo@3x.png */,
-				CBCE328324210A8A00844197 /* pornlogo.png */,
-				CBCE328424210A8A00844197 /* pornlogo@2x.png */,
-				CBCE328224210A8A00844197 /* pornlogo@3x.png */,
-				CB37695B23E5CD9F0015B61E /* lisinlogo.png */,
-				CB37695723E5CD7E0015B61E /* lisinlogo@2x.png */,
-				CB37695923E5CD850015B61E /* lisinlogo@3x.png */,
-			);
-			path = AlternateIcon;
 			sourceTree = "<group>";
 		};
 		CB4874C223D8161C00DEB38F /* ImageCache */ = {
@@ -570,45 +426,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CBE665DC23543A1000C43811 /* StudyHubWatchApp */ = {
-			isa = PBXGroup;
-			children = (
-				CBE665DD23543A1000C43811 /* Interface.storyboard */,
-				CBE665E023543A1400C43811 /* Assets.xcassets */,
-				CBE665E223543A1400C43811 /* Info.plist */,
-			);
-			path = StudyHubWatchApp;
-			sourceTree = "<group>";
-		};
-		CBE665EB23543A1400C43811 /* StudyHubWatchApp Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CB117B01244CABF400667F3A /* StudyHubWatchApp Extension.entitlements */,
-				CB70DCC3244621F300492E23 /* SignInWithAppleButton.swift */,
-				CBA255FA242C4F5800B20C6A /* SubscriptionWatchView.swift */,
-				CBCE3277241F9F5200844197 /* MenuWatch.swift */,
-				CB2761982355A9730054C753 /* Lesson */,
-				CB27619323556A1F0054C753 /* Login */,
-				CBE665EE23543A1400C43811 /* HostingController.swift */,
-				CBE665F023543A1400C43811 /* ExtensionDelegate.swift */,
-				CBE665F223543A1400C43811 /* NotificationController.swift */,
-				CBE665F423543A1400C43811 /* NotificationView.swift */,
-				CBE665F623543A1500C43811 /* Assets.xcassets */,
-				CBE665FB23543A1500C43811 /* Info.plist */,
-				CBE665FC23543A1500C43811 /* PushNotificationPayload.apns */,
-				CBE665F823543A1500C43811 /* Preview Content */,
-			);
-			path = "StudyHubWatchApp Extension";
-			sourceTree = "<group>";
-		};
-		CBE665F823543A1500C43811 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CBE665F923543A1500C43811 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -626,7 +443,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CBE665FE23543A1500C43811 /* PBXTargetDependency */,
 			);
 			name = StudyHub;
 			packageProductDependencies = (
@@ -650,45 +466,6 @@
 			productReference = CB0AED39232E59A10047A8A0 /* StudyHub.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CBE665DA23543A1000C43811 /* StudyHubWatchApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBE6660423543A1500C43811 /* Build configuration list for PBXNativeTarget "StudyHubWatchApp" */;
-			buildPhases = (
-				CBE665D923543A1000C43811 /* Resources */,
-				CBE6660323543A1500C43811 /* Embed App Extensions */,
-				C6328400BFC3FC0D3EC3D205 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBE665EA23543A1400C43811 /* PBXTargetDependency */,
-			);
-			name = StudyHubWatchApp;
-			productName = StudyHubWatchApp;
-			productReference = CBE665DB23543A1000C43811 /* StudyHub.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBE6660023543A1500C43811 /* Build configuration list for PBXNativeTarget "StudyHubWatchApp Extension" */;
-			buildPhases = (
-				CBE665E323543A1400C43811 /* Sources */,
-				CBE665E423543A1400C43811 /* Frameworks */,
-				CBE665E523543A1400C43811 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "StudyHubWatchApp Extension";
-			packageProductDependencies = (
-				CB609F88240662FE009A6389 /* Alamofire */,
-				CBA255FF242C4FE300B20C6A /* Purchases */,
-			);
-			productName = "StudyHubWatchApp Extension";
-			productReference = CBE665E723543A1400C43811 /* StudyHubWatchApp Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -701,12 +478,6 @@
 				TargetAttributes = {
 					CB0AED38232E59A10047A8A0 = {
 						CreatedOnToolsVersion = 11.0;
-					};
-					CBE665DA23543A1000C43811 = {
-						CreatedOnToolsVersion = 11.2;
-					};
-					CBE665E623543A1400C43811 = {
-						CreatedOnToolsVersion = 11.2;
 					};
 				};
 			};
@@ -734,8 +505,6 @@
 			projectRoot = "";
 			targets = (
 				CB0AED38232E59A10047A8A0 /* StudyHub */,
-				CBE665DA23543A1000C43811 /* StudyHubWatchApp */,
-				CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -745,36 +514,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBCE328724210A8A00844197 /* pornlogo@2x.png in Resources */,
 				CB0AED49232E59A30047A8A0 /* Preview Assets.xcassets in Resources */,
 				CB0AED46232E59A30047A8A0 /* Assets.xcassets in Resources */,
-				CB37695A23E5CD850015B61E /* lisinlogo@3x.png in Resources */,
-				CB37695823E5CD7E0015B61E /* lisinlogo@2x.png in Resources */,
-				CBCE328F2421C87A00844197 /* altstulogo.png in Resources */,
-				CBCE32912421C89700844197 /* altstulogo@2x.png in Resources */,
-				CBCE328624210A8A00844197 /* pornlogo.png in Resources */,
-				CB37695C23E5CD9F0015B61E /* lisinlogo.png in Resources */,
-				CBCE32932421C8AC00844197 /* altstulogo@3x.png in Resources */,
 				CB0AED8E232E5BA80047A8A0 /* GoogleService-Info.plist in Resources */,
-				CBCE328524210A8A00844197 /* pornlogo@3x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CBE665D923543A1000C43811 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CBE665E123543A1400C43811 /* Assets.xcassets in Resources */,
-				CBE665DF23543A1000C43811 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CBE665E523543A1400C43811 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CBE665FA23543A1500C43811 /* Preview Assets.xcassets in Resources */,
-				CBE665F723543A1500C43811 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,54 +585,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBE665E323543A1400C43811 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB27619A2355A9A00054C753 /* ScheduleListWatch.swift in Sources */,
-				CBE665EF23543A1400C43811 /* HostingController.swift in Sources */,
-				CBA25601242C53F100B20C6A /* PurchasesStore.swift in Sources */,
-				CBE665ED23543A1400C43811 /* LoginWatch.swift in Sources */,
-				CB117B03244D4BB700667F3A /* SessionStoreWatch.swift in Sources */,
-				CBE665F323543A1400C43811 /* NotificationController.swift in Sources */,
-				CBE665F123543A1400C43811 /* ExtensionDelegate.swift in Sources */,
-				CB70DCC4244621F300492E23 /* SignInWithAppleButton.swift in Sources */,
-				CB609F842406628B009A6389 /* ScheduleItem.swift in Sources */,
-				CBCE3278241F9F5200844197 /* MenuWatch.swift in Sources */,
-				CB609F8624066297009A6389 /* ScheduleStore.swift in Sources */,
-				CB609F8724066299009A6389 /* ScheduleDetail.swift in Sources */,
-				CBA25602242C62B200B20C6A /* DateStore.swift in Sources */,
-				CBA255FB242C4F5800B20C6A /* SubscriptionWatchView.swift in Sources */,
-				CBE665F523543A1400C43811 /* NotificationView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CBE665EA23543A1400C43811 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CBE665E623543A1400C43811 /* StudyHubWatchApp Extension */;
-			targetProxy = CBE665E923543A1400C43811 /* PBXContainerItemProxy */;
-		};
-		CBE665FE23543A1500C43811 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = CBE665DA23543A1000C43811 /* StudyHubWatchApp */;
-			targetProxy = CBE665FD23543A1500C43811 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CBE665DD23543A1000C43811 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBE665DE23543A1000C43811 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CB0AED4E232E59A30047A8A0 /* Debug */ = {
@@ -1022,15 +717,15 @@
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1048,113 +743,17 @@
 				DEVELOPMENT_TEAM = 48HFZR3X8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/StudyHub/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu;
 				PRODUCT_NAME = StudyHub;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CBE6660123543A1500C43811 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 580;
-				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "StudyHubWatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "StudyHubWatchApp Extension";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Debug;
-		};
-		CBE6660223543A1500C43811 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "StudyHubWatchApp Extension/StudyHubWatchApp Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 580;
-				DEVELOPMENT_ASSET_PATHS = "\"StudyHubWatchApp Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "StudyHubWatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "StudyHubWatchApp Extension";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Release;
-		};
-		CBE6660523543A1500C43811 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 580;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				IBSC_MODULE = StudyHubWatchApp_Extension;
-				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
-				PRODUCT_NAME = StudyHub;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Debug;
-		};
-		CBE6660623543A1500C43811 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 580;
-				DEVELOPMENT_TEAM = 48HFZR3X8K;
-				IBSC_MODULE = StudyHubWatchApp_Extension;
-				INFOPLIST_FILE = StudyHubWatchApp/Info.plist;
-				MARKETING_VERSION = 0.6.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.darkfox.altgtu.watchkitapp;
-				PRODUCT_NAME = StudyHub;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1175,24 +774,6 @@
 			buildConfigurations = (
 				CB0AED51232E59A30047A8A0 /* Debug */,
 				CB0AED52232E59A30047A8A0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CBE6660023543A1500C43811 /* Build configuration list for PBXNativeTarget "StudyHubWatchApp Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CBE6660123543A1500C43811 /* Debug */,
-				CBE6660223543A1500C43811 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CBE6660423543A1500C43811 /* Build configuration list for PBXNativeTarget "StudyHubWatchApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CBE6660523543A1500C43811 /* Debug */,
-				CBE6660623543A1500C43811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1277,11 +858,6 @@
 			package = CB4B930C246CE850006B7008 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUI;
 		};
-		CB609F88240662FE009A6389 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CBCA4C5123F7FE7E0018168D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
 		CB6AC62F2408F4FE00D0E482 /* SPAlert */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB6AC62E2408F4FE00D0E482 /* XCRemoteSwiftPackageReference "SPAlert" */;
@@ -1323,11 +899,6 @@
 			productName = CodeScanner;
 		};
 		CB9B90EC241090AF006CF9BF /* Purchases */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = Purchases;
-		};
-		CBA255FF242C4FE300B20C6A /* Purchases */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CB9B90EB241090AF006CF9BF /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = Purchases;

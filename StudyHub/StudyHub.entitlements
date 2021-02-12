@@ -8,10 +8,6 @@
 	<array>
 		<string>Default</string>
 	</array>
-	<key>com.apple.developer.in-app-payments</key>
-	<array>
-		<string>merchant.com.darkfox.altgtu</string>
-	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>
 	<key>com.apple.security.device.camera</key>
@@ -22,9 +18,5 @@
 	<true/>
 	<key>com.apple.security.personal-information.photos-library</key>
 	<true/>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>$(AppIdentifierPrefix)com.darkfox.altgtu</string>
-	</array>
 </dict>
 </plist>
