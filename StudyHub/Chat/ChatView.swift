@@ -10,17 +10,15 @@ import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var chatStore: ChatStore
-
+    
     var body: some View {
-        Group {
-            if chatStore.statusChat == .loading {
-                ChatLoading()
-                    .onAppear(perform: chatStore.getDataFromDatabaseListenChat)
-            } else if chatStore.statusChat == .emptyChat {
-                ChatEmpty()
-            } else if chatStore.statusChat == .showChat {
-                ChatList()
-            }
+        if chatStore.statusChat == .loading {
+            ChatLoading()
+                .onAppear(perform: chatStore.getDataFromDatabaseListenChat)
+        } else if chatStore.statusChat == .emptyChat {
+            ChatEmpty()
+        } else if chatStore.statusChat == .showChat {
+            ChatList()
         }
     }
 }

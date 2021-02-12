@@ -55,8 +55,6 @@ struct SignUpView: View {
                     "biometricAccess": false,
                     "choiseTypeBackroundProfile": false,
                     "setImageForBackroundProfile": "",
-                    "choiseFaculty": 1,
-                    "choiseGroup": 1,
                     "urlImageProfile": "https://firebasestorage.googleapis.com/v0/b/altgtu-46659.appspot.com/o/placeholder%2FPortrait_Placeholder.jpeg?alt=media&token=1af11651-369e-4ff1-a332-e2581bd8e16d",
                 ]) {
                     err in
