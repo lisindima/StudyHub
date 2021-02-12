@@ -15,9 +15,7 @@ import SwiftUI
 class SessionStore: ObservableObject {
     @Published var user: User?
     @Published var userData: UserData!
-    @Published var showBanner: Bool = false
     @Published var onlineUser: Bool = false
-    @Published var percentComplete: Double = 0.0
     @Published var userTypeAuth: ActiveAuthType = .email
 
     static let shared = SessionStore()
@@ -142,14 +140,6 @@ class SessionStore: ObservableObject {
 
     func sendPasswordReset(email: String, handler: @escaping SendPasswordResetCallback) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: handler)
-    }
-
-    func updateEmail(email: String, handler: @escaping UserProfileChangeCallback) {
-        Auth.auth().currentUser?.updateEmail(to: email, completion: handler)
-    }
-
-    func updatePassword(password: String, handler: @escaping UserProfileChangeCallback) {
-        Auth.auth().currentUser?.updatePassword(to: password, completion: handler)
     }
 
     func sendEmailVerification() {

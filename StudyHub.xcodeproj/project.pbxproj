@@ -19,8 +19,6 @@
 		CB11A8CC23E1DF4C006E568C /* ChatEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */; };
 		CB11A8CE23E1E1D4006E568C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11A8CD23E1E1D4006E568C /* ChatView.swift */; };
 		CB12E7EE23596F9E00115B2E /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12E7ED23596F9E00115B2E /* MessageList.swift */; };
-		CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179ACA23CC182F00424FD2 /* Banner.swift */; };
-		CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB179AD123CC331B00424FD2 /* CircleProgress.swift */; };
 		CB286DB52437159600977D60 /* CalenderTimeSinceNow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */; };
 		CB286DC8243782B700977D60 /* NotificationSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB286DC7243782B700977D60 /* NotificationSetting.swift */; };
 		CB30FB642424809100F5793E /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB30FB632424809100F5793E /* String+Emoji.swift */; };
@@ -113,8 +111,6 @@
 		CB11A8CB23E1DF4C006E568C /* ChatEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmpty.swift; sourceTree = "<group>"; };
 		CB11A8CD23E1E1D4006E568C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		CB12E7ED23596F9E00115B2E /* MessageList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
-		CB179ACA23CC182F00424FD2 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
-		CB179AD123CC331B00424FD2 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
 		CB27480524A1CFE500DA7664 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CB27480724A1CFE500DA7664 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CB286DB42437159600977D60 /* CalenderTimeSinceNow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderTimeSinceNow.swift; sourceTree = "<group>"; };
@@ -206,7 +202,6 @@
 			children = (
 				CBD673542552E11500437053 /* StudyHub.swift */,
 				CBA6C94E247EBA5A0025A4EC /* Tabbed.swift */,
-				CB179AC923CC181D00424FD2 /* Banner */,
 				CB56F587241B39F900868B09 /* Date */,
 				CB31F0BE23FEC194003EF59D /* Purchases */,
 				CB6704EA23712BB200F875C3 /* Notifications */,
@@ -267,15 +262,6 @@
 				CB5ED66E23F4F5EE00A28A6D /* ChatTextField.swift */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		CB179AC923CC181D00424FD2 /* Banner */ = {
-			isa = PBXGroup;
-			children = (
-				CB179AD123CC331B00424FD2 /* CircleProgress.swift */,
-				CB179ACA23CC182F00424FD2 /* Banner.swift */,
-			);
-			path = Banner;
 			sourceTree = "<group>";
 		};
 		CB31F0BE23FEC194003EF59D /* Purchases */ = {
@@ -460,7 +446,6 @@
 				CB0AED5F232E5A210047A8A0 /* RootView.swift in Sources */,
 				CB5DE180236AB98D001AC3E3 /* ChatList.swift in Sources */,
 				CB8EF87823C85D6D00992764 /* QRReader.swift in Sources */,
-				CB179AD223CC331B00424FD2 /* CircleProgress.swift in Sources */,
 				CB11A8CA23E1DEEB006E568C /* ChatLoading.swift in Sources */,
 				CB4377B823DFDC200002C47C /* SettingView.swift in Sources */,
 				CB457CCE241E3D6900DBBCC9 /* MailFeedback.swift in Sources */,
@@ -472,7 +457,6 @@
 				CB31F0C023FEC1C7003EF59D /* PurchasesStore.swift in Sources */,
 				CB4FA0112343960A0049D271 /* ProfileView.swift in Sources */,
 				CB37694123E2CA3D0015B61E /* Color.swift in Sources */,
-				CB179ACB23CC182F00424FD2 /* Banner.swift in Sources */,
 				CB0AED77232E5AC50047A8A0 /* CustomInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

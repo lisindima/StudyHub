@@ -30,7 +30,6 @@ struct Tabbed: View {
                 }
                 .tag(1)
         }
-        .banner(isPresented: $sessionStore.showBanner)
         .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .onAppear(perform: notificationStore.updateFcmToken)
     }
