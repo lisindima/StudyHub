@@ -11,6 +11,7 @@ import CoreImage.CIFilterBuiltins
 import Firebase
 import KingfisherSwiftUI
 import SwiftUI
+import BottomSheet
 
 struct QRReader: View {
     @EnvironmentObject var sessionStore: SessionStore
@@ -50,13 +51,14 @@ struct QRReader: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 30)
                     }
-                }.bottomSheet(isPresented: $showProfileFriends, height: 250) {
+                }
+                .bottomSheet(isPresented: $showProfileFriends, height: 250) {
                     ProfileFriends()
                         .padding(.horizontal)
                         .padding(.bottom, 30)
                 }
             } else if choiseView == 1 {
-                VStack(alignment: .center) {
+                VStack {
                     Spacer()
                     ZStack {
                         Image(uiImage: qrStore.generatedQRCode(from: currentUser!.uid))

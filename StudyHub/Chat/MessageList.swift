@@ -36,7 +36,7 @@ struct MessageList: View {
                 .scaleEffect(x: -1.0, y: 1.0)
                 .rotationEffect(.degrees(180))
                 ChatTextField(messageText: $typeMessage, action: {
-                    chatStore.sendMessage(chatStore: chatStore, token: receiverFCMToken, title: "Лисин Дмитрий", body: typeMessage)
+                    chatStore.sendMessage(token: receiverFCMToken, title: "Лисин Дмитрий", body: typeMessage)
                     typeMessage = ""
                 })
                     .padding(.horizontal)

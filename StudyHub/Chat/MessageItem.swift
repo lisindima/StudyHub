@@ -12,7 +12,6 @@ import SwiftUI
 
 struct MessageItem: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var dateStore = DateStore.shared
 
     let currentUser = Auth.auth().currentUser
 
@@ -48,7 +47,7 @@ struct MessageItem: View {
                     }.padding(.bottom, -3)
                     HStack {
                         Spacer()
-                        Text("\(dataMessages.dateMsg, formatter: dateStore.dateHour)")
+                        Text("\(dataMessages.dateMsg, formatter: dateHour)")
                             .font(.system(size: 10))
                             .foregroundColor(.secondary)
                     }.padding(.trailing, 3)
@@ -79,7 +78,7 @@ struct MessageItem: View {
                             Spacer()
                         }.padding(.bottom, 3)
                         HStack {
-                            Text("\(dataMessages.dateMsg, formatter: dateStore.dateHour)")
+                            Text("\(dataMessages.dateMsg, formatter: dateHour)")
                                 .font(.system(size: 10))
                                 .foregroundColor(.secondary)
                             Spacer()

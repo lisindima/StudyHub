@@ -10,7 +10,6 @@ import SwiftUI
 
 struct SettingAccount: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var pickerStore = PickerStore.shared
 
     @State private var showActionSheetImage: Bool = false
     @State private var isShowingModalViewImage: Bool = false
@@ -47,101 +46,29 @@ struct SettingAccount: View {
                         showActionSheetImage = true
                     }
                     .foregroundColor(.primary)
-                    .actionSheet(isPresented: $showActionSheetImage) {
-                        ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
-                            .default(Text("Сделать фотографию")) {
-                                selectedSourceType = .camera
-                                isShowingModalViewImage = true
-                            }, .default(Text("Выбрать фотографию")) {
-                                selectedSourceType = .photoLibrary
-                                isShowingModalViewImage = true
-                            }, .destructive(Text("Удалить фотографию")) {
-                                sessionStore.userData.urlImageProfile = deletedUrlImageProfile
-                            }, .cancel(),
-                        ])
-                    }
-                    .sheet(isPresented: $isShowingModalViewImage) {
-                        ImagePicker(selectedSourceType: $selectedSourceType)
-                            .environmentObject(sessionStore)
-                            .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                            .edgesIgnoringSafeArea(.bottom)
-                    }
-                }
-            }
-            Section(header: Text("Факультет и группа").fontWeight(.bold), footer: Text("Укажите свой факультет и группу, эти параметры влияют на расписание занятий.")) {
-                Picker(selection: $sessionStore.userData.choiseFaculty, label: HStack {
-                    Image(systemName: "list.bullet.below.rectangle")
-                        .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                    Text("Факультет")
-                }) {
-                    ForEach(0 ..< pickerStore.facultyModel.count, id: \.self) {
-                        Text(pickerStore.facultyModel[$0].name)
-                    }
-                }.lineLimit(1)
-                Picker(selection: $sessionStore.userData.choiseGroup, label: HStack {
-                    Image(systemName: "list.bullet.below.rectangle")
-                        .frame(width: 24)
-                        .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                    Text("Группа")
-                }) {
-                    ForEach(0 ..< pickerStore.groupModel.count, id: \.self) {
-                        Text(pickerStore.groupModel[$0].name)
-                    }
-                }.lineLimit(1)
-            }
-            Section(header: Text("Аккаунты для входа").fontWeight(.bold), footer: Text("Активируя эти аккаунты, вы сможете входить в ваш профиль используя любой из них.")) {
-                NavigationLink(destination: Changelog()) {
-                    HStack {
-                        Image(systemName: "applelogo")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Вход через Apple")
-                        Spacer()
-                        Text("Выкл")
-                            .foregroundColor(.secondary)
-                    }
-                }
-                NavigationLink(destination: Changelog()) {
-                    HStack {
-                        Image(systemName: "envelope")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Вход через почту и пароль")
-                        Spacer()
-                        Text("Вкл")
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            Section {
-                if sessionStore.userTypeAuth == .email {
-                    NavigationLink(destination: ChangeEmail()) {
-                        Image(systemName: "envelope")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Изменить эл.почту")
-                    }
-                    NavigationLink(destination: ChangePassword()) {
-                        Image(systemName: "lock")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Изменить пароль")
-                    }
-                }
-            }
-            Section {
-                NavigationLink(destination: DeleteUser()) {
-                    Image(systemName: "flame")
-                        .frame(width: 24)
-                        .foregroundColor(.red)
-                    Text("Удалить аккаунт")
-                        .foregroundColor(.red)
                 }
             }
         }
-        .environment(\.horizontalSizeClass, .regular)
-        .navigationBarTitle("Настройки аккаунта", displayMode: .inline)
+        .actionSheet(isPresented: $showActionSheetImage) {
+            ActionSheet(title: Text("Изменение фотографии"), message: Text("Скорость, с которой отобразиться новая фотография в профиле напрямую зависит от размера выбранной вами фотографии."), buttons: [
+                .default(Text("Сделать фотографию")) {
+                    selectedSourceType = .camera
+                    isShowingModalViewImage = true
+                }, .default(Text("Выбрать фотографию")) {
+                    selectedSourceType = .photoLibrary
+                    isShowingModalViewImage = true
+                }, .destructive(Text("Удалить фотографию")) {
+                    sessionStore.userData.urlImageProfile = deletedUrlImageProfile
+                }, .cancel(),
+            ])
+        }
+        .sheet(isPresented: $isShowingModalViewImage) {
+            ImagePicker(selectedSourceType: $selectedSourceType)
+                .environmentObject(sessionStore)
+                .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
+                .edgesIgnoringSafeArea(.bottom)
+        }
+        .navigationTitle("Настройки аккаунта")
     }
 }
 

@@ -16,7 +16,6 @@ struct StudyHub: App {
 
     @StateObject private var sessionStore = SessionStore.shared
     @StateObject private var chatStore = ChatStore.shared
-    @StateObject private var noteStore = NoteStore.shared
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
@@ -25,7 +24,6 @@ struct StudyHub: App {
             RootView()
                 .environmentObject(sessionStore)
                 .environmentObject(chatStore)
-                .environmentObject(noteStore)
         }
         .onChange(of: scenePhase) { phase in
             if phase == .active {

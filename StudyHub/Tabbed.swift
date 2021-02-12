@@ -15,45 +15,23 @@ struct Tabbed: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            CardList()
-                .tabItem {
-                    Image(systemName: "doc.richtext")
-                        .imageScale(.large)
-                    Text("Сегодня")
-                }.tag(0)
-            ScheduleView()
-                .tabItem {
-                    Image(systemName: "calendar")
-                        .imageScale(.large)
-                    Text("Расписание")
-                }.tag(1)
-            NoteView()
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                        .imageScale(.large)
-                    Text("Заметки")
-                }.tag(2)
             ChatView()
                 .tabItem {
                     Image(systemName: "bubble.left")
                         .imageScale(.large)
                     Text("Сообщения")
-                }.tag(3)
+                }
+                .tag(0)
             ProfileView()
                 .tabItem {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
                     Text("Профиль")
-                }.tag(4)
+                }
+                .tag(1)
         }
         .banner(isPresented: $sessionStore.showBanner)
         .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .onAppear(perform: notificationStore.updateFcmToken)
-    }
-}
-
-struct Tabbed_Previews: PreviewProvider {
-    static var previews: some View {
-        Tabbed()
     }
 }

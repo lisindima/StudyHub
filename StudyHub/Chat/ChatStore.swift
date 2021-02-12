@@ -6,7 +6,6 @@
 //  Copyright © 2019 Dmitriy Lisin. All rights reserved.
 //
 
-import Alamofire
 import Combine
 import Firebase
 import FirebaseFirestoreSwift
@@ -100,37 +99,37 @@ class ChatStore: ObservableObject {
         }
     }
 
-    func sendMessage(chatStore _: ChatStore, token: String, title: String, body: String) {
+    func sendMessage(token: String, title: String, body: String) {
         let currentUser = Auth.auth().currentUser
         addMessageDB(message: body, user: title, idUser: currentUser!.uid)
         isNotRead += 1
 
-        let parameters: Parameters = [
-            "to": token,
-            "priority": "high",
-            "notification": [
-                "title": title,
-                "body": body,
-                "sound": "default",
-                "badge": isNotRead,
-            ],
-            "data": [
-                "user": "test_id",
-            ],
-        ]
-
-        let headers: HTTPHeaders = [
-            .contentType("application/json"),
-            .authorization("key=\(legacyServerKey)"),
-        ]
-
-        let encoding = JSONEncoding.prettyPrinted
-
-        AF.request("https://fcm.googleapis.com/fcm/send", method: .post, parameters: parameters, encoding: encoding, headers: headers)
-            .validate()
-            .responseJSON { response in
-                print(response)
-            }
+//        let parameters: Parameters = [
+//            "to": token,
+//            "priority": "high",
+//            "notification": [
+//                "title": title,
+//                "body": body,
+//                "sound": "default",
+//                "badge": isNotRead,
+//            ],
+//            "data": [
+//                "user": "test_id",
+//            ],
+//        ]
+//
+//        let headers: HTTPHeaders = [
+//            .contentType("application/json"),
+//            .authorization("key=\(legacyServerKey)"),
+//        ]
+//
+//        let encoding = JSONEncoding.prettyPrinted
+//
+//        AF.request("https://fcm.googleapis.com/fcm/send", method: .post, parameters: parameters, encoding: encoding, headers: headers)
+//            .validate()
+//            .responseJSON { response in
+//                print(response)
+//            }
     }
 
     func checkRead() {

@@ -168,15 +168,6 @@ struct UserData: Identifiable, Codable {
     var gValue: Double
     var bValue: Double
     var adminSetting: Bool
-    var choiseGroup: Int
-    var choiseFaculty: Int {
-        didSet {
-            if !PickerStore.shared.facultyModel.isEmpty {
-                PickerStore.shared.loadPickerGroup()
-            }
-        }
-    }
-
     var darkThemeOverride: Bool
 }
 

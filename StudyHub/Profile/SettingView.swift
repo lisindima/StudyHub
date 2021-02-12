@@ -6,7 +6,6 @@
 //  Copyright © 2020 Dmitriy Lisin. All rights reserved.
 //
 
-import BottomSheet
 import KingfisherSwiftUI
 import MessageUI
 import SPAlert
@@ -15,9 +14,7 @@ import SwiftUI
 struct SettingView: View {
     @State private var showActionSheetMailFeedback: Bool = false
     @State private var showSubcriptionSheet: Bool = false
-    @State private var showChangeIcons: Bool = false
     @State private var subscribeApplication: Bool = false
-    @State private var firebaseServiceStatus: FirebaseServiceStatus = .normal
     @State private var mailSubject: String = ""
 
     @Environment(\.presentationMode) var presentationMode
@@ -27,8 +24,6 @@ struct SettingView: View {
     @ObservedObject private var notificationStore = NotificationStore.shared
     @ObservedObject private var imageCacheStore = ImageCacheStore.shared
     @ObservedObject private var purchasesStore = PurchasesStore.shared
-    @ObservedObject private var pickerStore = PickerStore.shared
-    @ObservedObject private var dateStore = DateStore.shared
 
     private var appVersionView: some View {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
@@ -46,9 +41,6 @@ struct SettingView: View {
         purchasesStore.purchasesIsDateInToday()
         if imageCacheStore.sizeLimitImageCache == 0 {
             imageCacheStore.setCacheSizeLimit()
-        }
-        if pickerStore.facultyModel.isEmpty {
-            pickerStore.loadPickerFaculty()
         }
     }
 
@@ -91,11 +83,11 @@ struct SettingView: View {
                                     Text("Управление подпиской")
                                         .foregroundColor(.primary)
                                     if purchasesStore.purchasesSameDay {
-                                        Text("Подписка возобновится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateHour)")
+                                        Text("Подписка возобновится: Сегодня, \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateHour)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     } else {
-                                        Text("Подписка возобновится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateStore.dateDay)")
+                                        Text("Подписка возобновится: \(purchasesStore.purchasesInfo!.expirationDate(forEntitlement: "altgtu")!, formatter: dateDay)")
                                             .font(.system(size: 11))
                                             .foregroundColor(.secondary)
                                     }
@@ -114,54 +106,6 @@ struct SettingView: View {
                             .sheet(isPresented: $showSubcriptionSheet) {
                                 SubscriptionSplashScreen()
                                     .environmentObject(sessionStore)
-                            }
-                        }
-                    }
-                    if firebaseServiceStatus == .normal {
-                        HStack {
-                            Image(systemName: "icloud")
-                                .frame(width: 24)
-                                .foregroundColor(.green)
-                            VStack(alignment: .leading) {
-                                Text("Синхронизация работает")
-                                Text("Все сервисы работают в обычном режиме.")
-                                    .font(.system(size: 11))
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    } else if firebaseServiceStatus == .problem {
-                        HStack {
-                            Image(systemName: "exclamationmark.icloud")
-                                .frame(width: 24)
-                                .foregroundColor(.yellow)
-                            VStack(alignment: .leading) {
-                                Text("Наблюдаются неполадки")
-                                Text("Cихронизация может занять больше времени.")
-                                    .font(.system(size: 11))
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    } else if firebaseServiceStatus == .failure {
-                        HStack {
-                            Image(systemName: "xmark.icloud")
-                                .frame(width: 24)
-                                .foregroundColor(.red)
-                            VStack(alignment: .leading) {
-                                Text("Синхронизация не работает")
-                                Text("Данные пользователей сохраняются локально.")
-                                    .font(.system(size: 11))
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    } else if firebaseServiceStatus == .loading {
-                        HStack {
-                            ProgressView()
-                                .frame(width: 24)
-                            VStack(alignment: .leading) {
-                                Text("Загрузка")
-                                Text("Проверяем работоспособность сервера.")
-                                    .font(.system(size: 11))
-                                    .foregroundColor(.secondary)
                             }
                         }
                     }
@@ -220,16 +164,6 @@ struct SettingView: View {
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
                         Text("Темная тема")
                     }
-                    #if !targetEnvironment(macCatalyst)
-                    HStack {
-                        Image(systemName: "app")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Button("Изменить иконку") {
-                            showChangeIcons = true
-                        }.foregroundColor(.primary)
-                    }
-                    #endif
                 }
                 Section(header: Text("Настройки уведомлений").fontWeight(.bold), footer: Text("Здесь вы можете управлять уведомлениями, выбирать именно те, которые вы хотите получать или вовсе отключить все.")) {
                     NavigationLink(destination: NotificationSetting()) {
@@ -288,13 +222,7 @@ struct SettingView: View {
                     }
                 }
                 Section(header: Text("Другое").fontWeight(.bold), footer: Text("Если в приложение возникают ошибки или вам не хватает какой-нибудь функции, нажмите на кнопку \"Сообщить об ошибке\".")) {
-                    NavigationLink(destination: Changelog()) {
-                        Image(systemName: "wand.and.stars.inverse")
-                            .frame(width: 24)
-                            .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
-                        Text("Что нового?")
-                    }
-                    NavigationLink(destination: License()) {
+                    NavigationLink(destination: Text("Лицензии")) {
                         Image(systemName: "doc.plaintext")
                             .frame(width: 24)
                             .foregroundColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
@@ -361,23 +289,16 @@ struct SettingView: View {
                 }
             }
             .onAppear(perform: startSettingView)
-            .environment(\.horizontalSizeClass, .regular)
-            .navigationBarTitle("Настройки", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Закрыть")
-                    .bold()
-            })
-            .bottomSheet(isPresented: $showChangeIcons, height: 200) {
-                ChangeIcons()
+            .navigationTitle("Настройки")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: { presentationMode.wrappedValue.dismiss() }) {
+                        Text("Закрыть")
+                    }
+                }
             }
         }
         .accentColor(Color.rgb(red: sessionStore.userData.rValue, green: sessionStore.userData.gValue, blue: sessionStore.userData.bValue))
         .navigationViewStyle(StackNavigationViewStyle())
     }
-}
-
-enum FirebaseServiceStatus {
-    case normal, problem, failure, loading
 }

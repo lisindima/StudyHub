@@ -16,7 +16,6 @@ import SwiftUI
 
 struct SignUpView: View {
     @EnvironmentObject var sessionStore: SessionStore
-    @ObservedObject private var dateStore = DateStore.shared
 
     @State private var email: String = ""
     @State private var password: String = ""
@@ -82,7 +81,7 @@ struct SignUpView: View {
                 Button(action: {
                     isShowDate = true
                 }) {
-                    Text("\(dateBirthday, formatter: dateStore.dateDay)")
+                    Text("\(dateBirthday, formatter: dateDay)")
                 }
             }
             if isShowDate {
@@ -90,7 +89,7 @@ struct SignUpView: View {
                     Button(action: {
                         isShowDate = false
                     }) {
-                        Text("\(dateBirthday, formatter: dateStore.dateDay)")
+                        Text("\(dateBirthday, formatter: dateDay)")
                     }
                     DatePicker(selection: $dateBirthday, displayedComponents: .date) {
                         Text("День рождения")
